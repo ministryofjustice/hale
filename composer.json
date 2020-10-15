@@ -1,6 +1,6 @@
 {
-    "name": "ministryofjustice/nightingale",
-    "description": "Nightingale generic theme",
+    "name": "ministryofjustice/wp-hale",
+    "description": "Hale theme",
     "type": "wordpress-theme",
     "require": {}
 }
