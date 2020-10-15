@@ -1,0 +1,10 @@
+@each $name, $colour in $colours {
+
+  .has-#{$name}-color {
+	color : $colour;
+  }
+
+  .has-#{$name}-background-color {
+	background-color : $colour;
+  }
+}

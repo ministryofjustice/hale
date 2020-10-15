@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*
+Theme Name: Hale
+Text Domain: hale
+Version: 1.0.0
+Description: Theme for Ministry of Justice websites.
+Author: Ministry of Justice - Adam Brown, Beverley Newing, Damien Wilson & Robert Lowe
+*/
+
+@import 'assets/scss/default';
+@import 'assets/scss/nhsuk-replacement';
+
+@import 'assets/scss/variables';
+
+// start importing the theme specific settings
+@import 'assets/scss/nhs-colours';
+// nhs colour pallette
+@import 'assets/scss/generic-overrides';
+// generic over-rides to remove default wordpress styling issues
+@import 'assets/scss/header';
+// header styles
+@import 'assets/scss/banner';
+// header banner styles
+@import 'assets/scss/breadcrumb';
+// breadcrumb styles
+@import 'assets/scss/footer';
+// footer styles
+@import 'assets/scss/style_variations';
+// block elements
+@import 'assets/scss/sidebar-widgets.scss';
+// sidebar elements and subpages navigation
+@import 'assets/scss/comments-and-meta';
+// Print output styling
+@import 'assets/scss/print';
+// over-ride for gallery styling to bring into NHSUK style
+@import 'assets/scss/gallery';
+// Gravity Forms plugin styling to match NHSUK design patterns
+@import 'assets/scss/gravity-forms';
+// LearnDash plugin styling to match NHSUK design patterns
+@import 'assets/scss/learndash-styling';
+
+@import 'assets/scss/typography';
+
+// Events Calendar plugin styling to match NHSUK design patterns
+@import 'assets/scss/events-calendar-styling';
+// Download Monitor plugin styling to match NHSUK design patterns
+@import 'assets/scss/download-monitor';
+// Events Calendar plugin styling to match NHSUK design patterns
+@import 'assets/scss/emergency_alert';
+// Events Calendar plugin styling to match NHSUK design patterns
+@import 'assets/scss/feedback_banner';
+@import 'assets/scss/nhsblocks/nhsl-blocks'; // specific elements for nhsl-blocks plugin
+@import 'assets/scss/nhsblocks/style_variations';//gutenberg blocks style variations
+@import 'assets/scss/nhsblocks/stripe-blocks';//gutenberg blocks stripe
+// nhs colour pallette
+@import 'assets/scss/color-mixer';
+@import 'assets/scss/icons';
