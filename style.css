@@ -10809,6 +10809,7 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   .nhsuk-header .nhsuk-header__navigation-link,
   .nhsuk-header .nhsuk-header__navigation ul li a {
     color: #005eb8;
+    padding: 6px 16px;
   }
   .nhsuk-header .nhsuk-header__navigation,
   .nhsuk-header .nhsuk-header__navigation-link:hover,
