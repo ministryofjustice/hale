@@ -13,7 +13,7 @@
 		a {
 		  @extend .nhsuk-header__navigation-link;
 		  height : 100%;
-
+      padding: 8px 0;
 		}
 	  }
 	}
@@ -253,7 +253,7 @@
   }
 
   @include mq($from: tablet) {
-      margin-left: -15px;
+      //margin-left: -15px;
   }
 
 }

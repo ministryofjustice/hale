@@ -10686,6 +10686,7 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
 
 .nhsuk-header .nhsuk-header__navigation ul li a {
   height: 100%;
+  padding: 8px 0;
 }
 
 .nhsuk-header .nhsuk-header__search-wrap input[type="text"] {
@@ -10890,12 +10891,6 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
 @media (max-width: 40.0525em) {
   .nhsuk-header__logo {
     max-width: 70%;
-  }
-}
-
-@media (min-width: 40.0625em) {
-  .nhsuk-header__logo {
-    margin-left: -15px;
   }
 }
 
