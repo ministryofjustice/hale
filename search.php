@@ -18,24 +18,40 @@ get_header();
 	<div id="primary" class="clear">
 		<header>
 			<h1 class="nhsuk-heading-xl">
-			Boop
 				<?php
 				/* translators: %s: search term */
-				printf( esc_html__( 'Search Results for: %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
+				printf( esc_html__( 'Search Results for %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
+
+				$header_search = get_theme_mod( 'show_search', 'yes' );
 				?>
 			</h1>
+
+			<div class="nhsuk-header__search">
+				<?php get_search_form(); ?>
+			</div>
+
 		</header>
 		<div class="index">
 			<?php
 			if ( have_posts() ) :
 				?>
+
+				<p class="search-results-count">
+					<?php /* Search Count */
+						echo $wp_query->found_posts . ' ';
+						_e('results');
+						// echo $wp_query->max_num_pages;
+						// echo $current_page = get_query_var( 'paged' );
+					?>
+				</h2>
+
 				<div class="nhsuk-grid-row nhsuk-promo-group">
 					<?php
 					/* Start the Loop */
 					while ( have_posts() ) :
 						the_post();
 						?>
-						<div class="nhsuk-grid-column-one-third nhsuk-promo-group__item nhsuk-postslisting">
+						<div class="nhsuk-postslisting">
 							<div class="nhsuk-promo">
 								<a class="nhsuk-promo__link-wrapper" href="<?php the_permalink(); ?>">
 									<?php

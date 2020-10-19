@@ -58,6 +58,7 @@ function nightingale_archive_pagination() {
 		$pagination .= "<li class='nhsuk-pagination-numbers'>";
 
 		foreach ( $paginate as $element ) {
+			// this is the bit that spits out the numbers
 
 			$pagination .= $element;
 		}
