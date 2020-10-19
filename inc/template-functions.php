@@ -172,10 +172,11 @@ function nightingale_sidebar_location( $sidebar ) {
  */
 function nightingale_custom_page_colour( $classes ) {
 	$colour = get_theme_mod( 'theme_colour', 'nhs_blue' );
+
 	if ( 'nhs_blue' !== $colour ) {
 		$colour_array      = array(
 			'005eb8' => 'nhs-blue',
-			'003087' => 'dark-blue',
+			'0c223f' => 'dark-blue',
 			'0072ce' => 'bright-blue',
 			'768692' => 'mid-grey',
 			'425563' => 'dark-grey',
