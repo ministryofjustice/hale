@@ -26,7 +26,7 @@ get_header();
 				?>
 			</h1>
 
-			<div class="nhsuk-header__search">
+			<div class="nhsuk-header__search--results-page">
 				<?php get_search_form(); ?>
 			</div>
 
