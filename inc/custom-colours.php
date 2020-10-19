@@ -10,130 +10,130 @@
 /**
  * Setup the colours for our theme.
  */
-function nightingale_get_theme_colours() {
+function hale_get_theme_colours() {
 	return array(
-		''       => esc_html__( 'Inherit site wide colour settings', 'nightingale' ),
-		'005eb8' => esc_html__( 'NHS Blue', 'nightingale' ),
-        '336c83' => esc_html__( 'Magistrates Teal', 'nightingale' ),
-		'003087' => esc_html__( 'Dark Blue', 'nightingale' ),
-		'0072ce' => esc_html__( 'Bright Blue', 'nightingale' ),
-		'768692' => esc_html__( 'Mid Grey', 'nightingale' ),
-		'425563' => esc_html__( 'Dark Grey', 'nightingale' ),
-		'231f20' => esc_html__( 'Black', 'nightingale' ),
-		'330072' => esc_html__( 'Purple', 'nightingale' ),
-		'ae2573' => esc_html__( 'Pink', 'nightingale' ),
-		'704c9c' => esc_html__( 'Light Purple', 'nightingale' ),
-		'da291c' => esc_html__( 'Emergency Services Red', 'nightingale' ),
-		'006747' => esc_html__( 'Dark Green', 'nightingale' ),
-		'78be20' => esc_html__( 'Light Green', 'nightingale' ),
-		'00a499' => esc_html__( 'Aqua Green', 'nightingale' ),
-		'0b0c0c' => esc_html__( 'GDS Black', 'nightingale' ),
+		''       => esc_html__( 'Inherit site wide colour settings', 'hale' ),
+		'005eb8' => esc_html__( 'NHS Blue', 'hale' ),
+        '336c83' => esc_html__( 'Magistrates Teal', 'hale' ),
+		'0c223f' => esc_html__( 'Dark Blue', 'hale' ),
+		'0072ce' => esc_html__( 'Bright Blue', 'hale' ),
+		'768692' => esc_html__( 'Mid Grey', 'hale' ),
+		'425563' => esc_html__( 'Dark Grey', 'hale' ),
+		'231f20' => esc_html__( 'Black', 'hale' ),
+		'330072' => esc_html__( 'Purple', 'hale' ),
+		'ae2573' => esc_html__( 'Pink', 'hale' ),
+		'704c9c' => esc_html__( 'Light Purple', 'hale' ),
+		'da291c' => esc_html__( 'Emergency Services Red', 'hale' ),
+		'006747' => esc_html__( 'Dark Green', 'hale' ),
+		'78be20' => esc_html__( 'Light Green', 'hale' ),
+		'00a499' => esc_html__( 'Aqua Green', 'hale' ),
+		'0b0c0c' => esc_html__( 'GDS Black', 'hale' ),
 	);
 }
 
 // -- Disable Custom Colors
-add_action( 'after_setup_theme', 'nightingale_prefix_register_colors' );
+add_action( 'after_setup_theme', 'hale_prefix_register_colors' );
 /**
  * Make an array of colours we want to show.
  */
-function nightingale_prefix_register_colors() {
+function hale_prefix_register_colors() {
 
 	add_theme_support( 'disable-custom-colors' );
 	add_theme_support(
 		'editor-color-palette',
 		array(
 			array(
-				'name'  => esc_html__( 'NHS Blue', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Blue', 'hale' ),
 				'slug'  => 'nhs_blue',
 				'color' => '#005eb8',
 			),
             array(
-                'name'  => esc_html__( 'Magistrates Teal', 'nightingale' ),
+                'name'  => esc_html__( 'Magistrates Teal', 'hale' ),
                 'slug'  => 'magistrates_teal',
                 'color' => '#336c83',
             ),
 			array(
-				'name'  => esc_html__( 'NHS Dark Blue', 'nightingale' ),
-				'slug'  => 'nhs_dark_blue',
-				'color' => '#003087',
+				'name'  => esc_html__( 'Dark Blue', 'hale' ),
+				'slug'  => 'dark_blue',
+				'color' => '#0c223f',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Bright Blue', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Bright Blue', 'hale' ),
 				'slug'  => 'nhs_bright_blue',
 				'color' => '#0072ce',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Light Blue', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Light Blue', 'hale' ),
 				'slug'  => 'nhs_light_blue',
 				'color' => '#41b6e6',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Mid Grey', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Mid Grey', 'hale' ),
 				'slug'  => 'nhs_mid_grey',
 				'color' => '#768692',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Light Grey', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Light Grey', 'hale' ),
 				'slug'  => 'nhs_light_grey',
 				'color' => '#e8edee',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Purple', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Purple', 'hale' ),
 				'slug'  => 'nhs_purple',
 				'color' => '#330072',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Pink', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Pink', 'hale' ),
 				'slug'  => 'nhs_pink',
 				'color' => '#ae2573',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Light Purple', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Light Purple', 'hale' ),
 				'slug'  => 'nhs_light_purple',
 				'color' => '#704c9c',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Light Green', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Light Green', 'hale' ),
 				'slug'  => 'nhs_light_green',
 				'color' => '#78be20',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Dark Green', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Dark Green', 'hale' ),
 				'slug'  => 'nhs_dark_green',
 				'color' => '#006747',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Aqua Green', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Aqua Green', 'hale' ),
 				'slug'  => 'nhs_aqua_green',
 				'color' => '#00a499',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Black', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Black', 'hale' ),
 				'slug'  => 'nhs_black',
 				'color' => '#231f20',
 			),
 			array(
-				'name'  => esc_html__( 'Emergency Services Red', 'nightingale' ),
+				'name'  => esc_html__( 'Emergency Services Red', 'hale' ),
 				'slug'  => 'emergency_red',
 				'color' => '#da291c',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Yellow', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Yellow', 'hale' ),
 				'slug'  => 'nhs_yellow',
 				'color' => '#fae100',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Warm Yellow', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Warm Yellow', 'hale' ),
 				'slug'  => 'nhs_warm_yellow',
 				'color' => '#ffb81c',
 			),
 			array(
-				'name'  => esc_html__( 'NHS Dark Grey', 'nightingale' ),
+				'name'  => esc_html__( 'NHS Dark Grey', 'hale' ),
 				'slug'  => 'nhs_grey_dark',
 				'color' => '#425563',
 			),
 			array(
-				'name'  => esc_html__( 'White', 'nightingale' ),
+				'name'  => esc_html__( 'White', 'hale' ),
 				'slug'  => 'white',
 				'color' => '#ffffff',
 			),
