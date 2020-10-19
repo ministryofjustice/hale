@@ -46,7 +46,7 @@ function nightingale_render_colourpicker( $post ) {
 	wp_nonce_field( basename( __FILE__ ), 'nightingale-colour-picker-nonce' );
 	// get previously saved meta values (if any).
 	$sidebar       = esc_attr( get_post_meta( $post->ID, 'page-color', true ) );
-	$theme_colours = nightingale_get_theme_colours();
+	$theme_colours = hale_get_theme_colours();
 	?>
 	<label for="color-picker"><?php esc_html_e( 'Choose colour for the page. (Refresh the page for changes to take effect.)', 'nightingale' ); ?></label>
 	<select id="color-picker" name="color-picker" class="widefat">
