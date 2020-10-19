@@ -18,6 +18,7 @@ get_header();
 	<div id="primary" class="clear">
 		<header>
 			<h1 class="nhsuk-heading-xl">
+			Boop
 				<?php
 				/* translators: %s: search term */
 				printf( esc_html__( 'Search Results for: %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
