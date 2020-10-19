@@ -1,36 +1,37 @@
-$color_nhsuk-white : #ffffff;
-$color_nhsuk-black : #000000;
-$color_nhsuk-blue : #005eb8;
-$color_nhsuk-purple : #330072;
-$color_nhsuk-red : #d5281b;
-$color_nhsuk-aqua-green : #00a499;
-$color_nhsuk-dark-blue : #003087;
-$color_nhsuk-bright-blue : #0072ce;
-$color_nhsuk-light-blue : #41b6e6;
-$color_nhsuk-mid-grey : #768692;
-$color_nhsuk-light-grey : #e8edee;
-$color_nhsuk-dark-grey : #425563;
-$color_nhsuk-pink : #ae2573;
+$color_nhsuk-white        : #ffffff;
+$color_nhsuk-black        : #000000;
+$color_nhsuk-blue         : #005eb8;
+$color_nhsuk-purple       : #330072;
+$color_nhsuk-red          : #d5281b;
+$color_nhsuk-aqua-green   : #00a499;
+$color_nhsuk-bright-blue  : #0072ce;
+$color_nhsuk-light-blue   : #41b6e6;
+$color_nhsuk-mid-grey     : #768692;
+$color_nhsuk-light-grey   : #e8edee;
+$color_nhsuk-dark-grey    : #425563;
+$color_nhsuk-pink         : #ae2573;
 $color_nhsuk-light-purple : #704c9c;
-$color_nhsuk-light-green : #78be20;
-$color_nhsuk-dark-green : #006747;
-$color_gds_black : #0b0c0c;
-$color_magi_teal : #336C83;
-$page-colours : ('nhs-blue' : $color_nhsuk-blue,
-  'dark-blue' : $color_nhsuk_dark-blue,
-  'bright-blue' : $color_nhsuk-bright-blue,
-  'mid-grey' : $color_nhsuk-mid-grey,
-  'dark-grey' : $color-nhsuk-dark-grey,
-  'black' : $color_nhsuk-black,
-  'purple' : $color-nhsuk-purple,
-  'pink' : $color_nhsuk-pink,
-  'light-purple' : $color_nhsuk-light-purple,
-  'emergency-services-red' : $color_nhsuk-red,
-  'dark-green' : $color_nhsuk-dark-green,
-  'light-green' : $color_nhsuk-light-green,
-  'aqua-green' : $color_nhsuk-aqua-green,
-  'gds-black' : $color_gds_black,
-  'magistrates-teal' : $color_magi_teal,
+$color_nhsuk-light-green  : #78be20;
+$color_nhsuk-dark-green   : #006747;
+$color_gds_black          : #0b0c0c;
+$color_magi_teal          : #336C83;
+$color_dark-blue          : #0C223F;
+$page-colours             : (
+		'nhs-blue' : $color_nhsuk-blue,
+		'dark-blue' : $color_dark-blue,
+		'bright-blue' : $color_nhsuk-bright-blue,
+		'mid-grey' : $color_nhsuk-mid-grey,
+		'dark-grey' : $color-nhsuk-dark-grey,
+		'black' : $color_nhsuk-black,
+		'purple' : $color-nhsuk-purple,
+		'pink' : $color_nhsuk-pink,
+		'light-purple' : $color_nhsuk-light-purple,
+		'emergency-services-red' : $color_nhsuk-red,
+		'dark-green' : $color_nhsuk-dark-green,
+		'light-green' : $color_nhsuk-light-green,
+		'aqua-green' : $color_nhsuk-aqua-green,
+		'gds-black' : $color_gds_black,
+		'magistrates-teal' : $color_magi_teal,
 );
 
 @each $name,
