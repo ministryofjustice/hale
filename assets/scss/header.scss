@@ -286,11 +286,6 @@
   @include mq($until: tablet) {
     max-width: 70%;
   }
-
-  @include mq($from: tablet) {
-    //margin-left: -15px;
-  }
-
 }
 
 .nhsuk-header .nhsuk-header__container {

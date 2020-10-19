@@ -263,46 +263,31 @@
 }
 
 @media (min-width: 40.0625em) {
-<<<<<<< HEAD
   .page-colour--dark-blue .nhsuk-icon__search,
   #content .page-style--dark-blue .nhsuk-icon__search {
-    fill: #003087;
+    fill: #0C223F;
   }
 }
 
 .page-colour--dark-blue #secondary section ul > li > ul > li > a,
 #content .page-style--dark-blue #secondary section ul > li > ul > li > a {
-  border-left: 2px solid #003087;
+  border-left: 2px solid #0C223F;
 }
 
 .page-colour--dark-blue .gform_wrapper .gf_progressbar_wrapper .gf_progressbar .gf_progressbar_percentage,
 #content .page-style--dark-blue .gform_wrapper .gf_progressbar_wrapper .gf_progressbar .gf_progressbar_percentage {
-  background-color: #003087;
-=======
-  .page-colour--dark-blue .nhsuk-icon__search, #content .page-style--dark-blue .nhsuk-icon__search {
-    fill: #0C223F;
-  }
-}
-
-.page-colour--dark-blue #secondary section ul > li > ul > li > a, #content .page-style--dark-blue #secondary section ul > li > ul > li > a {
-  border-left: 2px solid #0C223F;
-}
-
-.page-colour--dark-blue .gform_wrapper .gf_progressbar_wrapper .gf_progressbar .gf_progressbar_percentage, #content .page-style--dark-blue .gform_wrapper .gf_progressbar_wrapper .gf_progressbar .gf_progressbar_percentage {
   background-color: #0C223F;
->>>>>>> main
 }
 
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation {
   background: #0C223F;
 }
 
-<<<<<<< HEAD
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link:hover,
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover,
 .page-colour--dark-blue .nhsuk-header .nhsuk-search__submit:hover {
-  background-color: #00153b;
-  background: #00153b;
+  background-color: black;
+  background: black;
 }
 
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__menu-toggle:focus,
@@ -313,18 +298,8 @@
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle:focus,
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle.is-active,
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle:active {
-  background-color: #00153b;
-  background: #00153b;
-=======
-.page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link:hover, .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover, .page-colour--dark-blue .nhsuk-header .nhsuk-search__submit:hover {
   background-color: black;
   background: black;
-}
-
-.page-colour--dark-blue .nhsuk-header .nhsuk-header__menu-toggle:focus, .page-colour--dark-blue .nhsuk-header .nhsuk-header__menu-toggle:hover, .page-colour--dark-blue .nhsuk-header .nhsuk-header__menu-toggle.is-active, .page-colour--dark-blue .nhsuk-header .nhsuk-header__menu-toggle:active, .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle:hover, .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle:focus, .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle.is-active, .page-colour--dark-blue .nhsuk-header .nhsuk-header__search-toggle:active {
-  background-color: black;
-  background: black;
->>>>>>> main
   color: #ffffff;
 }
 
@@ -373,14 +348,9 @@
 }
 
 @media (max-width: 989px) {
-<<<<<<< HEAD
   .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a,
   .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link {
-    color: #003087;
-=======
-  .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a, .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link {
     color: #0C223F;
->>>>>>> main
   }
   .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation,
   .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link:hover,
