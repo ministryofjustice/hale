@@ -11368,6 +11368,54 @@ span.search-terms {
   }
 }
 
+.search__pagination-text {
+  font-size: 14px;
+  text-align: center;
+}
+
+.search__pagination-button-text {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.search__pagination-button a {
+  font-family: inherit;
+  background-color: #e8f1fb;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: none;
+  padding: 9px 17px;
+  fill: #1976d2;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.search__pagination-button a:focus, .search__pagination-button a:hover {
+  color: #FFFFFF;
+  -webkit-text-fill-color: #FFFFFF;
+  background-color: #0D47A1;
+  fill: #FFFFFF;
+  border: 1px solid #0D47A1;
+}
+
+.search__pagination-button a:focus, .search__pagination-button a:active {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #00A0CC;
+}
+
+.search__pagination-button a:active {
+  background-color: #403DD0;
+}
+
+.search__pagination-button--previous a {
+  float: left;
+}
+
+.search__pagination-button--next a {
+  float: right;
+}
+
 #secondary section {
   border-top: 2px solid #005eb8;
   margin-bottom: 32px;
