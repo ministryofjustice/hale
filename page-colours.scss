@@ -217,14 +217,15 @@ $colour in $page-colours {
           border-top: 0px solid #f0f4f5;
         }
 
+        .nhsuk-header__navigation ul li,
+        .nhsuk-header__navigation-item {
+          border-top: 0;
+          border-bottom: 1px solid #B6BDC5;
+        }
+
         .nhsuk-header__search-form {
           background-color: $colour;
           background: $colour;
-        }
-
-        .nhsuk-header__navigation ul li:hover,
-        .nhsuk-header__navigation-link {
-          border-bottom: 4px solid #B6BDC5;
         }
 
         .nhsuk-header__navigation ul li a,
@@ -242,7 +243,6 @@ $colour in $page-colours {
           color:  #B6BDC5;
           text-decoration: none;
         }
-
       }
     }
   }
