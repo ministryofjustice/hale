@@ -76,6 +76,15 @@ get_header();
 											?>
 										</p>
 										<?php do_action( 'nightingale_after_archive_content' ); ?>
+
+										<?php
+										// Get and display the last updated time of the search result
+											$u_time = get_the_time('U');
+											$u_modified_time = get_the_modified_time('U');
+											echo "<p>Updated on ";
+											the_modified_time('jS F Y');
+											echo "</p> ";
+										?>
 									</div>
 								</a>
 							</div>
