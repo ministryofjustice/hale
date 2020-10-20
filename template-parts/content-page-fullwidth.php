@@ -7,7 +7,18 @@
  * @copyright NHS Leadership Academy, Tony Blacker
  * @version   1.1 21st August 2019
  */
+
+$show_title = get_post_meta(get_the_ID(), 'display-page-title', true);
+
 ?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+    <?php if($show_title != 'no' && is_front_page() == false){ ?>
+        <header class="entry-header">
+            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+        </header><!-- .entry-header -->
+    <?php } ?>
 
 	<?php do_action( 'nightingale_before_single_content' ); ?>
 
@@ -46,3 +57,4 @@
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
+</article><!-- #post-<?php the_ID(); ?> -->
