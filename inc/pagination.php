@@ -57,11 +57,10 @@ function nightingale_archive_pagination() {
 
 		$pagination .= "<li class='nhsuk-pagination-numbers'>";
 
-		foreach ( $paginate as $element ) {
-			// this is the bit that spits out the numbers
-
-			$pagination .= $element;
-		}
+		$pagination .= "Page ";
+		$pagination .= $current_page = get_query_var( 'paged' );
+		$pagination .= " of ";
+		$pagination .= $count - 1;
 
 		$pagination .= '</li></ul></nav></div>';
 

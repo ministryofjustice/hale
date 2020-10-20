@@ -40,8 +40,6 @@ get_header();
 					<?php /* Search Count */
 						echo $wp_query->found_posts . ' ';
 						_e('results');
-						// echo $wp_query->max_num_pages;
-						// echo $current_page = get_query_var( 'paged' );
 					?>
 				</h2>
 
