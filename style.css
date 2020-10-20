@@ -10954,6 +10954,38 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   }
 }
 
+.nhsuk-header__search--results-page {
+  float: unset;
+  margin-left: 0;
+}
+
+.nhsuk-header__search--results-page .nhsuk-search__input {
+  float: none;
+  width: calc(100% - 54px);
+  display: inline-block;
+}
+
+.nhsuk-header__search--results-page .nhsuk-search__submit {
+  float: none !important;
+  margin-top: 0 !important;
+  display: inline-block;
+}
+
+@media (max-width: 40.0525em) {
+  .nhsuk-header__search--results-page .nhsuk-header__search-wrap {
+    display: unset;
+  }
+  .nhsuk-header__search--results-page .nhsuk-header__search-wrap .nhsuk-search__close {
+    display: none;
+  }
+  .nhsuk-header__search--results-page .nhsuk-header__search-wrap .autocomplete-container {
+    width: 0;
+  }
+  .nhsuk-header__search--results-page .nhsuk-header__search-wrap .nhsuk-header__search-form {
+    padding: 0;
+  }
+}
+
 /* end of header.scss include */
 .nightingale-banner__container {
   padding: 20px 0;

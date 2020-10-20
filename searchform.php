@@ -41,7 +41,7 @@ if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
 	<span class="nhsuk-u-visually-hidden"><?php echo esc_html__( 'Search', 'nightingale' ); ?></span>
 </button>
 <div class="nhsuk-header__search-wrap" <?php echo esc_attr( $wrap_search ); ?>>
-	<form class="nhsuk-header__search-form" <?php echo esc_attr( $search_form ); ?> action="/" method="get" role="search">
+	<form class="nhsuk-header__search-form" <?php echo esc_attr( $search_form ); ?> action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
 		<label class="nhsuk-u-visually-hidden" for="<?php echo esc_attr( $search_field ); ?>"><?php esc_html_e( 'Search this website', 'nightingale' ); ?></label>
 		<div class="autocomplete-container" <?php echo esc_attr( $autocomplete ); ?>></div>
 		<input class="nhsuk-search__input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search', 'nightingale' ); ?>" autocomplete="off">
