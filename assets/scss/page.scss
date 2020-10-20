@@ -1,0 +1,45 @@
+/* Styles - Page Templates */
+
+.page {
+  .page-header {
+
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: rgba(#000000, 0.1);
+    padding: 1em 0 0 0;
+    margin-bottom: 2em;
+    display: inline-block;
+
+    @include mq($from: tablet) {
+      padding: 2em 0 0 0;
+    }
+
+    h1 {
+      margin-bottom: 0.5em;
+    }
+
+
+  }
+
+  .nhsuk-grid-column-two-thirds.contentleft {
+    @include mq($until: tablet) {
+      padding: 0;
+    }
+  }
+
+  .nhsuk-grid-column-one-third {
+    @include mq($until: tablet) {
+      padding: 0;
+    }
+  }
+
+  #secondary.widget-area {
+    @include mq($until: tablet) {
+      margin: 0;
+    }
+  }
+}

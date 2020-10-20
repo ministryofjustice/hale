@@ -15,6 +15,7 @@ function hale_get_theme_colours() {
 		''       => esc_html__( 'Inherit site wide colour settings', 'hale' ),
 		'005eb8' => esc_html__( 'NHS Blue', 'hale' ),
         '336c83' => esc_html__( 'Magistrates Teal', 'hale' ),
+		'00a19a' => esc_html__( 'Light Teal', 'hale' ),
 		'0c223f' => esc_html__( 'Dark Blue', 'hale' ),
 		'0072ce' => esc_html__( 'Bright Blue', 'hale' ),
 		'768692' => esc_html__( 'Mid Grey', 'hale' ),
@@ -51,6 +52,11 @@ function hale_prefix_register_colors() {
                 'name'  => esc_html__( 'Magistrates Teal', 'hale' ),
                 'slug'  => 'magistrates_teal',
                 'color' => '#336c83',
+            ),
+            array(
+                'name'  => esc_html__( 'Light Teal', 'hale' ),
+                'slug'  => 'light_teal',
+                'color' => '#00a19a',
             ),
 			array(
 				'name'  => esc_html__( 'Dark Blue', 'hale' ),

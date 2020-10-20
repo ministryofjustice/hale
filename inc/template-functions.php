@@ -190,9 +190,20 @@ function nightingale_custom_page_colour( $classes ) {
 			'00a499' => 'aqua-green',
 			'0b0c0c' => 'gds-black',
             '336c83' => 'magistrates-teal',
+            '00a19a' => 'light-teal',
 		);
 		$theme_colour_name = 'page-colour--' . $colour_array[ $colour ];
 		$classes[]         = $theme_colour_name;
+
+		//Add page header colour class
+
+        $page_header_colour = get_theme_mod( 'page_header_colour', '' );
+
+        if(!empty($page_header_colour)){
+            $page_heaer_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
+            $classes[] = $page_heaer_colour_name;
+        }
+
 	}
 
 	return $classes;

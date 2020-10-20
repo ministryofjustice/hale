@@ -452,6 +452,29 @@ function nightingale_customize_register( $wp_customize ) {
 		)
 	);
 
+    /*
+     * -----------------------------------------------------------
+     * Colour chooser
+     * -----------------------------------------------------------
+     */
+    $wp_customize->add_setting(
+        'page_header_colour',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'nightingale_sanitize_select',
+        )
+    );
+    $wp_customize->add_control(
+        'page_header_colour',
+        array(
+            'label'       => esc_html__( 'Page Header Colour', 'nightingale' ),
+            'description' => esc_html__( 'Sets the background color of page headers. Please note all colours are set to 10% opacity', 'nightingale' ),
+            'section'     => 'colors',
+            'type'        => 'select',
+            'choices'     => hale_get_theme_colours(),
+        )
+    );
+
 	/*
 	 * ------------------------------------------------------------
 	 * SECTION: Layout

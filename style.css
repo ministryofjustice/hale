@@ -11294,6 +11294,48 @@ span.search-terms {
   background: #ffb81C;
 }
 
+/* Styles - Page Templates */
+.page .page-header {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 1em 0 0 0;
+  margin-bottom: 2em;
+  display: inline-block;
+}
+
+@media (min-width: 40.0625em) {
+  .page .page-header {
+    padding: 2em 0 0 0;
+  }
+}
+
+.page .page-header h1 {
+  margin-bottom: 0.5em;
+}
+
+@media (max-width: 40.0525em) {
+  .page .nhsuk-grid-column-two-thirds.contentleft {
+    padding: 0;
+  }
+}
+
+@media (max-width: 40.0525em) {
+  .page .nhsuk-grid-column-one-third, .page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .page div.nhsuk-grid-column-one-third {
+    padding: 0;
+  }
+}
+
+@media (max-width: 40.0525em) {
+  .page #secondary.widget-area {
+    margin: 0;
+  }
+}
+
 #secondary section {
   border-top: 2px solid #005eb8;
   margin-bottom: 32px;
