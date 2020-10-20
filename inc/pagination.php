@@ -58,9 +58,9 @@ function nightingale_archive_pagination() {
 		$pagination .= "<li class='nhsuk-pagination-numbers'>";
 
 		$pagination .= "Page ";
-		$pagination .= $current_page = get_query_var( 'paged' );
+		$pagination .= (get_query_var('paged')) ? get_query_var('paged') : 1;
 		$pagination .= " of ";
-		$pagination .= $count - 1;
+		$pagination .= count( $paginate );
 
 		$pagination .= '</li></ul></nav></div>';
 

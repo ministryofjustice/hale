@@ -15,21 +15,26 @@
 get_header();
 ?>
 
-	<div id="primary" class="clear">
-		<header>
-			<h1 class="nhsuk-heading-xl">
-				<?php
-				/* translators: %s: search term */
-				printf( esc_html__( 'Search Results for %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
+	<div id="primary" class="clear search-page">
+		<header class="entry-header page-header" style="">
+			<div class="nhsuk-width-container">
+				<div class="nhsuk-grid-row">
+					<div class="nhsuk-grid-column-two-thirds">
+						<h1 class="nhsuk-heading-xl">
+							<?php
+							/* translators: %s: search term */
+							printf( esc_html__( 'Search Results for %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
 
-				$header_search = get_theme_mod( 'show_search', 'yes' );
-				?>
-			</h1>
+							$header_search = get_theme_mod( 'show_search', 'yes' );
+							?>
+						</h1>
 
-			<div class="nhsuk-header__search--results-page">
-				<?php get_search_form(); ?>
+						<div class="nhsuk-header__search--results-page">
+							<?php get_search_form(); ?>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</header>
 		<div class="index">
 			<?php

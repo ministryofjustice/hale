@@ -11327,7 +11327,7 @@ span.search-terms {
 }
 
 /* Styles - Page Templates */
-.page .page-header {
+.page .page-header, .search-page .page-header {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -11341,29 +11341,29 @@ span.search-terms {
 }
 
 @media (min-width: 40.0625em) {
-  .page .page-header {
+  .page .page-header, .search-page .page-header {
     padding: 2em 0 0 0;
   }
 }
 
-.page .page-header h1 {
+.page .page-header h1, .search-page .page-header h1 {
   margin-bottom: 0.5em;
 }
 
 @media (max-width: 40.0525em) {
-  .page .nhsuk-grid-column-two-thirds.contentleft {
+  .page .nhsuk-grid-column-two-thirds.contentleft, .search-page .nhsuk-grid-column-two-thirds.contentleft {
     padding: 0;
   }
 }
 
 @media (max-width: 40.0525em) {
-  .page .nhsuk-grid-column-one-third, .page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .page div.nhsuk-grid-column-one-third {
+  .page .nhsuk-grid-column-one-third, .page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .page div.nhsuk-grid-column-one-third, .search-page .nhsuk-grid-column-one-third, .search-page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .search-page div.nhsuk-grid-column-one-third {
     padding: 0;
   }
 }
 
 @media (max-width: 40.0525em) {
-  .page #secondary.widget-area {
+  .page #secondary.widget-area, .search-page #secondary.widget-area {
     margin: 0;
   }
 }
