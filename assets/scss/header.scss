@@ -311,4 +311,40 @@
   }
 }
 
+
+.nhsuk-header__search--results-page {
+	float: unset;
+	margin-left: 0;
+
+	& .nhsuk-search__input {
+		float: none;
+		width: calc(100% - 54px);
+		display: inline-block;
+	}
+
+	& .nhsuk-search__submit {
+		float: none !important;
+		margin-top: 0 !important;
+		display: inline-block;
+	}
+
+	& .nhsuk-header__search-wrap {
+		@include mq($until: tablet) {
+			display: unset;
+
+			& .nhsuk-search__close {
+				display: none;
+			}
+
+			& .autocomplete-container {
+				width: 0;
+			}
+
+			& .nhsuk-header__search-form {
+				padding: 0;
+			}
+		}
+	}
+}
+
 /* end of header.scss include */

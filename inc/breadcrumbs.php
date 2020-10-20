@@ -227,7 +227,7 @@ function nightingale_breadcrumb() {
 						</ol>
 						<p class="nhsuk-breadcrumb__back">
 							<a class="nhsuk-breadcrumb__backlink" href="<?php echo esc_url( $back_one_level[0] ); ?>">
-								<?php echo esc_html_e( 'Back to ', 'nightingale' ) . esc_html( $back_one_level[1] ); ?>
+								<?php echo esc_html_e( 'Go back to ', 'nightingale' ) . esc_html( $back_one_level[1] ); ?>
 							</a>
 						</p>
 					<?php } // end of LearnDash / Uncanny Toolkit conditional ?>

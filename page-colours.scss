@@ -16,26 +16,36 @@ $color_nhsuk-dark-green   : #006747;
 $color_gds_black          : #0b0c0c;
 $color_magi_teal          : #336C83;
 $color_dark-blue          : #0C223F;
+$color_light_teal         : #00a19a;
+
 $page-colours             : (
-		'nhs-blue' : $color_nhsuk-blue,
-		'dark-blue' : $color_dark-blue,
-		'bright-blue' : $color_nhsuk-bright-blue,
-		'mid-grey' : $color_nhsuk-mid-grey,
-		'dark-grey' : $color-nhsuk-dark-grey,
-		'black' : $color_nhsuk-black,
-		'purple' : $color-nhsuk-purple,
-		'pink' : $color_nhsuk-pink,
-		'light-purple' : $color_nhsuk-light-purple,
-		'emergency-services-red' : $color_nhsuk-red,
-		'dark-green' : $color_nhsuk-dark-green,
-		'light-green' : $color_nhsuk-light-green,
-		'aqua-green' : $color_nhsuk-aqua-green,
-		'gds-black' : $color_gds_black,
-		'magistrates-teal' : $color_magi_teal,
+  'nhs-blue' : $color_nhsuk-blue,
+  'dark-blue' : $color_dark-blue,
+  'bright-blue' : $color_nhsuk-bright-blue,
+  'mid-grey' : $color_nhsuk-mid-grey,
+  'dark-grey' : $color-nhsuk-dark-grey,
+  'black' : $color_nhsuk-black,
+  'purple' : $color-nhsuk-purple,
+  'pink' : $color_nhsuk-pink,
+  'light-purple' : $color_nhsuk-light-purple,
+  'emergency-services-red' : $color_nhsuk-red,
+  'dark-green' : $color_nhsuk-dark-green,
+  'light-green' : $color_nhsuk-light-green,
+  'aqua-green' : $color_nhsuk-aqua-green,
+  'gds-black' : $color_gds_black,
+  'magistrates-teal' : $color_magi_teal,
+  'light-teal' : $color_light_teal,
 );
 
 @each $name,
 $colour in $page-colours {
+
+  .page-header-color--#{$name} {
+
+    .page-header {
+      background: rgba($colour, 0.1);
+    }
+  }
 
   .page-colour--#{$name},
   #content .page-style--#{$name} {
