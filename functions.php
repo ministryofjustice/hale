@@ -474,6 +474,12 @@ if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) {
 require get_template_directory() . '/inc/critical-style.php';
 
 /**
+ * Taxonomies
+ */
+require get_template_directory() . '/inc/tax-page-category.php';
+
+
+/**
  * Add a pill next to comment author name showing their user role.
  */
 require get_template_directory() . '/inc/class-comment-author-role-label.php';
