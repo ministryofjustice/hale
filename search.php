@@ -19,7 +19,6 @@ get_header();
 		<header class="entry-header page-header" style="">
 			<div class="nhsuk-width-container">
 				<div class="nhsuk-grid-row">
-					<div class="nhsuk-grid-column-two-thirds">
 						<h1 class="nhsuk-heading-xl">
 							<?php
 							/* translators: %s: search term */
@@ -31,7 +30,6 @@ get_header();
 
 						<div class="nhsuk-header__search--results-page">
 							<?php get_search_form(); ?>
-						</div>
 					</div>
 				</div>
 			</div>
