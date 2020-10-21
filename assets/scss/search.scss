@@ -86,6 +86,10 @@
       &:active {
           background-color:#403DD0;
       }
+
+      &:focus path, &:active path, &:hover path {
+        fill: $color_snow_white;
+      }
     }
 
     &--previous a {
