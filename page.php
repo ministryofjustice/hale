@@ -37,9 +37,7 @@ while ( have_posts() ) :
                         $is_cat_page = false;
                         $prev_page = '';
                         $next_page = '';
-
-
-
+                        
                         if(!empty($page_cats)){
                             $page_cat = $page_cats[0];
                             $current_page = get_the_ID();
@@ -58,7 +56,6 @@ while ( have_posts() ) :
                             );
 
                             $pages = get_posts($args);
-
 
                             if(!empty($pages) && count($pages) > 1){
 
@@ -140,7 +137,7 @@ while ( have_posts() ) :
 
                 <?php
 
-                if($is_cat_page) { ?>
+                if($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
                     <div class="category-page-bottom-nav <?php if(!empty($prev_page)){ echo 'has-prev-page'; } ?> <?php if(!empty($prev_page)){ echo 'has-next-page'; } ?>">
                         <?php
                         if(!empty($prev_page)) {
