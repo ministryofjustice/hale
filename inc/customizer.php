@@ -475,29 +475,6 @@ function nightingale_customize_register( $wp_customize ) {
         )
     );
 
-    /*
-     * -----------------------------------------------------------
-     * Body colour chooser
-     * -----------------------------------------------------------
-     */
-    $wp_customize->add_setting(
-        'page_body_colour',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'nightingale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'page_body_colour',
-        array(
-            'label'       => esc_html__( 'Page Body Colour', 'nightingale' ),
-            'description' => esc_html__( 'Sets the background color of the page body. Please note all colours are set to 10% opacity', 'nightingale' ),
-            'section'     => 'colors',
-            'type'        => 'select',
-            'choices'     => hale_get_theme_colours(),
-        )
-    );
-
 
 	/*
 	 * ------------------------------------------------------------

@@ -51,7 +51,8 @@ $colour in $page-colours {
       background: rgba($colour, 0.1);
 
       /** This solves an issue when both header and body colour are set at the same time.
-      / Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
       **/
       .page-header {
         background: transparent;

@@ -204,15 +204,6 @@ function nightingale_custom_page_colour( $classes ) {
             $classes[] = $page_header_colour_name;
         }
 
-        //Add custom page body colour class
-
-        $page_body_colour = get_theme_mod( 'page_body_colour', '' );
-
-        if(!empty($page_body_colour)){
-            $page_body_colour_name = 'page-body-color--' . $colour_array[ $page_body_colour ];
-            $classes[] = $page_body_colour_name;
-        }
-
 	}
 
 	return $classes;
