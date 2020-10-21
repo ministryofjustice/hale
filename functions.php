@@ -366,7 +366,7 @@ require get_template_directory() . '/inc/metabox-page-clearance.php';
 
 
 /**
- * Page Background Settings Metabox
+ * Custom Page Settings Metabox
  */
 require get_template_directory() . '/inc/metabox-page-custom-settings.php';
 
