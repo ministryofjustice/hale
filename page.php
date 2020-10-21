@@ -30,29 +30,145 @@ while ( have_posts() ) :
             <div class="nhsuk-width-container">
                 <div class="nhsuk-grid-row">
                     <div class="nhsuk-grid-column-two-thirds">
-                        <?php if($show_title != 'no' && is_front_page() == false){ ?>
 
-                                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-                        <?php } ?>
-                        <?php if(has_excerpt()){ ?>
-                            <div class="intro">
-                                <?php the_excerpt(); ?>
-                            </div>
-                        <?php } ?>
+                        <?php
+                        $page_cats = get_the_terms(get_the_ID(), 'page_category');
+
+                        $is_cat_page = false;
+                        $prev_page = '';
+                        $next_page = '';
+
+
+
+                        if(!empty($page_cats)){
+                            $page_cat = $page_cats[0];
+                            $current_page = get_the_ID();
+
+                            $args = array(
+                                'post_type' => 'page',
+                                'posts_per_page' => -1,
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'page_category',
+                                        'terms'    => $page_cat->term_id,
+                                    ),
+                                ),
+                                'orderby' => 'menu_order',
+                                'order' => 'ASC',
+                            );
+
+                            $pages = get_posts($args);
+
+
+                            if(!empty($pages) && count($pages) > 1){
+
+                                    $current_cat_page_index = 0;
+
+                                    $is_cat_page = true;
+                                    ?>
+                                    <h2 class="category-pages-title"><?php echo $page_cat->name; ?></h2>
+
+                                    <ul class="category-pages-nav">
+                                        <?php
+                                        foreach ( $pages as $key=>$post ) : ?>
+
+                                            <?php if($current_page == $post->ID) {
+                                                $current_cat_page_index = $key;
+                                                ?>
+                                                <li class="current_page"><?php echo $post->post_title; ?></li>
+                                            <?php
+                                            }
+                                            else {
+                                                ?>
+                                                <li><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></li>
+                                                <?php
+                                            }
+
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                            <?php
+
+                                if($current_cat_page_index > 0){
+                                    $prev_page = $pages[$current_cat_page_index-1];
+                                }
+
+                                if($current_cat_page_index + 1 < count($pages)){
+                                    $next_page = $pages[$current_cat_page_index+1];
+                                }
+
+                            } ?>
+                        <?php
+                        }
+
+                        if($is_cat_page == false) {
+                            ?>
+                            <?php if ($show_title != 'no' && is_front_page() == false) { ?>
+
+                                <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+                            <?php } ?>
+                            <?php if (has_excerpt()) { ?>
+                                <div class="intro">
+                                    <?php the_excerpt(); ?>
+                                </div>
+                            <?php }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </header><!-- .entry-header -->
         <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-two-thirds page <?php echo nightingale_sidebar_location( 'sidebar-1' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
+
+                <?php
+                if($is_cat_page) {
+                    if ($show_title != 'no' && is_front_page() == false) {
+                        the_title('<h1 class="entry-title">', '</h1>');
+
+                    } ?>
+                    <?php if (has_excerpt()) { ?>
+                        <div class="intro">
+                            <?php the_excerpt(); ?>
+                        </div>
+                    <?php }
+                }
+
+                get_template_part( 'template-parts/content', 'page' );
+
+                ?>
+
                 <?php
 
-                    get_template_part( 'template-parts/content', 'page' );
-                    // If comments are open or we have at least one comment, load up the comment template.
-                    if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif;
+                if($is_cat_page) { ?>
+                    <div class="category-page-bottom-nav <?php if(!empty($prev_page)){ echo 'has-prev-page'; } ?> <?php if(!empty($prev_page)){ echo 'has-next-page'; } ?>">
+                        <?php
+                        if(!empty($prev_page)) {
+                            ?>
+                            <div class="category-page-bottom-nav-prev">
+                                <a href="<?php echo get_permalink($prev_page->ID); ?>" class="prev-page-link">Previous page</a>
+                                <div class="prev-page-title">
+                                    <?php echo $prev_page->post_title; ?>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
 
+                        <?php
+                        if(!empty($next_page)) { ?>
+                            <div class="category-page-bottom-nav-next">
+                                <a href="<?php echo get_permalink($next_page->ID); ?>" class="next-page-link">Next page</a>
+                                <div class="prev-next-title">
+                                    <?php echo $next_page->post_title; ?>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                 <?php
+                 }
                 ?>
             </div>
             <div class="nhsuk-grid__item nhsuk-grid-column-one-third">
