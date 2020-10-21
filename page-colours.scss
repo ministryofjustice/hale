@@ -47,6 +47,17 @@ $colour in $page-colours {
     }
   }
 
+  .page-body-color--#{$name} {
+      background: rgba($colour, 0.1);
+
+      /** This solves an issue when both header and body colour are set at the same time.
+      / Page header and page body overlap causing a discrepancy in opacity of the elements.
+      **/
+      .page-header {
+        background: transparent;
+      }
+  }
+
   .page-colour--#{$name},
   #content .page-style--#{$name} {
 
