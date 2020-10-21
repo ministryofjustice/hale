@@ -32,12 +32,9 @@ function page_category_custom_taxonomy() {
         'show_admin_column'          => true,
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => true,
+        'show_in_rest'               => true,
     );
-    register_taxonomy( 'page_category', array( 'page' ), $args );
+    register_taxonomy( 'page_category', array( 'page'), $args );
 
 }
 add_action( 'init', 'page_category_custom_taxonomy', 0 );
-
-
-
-
