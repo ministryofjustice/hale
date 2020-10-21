@@ -352,7 +352,7 @@ require get_template_directory() . '/inc/breadcrumbs.php';
 /**
  * Color Picker.
  */
-require get_template_directory() . '/inc/color-picker.php';
+//require get_template_directory() . '/inc/color-picker.php';
 
 /**
  * Color Picker.
@@ -368,6 +368,12 @@ require get_template_directory() . '/inc/metabox-page-title.php';
  * Page Clearance Settings Metabox
  */
 require get_template_directory() . '/inc/metabox-page-clearance.php';
+
+
+/**
+ * Page Background Settings Metabox
+ */
+require get_template_directory() . '/inc/metabox-page-custom-settings.php';
 
 /**
  * Social Widget.
