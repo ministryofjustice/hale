@@ -127,7 +127,7 @@ function nightingale_page_last_reviewed() {
 
 	<div class="nhsuk-review-date">
 		<p class="nhsuk-body-s">
-			<?php esc_html_e( 'Page last reviewed', 'nightingale' ); ?>: <?php echo esc_html( $updated_date ); ?>
+			<?php esc_html_e( 'Page updated on', 'nightingale' ); ?> <?php echo esc_html( $updated_date ); ?>
 		</p>
 	</div>
 
