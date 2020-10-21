@@ -350,12 +350,7 @@ require get_template_directory() . '/inc/pagination.php';
 require get_template_directory() . '/inc/breadcrumbs.php';
 
 /**
- * Color Picker.
- */
-//require get_template_directory() . '/inc/color-picker.php';
-
-/**
- * Color Picker.
+ * Last reviewed.
  */
 require get_template_directory() . '/inc/last-reviewed.php';
 
