@@ -72,7 +72,9 @@ while ( have_posts() ) :
                                             <?php if($current_page == $post->ID) {
                                                 $current_cat_page_index = $key;
                                                 ?>
-                                                <li class="current_page"><?php echo $post->post_title; ?></li>
+                                                <li class="current_page">
+                                                    <?php echo $post->post_title; ?>
+                                                </li>
                                             <?php
                                             }
                                             else {
@@ -141,13 +143,13 @@ while ( have_posts() ) :
                 <?php
 
                 if($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
-                    <div class="category-page-bottom-nav <?php if(!empty($prev_page)){ echo 'has-prev-page'; } ?> <?php if(!empty($prev_page)){ echo 'has-next-page'; } ?>">
+                    <div class="category-page-pagination <?php if(!empty($prev_page)){ echo 'has-prev-page'; } ?> <?php if(!empty($prev_page)){ echo 'has-next-page'; } ?>">
                         <?php
                         if(!empty($prev_page)) {
                             ?>
-                            <div class="category-page-bottom-nav-prev">
-                                <a href="<?php echo get_permalink($prev_page->ID); ?>" class="prev-page-link">Previous page</a>
-                                <div class="prev-page-title">
+                            <div class="category-page-pagination-section category-page-pagination-prev">
+                                <a href="<?php echo get_permalink($prev_page->ID); ?>" class="category-page-pagination-page-link">Previous page</a>
+                                <div class="category-page-pagination-page-title">
                                     <?php echo $prev_page->post_title; ?>
                                 </div>
                             </div>
@@ -157,9 +159,9 @@ while ( have_posts() ) :
 
                         <?php
                         if(!empty($next_page)) { ?>
-                            <div class="category-page-bottom-nav-next">
-                                <a href="<?php echo get_permalink($next_page->ID); ?>" class="next-page-link">Next page</a>
-                                <div class="prev-next-title">
+                            <div class="category-page-pagination-section category-page-pagination-next">
+                                <a href="<?php echo get_permalink($next_page->ID); ?>" class="category-page-pagination-page-link">Next page</a>
+                                <div class="category-page-pagination-page-title">
                                     <?php echo $next_page->post_title; ?>
                                 </div>
                             </div>
