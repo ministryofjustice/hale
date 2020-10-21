@@ -37,7 +37,7 @@ while ( have_posts() ) :
                         $is_cat_page = false;
                         $prev_page = '';
                         $next_page = '';
-                        
+
                         if(!empty($page_cats)){
                             $page_cat = $page_cats[0];
                             $current_page = get_the_ID();
@@ -94,8 +94,11 @@ while ( have_posts() ) :
                                     $next_page = $pages[$current_cat_page_index+1];
                                 }
 
+                                wp_reset_postdata();
+
                             } ?>
                         <?php
+
                         }
 
                         if($is_cat_page == false) {
