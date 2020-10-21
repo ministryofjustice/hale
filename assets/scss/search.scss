@@ -33,9 +33,26 @@
     text-align: center;
   }
 
+  &__pagination-arrow {
+    vertical-align: text-top;
+  }
+
   &__pagination-button-text {
     display: inline-block;
-    vertical-align: text-bottom;
+
+    @include mq($until: tablet) {
+      -webkit-clip-path: inset(50%);
+      border: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   &__pagination-button {

@@ -13,11 +13,11 @@
 function nightingale_archive_pagination() {
 
 	$args = array(
-		'prev_text' => '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+		'prev_text' => '<svg aria-hidden="true" class="search__pagination-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M8.76085 18.1317C9.34664 18.7175 10.2964 18.7175 10.8822 18.1317C11.468 17.5459 11.468 16.5962 10.8822 16.0104L8.76085 18.1317ZM2.75044 10L1.68978 8.93934C1.104 9.52513 1.104 10.4749 1.68978 11.0607L2.75044 10ZM10.8822 3.98959C11.468 3.40381 11.468 2.45406 10.8822 1.86827C10.2964 1.28249 9.34664 1.28249 8.76085 1.86827L10.8822 3.98959ZM10.8822 16.0104L3.8111 8.93934L1.68978 11.0607L8.76085 18.1317L10.8822 16.0104ZM3.8111 11.0607L10.8822 3.98959L8.76085 1.86827L1.68978 8.93934L3.8111 11.0607Z" fill="#1976D2"/></svg><span class="search__pagination-button-text">' . esc_html__( 'Previous', 'nightingale' ) . '</span>
 								<span class="nhsuk-u-visually-hidden">:</span>',
 		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'nightingale' ) . '</span>
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<svg aria-hidden="true" class="search__pagination-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M11.0516 1.86827C10.4659 1.28249 9.51612 1.28249 8.93033 1.86827C8.34454 2.45406 8.34454 3.40381 8.93033 3.98959L11.0516 1.86827ZM17.0621 10L18.1227 11.0607C18.7085 10.4749 18.7085 9.52513 18.1227 8.93934L17.0621 10ZM8.93033 16.0104C8.34454 16.5962 8.34454 17.5459 8.93033 18.1317C9.51612 18.7175 10.4659 18.7175 11.0516 18.1317L8.93033 16.0104ZM8.93033 3.98959L16.0014 11.0607L18.1227 8.93934L11.0516 1.86827L8.93033 3.98959ZM16.0014 8.93934L8.93033 16.0104L11.0516 18.1317L18.1227 11.0607L16.0014 8.93934Z" fill="#1976D2"/></svg>',
 	);
 
