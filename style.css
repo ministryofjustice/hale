@@ -11487,28 +11487,29 @@ span.search-terms {
 
 .search__pagination-button a {
   font-family: inherit;
-  background-color: #e8f1fb;
-  color: #1976d2;
-  border: 1px solid #1976d2;
+  background-color: #1976D2;
+  opacity: 0.1;
+  color: #1976D2;
+  border: 1px solid #1976D2;
   border-radius: 4px;
   font-weight: 600;
   box-shadow: none;
   padding: 9px 17px;
-  fill: #1976d2;
+  fill: #1976D2;
   display: inline-block;
   text-decoration: none;
 }
 
 .search__pagination-button a:focus, .search__pagination-button a:hover {
-  color: #FFFFFF;
-  -webkit-text-fill-color: #FFFFFF;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
   background-color: #0D47A1;
-  fill: #FFFFFF;
+  fill: #ffffff;
   border: 1px solid #0D47A1;
 }
 
 .search__pagination-button a:focus, .search__pagination-button a:active {
-  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #00A0CC;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #00A0CC;
 }
 
 .search__pagination-button a:active {
