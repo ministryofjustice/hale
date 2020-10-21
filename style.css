@@ -1055,13 +1055,13 @@ caption {
   }
 }
 
-.nhsuk-grid-column-two-thirds, .tribe-common div.nhsuk-grid-column-two-thirds {
+.nhsuk-grid-column-two-thirds, .nhsuk-header__search--results-page .nhsuk-header__search-wrap, .tribe-common div.nhsuk-grid-column-two-thirds {
   box-sizing: border-box;
   padding: 0 16px;
 }
 
 @media (min-width: 48.0625em) {
-  .nhsuk-grid-column-two-thirds, .tribe-common div.nhsuk-grid-column-two-thirds {
+  .nhsuk-grid-column-two-thirds, .nhsuk-header__search--results-page .nhsuk-header__search-wrap, .tribe-common div.nhsuk-grid-column-two-thirds {
     float: left;
     width: 66.6666%;
   }
@@ -10959,16 +10959,24 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   margin-left: 0;
 }
 
+.nhsuk-header__search--results-page .nhsuk-header__search-wrap {
+  padding: 0;
+}
+
 .nhsuk-header__search--results-page .nhsuk-search__input {
   float: none;
-  width: calc(100% - 54px);
-  display: inline-block;
+  width: calc(100% - 44px);
+  float: left;
 }
 
 .nhsuk-header__search--results-page .nhsuk-search__submit {
-  float: none !important;
+  float: right !important;
   margin-top: 0 !important;
-  display: inline-block;
+  background-color: #1976D2;
+}
+
+.nhsuk-header__search--results-page .nhsuk-search__submit svg {
+  fill: #FFFFFF;
 }
 
 @media (max-width: 40.0525em) {
@@ -10992,13 +11000,13 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
 }
 
 @media (min-width: 40.0625em) {
-  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nightingale-banner__container div.nhsuk-grid-column-two-thirds {
+  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container .nhsuk-header__search--results-page .nhsuk-header__search-wrap, .nhsuk-header__search--results-page .nightingale-banner__container .nhsuk-header__search-wrap, .nightingale-banner__container .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nightingale-banner__container div.nhsuk-grid-column-two-thirds {
     padding: 0;
   }
 }
 
 @media (min-width: 40.0625em) and (min-width: 40.0625em) {
-  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nightingale-banner__container div.nhsuk-grid-column-two-thirds {
+  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container .nhsuk-header__search--results-page .nhsuk-header__search-wrap, .nhsuk-header__search--results-page .nightingale-banner__container .nhsuk-header__search-wrap, .nightingale-banner__container .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nightingale-banner__container div.nhsuk-grid-column-two-thirds {
     padding: 0;
   }
 }
@@ -11146,12 +11154,12 @@ a:visited {
   color: #000000;
 }
 
-.nhsuk-grid-column-two-thirds.contentright, .tribe-common div.contentright.nhsuk-grid-column-two-thirds {
+.nhsuk-grid-column-two-thirds.contentright, .nhsuk-header__search--results-page .contentright.nhsuk-header__search-wrap, .tribe-common div.contentright.nhsuk-grid-column-two-thirds {
   float: right;
   padding: 0 16px 0 16px;
 }
 
-.nhsuk-grid-column-two-thirds.contentleft, .tribe-common div.contentleft.nhsuk-grid-column-two-thirds {
+.nhsuk-grid-column-two-thirds.contentleft, .nhsuk-header__search--results-page .contentleft.nhsuk-header__search-wrap, .tribe-common div.contentleft.nhsuk-grid-column-two-thirds {
   padding: 0 16px 0 16px;
 }
 
@@ -11208,8 +11216,9 @@ a:visited {
   color: #005eb8;
 }
 
-.nhsuk-grid-column-two-thirds.archive, .tribe-common div.archive.nhsuk-grid-column-two-thirds,
+.nhsuk-grid-column-two-thirds.archive, .nhsuk-header__search--results-page .archive.nhsuk-header__search-wrap, .tribe-common div.archive.nhsuk-grid-column-two-thirds,
 .nhsuk-grid-column-two-thirds.index,
+.nhsuk-header__search--results-page .index.nhsuk-header__search-wrap,
 .tribe-common div.index.nhsuk-grid-column-two-thirds {
   padding: 0 16px 0 0;
 }
@@ -11327,7 +11336,7 @@ span.search-terms {
 }
 
 /* Styles - Page Templates */
-.page .page-header {
+.page .page-header, .search-page .page-header {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -11341,31 +11350,108 @@ span.search-terms {
 }
 
 @media (min-width: 40.0625em) {
-  .page .page-header {
+  .page .page-header, .search-page .page-header {
     padding: 2em 0 0 0;
   }
 }
 
-.page .page-header h1 {
+.page .page-header h1, .search-page .page-header h1 {
   margin-bottom: 0.5em;
 }
 
 @media (max-width: 40.0525em) {
-  .page .nhsuk-grid-column-two-thirds.contentleft {
+  .page .nhsuk-grid-column-two-thirds.contentleft, .page .nhsuk-header__search--results-page .contentleft.nhsuk-header__search-wrap, .nhsuk-header__search--results-page .page .contentleft.nhsuk-header__search-wrap, .search-page .nhsuk-grid-column-two-thirds.contentleft, .search-page .nhsuk-header__search--results-page .contentleft.nhsuk-header__search-wrap, .nhsuk-header__search--results-page .search-page .contentleft.nhsuk-header__search-wrap {
     padding: 0;
   }
 }
 
 @media (max-width: 40.0525em) {
-  .page .nhsuk-grid-column-one-third, .page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .page div.nhsuk-grid-column-one-third {
+  .page .nhsuk-grid-column-one-third, .page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .page div.nhsuk-grid-column-one-third, .search-page .nhsuk-grid-column-one-third, .search-page .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .search-page div.nhsuk-grid-column-one-third {
     padding: 0;
   }
 }
 
 @media (max-width: 40.0525em) {
-  .page #secondary.widget-area {
+  .page #secondary.widget-area, .search-page #secondary.widget-area {
     margin: 0;
   }
+}
+
+.search__results-list {
+  color: #535A5E;
+  border-top: 1px solid #B1B4B6;
+}
+
+.search__results-list .nhsuk-promo {
+  margin-bottom: 0;
+  border-bottom: 1px solid #B1B4B6;
+}
+
+.search__results-list .nhsuk-promo__description {
+  margin-bottom: 0;
+  color: #535A5E;
+}
+
+.search__results-list h2.nhsuk-promo__heading, .search__results-list .tribe-common .nhsuk-promo-group h2.nhsuk-promo__heading, .tribe-common .nhsuk-promo-group .search__results-list h2.nhsuk-promo__heading {
+  margin-top: 24px;
+  text-decoration: none;
+  color: #1976D2;
+}
+
+.search__results-list .nhsuk-promo__link-wrapper {
+  box-shadow: none;
+}
+
+.search__result-updated {
+  margin: 16px 0;
+  color: #535A5E;
+}
+
+.search__pagination-text {
+  text-align: center;
+}
+
+.search__pagination-button-text {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.search__pagination-button a {
+  font-family: inherit;
+  background-color: #e8f1fb;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: none;
+  padding: 9px 17px;
+  fill: #1976d2;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.search__pagination-button a:focus, .search__pagination-button a:hover {
+  color: #FFFFFF;
+  -webkit-text-fill-color: #FFFFFF;
+  background-color: #0D47A1;
+  fill: #FFFFFF;
+  border: 1px solid #0D47A1;
+}
+
+.search__pagination-button a:focus, .search__pagination-button a:active {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #00A0CC;
+}
+
+.search__pagination-button a:active {
+  background-color: #403DD0;
+}
+
+.search__pagination-button--previous a {
+  float: left;
+}
+
+.search__pagination-button--next a {
+  float: right;
 }
 
 #secondary section {
@@ -12620,7 +12706,7 @@ span.search-terms {
 }
 
 /* Events Calendar Styles */
-.tribe-common div.nhsuk-grid-column-two-thirds {
+.tribe-common .nhsuk-header__search--results-page div.nhsuk-header__search-wrap, .nhsuk-header__search--results-page .tribe-common div.nhsuk-header__search-wrap, .tribe-common div.nhsuk-grid-column-two-thirds {
   padding-left: 0;
 }
 
@@ -13142,7 +13228,7 @@ ul.download-versions {
   max-height: 250px;
 }
 
-.nhsuk-dashboard .nhsuk-grid-column-one-third, .nhsuk-dashboard .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .nhsuk-dashboard div.nhsuk-grid-column-one-third, .nhsuk-dashboard .nhsuk-grid-column-two-thirds, .nhsuk-dashboard .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nhsuk-dashboard div.nhsuk-grid-column-two-thirds {
+.nhsuk-dashboard .nhsuk-grid-column-one-third, .nhsuk-dashboard .tribe-common div.nhsuk-grid-column-one-third, .tribe-common .nhsuk-dashboard div.nhsuk-grid-column-one-third, .nhsuk-dashboard .nhsuk-grid-column-two-thirds, .nhsuk-dashboard .nhsuk-header__search--results-page .nhsuk-header__search-wrap, .nhsuk-header__search--results-page .nhsuk-dashboard .nhsuk-header__search-wrap, .nhsuk-dashboard .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nhsuk-dashboard div.nhsuk-grid-column-two-thirds {
   max-height: 200px;
 }
 
@@ -13458,7 +13544,7 @@ input.is-style-reverse[type="submit"], #content a.is-style-reverse.wp-block-butt
   padding-right: 24px;
 }
 
-.nhsuk-hero__overlay .nhsuk-grid-column-two-thirds, .nhsuk-hero__overlay .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nhsuk-hero__overlay div.nhsuk-grid-column-two-thirds {
+.nhsuk-hero__overlay .nhsuk-grid-column-two-thirds, .nhsuk-hero__overlay .nhsuk-header__search--results-page .nhsuk-header__search-wrap, .nhsuk-header__search--results-page .nhsuk-hero__overlay .nhsuk-header__search-wrap, .nhsuk-hero__overlay .tribe-common div.nhsuk-grid-column-two-thirds, .tribe-common .nhsuk-hero__overlay div.nhsuk-grid-column-two-thirds {
   padding: 0;
 }
 
@@ -13526,6 +13612,8 @@ section.nhsuk-section:after,
 .tribe-common .nhsuk-promo-group .wp-block-nhsblocks-stripeblock.nhsuk-section div.nhsuk-grid-column-one-third,
 .wp-block-nhsblocks-stripeblock.nhsuk-section .nhsuk-grid-column-one-quarter,
 .wp-block-nhsblocks-stripeblock.nhsuk-section .nhsuk-grid-column-two-thirds,
+.wp-block-nhsblocks-stripeblock.nhsuk-section .nhsuk-header__search--results-page .nhsuk-header__search-wrap,
+.nhsuk-header__search--results-page .wp-block-nhsblocks-stripeblock.nhsuk-section .nhsuk-header__search-wrap,
 .wp-block-nhsblocks-stripeblock.nhsuk-section .nhsuk-grid-column-three-quarters {
   display: inline-block;
 }

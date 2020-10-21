@@ -316,16 +316,24 @@
 	float: unset;
 	margin-left: 0;
 
+  & .nhsuk-header__search-wrap {
+    @extend .nhsuk-grid-column-two-thirds;
+    padding: 0;
+  }
 	& .nhsuk-search__input {
 		float: none;
-		width: calc(100% - 54px);
-		display: inline-block;
+		width: calc(100% - 44px);
+    float: left;
 	}
 
 	& .nhsuk-search__submit {
-		float: none !important;
+		float: right !important;
 		margin-top: 0 !important;
-		display: inline-block;
+    background-color: #1976D2;
+
+    svg {
+      fill: #FFFFFF;
+    }
 	}
 
 	& .nhsuk-header__search-wrap {

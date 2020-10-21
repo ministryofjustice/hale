@@ -15,21 +15,22 @@
 get_header();
 ?>
 
-	<div id="primary" class="clear">
-		<header>
-			<h1 class="nhsuk-heading-xl">
-				<?php
-				/* translators: %s: search term */
-				printf( esc_html__( 'Search Results for %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
+	<div id="primary" class="clear search-page">
+		<header class="entry-header page-header" style="">
+			<div class="nhsuk-width-container">
+					<h1 class="nhsuk-heading-xl">
+						<?php
+						/* translators: %s: search term */
+						printf( esc_html__( 'Search Results for %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );
 
-				$header_search = get_theme_mod( 'show_search', 'yes' );
-				?>
-			</h1>
+						$header_search = get_theme_mod( 'show_search', 'yes' );
+						?>
+					</h1>
 
-			<div class="nhsuk-header__search--results-page">
-				<?php get_search_form(); ?>
+					<div class="nhsuk-header__search--results-page">
+						<?php get_search_form(); ?>
+				</div>
 			</div>
-
 		</header>
 		<div class="index">
 			<?php
@@ -43,48 +44,48 @@ get_header();
 					?>
 				</h2>
 
-				<div class="nhsuk-grid-row nhsuk-promo-group">
+				<div class="nhsuk-promo-group search__results-list">
 					<?php
 					/* Start the Loop */
 					while ( have_posts() ) :
 						the_post();
 						?>
-						<div class="nhsuk-postslisting">
+						<div class="nhsuk-postslisting search__results">
 							<div class="nhsuk-promo">
-								<a class="nhsuk-promo__link-wrapper" href="<?php the_permalink(); ?>">
-									<?php
-									if ( has_post_thumbnail() ) :
-										the_post_thumbnail( 'thumbnail', [ 'class' => 'nhsuk-promo__img' ] );
-									else :
-										$fallback = get_theme_mod( 'blog_fallback' );
-										if ( $fallback ) {
-											echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'nhsuk-promo__img' ] );
-										}
-									endif;
-									?>
-									<div class="nhsuk-promo__content">
-										<?php the_title( '<h2 class="nhsuk-promo__heading">', '</h2>' ); ?>
-										<?php do_action( 'nightingale_before_archive_content' ); ?>
-										<p class="nhsuk-promo__description">
-											<?php
-											$excerpt = get_the_excerpt();
-											$keys    = explode( ' ', $s );
-											$excerpt = preg_replace( '/(' . implode( '|', $keys ) . ')/iu', '<span class="search-terms">\0</span>', $excerpt );
-											echo $excerpt; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-											?>
-										</p>
-										<?php do_action( 'nightingale_after_archive_content' ); ?>
+								<?php
+								if ( has_post_thumbnail() ) :
+									the_post_thumbnail( 'thumbnail', [ 'class' => 'nhsuk-promo__img' ] );
+								else :
+									$fallback = get_theme_mod( 'blog_fallback' );
+									if ( $fallback ) {
+										echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'nhsuk-promo__img' ] );
+									}
+								endif;
+								?>
 
-										<?php
-										// Get and display the last updated time of the search result
-											$u_time = get_the_time('U');
-											$u_modified_time = get_the_modified_time('U');
-											echo "<p>Updated on ";
-											the_modified_time('jS F Y');
-											echo "</p> ";
-										?>
-									</div>
+								<a class="nhsuk-promo__link-wrapper" href="<?php the_permalink(); ?>">
+									<?php the_title( '<h2 class="nhsuk-promo__heading">', '</h2>' ); ?>
 								</a>
+
+								<?php do_action( 'nightingale_before_archive_content' ); ?>
+								<p class="nhsuk-promo__description">
+									<?php
+									$excerpt = get_the_excerpt();
+									$keys    = explode( ' ', $s );
+									$excerpt = preg_replace( '/(' . implode( '|', $keys ) . ')/iu', '<span class="search-terms">\0</span>', $excerpt );
+									echo $excerpt; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									?>
+								</p>
+								<?php do_action( 'nightingale_after_archive_content' ); ?>
+
+								<?php
+								// Get and display the last updated time of the search result
+									$u_time = get_the_time('U');
+									$u_modified_time = get_the_modified_time('U');
+									echo "<p class='search__result-updated'>Updated on ";
+									the_modified_time('jS F Y');
+									echo "</p> ";
+								?>
 							</div>
 						</div>
 						<?php
