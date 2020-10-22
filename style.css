@@ -10718,6 +10718,32 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   border-right: none;
 }
 
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit {
+  background-color: #1976D2;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit svg {
+  fill: #FFFFFF;
+  height: 27px;
+  width: 27px;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:hover {
+  background-color: #0D47A1;
+  background: #0D47A1;
+  fill: #FFFFFF;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus path, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:hover path {
+  fill: #FFFFFF;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:active {
+  background-color: #403DD0;
+  fill: #FFFFFF;
+  top: 0;
+}
+
 .nhsuk-header.nhsuk-header--white .nhsuk-header__search-wrap input[type="text"] {
   border: 2px solid #d8dde0;
 }
@@ -10950,6 +10976,7 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   }
 }
 
+/* Styles for the search page's search */
 div.nhsuk-header__search--results-page {
   float: unset;
   margin-left: 0;
@@ -11405,13 +11432,6 @@ span.search-terms {
   margin-bottom: 1rem;
 }
 
-.page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
-  list-style: none;
-  padding: 0;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
 .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
   padding: 0;
 }
@@ -11420,6 +11440,13 @@ span.search-terms {
   .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
     padding: 0 16px;
   }
+}
+
+.page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+  font-size: 1rem;
 }
 
 .page .page-header .category-pages-nav .current_page, .search-page .page-header .category-pages-nav .current_page {

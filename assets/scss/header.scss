@@ -52,6 +52,32 @@
     border-right: none;
   }
 
+  & .nhsuk-header__search-form button.nhsuk-search__submit {
+    background-color: $color_southsea-blue;
+
+    svg {
+      fill: $color_snow_white;
+      height: 27px;
+      width: 27px;
+    }
+
+    &:focus, &:hover {
+      background-color: $color_marine-blue;
+      background: $color_marine-blue;
+      fill: $color_snow_white;
+
+      & path {
+        fill: $color_snow_white;
+      }
+    }
+
+    &:active {
+        background-color:#403DD0;
+        fill: $color_snow_white;
+        top: 0;
+    }
+  }
+
   &.nhsuk-header--white {
     .nhsuk-header__search-wrap input[type="text"] {
       border: $nhsuk-border-width-form-element solid $nhsuk-border-color;
@@ -307,7 +333,7 @@
   }
 }
 
-
+/* Styles for the search page's search */
 div.nhsuk-header__search--results-page {
 	float: unset;
   margin-left: 0;
@@ -348,7 +374,7 @@ div.nhsuk-header__search--results-page {
 
 	& .nhsuk-search__submit {
 		float: right !important;
-		margin-top: 0 !important;
+    margin-top: 0 !important;
     background-color: $color_southsea-blue;
 
     @include mq($until: tablet) {
