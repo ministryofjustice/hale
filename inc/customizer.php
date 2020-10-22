@@ -1,10 +1,10 @@
 <?php
 /**
- * Nightingale Theme Customizer
+ * Hale Theme Customizer
  *
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.1 21st August 2019
+ * @package   Hale
+ * @copyright Ministry of Justice
+ * @version   1.0 Oct 2020
  */
 
 /**
@@ -431,7 +431,7 @@ function nightingale_customize_register( $wp_customize ) {
 
 	/*
 	 * -----------------------------------------------------------
-	 * Colour chooser
+	 * Theme colour chooser
 	 * -----------------------------------------------------------
 	 */
 	$wp_customize->add_setting(
@@ -454,7 +454,7 @@ function nightingale_customize_register( $wp_customize ) {
 
     /*
      * -----------------------------------------------------------
-     * Colour chooser
+     * Header colour chooser
      * -----------------------------------------------------------
      */
     $wp_customize->add_setting(
@@ -474,6 +474,7 @@ function nightingale_customize_register( $wp_customize ) {
             'choices'     => hale_get_theme_colours(),
         )
     );
+
 
 	/*
 	 * ------------------------------------------------------------
