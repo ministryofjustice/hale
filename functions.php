@@ -365,12 +365,6 @@ require get_template_directory() . '/inc/last-reviewed.php';
 require get_template_directory() . '/inc/metabox-page-title.php';
 
 /**
- * Page Clearance Settings Metabox
- */
-require get_template_directory() . '/inc/metabox-page-clearance.php';
-
-
-/**
  * Custom Page Settings Metabox
  */
 require get_template_directory() . '/inc/metabox-page-custom-settings.php';

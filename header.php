@@ -103,18 +103,10 @@ $page_color = get_post_meta( get_the_id(), 'page-color', true );
 
 $extra_styles = $page_color ? 'page-style--' . $page_color : '';
 
-$header_clearance_style = '';
-
-$header_clearance = get_post_meta( get_the_id(), 'page-header-clearance', true );
-
-if(!empty($header_clearance) && $header_clearance == 'no'){
-    $header_clearance_style = 'nhsuk-main-wrapper--no-header-clearance';
-}
-
 ?>
 
 <div id="content" class="nhsuk-width-container nhsuk-width-container--full">
-	<main class="nhsuk-main-wrapper nhsuk-main-wrapper--no-padding <?php echo esc_attr( $extra_styles ); ?> <?php echo esc_attr( $header_clearance_style ); ?>" id="maincontent">
+	<main class="nhsuk-main-wrapper nhsuk-main-wrapper--no-padding <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
 		<div id="contentinner" class="nhsuk-width-container">
 		<?php
 		flush();

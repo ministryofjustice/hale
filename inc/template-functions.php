@@ -69,21 +69,6 @@ if ( ! function_exists( 'nightingale_get_header_style' ) ) {
 add_post_type_support( 'page', 'excerpt' );
 
 /**
- * Adds Correct Class to excerpt paragraph tag
- *
- * @param string $excerpt the_expert html.
- */
-function nightingale_add_class_to_excerpt( $excerpt ) {
-	if ( is_admin() ) {
-		return $excerpt;
-	}
-
-	return str_replace( '<p>', '<p class="nhsuk-promo__description">', $excerpt );
-}
-
-add_filter( 'the_excerpt', 'nightingale_add_class_to_excerpt', 10 );
-
-/**
  * Shortens the excerpt to 20 char
  *
  * @param int $length length to shorten content to.
