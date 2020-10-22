@@ -28,6 +28,14 @@
       }
     }
 
+    & .nhsuk-grid-column-two-thirds {
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 16px;
+      }
+    }
+
     .category-pages-nav {
 
       list-style: none;
@@ -138,4 +146,9 @@
       margin: 0;
     }
   }
+}
+
+.nhsuk-grid-row {
+  margin-left: 0;
+  margin-right: 0;
 }
