@@ -10716,10 +10716,24 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   border-radius: 4px 0 0 4px;
   border: 2px solid #768692;
   border-right: none;
+  height: 40px;
+}
+
+.nhsuk-header .nhsuk-search__input:focus {
+  border: 3px solid #0D47A1;
+  background: #D9F1F0 !important;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.nhsuk-header .nhsuk-search__input:active {
+  border: 3px solid #0D47A1;
+  background: #D9F1F0 !important;
+  box-shadow: 0 0 0 1px #fff;
 }
 
 .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit {
   background-color: #1976D2;
+  height: 40px;
 }
 
 .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit svg {
@@ -10736,6 +10750,10 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
 
 .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus path, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:hover path {
   fill: #FFFFFF;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:active {
+  box-shadow: 0 0 0 1px #fff;
 }
 
 .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:active {

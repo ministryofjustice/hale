@@ -50,10 +50,24 @@
     border-radius: $nhsuk-border-radius 0 0 $nhsuk-border-radius;
     border: $nhsuk-border-width-form-element solid $color_nhsuk-grey-2;
     border-right: none;
+    height: 40px;
+
+    &:focus {
+      border: 3px solid $color_marine-blue;
+      background: #D9F1F0 !important;
+      box-shadow: 0 0 0 1px #fff;
+    }
+
+    &:active {
+      border: 3px solid $color_marine-blue;
+      background: #D9F1F0 !important;
+      box-shadow: 0 0 0 1px #fff;
+    }
   }
 
   & .nhsuk-header__search-form button.nhsuk-search__submit {
     background-color: $color_southsea-blue;
+    height: 40px;
 
     svg {
       fill: $color_snow_white;
@@ -69,6 +83,10 @@
       & path {
         fill: $color_snow_white;
       }
+    }
+
+    &:focus, &:active {
+      box-shadow: 0 0 0 1px #fff;
     }
 
     &:active {
