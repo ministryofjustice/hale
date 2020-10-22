@@ -2,6 +2,18 @@
   background: rgba(0, 94, 184, 0.1);
 }
 
+.page-body-color--nhs-blue {
+  background: rgba(0, 94, 184, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--nhs-blue .page-header {
+  background: transparent;
+}
+
 .page-colour--nhs-blue .nhsuk-footer,
 .page-colour--nhs-blue #secondary section,
 #content .page-style--nhs-blue .nhsuk-footer,
@@ -227,6 +239,18 @@
 
 .page-header-color--dark-blue .page-header {
   background: rgba(12, 34, 63, 0.1);
+}
+
+.page-body-color--dark-blue {
+  background: rgba(12, 34, 63, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--dark-blue .page-header {
+  background: transparent;
 }
 
 .page-colour--dark-blue .nhsuk-footer,
@@ -456,6 +480,18 @@
   background: rgba(0, 114, 206, 0.1);
 }
 
+.page-body-color--bright-blue {
+  background: rgba(0, 114, 206, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--bright-blue .page-header {
+  background: transparent;
+}
+
 .page-colour--bright-blue .nhsuk-footer,
 .page-colour--bright-blue #secondary section,
 #content .page-style--bright-blue .nhsuk-footer,
@@ -681,6 +717,18 @@
 
 .page-header-color--mid-grey .page-header {
   background: rgba(118, 134, 146, 0.1);
+}
+
+.page-body-color--mid-grey {
+  background: rgba(118, 134, 146, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--mid-grey .page-header {
+  background: transparent;
 }
 
 .page-colour--mid-grey .nhsuk-footer,
@@ -910,6 +958,18 @@
   background: rgba(66, 85, 99, 0.1);
 }
 
+.page-body-color--dark-grey {
+  background: rgba(66, 85, 99, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--dark-grey .page-header {
+  background: transparent;
+}
+
 .page-colour--dark-grey .nhsuk-footer,
 .page-colour--dark-grey #secondary section,
 #content .page-style--dark-grey .nhsuk-footer,
@@ -1135,6 +1195,18 @@
 
 .page-header-color--black .page-header {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.page-body-color--black {
+  background: rgba(0, 0, 0, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--black .page-header {
+  background: transparent;
 }
 
 .page-colour--black .nhsuk-footer,
@@ -1364,6 +1436,18 @@
   background: rgba(51, 0, 114, 0.1);
 }
 
+.page-body-color--purple {
+  background: rgba(51, 0, 114, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--purple .page-header {
+  background: transparent;
+}
+
 .page-colour--purple .nhsuk-footer,
 .page-colour--purple #secondary section,
 #content .page-style--purple .nhsuk-footer,
@@ -1589,6 +1673,18 @@
 
 .page-header-color--pink .page-header {
   background: rgba(174, 37, 115, 0.1);
+}
+
+.page-body-color--pink {
+  background: rgba(174, 37, 115, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--pink .page-header {
+  background: transparent;
 }
 
 .page-colour--pink .nhsuk-footer,
@@ -1818,6 +1914,18 @@
   background: rgba(112, 76, 156, 0.1);
 }
 
+.page-body-color--light-purple {
+  background: rgba(112, 76, 156, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--light-purple .page-header {
+  background: transparent;
+}
+
 .page-colour--light-purple .nhsuk-footer,
 .page-colour--light-purple #secondary section,
 #content .page-style--light-purple .nhsuk-footer,
@@ -2043,6 +2151,18 @@
 
 .page-header-color--emergency-services-red .page-header {
   background: rgba(213, 40, 27, 0.1);
+}
+
+.page-body-color--emergency-services-red {
+  background: rgba(213, 40, 27, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--emergency-services-red .page-header {
+  background: transparent;
 }
 
 .page-colour--emergency-services-red .nhsuk-footer,
@@ -2272,6 +2392,18 @@
   background: rgba(0, 103, 71, 0.1);
 }
 
+.page-body-color--dark-green {
+  background: rgba(0, 103, 71, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--dark-green .page-header {
+  background: transparent;
+}
+
 .page-colour--dark-green .nhsuk-footer,
 .page-colour--dark-green #secondary section,
 #content .page-style--dark-green .nhsuk-footer,
@@ -2497,6 +2629,18 @@
 
 .page-header-color--light-green .page-header {
   background: rgba(120, 190, 32, 0.1);
+}
+
+.page-body-color--light-green {
+  background: rgba(120, 190, 32, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--light-green .page-header {
+  background: transparent;
 }
 
 .page-colour--light-green .nhsuk-footer,
@@ -2726,6 +2870,18 @@
   background: rgba(0, 164, 153, 0.1);
 }
 
+.page-body-color--aqua-green {
+  background: rgba(0, 164, 153, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--aqua-green .page-header {
+  background: transparent;
+}
+
 .page-colour--aqua-green .nhsuk-footer,
 .page-colour--aqua-green #secondary section,
 #content .page-style--aqua-green .nhsuk-footer,
@@ -2951,6 +3107,18 @@
 
 .page-header-color--gds-black .page-header {
   background: rgba(11, 12, 12, 0.1);
+}
+
+.page-body-color--gds-black {
+  background: rgba(11, 12, 12, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--gds-black .page-header {
+  background: transparent;
 }
 
 .page-colour--gds-black .nhsuk-footer,
@@ -3180,6 +3348,18 @@
   background: rgba(51, 108, 131, 0.1);
 }
 
+.page-body-color--magistrates-teal {
+  background: rgba(51, 108, 131, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--magistrates-teal .page-header {
+  background: transparent;
+}
+
 .page-colour--magistrates-teal .nhsuk-footer,
 .page-colour--magistrates-teal #secondary section,
 #content .page-style--magistrates-teal .nhsuk-footer,
@@ -3405,6 +3585,18 @@
 
 .page-header-color--light-teal .page-header {
   background: rgba(0, 161, 154, 0.1);
+}
+
+.page-body-color--light-teal {
+  background: rgba(0, 161, 154, 0.1);
+  /** This solves an issue when both header and body colour are set at the same time.
+      * Page header and page body overlap causing a discrepancy in opacity of the elements.
+      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      **/
+}
+
+.page-body-color--light-teal .page-header {
+  background: transparent;
 }
 
 .page-colour--light-teal .nhsuk-footer,

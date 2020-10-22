@@ -200,8 +200,8 @@ function nightingale_custom_page_colour( $classes ) {
         $page_header_colour = get_theme_mod( 'page_header_colour', '' );
 
         if(!empty($page_header_colour)){
-            $page_heaer_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
-            $classes[] = $page_heaer_colour_name;
+            $page_header_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
+            $classes[] = $page_header_colour_name;
         }
 
 	}
