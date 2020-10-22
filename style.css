@@ -10911,12 +10911,8 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   text-decoration: none;
 }
 
-.nhsuk-main-wrapper--no-header-clearance {
+.nhsuk-main-wrapper {
   padding-top: 0px;
-}
-
-.nhsuk-main-wrapper--no-header-clearance .entry-content {
-  margin-top: 0;
 }
 
 .custom-logo {
@@ -11397,12 +11393,16 @@ span.search-terms {
 
 @media (min-width: 40.0625em) {
   .page .page-header, .search-page .page-header {
-    padding: 2rem 0 0 0;
+    padding: 2rem 0 1rem 0;
   }
 }
 
 .page .page-header h1, .search-page .page-header h1 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.page .page-header .intro p, .search-page .page-header .intro p {
+  margin-bottom: 1rem;
 }
 
 .page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
