@@ -91,7 +91,12 @@ add_filter('body_class', 'hale_append_selected_bg_colour_to_body');
  */
 function hale_append_selected_bg_colour_to_body($classes)
 {
-    $page_bg_color = esc_attr(get_post_meta(get_the_id(), 'hale_page_bg_colour', true));
+    if (is_page(get_the_id()))
+    {
+        $page_bg_color = esc_attr(get_post_meta(get_the_id(), 'hale_page_bg_colour', true));
+    } else {
+        $page_bg_color = '';
+    }
 
     // If a selected colour exsits in the DB add the name to the CSS class and add to WP body class array, if not, return the $classes array.
     $classes = $page_bg_color ? array_merge($classes, [ 'page-body-color--' . $page_bg_color ]) : $classes;
