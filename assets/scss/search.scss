@@ -1,73 +1,126 @@
 .search {
   &__results-list {
-    color: #535A5E;
-    border-top: 1px solid #B1B4B6;
+    color: $color_metal_grey;
+    border-top: 1px solid $color_concrete_grey;
 
     & .nhsuk-promo {
       margin-bottom: 0;
-      border-bottom: 1px solid #B1B4B6;
+      border-bottom: 1px solid $color_concrete_grey;
     }
 
     & .nhsuk-promo__description {
       margin-bottom: 0;
-      color: #535A5E;
+      color: $color_metal_grey;
     }
 
     & h2.nhsuk-promo__heading {
       margin-top: 24px;
       text-decoration: none;
-      color: #1976D2;
+      color: $color_southsea-blue;
     }
 
     & .nhsuk-promo__link-wrapper {
       box-shadow: none;
     }
+
+    & .nhsuk-promo__link-wrapper {
+      border-bottom: 4px solid transparent;
+
+      &:hover {
+        color: #0D47A1;
+        -webkit-text-fill-color: #0D47A1;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      &:focus {
+        color: #0D47A1;
+        background: #0090B8;
+        border-bottom: 4px solid #0090B8;
+        background: #d9eef4;
+        box-shadow: none;
+        text-decoration: none;
+      }
+
+      &:active {
+        color: #403DD0;
+        border-bottom: 4px solid #0090B8;
+        background: #d9eef4;
+        text-decoration: none;
+        top: 0;
+      }
+
+      &:visited h2 {
+        color: #7E57C2;
+      }
+    }
   }
 
   &__result-updated {
     margin: 16px 0;
-    color: #535A5E;
+    color: $color_metal_grey;
   }
 
   &__pagination-text {
     text-align: center;
   }
 
+  &__pagination-arrow {
+    vertical-align: text-top;
+  }
+
   &__pagination-button-text {
     display: inline-block;
-    vertical-align: text-bottom;
+
+    @include mq($until: tablet) {
+      -webkit-clip-path: inset(50%);
+      border: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   &__pagination-button {
     & a {
       font-family: inherit;
       background-color: #e8f1fb;
-      color: #1976d2;
-      border: 1px solid #1976d2;
+      color: $color_southsea-blue;
+      border: 1px solid $color_southsea-blue;
       border-radius: 4px;
       font-weight: 600;
       box-shadow: none;
       padding: 9px 17px;
-      fill: #1976d2;
+      fill: $color_southsea-blue;
       display: inline-block;
       text-decoration: none;
 
       &:focus, &:hover {
-        color: #FFFFFF;
-        -webkit-text-fill-color: #FFFFFF;
-        background-color: #0D47A1;
-        fill: #FFFFFF;
-        border: 1px solid #0D47A1;
+        color: $color_nhsuk-white  ;
+        -webkit-text-fill-color: $color_nhsuk-white;
+        background-color: $color_marine-blue;
+        fill: $color_nhsuk-white;
+        border: 1px solid $color_marine-blue;
       }
 
       &:focus, &:active {
           box-shadow:
-          0 0 0 2px #FFFFFF,
+          0 0 0 2px $color_nhsuk-white,
           0 0 0 4px #00A0CC;
       }
 
       &:active {
           background-color:#403DD0;
+      }
+
+      &:focus path, &:active path, &:hover path {
+        fill: $color_snow_white;
       }
     }
 

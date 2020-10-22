@@ -63,9 +63,11 @@ get_header();
 								endif;
 								?>
 
-								<a class="nhsuk-promo__link-wrapper" href="<?php the_permalink(); ?>">
-									<?php the_title( '<h2 class="nhsuk-promo__heading">', '</h2>' ); ?>
-								</a>
+								<h2 class="nhsuk-promo__heading">
+									<a class="nhsuk-promo__link-wrapper" href="<?php the_permalink(); ?>">
+										<?php the_title( ); ?>
+									</a>
+								</h2>
 
 								<?php do_action( 'nightingale_before_archive_content' ); ?>
 								<p class="nhsuk-promo__description">
