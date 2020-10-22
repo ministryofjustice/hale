@@ -115,6 +115,6 @@ if(!empty($header_clearance) && $header_clearance == 'no'){
 
 <div id="content" class="nhsuk-width-container nhsuk-width-container--full">
 	<main class="nhsuk-main-wrapper nhsuk-main-wrapper--no-padding <?php echo esc_attr( $extra_styles ); ?> <?php echo esc_attr( $header_clearance_style ); ?>" id="maincontent">
-		<div id="contentinner" class="nhsuk-width-container">
+		<div id="contentinner">
 		<?php
 		flush();

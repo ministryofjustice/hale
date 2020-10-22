@@ -11405,6 +11405,16 @@ span.search-terms {
   margin-bottom: 0.5em;
 }
 
+.page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
+  padding: 0;
+}
+
+@media (min-width: 40.0625em) {
+  .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
+    padding: 0 16px;
+  }
+}
+
 .page .page-header .category-pages-nav .current_page, .search-page .page-header .category-pages-nav .current_page {
   font-weight: bold;
   color: #0B0C0C;
@@ -11471,6 +11481,11 @@ span.search-terms {
   .page #secondary.widget-area, .search-page #secondary.widget-area {
     margin: 0;
   }
+}
+
+.nhsuk-grid-row, .tribe-common .nhsuk-promo-group.nhsuk-grid-row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .search__results-list {
