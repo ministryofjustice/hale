@@ -91,8 +91,7 @@ add_filter('body_class', 'hale_append_selected_bg_colour_to_body');
  */
 function hale_append_selected_bg_colour_to_body($classes)
 {
-    if (is_page(get_the_id()))
-    {
+    if (is_page(get_the_id())) {
         $page_bg_color = esc_attr(get_post_meta(get_the_id(), 'hale_page_bg_colour', true));
     } else {
         $page_bg_color = '';
