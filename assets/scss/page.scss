@@ -68,6 +68,26 @@
            &:visited {
              color: $color_southsea-blue;
            }
+
+          &:hover{
+            text-decoration: underline;
+            color: $color_marine-blue;
+          }
+
+          &:active {
+            color: $color_bluebell-blue;
+          }
+
+          &:focus {
+            color: $color_marine-blue;
+          }
+
+          &:active, &:focus {
+            background-color: $color_snow_white;
+            box-shadow: 0 -2px $color_snow_white, 0 4px $color-light_teal;
+          }
+
+
         }
       }
     }
@@ -88,10 +108,29 @@
 
         font-size: 22px;
         font-size: 1.375rem;
+        text-decoration: none;
 
         @include mq($from: tablet) {
           font-size: 24px;
           font-size: 1.5rem;
+        }
+
+        &:hover{
+          text-decoration: underline;
+          color: $color_marine-blue;
+        }
+
+        &:active {
+          color: $color_bluebell-blue;
+        }
+
+        &:focus {
+          color: $color_marine-blue;
+        }
+
+        &:active, &:focus {
+          background-color: rgba($color-light_teal, 0.1);
+          box-shadow: 0 -2px rgba($color-light_teal, 0.1), 0 4px $color-light_teal;
         }
       }
 
