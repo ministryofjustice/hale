@@ -11405,13 +11405,6 @@ span.search-terms {
   margin-bottom: 1rem;
 }
 
-.page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
-  list-style: none;
-  padding: 0;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
 .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
   padding: 0;
 }
@@ -11420,6 +11413,13 @@ span.search-terms {
   .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
     padding: 0 16px;
   }
+}
+
+.page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+  font-size: 1rem;
 }
 
 .page .page-header .category-pages-nav .current_page, .search-page .page-header .category-pages-nav .current_page {
@@ -12900,11 +12900,11 @@ span.search-terms {
 }
 
 @media (min-width: 40.0625em) {
-  .page .entry-content > p, .page .tribe-common .nhsuk-promo-group .entry-content > p.nhsuk-promo__description, .tribe-common .nhsuk-promo-group .page .entry-content > p.nhsuk-promo__description,
-  .page .entry-content > h1,
-  .page .entry-content > h2,
-  .page .entry-content > h3,
-  .page .entry-content > h4 {
+  .page-template-full-width-page .entry-content > p, .page-template-full-width-page .tribe-common .nhsuk-promo-group .entry-content > p.nhsuk-promo__description, .tribe-common .nhsuk-promo-group .page-template-full-width-page .entry-content > p.nhsuk-promo__description,
+  .page-template-full-width-page .entry-content > h1,
+  .page-template-full-width-page .entry-content > h2,
+  .page-template-full-width-page .entry-content > h3,
+  .page-template-full-width-page .entry-content > h4 {
     max-width: 75%;
   }
 }
