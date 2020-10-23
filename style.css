@@ -10716,6 +10716,15 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   color: #ffffff;
 }
 
+.nhsuk-header .nhsuk-header__logo a .custom-logo {
+  border: 2px solid transparent;
+  padding: 2px;
+}
+
+.nhsuk-header .nhsuk-header__logo a:hover .custom-logo, .nhsuk-header .nhsuk-header__logo a:focus .custom-logo, .nhsuk-header .nhsuk-header__logo a:active .custom-logo {
+  border: 2px solid #FFFFFF;
+}
+
 .nhsuk-header .nhsuk-search__close {
   display: none;
 }

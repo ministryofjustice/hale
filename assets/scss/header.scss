@@ -51,6 +51,20 @@
 
   }
 
+  .nhsuk-header__logo a {
+
+    .custom-logo {
+      border: 2px solid transparent;
+      padding: 2px;
+    }
+
+    &:hover, &:focus, &:active {
+      & .custom-logo {
+        border: 2px solid $color_snow_white;
+      }
+    }
+  }
+
   .nhsuk-search__close {
     display: none;
   }
