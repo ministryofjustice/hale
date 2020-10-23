@@ -65,7 +65,7 @@ function hale_save_page_custom_settings($post_id)
     $is_autosave = wp_is_post_autosave($post_id);
     $is_revision = wp_is_post_revision($post_id);
 
-    $get_settings_nonce = $_POST['hale_page_custom_settings_metabox_nonce'];
+    $get_settings_nonce = isset($_POST['hale_page_custom_settings_metabox_nonce']) ? $_POST['hale_page_custom_settings_metabox_nonce'] : '';
 
     $hale_page_custom_settings_metabox_nonce = isset($get_settings_nonce) ? sanitize_text_field(wp_unslash($get_settings_nonce)) : '';
 
