@@ -13067,6 +13067,18 @@ span.search-terms {
   }
 }
 
+a:focus {
+  background-color: rgba(0, 161, 154, 0.1);
+  box-shadow: 0 -2px rgba(0, 161, 154, 0.1), 0 4px #00a19a;
+}
+
+a:active {
+  background-color: rgba(0, 161, 154, 0.1);
+  box-shadow: 0 -2px rgba(0, 161, 154, 0.1), 0 4px #00a19a;
+  color: #403DD0;
+  text-decoration: none;
+}
+
 /* Events Calendar Styles */
 .tribe-common div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .tribe-common div.nhsuk-header__search-wrap, .tribe-common div.nhsuk-grid-column-two-thirds {
   padding-left: 0;
