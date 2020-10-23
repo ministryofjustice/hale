@@ -158,6 +158,11 @@ $colour in $page-colours {
 
     .nhsuk-header__navigation ul li:hover,
     .nhsuk-header__navigation-link {
+      border-bottom: 4px solid $color_nhsuk-white;
+    }
+
+    .nhsuk-header__navigation ul li:focus,
+    .nhsuk-header__navigation-link {
       border-bottom: 4px solid $color_nhsuk-aqua-green;
     }
 
@@ -194,12 +199,21 @@ $colour in $page-colours {
         background: $colour;
       }
 
-      .nhsuk-header__navigation-link:hover,
-      .nhsuk-header__navigation ul li a:hover,
-      .nhsuk-search__submit:hover {
+      .nhsuk-header__navigation-link:focus,
+      .nhsuk-header__navigation ul li a:focus,
+      .nhsuk-search__submit:focus {
         background-color: #B6BDC5;
         background: #B6BDC5;
         color:  $colour;
+        text-decoration: none;
+        border-bottom: 4px solid $color_nhsuk-aqua-green;
+      }
+
+      .nhsuk-header__navigation-link:hover,
+      .nhsuk-header__navigation ul li a:hover,
+      .nhsuk-search__submit:hover {
+        background-color: transparent;
+        border-bottom: 4px solid white;
         text-decoration: none;
       }
 

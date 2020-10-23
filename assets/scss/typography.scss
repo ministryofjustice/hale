@@ -23,7 +23,7 @@ $fonts: (
 //PT Sans Specific font sizes - Font size maybe something we want to add to customizer
 .primary-font--pt-sans {
   font-size: 100%;
-  
+
   @import 'fontstyles/pt-sans';
 }
 
@@ -39,4 +39,16 @@ $fonts: (
       max-width: 75%;
     }
   }
+}
+
+a:focus {
+  background-color: rgba(0,161,154,.1);
+  box-shadow: 0 -2px rgba(0,161,154,.1),0 4px #00a19a;
+}
+
+a:active {
+  background-color: rgba(0,161,154,.1);
+  box-shadow: 0 -2px rgba(0,161,154,.1),0 4px #00a19a;
+  color: $color_bluebell-blue;
+  text-decoration: none;
 }
