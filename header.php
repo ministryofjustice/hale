@@ -68,12 +68,8 @@ echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $
         if ($show_header_menu == 'yes') {
             ?>
             <div class="nhsuk-header__menu <?php echo esc_attr($headersearchextra); ?>">
-                <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation"
-												aria-label="Open menu">
-												<svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M0.857143 3.84437H23.1429C23.6163 3.84437 24 3.46191 24 2.99007V0.854305C24 0.382462 23.6163 0 23.1429 0H0.857143C0.383732 0 0 0.382462 0 0.854305V2.99007C0 3.46191 0.383732 3.84437 0.857143 3.84437ZM0.857143 12.3874H23.1429C23.6163 12.3874 24 12.005 24 11.5331V9.39735C24 8.92551 23.6163 8.54305 23.1429 8.54305H0.857143C0.383732 8.54305 0 8.92551 0 9.39735V11.5331C0 12.005 0.383732 12.3874 0.857143 12.3874ZM0.857143 20.9305H23.1429C23.6163 20.9305 24 20.548 24 20.0762V17.9404C24 17.4686 23.6163 17.0861 23.1429 17.0861H0.857143C0.383732 17.0861 0 17.4686 0 17.9404V20.0762C0 20.548 0.383732 20.9305 0.857143 20.9305Z" fill="white"/>
-												</svg>
-												Menu
+                <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu">
+									<span>Menu</span>
                 </button>
             </div>
 
