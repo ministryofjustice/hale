@@ -11221,6 +11221,17 @@ div.nhsuk-header__search--results-page .nhsuk-search__submit:active {
   }
 }
 
+.nhsuk-breadcrumb__list a:focus, .learndash-wrapper ld-breadcrumbs .ld-breadcrumbs-segments a:focus, .nhsuk-breadcrumb .sfwd-breadcrumbs a:focus, .learndash-wrapper ld-breadcrumbs .sfwd-breadcrumbs a:focus {
+  background-color: rgba(0, 161, 154, 0.1);
+  box-shadow: 0 -2px rgba(0, 161, 154, 0.1), 0 4px #00a19a;
+}
+
+.nhsuk-breadcrumb__list a:active, .learndash-wrapper ld-breadcrumbs .ld-breadcrumbs-segments a:active, .nhsuk-breadcrumb .sfwd-breadcrumbs a:active, .learndash-wrapper ld-breadcrumbs .sfwd-breadcrumbs a:active {
+  background-color: rgba(0, 161, 154, 0.1);
+  box-shadow: 0 -2px rgba(0, 161, 154, 0.1), 0 4px #00a19a;
+  color: #403DD0;
+}
+
 .nhsuk-footer__list {
   width: 100%;
   margin-bottom: 16px;
