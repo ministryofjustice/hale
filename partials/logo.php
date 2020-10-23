@@ -34,7 +34,6 @@ $logo_line_1 = 'no' === $org_name_checkbox ? get_bloginfo( 'name' ) : get_theme_
 $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get_bloginfo( 'name' );
 
 ?>
-<a href="<?php echo esc_url_raw( get_home_url() ); ?>" aria-label="<?php bloginfo( 'name' ); ?> homepage">
 <?php
 if ( has_custom_logo() ) {
 
@@ -43,7 +42,7 @@ if ( has_custom_logo() ) {
 	?>
 	<div class="nhsuk-header__logo">
         <?php if ( $logo_has_link === 'yes' ) { ?>
-            <a class="nhsuk-header__logo--link" href="<?php echo esc_url_raw( $logo_link ); ?>">
+            <a class="nhsuk-header__logo--link" href="<?php echo esc_url_raw( $logo_link ); ?>" aria-label="<?php bloginfo( 'name' ); ?> homepage">
         <?php
             }
         ?>
