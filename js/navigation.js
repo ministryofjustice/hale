@@ -4,7 +4,28 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+
 ( function() {
+
+	const searchToggleButton = document.getElementById('toggle-search');
+	const menuToggleButton = document.getElementById('toggle-menu');
+
+	searchToggleButton.onclick = function () {
+		if (searchToggleButton.getAttribute("aria-expanded") === "false") {
+			searchToggleButton.setAttribute("aria-label", "Close search");
+		} else {
+			searchToggleButton.setAttribute("aria-label", "Open search");
+		}
+	}
+
+	menuToggleButton.onclick = function () {
+		if (menuToggleButton.getAttribute("aria-expanded") === "false") {
+			menuToggleButton.setAttribute("aria-label", "Close menu");
+		} else {
+			menuToggleButton.setAttribute("aria-label", "Open menu");
+		}
+	}
+
 	var container, button, menu, links, i, len;
 
 	container = document.getElementById( 'site-navigation' );
@@ -125,4 +146,3 @@ function guideNavClick(id) {
 		document.getElementById(id).style.display = "block";
 	}
 }
-
