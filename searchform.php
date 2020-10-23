@@ -20,14 +20,12 @@ if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
 	$wrap_search                                = 'id=wrap-search';
 	$search_form                                = 'id=search';
 	$search_field                               = 'search-field';
-	$autocomplete                               = 'id=autocomplete-container';
 	$close_search                               = 'id=close-search';
 } else {
 	$GLOBALS['nightingale_search_form_counter'] ++;
 	$searchid      = $GLOBALS['nightingale_search_form_counter'];
 	$toggle_search = '';
 	$wrap_search   = '';
-	$autocomplete  = '';
 	$close_search  = '';
 	$search_form   = 'id=search' . $searchid . '';
 	$search_field  = 'search-field' . $searchid;
@@ -35,16 +33,12 @@ if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
 
 ?>
 <button class="nhsuk-header__search-toggle" <?php echo esc_attr( $toggle_search ); ?> aria-controls="search" aria-label="Open search" aria-expanded="false">
-	<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-		<path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
-	</svg>
-	<span class="nhsuk-u-visually-hidden"><?php echo esc_html__( 'Search', 'nightingale' ); ?></span>
+	<span><?php echo esc_html__( 'Search', 'nightingale' ); ?></span>
 </button>
 <div class="nhsuk-header__search-wrap" <?php echo esc_attr( $wrap_search ); ?>>
 	<form class="nhsuk-header__search-form" <?php echo esc_attr( $search_form ); ?> action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
 		<label class="nhsuk-u-visually-hidden" for="<?php echo esc_attr( $search_field ); ?>"><?php esc_html_e( 'Search this website', 'nightingale' ); ?></label>
-		<div class="autocomplete-container" <?php echo esc_attr( $autocomplete ); ?>></div>
-		<input class="nhsuk-search__input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search', 'nightingale' ); ?>" autocomplete="off">
+		<input class="nhsuk-search__input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search', 'nightingale' ); ?>">
 		<button class="nhsuk-search__submit" type="submit">
 			<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 				<path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>

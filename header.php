@@ -68,8 +68,8 @@ echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $
         if ($show_header_menu == 'yes') {
             ?>
             <div class="nhsuk-header__menu <?php echo esc_attr($headersearchextra); ?>">
-                <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation"
-                        aria-label="Open menu">Menu
+                <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu">
+									<span>Menu</span>
                 </button>
             </div>
 

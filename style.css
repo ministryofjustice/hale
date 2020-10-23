@@ -10716,6 +10716,88 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   border-radius: 4px 0 0 4px;
   border: 2px solid #768692;
   border-right: none;
+  height: 40px;
+}
+
+.nhsuk-header .nhsuk-search__input:focus {
+  border: 3px solid #0D47A1;
+  background: #D9F1F0 !important;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.nhsuk-header .nhsuk-search__input:active {
+  border: 3px solid #0D47A1;
+  background: #D9F1F0 !important;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit {
+  background-color: #1976D2;
+  height: 40px;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit svg {
+  fill: #FFFFFF;
+  height: 27px;
+  width: 27px;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:hover {
+  background-color: #0D47A1;
+  background: #0D47A1;
+  fill: #FFFFFF;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus path, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:hover path {
+  fill: #FFFFFF;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:focus, .nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:active {
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.nhsuk-header .nhsuk-header__search-form button.nhsuk-search__submit:active {
+  background-color: #403DD0;
+  fill: #FFFFFF;
+  top: 0;
+}
+
+.nhsuk-header .nhsuk-header__menu-toggle, .nhsuk-header .nhsuk-header__menu-toggle:hover {
+  border: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='21' viewBox='0 0 24 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.857143 3.84437H23.1429C23.6163 3.84437 24 3.46191 24 2.99007V0.854305C24 0.382462 23.6163 0 23.1429 0H0.857143C0.383732 0 0 0.382462 0 0.854305V2.99007C0 3.46191 0.383732 3.84437 0.857143 3.84437ZM0.857143 12.3874H23.1429C23.6163 12.3874 24 12.005 24 11.5331V9.39735C24 8.92551 23.6163 8.54305 23.1429 8.54305H0.857143C0.383732 8.54305 0 8.92551 0 9.39735V11.5331C0 12.005 0.383732 12.3874 0.857143 12.3874ZM0.857143 20.9305H23.1429C23.6163 20.9305 24 20.548 24 20.0762V17.9404C24 17.4686 23.6163 17.0861 23.1429 17.0861H0.857143C0.383732 17.0861 0 17.4686 0 17.9404V20.0762C0 20.548 0.383732 20.9305 0.857143 20.9305Z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  width: auto;
+  height: 35px;
+}
+
+.nhsuk-header .nhsuk-header__menu-toggle span, .nhsuk-header .nhsuk-header__menu-toggle:hover span {
+  padding-top: 28px;
+  display: block;
+  font-weight: normal;
+}
+
+.nhsuk-header .nhsuk-header__menu-toggle[aria-expanded="true"], .nhsuk-header .nhsuk-header__menu-toggle:hover[aria-expanded="true"] {
+  background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__close' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
+}
+
+.nhsuk-header .nhsuk-header__search-toggle {
+  border: none;
+  background: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__search' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  width: auto;
+  height: 35px;
+}
+
+.nhsuk-header .nhsuk-header__search-toggle span {
+  padding-top: 31px;
+  display: block;
+  font-weight: normal;
+}
+
+.nhsuk-header .nhsuk-header__search-toggle[aria-expanded="true"] {
+  background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__close' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
 }
 
 .nhsuk-header.nhsuk-header--white .nhsuk-header__search-wrap input[type="text"] {
@@ -10950,6 +11032,7 @@ textarea:focus, #login #loginform .user-login:focus, #login #loginform .user_pas
   }
 }
 
+/* Styles for the search page's search */
 div.nhsuk-header__search--results-page {
   float: unset;
   margin-left: 0;
@@ -11405,13 +11488,6 @@ span.search-terms {
   margin-bottom: 1rem;
 }
 
-.page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
-  list-style: none;
-  padding: 0;
-  font-size: 16px;
-  font-size: 1rem;
-}
-
 .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
   padding: 0;
 }
@@ -11420,6 +11496,13 @@ span.search-terms {
   .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap, .search-page .page-header .nhsuk-grid-column-two-thirds, .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
     padding: 0 16px;
   }
+}
+
+.page .page-header .category-pages-nav, .search-page .page-header .category-pages-nav {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+  font-size: 1rem;
 }
 
 .page .page-header .category-pages-nav .current_page, .search-page .page-header .category-pages-nav .current_page {
