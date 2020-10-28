@@ -2,13 +2,13 @@
 .hale-heading-xxl {
 
   font-size: 68px;
-  font-size: 4.25em;
+  font-size: 4.25rem;
   line-height: 120%;
 
   @include mq($from: desktop) {
 
     font-size: 76px;
-    font-size: 4.75em;
+    font-size: 4.75rem;
   }
 }
 

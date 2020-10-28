@@ -12920,14 +12920,14 @@ span.search-terms {
 
 .primary-font--pt-sans .hale-heading-xxl, .primary-font--pt-sans .display {
   font-size: 68px;
-  font-size: 4.25em;
+  font-size: 4.25rem;
   line-height: 120%;
 }
 
 @media (min-width: 48.0625em) {
   .primary-font--pt-sans .hale-heading-xxl, .primary-font--pt-sans .display {
     font-size: 76px;
-    font-size: 4.75em;
+    font-size: 4.75rem;
   }
 }
 
