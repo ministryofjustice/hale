@@ -12918,53 +12918,66 @@ span.search-terms {
   font-size: 100%;
 }
 
-.primary-font--pt-sans h1 {
+.primary-font--pt-sans .hale-heading-xxl, .primary-font--pt-sans .display {
+  font-size: 68px;
+  font-size: 4.25rem;
+  line-height: 120%;
+}
+
+@media (min-width: 48.0625em) {
+  .primary-font--pt-sans .hale-heading-xxl, .primary-font--pt-sans .display {
+    font-size: 76px;
+    font-size: 4.75rem;
+  }
+}
+
+.primary-font--pt-sans .hale-heading-xl, .primary-font--pt-sans h1 {
   font-size: 50px;
   font-size: 3.125rem;
   line-height: 120%;
 }
 
 @media (min-width: 48.0625em) {
-  .primary-font--pt-sans h1 {
+  .primary-font--pt-sans .hale-heading-xl, .primary-font--pt-sans h1 {
     font-size: 56px;
     font-size: 3.5rem;
   }
 }
 
-.primary-font--pt-sans h2 {
+.primary-font--pt-sans .hale-heading-l, .primary-font--pt-sans h2 {
   font-size: 38px;
   font-size: 2.375rem;
   line-height: 120%;
 }
 
 @media (min-width: 48.0625em) {
-  .primary-font--pt-sans h2 {
+  .primary-font--pt-sans .hale-heading-l, .primary-font--pt-sans h2 {
     font-size: 42px;
     font-size: 2.625rem;
   }
 }
 
-.primary-font--pt-sans h3 {
+.primary-font--pt-sans .hale-heading-m, .primary-font--pt-sans h3 {
   font-size: 28px;
   font-size: 1.75rem;
   line-height: 130%;
 }
 
 @media (min-width: 48.0625em) {
-  .primary-font--pt-sans h3 {
+  .primary-font--pt-sans .hale-heading-m, .primary-font--pt-sans h3 {
     font-size: 32px;
     font-size: 2.0rem;
   }
 }
 
-.primary-font--pt-sans h4 {
+.primary-font--pt-sans .hale-heading-s, .primary-font--pt-sans h4 {
   font-size: 22px;
   font-size: 1.375rem;
   line-height: 145%;
 }
 
 @media (min-width: 48.0625em) {
-  .primary-font--pt-sans h4 {
+  .primary-font--pt-sans .hale-heading-s, .primary-font--pt-sans h4 {
     font-size: 24px;
     font-size: 1.5rem;
   }
@@ -13021,19 +13034,6 @@ span.search-terms {
   .primary-font--pt-sans .button {
     font-size: 24px;
     font-size: 1.5rem;
-  }
-}
-
-.primary-font--pt-sans .display {
-  font-size: 68px;
-  font-size: 4.25em;
-  line-height: 120%;
-}
-
-@media (min-width: 48.0625em) {
-  .primary-font--pt-sans .display {
-    font-size: 76px;
-    font-size: 4.75em;
   }
 }
 

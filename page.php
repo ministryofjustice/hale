@@ -63,7 +63,7 @@ while ( have_posts() ) :
 
                                     $is_cat_page = true;
                                     ?>
-                                    <h2 class="category-pages-title"><?php echo $page_cat->name; ?></h2>
+                                    <h2 class="category-pages-title hale-heading-xl"><?php echo $page_cat->name; ?></h2>
 
                                     <ul class="category-pages-nav">
                                         <?php
@@ -126,7 +126,7 @@ while ( have_posts() ) :
                 <?php
                 if($is_cat_page) {
                     if ($show_title != 'no' && is_front_page() == false) {
-                        the_title('<h1 class="entry-title">', '</h1>');
+                        the_title('<h1 class="entry-title hale-heading-l">', '</h1>');
 
                     } ?>
                     <?php if (has_excerpt()) { ?>

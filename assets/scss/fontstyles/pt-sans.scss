@@ -1,4 +1,19 @@
-h1 {
+//Normally used for display/hero
+.hale-heading-xxl {
+
+  font-size: 68px;
+  font-size: 4.25rem;
+  line-height: 120%;
+
+  @include mq($from: desktop) {
+
+    font-size: 76px;
+    font-size: 4.75rem;
+  }
+}
+
+//Normally used for H1
+.hale-heading-xl {
 
   font-size: 50px;
   font-size: 3.125rem;
@@ -8,9 +23,11 @@ h1 {
     font-size: 56px;
     font-size: 3.5rem;
   }
+
 }
 
-h2 {
+//Normally used for H2
+.hale-heading-l {
 
   font-size: 38px;
   font-size: 2.375rem;
@@ -22,8 +39,8 @@ h2 {
   }
 }
 
-h3 {
-
+//Normally used for H3
+.hale-heading-m {
   font-size: 28px;
   font-size: 1.75rem;
   line-height: 130%;
@@ -34,7 +51,8 @@ h3 {
   }
 }
 
-h4 {
+//Normally used for H4
+.hale-heading-s {
 
   font-size: 22px;
   font-size: 1.375rem;
@@ -44,6 +62,27 @@ h4 {
     font-size: 24px;
     font-size: 1.5rem;
   }
+}
+
+h1 {
+
+  @extend .hale-heading-xl;
+
+}
+
+h2 {
+
+  @extend .hale-heading-l;
+}
+
+h3 {
+
+  @extend .hale-heading-m;
+}
+
+h4 {
+
+  @extend .hale-heading-s;
 }
 
 p {
@@ -104,16 +143,7 @@ blockquote {
 }
 
 .display {
-  font-size: 68px;
-  font-size: 4.25em;
-  line-height: 120%;
-
-  @include mq($from: desktop) {
-
-    font-size: 76px;
-    font-size: 4.75em;
-  }
-
+  @extend .hale-heading-xxl;
 }
 
 .nhsuk-header .nhsuk-header__transactional-service-name {

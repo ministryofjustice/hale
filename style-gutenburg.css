@@ -14852,53 +14852,66 @@
   font-size: 100%;
 }
 
-.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .editor-post-title__input, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .editor-post-title__input {
+.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-xxl, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .display, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-xxl, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .display {
+  font-size: 68px;
+  font-size: 4.25rem;
+  line-height: 120%;
+}
+
+@media (min-width: 61.25em) {
+  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-xxl, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .display, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-xxl, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .display {
+    font-size: 76px;
+    font-size: 4.75rem;
+  }
+}
+
+.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-xl, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .editor-post-title__input, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-xl, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .editor-post-title__input {
   font-size: 50px;
   font-size: 3.125rem;
   line-height: 120%;
 }
 
 @media (min-width: 61.25em) {
-  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .editor-post-title__input, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .editor-post-title__input {
+  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-xl, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .editor-post-title__input, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-xl, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h1, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h1, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .editor-post-title__input {
     font-size: 56px;
     font-size: 3.5rem;
   }
 }
 
-.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h2 {
+.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-l, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-l, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h2 {
   font-size: 38px;
   font-size: 2.375rem;
   line-height: 120%;
 }
 
 @media (min-width: 61.25em) {
-  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h2 {
+  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-l, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-l, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h2, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h2, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h2 {
     font-size: 42px;
     font-size: 2.625rem;
   }
 }
 
-.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h3 {
+.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-m, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-m, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h3 {
   font-size: 28px;
   font-size: 1.75rem;
   line-height: 130%;
 }
 
 @media (min-width: 61.25em) {
-  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h3 {
+  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-m, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-m, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h3, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h3, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h3 {
     font-size: 32px;
     font-size: 2.0rem;
   }
 }
 
-.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h4 {
+.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-s, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-s, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h4 {
   font-size: 22px;
   font-size: 1.375rem;
   line-height: 145%;
 }
 
 @media (min-width: 61.25em) {
-  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h4 {
+  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .hale-heading-s, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .hale-heading-s, .primary-font-admin--pt-sans .block-editor-block-styles .edit-post-visual-editor .block-editor-block-list__block h4, .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-styles .block-editor-block-list__block h4, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block h4 {
     font-size: 24px;
     font-size: 1.5rem;
   }
@@ -14955,19 +14968,6 @@
   .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .button, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .button {
     font-size: 24px;
     font-size: 1.5rem;
-  }
-}
-
-.primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .display, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .display {
-  font-size: 68px;
-  font-size: 4.25em;
-  line-height: 120%;
-}
-
-@media (min-width: 61.25em) {
-  .primary-font-admin--pt-sans .edit-post-visual-editor .block-editor-block-list__block .display, .primary-font-admin--pt-sans .block-editor-block-styles .block-editor-block-list__block .display {
-    font-size: 76px;
-    font-size: 4.75em;
   }
 }
 
