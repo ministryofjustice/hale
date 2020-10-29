@@ -11630,6 +11630,10 @@ span.search-terms {
   box-shadow: 0 -2px rgba(0, 161, 154, 0.1), 0 4px #00a19a;
 }
 
+.page .category-page-pagination .category-page-pagination-section .category-page-pagination-page-link:active:hover, .page .category-page-pagination .category-page-pagination-section .category-page-pagination-page-link:focus:hover, .search-page .category-page-pagination .category-page-pagination-section .category-page-pagination-page-link:active:hover, .search-page .category-page-pagination .category-page-pagination-section .category-page-pagination-page-link:focus:hover {
+  text-decoration: none;
+}
+
 .page .category-page-pagination .category-page-pagination-section .category-page-pagination-page-title, .search-page .category-page-pagination .category-page-pagination-section .category-page-pagination-page-title {
   color: #535A5E;
   font-size: 16px;
