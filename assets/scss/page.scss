@@ -131,6 +131,10 @@
         &:active, &:focus {
           background-color: rgba($color-light_teal, 0.1);
           box-shadow: 0 -2px rgba($color-light_teal, 0.1), 0 4px $color-light_teal;
+
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
 
