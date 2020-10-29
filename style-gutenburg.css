@@ -13522,10 +13522,6 @@
   box-shadow: inset 0 0 0 4px #ffeb3b;
 }
 
-.edit-post-visual-editor .nhsuk-search__input#search-field, .block-editor-block-styles .nhsuk-search__input#search-field, .block-editor-inserter__menu-help-panel .nhsuk-search__input#search-field {
-  width: 15rem;
-}
-
 .edit-post-visual-editor #cookie-notice, .block-editor-block-styles #cookie-notice, .block-editor-inserter__menu-help-panel #cookie-notice {
   position: fixed;
   left: 0;

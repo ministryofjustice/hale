@@ -144,11 +144,6 @@
   #content .page-style--nhs-blue .nhsuk-icon__search {
     fill: #005eb8;
   }
-  .page-colour--nhs-blue .nhsuk-header__search-wrap,
-  #content .page-style--nhs-blue .nhsuk-header__search-wrap {
-    background-color: #005eb8;
-    background: #005eb8;
-  }
 }
 
 .page-colour--nhs-blue #secondary section ul > li > ul > li > a,
@@ -419,11 +414,6 @@
   .page-colour--dark-blue .nhsuk-icon__search,
   #content .page-style--dark-blue .nhsuk-icon__search {
     fill: #0C223F;
-  }
-  .page-colour--dark-blue .nhsuk-header__search-wrap,
-  #content .page-style--dark-blue .nhsuk-header__search-wrap {
-    background-color: #0C223F;
-    background: #0C223F;
   }
 }
 
@@ -696,11 +686,6 @@
   #content .page-style--bright-blue .nhsuk-icon__search {
     fill: #0072ce;
   }
-  .page-colour--bright-blue .nhsuk-header__search-wrap,
-  #content .page-style--bright-blue .nhsuk-header__search-wrap {
-    background-color: #0072ce;
-    background: #0072ce;
-  }
 }
 
 .page-colour--bright-blue #secondary section ul > li > ul > li > a,
@@ -971,11 +956,6 @@
   .page-colour--mid-grey .nhsuk-icon__search,
   #content .page-style--mid-grey .nhsuk-icon__search {
     fill: #768692;
-  }
-  .page-colour--mid-grey .nhsuk-header__search-wrap,
-  #content .page-style--mid-grey .nhsuk-header__search-wrap {
-    background-color: #768692;
-    background: #768692;
   }
 }
 
@@ -1248,11 +1228,6 @@
   #content .page-style--dark-grey .nhsuk-icon__search {
     fill: #425563;
   }
-  .page-colour--dark-grey .nhsuk-header__search-wrap,
-  #content .page-style--dark-grey .nhsuk-header__search-wrap {
-    background-color: #425563;
-    background: #425563;
-  }
 }
 
 .page-colour--dark-grey #secondary section ul > li > ul > li > a,
@@ -1523,11 +1498,6 @@
   .page-colour--black .nhsuk-icon__search,
   #content .page-style--black .nhsuk-icon__search {
     fill: #000000;
-  }
-  .page-colour--black .nhsuk-header__search-wrap,
-  #content .page-style--black .nhsuk-header__search-wrap {
-    background-color: #000000;
-    background: #000000;
   }
 }
 
@@ -1800,11 +1770,6 @@
   #content .page-style--purple .nhsuk-icon__search {
     fill: #330072;
   }
-  .page-colour--purple .nhsuk-header__search-wrap,
-  #content .page-style--purple .nhsuk-header__search-wrap {
-    background-color: #330072;
-    background: #330072;
-  }
 }
 
 .page-colour--purple #secondary section ul > li > ul > li > a,
@@ -2075,11 +2040,6 @@
   .page-colour--pink .nhsuk-icon__search,
   #content .page-style--pink .nhsuk-icon__search {
     fill: #ae2573;
-  }
-  .page-colour--pink .nhsuk-header__search-wrap,
-  #content .page-style--pink .nhsuk-header__search-wrap {
-    background-color: #ae2573;
-    background: #ae2573;
   }
 }
 
@@ -2352,11 +2312,6 @@
   #content .page-style--light-purple .nhsuk-icon__search {
     fill: #704c9c;
   }
-  .page-colour--light-purple .nhsuk-header__search-wrap,
-  #content .page-style--light-purple .nhsuk-header__search-wrap {
-    background-color: #704c9c;
-    background: #704c9c;
-  }
 }
 
 .page-colour--light-purple #secondary section ul > li > ul > li > a,
@@ -2627,11 +2582,6 @@
   .page-colour--emergency-services-red .nhsuk-icon__search,
   #content .page-style--emergency-services-red .nhsuk-icon__search {
     fill: #d5281b;
-  }
-  .page-colour--emergency-services-red .nhsuk-header__search-wrap,
-  #content .page-style--emergency-services-red .nhsuk-header__search-wrap {
-    background-color: #d5281b;
-    background: #d5281b;
   }
 }
 
@@ -2904,11 +2854,6 @@
   #content .page-style--dark-green .nhsuk-icon__search {
     fill: #006747;
   }
-  .page-colour--dark-green .nhsuk-header__search-wrap,
-  #content .page-style--dark-green .nhsuk-header__search-wrap {
-    background-color: #006747;
-    background: #006747;
-  }
 }
 
 .page-colour--dark-green #secondary section ul > li > ul > li > a,
@@ -3179,11 +3124,6 @@
   .page-colour--light-green .nhsuk-icon__search,
   #content .page-style--light-green .nhsuk-icon__search {
     fill: #78be20;
-  }
-  .page-colour--light-green .nhsuk-header__search-wrap,
-  #content .page-style--light-green .nhsuk-header__search-wrap {
-    background-color: #78be20;
-    background: #78be20;
   }
 }
 
@@ -3456,11 +3396,6 @@
   #content .page-style--aqua-green .nhsuk-icon__search {
     fill: #00a499;
   }
-  .page-colour--aqua-green .nhsuk-header__search-wrap,
-  #content .page-style--aqua-green .nhsuk-header__search-wrap {
-    background-color: #00a499;
-    background: #00a499;
-  }
 }
 
 .page-colour--aqua-green #secondary section ul > li > ul > li > a,
@@ -3731,11 +3666,6 @@
   .page-colour--gds-black .nhsuk-icon__search,
   #content .page-style--gds-black .nhsuk-icon__search {
     fill: #0b0c0c;
-  }
-  .page-colour--gds-black .nhsuk-header__search-wrap,
-  #content .page-style--gds-black .nhsuk-header__search-wrap {
-    background-color: #0b0c0c;
-    background: #0b0c0c;
   }
 }
 
@@ -4008,11 +3938,6 @@
   #content .page-style--magistrates-teal .nhsuk-icon__search {
     fill: #336C83;
   }
-  .page-colour--magistrates-teal .nhsuk-header__search-wrap,
-  #content .page-style--magistrates-teal .nhsuk-header__search-wrap {
-    background-color: #336C83;
-    background: #336C83;
-  }
 }
 
 .page-colour--magistrates-teal #secondary section ul > li > ul > li > a,
@@ -4283,11 +4208,6 @@
   .page-colour--light-teal .nhsuk-icon__search,
   #content .page-style--light-teal .nhsuk-icon__search {
     fill: #00a19a;
-  }
-  .page-colour--light-teal .nhsuk-header__search-wrap,
-  #content .page-style--light-teal .nhsuk-header__search-wrap {
-    background-color: #00a19a;
-    background: #00a19a;
   }
 }
 
