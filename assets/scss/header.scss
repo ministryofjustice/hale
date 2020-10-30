@@ -364,6 +364,10 @@
       }
     }
   }
+
+  .nhsuk-search__input#search-field {
+    width : 15rem;
+  }
 }
 
 .nhsuk-header__container {
@@ -437,8 +441,6 @@ div.nhsuk-header__search--results-page {
   & div.nhsuk-header__search-wrap {
     @extend .nhsuk-grid-column-two-thirds;
     padding: 0;
-    background: unset;
-    background-color: unset;
   }
 
 	& .nhsuk-search__input {

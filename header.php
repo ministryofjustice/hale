@@ -4,9 +4,9 @@
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
  * @link      https://developer.wordpress.org/themes/basics/template-files/#template-partials
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.1 21st August 2019
+ * @package   Hale
+ * @copyright Ministry of Justice
+ * @version   1.0
  */
 
 ?>
@@ -37,7 +37,7 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 wp_body_open();
 ?>
 <?php do_action( 'nightingale_after_body' ); ?>
-<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nightingale' ); ?></a>
+<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
 
 $header_layout = get_theme_mod( 'logo_type', 'transactional' );
@@ -76,7 +76,7 @@ echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $
             <?php
         }
 
-		if ( 'yes' === $header_search ) {
+		if ( 'yes' === $header_search && !is_search()) {
 			?>
 			<div class="nhsuk-header__search">
 				<?php get_search_form(); ?>

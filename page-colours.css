@@ -144,11 +144,6 @@
   #content .page-style--nhs-blue .nhsuk-icon__search {
     fill: #005eb8;
   }
-  .page-colour--nhs-blue .nhsuk-header__search-wrap,
-  #content .page-style--nhs-blue .nhsuk-header__search-wrap {
-    background-color: #005eb8;
-    background: #005eb8;
-  }
 }
 
 .page-colour--nhs-blue #secondary section ul > li > ul > li > a,
@@ -166,8 +161,7 @@
 }
 
 .page-colour--nhs-blue .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--nhs-blue .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--nhs-blue .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--nhs-blue .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #005eb8;
@@ -176,8 +170,7 @@
 }
 
 .page-colour--nhs-blue .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--nhs-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--nhs-blue .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--nhs-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -420,11 +413,6 @@
   #content .page-style--dark-blue .nhsuk-icon__search {
     fill: #0C223F;
   }
-  .page-colour--dark-blue .nhsuk-header__search-wrap,
-  #content .page-style--dark-blue .nhsuk-header__search-wrap {
-    background-color: #0C223F;
-    background: #0C223F;
-  }
 }
 
 .page-colour--dark-blue #secondary section ul > li > ul > li > a,
@@ -442,8 +430,7 @@
 }
 
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--dark-blue .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #0C223F;
@@ -452,8 +439,7 @@
 }
 
 .page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--dark-blue .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--dark-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -696,11 +682,6 @@
   #content .page-style--bright-blue .nhsuk-icon__search {
     fill: #0072ce;
   }
-  .page-colour--bright-blue .nhsuk-header__search-wrap,
-  #content .page-style--bright-blue .nhsuk-header__search-wrap {
-    background-color: #0072ce;
-    background: #0072ce;
-  }
 }
 
 .page-colour--bright-blue #secondary section ul > li > ul > li > a,
@@ -718,8 +699,7 @@
 }
 
 .page-colour--bright-blue .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--bright-blue .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--bright-blue .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--bright-blue .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #0072ce;
@@ -728,8 +708,7 @@
 }
 
 .page-colour--bright-blue .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--bright-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--bright-blue .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--bright-blue .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -972,11 +951,6 @@
   #content .page-style--mid-grey .nhsuk-icon__search {
     fill: #768692;
   }
-  .page-colour--mid-grey .nhsuk-header__search-wrap,
-  #content .page-style--mid-grey .nhsuk-header__search-wrap {
-    background-color: #768692;
-    background: #768692;
-  }
 }
 
 .page-colour--mid-grey #secondary section ul > li > ul > li > a,
@@ -994,8 +968,7 @@
 }
 
 .page-colour--mid-grey .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--mid-grey .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--mid-grey .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--mid-grey .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #768692;
@@ -1004,8 +977,7 @@
 }
 
 .page-colour--mid-grey .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--mid-grey .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--mid-grey .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--mid-grey .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -1248,11 +1220,6 @@
   #content .page-style--dark-grey .nhsuk-icon__search {
     fill: #425563;
   }
-  .page-colour--dark-grey .nhsuk-header__search-wrap,
-  #content .page-style--dark-grey .nhsuk-header__search-wrap {
-    background-color: #425563;
-    background: #425563;
-  }
 }
 
 .page-colour--dark-grey #secondary section ul > li > ul > li > a,
@@ -1270,8 +1237,7 @@
 }
 
 .page-colour--dark-grey .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--dark-grey .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--dark-grey .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--dark-grey .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #425563;
@@ -1280,8 +1246,7 @@
 }
 
 .page-colour--dark-grey .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--dark-grey .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--dark-grey .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--dark-grey .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -1524,11 +1489,6 @@
   #content .page-style--black .nhsuk-icon__search {
     fill: #000000;
   }
-  .page-colour--black .nhsuk-header__search-wrap,
-  #content .page-style--black .nhsuk-header__search-wrap {
-    background-color: #000000;
-    background: #000000;
-  }
 }
 
 .page-colour--black #secondary section ul > li > ul > li > a,
@@ -1546,8 +1506,7 @@
 }
 
 .page-colour--black .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--black .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--black .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--black .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #000000;
@@ -1556,8 +1515,7 @@
 }
 
 .page-colour--black .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--black .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--black .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--black .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -1800,11 +1758,6 @@
   #content .page-style--purple .nhsuk-icon__search {
     fill: #330072;
   }
-  .page-colour--purple .nhsuk-header__search-wrap,
-  #content .page-style--purple .nhsuk-header__search-wrap {
-    background-color: #330072;
-    background: #330072;
-  }
 }
 
 .page-colour--purple #secondary section ul > li > ul > li > a,
@@ -1822,8 +1775,7 @@
 }
 
 .page-colour--purple .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--purple .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--purple .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--purple .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #330072;
@@ -1832,8 +1784,7 @@
 }
 
 .page-colour--purple .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--purple .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--purple .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--purple .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -2076,11 +2027,6 @@
   #content .page-style--pink .nhsuk-icon__search {
     fill: #ae2573;
   }
-  .page-colour--pink .nhsuk-header__search-wrap,
-  #content .page-style--pink .nhsuk-header__search-wrap {
-    background-color: #ae2573;
-    background: #ae2573;
-  }
 }
 
 .page-colour--pink #secondary section ul > li > ul > li > a,
@@ -2098,8 +2044,7 @@
 }
 
 .page-colour--pink .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--pink .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--pink .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--pink .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #ae2573;
@@ -2108,8 +2053,7 @@
 }
 
 .page-colour--pink .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--pink .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--pink .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--pink .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -2352,11 +2296,6 @@
   #content .page-style--light-purple .nhsuk-icon__search {
     fill: #704c9c;
   }
-  .page-colour--light-purple .nhsuk-header__search-wrap,
-  #content .page-style--light-purple .nhsuk-header__search-wrap {
-    background-color: #704c9c;
-    background: #704c9c;
-  }
 }
 
 .page-colour--light-purple #secondary section ul > li > ul > li > a,
@@ -2374,8 +2313,7 @@
 }
 
 .page-colour--light-purple .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--light-purple .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--light-purple .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--light-purple .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #704c9c;
@@ -2384,8 +2322,7 @@
 }
 
 .page-colour--light-purple .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--light-purple .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--light-purple .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--light-purple .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -2628,11 +2565,6 @@
   #content .page-style--emergency-services-red .nhsuk-icon__search {
     fill: #d5281b;
   }
-  .page-colour--emergency-services-red .nhsuk-header__search-wrap,
-  #content .page-style--emergency-services-red .nhsuk-header__search-wrap {
-    background-color: #d5281b;
-    background: #d5281b;
-  }
 }
 
 .page-colour--emergency-services-red #secondary section ul > li > ul > li > a,
@@ -2650,8 +2582,7 @@
 }
 
 .page-colour--emergency-services-red .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--emergency-services-red .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--emergency-services-red .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--emergency-services-red .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #d5281b;
@@ -2660,8 +2591,7 @@
 }
 
 .page-colour--emergency-services-red .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--emergency-services-red .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--emergency-services-red .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--emergency-services-red .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -2904,11 +2834,6 @@
   #content .page-style--dark-green .nhsuk-icon__search {
     fill: #006747;
   }
-  .page-colour--dark-green .nhsuk-header__search-wrap,
-  #content .page-style--dark-green .nhsuk-header__search-wrap {
-    background-color: #006747;
-    background: #006747;
-  }
 }
 
 .page-colour--dark-green #secondary section ul > li > ul > li > a,
@@ -2926,8 +2851,7 @@
 }
 
 .page-colour--dark-green .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--dark-green .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--dark-green .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--dark-green .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #006747;
@@ -2936,8 +2860,7 @@
 }
 
 .page-colour--dark-green .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--dark-green .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--dark-green .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--dark-green .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -3180,11 +3103,6 @@
   #content .page-style--light-green .nhsuk-icon__search {
     fill: #78be20;
   }
-  .page-colour--light-green .nhsuk-header__search-wrap,
-  #content .page-style--light-green .nhsuk-header__search-wrap {
-    background-color: #78be20;
-    background: #78be20;
-  }
 }
 
 .page-colour--light-green #secondary section ul > li > ul > li > a,
@@ -3202,8 +3120,7 @@
 }
 
 .page-colour--light-green .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--light-green .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--light-green .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--light-green .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #78be20;
@@ -3212,8 +3129,7 @@
 }
 
 .page-colour--light-green .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--light-green .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--light-green .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--light-green .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -3456,11 +3372,6 @@
   #content .page-style--aqua-green .nhsuk-icon__search {
     fill: #00a499;
   }
-  .page-colour--aqua-green .nhsuk-header__search-wrap,
-  #content .page-style--aqua-green .nhsuk-header__search-wrap {
-    background-color: #00a499;
-    background: #00a499;
-  }
 }
 
 .page-colour--aqua-green #secondary section ul > li > ul > li > a,
@@ -3478,8 +3389,7 @@
 }
 
 .page-colour--aqua-green .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--aqua-green .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--aqua-green .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--aqua-green .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #00a499;
@@ -3488,8 +3398,7 @@
 }
 
 .page-colour--aqua-green .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--aqua-green .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--aqua-green .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--aqua-green .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -3732,11 +3641,6 @@
   #content .page-style--gds-black .nhsuk-icon__search {
     fill: #0b0c0c;
   }
-  .page-colour--gds-black .nhsuk-header__search-wrap,
-  #content .page-style--gds-black .nhsuk-header__search-wrap {
-    background-color: #0b0c0c;
-    background: #0b0c0c;
-  }
 }
 
 .page-colour--gds-black #secondary section ul > li > ul > li > a,
@@ -3754,8 +3658,7 @@
 }
 
 .page-colour--gds-black .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--gds-black .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--gds-black .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--gds-black .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #0b0c0c;
@@ -3764,8 +3667,7 @@
 }
 
 .page-colour--gds-black .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--gds-black .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--gds-black .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--gds-black .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -4008,11 +3910,6 @@
   #content .page-style--magistrates-teal .nhsuk-icon__search {
     fill: #336C83;
   }
-  .page-colour--magistrates-teal .nhsuk-header__search-wrap,
-  #content .page-style--magistrates-teal .nhsuk-header__search-wrap {
-    background-color: #336C83;
-    background: #336C83;
-  }
 }
 
 .page-colour--magistrates-teal #secondary section ul > li > ul > li > a,
@@ -4030,8 +3927,7 @@
 }
 
 .page-colour--magistrates-teal .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--magistrates-teal .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--magistrates-teal .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--magistrates-teal .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #336C83;
@@ -4040,8 +3936,7 @@
 }
 
 .page-colour--magistrates-teal .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--magistrates-teal .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--magistrates-teal .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--magistrates-teal .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
@@ -4284,11 +4179,6 @@
   #content .page-style--light-teal .nhsuk-icon__search {
     fill: #00a19a;
   }
-  .page-colour--light-teal .nhsuk-header__search-wrap,
-  #content .page-style--light-teal .nhsuk-header__search-wrap {
-    background-color: #00a19a;
-    background: #00a19a;
-  }
 }
 
 .page-colour--light-teal #secondary section ul > li > ul > li > a,
@@ -4306,8 +4196,7 @@
 }
 
 .page-colour--light-teal .nhsuk-header .nhsuk-header__navigation-link:focus,
-.page-colour--light-teal .nhsuk-header .nhsuk-header__navigation ul li a:focus,
-.page-colour--light-teal .nhsuk-header .nhsuk-search__submit:focus {
+.page-colour--light-teal .nhsuk-header .nhsuk-header__navigation ul li a:focus {
   background-color: #B6BDC5;
   background: #B6BDC5;
   color: #00a19a;
@@ -4316,8 +4205,7 @@
 }
 
 .page-colour--light-teal .nhsuk-header .nhsuk-header__navigation-link:hover,
-.page-colour--light-teal .nhsuk-header .nhsuk-header__navigation ul li a:hover,
-.page-colour--light-teal .nhsuk-header .nhsuk-search__submit:hover {
+.page-colour--light-teal .nhsuk-header .nhsuk-header__navigation ul li a:hover {
   background-color: transparent;
   border-bottom: 4px solid white;
   text-decoration: none;
