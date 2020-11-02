@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Full-Width
  *
@@ -9,31 +10,30 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * @copyright Ministry of Justice
+ * @version 1.0
  */
 
 get_header();
 ?>
 
 <div id="primary" class=" nhsuk-grid-row">
-	<div class="nhsuk-grid-column-full full-width">
+    <div class="nhsuk-grid-column-full full-width">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+        <?php
+        while (have_posts()) :
+            the_post();
 
-			get_template_part( 'template-parts/content', 'page-fullwidth' );
+            get_template_part('template-parts/content', 'page-fullwidth');
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-	</div>
+            // If comments are open or we have at least one comment, load up the comment template.
+            if (comments_open() || get_comments_number()) :
+                comments_template();
+            endif;
+        endwhile; // End of the loop.
+        ?>
+    </div>
 </div><!-- #primary -->
 
 <?php

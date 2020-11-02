@@ -3,7 +3,7 @@ function nightingale_page_title_metabox()
 {
     add_meta_box(
         'nightingale-display-page-title-metabox',
-        __('Page Title Settings', 'nightingale'),
+        __('Page title', 'nightingale'),
         'nightingale_render_page_title_metabox',
         'page',
         'side',

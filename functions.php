@@ -291,7 +291,7 @@ require get_template_directory() . '/inc/breadcrumbs.php';
 /**
  * Last reviewed.
  */
-require get_template_directory() . '/inc/last-reviewed.php';
+require get_template_directory() . '/inc/metabox-page-last-reviewed.php';
 
 /**
  * Page Title Settings Metabox
@@ -301,7 +301,7 @@ require get_template_directory() . '/inc/metabox-page-title.php';
 /**
  * Custom Page Settings Metabox
  */
-require get_template_directory() . '/inc/metabox-page-custom-settings.php';
+require get_template_directory() . '/inc/metabox-page-background.php';
 
 /**
  * Social Widget.
