@@ -36,22 +36,17 @@ Author: Ministry of Justice - Adam Brown, Beverley Newing, Damien Wilson & Rober
 @import 'assets/scss/comments-and-meta';
 // Print output styling
 @import 'assets/scss/print';
-// over-ride for gallery styling to bring into NHSUK style
+// over-ride for gallery styling
 @import 'assets/scss/gallery';
-// Gravity Forms plugin styling to match NHSUK design patterns
-@import 'assets/scss/gravity-forms';
-// LearnDash plugin styling to match NHSUK design patterns
+// LearnDash plugin styling
 @import 'assets/scss/learndash-styling';
-
+// Typography
 @import 'assets/scss/typography';
-
-// Events Calendar plugin styling to match NHSUK design patterns
-@import 'assets/scss/events-calendar-styling';
-// Download Monitor plugin styling to match NHSUK design patterns
+// Download Monitor styling
 @import 'assets/scss/download-monitor';
-// Events Calendar plugin styling to match NHSUK design patterns
+// Emergency Alert styling
 @import 'assets/scss/emergency_alert';
-// Events Calendar plugin styling to match NHSUK design patterns
+// Feedback banner styling
 @import 'assets/scss/feedback_banner';
 @import 'assets/scss/nhsblocks/nhsl-blocks'; // specific elements for nhsl-blocks plugin
 @import 'assets/scss/nhsblocks/style_variations';//gutenberg blocks style variations
