@@ -28,9 +28,9 @@ require get_template_directory() . '/inc/sanitization-callbacks.php';
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function nightingale_setup()
+function hale_setup()
 {
-    load_theme_textdomain('nightingale');
+    load_theme_textdomain('hale');
     // Add default posts and comments RSS feed links to head.
     add_theme_support('automatic-feed-links');
 
@@ -166,7 +166,7 @@ function nightingale_setup()
     remove_theme_support('custom-background');
 }
 
-add_action('after_setup_theme', 'nightingale_setup');
+add_action('after_setup_theme', 'hale_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -174,7 +174,7 @@ add_action('after_setup_theme', 'nightingale_setup');
  *
  * @global int $content_width
  */
-function nightingale_content_width()
+function hale_content_width()
 {
     // This variable is intended to be overruled from themes.
     // Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
@@ -182,20 +182,20 @@ function nightingale_content_width()
     $GLOBALS['content_width'] = apply_filters('nightingale_content_width', 640);
 }
 
-add_action('after_setup_theme', 'nightingale_content_width', 0);
+add_action('after_setup_theme', 'hale_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function nightingale_widgets_init()
+function hale_widgets_init()
 {
     register_sidebar(
         array(
             'name'          => esc_html__('Sidebar', 'nightingale'),
             'id'            => 'sidebar-1',
-            'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'nightingale'),
+            'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
             'before_widget' => '<section id="%1$s" class="nhsuk-related-nav %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="nhsuk-related-nav__heading">',
@@ -206,7 +206,7 @@ function nightingale_widgets_init()
         array(
             'name'          => esc_html__('Post Sidebar', 'nightingale'),
             'id'            => 'sidebar-2',
-            'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'nightingale'),
+            'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
             'before_widget' => '<section id="%1$s" class="nhsuk-related-nav %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="nhsuk-related-nav__heading">',
@@ -217,7 +217,7 @@ function nightingale_widgets_init()
         array(
             'name'          => esc_html__('Footer Region', 'nightingale'),
             'id'            => 'footer-region',
-            'description'   => esc_html__('Widgets to show in the footer zone. By default the footer will have a copyright notice and the footer menu (if configured) only.', 'nightingale'),
+            'description'   => esc_html__('Widgets to show in the footer zone. By default the footer will have a copyright notice and the footer menu (if configured) only.', 'hale'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
         )
@@ -226,7 +226,7 @@ function nightingale_widgets_init()
         array(
             'name'          => '404 Page',
             'id'            => '404-error',
-            'description'   => esc_html__('Content for your 404 error page goes here.', 'nightingale'),
+            'description'   => esc_html__('Content for your 404 error page goes here.', 'hale'),
             'before_widget' => '<div id="%1$s" class="%2$s nhsuk-related-nav">',
             'after_widget'  => '</div>',
             'before_title'  => '<h3 class="nhsuk-related-nav__heading">',
@@ -235,25 +235,25 @@ function nightingale_widgets_init()
     );
 }
 
-add_action('widgets_init', 'nightingale_widgets_init');
+add_action('widgets_init', 'hale_widgets_init');
 
 
 /**
  * Enqueue scripts and styles.
  */
-function nightingale_scripts()
+function hale_scripts()
 {
-    wp_enqueue_style('nightingale-style', get_template_directory_uri() . '/style.min.css', array(), '20202704');
-    wp_enqueue_style('nightingale-page-colours', get_template_directory_uri() . '/page-colours.min.css', array(), '20202704');
-    wp_enqueue_script('nightingale-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', '', '20190828', true);
-    wp_enqueue_script('nightingale-nhs-library', get_template_directory_uri() . '/js/nhsuk.min.js', '', '20190828', true);
-    wp_enqueue_script('nightingale-navigation', get_template_directory_uri() . '/js/navigation.js', '', '20190828', true);
+    wp_enqueue_style('hale-style', get_template_directory_uri() . '/style.min.css', array(), '20202704');
+    wp_enqueue_style('hale-page-colours', get_template_directory_uri() . '/page-colours.min.css', array(), '20202704');
+    wp_enqueue_script('hale-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', '', '20190828', true);
+    wp_enqueue_script('hale-nhs-library', get_template_directory_uri() . '/js/nhsuk.min.js', '', '20190828', true);
+    wp_enqueue_script('hale-navigation', get_template_directory_uri() . '/js/navigation.js', '', '20190828', true);
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 }
 
-add_action('wp_enqueue_scripts', 'nightingale_scripts');
+add_action('wp_enqueue_scripts', 'hale_scripts');
 
 /**
  * Custom template tags for this theme.
@@ -320,33 +320,6 @@ if (! empty($network_plugins)) { // add network plugins to array if network arra
     }
 }
 
-
-/**
- * Gravity Forms style over-ride.
- * N.B. This is not a plugin, nor does it provide any plugin-like changes. This is a theme file for
- * the Gravity Forms plugin so any content generated by Gravity Forms fits in to this theme.
- * The check around the require is to see if the plugin is active on this install
- */
-if (in_array('gravityforms/gravityforms.php', $active_plugins, true)) {
-    if (! is_admin()) {
-        require get_template_directory() . '/inc/gravity-forms.php';
-    }
-}
-
-
-/**
- * Formidable Forms style over-ride.
- * N.B. This is not a plugin, nor does it provide any plugin-like changes. This is a theme file for
- * the Formidable Forms plugin so any content generated by Formidable Forms fits in to this theme.
- * The check around the require is to see if the plugin is active on this install
- * N.B - You must set formidaable forms to 'Do not use formidable styles' for it to kick in
- */
-if (in_array('formidable/formidable.php', $active_plugins, true)) {
-    if (! is_admin()) {
-        require get_template_directory() . '/inc/formidable.php';
-    }
-}
-
 /**
  * LearnDash style over-ride.
  * N.B. This is not a plugin, nor does it provide any plugin-like changes. This is a theme file for
@@ -358,13 +331,13 @@ if (in_array('sfwd-lms/sfwd-lms.php', $active_plugins, true)) {
         require get_template_directory() . '/inc/learndash.php';
     }
 
-    add_action('admin_head', 'nightingale_learndash_admin_fix');
+    add_action('admin_head', 'hale_learndash_admin_fix');
 }
 
 /**
  * Add custom styling to admin header for learndash pages so you can actually use the links. Dont ask.
  */
-function nightingale_learndash_admin_fix()
+function hale_learndash_admin_fix()
 {
     echo '<!-- Tony woz here --><style type="text/css">
 			    #swfd-header {
