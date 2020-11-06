@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setup Custom Page Settings metabox
+ * Metabox custom background
  *
  * @package   Hale
  * @copyright Ministry Of Justice
@@ -9,14 +9,14 @@
  */
 
 // Add the new meta box to side of editor page
-add_action('add_meta_boxes', 'hale_page_custom_settings_metabox');
+add_action('add_meta_boxes', 'hale_metabox_page_background');
 
-function hale_page_custom_settings_metabox()
+function hale_metabox_page_background()
 {
     add_meta_box(
-        'hale-page-custom-settings-metabox',
-        __('Custom Page Settings', 'hale'),
-        'hale_render_page_custom_settings_metabox',
+        'hale-page-background-metabox',
+        __('Background', 'hale'),
+        'hale_render_page_background_metabox',
         'page',
         'side',
         'core'
@@ -26,12 +26,12 @@ function hale_page_custom_settings_metabox()
 /**
  * Render the metabox and it's contents to the page.
  */
-function hale_render_page_custom_settings_metabox($post)
+function hale_render_page_background_metabox($post)
 {
     // generate a nonce field.
-    wp_nonce_field(basename(__FILE__), 'hale_page_custom_settings_metabox_nonce');
+    wp_nonce_field(basename(__FILE__), 'hale_page_metabox_background_nonce');
 
-    // Settings for Setting Hale Page Background Colour
+    // Setting Hale Page background Colour
     $theme_colours = hale_get_theme_colours();
     $hale_page_bg_colour = esc_attr(get_post_meta($post->ID, 'hale_page_bg_colour', true));
     ?>
@@ -48,13 +48,13 @@ function hale_render_page_custom_settings_metabox($post)
     <?php
 }
 
-add_action('save_post', 'hale_save_page_custom_settings');
+add_action('save_post', 'hale_save_page_background_settings');
 /**
- * Sends any saved custom settings to the DB when user saves post.
+ * Sends any saved background settings to the DB when user saves post.
  *
  * @param int $post_id the unique post identifier.
  */
-function hale_save_page_custom_settings($post_id)
+function hale_save_page_background_settings($post_id)
 {
     global $pagenow;
 
@@ -65,11 +65,11 @@ function hale_save_page_custom_settings($post_id)
     $is_autosave = wp_is_post_autosave($post_id);
     $is_revision = wp_is_post_revision($post_id);
 
-    $get_settings_nonce = isset($_POST['hale_page_custom_settings_metabox_nonce']) ? $_POST['hale_page_custom_settings_metabox_nonce'] : '';
+    $get_settings_nonce = isset($_POST['hale_page_metabox_background_nonce']) ? $_POST['hale_page_metabox_background_nonce'] : '';
 
-    $hale_page_custom_settings_metabox_nonce = isset($get_settings_nonce) ? sanitize_text_field(wp_unslash($get_settings_nonce)) : '';
+    $hale_page_metabox_background_nonce = isset($get_settings_nonce) ? sanitize_text_field(wp_unslash($get_settings_nonce)) : '';
 
-    $is_valid_nonce = ( isset($get_settings_nonce) && ( wp_verify_nonce($hale_page_custom_settings_metabox_nonce, basename(__FILE__)) ) ) ? true : false;
+    $is_valid_nonce = ( isset($get_settings_nonce) && ( wp_verify_nonce($hale_page_metabox_background_nonce, basename(__FILE__)) ) ) ? true : false;
 
     if ($is_autosave || $is_revision || ! $is_valid_nonce) {
         return;

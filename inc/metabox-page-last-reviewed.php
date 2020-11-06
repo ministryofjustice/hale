@@ -1,10 +1,10 @@
 <?php
 /**
- * Meta Box for adding a review date to a page
+ * MetaBox for adding a review date to a page
  *
- * @package   Nightingale-2-0
- * @copyright NHS Leadership Academy, Very Twisty
- * @version   Feburary 2020
+ * @package   Hale
+ * @copyright Ministry of Justice
+ * @version   1.0
  */
 
 // Tutorial found here:
@@ -23,28 +23,28 @@
 /**
  * Create the last reviewed option in a metabox.
  */
-function nightingale_lastreviewed_metabox() {
+function hale_lastreviewed_metabox() {
 	add_meta_box(
-		'nightingale-last-reviewed-metabox',
-		__( 'Toggle Page Reviewd', 'nightingale' ),
-		'nightingale_render_lastreviewed',
+		'hale-last-reviewed-metabox',
+		__( 'Page Reviewed', 'hale' ),
+		'hale_render_lastreviewed',
 		'page',
 		'side',
 		'core'
 	);
 }
 
-add_action( 'add_meta_boxes', 'nightingale_lastreviewed_metabox' );
+add_action( 'add_meta_boxes', 'hale_lastreviewed_metabox' );
 
 /**
  * Render the last reviewed.
  *
  * @param array $post the post variables.
  */
-function nightingale_render_lastreviewed( $post ) {
+function hale_render_lastreviewed( $post ) {
 
 	// generate a nonce field.
-	wp_nonce_field( basename( __FILE__ ), 'nightingale-last-reviewed-nonce' );
+	wp_nonce_field( basename( __FILE__ ), 'hale-last-reviewed-nonce' );
 
 	// get previously saved meta values (if any).
 	$sidebar = get_post_meta( $post->ID, 'last-reviewed', true );
@@ -52,7 +52,7 @@ function nightingale_render_lastreviewed( $post ) {
 	$checked = 'on' === $sidebar ? true : false;
 	?>
 
-	<p><?php esc_html_e( 'Toggle last reviewed', 'nightingale' ); ?></p>
+	<p><?php esc_html_e( 'Toggle last reviewed', 'hale' ); ?></p>
 	<input type="radio" id="review-on" name="lastReviwed" value="on"
 		<?php
 		if ( $checked ) :
@@ -60,7 +60,7 @@ function nightingale_render_lastreviewed( $post ) {
 		endif;
 		?>
 	>
-	<label for="review-on"><?php esc_html_e( 'On', 'nightingale' ); ?></label><br>
+	<label for="review-on"><?php esc_html_e( 'On', 'hale' ); ?></label><br>
 	<input type="radio" id="review-off" name="lastReviwed" value=""
 		<?php
 		if ( ! $checked ) :
@@ -68,7 +68,7 @@ function nightingale_render_lastreviewed( $post ) {
 		endif;
 		?>
 	>
-	<label for="review-off"><?php esc_html_e( 'Off', 'nightingale' ); ?></label><br>
+	<label for="review-off"><?php esc_html_e( 'Off', 'hale' ); ?></label><br>
 
 	<?php
 
@@ -79,7 +79,7 @@ function nightingale_render_lastreviewed( $post ) {
  *
  * @param int $post_id the unique post identifier.
  */
-function nightingale_save_lastreviewed( $post_id ) {
+function hale_save_lastreviewed( $post_id ) {
 	// checking if the post being saved is a 'page',
 	// if not, then return.
 	global $pagenow;
@@ -90,12 +90,12 @@ function nightingale_save_lastreviewed( $post_id ) {
 
 	$is_autosave = wp_is_post_autosave( $post_id );
 	$is_revision = wp_is_post_revision( $post_id );
-	if ( isset( $_POST['nightingale-last-reviewed-nonce'] ) ) {
-		$nightingale_colour_picker_nonce = sanitize_text_field( wp_unslash( $_POST['nightingale-last-reviewed-nonce'] ) );
+	if ( isset( $_POST['hale-last-reviewed-nonce'] ) ) {
+		$hale_colour_picker_nonce = sanitize_text_field( wp_unslash( $_POST['hale-last-reviewed-nonce'] ) );
 	} else {
-		$nightingale_colour_picker_nonce = '';
+		$hale_colour_picker_nonce = '';
 	}
-	$is_valid_nonce = ( isset( $_POST['nightingale-last-reviewed-nonce'] ) && ( wp_verify_nonce( $nightingale_colour_picker_nonce, basename( __FILE__ ) ) ) ) ? true : false;
+	$is_valid_nonce = ( isset( $_POST['hale-last-reviewed-nonce'] ) && ( wp_verify_nonce( $hale_colour_picker_nonce, basename( __FILE__ ) ) ) ) ? true : false;
 
 	if ( $is_autosave || $is_revision || ! $is_valid_nonce ) {
 		return;
@@ -108,14 +108,14 @@ function nightingale_save_lastreviewed( $post_id ) {
 
 }
 
-add_action( 'save_post', 'nightingale_save_lastreviewed' );
+add_action( 'save_post', 'hale_save_lastreviewed' );
 
-add_action( 'page_after_content', 'nightingale_page_last_reviewed' );
+add_action( 'page_after_content', 'hale_page_last_reviewed' );
 
 /**
  * Displays the last reviewed date on the post.
  */
-function nightingale_page_last_reviewed() {
+function hale_page_last_reviewed() {
 	$display = get_post_meta( get_the_id(), 'last-reviewed', true );
 
 	if ( 'on' !== $display ) {
@@ -127,7 +127,7 @@ function nightingale_page_last_reviewed() {
 
 	<div class="nhsuk-review-date">
 		<p class="nhsuk-body-s">
-			<?php esc_html_e( 'Page updated on', 'nightingale' ); ?> <?php echo esc_html( $updated_date ); ?>
+			<?php esc_html_e( 'Page updated on', 'hale' ); ?> <?php echo esc_html( $updated_date ); ?>
 		</p>
 	</div>
 

@@ -491,32 +491,6 @@ function nightingale_customize_register( $wp_customize ) {
 	);
 
 	/*
-	 * Show Sidebar left or right?
-	 */
-	$wp_customize->add_setting(
-		'sidebar_location',
-		array(
-			'default'           => 'right',
-			'sanitize_callback' => 'nightingale_sanitize_select',
-		)
-	);
-
-	$wp_customize->add_control(
-		'sidebar_location',
-		array(
-			'label'       => esc_html__( 'Where would you like the sidebar to appear?', 'nightingale' ),
-			'description' => esc_html__( 'Standard layout puts the sidebar to the right. You can change this here. WARNING: if your sidebar is empty, but you have sidebar set to left, your content will be floating a third of the way across the page, which could look weird!', 'nightingale' ),
-			'section'     => 'section_layout',
-			'priority'    => '100',
-			'type'        => 'radio',
-			'choices'     => array(
-				'right' => esc_html__( 'Right', 'nightingale' ),
-				'left'  => esc_html__( 'Left', 'nightingale' ),
-			),
-		)
-	);
-
-	/*
 	 * Display Featured image on post / page?
 	 */
 	$wp_customize->add_setting(

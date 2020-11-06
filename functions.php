@@ -289,19 +289,19 @@ require get_template_directory() . '/inc/pagination.php';
 require get_template_directory() . '/inc/breadcrumbs.php';
 
 /**
- * Last reviewed.
+ * Page sidebar toggle on/off.
  */
-require get_template_directory() . '/inc/last-reviewed.php';
+require get_template_directory() . '/inc/metabox-page-sidebar.php';
 
 /**
- * Page Title Settings Metabox
+ * Last reviewed.
  */
-require get_template_directory() . '/inc/metabox-page-title.php';
+require get_template_directory() . '/inc/metabox-page-last-reviewed.php';
 
 /**
  * Custom Page Settings Metabox
  */
-require get_template_directory() . '/inc/metabox-page-custom-settings.php';
+require get_template_directory() . '/inc/metabox-page-background.php';
 
 /**
  * Social Widget.
