@@ -19,7 +19,7 @@ get_header();
 
 flush();
 
-// Check if editor has turned off the sidebar
+// Get value if editor has turned off the sidebar
 $display_sidebar = get_post_meta($post->ID, 'hale_metabox_page_sidebar', true);
 
 // If it's a new page, set sidebar to "on" by default

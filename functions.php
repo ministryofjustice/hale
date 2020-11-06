@@ -299,7 +299,7 @@ require get_template_directory() . '/inc/metabox-page-sidebar.php';
 require get_template_directory() . '/inc/metabox-page-last-reviewed.php';
 
 /**
- * Custom Page Settings Metabox
+ * Custom Page Background Metabox
  */
 require get_template_directory() . '/inc/metabox-page-background.php';
 
