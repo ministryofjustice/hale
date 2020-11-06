@@ -444,8 +444,8 @@ function nightingale_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'theme_colour',
 		array(
-			'label'       => esc_html__( 'Theme Colour', 'nightingale' ),
-			'description' => esc_html__( 'If you wish to change the default colour of the theme, this is where you do it. Please note, this will disable the inline critical-css and may have a slight performance impact on your visible loadtimes. It may also affect the accessability of your site.', 'nightingale' ),
+			'label'       => esc_html__( 'Theme Colour', 'hale' ),
+			'description' => esc_html__( 'If you wish to change the default colour of the theme.', 'hale' ),
 			'section'     => 'colors',
 			'type'        => 'select',
 			'choices'     => hale_get_theme_colours(),

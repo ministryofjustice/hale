@@ -2,14 +2,9 @@
 /**
  * The template for displaying 404 pages (not found)
  *
- * @link      https://codex.wordpress.org/Creating_an_Error_404_Page
- * @package   Nightingale
- * @copyright NHS Leadership Academy
- * @license   https://www.gnu.org/licenses/gpl-3.0.en.html
- * @author    Tony Blacker <tony.blacker@leadershipacademy.nhs.uk>, Chris Witham <chris.witham@leadershipacademy.nhs.uk>
- * @since     1.1.0
- * @since     2.2.0 includes sitemap
- * @uses      template-parts/sitemap
+ * @package Hale
+ * @copyright Ministry of Justice
+ * @version 1.0.2
  */
 
 get_header();
@@ -32,7 +27,6 @@ get_header();
 							?>
 						</div>
 					</div>
-					<?php get_template_part( 'template-parts/sitemap' ); ?>
 				</div>
 				<div class="nhsuk-content__clearfix"></div>
 			</section>

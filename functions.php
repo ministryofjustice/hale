@@ -376,11 +376,6 @@ if (function_exists('gtm4wp_the_gtm_tag')) {
 }
 
 /**
- * Shove the critical path css directly into the header.
- */
-require get_template_directory() . '/inc/critical-style.php';
-
-/**
  * Taxonomies
  */
 require get_template_directory() . '/inc/tax-page-category.php';
