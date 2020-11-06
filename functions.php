@@ -6,7 +6,7 @@
  * @link      https://developer.wordpress.org/themes/basics/theme-functions/
  * @package   Hale
  * @copyright Ministry Of Justice
- * @version   1.0
+ * @version   1.0.1
  */
 
 /**
