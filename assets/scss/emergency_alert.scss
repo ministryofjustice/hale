@@ -4,7 +4,7 @@
 
 /**
  * 1. Use inverted link colours due to the yellow
- *    ($color_nhsuk-yellow) background.
+ *    ($color_yellow) background.
  */
 
 @mixin nhsuk-link-style-inverted {
@@ -13,27 +13,27 @@
   &:focus {
 	background-color : $color_shade_nhsuk-blue-35;
 	box-shadow       : 0 0 0 4px $color_shade_nhsuk-blue-35;
-	color            : $color_nhsuk-white;
+	color            : $color_snow-white;
 	outline          : $nhsuk-focus-width solid transparent;
 	outline-offset   : $nhsuk-focus-width;
   }
 
   &:hover {
-	background-color : $color_nhsuk-blue;
-	box-shadow       : 0 0 0 4px $color_nhsuk-blue;
-	color            : $color_nhsuk-white;
+	background-color : $color_blue;
+	box-shadow       : 0 0 0 4px $color_blue;
+	color            : $color_snow-white;
   }
 
   &:active {
 	background-color : $color_shade_nhsuk-blue-50;
 	box-shadow       : 0 0 0 4px $color_shade_nhsuk-blue-35;
-	color            : $color_nhsuk-white;
+	color            : $color_snow-white;
   }
 }
 
 .nhsuk-global-alert {
   @include print-hide();
-  background-color : $color_nhsuk-yellow;
+  background-color : $color_yellow;
   padding-bottom   : nhsuk-spacing(4);
   padding-top      : nhsuk-spacing(4);
 

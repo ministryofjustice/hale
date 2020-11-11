@@ -2,10 +2,11 @@
   //@import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
   @import 'assets/scss/nhsuk-replacement';
+  @import 'assets/scss/colours';
   ul {
     list-style: none;
   }
-  background-color: $color_nhsuk-grey-5;
+  background-color: $color_grey-5;
   .nhsuk-button:link, .wp-block-button__link:link, .wp-block-file__button:link, .wp-block-file a.wp-block-file__button:link, .nhsuk-button:visited, .wp-block-button__link:visited, .wp-block-file__button:visited, .wp-block-file a.wp-block-file__button:visited, .nhsuk-button:active, .wp-block-button__link:active, .wp-block-file__button:active, .wp-block-file a.wp-block-file__button:active, .nhsuk-button:hover, .wp-block-button__link:hover, .wp-block-file__button:hover, .wp-block-file a.wp-block-file__button:hover {
     color: #ffffff;
     text-decoration: none;
@@ -22,7 +23,6 @@
   // start importing the theme specific settings
 
   @import 'assets/scss/generic-overrides'; // generic over-rides to remove default wordpress styling issues
-  @import 'assets/scss/nhs-colours'; // nhs colour pallette
   .editor-post-title__input {
     font-family: $nhsuk-font, $nhsuk-font-fallback;
     @extend h1;
@@ -42,8 +42,6 @@
 
   }
   @import 'assets/scss/style_variations';// style variations
-  @import 'assets/scss/nhsblocks/nhsl-blocks'; // specific elements for nhsl-blocks plugin
-  @import 'assets/scss/nhsblocks/stripe-blocks';//gutenberg blocks stripe
   [data-type="nhsblocks/stripesblock"] {
     width: 100%;
     max-width: 100%;
@@ -56,9 +54,9 @@
   }
   //promo panel blockquote address button
   .nhsuk-promo {
-    background : $color_nhsuk-white;
+    background : $color_snow-white;
     border     : 1px solid transparent;
-    box-shadow : 0 4px 0 0 $color_nhsuk-grey-4;
+    box-shadow : 0 4px 0 0 $color_grey-4;
 
     .nhsuk-promo__content {
       .editor-url-input__button {
@@ -95,7 +93,6 @@
     }
   }
 
-  @import 'assets/scss/nhsblocks/style_variations';//gutenberg blocks style variations
   .is-style-panel-with-label {
     h3 {
       width  : fit-content;
@@ -145,7 +142,7 @@
   .nhsuk-do-dont-list {
     h3.nhsuk-do-dont-list__label {
       .rich-text {
-        color : $color_nhsuk-white;
+        color : $color_snow-white;
       }
     }
 
@@ -173,7 +170,7 @@
 
       .rich-text {
         font-size : 1.1rem;
-        color     : $color_nhsuk-white;
+        color     : $color_snow-white;
       }
     }
   }
@@ -250,12 +247,12 @@
 
     [data-type="nhsblocks/rowgroup"] .nhsuk-grid-row {
 
-      border : 1px dashed $color_nhsuk-bright-blue;
+      border : 1px dashed $color_bright-blue;
 
       &:before {
         content          : 'Grouped Items';
-        background-color : $color_nhsuk-bright-blue;
-        color            : $color_nhsuk-white;
+        background-color : $color_bright-blue;
+        color            : $color_snow-white;
         position         : absolute;
         top              : 0;
         left             : 0;
@@ -275,11 +272,11 @@
         [data-type="nhsblocks/onequarter"],
         [data-type="nhsblocks/threequarters"] {
           padding : 0;
-          border  : 1px dashed $color_nhsuk-black;
+          border  : 1px dashed $color_black;
           clear   : none;
 
           &.has-child-selected {
-            border   : 3px solid $color_nhsuk-warm-yellow;
+            border   : 3px solid $color_warm-yellow;
             position : relative;
             z-index  : 5;
           }
@@ -343,7 +340,7 @@
   .is-selected {
     figure.is-style-nhsuk-table-responsive {
       thead, tr, th, td {
-        border    : 1px dashed $color_nhsuk-grey-3;
+        border    : 1px dashed $color_grey-3;
         min-width : 2rem;
       }
     }
@@ -359,7 +356,7 @@
   .dlmPreviewButton {
     padding: 0;
     min-height: 50px;
-    border: 2px dashed $color-nhsuk-dark-grey;
+    border: 2px dashed $color_grey-1;
     iframe {
       min-height: 50px;
     }

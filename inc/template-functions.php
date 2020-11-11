@@ -156,42 +156,31 @@ function nightingale_sidebar_location( $sidebar ) {
  * @param array $classes the pre-existing classes for a WordPress page.
  */
 function nightingale_custom_page_colour( $classes ) {
-	$colour = get_theme_mod( 'theme_colour', 'nhs_blue' );
 
-	if ( 'nhs_blue' !== $colour ) {
-		$colour_array      = array(
-			'005eb8' => 'nhs-blue',
-			'0c223f' => 'dark-blue',
-			'0072ce' => 'bright-blue',
-			'768692' => 'mid-grey',
-			'425563' => 'dark-grey',
-			'231f20' => 'black',
-			'330072' => 'purple',
-			'ae2573' => 'pink',
-			'704c9c' => 'light-purple',
-			'da291c' => 'emergency-services-red',
-			'006747' => 'dark-green',
-			'78be20' => 'light-green',
-			'00a499' => 'aqua-green',
-			'0b0c0c' => 'gds-black',
-            '336c83' => 'magistrates-teal',
-            '00a19a' => 'light-teal',
-		);
+    $colour_array      = array(
+        '005eb8' => 'blue',
+        '0c223f' => 'dark-blue',
+        '336c83' => 'teal',
+        '00a19a' => 'light-teal',
+    );
+
+	$colour = get_theme_mod( 'theme_colour', 'blue' );
+
+	if ( !empty($colour) ) {
 		$theme_colour_name = 'page-colour--' . $colour_array[ $colour ];
 		$classes[]         = $theme_colour_name;
-
-		//Add page header colour class
-
-        $page_header_colour = get_theme_mod( 'page_header_colour', '' );
-
-        if(!empty($page_header_colour)){
-            $page_header_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
-            $classes[] = $page_header_colour_name;
-        }
-
 	}
 
-	return $classes;
+    //Add page header colour class
+    $page_header_colour = get_theme_mod( 'page_header_colour', '' );
+
+    if(!empty($page_header_colour)){
+        $page_header_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
+        $classes[] = $page_header_colour_name;
+    }
+
+
+    return $classes;
 }
 
 add_filter( 'body_class', 'nightingale_custom_page_colour' );

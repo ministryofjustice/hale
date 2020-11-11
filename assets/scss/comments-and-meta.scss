@@ -8,12 +8,12 @@
 
   .comment-list {
 	margin-bottom    : nhsuk-spacing(3);
-	background-color : $color-nhsuk-grey-5;
+	background-color : $color_grey-5;
 
 	.nhsuk-list-panel__item {
 	  padding          : nhsuk-spacing(3) 0;
 	  display          : block;
-	  background-color : $color-nhsuk-grey-5;
+	  background-color : $color_grey-5;
 
 	  #respond {
 		margin-top : nhsuk-spacing(3);
@@ -55,7 +55,7 @@
 		  padding          : nhsuk-spacing(3) nhsuk-spacing(5) nhsuk-spacing(3) nhsuk-spacing(4);
 		  position         : relative;
 		  word-wrap        : break-word;
-		  background-color : $color_nhsuk-white;
+		  background-color : $color_snow-white;
 		  width            : 100%;
 		  order            : 1;
 
@@ -65,8 +65,8 @@
 			width            : 15px;
 			height           : 15px;
 			border-radius    : 50%;
-			background-color : $color_nhsuk-white;
-			border           : $nhsuk-border-width-form-element solid $color_nhsuk-light-grey;
+			background-color : $color_snow-white;
+			border           : $nhsuk-border-width-form-element solid $color_light-grey;
 			top              : initial;
 			left             : 20px;
 			bottom           : -6px;
@@ -99,7 +99,7 @@
 		  cite {
 			display         : block;
 			text-decoration : none;
-			color           : $color_nhsuk-dark-grey;
+			color           : $color_grey-1;
 			font-weight     : $nhsuk-font-bold;
 			text-overflow   : ellipsis;
 			overflow        : hidden;
@@ -109,7 +109,7 @@
 		  .comment-meta {
 			a {
 			  //text-decoration : none;
-			  color           : $color_nhsuk-black;
+			  color           : $color_black;
 			  @extend .nhsuk-body-s;
 
 			  &:hover {
@@ -153,7 +153,7 @@
 			}
 			display : block;
 			margin  : auto;
-			fill    : $color_nhsuk-blue;
+			fill    : $color_blue;
 		  }
 
 		  .comment-edit {
@@ -226,9 +226,9 @@
 		  margin-left    : nhsuk-spacing(2);
 		  border-radius  : $nhsuk-border-radius;
 		  border         : $nhsuk-border-width-form-element solid;
-		  background     : $color_nhsuk-white;
-		  color          : $color_nhsuk-blue;
-		  border-color   : $color_nhsuk-blue;
+		  background     : $color_snow-white;
+		  color          : $color_blue;
+		  border-color   : $color_blue;
 		  padding        : nhsuk-spacing(1);
 		  text-transform : uppercase;
 		}
@@ -257,10 +257,10 @@
 	@extend .nhsuk-pill-success;
 
 	a {
-	  color : $color_nhsuk-green;
+	  color : $color_green;
 
 	  &:visited {
-		color : $color_nhsuk-green;
+		color : $color_green;
 	  }
 	}
   }
@@ -307,7 +307,7 @@
   }
 
   .current {
-	background : $color_nhsuk-blue;
-	color      : $color_nhsuk-white;
+	background : $color_blue;
+	color      : $color_snow-white;
   }
 }

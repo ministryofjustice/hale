@@ -1,16 +1,16 @@
 .search {
   &__results-list {
-    color: $color_metal_grey;
-    border-top: 1px solid $color_concrete_grey;
+    color: $color_metal-grey;
+    border-top: 1px solid $color_concrete-grey;
 
     & .nhsuk-promo {
       margin-bottom: 0;
-      border-bottom: 1px solid $color_concrete_grey;
+      border-bottom: 1px solid $color_concrete-grey;
     }
 
     & .nhsuk-promo__description {
       margin-bottom: 0;
-      color: $color_metal_grey;
+      color: $color_metal-grey;
     }
 
     & h2.nhsuk-promo__heading {
@@ -58,7 +58,7 @@
 
   &__result-updated {
     margin: 16px 0;
-    color: $color_metal_grey;
+    color: $color_metal-grey;
   }
 
   &__pagination-text {
@@ -102,16 +102,16 @@
       text-decoration: none;
 
       &:focus, &:hover {
-        color: $color_nhsuk-white  ;
-        -webkit-text-fill-color: $color_nhsuk-white;
+        color: $color_snow-white  ;
+        -webkit-text-fill-color: $color_snow-white;
         background-color: $color_marine-blue;
-        fill: $color_nhsuk-white;
+        fill: $color_snow-white;
         border: 1px solid $color_marine-blue;
       }
 
       &:focus, &:active {
           box-shadow:
-          0 0 0 2px $color_nhsuk-white,
+          0 0 0 2px $color_snow-white,
           0 0 0 4px #00A0CC;
       }
 
@@ -120,7 +120,7 @@
       }
 
       &:focus path, &:active path, &:hover path {
-        fill: $color_snow_white;
+        fill: $color_snow-white;
       }
     }
 
