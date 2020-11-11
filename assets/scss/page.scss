@@ -1,8 +1,8 @@
 /* Styles - Page Templates */
 
-.page, .search-page {
+.page,
+.search-page {
   .page-header {
-
     width: 100vw;
     position: relative;
     left: 50%;
@@ -10,16 +10,15 @@
     margin-left: -50vw;
     margin-right: -50vw;
     background: rgba(#000000, 0.1);
-    padding: 1rem 0 0 0;
-    margin-bottom: 2rem;
-    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 2rem 0;
 
     @include mq($from: tablet) {
-      padding: 2rem 0 1rem 0;
+      padding: 1rem 0;
     }
 
     h1 {
-      margin-bottom: 1rem;
+      margin: 1rem 0;
     }
 
     .intro {
@@ -36,10 +35,14 @@
       }
     }
 
+    .category-pages-title {
+      margin-top: 1rem;
+    }
+
     .category-pages-nav {
 
       list-style: none;
-      padding: 0;
+      padding: 16px;
       font-size: 16px;
       font-size: 1rem;
 
@@ -62,14 +65,14 @@
         }
 
         a {
+          color: $color_southsea-blue;
+          text-decoration: none;
+
+          &:visited {
             color: $color_southsea-blue;
-            text-decoration: none;
+          }
 
-           &:visited {
-             color: $color_southsea-blue;
-           }
-
-          &:hover{
+          &:hover {
             text-decoration: underline;
             color: $color_marine-blue;
           }
@@ -82,7 +85,8 @@
             color: $color_marine-blue;
           }
 
-          &:active, &:focus {
+          &:active,
+          &:focus {
             background-color: $color_snow_white;
             box-shadow: 0 -2px $color_snow_white, 0 4px $color-light_teal;
           }
@@ -91,7 +95,6 @@
         }
       }
     }
-
   }
 
   .category-page-pagination {
@@ -115,7 +118,7 @@
           font-size: 1.5rem;
         }
 
-        &:hover{
+        &:hover {
           text-decoration: underline;
           color: $color_marine-blue;
         }
@@ -128,7 +131,8 @@
           color: $color_marine-blue;
         }
 
-        &:active, &:focus {
+        &:active,
+        &:focus {
           background-color: rgba($color-light_teal, 0.1);
           box-shadow: 0 -2px rgba($color-light_teal, 0.1), 0 4px $color-light_teal;
 
@@ -188,6 +192,12 @@
     @include mq($until: tablet) {
       margin: 0;
     }
+  }
+}
+
+.search-page {
+  .page-header {
+    padding-bottom: 3.5rem;
   }
 }
 
