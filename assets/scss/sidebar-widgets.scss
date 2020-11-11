@@ -3,7 +3,7 @@
 #secondary {
   section {
 
-  border-top: 2px solid $color_nhsuk-blue;
+  border-top: 2px solid $color_blue;
   margin-bottom: nhsuk-spacing(5);
   padding-top: nhsuk-spacing(3);
   padding-bottom: nhsuk-spacing(3);
@@ -77,8 +77,8 @@
         clip-path: unset;
         height: auto;
         width: auto;
-        background: $color_nhsuk-blue;
-        color: $color_nhsuk-white;
+        background: $color_blue;
+        color: $color_snow-white;
         font-size: 1.25rem;
         text-transform: uppercase;
       }
@@ -92,7 +92,7 @@
 
     //subpages nav alteration
      ul > li {
-      border-bottom: 1px solid $color_nhsuk-grey-3;
+      border-bottom: 1px solid $color_grey-3;
 
     }
 
@@ -107,7 +107,7 @@
     }
 
     ul > li > ul > li > a {
-      border-left: 2px solid $color_nhsuk-blue;
+      border-left: 2px solid $color_blue;
 
       padding: 0 0 0 nhsuk-spacing(2);
       margin: nhsuk-spacing(2) 0 0 nhsuk-spacing(2);
@@ -121,7 +121,7 @@
 
       &:before {
         content: "-  ";
-        color: $color_nhsuk-light-grey;
+        color: $color_light-grey;
       }
     }
 
@@ -137,8 +137,8 @@
 
         li.widget_subpages__active {
           & > a {
-            background: $color_nhsuk-blue;
-            color: $color_nhsuk-white;
+            background: $color_blue;
+            color: $color_snow-white;
           }
         }
 

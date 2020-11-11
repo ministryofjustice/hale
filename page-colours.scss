@@ -1,40 +1,10 @@
-$color_nhsuk-white        : #ffffff;
-$color_nhsuk-black        : #000000;
-$color_nhsuk-blue         : #005eb8;
-$color_nhsuk-purple       : #330072;
-$color_nhsuk-red          : #d5281b;
-$color_nhsuk-aqua-green   : #00a499;
-$color_nhsuk-bright-blue  : #0072ce;
-$color_nhsuk-light-blue   : #41b6e6;
-$color_nhsuk-mid-grey     : #768692;
-$color_nhsuk-light-grey   : #e8edee;
-$color_nhsuk-dark-grey    : #425563;
-$color_nhsuk-pink         : #ae2573;
-$color_nhsuk-light-purple : #704c9c;
-$color_nhsuk-light-green  : #78be20;
-$color_nhsuk-dark-green   : #006747;
-$color_gds_black          : #0b0c0c;
-$color_magi_teal          : #336C83;
-$color_dark-blue          : #0C223F;
-$color_light_teal         : #00a19a;
+@import 'assets/scss/colours';
 
 $page-colours             : (
-  'nhs-blue' : $color_nhsuk-blue,
+  'blue' : $color_blue,
   'dark-blue' : $color_dark-blue,
-  'bright-blue' : $color_nhsuk-bright-blue,
-  'mid-grey' : $color_nhsuk-mid-grey,
-  'dark-grey' : $color-nhsuk-dark-grey,
-  'black' : $color_nhsuk-black,
-  'purple' : $color-nhsuk-purple,
-  'pink' : $color_nhsuk-pink,
-  'light-purple' : $color_nhsuk-light-purple,
-  'emergency-services-red' : $color_nhsuk-red,
-  'dark-green' : $color_nhsuk-dark-green,
-  'light-green' : $color_nhsuk-light-green,
-  'aqua-green' : $color_nhsuk-aqua-green,
-  'gds-black' : $color_gds_black,
-  'magistrates-teal' : $color_magi_teal,
-  'light-teal' : $color_light_teal,
+  'teal' : $color_teal,
+  'light-teal' : $color_light-teal,
 );
 
 @each $name,
@@ -51,7 +21,7 @@ $colour in $page-colours {
 
           a {
             &:active, &:focus {
-              box-shadow: 0 -2px $color_nhsuk-white, 0 4px $colour;
+              box-shadow: 0 -2px $color_snow-white, 0 4px $colour;
             }
           }
         }
@@ -118,7 +88,7 @@ $colour in $page-colours {
     .nhsuk-panel.is-style-panel-with-label h3 .rich-text {
       background-color: $colour;
       background: $colour;
-      color: $color_nhsuk-white;
+      color: $color_snow-white;
     }
 
     .nhsuk-details__summary,
@@ -128,11 +98,11 @@ $colour in $page-colours {
     }
 
     a.nhsuk-button {
-      color: $color_nhsuk-white;
+      color: $color_snow-white;
     }
 
     a.nhsuk-button--reverse {
-      color: $color_nhsuk-black;
+      color: $color_black;
     }
 
     .nhsuk-inset-text,
@@ -152,7 +122,7 @@ $colour in $page-colours {
 
     .nhsuk-header__navigation ul li:focus,
     .nhsuk-header__navigation-link {
-      border-bottom: 4px solid $color_nhsuk-aqua-green;
+      border-bottom: 4px solid $color_aqua-green;
     }
 
     @media (min-width : 40.0625em) {
@@ -190,15 +160,15 @@ $colour in $page-colours {
         background: #B6BDC5;
         color:  $colour;
         text-decoration: none;
-        border-bottom: 4px solid $color_nhsuk-aqua-green;
+        border-bottom: 4px solid $color_aqua-green;
       }
 
       .nhsuk-header__navigation-link:hover,
       .nhsuk-header__navigation ul li a:hover {
         background-color: transparent;
-        border-bottom: 4px solid $color_nhsuk-white;
+        border-bottom: 4px solid $color_snow-white;
         text-decoration: none;
-        color: $color_nhsuk-white;
+        color: $color_snow-white;
       }
 
       .nhsuk-header__menu-toggle:focus,

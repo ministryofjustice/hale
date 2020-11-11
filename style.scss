@@ -13,7 +13,7 @@ Author: Ministry of Justice - Adam Brown, Beverley Newing, Damien Wilson & Rober
 @import 'assets/scss/variables';
 
 // start importing the theme specific settings
-@import 'assets/scss/nhs-colours';
+@import 'assets/scss/colours';
 // nhs colour pallette
 @import 'assets/scss/generic-overrides';
 // generic over-rides to remove default wordpress styling issues
@@ -38,8 +38,6 @@ Author: Ministry of Justice - Adam Brown, Beverley Newing, Damien Wilson & Rober
 @import 'assets/scss/print';
 // over-ride for gallery styling
 @import 'assets/scss/gallery';
-// LearnDash plugin styling
-@import 'assets/scss/learndash-styling';
 // Typography
 @import 'assets/scss/typography';
 // Download Monitor styling
@@ -48,9 +46,6 @@ Author: Ministry of Justice - Adam Brown, Beverley Newing, Damien Wilson & Rober
 @import 'assets/scss/emergency_alert';
 // Feedback banner styling
 @import 'assets/scss/feedback_banner';
-@import 'assets/scss/nhsblocks/nhsl-blocks'; // specific elements for nhsl-blocks plugin
-@import 'assets/scss/nhsblocks/style_variations';//gutenberg blocks style variations
-@import 'assets/scss/nhsblocks/stripe-blocks';//gutenberg blocks stripe
 // nhs colour pallette
 @import 'assets/scss/color-mixer';
 @import 'assets/scss/icons';

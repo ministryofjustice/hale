@@ -437,7 +437,7 @@ function nightingale_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'theme_colour',
 		array(
-			'default'           => 'nhs_blue',
+			'default'           => 'blue',
 			'sanitize_callback' => 'nightingale_sanitize_select',
 		)
 	);

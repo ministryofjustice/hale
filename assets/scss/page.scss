@@ -83,8 +83,8 @@
           }
 
           &:active, &:focus {
-            background-color: $color_snow_white;
-            box-shadow: 0 -2px $color_snow_white, 0 4px $color-light_teal;
+            background-color: $color_snow-white;
+            box-shadow: 0 -2px $color_snow-white, 0 4px $color-light_teal;
           }
 
 
@@ -97,8 +97,8 @@
   .category-page-pagination {
     .category-page-pagination-section {
 
-      border-top: 1px solid $color_concrete_grey;
-      border-bottom: 1px solid $color_concrete_grey;
+      border-top: 1px solid $color_concrete-grey;
+      border-bottom: 1px solid $color_concrete-grey;
       padding: 16px 0 16px 40px;
       padding: 1rem 0 1rem 2.5rem;
 
@@ -139,7 +139,7 @@
       }
 
       .category-page-pagination-page-title {
-        color: $color_metal_grey;
+        color: $color_metal-grey;
         font-size: 16px;
         font-size: 1rem;
 
