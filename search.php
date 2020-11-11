@@ -7,9 +7,9 @@
  * The sidebar is intentionally disabled on this view, regardless of site settings.
  *
  * @link      https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.0 23rd March 2020
+ * @package   Hale
+ * @copyright Ministry of Justice
+ * @version   1.0
  */
 
 get_header();
