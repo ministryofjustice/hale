@@ -80,7 +80,7 @@ while (have_posts()) :
             // Add special heading CSS class depending on if category menu is activated
             $hale_heading_class = $is_cat_page ? ' hale-heading-l' : null;
 
-                echo '<h2 class="entry-title' . $hale_heading_class . '">' . get_the_title() . '</h2>';
+                echo '<h1 class="entry-title' . $hale_heading_class . '">' . get_the_title() . '</h1>';
             }
         }
 
