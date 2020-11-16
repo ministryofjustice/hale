@@ -49,3 +49,27 @@
 		}
 	}
 }
+
+// Sticky footer, for browsers that support it
+@supports (display: flex) {
+	html, body {
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#content {
+		flex: 1 0 auto;
+
+		@media (min-width: 1024px) {
+			width: 100%;
+		}
+	}
+
+	footer {
+		flex-shrink: 0;
+	}
+}
