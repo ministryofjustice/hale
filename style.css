@@ -2,7 +2,7 @@
 /*
 Theme Name: Hale
 Text Domain: hale
-Version: 1.0.7
+Version: 1.0.2
 Description: Theme for Ministry of Justice websites.
 Author: Ministry of Justice - Adam Brown, Beverley Newing, Damien Wilson & Robert Lowe
 */
@@ -1054,13 +1054,13 @@ caption {
   }
 }
 
-.nhsuk-grid-column-two-thirds, div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search {
+.nhsuk-grid-column-two-thirds, div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap {
   box-sizing: border-box;
   padding: 0 16px;
 }
 
 @media (min-width: 48.0625em) {
-  .nhsuk-grid-column-two-thirds, div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search {
+  .nhsuk-grid-column-two-thirds, div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap {
     float: left;
     width: 66.6666%;
   }
@@ -10525,7 +10525,7 @@ div.nhsuk-header__search--results-page {
   }
 }
 
-div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search {
+div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap {
   padding: 0;
 }
 
@@ -10608,13 +10608,13 @@ div.nhsuk-header__search--results-page .nhsuk-search__submit:focus, div.nhsuk-he
 }
 
 @media (min-width: 40.0625em) {
-  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search, div.nhsuk-header__search--results-page .nightingale-banner__container div.nhsuk-header__search-wrap#wrap-search {
+  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .nightingale-banner__container div.nhsuk-header__search-wrap {
     padding: 0;
   }
 }
 
 @media (min-width: 40.0625em) and (min-width: 40.0625em) {
-  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search, div.nhsuk-header__search--results-page .nightingale-banner__container div.nhsuk-header__search-wrap#wrap-search {
+  .nightingale-banner__container .nhsuk-grid-column-two-thirds, .nightingale-banner__container div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .nightingale-banner__container div.nhsuk-header__search-wrap {
     padding: 0;
   }
 }
@@ -10794,12 +10794,12 @@ a:visited {
   color: #000000;
 }
 
-.nhsuk-grid-column-two-thirds.contentright, div.nhsuk-header__search--results-page div.contentright.nhsuk-header__search-wrap#wrap-search {
+.nhsuk-grid-column-two-thirds.contentright, div.nhsuk-header__search--results-page div.contentright.nhsuk-header__search-wrap {
   float: right;
   padding: 0 16px 0 16px;
 }
 
-.nhsuk-grid-column-two-thirds.contentleft, div.nhsuk-header__search--results-page div.contentleft.nhsuk-header__search-wrap#wrap-search {
+.nhsuk-grid-column-two-thirds.contentleft, div.nhsuk-header__search--results-page div.contentleft.nhsuk-header__search-wrap {
   padding: 0 16px 0 16px;
 }
 
@@ -10856,9 +10856,9 @@ a:visited {
   color: #005eb8;
 }
 
-.nhsuk-grid-column-two-thirds.archive, div.nhsuk-header__search--results-page div.archive.nhsuk-header__search-wrap#wrap-search,
+.nhsuk-grid-column-two-thirds.archive, div.nhsuk-header__search--results-page div.archive.nhsuk-header__search-wrap,
 .nhsuk-grid-column-two-thirds.index,
-div.nhsuk-header__search--results-page div.index.nhsuk-header__search-wrap#wrap-search {
+div.nhsuk-header__search--results-page div.index.nhsuk-header__search-wrap {
   padding: 0 16px 0 0;
 }
 
@@ -11005,18 +11005,18 @@ span.search-terms {
   margin-bottom: 1rem;
 }
 
-.page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap#wrap-search,
+.page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap,
 .search-page .page-header .nhsuk-grid-column-two-thirds,
-.search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search,
-div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap#wrap-search {
+.search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap,
+div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
   padding: 0;
 }
 
 @media (min-width: 40.0625em) {
-  .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap#wrap-search,
+  .page .page-header .nhsuk-grid-column-two-thirds, .page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page .page-header div.nhsuk-header__search-wrap,
   .search-page .page-header .nhsuk-grid-column-two-thirds,
-  .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap#wrap-search,
-  div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap#wrap-search {
+  .search-page .page-header div.nhsuk-header__search--results-page div.nhsuk-header__search-wrap,
+  div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-header__search-wrap {
     padding: 0 16px;
   }
 }
@@ -11182,10 +11182,10 @@ div.nhsuk-header__search--results-page .search-page .page-header div.nhsuk-heade
 }
 
 @media (max-width: 40.0525em) {
-  .page .nhsuk-grid-column-two-thirds.contentleft, .page div.nhsuk-header__search--results-page div.contentleft.nhsuk-header__search-wrap#wrap-search, div.nhsuk-header__search--results-page .page div.contentleft.nhsuk-header__search-wrap#wrap-search,
+  .page .nhsuk-grid-column-two-thirds.contentleft, .page div.nhsuk-header__search--results-page div.contentleft.nhsuk-header__search-wrap, div.nhsuk-header__search--results-page .page div.contentleft.nhsuk-header__search-wrap,
   .search-page .nhsuk-grid-column-two-thirds.contentleft,
-  .search-page div.nhsuk-header__search--results-page div.contentleft.nhsuk-header__search-wrap#wrap-search,
-  div.nhsuk-header__search--results-page .search-page div.contentleft.nhsuk-header__search-wrap#wrap-search {
+  .search-page div.nhsuk-header__search--results-page div.contentleft.nhsuk-header__search-wrap,
+  div.nhsuk-header__search--results-page .search-page div.contentleft.nhsuk-header__search-wrap {
     padding: 0;
   }
 }
