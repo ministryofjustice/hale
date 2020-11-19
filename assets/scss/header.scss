@@ -438,7 +438,7 @@ div.nhsuk-header__search--results-page {
 		}
   }
 
-  & div.nhsuk-header__search-wrap {
+  & div.nhsuk-header__search-wrap#wrap-search {
     @extend .nhsuk-grid-column-two-thirds;
     padding: 0;
   }
@@ -488,9 +488,14 @@ div.nhsuk-header__search--results-page {
     }
 
     &:active {
-        background-color:#403DD0;
-        fill: $color_snow-white;
-        top: 0;
+      background-color:#403DD0;
+      fill: $color_snow-white;
+      top: 0;
+    }
+
+    &:focus, &:active {
+      box-shadow: 0 0 0 2px #fff,0 0 0 4px #00a0cc;
+      outline: none;
     }
 	}
 
