@@ -50,3 +50,4 @@ ssh-key
 
 # Compiled Styles
 style.min.css
+dist/
