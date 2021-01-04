@@ -10,25 +10,23 @@
 	const searchToggleButton = document.getElementById('toggle-search');
 	const menuToggleButton = document.getElementById('toggle-menu');
 
-	if (searchToggleButton != null) {
-    searchToggleButton.onclick = function () {
-      if (searchToggleButton.getAttribute("aria-expanded") === "false") {
-        searchToggleButton.setAttribute("aria-label", "Close search");
-      } else {
-        searchToggleButton.setAttribute("aria-label", "Open search");
-      }
+
+  searchToggleButton.onclick = function () {
+    if (searchToggleButton.getAttribute("aria-expanded") === "false") {
+      searchToggleButton.setAttribute("aria-label", "Close search");
+    } else {
+      searchToggleButton.setAttribute("aria-label", "Open search");
     }
   }
 
-  if (menuToggleButton != null) {
-    menuToggleButton.onclick = function () {
-      if (menuToggleButton.getAttribute("aria-expanded") === "false") {
-        menuToggleButton.setAttribute("aria-label", "Close menu");
-      } else {
-        menuToggleButton.setAttribute("aria-label", "Open menu");
-      }
+  menuToggleButton.onclick = function () {
+    if (menuToggleButton.getAttribute("aria-expanded") === "false") {
+      menuToggleButton.setAttribute("aria-label", "Close menu");
+    } else {
+      menuToggleButton.setAttribute("aria-label", "Open menu");
     }
   }
+
 
 	var container, button, menu, links, i, len;
 
