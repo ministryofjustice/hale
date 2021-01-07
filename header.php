@@ -16,7 +16,8 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="theme" content="NHS-nightingale-2.2.0">
+	<meta name="theme" content="MOJ-hale-1.0.11">
+	<meta name="description" content="<?php bloginfo('description'); ?>" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php
 	wp_enqueue_script( 'jquery' );
