@@ -243,17 +243,35 @@ add_action('widgets_init', 'hale_widgets_init');
  */
 function hale_scripts()
 {
-    wp_enqueue_style('hale-style', get_template_directory_uri() . '/style.min.css', array(), '20202704');
-    wp_enqueue_style('hale-page-colours', get_template_directory_uri() . '/page-colours.min.css', array(), '20202704');
-    wp_enqueue_script('hale-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', '', '20190828', true);
-    wp_enqueue_script('hale-nhs-library', get_template_directory_uri() . '/js/nhsuk.min.js', '', '20190828', true);
-    wp_enqueue_script('hale-navigation', get_template_directory_uri() . '/js/navigation.js', '', '20190828', true);
+
+    wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
+    wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
+
+    wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
+    wp_enqueue_script('hale-nhs-library', hale_mix_asset('/js/nhsuk.min.js'), '', null , true);
+    wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', 'null', true);
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 }
 
 add_action('wp_enqueue_scripts', 'hale_scripts');
+
+/**
+ * @param $filename
+ * @return string
+ */
+function hale_mix_asset($filename)
+{
+    
+    $manifest = file_get_contents(get_template_directory() . '/dist/mix-manifest.json');
+    $manifest = json_decode($manifest, true);
+
+    if (!isset($manifest[$filename])) {
+        error_log("Mix asset '$filename' does not exist in manifest.");
+    }
+    return get_template_directory_uri() . '/dist' . $manifest[$filename];
+}
 
 /**
  * Custom template tags for this theme.
