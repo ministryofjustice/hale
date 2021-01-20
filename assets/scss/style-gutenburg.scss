@@ -1,8 +1,8 @@
 .edit-post-visual-editor, .block-editor-block-styles, .block-editor-inserter__menu-help-panel { // target only the editor itself
   //@import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
-  @import 'assets/scss/nhsuk-replacement';
-  @import 'assets/scss/colours';
+  @import 'nhsuk-replacement';
+  @import 'colours';
   ul {
     list-style: none;
   }
@@ -361,8 +361,8 @@
       min-height: 50px;
     }
   }
-  @import 'assets/scss/color-mixer';//gutenberg page style overrides
+  @import 'color-mixer';//gutenberg page style overrides
 
 }
 
-@import 'assets/scss/typography-gutenberg';
+@import 'typography-gutenberg';

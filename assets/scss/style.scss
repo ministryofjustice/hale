@@ -1,44 +1,44 @@
 @charset "UTF-8";
 
-@import 'assets/scss/default';
-@import 'assets/scss/nhsuk-replacement';
+@import 'default';
+@import 'nhsuk-replacement';
 
-@import 'assets/scss/variables';
+@import 'variables';
 
 // start importing the theme specific settings
-@import 'assets/scss/colours';
+@import 'colours';
 // nhs colour pallette
-@import 'assets/scss/generic-overrides';
+@import 'generic-overrides';
 // generic over-rides to remove default wordpress styling issues
-@import 'assets/scss/header';
+@import 'header';
 // header styles
-@import 'assets/scss/banner';
+@import 'banner';
 // header banner styles
-@import 'assets/scss/breadcrumb';
+@import 'breadcrumb';
 // breadcrumb styles
-@import 'assets/scss/footer';
+@import 'footer';
 // footer styles
-@import 'assets/scss/style_variations';
+@import 'style_variations';
 // page template styles
-@import 'assets/scss/page.scss';
+@import 'page.scss';
 // search page template styles
-@import 'assets/scss/search.scss';
+@import 'search.scss';
 // block elements
-@import 'assets/scss/sidebar-widgets.scss';
+@import 'sidebar-widgets.scss';
 // sidebar elements and subpages navigation
-@import 'assets/scss/comments-and-meta';
+@import 'comments-and-meta';
 // Print output styling
-@import 'assets/scss/print';
+@import 'print';
 // over-ride for gallery styling
-@import 'assets/scss/gallery';
+@import 'gallery';
 // Typography
-@import 'assets/scss/typography';
+@import 'typography';
 // Download Monitor styling
-@import 'assets/scss/download-monitor';
+@import 'download-monitor';
 // Emergency Alert styling
-@import 'assets/scss/emergency_alert';
+@import 'emergency_alert';
 // Feedback banner styling
-@import 'assets/scss/feedback_banner';
+@import 'feedback_banner';
 // nhs colour pallette
-@import 'assets/scss/color-mixer';
-@import 'assets/scss/icons';
+@import 'color-mixer';
+@import 'icons';
