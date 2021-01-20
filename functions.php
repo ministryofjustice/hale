@@ -263,9 +263,8 @@ add_action('wp_enqueue_scripts', 'hale_scripts');
  */
 function hale_mix_asset($filename)
 {
-    global $webroot_dir;
-
-    $manifest = file_get_contents($webroot_dir . '/app/themes/hale-dev/dist/mix-manifest.json');
+    
+    $manifest = file_get_contents(get_template_directory() . '/dist/mix-manifest.json');
     $manifest = json_decode($manifest, true);
 
     if (!isset($manifest[$filename])) {
