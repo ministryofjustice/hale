@@ -18,7 +18,7 @@ get_header();
 	<div id="primary" class="clear search-page">
 		<header class="entry-header page-header" style="">
 			<div class="govuk-width-container">
-					<h1 class="nhsuk-heading-xl">
+					<h1 class="govuk-heading-xl">
 						<?php
 						/* translators: %s: search term */
 						printf( esc_html__( 'Search Results for %s', 'nightingale' ), '<span>' . get_search_query() . '</span>' );

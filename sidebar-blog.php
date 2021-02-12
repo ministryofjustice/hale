@@ -17,7 +17,7 @@ if ( ! nightingale_show_sidebar() ) {
 	return;
 }
 ?>
-<div class="nhsuk-grid__item govuk-grid-column-one-third">
+<div class="govuk-grid-column-one-third">
 	<aside id="secondary" class="widget-area govuk-width-container">
 		<?php dynamic_sidebar( 'sidebar-2' ); ?>
 	</aside><!-- #secondary -->

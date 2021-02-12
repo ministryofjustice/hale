@@ -97,7 +97,7 @@ while (have_posts()) :
         ?>
         </div>
 
-        <div class="nhsuk-grid__item govuk-grid-column-one-third">
+        <div class="govuk-grid-column-one-third">
         <?php
             /**
              * Load page sidebar

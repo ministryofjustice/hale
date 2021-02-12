@@ -25,7 +25,7 @@ $sidebar = nightingale_show_sidebar();
 		if ( is_home() && ! is_front_page() ) :
 			?>
 			<header>
-				<h1 class="nhsuk-heading-xl"><?php single_post_title(); ?></h1>
+				<h1 class="govuk-heading-xl"><?php single_post_title(); ?></h1>
 			</header>
 			<?php
 		endif;

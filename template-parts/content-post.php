@@ -24,9 +24,9 @@ else :
 	if ( 'latest-posts' === $parent_template_part ) {
 		if ( 'grid' === $post_layout ) {
 			if ( 4 === $columns ) {
-				echo 'nhsuk-grid-column-one-quarter ';
+				echo 'govuk-grid-column-one-quarter ';
 			} elseif ( 2 === $columns ) {
-				echo 'nhsuk-grid-column-one-half ';
+				echo 'govuk-grid-column-one-half ';
 			} else {
 				echo 'govuk-grid-column-one-third ';
 			}
@@ -35,7 +35,7 @@ else :
 		}
 	} else {
 		if ( $sidebar ) :
-			echo 'nhsuk-grid-column-one-half ';
+			echo 'govuk-grid-column-one-half ';
 		else :
 			echo 'govuk-grid-column-one-third ';
 		endif;

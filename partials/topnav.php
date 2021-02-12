@@ -17,7 +17,7 @@ if ($show_header_menu == 'yes') {
 
     $topmenu_args = array(
         'menu' => 'main-menu',
-        'menu_class' => 'nhsuk-header__navigation-list',
+        'menu_class' => 'govuk-header__navigation',
         'menu_id' => 'menu-menu-top-menu',
         'container' => false,
         'container_class' => '',
@@ -35,12 +35,10 @@ if ($show_header_menu == 'yes') {
         'item_spacing' => 'preserve',
     );
     ?>
-    <nav class="nhsuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation"
+    <nav class="" id="header-navigation" role="navigation" aria-label="Primary navigation"
          aria-labelledby="label-navigation">
-        <div class="govuk-width-container">
-            <?php
-            wp_nav_menu($topmenu_args);
-            ?>
-        </div>
+        <?php
+        wp_nav_menu($topmenu_args);
+        ?>
     </nav>
 <?php }

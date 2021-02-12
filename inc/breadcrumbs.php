@@ -39,11 +39,11 @@ function nightingale_category_parents( $id, $link = false, $separator = '', $nic
 		$chain    .= get_category_parents( $parent->parent, $link, $separator, $nicename );
 	}
 	if ( $iscrumb ) {
-		$chain .= '<li class="nhsuk-breadcrumb__item"><a itemprop="item" href="' . esc_url( get_category_link( $parent->term_id ) ) . '">' . $name . '</a></li>' . $separator;
+		$chain .= '<li class="govuk-breadcrumbs__list-item"><a itemprop="item" href="' . esc_url( get_category_link( $parent->term_id ) ) . '">' . $name . '</a></li>' . $separator;
 	} elseif ( $link && ! $iscrumb ) {
-		$chain .= '<li class="nhsuk-breadcrumb__item"><a itemprop="item" href="' . esc_url( get_category_link( $parent->term_id ) ) . '">' . $name . '</a>' . $separator . '</li>';
+		$chain .= '<li class="govuk-breadcrumbs__list-item"><a itemprop="item" href="' . esc_url( get_category_link( $parent->term_id ) ) . '">' . $name . '</a>' . $separator . '</li>';
 	} else {
-		$chain .= '<li class="nhsuk-breadcrumb__item">' . $name . $separator . '</li>';
+		$chain .= '<li class="govuk-breadcrumbs__list-item">' . $name . $separator . '</li>';
 	}
 
 	return $chain;
@@ -87,15 +87,15 @@ function nightingale_breadcrumb() {
 		if ( ! is_front_page() ) {
 			$back_one_level = array( esc_url( home_url() ), __( 'Home', 'nightingale' ) );
 			?>
-			<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+			<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
 				<div class="govuk-width-container">
 					<?php
 					if ( true === nightingale_uncanny_breadcrumb_check() ) {
 						echo esc_html( uo_breadcrumbs() );
 						?>
 
-						<p class="nhsuk-breadcrumb__back">
-							<a class="nhsuk-breadcrumb__backlink" href="<?php echo esc_url( $back_one_level[0] ); ?>">
+						<p class="jotw-width_show-narrow-40">
+							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
 								<?php echo esc_html( __( 'Back to ', 'nightingale' ) ) . esc_html( $back_one_level[1] ); ?>
 							</a>
 						</p>
@@ -116,9 +116,9 @@ function nightingale_breadcrumb() {
 						<?php
 					} else {
 						?>
-						<ol class="nhsuk-breadcrumb__list">
-							<li class="nhsuk-breadcrumb__item">
-								<a href="<?php echo esc_url( home_url() ); ?>">
+						<ol class="govuk-breadcrumbs__list jotw-width_hide-narrow-40">
+							<li class="govuk-breadcrumbs__list-item">
+								<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( home_url() ); ?>">
 									<?php echo esc_html( __( 'Home', 'nightingale' ) ); ?>
 								</a>
 							</li>
@@ -134,10 +134,10 @@ function nightingale_breadcrumb() {
 								if ( 0 !== $this_cat->parent && ! is_wp_error( $cat_parents ) ) {
 									echo $cat_parents; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}
-								echo '<li class="nhsuk-breadcrumb__item"><a  href="' . esc_url( get_category_link( $this_cat ) ) . '">' . esc_html( single_cat_title( '', false ) ) . '</a></li>';
+								echo '<li class="govuk-breadcrumbs__list-item"><a  href="' . esc_url( get_category_link( $this_cat ) ) . '">' . esc_html( single_cat_title( '', false ) ) . '</a></li>';
 							} elseif ( is_post_type_archive( 'tribe_events' ) ) {
 								?>
-								<li class="nhsuk-breadcrumb__item">
+								<li class="govuk-breadcrumbs__list-item">
 									<?php
 									echo esc_html( tribe_get_event_label_plural() );
 									?>
@@ -145,7 +145,7 @@ function nightingale_breadcrumb() {
 								<?php
 							} elseif ( is_archive() && ! is_category() ) {
 								?>
-								<li class="nhsuk-breadcrumb__item">
+								<li class="govuk-breadcrumbs__list-item">
 									<?php
 									esc_html_e( 'Archives', 'nightingale' );
 									?>
@@ -153,7 +153,7 @@ function nightingale_breadcrumb() {
 								<?php
 							} elseif ( is_search() ) {
 								?>
-								<li class="nhsuk-breadcrumb__item">
+								<li class="govuk-breadcrumbs__list-item">
 									<?php
 									esc_html_e( 'Search Results', 'nightingale' );
 									?>
@@ -161,7 +161,7 @@ function nightingale_breadcrumb() {
 								<?php
 							} elseif ( is_404() ) {
 								?>
-								<li class="nhsuk-breadcrumb__item">
+								<li class="govuk-breadcrumbs__list-item">
 									<?php
 									esc_html_e( '404 Not Found', 'nightingale' );
 									?>
@@ -176,7 +176,7 @@ function nightingale_breadcrumb() {
 								}
 							} elseif ( is_singular( 'attachment' ) ) {
 								?>
-								<li class="nhsuk-breadcrumb__item">
+								<li class="govuk-breadcrumbs__list-item">
 									<?php
 									the_title();
 									?>
@@ -184,7 +184,7 @@ function nightingale_breadcrumb() {
 								<?php
 							} elseif ( is_singular( 'tribe_events' ) ) {
 								?>
-								<li class="nhsuk-breadcrumb__item">
+								<li class="govuk-breadcrumbs__list-item">
 									<a href="<?php echo esc_url( tribe_get_events_link() ); ?>">
 										<?php echo esc_html( tribe_get_event_label_plural() ); ?>
 									</a>
@@ -200,7 +200,7 @@ function nightingale_breadcrumb() {
 									foreach ( $ancestors as $ancestor ) {
 										if ( ( end( $ancestors ) !== $ancestor ) && ( ( $home_page !== $ancestor ) ) ) {
 											?>
-											<li class="nhsuk-breadcrumb__item">
+											<li class="govuk-breadcrumbs__list-item">
 												<a href="<?php echo esc_url( get_permalink( $ancestor ) ); ?>">
 													<?php echo esc_html( wp_strip_all_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) ); ?>
 												</a>
@@ -221,12 +221,12 @@ function nightingale_breadcrumb() {
 
 								?>
 
-								<li class="nhsuk-breadcrumb__item"><?php echo esc_html( the_title() ); ?></li>
+								<li class="govuk-breadcrumbs__list-item"><?php echo esc_html( the_title() ); ?></li>
 
 							<?php } ?>
 						</ol>
-						<p class="nhsuk-breadcrumb__back">
-							<a class="nhsuk-breadcrumb__backlink" href="<?php echo esc_url( $back_one_level[0] ); ?>">
+						<p class="jotw-width_show-narrow-40">
+							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
 								<?php echo esc_html_e( 'Go back to ', 'nightingale' ) . esc_html( $back_one_level[1] ); ?>
 							</a>
 						</p>
