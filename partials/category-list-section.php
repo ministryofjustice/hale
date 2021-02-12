@@ -40,9 +40,9 @@ if (!empty($page_cats)) {
             $is_cat_page = true;
         ?>
         <header class="entry-header page-header" style="">
-        <div class="nhsuk-width-container">
-            <div class="nhsuk-grid-row">
-                <div class="nhsuk-grid-column-two-thirds">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
                         <h2 class="category-pages-title hale-heading-xl"><?php echo $page_cat->name; ?></h2>
                         <ul class="category-pages-nav">
                             <?php

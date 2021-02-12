@@ -28,7 +28,7 @@ if ( ! function_exists( 'nightingale_posted_on' ) ) :
 				esc_html( get_the_modified_date() )
 			);
 
-			echo '<span class="nhsuk-u-visually-hidden">Posted on: </span>' . $time_string . ' '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<span class="govuk-visually-hidden">Posted on: </span>' . $time_string . ' '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 endif;
@@ -40,7 +40,7 @@ if ( ! function_exists( 'nightingale_posted_by' ) ) :
 	function nightingale_posted_by() {
 		$author_enabled = get_theme_mod( 'blog_author_display', 'true' );
 		if ( 'true' === $author_enabled ) {
-			echo '<span class="nhsuk-u-visually-hidden">Posted by: </span><a class="url fn n" 
+			echo '<span class="govuk-visually-hidden">Posted by: </span><a class="url fn n" 
  href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>&nbsp;-&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}

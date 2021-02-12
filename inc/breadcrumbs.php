@@ -88,7 +88,7 @@ function nightingale_breadcrumb() {
 			$back_one_level = array( esc_url( home_url() ), __( 'Home', 'nightingale' ) );
 			?>
 			<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
-				<div class="nhsuk-width-container">
+				<div class="govuk-width-container">
 					<?php
 					if ( true === nightingale_uncanny_breadcrumb_check() ) {
 						echo esc_html( uo_breadcrumbs() );

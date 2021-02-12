@@ -14,7 +14,7 @@ get_header();
 $sidebar = nightingale_show_sidebar();
 
 ?>
-	<div id="primary" class=" nhsuk-grid-row">
+	<div id="primary" class=" govuk-grid-row">
 		<header class="page-header">
 			<?php
 			the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -25,7 +25,7 @@ $sidebar = nightingale_show_sidebar();
 		<div class="
 		<?php
 		if ( $sidebar ) :
-			echo 'nhsuk-grid-column-two-thirds ';
+			echo 'govuk-grid-column-two-thirds ';
 			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>
@@ -35,7 +35,7 @@ $sidebar = nightingale_show_sidebar();
 			if ( have_posts() ) :
 				?>
 
-				<div class="nhsuk-grid-row nhsuk-promo-group">
+				<div class="govuk-grid-row nhsuk-promo-group">
 
 					<?php
 					/* Start the Loop */

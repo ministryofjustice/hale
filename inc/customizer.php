@@ -210,7 +210,7 @@ function nightingale_customize_register( $wp_customize ) {
     $wp_customize->add_setting(
         'banner_link_style',
         array(
-            'default'           => 'nhsuk-button',
+            'default'           => 'govuk-button',
             'sanitize_callback' => 'nightingale_sanitize_select',
         )
     );
@@ -226,7 +226,7 @@ function nightingale_customize_register( $wp_customize ) {
                 return 'yes' === $wp_customize->get_setting( 'show_header_banner' )->value() && 'yes' === $wp_customize->get_setting( 'show_header_banner_link' )->value() ;
             },
             'choices'     => array(
-                'nhsuk-button'   => esc_html__( 'NHS', 'nightingale' ),
+                'govuk-button'   => esc_html__( 'NHS', 'nightingale' ),
                 'yellow-button' => esc_html__( 'Yellow', 'nightingale' ),
             ),
         )

@@ -17,7 +17,7 @@ get_header();
 
 	<div id="primary" class="clear search-page">
 		<header class="entry-header page-header" style="">
-			<div class="nhsuk-width-container">
+			<div class="govuk-width-container">
 					<h1 class="nhsuk-heading-xl">
 						<?php
 						/* translators: %s: search term */
@@ -93,7 +93,7 @@ get_header();
 						<?php
 					endwhile;
 					?>
-				</div><!-- #nhsuk-panel-group nhsuk-grid-column-full -->
+				</div><!-- #nhsuk-panel-group govuk-grid-column-full -->
 				<?php
 				nightingale_archive_pagination();
 				else :

@@ -37,7 +37,7 @@ if ($show_header_menu == 'yes') {
     ?>
     <nav class="nhsuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation"
          aria-labelledby="label-navigation">
-        <div class="nhsuk-width-container">
+        <div class="govuk-width-container">
             <?php
             wp_nav_menu($topmenu_args);
             ?>

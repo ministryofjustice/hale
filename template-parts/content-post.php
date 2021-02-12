@@ -28,16 +28,16 @@ else :
 			} elseif ( 2 === $columns ) {
 				echo 'nhsuk-grid-column-one-half ';
 			} else {
-				echo 'nhsuk-grid-column-one-third ';
+				echo 'govuk-grid-column-one-third ';
 			}
 		} else { // single rows layout.
-			echo 'nhsuk-grid-column-full ';
+			echo 'govuk-grid-column-full ';
 		}
 	} else {
 		if ( $sidebar ) :
 			echo 'nhsuk-grid-column-one-half ';
 		else :
-			echo 'nhsuk-grid-column-one-third ';
+			echo 'govuk-grid-column-one-third ';
 		endif;
 	}
 	?>

@@ -40,9 +40,9 @@ while (have_posts()) :
         // Header loads if category not selected on page
         if (empty($is_cat_page)) { ?>
             <header class="entry-header page-header" style="">
-                <div class="nhsuk-width-container">
-                    <div class="nhsuk-grid-row">
-                        <div class="nhsuk-grid-column-two-thirds">
+                <div class="govuk-width-container">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
                             <h1 class="entry-title"><?php the_title(); ?></h1>
                         </div>
                     </div>
@@ -52,8 +52,8 @@ while (have_posts()) :
         }
     }
     ?>
-    <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds page
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds page
 
         <?php
 
@@ -66,7 +66,7 @@ while (have_posts()) :
         }
 
         // Apply CSS class depending on sidebar status
-        $full_column_class = ( $show_sidebar != 'yes' ) ? 'nhsuk-grid-column-full' : null;
+        $full_column_class = ( $show_sidebar != 'yes' ) ? 'govuk-grid-column-full' : null;
 
         echo nightingale_sidebar_location('sidebar-1'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo ' ' . $full_column_class; ?>">
@@ -97,7 +97,7 @@ while (have_posts()) :
         ?>
         </div>
 
-        <div class="nhsuk-grid__item nhsuk-grid-column-one-third">
+        <div class="nhsuk-grid__item govuk-grid-column-one-third">
         <?php
             /**
              * Load page sidebar

@@ -34,7 +34,7 @@ $sidebar = nightingale_show_sidebar();
 		<div class="
 		<?php
 		if ( $sidebar ) :
-			echo 'nhsuk-grid-column-two-thirds ';
+			echo 'govuk-grid-column-two-thirds ';
 			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>
@@ -45,7 +45,7 @@ $sidebar = nightingale_show_sidebar();
 				?>
 
 
-				<div class="nhsuk-grid-row nhsuk-promo-group">
+				<div class="govuk-grid-row nhsuk-promo-group">
 
 					<?php
 
@@ -64,7 +64,7 @@ $sidebar = nightingale_show_sidebar();
 
 					?>
 
-				</div><!-- #nhsuk-panel-group nhsuk-grid-column-full -->
+				</div><!-- #nhsuk-panel-group govuk-grid-column-full -->
 
 				<?php
 

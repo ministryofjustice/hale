@@ -18,8 +18,8 @@ flush();
 </div>
 
 <footer>
-	<div class="nhsuk-footer" id="nhsuk-footer">
-		<div class="nhsuk-width-container">
+	<div class="govuk-footer" id="footer">
+		<div class="govuk-width-container">
 			<?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
 				<div id="nhsuk-footer-widgets" class="nhsuk-footer__widgets widget-area" role="complementary">
 					<?php dynamic_sidebar( 'footer-region' ); ?>

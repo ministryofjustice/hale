@@ -12,11 +12,11 @@
 get_header();
 ?>
 
-	<div id="primary" class=" nhsuk-grid-row nhsuk-width-restrict">
+	<div id="primary" class=" govuk-grid-row">
 		<div class="
 		<?php
 		if ( nightingale_show_sidebar() ) :
-			echo 'nhsuk-grid-column-two-thirds ';
+			echo 'govuk-grid-column-two-thirds ';
 			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>

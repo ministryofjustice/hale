@@ -51,7 +51,7 @@ if ( 'normal' !== $header_colour ) {
 }
 echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $header_colour_text ) . '">';
 ?>
-<div class="nhsuk-width-container nhsuk-header__container">
+<div class="govuk-width-container nhsuk-header__container">
 	<?php
 	get_template_part( 'partials/logo' );
 	?>
@@ -106,7 +106,7 @@ $extra_styles = $page_color ? 'page-style--' . $page_color : '';
 
 ?>
 
-<div id="content" class="nhsuk-width-container nhsuk-width-container--full">
+<div id="content" class="govuk-width-container govuk-width-container--full">
 	<main class="nhsuk-main-wrapper nhsuk-main-wrapper--no-padding <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
 		<div id="contentinner">
 		<?php
