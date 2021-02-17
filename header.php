@@ -93,9 +93,7 @@ echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $
 get_template_part( 'partials/topnav' );
 ?>
 </header>
-<?php
-get_template_part( 'partials/banner' );
-?>
+
 <?php echo nightingale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php
