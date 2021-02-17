@@ -23,7 +23,7 @@ function hale_page_title_section_metabox()
 }
 
 /**
- * Render Page Breadcrumb Metabox
+ * Render Page Title Section Metabox
  *
  * @param array $post the post variables.
  */
