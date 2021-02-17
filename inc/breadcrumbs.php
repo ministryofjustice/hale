@@ -2,13 +2,13 @@
 /**
  * Generate breadcrumbs
  *
- * Get path to current page and leave breacrumb trail for users to navigate back up the decision tree
+ * Get path to current page and leave breadcrumb trail for users to navigate back up the decision tree
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package   Hale
+ * @copyright Ministry of Justice
+ * @version   1.0
  */
 
 /**
@@ -23,7 +23,7 @@
  *
  * @return array  $chain
  */
-function nightingale_category_parents( $id, $link = false, $separator = '', $nicename = false, $visited = array(), $iscrumb = false ) {
+function hale_category_parents( $id, $link = false, $separator = '', $nicename = false, $visited = array(), $iscrumb = false ) {
 	$chain  = '';
 	$parent = get_term( $id, 'category' );
 	if ( is_wp_error( $parent ) ) {
@@ -54,7 +54,7 @@ function nightingale_category_parents( $id, $link = false, $separator = '', $nic
  *
  * @return bool
  */
-function nightingale_uncanny_breadcrumb_check() {
+function hale_uncanny_breadcrumb_check() {
 	if ( in_array( 'uncanny-learndash-toolkit/uncanny-learndash-toolkit.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 		$uo_active_classes = get_option( 'uncanny_toolkit_active_classes', 0 );
 		if ( 0 !== $uo_active_classes ) {
@@ -77,20 +77,35 @@ function nightingale_uncanny_breadcrumb_check() {
 /**
  * Theme specific breadcrumb creation logic.
  */
-function nightingale_breadcrumb() {
+function hale_breadcrumb() {
 	global $wp_query;
 
-    $show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
+    $theme_show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
 
-	if ( ! is_home() && $show_breadcrumb == 'yes') {
+	if ( ! is_home() && $theme_show_breadcrumb == 'yes') {
 
-		if ( ! is_front_page() ) {
+        $show_page_breadcrumb = 'yes';
+
+        if(is_singular('page')) {
+            global $post;
+
+            // Get breadcrumb setting, is it set to display or not
+            $show_page_breadcrumb_setting = get_post_meta($post->ID, 'hale_metabox_page_breadcrumb', true);
+
+            if(!empty($show_page_breadcrumb_setting)){
+                $show_page_breadcrumb = $show_page_breadcrumb_setting;
+            }
+        }
+
+
+
+		if ( ! is_front_page() &&  $show_page_breadcrumb == 'yes') {
 			$back_one_level = array( esc_url( home_url() ), __( 'Home', 'nightingale' ) );
 			?>
 			<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
 				<div class="nhsuk-width-container">
 					<?php
-					if ( true === nightingale_uncanny_breadcrumb_check() ) {
+					if ( true === hale_uncanny_breadcrumb_check() ) {
 						echo esc_html( uo_breadcrumbs() );
 						?>
 
@@ -129,7 +144,7 @@ function nightingale_breadcrumb() {
 								$this_cat   = get_category( $cat_obj->term_id );
 								$parent_cat = get_category( $this_cat->parent );
 								if ( 0 !== $this_cat->parent ) {
-									$cat_parents = nightingale_category_parents( $parent_cat, true, '', false, array(), true );
+									$cat_parents = hale_category_parents( $parent_cat, true, '', false, array(), true );
 								}
 								if ( 0 !== $this_cat->parent && ! is_wp_error( $cat_parents ) ) {
 									echo $cat_parents; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -170,7 +185,7 @@ function nightingale_breadcrumb() {
 							} elseif ( is_singular( 'post' ) ) {
 								$category    = get_the_category();
 								$category_id = get_cat_ID( $category[0]->cat_name );
-								$cat_parents = nightingale_category_parents( $category_id, true, '', false, array(), true );
+								$cat_parents = hale_category_parents( $category_id, true, '', false, array(), true );
 								if ( ! is_wp_error( $cat_parents ) ) {
 									echo $cat_parents; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}

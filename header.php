@@ -96,7 +96,7 @@ get_template_part( 'partials/topnav' );
 <?php
 get_template_part( 'partials/banner' );
 ?>
-<?php echo nightingale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+<?php echo hale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php
 
