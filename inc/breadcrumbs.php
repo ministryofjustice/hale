@@ -80,11 +80,26 @@ function nightingale_uncanny_breadcrumb_check() {
 function nightingale_breadcrumb() {
 	global $wp_query;
 
-    $show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
+    $theme_show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
 
-	if ( ! is_home() && $show_breadcrumb == 'yes') {
+	if ( ! is_home() && $theme_show_breadcrumb == 'yes') {
 
-		if ( ! is_front_page() ) {
+        $show_page_breadcrumb = 'yes';
+
+        if(is_singular('page')) {
+            global $post;
+
+            // Get breadcrumb setting, is it set to display or not
+            $show_page_breadcrumb_setting = get_post_meta($post->ID, 'hale_metabox_page_breadcrumb', true);
+
+            if(!empty($show_page_breadcrumb_setting)){
+                $show_page_breadcrumb = $show_page_breadcrumb_setting;
+            }
+        }
+
+
+
+		if ( ! is_front_page() &&  $show_page_breadcrumb == 'yes') {
 			$back_one_level = array( esc_url( home_url() ), __( 'Home', 'nightingale' ) );
 			?>
 			<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">

@@ -27,28 +27,37 @@ while (have_posts()) :
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
-    /**
-    * Category page list section
-    * This loads the category list section if cat metabox is checked
-    *
-    * */
-    include(locate_template('partials/category-list-section.php', false, false));
+    $show_title_section = get_post_meta($post->ID, 'hale_metabox_page_title_section', true);
 
-    // Page title
-    if (is_front_page() === false) {
+    if (empty($show_title_section)) {
+        $show_title_section = 'yes';
+    }
 
-        // Header loads if category not selected on page
-        if (empty($is_cat_page)) { ?>
-            <header class="entry-header page-header" style="">
-                <div class="nhsuk-width-container">
-                    <div class="nhsuk-grid-row">
-                        <div class="nhsuk-grid-column-two-thirds">
-                            <h1 class="entry-title"><?php the_title(); ?></h1>
+    if($show_title_section == 'yes') {
+
+        /**
+         * Category page list section
+         * This loads the category list section if cat metabox is checked
+         *
+         * */
+        include(locate_template('partials/category-list-section.php', false, false));
+
+        // Page title
+        if (is_front_page() === false) {
+
+            // Header loads if category not selected on page
+            if (empty($is_cat_page)) { ?>
+                <header class="entry-header page-header" style="">
+                    <div class="nhsuk-width-container">
+                        <div class="nhsuk-grid-row">
+                            <div class="nhsuk-grid-column-two-thirds">
+                                <h1 class="entry-title"><?php the_title(); ?></h1>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </header>
-            <?php
+                </header>
+                <?php
+            }
         }
     }
     ?>

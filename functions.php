@@ -322,6 +322,17 @@ require get_template_directory() . '/inc/metabox-page-last-reviewed.php';
 require get_template_directory() . '/inc/metabox-page-background.php';
 
 /**
+ * Custom Page Breadcrumb Metabox
+ */
+require get_template_directory() . '/inc/metabox-page-breadcrumb.php';
+
+/**
+ * Custom Page Title Section Metabox
+ */
+require get_template_directory() . '/inc/metabox-page-title-section.php';
+
+
+/**
  * Social Widget.
  */
 require get_template_directory() . '/inc/social-widget.php';
