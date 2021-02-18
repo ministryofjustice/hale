@@ -8,6 +8,13 @@ $govuk-font-family: 'PT Sans', sans-serif;
   width: unset;
   min-width: 33.33%;
 }
+.jotw-header--with-search {
+  //but for search bar, we revert to the GDS norm
+  .govuk-header__logo {
+    width: 33.33%;
+  }
+}
+
 
 .moj-header__logotype-crest {
     position: relative;
@@ -49,17 +56,18 @@ a:focus .moj-header__logotype-crest path {
 .jotw-header__search-form {
   position:relative;
   width: calc(15rem + 44px);
+  max-width: 100%;
 
   .jotw-search__input{
-    padding-right:46px;
+    padding-right: 46px;
+    border-width: 0;
     &:focus {
-      border-color: $govuk-focus-colour;
-      box-shadow: none;
+      border-width: 0;
       + .jotw-search__submit {
         border-color: $govuk-focus-colour;
         color: $govuk-focus-text-colour;
         background-color: $govuk-focus-colour;
-        box-shadow: 0 1px 0 $govuk-focus-colour;
+        box-shadow: 0 2px 0 $govuk-focus-text-colour;
       }
     }
   }
@@ -86,7 +94,7 @@ a:focus .moj-header__logotype-crest path {
     }
   }
 }
-@media (min-width: 40.0625em) {
+@media (min-width: 48.0625em) {
   .jotw-header__search-form {
     margin-left: auto;
   }

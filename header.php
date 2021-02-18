@@ -92,7 +92,7 @@ echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text 
         ?>
     </div>
     <?php
-      $gds_header = get_theme_mod( 'gds_header', 'no' );
+      $gds_header = get_theme_mod( 'gds_header', 'yes' );
       if ($gds_header == 'yes') {
         get_template_part( 'partials/topnav' );
       }
