@@ -28,7 +28,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="nhsuk-content__clearfix"></div>
+				<div class="govuk-clearfix"></div>
 			</section>
 		</div>
 

@@ -72,7 +72,7 @@
 		wp_link_pages( $defaults );
 		?>
 	</article><!-- .article-content -->
-	<div class="nhsuk-content__clearfix"></div>
+	<div class="govuk-clearfix"></div>
 
 	<?php do_action( 'nightingale_after_single_content' ); ?>
 
