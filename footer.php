@@ -21,7 +21,7 @@ flush();
 	<div class="govuk-footer" id="footer">
 		<div class="govuk-width-container">
 			<?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
-				<div id="nhsuk-footer-widgets" class="nhsuk-footer__widgets widget-area" role="complementary">
+				<div id="jotw-footer-widgets" class="jotw-footer__widgets" role="complementary">
 					<?php dynamic_sidebar( 'footer-region' ); ?>
 				</div>
 				<?php

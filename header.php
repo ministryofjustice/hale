@@ -38,60 +38,72 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 wp_body_open();
 ?>
 <?php do_action( 'nightingale_after_body' ); ?>
-<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
+<a class="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
 
-$header_layout = get_theme_mod( 'logo_type', 'transactional' );
 $header_colour = get_theme_mod( 'header_styles', 'normal' );
+$header_search = get_theme_mod( 'show_search', 'yes' );
+$show_header_menu = get_theme_mod('show_header_menu', 'yes');
 
 if ( 'normal' !== $header_colour ) {
-	$header_colour_text = ' nhsuk-header--white';
+	$header_colour_text = ' jotw-header--white';
 } else {
 	$header_colour_text = '';
 }
-echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $header_colour_text ) . '">';
+if ($show_header_menu == 'yes') {
+  $header_search_class = 'jotw-header--with-search';
+} else {
+  $header_search_class = '';
+}
+
+echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text . $header_search_class ) . '">';
 ?>
-<div class="govuk-width-container nhsuk-header__container">
+<div class="govuk-width-container govuk-header__container">
 	<?php
 	get_template_part( 'partials/logo' );
 	?>
-	<div class="nhsuk-header__content" id="content-header">
-
-		<?php
-		$header_search = get_theme_mod( 'show_search', 'yes' );
+	<div class="govuk-header__content" id="content-header">
+    <div class="jotw-header__header-controls">
+<?php
 		if ( 'no' === $header_search ) {
-			$headersearchextra = 'nhsuk-header__menu--only';
+			$headersearchextra = 'jotw-header__menu--only';
 		} else {
 			$headersearchextra = '';
 		}
 
-        $show_header_menu = get_theme_mod('show_header_menu', 'yes');
         if ($show_header_menu == 'yes') {
             ?>
-            <div class="nhsuk-header__menu <?php echo esc_attr($headersearchextra); ?>">
-                <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu" aria-expanded="false">
-									<span>Menu</span>
+            <div class="jotw-header__menu <?php echo esc_attr($headersearchextra); ?>">
+                <button class="jotw-header__mobile-controls jotw-header__mobile-controls--menu govuk-header__menu-button govuk-js-header-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu" aria-expanded="false">
+                  <span>Menu</span>
                 </button>
             </div>
 
             <?php
         }
 
-		if ( 'yes' === $header_search && !is_search()) {
-			?>
-			<div class="nhsuk-header__search">
-				<?php get_search_form(); ?>
-			</div>
-			<?php
-		}
-		?>
-
+        if ( 'yes' === $header_search && !is_search()) {
+          ?>
+          <div class="jotw-header__search">
+            <?php get_search_form(); ?>
+          </div>
+          <?php
+        }
+        ?>
+    </div>
+    <?php
+      $gds_header = get_theme_mod( 'gds_header', 'no' );
+      if ($gds_header == 'yes') {
+        get_template_part( 'partials/topnav' );
+      }
+    ?>
 	</div>
-
+  <?php
+    if ($gds_header == 'no') {
+      get_template_part( 'partials/topnav' );
+    }
+  ?>
 </div>
-<?php
-get_template_part( 'partials/topnav' );
-?>
 </header>
 <?php
 get_template_part( 'partials/banner' );
@@ -107,7 +119,7 @@ $extra_styles = $page_color ? 'page-style--' . $page_color : '';
 ?>
 
 <div id="content" class="govuk-width-container govuk-width-container--full">
-	<main class="nhsuk-main-wrapper nhsuk-main-wrapper--no-padding <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
+	<main class="govuk-main-wrapper govuk-!-padding-top-0 <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
 		<div id="contentinner">
 		<?php
 		flush();

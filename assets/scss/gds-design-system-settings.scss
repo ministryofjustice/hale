@@ -1,2 +1,134 @@
 @import "node_modules/govuk-frontend/govuk/all";
 $govuk-font-family: 'PT Sans', sans-serif;
+
+//Overrides
+
+.govuk-header__logo {
+  //make this a min-width to account for the longer header texts than "GOV.UK"
+  width: unset;
+  min-width: 33.33%;
+}
+
+.moj-header__logotype-crest {
+    position: relative;
+    top: -6px;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+a:focus .moj-header__logotype-crest path {
+  fill: $govuk-focus-text-colour;
+}
+
+.jotw-header.jotw-header--with-search {
+//  background: $jotw-header-colour;
+  .govuk-header__logo {
+    float:left;
+  }
+  .jotw-header__header-controls {
+    float:right;
+    
+    &:after {
+      content:"";
+      clear:both;
+    }
+  }
+  
+}
+@media (min-width: 48.0625em) {
+  .js-enabled .govuk-header__container > .jotw-header__topnav {
+    clear:both;
+    ul {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media (min-width: 48.0625em) {
+  .jotw-header .govuk-header__content {
+  //  width:100%
+  }
+}
+
+.jotw-header__header-controls {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  width: 66.66%;
+  text-align: right;
+  
+  .jotw-header__menu,
+  .jotw-header__search {
+    display: inline-block;
+  }
+}
+
+
+.jotw-header__search-form {
+  position:relative;
+  width: calc(15rem + 44px);
+  margin-left: auto;
+
+  .jotw-search__input{
+    padding-right:46px;
+    &:focus {
+      border-color: $govuk-focus-colour;
+      box-shadow: none;
+      + .jotw-search__submit {
+        border-color: $govuk-focus-colour;
+        color: $govuk-focus-text-colour;
+        background-color: $govuk-focus-colour;
+        box-shadow: 0 1px 0 $govuk-focus-colour;
+      }
+    }
+  }
+  .jotw-search__submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 6px;
+    margin-top: 0;
+    border: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 4px;
+    padding-left: 9px;
+    padding-top: 2px;
+    width: 44px;
+
+    svg {
+      position: relative;
+      top: 4px;
+      height: 27px;
+      width: 27px;
+    }
+  }
+}
+
+.js-enabled .jotw-header__mobile-controls {
+  position: relative;
+  display: none;
+  @media (max-width: 48.0625em) {
+    &--menu {
+      display: inline-block;
+    }
+  }
+  @media (max-width: 40.0625em) {
+    &--search {
+      display: inline-block;
+    }
+  }
+}
+
+@media (max-width: 40.0625em) {
+  .js-enabled .jotw-header__search-wrap {
+    display: none;
+  }
+  .js-enabled .is-active+.jotw-header__search-wrap {
+    display: block;
+  }
+
+}
+

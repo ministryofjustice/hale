@@ -1,3 +1,18 @@
+.govuk-header {
+  .govuk-header__navigation {
+    max-width: 100%;
+    li {
+      @extend .govuk-header__navigation-item;
+
+      a {
+        @extend .govuk-header__link;
+        height: 100%;
+        padding: 8px 0;
+      }
+    }
+  }
+}
+
 .nhsuk-header {
   .nhsuk-header__navigation {
     max-width: 100%;

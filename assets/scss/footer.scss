@@ -1,52 +1,28 @@
-.nhsuk-footer {
-
-	&__list {
-		width: 100%;
-		margin-bottom: 16px;
-		margin-bottom: 1rem;
-	}
-
-	&__copyright {
+.jotw-footer__copyright {
 		float: unset;
 		text-align: left;
-    color: #454A4C;
+    color: $govuk-text-colour;
     width: 100%;
-
+    
     a {
-      color: #454A4C;
+      @extend .govuk-footer__link;
+      color:red;
+    }
+}
 
-      &:visited {
-        color: #454A4C;
+.govuk-footer {
+
+	.widget_social_widget {
+		font-size: 40px;
+    
+    .jotw-social-link {
+      margin-right:12px;
+      
+      &:hover {
+        //For social media links only, colour change on hover.
+        color: $govuk-link-hover-colour;
       }
     }
-
-		&_img {
-
-			text-align: center;
-
-			img {
-				max-width: 50%;
-			}
-		}
-	}
-	.widget_social_widget {
-		font-size: 2.5rem;
-
-		a {
-			color: #454A4C;
-			margin-right: 12px;
-
-			&:focus, &:hover, &:active  {
-				background-color: transparent;
-				box-shadow: none;
-				color:  $color_marine-blue;
-			}
-		}
-
-		.widgettitle {
-			font-size: 24px;
-			font-size: 1.5rem;
-		}
 	}
 }
 
