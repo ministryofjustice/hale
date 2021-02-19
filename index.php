@@ -18,15 +18,13 @@ $sidebar = nightingale_show_sidebar();
 
 ?>
 
-	<div id="primary" class="clear">
+	<div id="primary" class="govuk-grid-column-two-thirds">
 
 		<?php
 
 		if ( is_home() && ! is_front_page() ) :
 			?>
-			<header>
-				<h1 class="govuk-heading-xl"><?php single_post_title(); ?></h1>
-			</header>
+			<h1 class="govuk-heading-xl"><?php single_post_title(); ?></h1>
 			<?php
 		endif;
 		?>
@@ -34,7 +32,6 @@ $sidebar = nightingale_show_sidebar();
 		<div class="
 		<?php
 		if ( $sidebar ) :
-			echo 'govuk-grid-column-two-thirds ';
 			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>

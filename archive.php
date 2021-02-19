@@ -14,18 +14,15 @@ get_header();
 $sidebar = nightingale_show_sidebar();
 
 ?>
-	<div id="primary" class=" govuk-grid-row">
-		<header class="page-header">
-			<?php
-			the_archive_title( '<h1 class="page-title">', '</h1>' );
-			the_archive_description( '<div class="archive-description">', '</div>' );
-			?>
-		</header><!-- .page-header -->
+	<div id="primary" class="govuk-grid-column-two-thirds">
+    <?php
+    the_archive_title( '<h1 class="govuk-heading-l">', '</h1>' );
+    the_archive_description( '<div class="archive-description">', '</div>' );
+    ?>
 
 		<div class="
 		<?php
 		if ( $sidebar ) :
-			echo 'govuk-grid-column-two-thirds ';
 			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>

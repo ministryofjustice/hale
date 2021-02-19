@@ -23,7 +23,7 @@ while (have_posts()) :
     the_post();
     ?>
 
-<div id="primary">
+<div id="primary" class="govuk-grid-column-two-thirds">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
@@ -39,21 +39,12 @@ while (have_posts()) :
 
         // Header loads if category not selected on page
         if (empty($is_cat_page)) { ?>
-            <header class="entry-header page-header" style="">
-                <div class="govuk-width-container">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-two-thirds">
-                            <h1 class="entry-title"><?php the_title(); ?></h1>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <?php
+         <h1 class="govuk-heading-l"><?php the_title(); ?></h1>
+       <?php
         }
     }
     ?>
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds page
+      <div class="
 
         <?php
 
@@ -107,9 +98,7 @@ while (have_posts()) :
             get_sidebar('page');
         }
         ?>
-        </div>
-    </div>
-
+      </div>
     </article><!-- #post-<?php the_ID(); ?> -->
 </div><!-- #primary -->
 

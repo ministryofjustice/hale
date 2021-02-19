@@ -39,33 +39,25 @@ if (!empty($page_cats)) {
 
             $is_cat_page = true;
         ?>
-        <header class="entry-header page-header" style="">
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                        <h2 class="category-pages-title hale-heading-xl"><?php echo $page_cat->name; ?></h2>
-                        <ul class="category-pages-nav">
-                            <?php
-                            foreach ($pages as $key => $post) : ?>
-                                <?php if ($current_page == $post->ID) {
-                                    $current_cat_page_index = $key;
-                                    ?>
-                            <li class="current_page">
-                                    <?php echo $post->post_title; ?>
-                            </li>
-                                    <?php
-                                } else {
-                                    ?>
-                            <li><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></li>
-                                    <?php
-                                }
-                            endforeach;
-                            ?>
-                        </ul>
-                    </div>
-            </div>
-        </div>
-        </header><!-- .entry-header -->
+        <h2 class="govuk-heading-l"><?php echo $page_cat->name; ?></h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <?php
+            foreach ($pages as $key => $post) : ?>
+                <?php if ($current_page == $post->ID) {
+                    $current_cat_page_index = $key;
+                    ?>
+            <li class="current_page">
+                    <?php echo $post->post_title; ?>
+            </li>
+                    <?php
+                } else {
+                    ?>
+            <li><a class="govuk-link" href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></li>
+                    <?php
+                }
+            endforeach;
+            ?>
+        </ul>
 
         <?php
         if ($current_cat_page_index > 0) {
