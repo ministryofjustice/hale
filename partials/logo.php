@@ -58,6 +58,12 @@ if ( has_custom_logo() ) {
                   <?php echo esc_html( $logo_line_1 ); ?>
                 </span>
                <?php
+                } else {
+                ?>
+                <span class="govuk-header__logotype-text">
+                  Ministry of Justice
+                </span>
+               <?php
                 }
                 ?>
             </span>

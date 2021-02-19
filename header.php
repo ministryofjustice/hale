@@ -62,52 +62,45 @@ echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text 
 	<?php
 	get_template_part( 'partials/logo' );
 	?>
-	<div class="govuk-header__content" id="content-header">
-    <div class="jotw-header__header-controls">
-<?php
-		if ( 'no' === $header_search ) {
-			$headersearchextra = 'jotw-header__menu--only';
-		} else {
-			$headersearchextra = '';
-		}
-
-        if ($show_header_menu == 'yes') {
-            ?>
-            <div class="jotw-header__menu <?php echo esc_attr($headersearchextra); ?>">
-                <button class="jotw-header__mobile-controls jotw-header__mobile-controls--menu govuk-header__menu-button govuk-js-header-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu" aria-expanded="false">
-                  <span>Menu</span>
-                </button>
-            </div>
-
-            <?php
-        }
-
-        if ( 'yes' === $header_search && !is_search()) {
-          ?>
-          <div class="jotw-header__search">
-            <?php get_search_form(); ?>
-          </div>
-          <?php
-        }
-        ?>
+ <?php
+  if ( 'yes' === $header_search && !is_search()) {
+    ?>
+    <div class="jotw-header__search">
+      <?php get_search_form(); ?>
     </div>
     <?php
-      $gds_header = get_theme_mod( 'gds_header', 'yes' );
-      if ($gds_header == 'yes') {
-        get_template_part( 'partials/topnav' );
+  }
+?>     <?php
+        if ( 'no' === $header_search ) {
+          $headersearchextra = 'jotw-header__menu--only';
+        } else {
+          $headersearchextra = '';
+        }
+      ?>
+    <div class="govuk-header__content" id="content-header">
+      <div class="jotw-header__menu <?php echo esc_attr($headersearchextra); ?>">
+
+      </div>
+      <?php
+        if ($show_header_menu == 'yes') {
+      ?>
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu">Menu</button>
+      <?php get_template_part( 'partials/topnav' ); 
       }
-    ?>
+      ?>
+
+    <div class="jotw-header__header-controls">
+
+    </div>
 	</div>
   <?php
-    if ($gds_header == 'no') {
-      get_template_part( 'partials/topnav' );
-    }
+//    if ($gds_header == 'no') {
+//      get_template_part( 'partials/topnav' );
+//    }
   ?>
 </div>
 </header>
-<?php
-get_template_part( 'partials/banner' );
-?>
+
 <?php echo nightingale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php
