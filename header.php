@@ -111,8 +111,8 @@ $extra_styles = $page_color ? 'page-style--' . $page_color : '';
 
 ?>
 
-<div id="content" class="govuk-width-container govuk-width-container--full">
-	<main class="govuk-main-wrapper govuk-!-padding-top-0 <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
+<div id="content" class="govuk-width-container">
+	<main class="govuk-main-wrapper <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
 		<div id="contentinner" class="govuk-grid-row">
 		<?php
 		flush();
