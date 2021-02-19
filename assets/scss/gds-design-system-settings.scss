@@ -11,6 +11,11 @@ $govuk-font-family: 'PT Sans', sans-serif;
     width: unset;
     min-width: 33.33%;
 
+    .jotw-header__logo--custom {
+      //we do not display a custom logo in "native" mode (i.e. no overriding class = GDS styles)
+      display:none;
+    }
+
     a:focus .moj-header__logotype-crest path {
       fill: $govuk-focus-text-colour;
     }
