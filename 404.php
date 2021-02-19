@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-	<div id="primary" class=" govuk-grid-row">
+	<div id="primary" class="govuk-grid-column-two-thirds">
 
 		<div class="govuk-grid-column-full ">
 			<section class="error-404 not-found">
