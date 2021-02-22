@@ -134,7 +134,7 @@ function nightingale_breadcrumb() {
 								if ( 0 !== $this_cat->parent && ! is_wp_error( $cat_parents ) ) {
 									echo $cat_parents; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}
-								echo '<li class="govuk-breadcrumbs__list-item"><a  href="' . esc_url( get_category_link( $this_cat ) ) . '">' . esc_html( single_cat_title( '', false ) ) . '</a></li>';
+								echo '<li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="' . esc_url( get_category_link( $this_cat ) ) . '">' . esc_html( single_cat_title( '', false ) ) . '</a></li>';
 							} elseif ( is_post_type_archive( 'tribe_events' ) ) {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
@@ -185,7 +185,7 @@ function nightingale_breadcrumb() {
 							} elseif ( is_singular( 'tribe_events' ) ) {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
-									<a href="<?php echo esc_url( tribe_get_events_link() ); ?>">
+									<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( tribe_get_events_link() ); ?>">
 										<?php echo esc_html( tribe_get_event_label_plural() ); ?>
 									</a>
 								</li>
@@ -201,7 +201,7 @@ function nightingale_breadcrumb() {
 										if ( ( end( $ancestors ) !== $ancestor ) && ( ( $home_page !== $ancestor ) ) ) {
 											?>
 											<li class="govuk-breadcrumbs__list-item">
-												<a href="<?php echo esc_url( get_permalink( $ancestor ) ); ?>">
+												<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( get_permalink( $ancestor ) ); ?>">
 													<?php echo esc_html( wp_strip_all_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) ); ?>
 												</a>
 											</li>

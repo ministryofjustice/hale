@@ -89,7 +89,7 @@ get_header();
 						<?php
 					endwhile;
 					?>
-				</div><!-- #nhsuk-panel-group govuk-grid-column-full -->
+				</div>
 				<?php
 				nightingale_archive_pagination();
 				else :
