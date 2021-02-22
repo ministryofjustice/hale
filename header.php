@@ -50,7 +50,7 @@ if ( 'normal' !== $header_colour ) {
 } else {
 	$header_colour_text = '';
 }
-if ($show_header_menu == 'yes') {
+if ( 'yes' === $header_search && !is_search()) {
   $header_search_class = 'jotw-header--with-search';
 } else {
   $header_search_class = '';

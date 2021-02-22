@@ -27,6 +27,9 @@ $govuk-font-family: 'PT Sans', sans-serif;
       width: 50%;
     }
   }
+  .jotw-header__search {
+    padding-bottom: 0.5em;
+  }
   .govuk-header__content {
     //remove the width restriction - doesn't work with wider logo (above)
     width: unset;
