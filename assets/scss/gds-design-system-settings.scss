@@ -4,8 +4,22 @@ $govuk-font-family: 'PT Sans', sans-serif;
 
 //Overrides
 
+.jotw-page {
+  #primary {
+
+    font-family: $govuk-font-family;
+
+    &.govuk-grid-column-two-thirds .govuk-grid-column-full {
+      //for blocks (beneath primary that use the full width class to override the ⅔ width
+      @media (min-width: 40.0625em) {
+        width: 150%;
+      }
+    }
+  }
+}
+
 .jotw-header {
-  padding-top: 2px;
+  padding-top: 2px; //wee bit of space above the logo
 
   .govuk-header__logo {
     //make this a min-width to account for the longer header texts than "GOV.UK"

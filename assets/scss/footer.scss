@@ -19,8 +19,12 @@
       margin-right:12px;
       
       &:hover {
-        //For social media links only, colour change on hover.
-        color: $govuk-link-hover-colour;
+        //For social media links only
+        box-shadow: 0 4px $govuk-text-colour;
+      }
+      &:focus {
+        //For social media links only
+        box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
       }
     }
 	}

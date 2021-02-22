@@ -108,22 +108,11 @@ add_filter( 'excerpt_more', 'nightingale_excerpt_more' );
  *                      return string output html.
  */
 function nightingale_read_more_posts( $title, $link ) {
-
-	$readmorelink = '<div class="nhsuk-action-link nhsuk-readmore">';
+  $readmorelink = '';
 	if ( '' !== $link ) {
-		$readmorelink .= '<a class="nhsuk-action-link__link" href="' . $link . '">';
+		$readmorelink .= '<a class="govuk-button" href="' . $link . '">' . esc_html__( 'Read more ', 'nightingale' ) . '</a>';
 	}
-	$readmorelink .= '<span class="nhsuk-action-link__text">' . esc_html__( 'read more ', 'nightingale' ) . '</span><span class="govuk-visually-hidden">' . esc_html__( ' about ', 'nightingale' ) . $title . '</span><svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-	  <path d="M0 0h24v24H0z" fill="none"></path>
-	  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-	</svg>';
-	if ( '' !== $link ) {
-		$readmorelink .= '</a>';
-	}
-	$readmorelink .= '</div>';
-
 	return $readmorelink;
-
 }
 
 /**
