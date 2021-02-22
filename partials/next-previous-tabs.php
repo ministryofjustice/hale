@@ -14,7 +14,7 @@
 // Requires category-nav.php to be loaded first to set $prev_page and $next_page vars
 
 if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
-    <div class="category-page-pagination
+    <nav id="pagination-label" class="moj-pagination 
 
     <?php if (!empty($prev_page)) {
         echo 'has-prev-page';
@@ -23,27 +23,25 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
     if (!empty($next_page)) {
         echo 'has-next-page';
     } ?>">
-
+      <ul class="moj-pagination__list">
         <?php
         if (!empty($prev_page)) {
             ?>
-            <div class="category-page-pagination-section category-page-pagination-prev">
-                <a href="<?php echo get_permalink($prev_page->ID); ?>" class="category-page-pagination-page-link">Previous page</a>
-                <div class="category-page-pagination-page-title">
-                    <?php echo $prev_page->post_title; ?>
-                </div>
-            </div>
+            <li class="moj-pagination__item  moj-pagination__item--prev">
+              <a class="moj-pagination__link" href="<?php echo get_permalink($prev_page->ID); ?>">
+                <?php echo $prev_page->post_title; ?>
+              </a>
+            </li>
             <?php
         }
 
         if (!empty($next_page)) {
             ?>
-            <div class="category-page-pagination-section category-page-pagination-next">
-                <a href="<?php echo get_permalink($next_page->ID); ?>" class="category-page-pagination-page-link">Next page</a>
-                <div class="category-page-pagination-page-title">
-                    <?php echo $next_page->post_title; ?>
-                </div>
-            </div>
+            <li class="moj-pagination__item  moj-pagination__item--next">
+              <a class="moj-pagination__link" href="<?php echo get_permalink($next_page->ID); ?>">
+                <?php echo $next_page->post_title; ?>
+              </a>
+            </li>
             <?php
         }
         ?>
