@@ -27,7 +27,6 @@ if ( has_nav_menu( 'footer-menu' ) ) { // Check to see if there is a footer menu
 			}
 			// below div is a horrible hacky workaround to stop safari from jumping links all over the show on hover. As and when upstream library gets fixed, this div can come out.
 			?>
-      <li class="govuk-footer__inline-list-item"><button class="govuk-footer__link" id="js-ccfw-settings-button" value = "cookies">Cookie</button></li>
 		</ul>
 
 		<?php
