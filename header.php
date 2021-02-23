@@ -93,14 +93,11 @@ echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text 
 
     </div>
 	</div>
-  <?php
-//    if ($gds_header == 'no') {
-//      get_template_part( 'partials/topnav' );
-//    }
-  ?>
 </div>
 </header>
-
+<?php
+  get_template_part( 'partials/banner' );
+?>
 <?php echo nightingale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php

@@ -9,7 +9,6 @@ $banner_link_style = get_theme_mod('banner_link_style', 'govuk-button');
 
 if ($show_banner == 'yes' && is_front_page()) {
     ?>
-
     <div class="govuk-width-container nightingale-banner__container">
         <div class=" govuk-grid-row">
 
