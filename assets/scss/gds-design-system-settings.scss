@@ -5,6 +5,11 @@ $govuk-font-family: 'PT Sans', sans-serif;
 //Overrides
 
 .jotw-page {
+  body {
+    //the full width cover images go slightly off the pagem this is the easiest fix.
+    overflow-x: hidden;
+  }
+  
   #primary {
 
     font-family: $govuk-font-family;
@@ -13,6 +18,23 @@ $govuk-font-family: 'PT Sans', sans-serif;
       //for blocks (beneath primary that use the full width class to override the ⅔ width
       @media (min-width: 40.0625em) {
         width: 150%;
+        padding:0;
+      }
+    }
+  }
+  
+  .govuk-footer .widget_social_widget {
+    //the styles here are just for the social media icon links.
+    font-size: 40px;
+    
+    .jotw-social-link {
+      margin-right:12px;
+      
+      &:hover {
+        box-shadow: 0 4px $govuk-text-colour;
+      }
+      &:focus {
+        box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
       }
     }
   }

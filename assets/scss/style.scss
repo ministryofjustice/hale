@@ -10,37 +10,24 @@
 @import 'pagination.scss';
 
 // start importing the theme specific settings
-@import 'colours';
+// @import 'colours';
 // nhs colour pallette
-@import 'generic-overrides';
-// generic over-rides to remove default wordpress styling issues
-@import 'header';
+
+//Keep
 // header styles
-@import 'banner';
+@import 'header';
+
+//!! to be investigated
 // header banner styles
-@import 'breadcrumb';
-// breadcrumb styles
-@import 'footer';
+// @import 'banner';
+
+
+//separate out footer styling later?
 // footer styles
-@import 'style_variations';
-// page template styles
-@import 'page.scss';
-// search page template styles
-@import 'search.scss';
-// block elements
-@import 'sidebar-widgets.scss';
-// sidebar elements and subpages navigation
-@import 'comments-and-meta';
-// Print output styling
-@import 'print';
-// over-ride for gallery styling
-@import 'gallery';
-// Download Monitor styling
-@import 'download-monitor';
-// Emergency Alert styling
-@import 'emergency_alert';
-// Feedback banner styling
-@import 'feedback_banner';
-// nhs colour pallette
-@import 'color-mixer';
+//@import 'footer';
+//icons for footer
 @import 'icons';
+
+// nhs colour pallette
+// @import 'color-mixer';
+
