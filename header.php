@@ -93,11 +93,7 @@ echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $
 get_template_part( 'partials/topnav' );
 ?>
 </header>
-<?php
-get_template_part( 'partials/banner' );
-?>
-<?php echo hale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-
+<?php echo hale_breadcrumb(); ?>
 <?php
 
 $page_color = get_post_meta( get_the_id(), 'page-color', true );
