@@ -2,16 +2,9 @@
 
 @import 'default';
 @import 'gds-design-system-settings';
-@import 'nhsuk-replacement';
-
-@import 'variables';
 
 // pagination - from MoJ Design System
 @import 'pagination.scss';
-
-// start importing the theme specific settings
-// @import 'colours';
-// nhs colour pallette
 
 //Keep
 // header styles
@@ -21,13 +14,7 @@
 // header banner styles
 // @import 'banner';
 
-
-//separate out footer styling later?
 // footer styles
-//@import 'footer';
+@import 'footer';
 //icons for footer
 @import 'icons';
-
-// nhs colour pallette
-// @import 'color-mixer';
-

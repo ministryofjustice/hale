@@ -415,14 +415,15 @@ body {
   background: #fff;
   /* Fallback for when there is no custom background color defined. */
 }
-
+/*
+interferes with GDS styling
 hr {
   background-color: #ccc;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em;
 }
-
+*/
 ul {
   list-style: disc;
 }
@@ -461,38 +462,6 @@ table {
   margin: 0 0 1.5em;
   width: 100%;
 }
-
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  @extend .nhsuk-button;
-}
-
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-  @extend .nhsuk-input;
-}
-
-
 
 /*--------------------------------------------------------------
 # Navigation

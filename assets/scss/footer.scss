@@ -1,0 +1,17 @@
+.jotw-page {
+  .govuk-footer .widget_social_widget {
+    //the styles here are just for the social media icon links.
+    font-size: 40px;
+    
+    .jotw-social-link {
+      margin-right:12px;
+      
+      &:hover {
+        box-shadow: 0 4px $govuk-text-colour;
+      }
+      &:focus {
+        box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
+      }
+    }
+  }
+}
