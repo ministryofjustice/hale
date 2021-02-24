@@ -51,8 +51,9 @@ function hale_setup()
 
     // This theme uses wp_nav_menus() in two location.
     $locations = array(
-        'main-menu'   => __('The menu to show at the top of your site (does not show child options, only top level navigation)', 'nightingale'),
-        'footer-menu' => __('The footer navigation area - this is great for showing more detailed links and deeper navigation.', 'nightingale'),
+        'main-menu'   => __('The menu to show at the top of your site (does not show child options, only top level navigation)', 'hale'),
+        'secondary-top-menu'   => __('The secondary menu to show at the top of your site (does not show child options, only top level navigation)', 'hale'),
+        'footer-menu' => __('The footer navigation area - this is great for showing more detailed links and deeper navigation.', 'hale'),
     );
     register_nav_menus($locations);
 
