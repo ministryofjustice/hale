@@ -15,6 +15,15 @@
 }
 .jotw-header {
   padding-top: 2px; //wee bit of space above the logo
+  
+  .govuk-header__logotype-text {
+    @extend .govuk-header__link--homepage;
+    //copies the style for this as if it were a link
+    &:hover {
+      //BUT REMOVES THE UNDERLINE
+      border-bottom: none;
+    }
+  }
 
   .govuk-header__logo {
     //make this a min-width to account for the longer header texts than "GOV.UK"

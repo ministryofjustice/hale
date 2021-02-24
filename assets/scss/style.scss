@@ -4,8 +4,11 @@
 @import 'gds-design-system-settings';
 @import 'jotw-supplements';
 
+// theme colours
+@import 'theme-colours';
+
 // pagination - from MoJ Design System and GOVUK publishing
-@import 'pagination.scss';
+@import 'pagination';
 
 // header styles
 @import 'header';

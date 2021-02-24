@@ -10,6 +10,7 @@
  * @copyright NHS Leadership Academy, Tony Blacker
  * @version 1.1 21st August 2019
  */
+$crown_copyright = get_theme_mod('crown_copyright', 'Yes');
 
 flush();
 ?>
@@ -17,22 +18,36 @@ flush();
 </main>
 </div>
 
-<footer>
-	<div class="govuk-footer" id="footer">
-		<div class="govuk-width-container">
-			<?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
-				<div id="jotw-footer-widgets" class="jotw-footer__widgets" role="complementary">
-					<?php dynamic_sidebar( 'footer-region' ); ?>
-				</div>
-				<?php
-			endif;
-
-			get_template_part( 'partials/footernav' );
-			get_template_part( 'partials/footer-copyright' );
-			?>
-
-		</div>
-	</div>
+<footer class="govuk-footer " role="contentinfo" id="footer">
+  <div class="govuk-width-container">
+    <?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
+      <div id="jotw-footer-widgets" class="jotw-footer__widgets" role="complementary">
+        <?php dynamic_sidebar( 'footer-region' ); ?>
+      </div>
+      <?php
+    endif;
+    ?>
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <?php
+          get_template_part( 'partials/footernav' );
+          get_template_part( 'partials/footer-licence' );
+          if ('yes' != $crown_copyright) {
+            get_template_part( 'partials/footer-copyright' );
+          }
+        ?>
+      </div>
+      <?php
+        if ('yes' == $crown_copyright) {
+      ?>
+        <div class="govuk-footer__meta-item">
+          <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+        </div>
+      <?php
+        }
+      ?>
+    </div>
+  </div>
 </footer>
 <?php wp_footer(); ?>
 </body>

@@ -1,0 +1,28 @@
+@import 'colours';
+
+.page-colour--teal {
+  .govuk-header {
+    background: $color_teal;
+    padding-bottom: 1em;
+  }
+  .govuk-button {
+    background-color:$color_sunflower-yellow;
+    border-radius:5px;
+    color:$color_charcoal-black;
+    box-shadow: none;
+    &:hover, &:active, &:focus, &:focus:not(:active):not(:hover) {
+      box-shadow: none;
+      background-color:$color_charcoal-black;
+      color:$color_snow-white;
+    }
+  }
+  .govuk-header__container {
+    border-bottom: none;
+  }
+}
+
+.page-colour--light-teal {
+  .govuk-header__container {
+    border-bottom-color: $color_light-teal;
+  }
+}

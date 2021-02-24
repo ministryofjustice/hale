@@ -19,11 +19,11 @@ if ( has_nav_menu( 'footer-menu' ) ) { // Check to see if there is a footer menu
 		<h2 class="govuk-visually-hidden">Support links</h2>
 		<ul class="govuk-footer__inline-list">
 			<?php
-
 			foreach ( $menu_item as $nav_item ) {
-
-				echo '<li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="' . esc_url( $nav_item->url ) . '">' . esc_html( $nav_item->title ) . '</a></li>';
-
+				echo '
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="' . esc_url( $nav_item->url ) . '">' . esc_html( $nav_item->title ) . '</a>
+          </li>';
 			}
 			// below div is a horrible hacky workaround to stop safari from jumping links all over the show on hover. As and when upstream library gets fixed, this div can come out.
 			?>
