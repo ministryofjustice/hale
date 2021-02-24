@@ -207,33 +207,6 @@ function nightingale_customize_register( $wp_customize ) {
         )
     );
 
-    $wp_customize->add_setting(
-        'banner_link_style',
-        array(
-            'default'           => 'govuk-button',
-            'sanitize_callback' => 'nightingale_sanitize_select',
-        )
-    );
-
-    $wp_customize->add_control(
-        'banner_link_style',
-        array(
-            'label'       => esc_html__( 'Banner Link Style', 'nightingale' ),
-            'description' => esc_html__( 'What background would you like for your header region?', 'nightingale' ),
-            'section'     => 'section_header',
-            'type'        => 'select',
-            'active_callback' => function () use ( $wp_customize ) {
-                return 'yes' === $wp_customize->get_setting( 'show_header_banner' )->value() && 'yes' === $wp_customize->get_setting( 'show_header_banner_link' )->value() ;
-            },
-            'choices'     => array(
-                'govuk-button'   => esc_html__( 'GDS', 'nightingale' ),
-                'yellow-button' => esc_html__( 'Yellow', 'nightingale' ),
-            ),
-        )
-    );
-
-
-
     /*
      * Header Styles
      */
