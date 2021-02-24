@@ -53,5 +53,5 @@ one level only.
 
  * Screenshot - Copyright 2020
 
- * assets/cross.svg, assets/pixel_trans.svg, assets/pixel_trans_mini.png, assets/tick.svg, nhsuk-frontend css library -
+ * assets/cross.svg, assets/pixel_trans.svg, assets/pixel_trans_mini.png, assets/tick.svg, govuk-frontend css library -
  Copyright 2020 MoJ Digital. License MIT

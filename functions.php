@@ -196,9 +196,9 @@ function hale_widgets_init()
             'name'          => esc_html__('Sidebar', 'nightingale'),
             'id'            => 'sidebar-1',
             'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="nhsuk-related-nav %2$s">',
+            'before_widget' => '<section id="%1$s" class="%2$s">',
             'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="nhsuk-related-nav__heading">',
+            'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
         )
     );
@@ -207,9 +207,9 @@ function hale_widgets_init()
             'name'          => esc_html__('Post Sidebar', 'nightingale'),
             'id'            => 'sidebar-2',
             'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="nhsuk-related-nav %2$s">',
+            'before_widget' => '<section id="%1$s" class="%2$s">',
             'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="nhsuk-related-nav__heading">',
+            'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
         )
     );
@@ -227,9 +227,9 @@ function hale_widgets_init()
             'name'          => '404 Page',
             'id'            => '404-error',
             'description'   => esc_html__('Content for your 404 error page goes here.', 'hale'),
-            'before_widget' => '<div id="%1$s" class="%2$s nhsuk-related-nav">',
+            'before_widget' => '<div id="%1$s" class="%2$s">',
             'after_widget'  => '</div>',
-            'before_title'  => '<h3 class="nhsuk-related-nav__heading">',
+            'before_title'  => '<h3 class="govuk-heading-s">',
             'after_title'   => '</h3>',
         )
     );
@@ -248,7 +248,6 @@ function hale_scripts()
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
 
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
-    wp_enqueue_script('hale-nhs-library', hale_mix_asset('/js/nhsuk.min.js'), '', null , true);
     wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', 'null', true);
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');

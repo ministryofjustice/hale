@@ -23,7 +23,7 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
     if (!empty($next_page)) {
         echo 'has-next-page';
     } ?>">
-      <ul class="gem-c-pagination__list" data-module="track-click">
+      <ul class="gem-c-pagination__list">
         <?php
         if (!empty($prev_page)) {
             ?>

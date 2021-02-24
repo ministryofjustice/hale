@@ -41,37 +41,37 @@ else :
 		endif;
 	}
 	?>
-	nhsuk-promo-group__item nhsuk-postslisting">
-		<div class="nhsuk-promo">
-			<a class="nhsuk-promo__link-wrapper" href="<?php the_permalink(); ?>">
+	">
+		<div>
+			<a class="govuk-link" href="<?php the_permalink(); ?>">
 
 				<?php
 				if ( ( 'latest-posts' !== $parent_template_part ) || ( ( 'latest-posts' === $parent_template_part ) && ( 0 !== $display_featured_image ) ) ) {
 					if ( has_post_thumbnail() ) :
 
-						the_post_thumbnail( 'default', [ 'class' => 'nhsuk-promo__img' ] );
+						the_post_thumbnail( 'default', [ 'class' => 'jotw-promo__image' ] );
 
 					else :
 
 						$fallback = get_theme_mod( 'blog_fallback' );
 
 						if ( $fallback ) {
-							echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'nhsuk-promo__img' ] );
+							echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'jotw-promo__image' ] );
 						}
 
 					endif;
 				}
 				?>
 
-				<div class="nhsuk-promo__content">
-					<?php the_title( '<h2 class="nhsuk-promo__heading">', '</h2>' ); ?>
+				<div class="jotw-promo__content">
+					<?php the_title( '<h2 class="govuk-heading-m">', '</h2>' ); ?>
 
 					<?php
 					if ( ( 'latest-posts' === $parent_template_part ) && ( 0 !== $display_author ) ) {
-						echo '<span class="wp-block-latest-posts__post-author nhsuk_post_author">' . get_the_author() . '</span>';
+						echo '<span class="jotw-post--author">' . get_the_author() . '</span>';
 					}
 					if ( ( 'latest-posts' === $parent_template_part ) && ( 0 !== $display_post_date ) ) {
-						echo '<span class="wp-block-latest-posts__post-date nhsuk_post_date">' . get_the_date() . '</span>';
+						echo '<span class="jotw-post--date">' . get_the_date() . '</span>';
 					}
 
 					do_action( 'nightingale_before_archive_content' );

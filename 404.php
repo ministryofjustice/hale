@@ -20,7 +20,7 @@ get_header();
       </p>
       <p class="govuk-body">
         Use the search facility below, select an item from the contents or 
-        alternatively <a class="wpgovuk-link" href="<?php echo esc_attr( get_home_url() ); ?>">return to the home page</a>.
+        alternatively <a class="govuk-link" href="<?php echo esc_attr( get_home_url() ); ?>">return to the home page</a>.
       </p>
       <?php
         get_search_form();

@@ -42,7 +42,7 @@ $sidebar = nightingale_show_sidebar();
 				?>
 
 
-				<div class="govuk-grid-row nhsuk-promo-group">
+				<div class="govuk-grid-row">
 
 					<?php
 
@@ -61,7 +61,7 @@ $sidebar = nightingale_show_sidebar();
 
 					?>
 
-				</div><!-- #nhsuk-panel-group govuk-grid-column-full -->
+				</div>
 
 				<?php
 

@@ -9,16 +9,16 @@ $banner_link_style = get_theme_mod('banner_link_style', 'govuk-button');
 
 if ($show_banner == 'yes' && is_front_page()) {
     ?>
-    <div class="govuk-width-container nightingale-banner__container">
+    <div class="govuk-width-container govuk-!-margin-top-3">
         <div class=" govuk-grid-row">
 
             <div class="govuk-grid-column-two-thirds">
-                    <h1 class="nightingale-banner__title"><?php echo $banner_title; ?></h1>
+                    <h1 class="govuk-heading-xl"><?php echo $banner_title; ?></h1>
             </div>
             <div class="govuk-grid-column-one-third">
 
                 <?php if ($show_banner_link == 'yes') { ?>
-                    <a class="wp-block-nhsblocks-nhsbutton nightingale-banner__link <?php echo $banner_link_style; ?>"
+                    <a class="jotw-banner__button govuk-button govuk-button--start <?php echo $banner_link_style; ?>"
                        href="<?php echo $banner_link_url; ?>"><?php echo $banner_link_txt; ?></a>
                 <?php } ?>
             </div>

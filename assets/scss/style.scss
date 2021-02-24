@@ -2,19 +2,16 @@
 
 @import 'default';
 @import 'gds-design-system-settings';
+@import 'jotw-supplements';
 
-// pagination - from MoJ Design System
+// pagination - from MoJ Design System and GOVUK publishing
 @import 'pagination.scss';
 
-//Keep
 // header styles
 @import 'header';
 
-//!! to be investigated
-// header banner styles
-// @import 'banner';
-
 // footer styles
 @import 'footer';
+
 //icons for footer
 @import 'icons';

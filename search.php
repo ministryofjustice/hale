@@ -51,11 +51,11 @@ get_header();
 						<div class="jotw-search-result__item">
               <?php
               if ( has_post_thumbnail() ) :
-                the_post_thumbnail( 'thumbnail', [ 'class' => 'nhsuk-promo__img' ] );
+                the_post_thumbnail( 'thumbnail', [ 'class' => 'jotw-promo__image' ] );
               else :
                 $fallback = get_theme_mod( 'blog_fallback' );
                 if ( $fallback ) {
-                  echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'nhsuk-promo__img' ] );
+                  echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'jotw-promo__image' ] );
                 }
               endif;
               ?>

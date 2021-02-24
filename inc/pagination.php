@@ -73,11 +73,10 @@ function nightingale_archive_pagination() {
  * Add in a previous and next functionality
  */
 function nightingale_get_prev_next() {
-	echo '<div class="navigation">
-	<nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
-  <ul class="nhsuk-list nhsuk-pagination__list">';
+	echo '<nav role="navigation" aria-label="Pagination" class="gem-c-pagination">
+  <ul class="gem-c-pagination__list">';
 	echo nightingale_the_post_navigation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo '</ul></nav></div>';
+	echo '</ul></nav>';
 }
 
 /**
@@ -87,22 +86,37 @@ function nightingale_get_prev_next() {
  *
  * @return string the output.
  */
+
 function nightingale_the_post_navigation( $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
-			'prev_text'          => '<span class="nhsuk-pagination__title">Previous</span>
-									<span class="govuk-visually-hidden">:</span>
-									<span class="nhsuk-pagination__page">%title</span>
-									<svg class="nhsuk-icon nhsuk-icon__arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-									  <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path>
-									</svg>',
-			'next_text'          => '<span class="nhsuk-pagination__title">Next</span>
-									<span class="govuk-visually-hidden">:</span>
-									<span class="nhsuk-pagination__page">%title</span>
-									<svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-									  <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path>
-									</svg>',
+			'prev_text'          => '
+                <span class="gem-c-pagination__link-title">
+                  <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                    <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                  </svg>
+                  <span class="gem-c-pagination__link-text">
+                    Previous
+                  </span>
+                </span>
+                <span class="gem-c-pagination__link-divider govuk-visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">
+                  %title
+                </span>',
+			'next_text'          => '
+                <span class="gem-c-pagination__link-title">
+                  <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                    <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                  </svg>
+                  <span class="gem-c-pagination__link-text">
+                    Next
+                  </span>
+                </span>
+                <span class="gem-c-pagination__link-divider govuk-visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">
+                  %title
+                </span>',
 			'in_same_term'       => false,
 			'excluded_terms'     => '',
 			'taxonomy'           => 'category',
@@ -113,7 +127,7 @@ function nightingale_the_post_navigation( $args = array() ) {
 	$navigation = '';
 
 	$previous = get_previous_post_link(
-		'<li class="nhsuk-pagination-item--previous">%link</li>',
+		'<li class="gem-c-pagination__item gem-c-pagination__item--previous">%link</li>',
 		$args['prev_text'],
 		$args['in_same_term'],
 		$args['excluded_terms'],
@@ -121,7 +135,7 @@ function nightingale_the_post_navigation( $args = array() ) {
 	);
 
 	$next = get_next_post_link(
-		'<li class="nhsuk-pagination-item--next">%link</li>',
+		'<li class="gem-c-pagination__item gem-c-pagination__item--next">%link</li>',
 		$args['next_text'],
 		$args['in_same_term'],
 		$args['excluded_terms'],

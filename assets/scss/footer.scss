@@ -13,5 +13,8 @@
         box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
       }
     }
+    .widgettitle {
+      @extend .govuk-heading-s;
+    }
   }
 }

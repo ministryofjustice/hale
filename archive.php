@@ -32,7 +32,7 @@ $sidebar = nightingale_show_sidebar();
 			if ( have_posts() ) :
 				?>
 
-				<div class="govuk-grid-row nhsuk-promo-group">
+				<div class="govuk-grid-row">
 
 					<?php
 					/* Start the Loop */
