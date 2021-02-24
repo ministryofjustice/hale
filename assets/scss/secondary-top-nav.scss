@@ -1,0 +1,52 @@
+.secondary-top-nav {
+
+  padding: 15px 0 0 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+  }
+
+  li {
+    float: left;
+    border-right: 1px solid $color_black;
+    padding: 0 10px 0 10px;
+
+    &:first-child {
+      padding: 0 10px 0 0;
+    }
+
+    &:last-child {
+      border-right: none;
+      padding: 0 0 0 10px;
+    }
+
+    a {
+      color: $color_black;
+      text-decoration: none;
+
+      font-size: 16px;
+      font-size: 1rem;
+
+      @include mq($from: desktop) {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.current-menu-item {
+      a {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+

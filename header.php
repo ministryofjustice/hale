@@ -93,6 +93,9 @@ echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $
 get_template_part( 'partials/topnav' );
 ?>
 </header>
+<?php
+get_template_part( 'partials/secondary-top-nav' );
+?>
 <?php echo hale_breadcrumb(); ?>
 <?php
 
