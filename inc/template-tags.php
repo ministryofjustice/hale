@@ -3,9 +3,11 @@
  * Custom template tags for this theme
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.1 21st August 2019
+ * @package Hale
+ * @theme Hale with GDS styles
+ * @Crown Copyright
+ * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 if ( ! function_exists( 'nightingale_posted_on' ) ) :

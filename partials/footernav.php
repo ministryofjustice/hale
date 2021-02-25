@@ -4,9 +4,11 @@
  * This is the template that displays the default navigation in the footer region
  *
  * @link      https://developer.wordpress.org/themes/basics/template-files/#template-partials
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.0 13th January 2020
+ * @package Hale
+ * @theme Hale with GDS styles
+ * @Crown Copyright
+ * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 $menu_locations = get_nav_menu_locations(); // Get our nav locations (set in our theme, usually functions.php).

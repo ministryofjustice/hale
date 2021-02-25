@@ -3,9 +3,11 @@
  * Nightingale 2.0 rendering of The Events Calendar plugin output.
  *
  * @link      https://developer.wordpress.org/themes/basics/theme-functions/
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.0 18th February 2020
+ * @package Hale
+ * @theme Hale with GDS styles
+ * @Crown Copyright
+ * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 /**

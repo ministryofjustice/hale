@@ -6,7 +6,7 @@
  *
  * @package Hale
  * @copyright Ministry of Justice
- * @version 1.0
+ * @version 2.0
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

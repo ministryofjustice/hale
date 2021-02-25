@@ -2,9 +2,11 @@
 /**
  * The template for displaying search form
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * @theme Hale with GDS styles
+ * @Crown Copyright
+ * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 if ( ! empty( get_search_query() ) ) {

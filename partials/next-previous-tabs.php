@@ -8,7 +8,7 @@
  *
  * @package Hale
  * @copyright Ministry Of Justice
- * @version 1.0
+ * @version 2.0
  */
 
 // Requires category-nav.php to be loaded first to set $prev_page and $next_page vars

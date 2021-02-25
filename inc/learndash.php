@@ -2,12 +2,11 @@
 /**
  * Customised Learndash output markup
  *
- * @date         October 31st 2019
- * @version      1.0
- * @author       Tony Blacker
- * @organisation NHS Leadership Academy
- * @copyright    OGL v3
- * @package      Nightingale Theme
+ * @theme Hale with GDS styles
+ * @Crown Copyright
+ * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version   2.0 February 2021
+
  */
 
 add_filter(

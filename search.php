@@ -9,7 +9,7 @@
  * @link      https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @package   Hale
  * @copyright Ministry of Justice
- * @version   1.0
+ * @version   2.0
  */
 
 get_header();

@@ -3,9 +3,11 @@
  * Template part for displaying posts
  *
  * @link      https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   2.0 January 2020
+ * @package Hale
+ * @theme Hale with GDS styles
+ * @Crown Copyright
+ * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 if ( is_single() ) :

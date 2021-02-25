@@ -6,7 +6,7 @@
  * @link      https://developer.wordpress.org/themes/basics/template-files/#template-partials
  * @package   Hale
  * @copyright Ministry of Justice
- * @version   1.0
+ * @version   2.0
  */
 
 $page_cats = get_the_terms(get_the_ID(), 'page_category');
