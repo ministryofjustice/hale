@@ -5,6 +5,10 @@
     li {
       @extend .govuk-header__navigation-item;
 
+      &.current-menu-item {
+        @extend .govuk-header__navigation-item--active
+      }
+
       a {
         @extend .govuk-header__link;
         height: 100%;
