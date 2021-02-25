@@ -1,0 +1,6 @@
+#primary {
+  a:not([class]), a[class=''] {
+    //deals with any links that aren't classed - makes them GDS links
+    @extend .govuk-link;
+  }
+}

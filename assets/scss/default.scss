@@ -575,8 +575,6 @@ table {
 --------------------------------------------------------------*/
 .clear:before,
 .clear:after,
-.entry-content:before,
-.entry-content:after,
 .comment-content:before,
 .comment-content:after,
 .site-header:before,
@@ -591,7 +589,6 @@ table {
 }
 
 .clear:after,
-.entry-content:after,
 .comment-content:after,
 .site-header:after,
 .site-content:after,
@@ -670,7 +667,6 @@ table {
 # Media
 --------------------------------------------------------------*/
 .page-content .wp-smiley,
-.entry-content .wp-smiley,
 .comment-content .wp-smiley {
   border: none;
   margin-bottom: 0;

@@ -7,6 +7,9 @@
 // theme colours
 @import 'theme-colours';
 
+// styles for all MoJ blocks (including overrides)
+@import 'moj-blocks-general';
+
 // pagination - from MoJ Design System and GOVUK publishing
 @import 'pagination';
 
