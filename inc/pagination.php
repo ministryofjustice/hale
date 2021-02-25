@@ -3,9 +3,9 @@
  * Replace css classes in standard navigation with Nightingale classes
  *
  * @package Hale
- * @theme Hale with GDS styles
- * @Crown Copyright
- * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
  * @version 2.0 February 2021
  **/
 

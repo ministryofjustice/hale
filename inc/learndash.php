@@ -2,9 +2,9 @@
 /**
  * Customised Learndash output markup
  *
- * @theme Hale with GDS styles
- * @Crown Copyright
- * @Adapted from version from NHS Leadership Academy, Tony Blacker
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
  * @version   2.0 February 2021
 
  */

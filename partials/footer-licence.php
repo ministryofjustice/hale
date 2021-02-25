@@ -4,7 +4,7 @@
  * This is the template that displays the default navigation in the footer region
  *
  * @link      https://developer.wordpress.org/themes/basics/template-files/#template-partials
- * @Crown Copyright 
+ * ©Crown Copyright 
  * @version   1.0 24th February 2021
  */
 
