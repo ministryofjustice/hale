@@ -10,7 +10,7 @@
 get_header();
 ?>
 	<div id="primary" class="govuk-grid-column-two-thirds">
-    <section class="jotw-error-404">
+    <section class="hale-error-404">
       <h1 class="govuk-heading-l">Page not found</h1>
       <p class="govuk-body">
         If you typed the web address, check it is correct.

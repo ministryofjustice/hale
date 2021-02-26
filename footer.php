@@ -23,7 +23,7 @@ flush();
 <footer class="govuk-footer " role="contentinfo" id="footer">
   <div class="govuk-width-container">
     <?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
-      <div id="jotw-footer-widgets" class="jotw-footer__widgets" role="complementary">
+      <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
         <?php dynamic_sidebar( 'footer-region' ); ?>
       </div>
       <?php

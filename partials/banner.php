@@ -18,7 +18,7 @@ if ($show_banner == 'yes' && is_front_page()) {
             <div class="govuk-grid-column-one-third">
 
                 <?php if ($show_banner_link == 'yes') { ?>
-                    <a class="jotw-banner__button govuk-button govuk-button--start <?php echo $banner_link_style; ?>"
+                    <a class="hale-banner__button govuk-button govuk-button--start <?php echo $banner_link_style; ?>"
                        href="<?php echo $banner_link_url; ?>"><?php echo $banner_link_txt; ?></a>
                 <?php } ?>
             </div>

@@ -16,7 +16,7 @@ get_header();
 ?>
 
 	<div id="primary" class="govuk-grid-column-two-thirds">
-		<header class="jotw-search-header" style="">
+		<header class="hale-search-header" style="">
       <h1 class="govuk-heading-l">
         Search Results
         <span class="govuk-caption-m">for 
@@ -41,21 +41,21 @@ get_header();
 					?>
 				</h2>
 
-				<div class="jotw-search-results">
+				<div class="hale-search-results">
 					<?php
 					/* Start the Loop */
 					while ( have_posts() ) :
 						the_post();
 						?>
            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-						<div class="jotw-search-result__item">
+						<div class="hale-search-result__item">
               <?php
               if ( has_post_thumbnail() ) :
-                the_post_thumbnail( 'thumbnail', [ 'class' => 'jotw-promo__image' ] );
+                the_post_thumbnail( 'thumbnail', [ 'class' => 'hale-promo__image' ] );
               else :
                 $fallback = get_theme_mod( 'blog_fallback' );
                 if ( $fallback ) {
-                  echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'jotw-promo__image' ] );
+                  echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'hale-promo__image' ] );
                 }
               endif;
               ?>
@@ -81,7 +81,7 @@ get_header();
               // Get and display the last updated time of the search result
                 $u_time = get_the_time('U');
                 $u_modified_time = get_the_modified_time('U');
-                echo "<p class='govuk-body jotw-search-results__last-updated-date'>Updated on ";
+                echo "<p class='govuk-body hale-search-results__last-updated-date'>Updated on ";
                 the_modified_time('j<\s\up>S</\s\up> F Y');
                 echo "</p> ";
               ?>

@@ -4,7 +4,7 @@ $govuk-font-family: 'PT Sans', sans-serif;
 
 //Overrides
 
-.jotw-page {
+.hale-page {
   body {
     //the full width cover images go slightly off the pagem this is the easiest fix.
     overflow-x: hidden;
@@ -21,12 +21,12 @@ $govuk-font-family: 'PT Sans', sans-serif;
       }
     }
   }
-  .jotw-footer__copyright a {
+  .hale-footer__copyright a {
     @extend .govuk-footer__link;
   }
 }
 
-.jotw-width {
+.hale-width {
   &--show-narrow-40 {
     display:block;
     @media (min-width: 40.0625em) {
@@ -41,10 +41,10 @@ $govuk-font-family: 'PT Sans', sans-serif;
   }
 }
 
-.jotw-header__mobile-controls--search {
+.hale-header__mobile-controls--search {
   display:none;
 }
 
-.jotw-search-results__last-updated-date{
+.hale-search-results__last-updated-date{
   color: $govuk-secondary-text-colour;
 }

@@ -122,8 +122,8 @@ if ( ! function_exists( 'nightingale_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<fig class="jotw-image__figure featured">
-				<?php the_post_thumbnail( '', array( 'class' => 'jotw-image__image' ) ); ?>
+			<fig class="hale-image__figure featured">
+				<?php the_post_thumbnail( '', array( 'class' => 'hale-image__image' ) ); ?>
 			</fig><!-- .post-thumbnail -->
 
 		<?php else : ?>
@@ -163,7 +163,7 @@ function nightingale_comment_display( $comment, $args, $depth ) {
 		$add_below = 'div-comment';
 	}
 	?>
-	<<?php echo esc_html( $tag ); ?><?php echo comment_class( 'jotw-comment__item' ); ?> id="comment-<?php echo esc_html( comment_ID() ); ?>">
+	<<?php echo esc_html( $tag ); ?><?php echo comment_class( 'hale-comment__item' ); ?> id="comment-<?php echo esc_html( comment_ID() ); ?>">
 	<?php
 	if ( 'div' !== $args['style'] ) {
 		?>

@@ -96,7 +96,7 @@ function nightingale_breadcrumb() {
 						echo esc_html( uo_breadcrumbs() );
 						?>
 
-						<p class="jotw-width--show-narrow-40">
+						<p class="hale-width--show-narrow-40">
 							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
 								<?php echo esc_html( __( 'Back to ', 'nightingale' ) ) . esc_html( $back_one_level[1] ); ?>
 							</a>
@@ -118,7 +118,7 @@ function nightingale_breadcrumb() {
 						<?php
 					} else {
 						?>
-						<ol class="govuk-breadcrumbs__list jotw-width--hide-narrow-40">
+						<ol class="govuk-breadcrumbs__list hale-width--hide-narrow-40">
 							<li class="govuk-breadcrumbs__list-item">
 								<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( home_url() ); ?>">
 									<?php echo esc_html( __( 'Home', 'nightingale' ) ); ?>
@@ -227,7 +227,7 @@ function nightingale_breadcrumb() {
 
 							<?php } ?>
 						</ol>
-						<p class="jotw-width--show-narrow-40">
+						<p class="hale-width--show-narrow-40">
 							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
 								<?php echo esc_html_e( 'Go back to ', 'nightingale' ) . esc_html( $back_one_level[1] ); ?>
 							</a>

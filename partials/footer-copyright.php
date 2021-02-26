@@ -18,13 +18,13 @@ $copyright_img = get_theme_mod('copyright_img');
 $copyright_additional_text = get_theme_mod('copyright_additional_text', '');
 
 ?>
-<div class="jotw-footer__copyright">
+<div class="hale-footer__copyright">
 
     <?php
 
     if (!empty($copyright_img)) {
         ?>
-        <div class="jotw-footer__copyright_img">
+        <div class="hale-footer__copyright_img">
             <img src="<?php echo $copyright_img; ?>"/>
         </div>
     <?php } ?>

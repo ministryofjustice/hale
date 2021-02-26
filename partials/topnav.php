@@ -37,7 +37,7 @@ if ($show_header_menu == 'yes') {
         'item_spacing' => 'preserve',
     );
     ?>
-    <nav class="jotw-header__topnav" id="header-navigation" role="navigation" aria-label="Primary navigation"
+    <nav class="hale-header__topnav" id="header-navigation" role="navigation" aria-label="Primary navigation"
          aria-labelledby="label-navigation">
         <?php
         wp_nav_menu($topmenu_args);

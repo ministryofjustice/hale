@@ -1,9 +1,9 @@
-.jotw-page {
+.hale-page {
   .govuk-footer .widget_social_widget {
     //the styles here are just for the social media icon links.
     font-size: 40px;
     
-    .jotw-social-link {
+    .hale-social-link {
       margin-right:12px;
       
       &:hover {
@@ -17,7 +17,7 @@
       @extend .govuk-heading-s;
     }
   }
-  .jotw-footer__copyright {
+  .hale-footer__copyright {
     margin-top: 1em;
   }
 }

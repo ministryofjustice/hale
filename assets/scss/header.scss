@@ -17,7 +17,7 @@
     }
   }
 }
-.jotw-header {
+.hale-header {
   padding-top: 2px; //wee bit of space above the logo
   
   .govuk-header__logotype-text {
@@ -34,7 +34,7 @@
     width: unset;
     min-width: 33.33%;
 
-    .jotw-header__logo--custom {
+    .hale-header__logo--custom {
       //we do not display a custom logo in "native" mode (i.e. no overriding class = GDS styles)
       display:none;
     }
@@ -43,13 +43,13 @@
       fill: $govuk-focus-text-colour;
     }
   }
-  .jotw-header--with-search {
+  .hale-header--with-search {
     //but for search bar, we revert to the GDS norm
     .govuk-header__logo {
       width: 50%;
     }
   }
-  .jotw-header__search {
+  .hale-header__search {
     padding-bottom: 0.5em;
   }
   .govuk-header__content {
@@ -76,21 +76,21 @@
       padding: 1em 0 0;
     }
   }
-  .jotw-header__search-form {
+  .hale-header__search-form {
     position:relative;
     width: calc(15rem + 44px);
     max-width: 100%;
 
-    .jotw-search__button-text {
+    .hale-search__button-text {
       @extend .govuk-visually-hidden;
     }
 
-    .jotw-search__input{
+    .hale-search__input{
       padding-right: 46px;
       border-width: 0;
       &:focus {
         border-width: 0;
-        + .jotw-search__submit {
+        + .hale-search__submit {
           border-color: $govuk-focus-colour;
           color: $govuk-focus-text-colour;
           background-color: $govuk-focus-colour;
@@ -101,7 +101,7 @@
         }
       }
     }
-    .jotw-search__submit {
+    .hale-search__submit {
       position: absolute;
       right: -2px;
       top: 0;
@@ -116,7 +116,7 @@
       padding-top: 2px;
       width: 44px;
 
-      svg.jotw-icon__search {
+      svg.hale-icon__search {
         display:inline;
         position: relative;
         top: 4px;
@@ -126,14 +126,14 @@
     }
   }
   @media (min-width: 48.0625em) {
-    .jotw-header__search-form {
+    .hale-header__search-form {
       margin-left: auto;
     }
   }
 }
-.jotw-search__submit {
+.hale-search__submit {
   margin-top: 30px; //to mimic the .govuk-form-group that we don't have here.
 }
-svg.jotw-icon__search {
+svg.hale-icon__search {
   display:none; //display in header only;
 }

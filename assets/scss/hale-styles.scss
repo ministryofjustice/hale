@@ -1,18 +1,18 @@
-.jotw-secondary-text {
+.hale-secondary-text {
   color:$govuk-secondary-text-colour;
 }
 
 @media (max-width: 40.0525em) {
-  .jotw-width_hide-narrow-40 {
+  .hale-width_hide-narrow-40 {
     display: none;
   }
 }
 @media (min-width: 40.0525em) {
-  .jotw-width_hide-narrow-40 {
+  .hale-width_hide-narrow-40 {
     display: none;
   }
 }
 
-.jotw-banner__button {
+.hale-banner__button {
   float: right;
 }

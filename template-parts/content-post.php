@@ -51,29 +51,29 @@ else :
 				if ( ( 'latest-posts' !== $parent_template_part ) || ( ( 'latest-posts' === $parent_template_part ) && ( 0 !== $display_featured_image ) ) ) {
 					if ( has_post_thumbnail() ) :
 
-						the_post_thumbnail( 'default', [ 'class' => 'jotw-promo__image' ] );
+						the_post_thumbnail( 'default', [ 'class' => 'hale-promo__image' ] );
 
 					else :
 
 						$fallback = get_theme_mod( 'blog_fallback' );
 
 						if ( $fallback ) {
-							echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'jotw-promo__image' ] );
+							echo wp_get_attachment_image( $fallback, 'thumbnail', false, [ 'class' => 'hale-promo__image' ] );
 						}
 
 					endif;
 				}
 				?>
 
-				<div class="jotw-promo__content">
+				<div class="hale-promo__content">
 					<?php the_title( '<h2 class="govuk-heading-m">', '</h2>' ); ?>
 
 					<?php
 					if ( ( 'latest-posts' === $parent_template_part ) && ( 0 !== $display_author ) ) {
-						echo '<span class="jotw-post--author">' . get_the_author() . '</span>';
+						echo '<span class="hale-post--author">' . get_the_author() . '</span>';
 					}
 					if ( ( 'latest-posts' === $parent_template_part ) && ( 0 !== $display_post_date ) ) {
-						echo '<span class="jotw-post--date">' . get_the_date() . '</span>';
+						echo '<span class="hale-post--date">' . get_the_date() . '</span>';
 					}
 
 					do_action( 'nightingale_before_archive_content' );

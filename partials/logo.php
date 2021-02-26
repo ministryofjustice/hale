@@ -48,8 +48,8 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
     <?php
       if ( has_custom_logo() ) {
     ?>
-    jotw-header__logotype--custom">
-    <div class="jotw-header__logo--custom">
+    hale-header__logotype--custom">
+    <div class="hale-header__logo--custom">
     <?php
         echo $image;
         echo "</div>";
@@ -64,7 +64,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
       }
     ?>
     <?php if ( $show_sitename === 'yes' ) { ?>
-      <span class="govuk-header__logotype-text jotw-header__logotype-text--custom">
+      <span class="govuk-header__logotype-text hale-header__logotype-text--custom">
         <?php echo esc_html( $logo_line_1 ); ?>
       </span>
     <?php

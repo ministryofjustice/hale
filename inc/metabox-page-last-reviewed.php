@@ -125,7 +125,7 @@ function hale_page_last_reviewed() {
 	$updated_date = get_the_modified_time( 'j F, Y' );
 	?>
 
-	<div class="govuk-!-margin-top-7 jotw-secondary-text">
+	<div class="govuk-!-margin-top-7 hale-secondary-text">
 		<p class="govuk-body-s">
 			<?php esc_html_e( 'Page updated on', 'hale' ); ?> <?php echo esc_html( $updated_date ); ?>
 		</p>

@@ -11,7 +11,7 @@
 
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="jotw-page">
+<html <?php language_attributes(); ?> class="hale-page">
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,17 +46,17 @@ $header_search = get_theme_mod( 'show_search', 'yes' );
 $show_header_menu = get_theme_mod('show_header_menu', 'yes');
 
 if ( 'normal' !== $header_colour ) {
-	$header_colour_text = ' jotw-header--white';
+	$header_colour_text = ' hale-header--white';
 } else {
 	$header_colour_text = '';
 }
 if ( 'yes' === $header_search && !is_search()) {
-  $header_search_class = 'jotw-header--with-search';
+  $header_search_class = 'hale-header--with-search';
 } else {
   $header_search_class = '';
 }
 
-echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text . $header_search_class ) . '">';
+echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text . $header_search_class ) . '">';
 ?>
 <div class="govuk-width-container govuk-header__container">
 	<?php
@@ -65,20 +65,20 @@ echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text 
  <?php
   if ( 'yes' === $header_search && !is_search()) {
     ?>
-    <div class="jotw-header__search">
+    <div class="hale-header__search">
       <?php get_search_form(); ?>
     </div>
     <?php
   }
 ?>     <?php
         if ( 'no' === $header_search ) {
-          $headersearchextra = 'jotw-header__menu--only';
+          $headersearchextra = 'hale-header__menu--only';
         } else {
           $headersearchextra = '';
         }
       ?>
     <div class="govuk-header__content" id="content-header">
-      <div class="jotw-header__menu <?php echo esc_attr($headersearchextra); ?>">
+      <div class="hale-header__menu <?php echo esc_attr($headersearchextra); ?>">
 
       </div>
       <?php
@@ -89,7 +89,7 @@ echo '<header class="govuk-header jotw-header ' . esc_attr( $header_colour_text 
       }
       ?>
 
-    <div class="jotw-header__header-controls">
+    <div class="hale-header__header-controls">
 
     </div>
 	</div>

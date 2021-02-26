@@ -14,7 +14,7 @@
 
 	<?php do_action( 'nightingale_before_single_content' ); ?>
 
-	<div class="jotw-entry-content">
+	<div class="hale-entry-content">
 		<?php
 		if ( function_exists( 'nightingale_clean_bad_content' ) ) {
 			nightingale_clean_bad_content( true );
