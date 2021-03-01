@@ -1,21 +1,26 @@
-@import 'colours';
+@import 'page-colours';
+
+//branding colours and styles
 
 .page-colour--teal {
+  //header colour.
   .govuk-header {
-    background: $color_teal;
+    background: $hale-teal-brand-colour;
     padding-bottom: 1em;
   }
+  //yellow buttons
   .govuk-button {
-    background-color:$color_sunflower-yellow;
+    background-color:$hale-teal-button-yellow;
     border-radius:5px;
-    color:$color_charcoal-black;
+    color:$hale-colour-black;
     box-shadow: none;
     &:hover, &:active, &:focus, &:focus:not(:active):not(:hover) {
       box-shadow: none;
-      background-color:$color_charcoal-black;
-      color:$color_snow-white;
+      background-color:$hale-colour-black;
+      color:$hale-colour-white;
     }
   }
+  //remove GDS brand colour bar
   .govuk-header__container {
     border-bottom: none;
   }
@@ -23,6 +28,100 @@
 
 .page-colour--light-teal {
   .govuk-header__container {
-    border-bottom-color: $color_light-teal;
+    border-bottom-color: #FF0;
+  }
+}
+
+.page-colour--dark-blue {
+
+  //header colour.
+  .govuk-header {
+    background: $hale-darkblue-brand-colour;
+    
+    //remove MoJ logo text
+    .govuk-header__logotype-text {
+      display:none;
+    }
+
+    .govuk-header__content {
+      width:100%;
+      //header arrangement
+      .govuk-header__navigation {
+        border-top: 1px solid $hale-darkblue-menu-border;
+
+        a:link {
+          border-bottom: 4px solid transparent;
+          color:$hale-colour-white;
+          display:inline-block;
+          text-decoration: none;
+          box-shadow: none;
+          &:hover {
+            border-bottom-color: $hale-colour-white;
+            background-color: unset;
+          }
+          &:focus {
+            color:$hale-darkblue-brand-colour;
+            background-color: $hale-darkblue-header-link-focus-background;
+            border-bottom-color: $hale-darkblue-header-link-focus-underline;
+          }
+        }
+      }
+    }
+    @include govuk-media-query($from: desktop) {
+      padding-bottom: 0;
+
+      .govuk-header__navigation {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+          padding:0;
+        } 
+      }
+    }
+  }
+  //link focus state
+  #primary a:not(class),
+  #primary a[class=""],
+  a:link {
+    &:focus {
+      background-color: $hale-darkblue-link-focus-background;
+      box-shadow: 0 -2px $hale-darkblue-link-focus-background, 0 4px $hale-darkblue-link-focus-underline;
+      outline: 4px solid transparent;
+    }
+  }
+  .govuk-footer {
+    .govuk-footer__link:hover {
+      text-decoration:none;
+    }
+    .widget_social_widget .hale-social-link:focus {
+      box-shadow: 
+        -4px 0 $hale-darkblue-footer-link-focus-background,
+        4px 0 $hale-darkblue-footer-link-focus-background,
+        -4px 4px $hale-darkblue-link-focus-underline,
+        4px 4px $hale-darkblue-link-focus-underline;
+    }
+  }
+  //search box focus colouring
+  .govuk-input:focus {
+    outline-color: $hale-darkblue-link-focus-underline;
+    background: $hale-darkblue-input-background;
+  }
+  .hale-header .hale-header__search-form {
+    .hale-search__input:focus+.hale-search__submit,
+    .govuk-button:focus {
+      border-color: $hale-darkblue-search-button;
+      color: $hale-colour-white;
+      background-color: $hale-darkblue-search-button;
+
+      svg {
+        fill: $hale-colour-white;
+      }
+    }
+  }
+  
+  //remove GDS brand colour bar
+  .govuk-header__container {
+    border-bottom: none;
   }
 }

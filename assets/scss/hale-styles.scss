@@ -2,12 +2,12 @@
   color:$govuk-secondary-text-colour;
 }
 
-@media (max-width: 40.0525em) {
+@include govuk-media-query($from: tablet) {
   .hale-width_hide-narrow-40 {
     display: none;
   }
 }
-@media (min-width: 40.0525em) {
+@include govuk-media-query($from: tablet) {
   .hale-width_hide-narrow-40 {
     display: none;
   }

@@ -1,6 +1,11 @@
 #primary {
-  a:not([class]), a[class=''] {
+  a:not([class]), a[class=""] {
     //deals with any links that aren't classed - makes them GDS links
     @extend .govuk-link;
+  }
+  ul:not([class]), ul[class=""] {
+    //deals with any lists that aren't classed - makes them GDS links
+    @extend .govuk-list;
+    @extend .govuk-list--bullet;
   }
 }
