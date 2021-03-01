@@ -1,13 +1,11 @@
 //Normally used for display/hero
-  #primary {
+#primary {
   .hale-heading-xxl {
-
     font-size: 68px;
     font-size: 4.25rem;
     line-height: 120%;
 
     @include mq($from: desktop) {
-
       font-size: 76px;
       font-size: 4.75rem;
     }
@@ -15,7 +13,6 @@
 
   //Normally used for H1
   .hale-heading-xl {
-
     font-size: 50px;
     font-size: 3.125rem;
     line-height: 120%;
@@ -24,12 +21,10 @@
       font-size: 56px;
       font-size: 3.5rem;
     }
-
   }
 
   //Normally used for H2
   .hale-heading-l {
-
     font-size: 38px;
     font-size: 2.375rem;
     line-height: 120%;
@@ -54,7 +49,6 @@
 
   //Normally used for H4
   .hale-heading-s {
-
     font-size: 22px;
     font-size: 1.375rem;
     line-height: 145%;
@@ -66,28 +60,22 @@
   }
 
   h1 {
-
     @extend .hale-heading-xl;
-
   }
 
   h2 {
-
     @extend .hale-heading-l;
   }
 
   h3 {
-
     @extend .hale-heading-m;
   }
 
   h4 {
-
     @extend .hale-heading-s;
   }
 
   p {
-
     font-size: 16px;
     font-size: 1rem;
     line-height: 155%;
@@ -96,12 +84,9 @@
       font-size: 18px;
       font-size: 1.125rem;
     }
-
-
   }
 
   .intro, .intro p {
-
     font-size: 22px;
     font-size: 1.375rem;
     line-height: 150%;
@@ -110,6 +95,5 @@
       font-size: 24px;
       font-size: 1.5rem;
     }
-
   }
 }
