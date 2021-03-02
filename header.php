@@ -85,7 +85,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
         if ($show_header_menu == 'yes') {
       ?>
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu">Menu</button>
-      <?php get_template_part( 'partials/topnav' ); 
+      <?php get_template_part( 'partials/topnav' );
       }
       ?>
 
@@ -102,9 +102,9 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
 
 <?php
 
-$page_color = get_post_meta( get_the_id(), 'page-color', true );
+$page_colour = get_post_meta( get_the_id(), 'page-colour', true );
 
-$extra_styles = $page_color ? 'page-style--' . $page_color : '';
+$extra_styles = $page_colour ? 'page-style--' . $page_colour : '';
 
 ?>
 

@@ -98,7 +98,7 @@ function hale_append_selected_bg_colour_to_body($classes)
     }
 
     // If a selected colour exsits in the DB add the name to the CSS class and add to WP body class array, if not, return the $classes array.
-    $classes = $page_bg_color ? array_merge($classes, [ 'page-body-color--' . $page_bg_color ]) : $classes;
+    $classes = $page_bg_color ? array_merge($classes, [ 'page-body-colour--' . $page_bg_color ]) : $classes;
 
     return $classes;
 }
