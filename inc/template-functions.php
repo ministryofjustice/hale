@@ -148,14 +148,14 @@ function nightingale_sidebar_location( $sidebar ) {
  */
 function nightingale_custom_page_colour( $classes ) {
 
-    $colour_array      = array(
+    $colour_array = [
         '005eb8' => 'blue',
         '0c223f' => 'dark-blue',
         '336c83' => 'teal',
         '00a19a' => 'light-teal',
-    );
+    ];
 
-	$colour = get_theme_mod( 'theme_colour', 'blue' );
+	$colour = get_theme_mod( 'theme_colour', '005eb8' );
 
 	if ( !empty($colour) ) {
 		$theme_colour_name = 'page-colour--' . $colour_array[ $colour ];
@@ -166,7 +166,7 @@ function nightingale_custom_page_colour( $classes ) {
     $page_header_colour = get_theme_mod( 'page_header_colour', '' );
 
     if(!empty($page_header_colour)){
-        $page_header_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
+        $page_header_colour_name = 'page-header-colour--' . $colour_array[ $page_header_colour ];
         $classes[] = $page_header_colour_name;
     }
 
