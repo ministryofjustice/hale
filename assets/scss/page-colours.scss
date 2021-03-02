@@ -1,6 +1,6 @@
 @import 'colours';
 
-$page-colours             : (
+$page-colours: (
   'blue' : $color_blue,
   'dark-blue' : $color_dark-blue,
   'teal' : $color_teal,
@@ -10,7 +10,7 @@ $page-colours             : (
 @each $name,
 $colour in $page-colours {
 
-  .page-header-color--#{$name} {
+  .page-header-colour--#{$name} {
 
     .page-header {
       background: rgba($colour, 0.1);
@@ -51,12 +51,12 @@ $colour in $page-colours {
     }
   }
 
-  .page-body-color--#{$name} {
+  .page-body-colour--#{$name} {
       background: rgba($colour, 0.1);
 
       /** This solves an issue when both header and body colour are set at the same time.
       * Page header and page body overlap causing a discrepancy in opacity of the elements.
-      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
+      * .page-body-colour--* class is used by Custom Page Setting metabox to change bg colour.
       **/
       .page-header {
         background: transparent;
