@@ -2,11 +2,41 @@
 
 //branding colours and styles
 
+/**********************
+  Common ALB styles
+**********************/
+$brand-colours             : (
+  'dark-blue' : $hale-darkblue-brand-colour,
+  'teal' : $hale-teal-brand-colour,
+  'light-teal' : $hale-lightteal-brand-colour,
+);
+
+@each $name, $colour in $brand-colours {
+
+  .page-colour--#{$name} {
+    .govuk-footer{
+      border-top-width: 4px;
+      border-top-color: $colour;
+    }
+  }
+}
+
+/**********************
+     Magistrates
+**********************/
 .page-colour--teal {
   //header colour.
   .govuk-header {
     background: $hale-teal-brand-colour;
     padding-bottom: 1em;
+
+    .hale-header__logotype-text--custom {
+      font-weight: 400;
+      font-size: 22px;
+      padding-left: 0.5em;
+      position: relative;
+      top: -0.2em;
+    }
   }
   //yellow buttons
   .govuk-button {
@@ -26,18 +56,24 @@
   }
 }
 
+/**********************
+      Unused
+**********************/
 .page-colour--light-teal {
   .govuk-header__container {
     border-bottom-color: #FF0;
   }
 }
 
+/**********************
+        IMA
+**********************/
 .page-colour--dark-blue {
 
   //header colour.
   .govuk-header {
     background: $hale-darkblue-brand-colour;
-    
+
     //remove MoJ logo text
     .govuk-header__logotype-text {
       display:none;
@@ -45,25 +81,30 @@
 
     .govuk-header__content {
       width:100%;
+      min-height: 15px;
       //header arrangement
       .govuk-header__navigation {
         border-top: 1px solid $hale-darkblue-menu-border;
 
         a:link {
-          border-bottom: 4px solid transparent;
-          color:$hale-colour-white;
           display:inline-block;
-          text-decoration: none;
-          box-shadow: none;
-          &:hover {
-            border-bottom-color: $hale-colour-white;
-            background-color: unset;
-          }
-          &:focus {
-            color:$hale-darkblue-brand-colour;
-            background-color: $hale-darkblue-header-link-focus-background;
-            border-bottom-color: $hale-darkblue-header-link-focus-underline;
-          }
+        }
+      }
+      li.current-menu-item a:link,
+      .govuk-header__menu-button,
+      a:link {
+        border-bottom: 4px solid transparent;
+        color:$hale-colour-white;
+        text-decoration: none;
+        box-shadow: none;
+        &:hover {
+          border-bottom-color: $hale-colour-white;
+          background-color: unset;
+        }
+        &:focus {
+          color:$hale-darkblue-brand-colour;
+          background-color: $hale-darkblue-header-link-focus-background;
+          border-bottom-color: $hale-darkblue-header-link-focus-underline;
         }
       }
     }
@@ -86,7 +127,7 @@
   a:link {
     &:focus {
       background-color: $hale-darkblue-link-focus-background;
-      box-shadow: 0 -2px $hale-darkblue-link-focus-background, 0 4px $hale-darkblue-link-focus-underline;
+      box-shadow: 0 -2px $hale-darkblue-link-focus-background, 0 4px $hale-darkblue-link-focus-colour;
       outline: 4px solid transparent;
     }
   }
@@ -98,28 +139,83 @@
       box-shadow: 
         -4px 0 $hale-darkblue-footer-link-focus-background,
         4px 0 $hale-darkblue-footer-link-focus-background,
-        -4px 4px $hale-darkblue-link-focus-underline,
-        4px 4px $hale-darkblue-link-focus-underline;
+        -4px 4px $hale-darkblue-link-focus-colour,
+        4px 4px $hale-darkblue-link-focus-colour;
     }
   }
   //search box focus colouring
-  .govuk-input:focus {
-    outline-color: $hale-darkblue-link-focus-underline;
-    background: $hale-darkblue-input-background;
+  @mixin button-style {
+    border-color: $hale-darkblue--button;
+    color: $hale-colour-white;
+    background-color: $hale-darkblue--button;
+    box-shadow: 0 1px 0 $hale-darkblue--button;
+    border-radius: 4px;
+
+    svg {
+      fill: $hale-colour-white;
+    }
+
+    &:focus {
+      background-color: $hale-darkblue-link-focus-colour;
+      border-color: $hale-darkblue-link-focus-colour;
+      box-shadow: 0 1px 0 $hale-darkblue-link-focus-colour;
+    }
+  }
+
+  .govuk-input {
+    border: 2px solid $hale-darkblue--input-border;
+
+    &:focus {
+      outline: 2px solid $hale-darkblue-link-focus-colour;
+      outline-offset: 0;
+      box-shadow: none;
+    }
+  }
+
+  .hale-search__submit.govuk-button.govuk-button--secondary {
+    @include button-style;
   }
   .hale-header .hale-header__search-form {
-    .hale-search__input:focus+.hale-search__submit,
-    .govuk-button:focus {
-      border-color: $hale-darkblue-search-button;
-      color: $hale-colour-white;
-      background-color: $hale-darkblue-search-button;
 
-      svg {
-        fill: $hale-colour-white;
+    @include govuk-media-query($from: tablet) {
+      //space for menu button
+      margin-left:auto;
+      margin-right:66px;
+    }
+    @include govuk-media-query($from: desktop) {
+      margin-left:auto;
+      margin-right:0;
+    }
+
+    .hale-search__input {
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+
+      +.hale-search__submit {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+      &:focus {
+        outline-width: 3px;
+        border-right: 3px solid $hale-darkblue-link-focus-colour;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+
+        +.hale-search__submit,
+        .hale-search__submit.govuk-button.govuk-button--secondary {
+          @include button-style;
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+        }
       }
     }
   }
-  
+  .govuk-header__logo {
+    @include govuk-media-query($from: tablet) {
+      float:left;
+    }
+  }
+
   //remove GDS brand colour bar
   .govuk-header__container {
     border-bottom: none;
