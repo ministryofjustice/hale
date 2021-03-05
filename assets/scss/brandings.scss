@@ -3,7 +3,8 @@
 //branding colours and styles
 
 /**********************
-  Common ALB styles
+  Common styles
+  All brandings
 **********************/
 
 //space out menu for all brandings
@@ -41,12 +42,23 @@
       .govuk-header__logotype-text {
         display:none;
       }
-      .govuk-header__navigation {
-        border-top: 1px solid branded(menu-border);
-      }
-    }
-    &.govuk-footer{
-      border-top-color: branded(brand-colour);
+			.govuk-header__content {
+				a:link{
+					color: branded(header-link);
+					&:hover:focus{
+						color: branded(header-link-hover-focus);
+					}
+					&:focus:not(:active):not(:hover) {
+						color: branded(header-link-focus);
+						background-color: branded(header-link-focus-highlight);
+						border-bottom-color: branded(header-link-focus-underline);
+						box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
+					}
+        }
+				.current-menu-item a:link:not(:focus) {
+					color: branded(header-link-current);
+				}
+			}
     }
     &.govuk-button {
       border:branded(button-border);
@@ -56,6 +68,9 @@
       &:hover, &:active, &:focus, &:focus:not(:active):not(:hover) {
         background-color: branded(button-hover);
         color: branded(button-hover-text);
+				svg {
+					fill: branded(button-hover-text);
+				}
       }
       &:hover, &:focus:not(:active):not(:hover) {
         box-shadow: 0 1px 0 branded(button-hover);
@@ -64,7 +79,7 @@
         box-shadow: none;
       }
       &:focus {
-        background-color: branded(link-focus-colour);
+				background-color: branded(link-focus-colour);
         border-color: branded(link-focus-colour);
         box-shadow: 0 1px 0 branded(link-focus-colour);
       }
@@ -124,7 +139,7 @@
     Uranus branding
     Magistrates
 **********************/
-.branding-uranus {
+.hale-branding--uranus {
   //header colour.
   .govuk-header {
     padding-bottom: 1em;
@@ -144,11 +159,11 @@
 }
 
 /**********************
-      Unused - example of gov styling with minor change
+		Unused - example of gov styling with minor change
 **********************/
-.branding-eris {
+.hale-branding--eris {
   .govuk-header__container {
-    border-bottom-color: grey;
+    border-bottom-color: #B10E1E;
   }
 }
 
@@ -156,7 +171,7 @@
     Neptune branding
     IMA
 **********************/
-.branding-neptune {
+.hale-branding--neptune {
 
   //light blue shading for page title
   article>*:first-child {
@@ -183,30 +198,35 @@
 
   //header
   .govuk-header {
+	
+		.govuk-header__navigation {
+			border-top: 1px solid $hale-neptune-top-border-colour;
+		}
     .govuk-header__content {
       width:100%;
       min-height: 15px;
-      //header arrangement
       .govuk-header__navigation a:link {
         display:inline-block;
         font-weight: 400;
       }
+      //header arrangement
       li.current-menu-item a:link,
       .govuk-header__menu-button,
       a:link {
-        border-bottom: 4px solid transparent;
-        color:govuk-colour("white");
+        border-bottom-width: 4px;
+				border-bottom-style: solid;
         text-decoration: none;
         box-shadow: none;
+				&:not(:hover) {
+					border-bottom-color:transparent;
+				}
         &:hover {
-          border-bottom-color: govuk-colour("white");
+					border-bottom-color:govuk-colour("white");
           background-color: unset;
         }
-        &:focus {
-          color:$hale-neptune-brand-colour;
-          background-color: $hale-neptune-header-focus-highlight;
-          border-bottom-color: $hale-neptune-header-focus-colour;
-        }
+				&:focus:not(:active):not(:hover) {
+					box-shadow:none;
+				}
       }
     }
   }
@@ -225,7 +245,7 @@
     .govuk-button {
       border-radius: 4px;
     }
-
+/*
     .hale-search__input {
       border-bottom-right-radius: 4px;
       border-top-right-radius: 4px;
@@ -247,5 +267,6 @@
         }
       }
     }
+		*/
   }
 }

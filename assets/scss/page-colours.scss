@@ -1,26 +1,79 @@
-//All brandings
-$hale-colour-white: govuk-colour("white");
-$hale-colour-black: govuk-colour("black");
+//Uranis (Magistrates) branding
+$hale-uranus-brand-colour: #336C83;
+$hale-uranus-button: #FFE600;
 
-//Teal branding
-$hale-teal-brand-colour: #336C83;
-$hale-teal-button-yellow: #FFE600;
+//Eris (unused) branding
+$hale-eris-brand-colour: #00A19A;
 
-//Light teal branding
-$hale-lightteal-brand-colour: #00A19A;
+//Neptune (IMA) branding
+$hale-neptune-brand-colour: #0C223F;
+$hale-neptune-header-focus-colour: #00A499;
+$hale-neptune-header-hover-link-colour: govuk-colour("white");
+$hale-neptune-header-focus-highlight: #B6bDC5;
+$hale-neptune-shading:#E5F5F5;
+$hale-neptune-top-border-colour:hsla(0,0%,100%,.2); //only used in brandings.scss
+$hale-neptune-footer-background: #D8DDE0;
+$hale-neptune-footer-link-focus-shading: #DAE9E8;
+$hale-neptune-focus-colour: #00A19A;
+$hale-neptune-focus-shading: rgba(0,161,154,.1);
+$hale-neptune-input-background: #D9F1F0;
+$hale-neptune-button:#005EB8;
+$hale-neptune-input-border:#768692;
 
-//Dark blue branding
-$hale-darkblue-brand-colour: #0C223F;
-$hale-darkblue-header-link-focus-underline: #00A499;
-$hale-darkblue-header-link-focus-background: #B6bDC5;
-$hale-darkblue-footer-link-focus-background: #DAE9E8;
-$hale-darkblue-link-focus-colour: #00A19A;
-$hale-darkblue-link-focus-background: rgba(0,161,154,.1);
-$hale-darkblue-menu-border: hsla(0,0%,100%,.2);
-$hale-darkblue-input-background: #D9F1F0;
-$hale-darkblue--button:#005EB8;
-$hale-darkblue--input-border:#768692;
+$brandings: (
+  neptune: (
+    brand-colour: $hale-neptune-brand-colour,
+		header-link-current: govuk-colour("white"),
+    header-link-focus-underline: $hale-neptune-header-focus-colour,
+    header-link-focus-highlight: $hale-neptune-header-focus-highlight,
+    header-link-focus: $hale-neptune-brand-colour,
+    header-link-hover-focus: $hale-neptune-header-hover-link-colour,
+    title-shading: $hale-neptune-shading,
+    footer-background: $hale-neptune-footer-background,
+    footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
+    link-focus-colour: $hale-neptune-focus-colour,
+    link-focus-background: $hale-neptune-focus-shading,
+    input-background: $hale-neptune-input-background,
+    input-border: $hale-neptune-input-border,
+    button: $hale-neptune-button,
+    button-hover:$hale-neptune-focus-colour,
+    button-text:govuk-colour("white"),
+    button-hover-text:govuk-colour("white"),
+    button-border:none,
+  ),
+  uranus: (
+    brand-colour: $hale-uranus-brand-colour,
+		header-link: $hale-uranus-button,
+		header-link-current: govuk-colour("white"),
+    header-link-focus: govuk-colour("black"),
+    header-link-hover-focus: govuk-colour("black"),
+    button: $hale-uranus-button,
+    button-text: govuk-colour("black"),
+    button-hover: govuk-colour("black"),
+    button-hover-text: govuk-colour("white"),
+		link-focus-background: govuk-colour("yellow"),
+  ),
+);
 
+@mixin branding($brandings: $brandings) {
+  @each $brand, $map in $brandings {
+    .hale-branding--#{$brand} & {
+      $branding-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($brandings, $brand), '#{$key}');
+        $branding-map: map-merge($branding-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $branding-map: null !global;
+    }
+
+  }
+}
+
+@function branded($key) {
+  @return map-get($branding-map, $key);
+}
 
 //Old colours:
 /*

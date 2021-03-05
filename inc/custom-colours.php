@@ -13,10 +13,10 @@
 function hale_get_theme_colours() {
 	return array(
 		''       => esc_html__( 'Inherit site wide colour settings', 'hale' ),
-		'005eb8' => esc_html__( 'Blue', 'hale' ),
-        '336c83' => esc_html__( 'Teal', 'hale' ),
-		'00a19a' => esc_html__( 'Light Teal', 'hale' ),
-		'0c223f' => esc_html__( 'Dark Blue', 'hale' )
+		'0c223f' => esc_html__( 'Neptune', 'hale' ),
+		'336c83' => esc_html__( 'Uranus', 'hale' ),
+		'00a19a' => esc_html__( 'Eris', 'hale' ),
+		'005eb8' => esc_html__( 'HMG', 'hale' )
 	);
 }
 
@@ -32,24 +32,20 @@ function hale_prefix_register_colors() {
 		'editor-color-palette',
 		array(
 			array(
-				'name'  => esc_html__( 'Blue', 'hale' ),
-				'slug'  => 'blue',
-				'color' => '#005eb8',
+				'name'  => esc_html__( 'Neptune', 'hale' ),
+				'slug'  => 'neptune',
 			),
-            array(
-                'name'  => esc_html__( 'Teal', 'hale' ),
-                'slug'  => 'teal',
-                'color' => '#336c83',
-            ),
-            array(
-                'name'  => esc_html__( 'Light Teal', 'hale' ),
-                'slug'  => 'light_teal',
-                'color' => '#00a19a',
-            ),
 			array(
-				'name'  => esc_html__( 'Dark Blue', 'hale' ),
-				'slug'  => 'dark_blue',
-				'color' => '#0c223f',
+				'name'  => esc_html__( 'Uranus', 'hale' ),
+				'slug'  => 'uranus',
+			),
+			array(
+				'name'  => esc_html__( 'Eris', 'hale' ),
+				'slug'  => 'eris',
+			),
+			array(
+				'name'  => esc_html__( 'HMG', 'hale' ),
+				'slug'  => 'gds',
 			)
 		)
 	);
@@ -57,7 +53,7 @@ function hale_prefix_register_colors() {
 
 /**
  * Get the colors formatted for use with Iris, Automattic's color picker.
- */
+ *
 function nightingale_output_the_colors() {
 
 	// get the colors.
@@ -81,10 +77,10 @@ function nightingale_output_the_colors() {
 	return ob_get_clean();
 
 }
-
+*/
 /**
  * Get the colors formatted for use with TinyMCE.
- */
+ *
 function nightingale_output_tinymce_colors() {
 
 	// get the colors.
@@ -112,7 +108,7 @@ function nightingale_output_tinymce_colors() {
 	return ob_get_clean();
 
 }
-
+*/
 /**
  * Put the array of colours into the TinyMCE editor.
  *
