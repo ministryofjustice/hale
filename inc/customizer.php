@@ -643,3 +643,51 @@ function nightingale_add_typography_settings( $wp_customize )
 
 
 }
+
+
+add_action( 'customize_register', 'hale_add_blocks_settings' );
+
+function hale_add_blocks_settings( $wp_customize )
+{
+
+    if( current_user_can('administrator') ) {
+
+        $wp_customize->add_section(
+            'blocks_panel',
+            array(
+                'title' => esc_html__('Blocks', 'hale'),
+                'description' => esc_html__('Blocks settings', 'hale'),
+                'capability' => 'edit_theme_options',
+                'theme-supports' => '',
+                'priority' => '151',
+            )
+        );
+
+        /*
+        *  Restrict Blocks Settings
+        */
+        $wp_customize->add_setting(
+            'restrict_blocks',
+            array(
+                'default' => 'yes',
+            )
+        );
+
+        $wp_customize->add_control(
+            'restrict_blocks',
+            array(
+                'label' => esc_html__('Restrict Blocks', 'hale'),
+                'description' => esc_html__('Hides some core Wordpress blocks that are not currently compatible with Hale theme', 'hale'),
+                'section' => 'blocks_panel',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    'yes' => esc_html__('Yes', 'hale'),
+                    'no' => esc_html__('No', 'hale'),
+                ),
+            )
+        );
+    }
+
+
+}
