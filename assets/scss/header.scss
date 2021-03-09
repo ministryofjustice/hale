@@ -88,18 +88,6 @@
     .hale-search__input{
       padding-right: 46px;
       border-width: 0;
-      &:focus {
-        border-width: 0;
-        + .hale-search__submit {
-          border-color: $govuk-focus-colour;
-          color: $govuk-focus-text-colour;
-          background-color: $govuk-focus-colour;
-          box-shadow: none;
-          @include govuk-media-query($from: tablet) {
-            box-shadow: 0 1px 0 $govuk-focus-colour;
-          }
-        }
-      }
     }
     .hale-search__submit {
       position: absolute;

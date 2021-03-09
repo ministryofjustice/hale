@@ -1,3 +1,9 @@
+/**********************
+     Colours used 
+		    by the 
+		specific brands
+**********************/
+
 //Uranis (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
 $hale-uranus-button: #FFE600;
@@ -7,13 +13,13 @@ $hale-eris-brand-colour: #00A19A;
 
 //Neptune (IMA) branding
 $hale-neptune-brand-colour: #0C223F;
-$hale-neptune-header-focus-colour: #00A499;
 $hale-neptune-header-hover-link-colour: govuk-colour("white");
+$hale-neptune-header-focus-colour: #00A499;
 $hale-neptune-header-focus-highlight: #B6bDC5;
 $hale-neptune-shading:#E5F5F5;
 $hale-neptune-top-border-colour:hsla(0,0%,100%,.2); //only used in brandings.scss
 $hale-neptune-footer-background: #D8DDE0;
-$hale-neptune-footer-link-focus-shading: #DAE9E8;
+$hale-neptune-footer-link-focus-shading: #C2D6D9;
 $hale-neptune-focus-colour: #00A19A;
 $hale-neptune-focus-shading: rgba(0,161,154,.1);
 $hale-neptune-input-background: #D9F1F0;

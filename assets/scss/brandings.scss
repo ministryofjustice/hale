@@ -26,6 +26,11 @@
 *{
   @include branding($brandings) {
 
+		&.govuk-skip-link:focus {
+			outline-color: branded(header-link-focus-highlight);
+			background-color: branded(header-link-focus-highlight);
+		}
+
     &.govuk-main-wrapper {
       //remove gap at top of page
       padding-top:0;
@@ -37,18 +42,29 @@
     }
     &.govuk-header {
       background: branded(brand-colour);
+			border-bottom-width: 0;
+			.govuk-header__navigation {
+				margin-bottom: 0;
+			}
+
+			.govuk-header__link:focus {
+				background-color: branded(link-focus-background);
+				box-shadow: 0px -2px branded(link-focus-background), 0px 4px branded(link-focus-colour);
+				outline: transparent solid 4px;
+			}
 
       //remove MoJ logo text
-      .govuk-header__logotype-text {
+      .govuk-header__logotype-text:not(.hale-header__logotype-text--custom) {
         display:none;
       }
 			.govuk-header__content {
+				.govuk-header__menu-button,
 				a:link{
 					color: branded(header-link);
 					&:hover:focus{
 						color: branded(header-link-hover-focus);
 					}
-					&:focus:not(:active):not(:hover) {
+					&:focus:not(:hover) {
 						color: branded(header-link-focus);
 						background-color: branded(header-link-focus-highlight);
 						border-bottom-color: branded(header-link-focus-underline);
@@ -65,23 +81,20 @@
       box-shadow: 0 1px 0 branded(button);
       color:branded(button-text);
       background-color:branded(button);
-      &:hover, &:active, &:focus, &:focus:not(:active):not(:hover) {
+      &:hover, &:focus:not(:active):not(:hover) {
         background-color: branded(button-hover);
         color: branded(button-hover-text);
+        box-shadow: 0 1px 0 branded(button-hover);
+        border-color: branded(link-focus-colour);
 				svg {
 					fill: branded(button-hover-text);
 				}
-      }
-      &:hover, &:focus:not(:active):not(:hover) {
-        box-shadow: 0 1px 0 branded(button-hover);
-      }
-      &:active {
+			}
+			&:active {
         box-shadow: none;
       }
       &:focus {
 				background-color: branded(link-focus-colour);
-        border-color: branded(link-focus-colour);
-        box-shadow: 0 1px 0 branded(link-focus-colour);
       }
       svg {
         fill: branded(button-text);
@@ -101,7 +114,7 @@
     //link focus state
     #primary a:not(class),
     #primary a[class=""],
-    a:link {
+		a.govuk-footer__link {
       &:focus {
         background-color: branded(link-focus-background);
         box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
@@ -131,142 +144,5 @@
           4px 4px branded(link-focus-colour);
       }
     }
-  }
-}
-
-
-/**********************
-    Uranus branding
-    Magistrates
-**********************/
-.hale-branding--uranus {
-  //header colour.
-  .govuk-header {
-    padding-bottom: 1em;
-
-    .hale-header__logotype-text--custom {
-      font-weight: 400;
-      font-size: 22px;
-      padding-left: 0.5em;
-      position: relative;
-      top: -0.2em;
-    }
-  }
-
-  .govuk-button {
-    border-radius: 4px;
-  }
-}
-
-/**********************
-		Unused - example of gov styling with minor change
-**********************/
-.hale-branding--eris {
-  .govuk-header__container {
-    border-bottom-color: #B10E1E;
-  }
-}
-
-/**********************
-    Neptune branding
-    IMA
-**********************/
-.hale-branding--neptune {
-
-  //light blue shading for page title
-  article>*:first-child {
-    padding:0.2em 0;
-
-    &:before,
-    +ul>li:before {
-      transform: translateY(-20%);
-    }
-    
-    &:before,
-    +ul>li:before,
-    &:after,
-    +ul>li:after {
-      @extend .hale-shaded; // gets the shading colour
-      position: absolute;
-      content: "";
-      left: 0;
-      width: 100vw;
-      height: 2.2em;
-      z-index: -1;
-    }
-  }
-
-  //header
-  .govuk-header {
-	
-		.govuk-header__navigation {
-			border-top: 1px solid $hale-neptune-top-border-colour;
-		}
-    .govuk-header__content {
-      width:100%;
-      min-height: 15px;
-      .govuk-header__navigation a:link {
-        display:inline-block;
-        font-weight: 400;
-      }
-      //header arrangement
-      li.current-menu-item a:link,
-      .govuk-header__menu-button,
-      a:link {
-        border-bottom-width: 4px;
-				border-bottom-style: solid;
-        text-decoration: none;
-        box-shadow: none;
-				&:not(:hover) {
-					border-bottom-color:transparent;
-				}
-        &:hover {
-					border-bottom-color:govuk-colour("white");
-          background-color: unset;
-        }
-				&:focus:not(:active):not(:hover) {
-					box-shadow:none;
-				}
-      }
-    }
-  }
-
-  .hale-header .hale-header__search-form {
-    @include govuk-media-query($from: tablet) {
-      //space for menu button
-      margin-left:auto;
-      margin-right:66px;
-    }
-    @include govuk-media-query($from: desktop) {
-      margin-left:auto;
-      margin-right:0;
-    }
-
-    .govuk-button {
-      border-radius: 4px;
-    }
-/*
-    .hale-search__input {
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
-
-      +.hale-search__submit {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-      }
-      &:focus {
-        outline-width: 3px;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-
-        +.hale-search__submit,
-        .hale-search__submit.govuk-button.govuk-button--secondary {
-          background: $hale-neptune-button;
-          box-shadow: 0 1px 0 $hale-neptune-button;
-          border-radius: 0;
-        }
-      }
-    }
-		*/
   }
 }
