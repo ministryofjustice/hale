@@ -84,8 +84,8 @@
       &:hover, &:focus:not(:active):not(:hover) {
         background-color: branded(button-hover);
         color: branded(button-hover-text);
-        box-shadow: 0 1px 0 branded(button-hover);
-        border-color: branded(link-focus-colour);
+				box-shadow: 0 1px 0 branded(button-hover);
+				border-color: branded(link-focus-colour);
 				svg {
 					fill: branded(button-hover-text);
 				}

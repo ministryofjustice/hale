@@ -58,7 +58,9 @@ $brandings: (
     button-hover: govuk-colour("black"),
     button-hover-text: govuk-colour("white"),
 		link-focus-background: govuk-colour("yellow"),
-  ),
+		link-focus-colour: govuk-colour("black"),
+		footer-link-focus-background: govuk-colour("yellow"),
+	),
 );
 
 @mixin branding($brandings: $brandings) {
@@ -80,6 +82,30 @@ $brandings: (
 @function branded($key) {
   @return map-get($branding-map, $key);
 }
+
+//list of colours used - not all have to be declared.
+/*
+    brand-colour: 
+		header-link: 
+		header-link-current: 
+    header-link-focus-underline: 
+    header-link-focus-highlight: 
+    header-link-focus: 
+    header-link-hover-focus: 
+    title-shading: 
+    footer-background: 
+    footer-link-focus-background: 
+    link-focus-colour: 
+    link-focus-background: 
+    input-background: 
+    input-border: 
+    button: 
+    button-hover: 
+    button-text: 
+    button-hover-text: 
+    button-border: 
+*/
+
 
 //Old colours:
 /*

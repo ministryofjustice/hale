@@ -37,10 +37,6 @@
 **********************/
 .hale-branding--neptune {
 
-	.govuk-header__link:focus {
-		background-color: $hale-neptune-header-focus-colour;
-	}
-
 	.govuk-skip-link:focus {
 		outline-color: $hale-neptune-header-focus-colour;
 	}
@@ -164,6 +160,9 @@
 	//header
   .govuk-header {
 		
+		.govuk-header__link:focus {
+			background-color: $hale-neptune-header-focus-colour;
+		}
 		.govuk-header__navigation {
 			border-top: 1px solid $hale-neptune-top-border-colour;
 		}
@@ -192,7 +191,8 @@
 					border-bottom-color:govuk-colour("white");
           background-color: unset;
         }
-				&:focus:not(:active):not(:hover) {
+				&:focus:not(:active):not(:hover),
+				&:focus {
 					box-shadow:none;
 				}
       }
@@ -222,6 +222,10 @@
       +.govuk-button.hale-search__submit {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
+				box-shadow: 0 1px 0 $hale-neptune-button;
+				&:focus {
+					box-shadow: 0 1px 0 $hale-neptune-focus-colour;
+				}
       }
       &:focus {
         outline-width: 3px;
