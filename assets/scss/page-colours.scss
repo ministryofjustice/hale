@@ -17,7 +17,7 @@ $hale-neptune-header-hover-link-colour: govuk-colour("white");
 $hale-neptune-header-focus-colour: #00A499;
 $hale-neptune-header-focus-highlight: #B6bDC5;
 $hale-neptune-shading:#E5F5F5;
-$hale-neptune-top-border-colour:hsla(0,0%,100%,.2); //only used in brandings.scss
+$hale-neptune-header-border-colour:hsla(0,0%,100%,.2);
 $hale-neptune-footer-background: #D8DDE0;
 $hale-neptune-footer-link-focus-shading: #C2D6D9;
 $hale-neptune-focus-colour: #00A19A;
@@ -34,6 +34,7 @@ $brandings: (
 		header-link-focus-highlight: $hale-neptune-header-focus-highlight,
 		header-link-focus: $hale-neptune-brand-colour,
 		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
+		header-menu-border-colour: $hale-neptune-header-border-colour,
 		title-shading: $hale-neptune-shading,
 		footer-background: $hale-neptune-footer-background,
 		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,

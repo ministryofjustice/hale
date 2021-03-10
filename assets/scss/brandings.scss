@@ -45,6 +45,10 @@
 			border-bottom-width: 0;
 			.govuk-header__navigation {
 				margin-bottom: 0;
+
+				li {
+					border-bottom-color: branded(header-menu-border-colour);
+				}
 			}
 
 			.govuk-header__link:focus {

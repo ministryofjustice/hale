@@ -164,7 +164,13 @@
 			background-color: $hale-neptune-header-focus-colour;
 		}
 		.govuk-header__navigation {
-			border-top: 1px solid $hale-neptune-top-border-colour;
+			border-top: 1px solid $hale-neptune-header-border-colour;
+			li {
+				padding:0;
+				a {
+					width:100%;
+				}
+			}
 		}
 		.govuk-header__content {
 			width:100%;
