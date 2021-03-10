@@ -8,4 +8,12 @@
     @extend .govuk-list;
     @extend .govuk-list--bullet;
   }
+
+	//override for the sovial media links (ootb wordpress)
+	.wp-block-social-link {
+		> a:not([class]), > a[class=""] {
+			color: govuk-colour("white");
+		}
+	}
 }
+
