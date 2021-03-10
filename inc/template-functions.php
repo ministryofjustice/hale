@@ -150,7 +150,7 @@ function nightingale_custom_page_colour( $classes ) {
 
     $colour_array = [
 			'0c223f' => 'neptune',
-			'005eb8' => 'government',
+			'0b0c0c' => 'government',
 			'336c83' => 'uranus',
 			'00a19a' => 'eris',
     ];
