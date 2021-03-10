@@ -1,39 +1,39 @@
 /**********************
-    Uranus branding
-    Magistrates
+		Uranus branding
+		Magistrates
 **********************/
 .hale-branding--uranus {
-  //header colour.
-  .govuk-header {
-    padding-bottom: 1em;
+	//header colour.
+	.govuk-header {
+		padding-bottom: 1em;
 
-    .hale-header__logotype-text--custom {
-      font-weight: 400;
-      font-size: 22px;
-      padding-left: 0.5em;
-      position: relative;
-      top: -0.2em;
-    }
-  }
+		.hale-header__logotype-text--custom {
+			font-weight: 400;
+			font-size: 22px;
+			padding-left: 0.5em;
+			position: relative;
+			top: -0.2em;
+		}
+	}
 
-  .govuk-button {
-    border-radius: 4px;
+	.govuk-button {
+		border-radius: 4px;
 		border-width:0;
-  }
+	}
 }
 
 /**********************
 		Unused - example of gov styling with minor change
 **********************/
 .hale-branding--eris {
-  .govuk-header__container {
-    border-bottom-color: #FD0;
-  }
+	.govuk-header__container {
+		border-bottom-color: #FD0;
+	}
 }
 
 /**********************
-    Neptune branding
-    IMA
+		Neptune branding
+		IMA
 **********************/
 .hale-branding--neptune {
 
@@ -82,13 +82,13 @@
 		padding: 0.7em 0;
 	}
 
-  //light blue shading for page title
-  .hale-heading--top,
+	//light blue shading for page title
+	.hale-heading--top,
 	article>h1 {
 		position:relative;
-    padding:0.2em 0;
+		padding:0.2em 0;
 
-    +*:not(ul) {
+		+*:not(ul) {
 			margin-top:77px;
 		}
 		
@@ -96,9 +96,9 @@
 			position:relative;
 		}
 		
-    &:before,
-    +ul:before {
-      @extend .hale-shaded; // gets the shading colour
+		&:before,
+		+ul:before {
+			@extend .hale-shaded; // gets the shading colour
 			position: absolute;
 			content: "";
 			left: 50%;
@@ -109,7 +109,7 @@
 			overflow: visible;
 			transform: translate(-50%, -0.3em);
 		}
-  }
+	}
 	ul.hale-list--top{
 		list-style: none;
 		padding-bottom: 1em;
@@ -128,7 +128,7 @@
 				text-decoration:none;
 			}
 		}
-	} 
+	}
 	
 	//adjust the gem (government publishing component) navigation
 	.gem-c-pagination__item {
@@ -138,10 +138,10 @@
 			background-position-y: center;
 
 			.gem-c-pagination__link-title {
-				padding-left:30px; 
+				padding-left:30px;
 			}
 			.gem-c-pagination__link-label {
-				padding-left:10px; 
+				padding-left:10px;
 			}
 		}
 		
@@ -158,7 +158,7 @@
 	}
 
 	//header
-  .govuk-header {
+	.govuk-header {
 		
 		.govuk-header__link:focus {
 			background-color: $hale-neptune-header-focus-colour;
@@ -166,76 +166,76 @@
 		.govuk-header__navigation {
 			border-top: 1px solid $hale-neptune-top-border-colour;
 		}
-    .govuk-header__content {
-      width:100%;
-      min-height: 15px;
-      .govuk-header__navigation a:link {
-        display:inline-block;
-        font-weight: 400;
-      }
-      //header arrangement
-      li.current-menu-item a:link,
-      .govuk-header__menu-button,
-      a:link {
-        border-bottom-width: 4px;
+		.govuk-header__content {
+			width:100%;
+			min-height: 15px;
+			.govuk-header__navigation a:link {
+				display:inline-block;
+				font-weight: 400;
+			}
+			//header arrangement
+			li.current-menu-item a:link,
+			.govuk-header__menu-button,
+			a:link {
+				border-bottom-width: 4px;
 				border-bottom-style: solid;
-        text-decoration: none;
-        box-shadow: none;
+				text-decoration: none;
+				box-shadow: none;
 				&:not(:hover) {
 					border-bottom-color:transparent;
 					&:focus {
 						border-bottom-color:$hale-neptune-header-focus-colour;
 					}
 				}
-        &:hover {
+				&:hover {
 					border-bottom-color:govuk-colour("white");
-          background-color: unset;
-        }
+					background-color: unset;
+				}
 				&:focus:not(:active):not(:hover),
 				&:focus {
 					box-shadow:none;
 				}
-      }
-    }
-  }
+			}
+		}
+	}
 
-  .hale-header .hale-header__search-form {
+	.hale-header .hale-header__search-form {
 		margin-right:66px;
 		width: calc(100% - 44px);
-    @include govuk-media-query($from: tablet) {
-      //space for menu button
+		@include govuk-media-query($from: tablet) {
+			//space for menu button
 			width: calc(15rem + 44px);
-      margin-left:auto;
+			margin-left:auto;
 			position:relative;
 			top: -37px;
-    }
-    @include govuk-media-query($from: desktop) {
+		}
+		@include govuk-media-query($from: desktop) {
 			top: 0;
-      margin-left:auto;
-      margin-right:0;
-    }
+			margin-left:auto;
+			margin-right:0;
+		}
 
-    .hale-search__input {
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
+		.hale-search__input {
+			border-bottom-right-radius: 4px;
+			border-top-right-radius: 4px;
 
-      +.govuk-button.hale-search__submit {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
+			+.govuk-button.hale-search__submit {
+				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
 				box-shadow: 0 1px 0 $hale-neptune-button;
 				&:focus {
 					box-shadow: 0 1px 0 $hale-neptune-focus-colour;
 				}
-      }
-      &:focus {
-        outline-width: 3px;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
+			}
+			&:focus {
+				outline-width: 3px;
+				border-bottom-right-radius: 0;
+				border-top-right-radius: 0;
 
-        +.hale-search__submit {
-          border-radius: 0;
-        }
-      }
-    }
-  }
+				+.hale-search__submit {
+					border-radius: 0;
+				}
+			}
+		}
+	}
 }

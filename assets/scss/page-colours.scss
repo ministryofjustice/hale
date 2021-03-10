@@ -1,6 +1,6 @@
 /**********************
-     Colours used 
-		    by the 
+		 Colours used
+				by the
 		specific brands
 **********************/
 
@@ -27,36 +27,36 @@ $hale-neptune-button:#005EB8;
 $hale-neptune-input-border:#768692;
 
 $brandings: (
-  neptune: (
-    brand-colour: $hale-neptune-brand-colour,
+	neptune: (
+		brand-colour: $hale-neptune-brand-colour,
 		header-link-current: govuk-colour("white"),
-    header-link-focus-underline: $hale-neptune-header-focus-colour,
-    header-link-focus-highlight: $hale-neptune-header-focus-highlight,
-    header-link-focus: $hale-neptune-brand-colour,
-    header-link-hover-focus: $hale-neptune-header-hover-link-colour,
-    title-shading: $hale-neptune-shading,
-    footer-background: $hale-neptune-footer-background,
-    footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
-    link-focus-colour: $hale-neptune-focus-colour,
-    link-focus-background: $hale-neptune-focus-shading,
-    input-background: $hale-neptune-input-background,
-    input-border: $hale-neptune-input-border,
-    button: $hale-neptune-button,
-    button-hover:$hale-neptune-focus-colour,
-    button-text:govuk-colour("white"),
-    button-hover-text:govuk-colour("white"),
-    button-border:none,
-  ),
-  uranus: (
-    brand-colour: $hale-uranus-brand-colour,
+		header-link-focus-underline: $hale-neptune-header-focus-colour,
+		header-link-focus-highlight: $hale-neptune-header-focus-highlight,
+		header-link-focus: $hale-neptune-brand-colour,
+		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
+		title-shading: $hale-neptune-shading,
+		footer-background: $hale-neptune-footer-background,
+		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
+		link-focus-colour: $hale-neptune-focus-colour,
+		link-focus-background: $hale-neptune-focus-shading,
+		input-background: $hale-neptune-input-background,
+		input-border: $hale-neptune-input-border,
+		button: $hale-neptune-button,
+		button-hover:$hale-neptune-focus-colour,
+		button-text:govuk-colour("white"),
+		button-hover-text:govuk-colour("white"),
+		button-border:none,
+	),
+	uranus: (
+		brand-colour: $hale-uranus-brand-colour,
 		header-link: $hale-uranus-button,
 		header-link-current: govuk-colour("white"),
-    header-link-focus: govuk-colour("black"),
-    header-link-hover-focus: govuk-colour("black"),
-    button: $hale-uranus-button,
-    button-text: govuk-colour("black"),
-    button-hover: govuk-colour("black"),
-    button-hover-text: govuk-colour("white"),
+		header-link-focus: govuk-colour("black"),
+		header-link-hover-focus: govuk-colour("black"),
+		button: $hale-uranus-button,
+		button-text: govuk-colour("black"),
+		button-hover: govuk-colour("black"),
+		button-hover-text: govuk-colour("white"),
 		link-focus-background: govuk-colour("yellow"),
 		link-focus-colour: govuk-colour("black"),
 		footer-link-focus-background: govuk-colour("yellow"),
@@ -64,46 +64,46 @@ $brandings: (
 );
 
 @mixin branding($brandings: $brandings) {
-  @each $brand, $map in $brandings {
-    .hale-branding--#{$brand} & {
-      $branding-map: () !global;
-      @each $key, $submap in $map {
-        $value: map-get(map-get($brandings, $brand), '#{$key}');
-        $branding-map: map-merge($branding-map, ($key: $value)) !global;
-      }
+	@each $brand, $map in $brandings {
+		.hale-branding--#{$brand} & {
+			$branding-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($brandings, $brand), '#{$key}');
+				$branding-map: map-merge($branding-map, ($key: $value)) !global;
+			}
 
-      @content;
-      $branding-map: null !global;
-    }
+			@content;
+			$branding-map: null !global;
+		}
 
-  }
+	}
 }
 
 @function branded($key) {
-  @return map-get($branding-map, $key);
+	@return map-get($branding-map, $key);
 }
 
 //list of colours used - not all have to be declared.
 /*
-    brand-colour: 
+		brand-colour: 
 		header-link: 
 		header-link-current: 
-    header-link-focus-underline: 
-    header-link-focus-highlight: 
-    header-link-focus: 
-    header-link-hover-focus: 
-    title-shading: 
-    footer-background: 
-    footer-link-focus-background: 
-    link-focus-colour: 
-    link-focus-background: 
-    input-background: 
-    input-border: 
-    button: 
-    button-hover: 
-    button-text: 
-    button-hover-text: 
-    button-border: 
+		header-link-focus-underline: 
+		header-link-focus-highlight: 
+		header-link-focus: 
+		header-link-hover-focus: 
+		title-shading: 
+		footer-background: 
+		footer-link-focus-background: 
+		link-focus-colour: 
+		link-focus-background: 
+		input-background: 
+		input-border: 
+		button: 
+		button-hover: 
+		button-text: 
+		button-hover-text: 
+		button-border: 
 */
 
 
