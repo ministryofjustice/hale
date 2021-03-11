@@ -25,7 +25,11 @@
 	flush();
 	?>
 </head>
-<body <?php body_class( 'js-enabled' ); ?>>
+<body <?php body_class(""); ?>>
+<script>
+	// add in js-enabled by JavaScript - no JS, JS not enabled
+	document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+</script>
 <?php
 if ( ! function_exists( 'wp_body_open' ) ) {
 	/**
@@ -56,7 +60,7 @@ if ( 'yes' === $header_search && !is_search()) {
   $header_search_class = '';
 }
 
-echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text . $header_search_class ) . '">';
+echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text . $header_search_class ) . '" data-module="govuk-header">';
 ?>
 <div class="govuk-width-container govuk-header__container">
 	<?php
@@ -84,7 +88,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
       <?php
         if ($show_header_menu == 'yes') {
       ?>
-        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu">Menu</button>
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
       <?php get_template_part( 'partials/topnav' );
       }
       ?>

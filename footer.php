@@ -52,5 +52,8 @@ flush();
   </div>
 </footer>
 <?php wp_footer(); ?>
+  <script>
+    window.GOVUKFrontend.initAll()
+  </script>
 </body>
 </html>
