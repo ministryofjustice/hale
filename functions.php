@@ -406,6 +406,11 @@ if (function_exists('gtm4wp_the_gtm_tag')) {
 }
 
 /**
+ * Restrict Blocks
+ */
+require get_template_directory() . '/inc/restrict-blocks.php';
+
+/**
  * Taxonomies
  */
 require get_template_directory() . '/inc/tax-page-category.php';
