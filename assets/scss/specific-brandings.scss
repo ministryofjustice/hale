@@ -68,7 +68,8 @@
 		
 	}
 
-	.govuk-breadcrumbs__link {
+	.govuk-breadcrumbs__link,
+	.govuk-back-link {
 		@extend .govuk-link;
 		
 		&:focus {
