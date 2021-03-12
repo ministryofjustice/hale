@@ -42,9 +42,24 @@ $govuk-font-family: 'PT Sans', sans-serif;
 }
 
 .hale-header__mobile-controls--search {
-  display:none;
+  @extend .govuk-header__menu-button;
 }
-
+.js-enabled .hale-header__mobile-controls--search {
+	right: 60px;
+	@include govuk-media-query($from: tablet) {
+		display:none;
+	}
+	+ .hale-header__search-wrap {
+		display:none;
+		@include govuk-media-query($from: tablet) {
+			display:block;
+		}
+	}
+	&[aria-expanded="true"] + .hale-header__search-wrap {
+		display:block;
+		margin-top: 2em;
+	}
+}
 .hale-search-results__last-updated-date{
   color: $govuk-secondary-text-colour;
 }
