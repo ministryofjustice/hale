@@ -248,9 +248,9 @@ function hale_scripts()
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
 
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "3.11.0", true);
-    wp_enqueue_script('hale-script', hale_mix_asset('/js/hale-script.js'), '', "null", true);
+    wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
-    wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', 'null', true);
+    wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', null, true);
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }

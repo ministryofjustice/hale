@@ -138,6 +138,9 @@
 	//header
 	.govuk-header {
 
+		.govuk-header__logo {
+			min-height: 49px;
+		}
 		.govuk-header__menu-button {
 			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='%23fff'/%3E%3C/svg%3E");
 			background-position-x: center;
@@ -191,7 +194,6 @@
 			}
 		}
 		.govuk-header__content {
-			margin-top: 1em;
 			width:100%;
 			min-height: 15px;
 
@@ -227,7 +229,7 @@
 
 	.hale-header .hale-header__search-form {
 		margin-right:66px;
-		width: calc(100% - 44px);
+		width: 100%;
 		@include govuk-media-query($from: tablet) {
 			//space for menu button
 			width: calc(15rem + 44px);
