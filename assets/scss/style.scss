@@ -1,14 +1,14 @@
 @charset "UTF-8";
-
 @import 'default';
 @import 'gds-design-system-settings';
 @import 'hale-styles';
 
+// theme colours
+@import 'brandings';
+@import 'specific-brandings';
+
 //high-level text sizing for blocks
 @import 'fontstyles/pt-sans';
-
-// theme colours
-@import 'theme-colours';
 
 // styles for all MoJ blocks (including overrides)
 @import 'moj-blocks-general';

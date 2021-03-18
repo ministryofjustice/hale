@@ -149,29 +149,22 @@ function nightingale_sidebar_location( $sidebar ) {
 function nightingale_custom_page_colour( $classes ) {
 
     $colour_array = [
-        '005eb8' => 'blue',
-        '0c223f' => 'dark-blue',
-        '336c83' => 'teal',
-        '00a19a' => 'light-teal',
+			'0c223f' => 'neptune',
+			'0b0c0c' => 'government',
+			'336c83' => 'uranus',
+			'00a19a' => 'eris',
     ];
 
-	$colour = get_theme_mod( 'theme_colour', '005eb8' );
+	$colour = get_theme_mod( 'theme_colour', '0c223f' );
 
 	if ( !empty($colour) ) {
-		$theme_colour_name = 'page-colour--' . $colour_array[ $colour ];
+		$theme_colour_name = 'hale-branding--' . $colour_array[ $colour ];
 		$classes[]         = $theme_colour_name;
+	} else {
+		$classes[]         = 'hale-branding--neptune'; //none set = use Neptune
 	}
 
-    //Add page header colour class
-    $page_header_colour = get_theme_mod( 'page_header_colour', '' );
-
-    if(!empty($page_header_colour)){
-        $page_header_colour_name = 'page-header-colour--' . $colour_array[ $page_header_colour ];
-        $classes[] = $page_header_colour_name;
-    }
-
-
-    return $classes;
+  return $classes;
 }
 
 add_filter( 'body_class', 'nightingale_custom_page_colour' );

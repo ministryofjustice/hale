@@ -463,44 +463,20 @@ function nightingale_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'theme_colour',
 		array(
-			'default'           => 'blue',
+			'default'           => 'neptune',
 			'sanitize_callback' => 'nightingale_sanitize_select',
 		)
 	);
 	$wp_customize->add_control(
 		'theme_colour',
 		array(
-			'label'       => esc_html__( 'Theme Colour', 'hale' ),
-			'description' => esc_html__( 'If you wish to change the default colour of the theme.', 'hale' ),
+			'label'       => esc_html__( 'Theme Branding', 'hale' ),
+			'description' => esc_html__( 'Select the look and feel of the site.', 'hale' ),
 			'section'     => 'colors',
 			'type'        => 'select',
 			'choices'     => hale_get_theme_colours(),
 		)
 	);
-
-    /*
-     * -----------------------------------------------------------
-     * Header colour chooser
-     * -----------------------------------------------------------
-     */
-    $wp_customize->add_setting(
-        'page_header_colour',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'nightingale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'page_header_colour',
-        array(
-            'label'       => esc_html__( 'Page Header Colour', 'nightingale' ),
-            'description' => esc_html__( 'Sets the background color of page headers. Please note all colours are set to 10% opacity', 'nightingale' ),
-            'section'     => 'colors',
-            'type'        => 'select',
-            'choices'     => hale_get_theme_colours(),
-        )
-    );
-
 
 	/*
 	 * ------------------------------------------------------------

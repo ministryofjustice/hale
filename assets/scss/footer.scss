@@ -1,23 +1,22 @@
-.hale-page {
-  .govuk-footer .widget_social_widget {
-    //the styles here are just for the social media icon links.
-    font-size: 40px;
+.govuk-footer .widget_social_widget {
+  //the styles here are just for the social media icon links.
+  font-size: 40px;
+  font-size: 2.5rem;
+  
+  .hale-social-link {
+    margin-right:12px;
     
-    .hale-social-link {
-      margin-right:12px;
-      
-      &:hover {
-        box-shadow: 0 4px $govuk-text-colour;
-      }
-      &:focus {
-        box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
-      }
+    &:hover {
+      box-shadow: 0 4px $govuk-text-colour;
     }
-    .widgettitle {
-      @extend .govuk-heading-s;
+    &:focus {
+      box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
     }
   }
-  .hale-footer__copyright {
-    margin-top: 1em;
+  .widgettitle {
+    @extend .govuk-heading-s;
   }
+}
+.hale-footer__copyright {
+  margin-top: 1rem;
 }

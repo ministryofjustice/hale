@@ -15,7 +15,7 @@ $govuk-font-family: 'PT Sans', sans-serif;
 
     &.govuk-grid-column-two-thirds .govuk-grid-column-full {
       //for blocks (beneath primary that use the full width class to override the ⅔ width
-      @media (min-width: 40.0625em) {
+      @include govuk-media-query($from: tablet) {
         width: 150%;
         padding:0;
       }
@@ -29,13 +29,13 @@ $govuk-font-family: 'PT Sans', sans-serif;
 .hale-width {
   &--show-narrow-40 {
     display:block;
-    @media (min-width: 40.0625em) {
+    @include govuk-media-query($from: tablet) {
       display:none;
     }
   }
   &--hide-narrow-40 {
     display:none;
-    @media (min-width: 40.0625em) {
+    @include govuk-media-query($from: tablet) {
       display:block;
     }
   }
