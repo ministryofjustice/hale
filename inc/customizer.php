@@ -100,114 +100,6 @@ function nightingale_customize_register( $wp_customize ) {
     );
 
     /*
-     * -----------------------------------------------------------
-     * SHOW / HIDE Banner
-     * -----------------------------------------------------------
-     */
-    $wp_customize->add_setting(
-        'show_header_banner',
-        array(
-            'default'           => 'no',
-            'sanitize_callback' => 'nightingale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'show_header_banner',
-        array(
-            'label'       => esc_html__( 'Show Banner?', 'nightingale' ),
-            'description' => esc_html__( 'Would you like to show a banner at the top of your site?', 'nightingale' ),
-            'section'     => 'section_header',
-            'type'        => 'radio',
-            'choices'     => array(
-                'yes' => esc_html__( 'Yes', 'nightingale' ),
-                'no'  => esc_html__( 'No', 'nightingale' ),
-            ),
-        )
-    );
-
-    $wp_customize->add_setting(
-        'header_banner_title',
-        array(
-            'sanitize_callback' => 'nightingale_sanitize_nohtml',
-        )
-    );
-
-    $wp_customize->add_control(
-        'header_banner_title',
-        array(
-            'label'           => esc_html__( 'Banner Title', 'nightingale' ),
-            'section'         => 'section_header',
-            'type'            => 'text',
-            'active_callback' => function () use ( $wp_customize ) {
-                return 'yes' === $wp_customize->get_setting( 'show_header_banner' )->value();
-            },
-        )
-    );
-
-    $wp_customize->add_setting(
-        'show_header_banner_link',
-        array(
-            'default'           => 'no',
-            'sanitize_callback' => 'nightingale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'show_header_banner_link',
-        array(
-            'label'       => esc_html__( 'Show Banner Link?', 'nightingale' ),
-            'description' => esc_html__( 'Would you like to show a link in the banner?', 'nightingale' ),
-            'section'     => 'section_header',
-            'type'        => 'radio',
-            'active_callback' => function () use ( $wp_customize ) {
-                return 'yes' === $wp_customize->get_setting( 'show_header_banner' )->value();
-            },
-            'choices'     => array(
-                'yes' => esc_html__( 'Yes', 'nightingale' ),
-                'no'  => esc_html__( 'No', 'nightingale' ),
-            ),
-        )
-    );
-
-
-    $wp_customize->add_setting(
-        'header_banner_link_text',
-        array(
-            'sanitize_callback' => 'nightingale_sanitize_nohtml',
-        )
-    );
-
-    $wp_customize->add_control(
-        'header_banner_link_text',
-        array(
-            'label'           => esc_html__( 'Banner Link Text', 'nightingale' ),
-            'section'         => 'section_header',
-            'type'            => 'text',
-            'active_callback' => function () use ( $wp_customize ) {
-                return 'yes' === $wp_customize->get_setting( 'show_header_banner' )->value() && 'yes' === $wp_customize->get_setting( 'show_header_banner_link' )->value() ;
-            },
-        )
-    );
-
-    $wp_customize->add_setting(
-        'header_banner_link_url',
-        array(
-            'sanitize_callback' => 'nightingale_sanitize_nohtml',
-        )
-    );
-
-    $wp_customize->add_control(
-        'header_banner_link_url',
-        array(
-            'label'           => esc_html__( 'Banner Link URL', 'nightingale' ),
-            'section'         => 'section_header',
-            'type'            => 'text',
-            'active_callback' => function () use ( $wp_customize ) {
-                return 'yes' === $wp_customize->get_setting( 'show_header_banner' )->value() && 'yes' === $wp_customize->get_setting( 'show_header_banner_link' )->value() ;
-            },
-        )
-    );
-
-    /*
      * Header Styles
      */
 	$wp_customize->add_setting(
@@ -779,4 +671,50 @@ function nightingale_add_typography_settings( $wp_customize )
     );
 
 
+}
+
+
+add_action( 'customize_register', 'hale_add_blocks_settings' );
+
+function hale_add_blocks_settings( $wp_customize )
+{
+
+    if( current_user_can('administrator') ) {
+
+        $wp_customize->add_section(
+            'blocks_panel',
+            array(
+                'title' => esc_html__('Blocks', 'hale'),
+                'description' => esc_html__('Blocks settings', 'hale'),
+                'capability' => 'edit_theme_options',
+                'theme-supports' => '',
+                'priority' => '151',
+            )
+        );
+
+        /*
+        *  Restrict Blocks Settings
+        */
+        $wp_customize->add_setting(
+            'restrict_blocks',
+            array(
+                'default' => 'yes',
+            )
+        );
+
+        $wp_customize->add_control(
+            'restrict_blocks',
+            array(
+                'label' => esc_html__('Restrict Blocks', 'hale'),
+                'description' => esc_html__('Hides some core Wordpress blocks that are not currently compatible with Hale theme', 'hale'),
+                'section' => 'blocks_panel',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    'yes' => esc_html__('Yes', 'hale'),
+                    'no' => esc_html__('No', 'hale'),
+                ),
+            )
+        );
+    }
 }

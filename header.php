@@ -100,7 +100,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
 </div>
 </header>
 <?php
-  get_template_part( 'partials/banner' );
+get_template_part( 'partials/secondary-top-nav' );
 ?>
 <?php echo hale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
