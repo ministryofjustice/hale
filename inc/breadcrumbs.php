@@ -2,15 +2,15 @@
 /**
  * Generate breadcrumbs
  *
- * Get path to current page and leave breacrumb trail for users to navigate back up the decision tree
+ * Get path to current page and leave breadcrumb trail for users to navigate back up the decision tree
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/
  *
- * @package Hale
  * Theme Hale with GDS styles
  * ©Crown Copyright
- * Adapted from version from NHS Leadership Academy, Tony Blacker
- * @version 2.0 February 2021
+ * @package   Hale
+ * @copyright Ministry of Justice
+ * @version   1.0
  */
 
 /**
