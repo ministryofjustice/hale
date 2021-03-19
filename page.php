@@ -27,21 +27,31 @@ while (have_posts()) :
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
-    /**
-    * Category page list section
-    * This loads the category list section if cat metabox is checked
-    *
-    * */
-    include(locate_template('partials/category-list-section.php', false, false));
 
-    // Page title
-    if (is_front_page() === false) {
+    $show_title_section = get_post_meta($post->ID, 'hale_metabox_page_title_section', true);
 
-        // Header loads if category not selected on page
-        if (empty($is_cat_page)) { ?>
-         <h1 class="govuk-heading-l"><?php the_title(); ?></h1>
-       <?php
-        }
+    if (empty($show_title_section)) {
+        $show_title_section = 'yes';
+    }
+
+    if($show_title_section == 'yes') {
+
+        /**
+         * Category page list section
+         * This loads the category list section if cat metabox is checked
+         *
+         * */
+        include(locate_template('partials/category-list-section.php', false, false));
+
+        // Page title
+        if (is_front_page() === false) {
+
+			 // Header loads if category not selected on page
+					if (empty($is_cat_page)) { ?>
+					 <h1 class="govuk-heading-l"><?php the_title(); ?></h1>
+				 <?php
+					}
+				}
     }
     ?>
       <div class="
