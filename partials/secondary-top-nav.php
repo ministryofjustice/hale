@@ -20,4 +20,4 @@ if (has_nav_menu('secondary-top-menu')) {
             ?>
         </div>
     </nav>
-<?php }
+<?php } ?>

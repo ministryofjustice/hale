@@ -101,10 +101,8 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
 </header>
 <?php
 get_template_part( 'partials/secondary-top-nav' );
-?>
-<?php echo hale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-<?php
+echo hale_breadcrumb(); 
 
 $page_colour = get_post_meta( get_the_id(), 'page-colour', true );
 

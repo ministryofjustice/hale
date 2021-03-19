@@ -27,7 +27,6 @@ while (have_posts()) :
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
-
     $show_title_section = get_post_meta($post->ID, 'hale_metabox_page_title_section', true);
 
     if (empty($show_title_section)) {
