@@ -102,7 +102,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
 <?php
   get_template_part( 'partials/banner' );
 ?>
-<?php echo nightingale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+<?php echo hale_breadcrumb(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php
 
