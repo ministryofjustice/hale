@@ -15,4 +15,10 @@
 			color: govuk-colour("white");
 		}
 	}
+
+	// any full width under primary (which already has the two-thirds class)
+	.govuk-grid-column-full {
+		padding-left:0;
+		padding-right:0;
+	}
 }
