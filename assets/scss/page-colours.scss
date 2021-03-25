@@ -7,6 +7,7 @@
 //Uranus (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
 $hale-uranus-button: #FFE600;
+$hale-uranus-footer-background: #D8DDE0;
 
 //Eris (unused) branding
 $hale-eris-brand-colour: #00A19A;
@@ -44,6 +45,7 @@ $brandings: (
 		input-border: $hale-neptune-input-border,
 		button: $hale-neptune-button,
 		button-hover:$hale-neptune-focus-colour,
+		button-focus:$hale-neptune-focus-colour,
 		button-text:govuk-colour("white"),
 		button-hover-text:govuk-colour("white"),
 		button-border:none,
@@ -57,10 +59,13 @@ $brandings: (
 		button: $hale-uranus-button,
 		button-text: govuk-colour("black"),
 		button-hover: govuk-colour("black"),
+		button-focus: govuk-colour("black"),
+		button-active: govuk-colour("black"),
 		button-hover-text: govuk-colour("white"),
 		link-focus-background: govuk-colour("yellow"),
 		link-focus-colour: govuk-colour("black"),
 		footer-link-focus-background: govuk-colour("yellow"),
+		footer-background: $hale-uranus-footer-background,
 	),
 );
 

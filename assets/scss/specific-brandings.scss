@@ -16,9 +16,20 @@
 		}
 	}
 
+	h1 {
+		margin-top:0;
+	}
+
 	.govuk-button {
 		border-radius: 4px;
-		border-width:0;
+		border-width: 0;
+	}
+
+	.govuk-footer__inline-list-item {
+		display: block;
+		@include govuk-media-query($from: tablet) {
+			display: inline-block;
+		}
 	}
 }
 
@@ -264,6 +275,13 @@
 					border-radius: 0;
 				}
 			}
+		}
+	}
+
+	.govuk-footer__inline-list-item {
+		display: block;
+		@include govuk-media-query($from: tablet) {
+			display: inline-block;
 		}
 	}
 }

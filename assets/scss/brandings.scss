@@ -95,10 +95,11 @@
 				}
 			}
 			&:active {
+				background-color: branded(button-active);
 				box-shadow: none;
 			}
 			&:focus {
-				background-color: branded(link-focus-colour);
+				background-color: branded(button-focus);
 			}
 			svg {
 				fill: branded(button-text);
@@ -116,7 +117,7 @@
 		}
 
 		//link focus state
-		#primary a:not(class),
+		#primary a:not([class]),
 		#primary a[class=""],
 		a.govuk-footer__link {
 			&:focus {
