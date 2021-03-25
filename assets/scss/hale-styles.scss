@@ -13,6 +13,11 @@
   }
 }
 
-.hale-banner__button {
-  float: right;
+#content {
+	clear:both;
+}
+
+.secondary-top-nav a {
+	@extend .govuk-link;
+	line-height:1.5;
 }
