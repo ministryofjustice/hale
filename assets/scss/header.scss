@@ -34,10 +34,10 @@
     width: unset;
     min-width: 33.33%;
 
-    .hale-header__logo--custom {
-      //we do not display a custom logo in "native" mode (i.e. no overriding class = GDS styles)
-      display:none;
-    }
+		.hale-header__logotype--custom {
+			//Remove the space for the GDS logo (background image) so the custom logo isn't inset
+			padding-left:0;
+		}
 
     a:focus .moj-header__logotype-crest path {
       fill: $govuk-focus-text-colour;
