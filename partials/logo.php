@@ -44,7 +44,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
         $image = wp_get_attachment_image( $custom_logo_id , 'full' );
     }
 ?>
-  <span class="govuk-header__logotype
+  <div class="govuk-header__logotype
     <?php
       if ( has_custom_logo() ) {
     ?>
@@ -76,7 +76,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
    <?php
     }
     ?>
-  </span>
+  </div>
 <?php if ( $logo_has_link === 'yes' ) { ?>
   </a>
 <?php
