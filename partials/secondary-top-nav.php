@@ -12,8 +12,7 @@ if (has_nav_menu('secondary-top-menu')) {
         'theme_location' => 'secondary-top-menu'
     );
     ?>
-    <nav class="secondary-top-nav" id="secondary-top-navigation" role="navigation" aria-label="Seconday Top navigation"
-         aria-labelledby="label-navigation">
+    <nav class="secondary-top-nav" id="secondary-top-navigation" role="navigation" aria-label="Seconday Top navigation">
         <div class="govuk-width-container">
             <?php
             wp_nav_menu($menu_args);
