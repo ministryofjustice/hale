@@ -18,7 +18,6 @@ if ( ! empty( get_search_query() ) ) {
 if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
 	$GLOBALS['nightingale_search_form_counter'] = 1;
 	$searchid                                   = '';
-	$toggle_search                              = 'id=toggle-search';
 	$wrap_search                                = 'id=wrap-search';
 	$search_form                                = 'id=search';
 	$search_field                               = 'search-field';
@@ -26,14 +25,13 @@ if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
 } else {
 	$GLOBALS['nightingale_search_form_counter'] ++;
 	$searchid      = $GLOBALS['nightingale_search_form_counter'];
-	$toggle_search = '';
 	$wrap_search   = '';
 	$close_search  = '';
 	$search_form   = 'id=search' . $searchid . '';
 	$search_field  = 'search-field' . $searchid;
 }
 ?>
-<button id="search-show-hide" class="hale-header__mobile-controls hale-header__mobile-controls--search" <?php echo esc_attr( $toggle_search ); ?> aria-controls="search" aria-label="Open search" aria-expanded="false">
+<button id="search-show-hide" class="hale-header__mobile-controls hale-header__mobile-controls--search" aria-controls="search" aria-label="Open search" aria-expanded="false">
   <svg class="hale-icon hale-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
   </svg>
