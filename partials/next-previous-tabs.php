@@ -68,7 +68,7 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
 				}
 				?>
 			</ul>
-    </div>
+    </nav>
     <?php
 }
 
