@@ -119,6 +119,7 @@
 		//link focus state
 		#primary a:not([class]),
 		#primary a[class=""],
+		.hale-article-nav,
 		a.govuk-footer__link {
 			&:focus {
 				background-color: branded(link-focus-background);

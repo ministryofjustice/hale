@@ -26,6 +26,7 @@ $hale-neptune-focus-shading: rgba(0,161,154,.1);
 $hale-neptune-input-background: #D9F1F0;
 $hale-neptune-button:#005EB8;
 $hale-neptune-input-border:#768692;
+$hale-neptune-text-secondary:#535A5E;
 
 $brandings: (
 	neptune: (
@@ -37,6 +38,7 @@ $brandings: (
 		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
 		header-menu-border-colour: $hale-neptune-header-border-colour,
 		title-shading: $hale-neptune-shading,
+		secondary-text: $hale-neptune-text-secondary,
 		footer-background: $hale-neptune-footer-background,
 		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
 		link-focus-colour: $hale-neptune-focus-colour,
@@ -99,6 +101,7 @@ $brandings: (
 		header-link-focus: 
 		header-link-hover-focus: 
 		title-shading: 
+		secondary-text: 
 		footer-background: 
 		footer-link-focus-background: 
 		link-focus-colour: 
