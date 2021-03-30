@@ -63,7 +63,7 @@
 			}
 			.govuk-header__content {
 				.govuk-header__menu-button,
-				a:link{
+				a {
 					color: branded(header-link);
 					&:hover:focus{
 						color: branded(header-link-hover-focus);
@@ -75,7 +75,7 @@
 						box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
 					}
 				}
-				.current-menu-item a:link:not(:focus) {
+				.current-menu-item a:not(:focus) {
 					color: branded(header-link-current);
 				}
 			}
