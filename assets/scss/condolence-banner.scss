@@ -1,0 +1,16 @@
+.condolence-banner {
+  background: #000000;
+  color: #FFFFFF;
+  padding: 20px;
+
+
+  a {
+    color: #FFFFFF;
+    text-decoration: underline;
+
+    &:focus, &:visited, &:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+  }
+}
