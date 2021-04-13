@@ -244,10 +244,11 @@ add_action('widgets_init', 'hale_widgets_init');
  */
 function hale_scripts()
 {
-
+    // CSS
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
 
+    // JS
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "3.11.0", true);
     wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
@@ -260,12 +261,26 @@ function hale_scripts()
 add_action('wp_enqueue_scripts', 'hale_scripts');
 
 /**
+ * Dequeue nuisance plugins and their scripts.
+ *
+ * Hooked to the wp_print_scripts action, with a late priority (100),
+ * so that it is after the script was enqueued.
+ */
+function hale_dequeue_scripts() {
+
+    // Stop a clash from MoJ Blocks plugin, as this theme already uses Gov UK JS
+    wp_dequeue_script( 'mojblocks-govuk-js' );
+}
+
+add_action( 'wp_print_scripts', 'hale_dequeue_scripts', 100 );
+
+/**
  * @param $filename
  * @return string
  */
 function hale_mix_asset($filename)
 {
-    
+
     $manifest = file_get_contents(get_template_directory() . '/dist/mix-manifest.json');
     $manifest = json_decode($manifest, true);
 
