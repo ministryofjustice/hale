@@ -2,6 +2,7 @@
 .govuk-header {
   .govuk-header__navigation {
     max-width: 100%;
+
     li {
       @extend .govuk-header__navigation-item;
 
@@ -17,12 +18,17 @@
     }
   }
 }
+
 .hale-header {
   padding-top: 2px; //wee bit of space above the logo
-  
+
   .govuk-header__logotype-text {
+
+    margin-top: 13px;
+
     @extend .govuk-header__link--homepage;
     //copies the style for this as if it were a link
+
     &:hover {
       //BUT REMOVES THE UNDERLINE
       border-bottom: none;
@@ -34,32 +40,41 @@
     width: unset;
     min-width: 33.33%;
 
-		.hale-header__logotype--custom {
-			//Remove the space for the GDS logo (background image) so the custom logo isn't inset
-			padding-left:0;
-		}
+    .hale-header__logotype--custom {
+      //Remove the space for the GDS logo (background image) so the custom logo isn't inset
+      padding-left: 0;
+
+      .hale-header__logo--custom {
+        float: left;
+      }
+    }
 
     a:focus .moj-header__logotype-crest path {
       fill: $govuk-focus-text-colour;
     }
   }
+
   .hale-header--with-search {
+
     //but for search bar, we revert to the GDS norm
     .govuk-header__logo {
       width: 50%;
     }
   }
+
   .hale-header__search {
     padding-bottom: 0.5em;
   }
+
   .govuk-header__content {
     //remove the width restriction - doesn't work with wider logo (above)
     width: unset;
   }
+
   .govuk-header__logotype {
     //changes because of longer header text and their potential to wrap
     padding-left: 47px;
-    position:relative;
+    position: relative;
 
     .moj-header__logotype-crest {
       position: absolute;
@@ -69,25 +84,29 @@
       vertical-align: top;
     }
   }
+
   @media (min-width: 48.0625em) {
     .govuk-header__content {
       //with the longer header text, the menu now spans the bottom of the header, rather than only the last ⅔.
-      width:unset;
+      width: unset;
       padding: 1em 0 0;
     }
   }
+
   .hale-header__search-form {
-    position:relative;
+    position: relative;
     width: calc(15rem + 44px);
     max-width: 100%;
 
     .hale-search__button-text {
       @extend .govuk-visually-hidden;
     }
-    .hale-search__input{
+
+    .hale-search__input {
       padding-right: 46px;
       border-width: 0;
     }
+
     .hale-search__submit {
       position: absolute;
       right: -1px;
@@ -100,7 +119,7 @@
       width: 44px;
 
       svg.hale-icon__search {
-        display:inline;
+        display: inline;
         position: relative;
         top: 4px;
         height: 27px;
@@ -108,15 +127,18 @@
       }
     }
   }
+
   @media (min-width: 48.0625em) {
     .hale-header__search-form {
       margin-left: auto;
     }
   }
 }
+
 .hale-search__submit {
   margin-top: 30px; //to mimic the .govuk-form-group that we don't have here.
 }
+
 svg.hale-icon__search {
-  display:none; //display in header only;
+  display: none; //display in header only;
 }
