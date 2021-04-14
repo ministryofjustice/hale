@@ -17,12 +17,17 @@
     }
   }
 }
+
 .hale-header {
   padding-top: 2px; //wee bit of space above the logo
-  
+
   .govuk-header__logotype-text {
+
+    margin-top: 13px;
+
     @extend .govuk-header__link--homepage;
     //copies the style for this as if it were a link
+
     &:hover {
       //BUT REMOVES THE UNDERLINE
       border-bottom: none;
@@ -37,6 +42,10 @@
 		.hale-header__logotype--custom {
 			//Remove the space for the GDS logo (background image) so the custom logo isn't inset
 			padding-left:0;
+
+      .hale-header__logo--custom {
+        float:left;
+      }
 		}
 
     a:focus .moj-header__logotype-crest path {
