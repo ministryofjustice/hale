@@ -15,6 +15,8 @@
  * @version 2.0
  */
 
+$is_cat_page = false;
+
 get_header();
 
 flush();
