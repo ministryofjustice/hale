@@ -21,4 +21,30 @@
 		padding-left:0;
 		padding-right:0;
 	}
+
+  //Full width block overrides
+  .contentleft:not(.govuk-grid-column-full){
+    .mojblocks-hero {
+      width: 100%;
+      position: initial;
+      left: 0;
+      right: 0;
+      margin: 0;
+
+      .mojblocks-hero__image {
+        width: 100%;
+      }
+    }
+
+    .mojblocks-highlights-list,
+    .mojblocks-cta {
+      width: 100%;
+      position: initial;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 35px 15px 25px 15px;
+    }
+
+  }
 }
