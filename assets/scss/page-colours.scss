@@ -37,6 +37,7 @@ $brandings: (
 		header-link-focus: $hale-neptune-brand-colour,
 		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
 		header-menu-border-colour: $hale-neptune-header-border-colour,
+    page-body-bg: $hale-neptune-shading,
 		title-shading: $hale-neptune-shading,
 		secondary-text: $hale-neptune-text-secondary,
 		footer-background: $hale-neptune-footer-background,
@@ -73,7 +74,7 @@ $brandings: (
 
 @mixin branding($brandings: $brandings) {
 	@each $brand, $map in $brandings {
-		.hale-branding--#{$brand} & {
+    .hale-branding--#{$brand} {
 			$branding-map: () !global;
 			@each $key, $submap in $map {
 				$value: map-get(map-get($brandings, $brand), '#{$key}');

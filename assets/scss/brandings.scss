@@ -26,21 +26,21 @@
 *{
 	@include branding($brandings) {
 
-		&.govuk-skip-link:focus {
+		.govuk-skip-link:focus {
 			outline-color: branded(header-link-focus-highlight);
 			background-color: branded(header-link-focus-highlight);
 		}
 
-		&.govuk-main-wrapper {
+		.govuk-main-wrapper {
 			//remove gap at top of page
 			padding-top:0;
 		}
 
 		//remove GDS brand colour bar
-		&.govuk-header__container {
+		.govuk-header__container {
 			border-bottom: none;
 		}
-		&.govuk-header {
+		.govuk-header {
 			background: branded(brand-colour);
 			border-bottom-width: 0;
 			.govuk-header__navigation {
@@ -80,7 +80,7 @@
 				}
 			}
 		}
-		&.govuk-button {
+		.govuk-button {
 			border:branded(button-border);
 			box-shadow: 0 1px 0 branded(button);
 			color:branded(button-text);
@@ -106,7 +106,7 @@
 			}
 		}
 
-		&.govuk-input {
+		.govuk-input {
 			border: 2px solid branded(input-border);
 
 			&:focus {
@@ -132,9 +132,13 @@
 		.hale-shaded {
 			background-color:branded(title-shading);
 		}
-		
+
+    &.page-body-colour {
+      background-color:branded(page-body-bg);
+    }
+
 		//footer
-		&.govuk-footer {
+		.govuk-footer {
 			border-top-width: 4px;
 			border-top-color: branded(brand-colour);
 			background: branded(footer-background);
