@@ -99,20 +99,19 @@ while (have_posts()) :
         ?>
         </div>
 
-        <div class="govuk-grid-column-one-third">
-        <?php
-            /**
-             * Load page sidebar
-             *
-             * */
-        if ($show_sidebar === 'yes') {
-            get_sidebar('page');
-        }
-        ?>
-      </div>
     </article><!-- #post-<?php the_ID(); ?> -->
 </div><!-- #primary -->
-
+<div class="govuk-grid-column-one-third">
+    <?php
+    /**
+     * Load page sidebar
+     *
+     * */
+    if ($show_sidebar === 'yes') {
+        get_sidebar('page');
+    }
+    ?>
+</div>
 <?php endwhile;
 
 flush();
