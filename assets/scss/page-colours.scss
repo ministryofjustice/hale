@@ -4,6 +4,8 @@
     specific brands
 **********************/
 
+$light_grey: #e5e5e5;
+
 //Uranus (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
 $hale-uranus-button: #FFE600;
@@ -37,6 +39,7 @@ $brandings: (
 		header-link-focus: $hale-neptune-brand-colour,
 		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
 		header-menu-border-colour: $hale-neptune-header-border-colour,
+    page-body-bg: $hale-neptune-shading,
 		title-shading: $hale-neptune-shading,
 		secondary-text: $hale-neptune-text-secondary,
 		footer-background: $hale-neptune-footer-background,
@@ -58,6 +61,8 @@ $brandings: (
 		header-link-current: govuk-colour("white"),
 		header-link-focus: govuk-colour("black"),
 		header-link-hover-focus: govuk-colour("black"),
+    title-shading: $light_grey,
+    page-body-bg: $light_grey,
 		button: $hale-uranus-button,
 		button-text: govuk-colour("black"),
 		button-hover: govuk-colour("black"),
@@ -73,7 +78,7 @@ $brandings: (
 
 @mixin branding($brandings: $brandings) {
 	@each $brand, $map in $brandings {
-		.hale-branding--#{$brand} & {
+    .hale-branding--#{$brand} {
 			$branding-map: () !global;
 			@each $key, $submap in $map {
 				$value: map-get(map-get($brandings, $brand), '#{$key}');

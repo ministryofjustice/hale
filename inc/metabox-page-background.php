@@ -31,19 +31,31 @@ function hale_render_page_background_metabox($post)
     // generate a nonce field.
     wp_nonce_field(basename(__FILE__), 'hale_page_metabox_background_nonce');
 
-    // Setting Hale Page background Colour
-    $theme_colours = hale_get_theme_colours();
-    $hale_page_bg_colour = esc_attr(get_post_meta($post->ID, 'hale_page_bg_colour', true));
+    $page_bg_colour = get_post_meta($post->ID, 'hale_page_bg_colour', true);
+
+    if (empty($page_bg_colour) || $page_bg_colour != 'yes') {
+        $page_bg_colour = 'no';
+    }
     ?>
 
-    <label for="page-bg-colour-picker"><?php esc_html_e('Set page background colour.', 'hale'); ?></label>
-    <select id="page-bg-colour-picker" name="page-bg-colour-picker" class="wide">
-        <?php foreach ($theme_colours as $name => $colour) : ?>
-            <?php $select = esc_attr(sanitize_title($colour)) === $hale_page_bg_colour ? 'selected' : ''; ?>
-            <option value="<?php echo esc_attr(sanitize_title($colour)); ?>" <?php echo esc_html($select); ?> >
-            <?php echo esc_html($colour); ?></option>
-        <?php endforeach; ?>
-    </select>
+    <p><?php esc_html_e('Page background colour', 'hale'); ?></p>
+
+    <input type="radio" id="page-bg-color-on" name="page-bg-colour" value="yes"
+        <?php
+        if ($page_bg_colour == 'yes') :
+            echo 'checked';
+        endif;
+        ?>
+    >
+    <label for="page-bg-color-on"><?php esc_html_e('Yes', 'hale'); ?></label><br>
+    <input type="radio" id="page-bg-color-off" name="page-bg-colour" value="no"
+        <?php
+        if ($page_bg_colour == 'no') :
+            echo 'checked';
+        endif;
+        ?>
+    >
+    <label for="page-bg-color-off"><?php esc_html_e('No', 'hale'); ?></label><br>
 
     <?php
 }
@@ -75,9 +87,9 @@ function hale_save_page_background_settings($post_id)
         return;
     }
 
-    if (isset($_POST['page-bg-colour-picker'])) {
-        $page_bg_colour_picker = sanitize_text_field(wp_unslash($_POST['page-bg-colour-picker']));
-        update_post_meta($post_id, 'hale_page_bg_colour', esc_attr(wp_unslash($page_bg_colour_picker)));
+    if (isset($_POST['page-bg-colour'])) {
+        $page_bg_colour = sanitize_text_field(wp_unslash($_POST['page-bg-colour']));
+        update_post_meta($post_id, 'hale_page_bg_colour', esc_attr(wp_unslash($page_bg_colour)));
     }
 }
 
@@ -92,13 +104,22 @@ add_filter('body_class', 'hale_append_selected_bg_colour_to_body');
 function hale_append_selected_bg_colour_to_body($classes)
 {
     if (is_page(get_the_id())) {
-        $page_bg_color = esc_attr(get_post_meta(get_the_id(), 'hale_page_bg_colour', true));
-    } else {
-        $page_bg_color = '';
-    }
 
-    // If a selected colour exsits in the DB add the name to the CSS class and add to WP body class array, if not, return the $classes array.
-    $classes = $page_bg_color ? array_merge($classes, [ 'page-body-colour--' . $page_bg_color ]) : $classes;
+        // Get page bg value, is it set to display or not
+        $page_bg_colour = get_post_meta(get_the_id(), 'hale_page_bg_colour', true);
+
+        // If it's a new page, set page bg to "no" by default
+        if (empty($page_bg_colour) || $page_bg_colour != 'yes') {
+            $page_bg_colour = 'no';
+        }
+
+        if($page_bg_colour == 'yes'){
+
+            $classes[] =  'page-body-colour';
+
+        }
+
+    }
 
     return $classes;
 }
