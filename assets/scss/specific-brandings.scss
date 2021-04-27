@@ -72,6 +72,7 @@
 	}
 
 	//light blue shading for page title
+	.hale-search-header,
 	.hale-heading--top,
 	article>h1 {
 		position:relative;
@@ -103,6 +104,10 @@
 			}
 		}
 	}
+	.hale-search-header + div {
+		margin-top: 30px;
+	}
+
 	ul.hale-list--top{
 		list-style: none;
 		padding-bottom: 1em;
