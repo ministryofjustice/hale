@@ -4,6 +4,8 @@
     specific brands
 **********************/
 
+$light_grey: #e5e5e5;
+
 //Uranus (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
 $hale-uranus-button: #FFE600;
@@ -59,6 +61,8 @@ $brandings: (
 		header-link-current: govuk-colour("white"),
 		header-link-focus: govuk-colour("black"),
 		header-link-hover-focus: govuk-colour("black"),
+    title-shading: $light_grey,
+    page-body-bg: $light_grey,
 		button: $hale-uranus-button,
 		button-text: govuk-colour("black"),
 		button-hover: govuk-colour("black"),

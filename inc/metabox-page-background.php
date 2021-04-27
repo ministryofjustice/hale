@@ -33,7 +33,7 @@ function hale_render_page_background_metabox($post)
 
     $page_bg_colour = get_post_meta($post->ID, 'hale_page_bg_colour', true);
 
-    if (empty($page_bg_colour)) {
+    if (empty($page_bg_colour) || $page_bg_colour != 'yes') {
         $page_bg_colour = 'no';
     }
     ?>
@@ -105,11 +105,11 @@ function hale_append_selected_bg_colour_to_body($classes)
 {
     if (is_page(get_the_id())) {
 
-        // Get sidebar value, is it set to display or not
+        // Get page bg value, is it set to display or not
         $page_bg_colour = get_post_meta(get_the_id(), 'hale_page_bg_colour', true);
 
-        // If it's a new page, set sidebar to "on" by default
-        if (empty($page_bg_colour)) {
+        // If it's a new page, set page bg to "no" by default
+        if (empty($page_bg_colour) || $page_bg_colour != 'yes') {
             $page_bg_colour = 'no';
         }
 
