@@ -30,6 +30,38 @@ $hale-neptune-button:#005EB8;
 $hale-neptune-input-border:#768692;
 $hale-neptune-text-secondary:#535A5E;
 
+/*
+
+mojblocks-accordion-section-heading
+mojblocks-accordion-section-heading-hover
+
+mojblocks-banner-btn-bg
+mojblocks-banner-btn-text
+mojblocks-banner-btn-hover-bg //used for hover and focus
+mojblocks-banner-btn-hover-text //used for hover and focus
+
+mojblocks-cta-bg
+mojblocks-cta-title
+mojblocks-cta-text
+mojblocks-cta-btn-bg
+mojblocks-cta-btn-text
+mojblocks-cta-btn-hover-bg
+mojblocks-cta-btn-hover-text
+mojblocks-cta-btn-focus-bg
+mojblocks-cta-btn-focus-text
+
+mojblocks-highlights-list-bg
+mojblocks-highlights-list-title
+mojblocks-highlights-list-text
+mojblocks-highlights-list-divider
+
+mojblocks-staggered-box-bg
+mojblocks-staggered-box-text
+mojblocks-staggered-box-btn-border
+mojblocks-staggered-box-btn-hover-bg
+
+*/
+
 $brandings: (
 	neptune: (
 		brand-colour: $hale-neptune-brand-colour,
@@ -54,6 +86,17 @@ $brandings: (
 		button-text:govuk-colour("white"),
 		button-hover-text:govuk-colour("white"),
 		button-border:none,
+    mojblocks-cta-bg: $hale-neptune-brand-colour,
+    mojblocks-cta-title: $hale-neptune-focus-colour,
+    mojblocks-cta-text: govuk-colour("white"),
+    mojblocks-cta-btn-bg: $hale-neptune-focus-colour,
+    mojblocks-cta-btn-text: govuk-colour("black"),
+    mojblocks-cta-btn-hover-bg: govuk-colour("white"),
+    mojblocks-cta-btn-hover-text: $hale-neptune-focus-colour,
+    mojblocks-highlights-list-bg: $hale-neptune-brand-colour,
+    mojblocks-highlights-list-title:$hale-neptune-focus-colour,
+    mojblocks-highlights-list-text: govuk-colour("white"),
+    mojblocks-highlights-list-divider: $hale-neptune-focus-colour,
 	),
 	uranus: (
 		brand-colour: $hale-uranus-brand-colour,
@@ -74,6 +117,41 @@ $brandings: (
 		footer-link-focus-background: govuk-colour("yellow"),
 		footer-background: $hale-uranus-footer-background,
 	),
+  pluto: (
+    brand-colour: $hale-neptune-brand-colour,
+    header-link-current: govuk-colour("white"),
+    header-link-focus-underline: $hale-neptune-header-focus-colour,
+    header-link-focus-highlight: $hale-neptune-header-focus-highlight,
+    header-link-focus: $hale-neptune-brand-colour,
+    header-link-hover-focus: $hale-neptune-header-hover-link-colour,
+    header-menu-border-colour: $hale-neptune-header-border-colour,
+    page-body-bg: $hale-neptune-shading,
+    title-shading: $hale-neptune-shading,
+    secondary-text: $hale-neptune-text-secondary,
+    footer-background: $hale-neptune-footer-background,
+    footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
+    link-focus-colour: $hale-neptune-focus-colour,
+    link-focus-background: $hale-neptune-focus-shading,
+    input-background: $hale-neptune-input-background,
+    input-border: $hale-neptune-input-border,
+    button: $hale-neptune-button,
+    button-hover:$hale-neptune-focus-colour,
+    button-focus:$hale-neptune-focus-colour,
+    button-text:govuk-colour("white"),
+    button-hover-text:govuk-colour("white"),
+    button-border:none,
+    mojblocks-cta-bg: $hale-neptune-brand-colour,
+    mojblocks-cta-title: $hale-neptune-focus-colour,
+    mojblocks-cta-text: govuk-colour("white"),
+    mojblocks-cta-btn-bg: $hale-neptune-focus-colour,
+    mojblocks-cta-btn-text: govuk-colour("black"),
+    mojblocks-cta-btn-hover-bg: govuk-colour("white"),
+    mojblocks-cta-btn-hover-text: $hale-neptune-focus-colour,
+    mojblocks-highlights-list-bg: $hale-neptune-brand-colour,
+    mojblocks-highlights-list-title:$hale-neptune-focus-colour,
+    mojblocks-highlights-list-text: govuk-colour("white"),
+    mojblocks-highlights-list-divider: $hale-neptune-focus-colour,
+  ),
 );
 
 @mixin branding($brandings: $brandings) {

@@ -1,0 +1,50 @@
+@import 'page-colours';
+
+//brandings for MOj Blocks
+
+*{
+	@include branding($brandings) {
+
+    //CTA Block
+    .mojblocks-cta {
+      background-color: branded(mojblocks-cta-bg);
+
+      &__heading-text {
+        color: branded(mojblocks-cta-title);
+
+      }
+
+      &__content p {
+        color: branded(mojblocks-cta-text);
+      }
+
+      a.mojblocks-button {
+        background-color: branded(mojblocks-cta-btn-bg);
+        color: branded(mojblocks-cta-btn-text);
+
+        &:focus, &:hover {
+          background-color: branded(mojblocks-cta-btn-hover-bg);
+          color: branded(mojblocks-cta-btn-hover-text);
+        }
+      }
+    }
+
+    .mojblocks-highlights-list {
+      background-color: branded(mojblocks-highlights-list-bg);
+
+      &__heading-text {
+        color: branded(mojblocks-highlights-list-title);
+      }
+
+      &__content li {
+        color: branded(mojblocks-highlights-list-text);
+
+        &:before {
+          background-color: branded(mojblocks-highlights-list-divider);
+        }
+      }
+    }
+
+  }
+
+}
