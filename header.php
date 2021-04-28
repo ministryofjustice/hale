@@ -81,22 +81,24 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
           $headersearchextra = '';
         }
       ?>
+    <?php
+    if ($show_header_menu == 'yes') {
+    ?>
     <div class="govuk-header__content" id="content-header">
       <div class="hale-header__menu <?php echo esc_attr($headersearchextra); ?>">
 
       </div>
-      <?php
-        if ($show_header_menu == 'yes') {
-      ?>
+
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
       <?php get_template_part( 'partials/topnav' );
-      }
+
       ?>
 
     <div class="hale-header__header-controls">
 
     </div>
 	</div>
+    <?php } ?>
 </div>
 </header>
 <?php
