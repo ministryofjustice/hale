@@ -14,7 +14,8 @@ function hale_get_theme_colours() {
 	return array(
 		''       => esc_html__( 'Inherit site wide colour settings', 'hale' ),
 		'0c223f' => esc_html__( 'Neptune', 'hale' ),
-		'336c83' => esc_html__( 'Uranus', 'hale' ),
+		'ffffff' => esc_html__( 'Pluto', 'hale' ),
+        '336c83' => esc_html__( 'Uranus', 'hale' ),
 		'00a19a' => esc_html__( 'Eris', 'hale' ),
 		'0b0c0c' => esc_html__( 'HMG', 'hale' )
 	);

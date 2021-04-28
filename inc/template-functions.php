@@ -146,10 +146,11 @@ function nightingale_sidebar_location( $sidebar ) {
  *
  * @param array $classes the pre-existing classes for a WordPress page.
  */
-function nightingale_custom_page_colour( $classes ) {
+function hale_custom_page_colour( $classes ) {
 
     $colour_array = [
 			'0c223f' => 'neptune',
+            'ffffff' => 'pluto',
 			'0b0c0c' => 'government',
 			'336c83' => 'uranus',
 			'00a19a' => 'eris',
@@ -167,7 +168,7 @@ function nightingale_custom_page_colour( $classes ) {
   return $classes;
 }
 
-add_filter( 'body_class', 'nightingale_custom_page_colour' );
+add_filter( 'body_class', 'hale_custom_page_colour' );
 
 
 function nightingale_custom_typography( $classes ) {
