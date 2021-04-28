@@ -29,6 +29,7 @@
       }
     }
 
+    //Highlights List
     .mojblocks-highlights-list {
       background-color: branded(mojblocks-highlights-list-bg);
 
@@ -36,11 +37,56 @@
         color: branded(mojblocks-highlights-list-title);
       }
 
-      &__content li {
+      .mojblocks-highlights-list__content li {
         color: branded(mojblocks-highlights-list-text);
+
+        a,
+        a:link,
+        a:link:visited
+        a:link:visited:not([class]){
+          color: branded(mojblocks-highlights-list-text);
+        }
 
         &:before {
           background-color: branded(mojblocks-highlights-list-divider);
+        }
+      }
+    }
+
+    .mojblocks-staggered-box {
+      .mojblocks-staggered-box__text-container {
+        background: branded(mojblocks-staggered-box-bg);
+
+        .mojblocks-staggered-box__title {
+
+          color: branded(mojblocks-staggered-box-title);
+
+          &:before {
+            background: branded(mojblocks-staggered-box-divider);
+          }
+        }
+
+        .mojblocks-staggered-box__content {
+          color: branded(mojblocks-staggered-box-text);
+        }
+
+        .mojblocks-staggered-box__button {
+          border-color: branded(mojblocks-staggered-box-btn-border);
+          color: branded(mojblocks-staggered-box-btn-text);
+          background: branded(mojblocks-staggered-box-btn-bg);
+
+          &:hover {
+            border-color: branded(mojblocks-staggered-box-btn-hover-border);
+            color: branded(mojblocks-staggered-box-btn-hover-text);
+            background: branded(mojblocks-staggered-box-btn-hover-bg);
+          }
+
+          &:focus {
+            border-color: branded(mojblocks-staggered-box-btn-focus-border);
+            color: branded(mojblocks-staggered-box-btn-focus-text);
+            background: branded(mojblocks-staggered-box-btn-focus-bg);
+          }
+
         }
       }
     }

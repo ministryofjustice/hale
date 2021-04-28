@@ -16,10 +16,6 @@
 		}
 	}
 
-	h1 {
-		margin-top:0;
-	}
-
 	.govuk-button {
 		border-radius: 4px;
 		border-width: 0;
@@ -52,9 +48,9 @@
 		outline-color: $hale-neptune-header-focus-colour;
 	}
 
-	.govuk-button {
-		border-radius: 4px;
-	}
+  .govuk-header .govuk-header__logo {
+    min-height: 49px;
+  }
 
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
@@ -143,46 +139,6 @@
 
 		.gem-c-pagination__link-icon {
 			display:none;
-		}
-	}
-
-	.hale-header .hale-header__search-form {
-		margin-right:66px;
-		width: 100%;
-		@include govuk-media-query($from: tablet) {
-			//space for menu button
-			width: calc(15rem + 44px);
-			margin-left:auto;
-			position:relative;
-			top: -37px;
-		}
-		@include govuk-media-query($from: desktop) {
-			top: 0;
-			margin-left:auto;
-			margin-right:0;
-		}
-
-		.hale-search__input {
-			border-bottom-right-radius: 4px;
-			border-top-right-radius: 4px;
-
-			+.govuk-button.hale-search__submit {
-				border-bottom-left-radius: 0;
-				border-top-left-radius: 0;
-				box-shadow: 0 1px 0 $hale-neptune-button;
-				&:focus {
-					box-shadow: 0 1px 0 $hale-neptune-focus-colour;
-				}
-			}
-			&:focus {
-				outline-width: 3px;
-				border-bottom-right-radius: 0;
-				border-top-right-radius: 0;
-
-				+.hale-search__submit {
-					border-radius: 0;
-				}
-			}
 		}
 	}
 
