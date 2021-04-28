@@ -118,7 +118,8 @@ $brandings: (
 		footer-background: $hale-uranus-footer-background,
 	),
   pluto: (
-    brand-colour: $hale-neptune-brand-colour,
+    brand-colour: govuk-colour("white"),
+    header-link: govuk-colour("black"),
     header-link-current: govuk-colour("white"),
     header-link-focus-underline: $hale-neptune-header-focus-colour,
     header-link-focus-highlight: $hale-neptune-header-focus-highlight,

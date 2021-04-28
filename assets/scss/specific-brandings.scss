@@ -107,31 +107,6 @@
 	.hale-search-header + div {
 		margin-top: 30px;
 	}
-
-	ul.hale-list--top{
-		list-style: none;
-		padding-bottom: 1em;
-
-		li {
-			line-height:1.5;
-			margin: 0.5em 0;
-			background-repeat: no-repeat;
-			background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='%2300a19a'/%3E%3C/svg%3E");
-			padding-left: 35px;
-			
-			@include govuk-media-query($from: tablet) {
-				line-height:1.3;
-			}
-
-			&.current_page {
-				font-weight:700;
-			}
-			
-			a:not(:hover) {
-				text-decoration:none;
-			}
-		}
-	}
 	
 	//adjust the gem (government publishing component) navigation
 	.gem-c-pagination__item {
@@ -168,98 +143,6 @@
 
 		.gem-c-pagination__link-icon {
 			display:none;
-		}
-	}
-
-	//header
-	.govuk-header {
-
-		.govuk-header__logo {
-			min-height: 49px;
-		}
-		.govuk-header__menu-button {
-			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='%23fff'/%3E%3C/svg%3E");
-			background-position-x: center;
-			background-position-y: 2px;
-			background-repeat: no-repeat;
-			padding-top: 25px;
-			cursor: pointer;
-
-			&:after {
-				display:none;
-			}
-			&[aria-expanded=true] {
-				background-position-y: -7px;
-				background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='%23fff'/%3E%3C/svg%3E");
-			}
-		}
-
-		.hale-header__mobile-controls--search {
-			background-position-y: -4px;
-			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='%23fff'/%3E%3C/svg%3E");
-		}
-
-		.hale-header__mobile-controls--search,
-		.govuk-header__content .govuk-header__menu-button {
-			&:hover {
-				text-decoration: underline;
-				border-bottom:none;
-			}
-			&:focus,
-			&:not(:hover):focus {
-				background-color: unset;
-				color: govuk-colour("white");
-				box-shadow: none;
-				border-bottom:none;
-			}
-			&:active {
-				margin-top: 2px;
-			}
-		}
-	
-		.govuk-header__link:focus {
-			background-color: $hale-neptune-header-focus-colour;
-		}
-		.govuk-header__navigation {
-			border-top: 1px solid $hale-neptune-header-border-colour;
-			li {
-				padding:0;
-				a {
-					width:100%;
-				}
-			}
-		}
-		.govuk-header__content {
-			width:100%;
-			min-height: 15px;
-
-			.govuk-header__navigation a:link {
-				display:inline-block;
-				font-weight: 400;
-			}
-			//header arrangement
-			li.current-menu-item a:link,
-			.govuk-header__menu-button,
-			a:link {
-				border-bottom-width: 4px;
-				border-bottom-style: solid;
-				text-decoration: none;
-				box-shadow: none;
-				&:not(:hover) {
-					border-bottom-color:transparent;
-					&:focus {
-						border-bottom-color:$hale-neptune-header-focus-colour;
-					}
-				}
-				&:hover {
-					border-bottom-color:govuk-colour("white");
-					background-color: unset;
-				}
-				&:focus:not(:active):not(:hover),
-				&:focus {
-					box-shadow:none;
-				}
-			}
 		}
 	}
 

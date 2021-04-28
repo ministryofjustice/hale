@@ -63,7 +63,7 @@
 			}
 			.govuk-header__content {
 				.govuk-header__menu-button,
-				a {
+				.govuk-header__navigation a {
 					color: branded(header-link);
 					&:hover:focus{
 						color: branded(header-link-hover-focus);
