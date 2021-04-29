@@ -1,0 +1,57 @@
+.govuk-main-wrapper {
+  a:not([class]), a[class=""] {
+    //deals with any links that aren't classed - makes them GDS links
+    @extend .govuk-link;
+  }
+  ul:not([class]), ul[class=""] {
+    //deals with any lists that aren't classed - makes them GDS links
+    @extend .govuk-list;
+    @extend .govuk-list--bullet;
+  }
+
+	//override for the sovial media links (ootb wordpress)
+	.wp-block-social-link {
+		> a:not([class]), > a[class=""] {
+			color: govuk-colour("white");
+		}
+	}
+
+	//override download block button styling
+	.wp-block-file a.wp-block-file__button {
+		@extend .govuk-button;
+    margin: 0;
+    font-size: 1rem;
+	}
+
+	// any full width under primary (which already has the two-thirds class)
+	.govuk-grid-column-full {
+		padding-left:0;
+		padding-right:0;
+	}
+
+  //Full width block overrides
+  .contentleft:not(.govuk-grid-column-full){
+    .mojblocks-hero {
+      width: 100%;
+      position: initial;
+      left: 0;
+      right: 0;
+      margin: 0;
+
+      .mojblocks-hero__image {
+        width: 100%;
+      }
+    }
+
+    .mojblocks-highlights-list,
+    .mojblocks-cta {
+      width: 100%;
+      position: initial;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 35px 15px 25px 15px;
+    }
+
+  }
+}

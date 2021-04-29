@@ -1,0 +1,23 @@
+.hale-secondary-text {
+  color:$govuk-secondary-text-colour;
+}
+
+@include govuk-media-query($from: tablet) {
+  .hale-width_hide-narrow-40 {
+    display: none;
+  }
+}
+@include govuk-media-query($from: tablet) {
+  .hale-width_hide-narrow-40 {
+    display: none;
+  }
+}
+
+#content {
+	clear:both;
+}
+
+.secondary-top-nav a {
+	@extend .govuk-link;
+	line-height:1.5;
+}

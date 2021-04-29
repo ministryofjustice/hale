@@ -3,9 +3,11 @@
  * Template part for displaying posts
  *
  * @link      https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 ?>
 
@@ -13,14 +15,14 @@
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="nhsuk-heading-xl">', '</h1>' );
+			the_title( '<h1 class="govuk-heading-xl">', '</h1>' );
 		else :
-			the_title( '<h2 class="nhsuk-heading-l"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="govuk-heading-l"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="nhsuk-review-date">
+			<div class="hale-review-date">
 				<?php
 				nightingale_posted_by();
 				nightingale_posted_on();
@@ -28,7 +30,7 @@
 				$readmoretitle = esc_html( get_the_title() );
 				if ( strlen( $readmoretitle ) < 1 ) {
 					$readmoretitle = esc_html__( 'this post', 'nightingale' );
-					echo '<div class="nhsuk-readmore">' . nightingale_read_more_posts( $readmoretitle, $readmorelink ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '<div class="hale-readmore">' . nightingale_read_more_posts( $readmoretitle, $readmorelink ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 				?>
 				</p>
@@ -72,7 +74,7 @@
 		wp_link_pages( $defaults );
 		?>
 	</article><!-- .article-content -->
-	<div class="nhsuk-content__clearfix"></div>
+	<div class="govuk-clearfix"></div>
 
 	<?php do_action( 'nightingale_after_single_content' ); ?>
 

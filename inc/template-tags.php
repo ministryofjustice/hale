@@ -3,9 +3,11 @@
  * Custom template tags for this theme
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 if ( ! function_exists( 'nightingale_posted_on' ) ) :
@@ -28,7 +30,7 @@ if ( ! function_exists( 'nightingale_posted_on' ) ) :
 				esc_html( get_the_modified_date() )
 			);
 
-			echo '<span class="nhsuk-u-visually-hidden">Posted on: </span>' . $time_string . ' '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<span class="govuk-visually-hidden">Posted on: </span>' . $time_string . ' '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 endif;
@@ -40,7 +42,7 @@ if ( ! function_exists( 'nightingale_posted_by' ) ) :
 	function nightingale_posted_by() {
 		$author_enabled = get_theme_mod( 'blog_author_display', 'true' );
 		if ( 'true' === $author_enabled ) {
-			echo '<span class="nhsuk-u-visually-hidden">Posted by: </span><a class="url fn n" 
+			echo '<span class="govuk-visually-hidden">Posted by: </span><a class="url fn n" 
  href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>&nbsp;-&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
@@ -120,8 +122,8 @@ if ( ! function_exists( 'nightingale_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<fig class="nhsuk-image featured">
-				<?php the_post_thumbnail( '', array( 'class' => 'nhsuk-image__img' ) ); ?>
+			<fig class="hale-image__figure featured">
+				<?php the_post_thumbnail( '', array( 'class' => 'hale-image__image' ) ); ?>
 			</fig><!-- .post-thumbnail -->
 
 		<?php else : ?>
@@ -161,7 +163,7 @@ function nightingale_comment_display( $comment, $args, $depth ) {
 		$add_below = 'div-comment';
 	}
 	?>
-	<<?php echo esc_html( $tag ); ?><?php echo comment_class( 'nhsuk-list-panel__item' ); ?> id="comment-<?php echo esc_html( comment_ID() ); ?>">
+	<<?php echo esc_html( $tag ); ?><?php echo comment_class( 'hale-comment__item' ); ?> id="comment-<?php echo esc_html( comment_ID() ); ?>">
 	<?php
 	if ( 'div' !== $args['style'] ) {
 		?>

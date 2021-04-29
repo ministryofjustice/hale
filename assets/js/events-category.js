@@ -13,6 +13,7 @@ jQuery( document ).ready(function( $ ) {
 		}
 	}
 
-	$(".nhsuk-width-container").on( "change", "#select-1", onCatChange );
+	//$(".nhsuk-width-container").on( "change", "#select-1", onCatChange );
+  //this won't work anymore - we don't use nhsuk classes anymore
 
 });

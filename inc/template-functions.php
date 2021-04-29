@@ -2,9 +2,11 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 /**
@@ -108,22 +110,11 @@ add_filter( 'excerpt_more', 'nightingale_excerpt_more' );
  *                      return string output html.
  */
 function nightingale_read_more_posts( $title, $link ) {
-
-	$readmorelink = '<div class="nhsuk-action-link nhsuk-readmore">';
+  $readmorelink = '';
 	if ( '' !== $link ) {
-		$readmorelink .= '<a class="nhsuk-action-link__link" href="' . $link . '">';
+		$readmorelink .= '<a class="govuk-button" href="' . $link . '">' . esc_html__( 'Read more ', 'nightingale' ) . '</a>';
 	}
-	$readmorelink .= '<span class="nhsuk-action-link__text">' . esc_html__( 'read more ', 'nightingale' ) . '</span><span class="nhsuk-u-visually-hidden">' . esc_html__( ' about ', 'nightingale' ) . $title . '</span><svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-	  <path d="M0 0h24v24H0z" fill="none"></path>
-	  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-	</svg>';
-	if ( '' !== $link ) {
-		$readmorelink .= '</a>';
-	}
-	$readmorelink .= '</div>';
-
 	return $readmorelink;
-
 }
 
 /**
@@ -157,30 +148,23 @@ function nightingale_sidebar_location( $sidebar ) {
  */
 function nightingale_custom_page_colour( $classes ) {
 
-    $colour_array      = array(
-        '005eb8' => 'blue',
-        '0c223f' => 'dark-blue',
-        '336c83' => 'teal',
-        '00a19a' => 'light-teal',
-    );
+    $colour_array = [
+			'0c223f' => 'neptune',
+			'0b0c0c' => 'government',
+			'336c83' => 'uranus',
+			'00a19a' => 'eris',
+    ];
 
-	$colour = get_theme_mod( 'theme_colour', 'blue' );
+	$colour = get_theme_mod( 'theme_colour', '0c223f' );
 
 	if ( !empty($colour) ) {
-		$theme_colour_name = 'page-colour--' . $colour_array[ $colour ];
+		$theme_colour_name = 'hale-branding--' . $colour_array[ $colour ];
 		$classes[]         = $theme_colour_name;
+	} else {
+		$classes[]         = 'hale-branding--neptune'; //none set = use Neptune
 	}
 
-    //Add page header colour class
-    $page_header_colour = get_theme_mod( 'page_header_colour', '' );
-
-    if(!empty($page_header_colour)){
-        $page_header_colour_name = 'page-header-color--' . $colour_array[ $page_header_colour ];
-        $classes[] = $page_header_colour_name;
-    }
-
-
-    return $classes;
+  return $classes;
 }
 
 add_filter( 'body_class', 'nightingale_custom_page_colour' );

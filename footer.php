@@ -6,10 +6,13 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
+$crown_copyright = get_theme_mod('crown_copyright', 'Yes');
 
 flush();
 ?>
@@ -17,23 +20,40 @@ flush();
 </main>
 </div>
 
-<footer>
-	<div class="nhsuk-footer" id="nhsuk-footer">
-		<div class="nhsuk-width-container">
-			<?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
-				<div id="nhsuk-footer-widgets" class="nhsuk-footer__widgets widget-area" role="complementary">
-					<?php dynamic_sidebar( 'footer-region' ); ?>
-				</div>
-				<?php
-			endif;
-
-			get_template_part( 'partials/footernav' );
-			get_template_part( 'partials/footer-copyright' );
-			?>
-
-		</div>
-	</div>
+<footer class="govuk-footer " role="contentinfo" id="footer">
+  <div class="govuk-width-container">
+    <?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
+      <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
+        <?php dynamic_sidebar( 'footer-region' ); ?>
+      </div>
+      <?php
+    endif;
+    ?>
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <?php
+          get_template_part( 'partials/footernav' );
+          get_template_part( 'partials/footer-licence' );
+          if ('yes' != $crown_copyright) {
+            get_template_part( 'partials/footer-copyright' );
+          }
+        ?>
+      </div>
+      <?php
+        if ('yes' == $crown_copyright) {
+      ?>
+        <div class="govuk-footer__meta-item">
+          <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+        </div>
+      <?php
+        }
+      ?>
+    </div>
+  </div>
 </footer>
 <?php wp_footer(); ?>
+  <script>
+    window.GOVUKFrontend.initAll()
+  </script>
 </body>
 </html>

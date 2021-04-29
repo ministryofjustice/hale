@@ -6,7 +6,7 @@
  *
  * @package Hale
  * @copyright Ministry of Justice
- * @version 1.0
+ * @version 2.0
  */
 
 ?>
@@ -46,5 +46,5 @@
 		endif;
 		?>
 	</div><!-- .page-content -->
-	<div class="nhsuk-content__clearfix"></div>
+	<div class="govuk-clearfix"></div>
 </section><!-- .no-results -->

@@ -11,7 +11,7 @@
 
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="hale-page">
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,11 @@
 	flush();
 	?>
 </head>
-<body <?php body_class( 'js-enabled' ); ?>>
+<body <?php body_class(""); ?>>
+<script>
+	// add in js-enabled by JavaScript - no JS, JS not enabled
+	document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+</script>
 <?php
 if ( ! function_exists( 'wp_body_open' ) ) {
 	/**
@@ -38,75 +42,76 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 wp_body_open();
 ?>
 <?php do_action( 'nightingale_after_body' ); ?>
-<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
+<a class="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
 
-$header_layout = get_theme_mod( 'logo_type', 'transactional' );
 $header_colour = get_theme_mod( 'header_styles', 'normal' );
+$header_search = get_theme_mod( 'show_search', 'yes' );
+$show_header_menu = get_theme_mod('show_header_menu', 'yes');
 
 if ( 'normal' !== $header_colour ) {
-	$header_colour_text = ' nhsuk-header--white';
+	$header_colour_text = ' hale-header--white';
 } else {
 	$header_colour_text = '';
 }
-echo '<header class="nhsuk-header nhsuk-header--' . esc_attr( $header_layout . $header_colour_text ) . '">';
+if ( 'yes' === $header_search && !is_search()) {
+  $header_search_class = 'hale-header--with-search';
+} else {
+  $header_search_class = '';
+}
+
+echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text . $header_search_class ) . '" data-module="govuk-header">';
 ?>
-<div class="nhsuk-width-container nhsuk-header__container">
+<div class="govuk-width-container govuk-header__container">
 	<?php
 	get_template_part( 'partials/logo' );
 	?>
-	<div class="nhsuk-header__content" id="content-header">
-
-		<?php
-		$header_search = get_theme_mod( 'show_search', 'yes' );
-		if ( 'no' === $header_search ) {
-			$headersearchextra = 'nhsuk-header__menu--only';
-		} else {
-			$headersearchextra = '';
-		}
-
-        $show_header_menu = get_theme_mod('show_header_menu', 'yes');
-        if ($show_header_menu == 'yes') {
-            ?>
-            <div class="nhsuk-header__menu <?php echo esc_attr($headersearchextra); ?>">
-                <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu" aria-expanded="false">
-									<span>Menu</span>
-                </button>
-            </div>
-
-            <?php
+ <?php
+  if ( 'yes' === $header_search && !is_search()) {
+    ?>
+    <div class="hale-header__search">
+      <?php get_search_form(); ?>
+    </div>
+    <?php
+  }
+?>     <?php
+        if ( 'no' === $header_search ) {
+          $headersearchextra = 'hale-header__menu--only';
+        } else {
+          $headersearchextra = '';
         }
+      ?>
+    <div class="govuk-header__content" id="content-header">
+      <div class="hale-header__menu <?php echo esc_attr($headersearchextra); ?>">
 
-		if ( 'yes' === $header_search && !is_search()) {
-			?>
-			<div class="nhsuk-header__search">
-				<?php get_search_form(); ?>
-			</div>
-			<?php
-		}
-		?>
+      </div>
+      <?php
+        if ($show_header_menu == 'yes') {
+      ?>
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
+      <?php get_template_part( 'partials/topnav' );
+      }
+      ?>
 
+    <div class="hale-header__header-controls">
+
+    </div>
 	</div>
-
 </div>
-<?php
-get_template_part( 'partials/topnav' );
-?>
 </header>
 <?php
 get_template_part( 'partials/secondary-top-nav' );
+
+echo hale_breadcrumb(); 
+
+$page_colour = get_post_meta( get_the_id(), 'page-colour', true );
+
+$extra_styles = $page_colour ? 'page-style--' . $page_colour : '';
+
 ?>
-<?php echo hale_breadcrumb(); ?>
-<?php
 
-$page_color = get_post_meta( get_the_id(), 'page-color', true );
-
-$extra_styles = $page_color ? 'page-style--' . $page_color : '';
-
-?>
-
-<div id="content" class="nhsuk-width-container nhsuk-width-container--full">
-	<main class="nhsuk-main-wrapper nhsuk-main-wrapper--no-padding <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
-		<div id="contentinner">
+<div id="content" class="govuk-width-container">
+	<main class="govuk-main-wrapper <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
+		<div id="contentinner" class="govuk-grid-row">
 		<?php
 		flush();

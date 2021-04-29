@@ -221,8 +221,33 @@ function nightingale_customize_register( $wp_customize ) {
         )
     );
 
+  /*
+	 * Crown Copyright
+	 */
+	$wp_customize->add_setting(
+		'crown_copyright',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'nightingale_sanitize_select',
+		)
+	);
+
+	$wp_customize->add_control(
+      'crown_copyright',
+      array(
+          'label'       => esc_html__( 'Copyright', 'nightingale' ),
+          'description' => esc_html__( 'Is the content Crown Copyright', 'nightingale' ),
+          'section'     => 'title_tagline',
+          'type'        => 'radio',
+          'choices'     => array(
+              'yes'   => esc_html__( 'Yes', 'nightingale' ),
+              'no' => esc_html__( 'No', 'nightingale' ),
+          ),
+      )
+  );
+
 	/*
-	 * Show Organisation Name?
+	 * Show Organisation Name? (if not Crown Copyright)
 	 */
 	$wp_customize->add_setting(
 		'org_name_checkbox',
@@ -239,12 +264,37 @@ function nightingale_customize_register( $wp_customize ) {
 			'description' => esc_html__( 'This is used if your oganisation name should be different from the site title. It is also picked up for the copyright statement in your footer', 'nightingale' ),
 			'section'     => 'title_tagline',
 			'type'        => 'radio',
+      'active_callback' => function () use ( $wp_customize ) {
+        return 'no' === $wp_customize->get_setting( 'crown_copyright' )->value();
+      },
 			'choices'     => array(
 				'yes' => esc_html__( 'Yes', 'nightingale' ),
 				'no'  => esc_html__( 'No', 'nightingale' ),
 			),
 		)
 	);
+
+  $wp_customize->add_setting(
+		'include_licence',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'nightingale_sanitize_select',
+		)
+	);
+
+	$wp_customize->add_control(
+      'include_licence',
+      array(
+          'label'       => esc_html__( 'OGL Licence', 'nightingale' ),
+          'description' => esc_html__( 'Is the content published under an Open Government Licence', 'nightingale' ),
+          'section'     => 'title_tagline',
+          'type'        => 'radio',
+          'choices'     => array(
+              'yes'   => esc_html__( 'Yes (show OGL link in footer)', 'nightingale' ),
+              'no' => esc_html__( 'No', 'nightingale' ),
+          ),
+      )
+  );
 
 	$wp_customize->add_setting(
 		'org_name_field',
@@ -291,6 +341,9 @@ function nightingale_customize_register( $wp_customize ) {
             'description' => esc_html__( 'This text is shown next to copyright. It can include links.', 'nightingale' ),
             'section'         => 'title_tagline',
             'type'            => 'textarea',
+            'active_callback' => function () use ( $wp_customize ) {
+              return 'no' === $wp_customize->get_setting( 'crown_copyright' )->value();
+            },
         )
     );
 
@@ -302,44 +355,20 @@ function nightingale_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'theme_colour',
 		array(
-			'default'           => 'blue',
+			'default'           => 'neptune',
 			'sanitize_callback' => 'nightingale_sanitize_select',
 		)
 	);
 	$wp_customize->add_control(
 		'theme_colour',
 		array(
-			'label'       => esc_html__( 'Theme Colour', 'hale' ),
-			'description' => esc_html__( 'If you wish to change the default colour of the theme.', 'hale' ),
+			'label'       => esc_html__( 'Theme Branding', 'hale' ),
+			'description' => esc_html__( 'Select the look and feel of the site.', 'hale' ),
 			'section'     => 'colors',
 			'type'        => 'select',
 			'choices'     => hale_get_theme_colours(),
 		)
 	);
-
-    /*
-     * -----------------------------------------------------------
-     * Header colour chooser
-     * -----------------------------------------------------------
-     */
-    $wp_customize->add_setting(
-        'page_header_colour',
-        array(
-            'default'           => '',
-            'sanitize_callback' => 'nightingale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'page_header_colour',
-        array(
-            'label'       => esc_html__( 'Page Header Colour', 'nightingale' ),
-            'description' => esc_html__( 'Sets the background color of page headers. Please note all colours are set to 10% opacity', 'nightingale' ),
-            'section'     => 'colors',
-            'type'        => 'select',
-            'choices'     => hale_get_theme_colours(),
-        )
-    );
-
 
 	/*
 	 * ------------------------------------------------------------
@@ -688,6 +717,4 @@ function hale_add_blocks_settings( $wp_customize )
             )
         );
     }
-
-
 }

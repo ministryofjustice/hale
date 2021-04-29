@@ -4,19 +4,20 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 get_header();
 ?>
 
-	<div id="primary" class=" nhsuk-grid-row nhsuk-width-restrict">
+	<div id="primary" class="govuk-grid-column-two-thirds">
 		<div class="
 		<?php
 		if ( nightingale_show_sidebar() ) :
-			echo 'nhsuk-grid-column-two-thirds ';
 			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>

@@ -12,8 +12,10 @@
  *
  * @package Hale
  * @copyright Ministry of Justice
- * @version 1.0
+ * @version 2.0
  */
+
+$is_cat_page = false;
 
 get_header();
 
@@ -23,7 +25,7 @@ while (have_posts()) :
     the_post();
     ?>
 
-<div id="primary">
+<div id="primary" class="govuk-grid-column-two-thirds">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
@@ -45,24 +47,15 @@ while (have_posts()) :
         // Page title
         if (is_front_page() === false) {
 
-            // Header loads if category not selected on page
-            if (empty($is_cat_page)) { ?>
-                <header class="entry-header page-header" style="">
-                    <div class="nhsuk-width-container">
-                        <div class="nhsuk-grid-row">
-                            <div class="nhsuk-grid-column-two-thirds">
-                                <h1 class="entry-title"><?php the_title(); ?></h1>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                <?php
-            }
-        }
+			 // Header loads if category not selected on page
+					if (empty($is_cat_page)) { ?>
+					 <h1 class="govuk-heading-l"><?php the_title(); ?></h1>
+				 <?php
+					}
+				}
     }
     ?>
-    <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds page
+      <div class="
 
         <?php
 
@@ -75,7 +68,7 @@ while (have_posts()) :
         }
 
         // Apply CSS class depending on sidebar status
-        $full_column_class = ( $show_sidebar != 'yes' ) ? 'nhsuk-grid-column-full' : null;
+        $full_column_class = ( $show_sidebar != 'yes' ) ? 'govuk-grid-column-full' : null;
 
         echo nightingale_sidebar_location('sidebar-1'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo ' ' . $full_column_class; ?>">
@@ -106,22 +99,19 @@ while (have_posts()) :
         ?>
         </div>
 
-        <div class="nhsuk-grid__item nhsuk-grid-column-one-third">
-        <?php
-            /**
-             * Load page sidebar
-             *
-             * */
-        if ($show_sidebar === 'yes') {
-            get_sidebar('page');
-        }
-        ?>
-        </div>
-    </div>
-
     </article><!-- #post-<?php the_ID(); ?> -->
 </div><!-- #primary -->
-
+<div class="govuk-grid-column-one-third">
+    <?php
+    /**
+     * Load page sidebar
+     *
+     * */
+    if ($show_sidebar === 'yes') {
+        get_sidebar('page');
+    }
+    ?>
+</div>
 <?php endwhile;
 
 flush();

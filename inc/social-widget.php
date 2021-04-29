@@ -17,23 +17,23 @@ class social_widget extends WP_Widget {
             echo $args['before_title'] . $title . $args['after_title'];
 
         if ( ! empty( $instance['facebook_url'] ) ){
-            echo '<a href="' . $instance['facebook_url']  . '"><span class="nhsuk-u-visually-hidden">Facebook</span><i class="facebook" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['facebook_url']  . '"><span class="govuk-visually-hidden">Facebook</span><i class="facebook" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['instagram_url'] ) ){
-            echo '<a href="' . $instance['instagram_url']  . '"><span class="nhsuk-u-visually-hidden">Instagram</span><i class="instagram" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['instagram_url']  . '"><span class="govuk-visually-hidden">Instagram</span><i class="instagram" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['linkedin_url'] ) ){
-            echo '<a href="' . $instance['linkedin_url']  . '"><span class="nhsuk-u-visually-hidden">Linkedin</span><i class="linkedin" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['linkedin_url']  . '"><span class="govuk-visually-hidden">Linkedin</span><i class="linkedin" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['twitter_url'] ) ){
-            echo '<a href="' . $instance['twitter_url']  . '"><span class="nhsuk-u-visually-hidden">Twitter</span><i class="twitter" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['twitter_url']  . '"><span class="govuk-visually-hidden">Twitter</span><i class="twitter" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['youtube_url'] ) ){
-            echo '<a href="' . $instance['youtube_url']  . '"><span class="nhsuk-u-visually-hidden">YouTube</span><i class="youtube" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['youtube_url']  . '"><span class="govuk-visually-hidden">YouTube</span><i class="youtube" aria-hidden="true"></i></a>';
         }
 
         echo $args['after_widget'];

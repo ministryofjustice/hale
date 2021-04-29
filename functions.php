@@ -6,7 +6,7 @@
  * @link      https://developer.wordpress.org/themes/basics/theme-functions/
  * @package   Hale
  * @copyright Ministry Of Justice
- * @version   1.0.1
+ * @version   2.0
  */
 
 /**
@@ -197,9 +197,9 @@ function hale_widgets_init()
             'name'          => esc_html__('Sidebar', 'nightingale'),
             'id'            => 'sidebar-1',
             'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="nhsuk-related-nav %2$s">',
+            'before_widget' => '<section id="%1$s" class="%2$s">',
             'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="nhsuk-related-nav__heading">',
+            'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
         )
     );
@@ -208,9 +208,9 @@ function hale_widgets_init()
             'name'          => esc_html__('Post Sidebar', 'nightingale'),
             'id'            => 'sidebar-2',
             'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="nhsuk-related-nav %2$s">',
+            'before_widget' => '<section id="%1$s" class="%2$s">',
             'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="nhsuk-related-nav__heading">',
+            'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
         )
     );
@@ -228,9 +228,9 @@ function hale_widgets_init()
             'name'          => '404 Page',
             'id'            => '404-error',
             'description'   => esc_html__('Content for your 404 error page goes here.', 'hale'),
-            'before_widget' => '<div id="%1$s" class="%2$s nhsuk-related-nav">',
+            'before_widget' => '<div id="%1$s" class="%2$s">',
             'after_widget'  => '</div>',
-            'before_title'  => '<h3 class="nhsuk-related-nav__heading">',
+            'before_title'  => '<h3 class="govuk-heading-s">',
             'after_title'   => '</h3>',
         )
     );
@@ -244,13 +244,15 @@ add_action('widgets_init', 'hale_widgets_init');
  */
 function hale_scripts()
 {
-
+    // CSS
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
 
+    // JS
+    wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "3.11.0", true);
+    wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
-    wp_enqueue_script('hale-nhs-library', hale_mix_asset('/js/nhsuk.min.js'), '', null , true);
-    wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', 'null', true);
+    wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', null, true);
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
@@ -259,12 +261,26 @@ function hale_scripts()
 add_action('wp_enqueue_scripts', 'hale_scripts');
 
 /**
+ * Dequeue nuisance plugins and their scripts.
+ *
+ * Hooked to the wp_print_scripts action, with a late priority (100),
+ * so that it is after the script was enqueued.
+ */
+function hale_dequeue_scripts() {
+
+    // Stop a clash from MoJ Blocks plugin, as this theme already uses Gov UK JS
+    wp_dequeue_script( 'mojblocks-govuk-js' );
+}
+
+add_action( 'wp_print_scripts', 'hale_dequeue_scripts', 100 );
+
+/**
  * @param $filename
  * @return string
  */
 function hale_mix_asset($filename)
 {
-    
+
     $manifest = file_get_contents(get_template_directory() . '/dist/mix-manifest.json');
     $manifest = json_decode($manifest, true);
 
@@ -331,7 +347,6 @@ require get_template_directory() . '/inc/metabox-page-breadcrumb.php';
  * Custom Page Title Section Metabox
  */
 require get_template_directory() . '/inc/metabox-page-title-section.php';
-
 
 /**
  * Social Widget.

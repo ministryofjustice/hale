@@ -8,7 +8,7 @@
     color: #FFFFFF;
     text-decoration: underline;
 
-    &:focus, &:visited, &:hover {
+    &:focus, &:visited, &:hover,  #primary &:visited  {
       color: #FFFFFF;
       text-decoration: underline;
     }

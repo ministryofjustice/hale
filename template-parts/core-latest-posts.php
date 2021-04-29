@@ -3,9 +3,11 @@
  * Template part for displaying latest posts block
  *
  * @link      https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package   Nightingale
- * @copyright NHS Leadership Academy, VeryTwisty
- * @version   1.0 27th february 2020
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 $namespace = 'core/latest-posts/';
@@ -50,7 +52,7 @@ $the_query = new WP_Query( $args );
 
 // The Loop.
 if ( $the_query->have_posts() ) : ?>
-	<div class="nhsuk-grid-row nhsuk-promo-group">
+	<div class="govuk-grid-row">
 
 		<?php
 		while ( $the_query->have_posts() ) :

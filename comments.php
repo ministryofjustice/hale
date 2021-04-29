@@ -7,9 +7,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  */
 
 /*
@@ -21,7 +23,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="comments" class="nhsuk-list-panel comments-area">
+<div id="comments">
 
 	<?php
 	// You can start editing here -- including this comment!
@@ -57,7 +59,7 @@ if ( post_password_required() ) {
 
 		<?php the_comments_navigation(); ?>
 
-		<ul class="nhsuk-list-panel__list comment-list">
+		<ul class="govuk-list">
 			<?php wp_list_comments( 'type=all&callback=nightingale_comment_display' ); ?>
 		</ul><!-- .comment-list -->
 

@@ -1,0 +1,158 @@
+@import 'page-colours';
+
+//branding colours and styles
+
+/**********************
+    Common styles
+    All brandings
+**********************/
+
+//space out menu for all brandings
+.govuk-header {
+	@include govuk-media-query($from: desktop) {
+		padding-bottom: 0;
+
+		.govuk-header__navigation {
+			display: flex;
+			justify-content: space-between;
+
+			li {
+				padding:0;
+			}
+		}
+	}
+}
+
+*{
+	@include branding($brandings) {
+
+		.govuk-skip-link:focus {
+			outline-color: branded(header-link-focus-highlight);
+			background-color: branded(header-link-focus-highlight);
+		}
+
+		.govuk-main-wrapper {
+			//remove gap at top of page
+			padding-top:0;
+		}
+
+		//remove GDS brand colour bar
+		.govuk-header__container {
+			border-bottom: none;
+		}
+		.govuk-header {
+			background: branded(brand-colour);
+			border-bottom-width: 0;
+			.govuk-header__navigation {
+				margin-bottom: 0;
+
+				li {
+					border-bottom-color: branded(header-menu-border-colour);
+				}
+			}
+
+			.govuk-header__link:focus {
+				background-color: branded(link-focus-background);
+				box-shadow: 0px -2px branded(link-focus-background), 0px 4px branded(link-focus-colour);
+				outline: transparent solid 4px;
+			}
+
+			//remove MoJ logo text
+			.govuk-header__logotype-text:not(.hale-header__logotype-text--custom) {
+				display:none;
+			}
+			.govuk-header__content {
+				.govuk-header__menu-button,
+				a {
+					color: branded(header-link);
+					&:hover:focus{
+						color: branded(header-link-hover-focus);
+					}
+					&:focus:not(:hover) {
+						color: branded(header-link-focus);
+						background-color: branded(header-link-focus-highlight);
+						border-bottom-color: branded(header-link-focus-underline);
+						box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
+					}
+				}
+				.current-menu-item a:not(:focus) {
+					color: branded(header-link-current);
+				}
+			}
+		}
+		.govuk-button {
+			border:branded(button-border);
+			box-shadow: 0 1px 0 branded(button);
+			color:branded(button-text);
+			background-color:branded(button);
+			&:hover, &:focus:not(:active):not(:hover) {
+				background-color: branded(button-hover);
+				color: branded(button-hover-text);
+				box-shadow: 0 1px 0 branded(button-hover);
+				border-color: branded(link-focus-colour);
+				svg {
+					fill: branded(button-hover-text);
+				}
+			}
+			&:active {
+				background-color: branded(button-active);
+				box-shadow: none;
+			}
+			&:focus {
+				background-color: branded(button-focus);
+			}
+			svg {
+				fill: branded(button-text);
+			}
+		}
+
+		.govuk-input {
+			border: 2px solid branded(input-border);
+
+			&:focus {
+				outline: 2px solid branded(link-focus-colour);
+				outline-offset: 0;
+				box-shadow: none;
+			}
+		}
+
+		//link focus state
+		#primary a:not([class]),
+		#primary a[class=""],
+		.hale-article-nav,
+		a.govuk-footer__link {
+			&:focus {
+				background-color: branded(link-focus-background);
+				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
+				outline: 4px solid transparent;
+			}
+		}
+		
+		//shading colour - set here and use @extend to shade elements below
+		.hale-shaded {
+			background-color:branded(title-shading);
+		}
+
+    &.page-body-colour {
+      background-color:branded(page-body-bg);
+    }
+
+		//footer
+		.govuk-footer {
+			border-top-width: 4px;
+			border-top-color: branded(brand-colour);
+			background: branded(footer-background);
+
+			.govuk-footer__link:hover {
+				text-decoration:none;
+			}
+			.widget_social_widget .hale-social-link:focus {
+				box-shadow:
+					-4px 0 branded(footer-link-focus-background),
+					4px 0 branded(footer-link-focus-background),
+					-4px 4px branded(link-focus-colour),
+					4px 4px branded(link-focus-colour);
+			}
+		}
+	}
+}

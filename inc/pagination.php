@@ -2,9 +2,11 @@
 /**
  * Replace css classes in standard navigation with Nightingale classes
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
  **/
 
 /**
@@ -13,12 +15,8 @@
 function nightingale_archive_pagination() {
 
 	$args = array(
-		'prev_text' => '<svg aria-hidden="true" class="search__pagination-arrow" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-								<path d="M8.76085 18.1317C9.34664 18.7175 10.2964 18.7175 10.8822 18.1317C11.468 17.5459 11.468 16.5962 10.8822 16.0104L8.76085 18.1317ZM2.75044 10L1.68978 8.93934C1.104 9.52513 1.104 10.4749 1.68978 11.0607L2.75044 10ZM10.8822 3.98959C11.468 3.40381 11.468 2.45406 10.8822 1.86827C10.2964 1.28249 9.34664 1.28249 8.76085 1.86827L10.8822 3.98959ZM10.8822 16.0104L3.8111 8.93934L1.68978 11.0607L8.76085 18.1317L10.8822 16.0104ZM3.8111 11.0607L10.8822 3.98959L8.76085 1.86827L1.68978 8.93934L3.8111 11.0607Z" fill="#1976D2"/></svg><span class="search__pagination-button-text">' . esc_html__( 'Previous', 'nightingale' ) . '</span>
-								<span class="nhsuk-u-visually-hidden">:</span>',
-		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'nightingale' ) . '</span>
-								<svg aria-hidden="true" class="search__pagination-arrow" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-								<path d="M11.0516 1.86827C10.4659 1.28249 9.51612 1.28249 8.93033 1.86827C8.34454 2.45406 8.34454 3.40381 8.93033 3.98959L11.0516 1.86827ZM17.0621 10L18.1227 11.0607C18.7085 10.4749 18.7085 9.52513 18.1227 8.93934L17.0621 10ZM8.93033 16.0104C8.34454 16.5962 8.34454 17.5459 8.93033 18.1317C9.51612 18.7175 10.4659 18.7175 11.0516 18.1317L8.93033 16.0104ZM8.93033 3.98959L16.0014 11.0607L18.1227 8.93934L11.0516 1.86827L8.93033 3.98959ZM16.0014 8.93934L8.93033 16.0104L11.0516 18.1317L18.1227 11.0607L16.0014 8.93934Z" fill="#1976D2"/></svg>',
+		'prev_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Previous', 'nightingale' ) . '</span>',
+		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'nightingale' ) . '</span>',
 	);
 
 	$paginate = paginate_links(
@@ -32,34 +30,42 @@ function nightingale_archive_pagination() {
 
 	if ( $paginate ) {
 
-		$pagination = '<div class="navigation"><nav class="nhsuk-pagination" role="navigation" aria-label="Pagination"><ul class="nhsuk-list nhsuk-pagination__list">';
+		$pagination = '<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"><nav class="moj-pagination" role="navigation" id="pagination-label"><p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p><ul class="moj-pagination__list">';
 
 		$count = count( $paginate ) - 1;
 
 		$first_item = array_slice( $paginate, 0, 1 )[0];
 		$last_item  = array_slice( $paginate, $count, 1 )[0];
 
-		if ( false !== strpos( $last_item, 'class="next page-numbers"' ) ) {
+    for ($i=0;$i<count( $paginate );$i++) {
+      if (false !== strpos( $paginate[$i], 'class="prev page-numbers"' )) {
+        $pagination .= "<li class='moj-pagination__item moj-pagination__item--prev'>".str_replace("prev page-numbers", "moj-pagination__link", "{$paginate[$i]}")."</li>";
+      } elseif (false !== strpos( $paginate[$i], 'class="next page-numbers"' )) {
+        $pagination .= "<li class='moj-pagination__item moj-pagination__item--next'>".str_replace("next page-numbers", "moj-pagination__link", "{$paginate[$i]}")."</li>";
+      } elseif (false !== strpos( $paginate[$i], 'class="page-numbers current"' )) {
+        $pagination .= "<li class='moj-pagination__item moj-pagination__item--active'>{$paginate[$i]}</li>";
+      } else {
+        $pagination .= "<li class='moj-pagination__item'>".str_replace("page-numbers", "moj-pagination__link", "{$paginate[$i]}")."</li>";
+      }
+    }
 
-			$pagination .= "<li class='search__pagination-button search__pagination-button--next'>{$last_item}</li>";
+		if ( false !== strpos( $first_item, 'class="prev page-numbers"' ) ) {
+			array_shift( $paginate );
+		}
+    if ( false !== strpos( $last_item, 'class="next page-numbers"' ) ) {
 			array_pop( $paginate );
 		}
 
-		if ( false !== strpos( $first_item, 'class="prev page-numbers"' ) ) {
+		$pagination .= '</li></ul>';
 
-			$pagination .= "<li class='search__pagination-button search__pagination-button--previous'>{$first_item}</li>";
-			array_shift( $paginate );
+		$pagination .= ' <p class="moj-pagination__results">';
 
-		}
-
-		$pagination .= "<li class='search__pagination-text'>";
-
-		$pagination .= "Page ";
+		$pagination .= "Showing page <b>";
 		$pagination .= (get_query_var('paged')) ? get_query_var('paged') : 1;
-		$pagination .= " of ";
+		$pagination .= "</b> of <b>";
 		$pagination .= count( $paginate );
 
-		$pagination .= '</li></ul></nav></div>';
+		$pagination .= '</b></p></nav>';
 
 		echo $pagination; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
@@ -69,11 +75,10 @@ function nightingale_archive_pagination() {
  * Add in a previous and next functionality
  */
 function nightingale_get_prev_next() {
-	echo '<div class="navigation">
-	<nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
-  <ul class="nhsuk-list nhsuk-pagination__list">';
+	echo '<nav role="navigation" aria-label="Pagination" class="gem-c-pagination">
+  <ul class="gem-c-pagination__list">';
 	echo nightingale_the_post_navigation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo '</ul></nav></div>';
+	echo '</ul></nav>';
 }
 
 /**
@@ -83,22 +88,37 @@ function nightingale_get_prev_next() {
  *
  * @return string the output.
  */
+
 function nightingale_the_post_navigation( $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
-			'prev_text'          => '<span class="nhsuk-pagination__title">Previous</span>
-									<span class="nhsuk-u-visually-hidden">:</span>
-									<span class="nhsuk-pagination__page">%title</span>
-									<svg class="nhsuk-icon nhsuk-icon__arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-									  <path d="M4.1 12.3l2.7 3c.2.2.5.2.7 0 .1-.1.1-.2.1-.3v-2h11c.6 0 1-.4 1-1s-.4-1-1-1h-11V9c0-.2-.1-.4-.3-.5h-.2c-.1 0-.3.1-.4.2l-2.7 3c0 .2 0 .4.1.6z"></path>
-									</svg>',
-			'next_text'          => '<span class="nhsuk-pagination__title">Next</span>
-									<span class="nhsuk-u-visually-hidden">:</span>
-									<span class="nhsuk-pagination__page">%title</span>
-									<svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-									  <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path>
-									</svg>',
+			'prev_text'          => '
+                <span class="gem-c-pagination__link-title">
+                  <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                    <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                  </svg>
+                  <span class="gem-c-pagination__link-text">
+                    Previous
+                  </span>
+                </span>
+                <span class="gem-c-pagination__link-divider govuk-visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">
+                  %title
+                </span>',
+			'next_text'          => '
+                <span class="gem-c-pagination__link-title">
+                  <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                    <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                  </svg>
+                  <span class="gem-c-pagination__link-text">
+                    Next
+                  </span>
+                </span>
+                <span class="gem-c-pagination__link-divider govuk-visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">
+                  %title
+                </span>',
 			'in_same_term'       => false,
 			'excluded_terms'     => '',
 			'taxonomy'           => 'category',
@@ -109,7 +129,7 @@ function nightingale_the_post_navigation( $args = array() ) {
 	$navigation = '';
 
 	$previous = get_previous_post_link(
-		'<li class="nhsuk-pagination-item--previous">%link</li>',
+		'<li class="gem-c-pagination__item gem-c-pagination__item--previous">%link</li>',
 		$args['prev_text'],
 		$args['in_same_term'],
 		$args['excluded_terms'],
@@ -117,7 +137,7 @@ function nightingale_the_post_navigation( $args = array() ) {
 	);
 
 	$next = get_next_post_link(
-		'<li class="nhsuk-pagination-item--next">%link</li>',
+		'<li class="gem-c-pagination__item gem-c-pagination__item--next">%link</li>',
 		$args['next_text'],
 		$args['in_same_term'],
 		$args['excluded_terms'],

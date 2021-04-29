@@ -11,7 +11,7 @@
 
   li {
     float: left;
-    border-right: 1px solid $color_black;
+    border-right: 1px solid govuk-colour("black");
     padding: 0 10px 0 10px;
 
     &:first-child {
@@ -24,7 +24,7 @@
     }
 
     a {
-      color: $color_black;
+      color: govuk-colour("black");
       text-decoration: none;
 
       font-size: 16px;
@@ -48,5 +48,3 @@
     }
   }
 }
-
-

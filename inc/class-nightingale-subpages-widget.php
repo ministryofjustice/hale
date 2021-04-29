@@ -9,9 +9,12 @@
  * Modified by Tony Blacker, July 2019 to include inside Nightingale 2.0 Theme as a self contained widget so it can be auto deployed on theme activation
  * All nightingale_ functions renamed to nightingale_ to avoid clashes if BE Subpages widget is also installed
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 2.0 4th September 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
+
  */
 
 /**

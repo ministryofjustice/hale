@@ -4,9 +4,12 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version 1.1 21st August 2019
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version 2.0 February 2021
+
  */
 
 if ( ! is_active_sidebar( 'sidebar-2' ) ) {
@@ -17,8 +20,8 @@ if ( ! nightingale_show_sidebar() ) {
 	return;
 }
 ?>
-<div class="nhsuk-grid__item nhsuk-grid-column-one-third">
-	<aside id="secondary" class="widget-area nhsuk-width-container">
+<div class="govuk-grid-column-one-third">
+	<aside id="secondary" class="widget-area govuk-width-container">
 		<?php dynamic_sidebar( 'sidebar-2' ); ?>
 	</aside><!-- #secondary -->
 </div>

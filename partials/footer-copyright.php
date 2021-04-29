@@ -4,9 +4,12 @@
  * This is the template that displays the copyright in the footer
  *
  * @link      https://developer.wordpress.org/themes/basics/template-files/#template-partials
- * @package   Nightingale
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.0 13th January 2020
+ * @package Hale
+ * Theme Hale with GDS styles
+ * ©Crown Copyright
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version   2.0 February 2021
+
  */
 
 $organisation_name = get_theme_mod('org_name_field', '');
@@ -15,13 +18,13 @@ $copyright_img = get_theme_mod('copyright_img');
 $copyright_additional_text = get_theme_mod('copyright_additional_text', '');
 
 ?>
-<div class="nhsuk-footer__copyright">
+<div class="hale-footer__copyright">
 
     <?php
 
     if (!empty($copyright_img)) {
         ?>
-        <div class="nhsuk-footer__copyright_img">
+        <div class="hale-footer__copyright_img">
             <img src="<?php echo $copyright_img; ?>"/>
         </div>
     <?php } ?>

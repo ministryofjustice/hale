@@ -1,273 +1,154 @@
-@import 'colours';
+/**********************
+    Colours used
+      by the
+    specific brands
+**********************/
 
-$page-colours             : (
-  'blue' : $color_blue,
-  'dark-blue' : $color_dark-blue,
-  'teal' : $color_teal,
-  'light-teal' : $color_light-teal,
+$light_grey: #e5e5e5;
+
+//Uranus (Magistrates) branding
+$hale-uranus-brand-colour: #336C83;
+$hale-uranus-button: #FFE600;
+$hale-uranus-footer-background: #D8DDE0;
+
+//Eris (unused) branding
+$hale-eris-brand-colour: #00A19A;
+
+//Neptune (IMA) branding
+$hale-neptune-brand-colour: #0C223F;
+$hale-neptune-header-hover-link-colour: govuk-colour("white");
+$hale-neptune-header-focus-colour: #00A499;
+$hale-neptune-header-focus-highlight: #B6bDC5;
+$hale-neptune-shading:#E5F5F5;
+$hale-neptune-header-border-colour:hsla(0,0%,100%,.2);
+$hale-neptune-footer-background: #D8DDE0;
+$hale-neptune-footer-link-focus-shading: #C2D6D9;
+$hale-neptune-focus-colour: #00A19A;
+$hale-neptune-focus-shading: rgba(0,161,154,.1);
+$hale-neptune-input-background: #D9F1F0;
+$hale-neptune-button:#005EB8;
+$hale-neptune-input-border:#768692;
+$hale-neptune-text-secondary:#535A5E;
+
+$brandings: (
+	neptune: (
+		brand-colour: $hale-neptune-brand-colour,
+		header-link-current: govuk-colour("white"),
+		header-link-focus-underline: $hale-neptune-header-focus-colour,
+		header-link-focus-highlight: $hale-neptune-header-focus-highlight,
+		header-link-focus: $hale-neptune-brand-colour,
+		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
+		header-menu-border-colour: $hale-neptune-header-border-colour,
+    page-body-bg: $hale-neptune-shading,
+		title-shading: $hale-neptune-shading,
+		secondary-text: $hale-neptune-text-secondary,
+		footer-background: $hale-neptune-footer-background,
+		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
+		link-focus-colour: $hale-neptune-focus-colour,
+		link-focus-background: $hale-neptune-focus-shading,
+		input-background: $hale-neptune-input-background,
+		input-border: $hale-neptune-input-border,
+		button: $hale-neptune-button,
+		button-hover:$hale-neptune-focus-colour,
+		button-focus:$hale-neptune-focus-colour,
+		button-text:govuk-colour("white"),
+		button-hover-text:govuk-colour("white"),
+		button-border:none,
+	),
+	uranus: (
+		brand-colour: $hale-uranus-brand-colour,
+		header-link: $hale-uranus-button,
+		header-link-current: govuk-colour("white"),
+		header-link-focus: govuk-colour("black"),
+		header-link-hover-focus: govuk-colour("black"),
+    title-shading: $light_grey,
+    page-body-bg: $light_grey,
+		button: $hale-uranus-button,
+		button-text: govuk-colour("black"),
+		button-hover: govuk-colour("black"),
+		button-focus: govuk-colour("black"),
+		button-active: govuk-colour("black"),
+		button-hover-text: govuk-colour("white"),
+		link-focus-background: govuk-colour("yellow"),
+		link-focus-colour: govuk-colour("black"),
+		footer-link-focus-background: govuk-colour("yellow"),
+		footer-background: $hale-uranus-footer-background,
+	),
 );
 
-@each $name,
-$colour in $page-colours {
+@mixin branding($brandings: $brandings) {
+	@each $brand, $map in $brandings {
+    .hale-branding--#{$brand} {
+			$branding-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($brandings, $brand), '#{$key}');
+				$branding-map: map-merge($branding-map, ($key: $value)) !global;
+			}
 
-  .page-header-color--#{$name} {
+			@content;
+			$branding-map: null !global;
+		}
 
-    .page-header {
-      background: rgba($colour, 0.1);
-
-      .category-pages-nav {
-        li {
-          background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0.375C18.4219 0.375 23.625 5.57812 23.625 12C23.625 18.4219 18.4219 23.625 12 23.625C5.57813 23.625 0.375 18.4219 0.375 12C0.375 5.57812 5.57813 0.375 12 0.375ZM17.3391 11.2031L10.9875 4.85156C10.5469 4.41094 9.83438 4.41094 9.39844 4.85156L8.60156 5.64844C8.16094 6.08906 8.16094 6.80156 8.60156 7.2375L13.3641 12L8.60156 16.7625C8.16094 17.2031 8.16094 17.9156 8.60156 18.3516L9.39844 19.1484C9.83906 19.5891 10.5516 19.5891 10.9875 19.1484L17.3391 12.7969C17.7797 12.3562 17.7797 11.6438 17.3391 11.2031Z' fill='" + $colour + "'/%3E%3C/svg%3E%0A");
-
-          a {
-            &:active, &:focus {
-              box-shadow: 0 -2px $color_snow-white, 0 4px $colour;
-            }
-          }
-        }
-      }
-    }
-
-    .category-page-pagination {
-
-      .category-page-pagination-section {
-        .category-page-pagination-page-link {
-
-          &:active, &:focus {
-            background-color: rgba($colour, 0.1);
-            box-shadow: 0 -2px rgba($colour, 0.1), 0 4px $colour;
-          }
-
-        }
-      }
-
-      .category-page-pagination-next {
-        background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 0.4375C21.4922 0.4375 27.5625 6.50781 27.5625 14C27.5625 21.4922 21.4922 27.5625 14 27.5625C6.50781 27.5625 0.4375 21.4922 0.4375 14C0.4375 6.50781 6.50781 0.4375 14 0.4375ZM20.2289 13.0703L12.8187 5.66016C12.3047 5.14609 11.4734 5.14609 10.9648 5.66016L10.0352 6.58984C9.52109 7.10391 9.52109 7.93516 10.0352 8.44375L15.5914 14L10.0352 19.5562C9.52109 20.0703 9.52109 20.9016 10.0352 21.4102L10.9648 22.3398C11.4789 22.8539 12.3102 22.8539 12.8187 22.3398L20.2289 14.9297C20.743 14.4156 20.743 13.5844 20.2289 13.0703Z' fill='" + $colour + "'/%3E%3C/svg%3E%0A");
-      }
-
-      .category-page-pagination-prev {
-        background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 27.5625C6.50781 27.5625 0.4375 21.4922 0.4375 14C0.4375 6.50781 6.50781 0.4375 14 0.4375C21.4922 0.4375 27.5625 6.50781 27.5625 14C27.5625 21.4922 21.4922 27.5625 14 27.5625ZM7.77109 14.9297L15.1813 22.3398C15.6953 22.8539 16.5266 22.8539 17.0352 22.3398L17.9648 21.4102C18.4789 20.8961 18.4789 20.0648 17.9648 19.5562L12.4086 14L17.9648 8.44375C18.4789 7.92969 18.4789 7.09844 17.9648 6.58984L17.0352 5.66016C16.5211 5.14609 15.6898 5.14609 15.1813 5.66016L7.77109 13.0703C7.25703 13.5844 7.25703 14.4156 7.77109 14.9297Z' fill='" + $colour + "'/%3E%3C/svg%3E");
-      }
-    }
-  }
-
-  .page-body-color--#{$name} {
-      background: rgba($colour, 0.1);
-
-      /** This solves an issue when both header and body colour are set at the same time.
-      * Page header and page body overlap causing a discrepancy in opacity of the elements.
-      * .page-body-color--* class is used by Custom Page Setting metabox to change bg colour.
-      **/
-      .page-header {
-        background: transparent;
-      }
-  }
-
-  .page-colour--#{$name},
-  #content .page-style--#{$name} {
-
-    .nhsuk-footer,
-    #secondary section {
-      border-top-color: $colour;
-    }
-
-    .nhsuk-header,
-    .nhsuk-header--white .nhsuk-search__submit,
-    #secondary section h2.widget-title,
-    .nhsuk-panel-with-label__label,
-    #secondary section #wp-calendar caption,
-    #secondary section h2.widget-title,
-    .nhsuk-panel-with-label__label,
-    #secondary section #wp-calendar caption,
-    .nhsuk-do-dont-list__label,
-    .nhsuk-care-card.is-style-default .nhsuk-care-card__heading-container,
-    .nhsuk-hero--image-description .nhsuk-hero-content,
-    .nhsuk-panel-with-label__label,
-    .nhsuk-panel.is-style-panel-with-label h3,
-    .nhsuk-panel.is-style-panel-with-label h3 .rich-text {
-      background-color: $colour;
-      background: $colour;
-      color: $color_snow-white;
-    }
-
-    .nhsuk-details__summary,
-    .nhsuk-details__summary-text,
-    .nhsuk-promo__heading {
-      color: $colour;
-    }
-
-    a.nhsuk-button {
-      color: $color_snow-white;
-    }
-
-    a.nhsuk-button--reverse {
-      color: $color_black;
-    }
-
-    .nhsuk-inset-text,
-    .is-style-default .nhsuk-care-card__arrow:before,
-    .is-style-default .nhsuk-care-card__arrow:after,
-    .nhsuk-hero--image-description .nhsuk-hero-content .nhsuk-hero__arrow:before,
-    .nhsuk-hero--image-description .nhsuk-hero-content .nhsuk-hero__arrow:after,
-    #secondary section {
-      border-color: $colour;
-    }
-
-    .navigation .nhsuk-pagination ul.nhsuk-pagination__list li.nhsuk-pagination-item--next a .nhsuk-icon,
-    .navigation .nhsuk-pagination ul.nhsuk-pagination__list li.nhsuk-pagination-item--previous a .nhsuk-icon,
-    .nhsuk-pagination__link .nhsuk-icon {
-      fill: $colour;
-    }
-
-    .nhsuk-header__navigation ul li:focus,
-    .nhsuk-header__navigation-link {
-      border-bottom: 4px solid $color_aqua-green;
-    }
-
-    @media (min-width : 40.0625em) {
-
-      .nhsuk-icon__search {
-        fill: $colour;
-      }
-    }
-
-    #secondary section ul>li>ul>li>a {
-      border-left: 2px solid $colour;
-    }
-
-    .gform_wrapper {
-      .gf_progressbar_wrapper {
-        .gf_progressbar {
-          .gf_progressbar_percentage {
-            background-color: $colour;
-          }
-        }
-      }
-    }
-  }
-
-  .page-colour--#{$name} {
-    .nhsuk-header {
-      .nhsuk-header__navigation {
-        background: $colour;
-      }
-
-      .nhsuk-header__navigation-link:focus,
-      .nhsuk-header__navigation ul li a:focus, .nhsuk-header__navigation-link:active,
-      .nhsuk-header__navigation ul li a:active {
-        background-color: #B6BDC5;
-        background: #B6BDC5;
-        color:  $colour;
-        text-decoration: none;
-        border-bottom: 4px solid $color_aqua-green;
-      }
-
-      .nhsuk-header__navigation-link:hover,
-      .nhsuk-header__navigation ul li a:hover {
-        background-color: transparent;
-        border-bottom: 4px solid $color_snow-white;
-        text-decoration: none;
-        color: $color_snow-white;
-      }
-
-      .nhsuk-header__menu-toggle:focus,
-      .nhsuk-header__menu-toggle:hover,
-      .nhsuk-header__menu-toggle.is-active,
-      .nhsuk-header__menu-toggle:active,
-      .nhsuk-header__search-toggle:hover,
-      .nhsuk-header__search-toggle:focus,
-      .nhsuk-header__search-toggle.is-active,
-      .nhsuk-header__search-toggle:active {
-        background-color: $colour;
-        background: $colour;
-        color: #ffffff;
-      }
-
-      &.nhsuk-header--white {
-        background-color: #ffffff;
-        color: $colour;
-
-        a.nhsuk-header__transactional-service-name--link {
-          color: $colour;
-        }
-
-        .nhsuk-header__menu-toggle {
-          background-color: #ffffff;
-          background: #ffffff;
-          color: $colour;
-        }
-
-        .nhsuk-header__menu-toggle.is-active,
-        .nhsuk-header__menu-toggle:active,
-        .nhsuk-header__search-toggle.is-active,
-        .nhsuk-header__search-toggle:active {
-          color: #ffffff;
-        }
-
-
-        .nhsuk-header__menu {
-          .nhsuk-header__menu-toggle {
-            border-color: $colour;
-            color: $colour;
-          }
-        }
-
-        .nhsuk-header__search-toggle {
-          border-color: $colour;
-          color: $colour;
-
-          .nhsuk-icon__search {
-            fill: #B6BDC5;
-          }
-        }
-
-        .nhsuk-header__search-toggle.is_active {
-          background-color: $colour;
-        }
-      }
-
-      .nhsuk-icon__close {
-        fill: #B6BDC5;
-
-        &:hover {
-          fill: #B6BDC5;
-        }
-      }
-
-      @media (max-width : 989px) {
-
-        .nhsuk-header__navigation {
-          border-bottom: 0px solid #f0f4f5;
-          border-top: 0px solid #f0f4f5;
-        }
-
-        .nhsuk-header__navigation ul li,
-        .nhsuk-header__navigation-item {
-          border-top: 0;
-          border-bottom: 1px solid #B6BDC5;
-        }
-
-        .nhsuk-header__search-form {
-          background-color: $colour;
-          background: $colour;
-        }
-
-        .nhsuk-header__navigation ul li a,
-        .nhsuk-header__navigation-link {
-          color: #B6BDC5;
-          background-color: $colour;
-          background: $colour;
-        }
-
-        .nhsuk-header__navigation,
-        .nhsuk-header__navigation-link:hover,
-        .nhsuk-header .nhsuk-header__navigation ul li a:hover {
-          background-color: $colour;
-          background: $colour;
-          color:  #B6BDC5;
-          text-decoration: none;
-        }
-      }
-    }
-  }
+	}
 }
+
+@function branded($key) {
+	@return map-get($branding-map, $key);
+}
+
+//list of colours used - not all have to be declared.
+/*
+		brand-colour: 
+		header-link: 
+		header-link-current: 
+		header-link-focus-underline: 
+		header-link-focus-highlight: 
+		header-link-focus: 
+		header-link-hover-focus: 
+		title-shading: 
+		secondary-text: 
+		footer-background: 
+		footer-link-focus-background: 
+		link-focus-colour: 
+		link-focus-background: 
+		input-background: 
+		input-border: 
+		button: 
+		button-hover: 
+		button-text: 
+		button-hover-text: 
+		button-border: 
+*/
+
+
+//Old colours:
+/*
+$color_snow-white: #FFFFFF;
+$color_black: #000000;
+$color_charcoal-black: #0B0C0C;
+$color_metal-grey: #535A5E;
+$color_concrete-grey: #B1B4B6;
+$color_light-grey: #E8EDEE;
+$color_grey-1: #425563;
+$color_grey-2: #768692;
+$color_grey-3: #aeb7bd;
+$color_grey-4: #d8dde0;
+$color_grey-5: #f0f4f5;
+$color_blue: #005eb8;
+$color_southsea-blue: #1976D2;
+$color_bright-blue: #0072CE;
+$color_marine-blue: #0D47A1;
+$color_bluebell-blue: #403DD0;
+$color_navy-blue: #003087;
+$color_dark-blue: #0C223F;
+$color_lavendar-purple: #7E57C2;
+$color_yellow: #ffeb3b;
+$color_sunflower-yellow: #FFE600;
+$color_warm-yellow: #FFB81C;
+$color_red: #da291c;
+$color_teal: #336C83;
+$color_light-teal: #00a19a;
+$color_aqua-green: #00a499;
+$color_dark-green: #006747;
+$color_green: #007F3B;
+*/

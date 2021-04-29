@@ -1,521 +1,144 @@
-.nhsuk-header {
-  .nhsuk-header__navigation {
+// This is required as unable to add classes to the header navigation
+.govuk-header {
+  .govuk-header__navigation {
     max-width: 100%;
 
-    ul {
-      @extend .nhsuk-header__navigation-list;
-      overflow: hidden;
+    li {
+      @extend .govuk-header__navigation-item;
 
-
-      li {
-        @extend .nhsuk-header__navigation-item;
-
-        a {
-          @extend .nhsuk-header__navigation-link;
-          height: 100%;
-          padding: 8px 0;
-        }
+      &.current-menu-item {
+        @extend .govuk-header__navigation-item--active
       }
-    }
-  }
-
-  .nhsuk-header__search-wrap.js-show {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .nhsuk-header__search-wrap input[type="text"] {
-    border-radius: $nhsuk-border-radius 0px 0px $nhsuk-border-radius;
-    border: none;
-  }
-
-
-  .nhsuk-header__search-toggle,
-  .nhsuk-search__close,
-  .nhsuk-header__navigation-close,
-  .nhsuk-header__menu-toggle {
-    box-shadow: none;
-  }
-
-
-  .nhsuk-header__transactional-service-name {
-
-    font-weight: $nhsuk-font-bold;
-    color: $color_snow-white;
-
-    &:hover {
-      text-decoration: none;
-      background-color: transparent;
-      color: $color_snow-white;
-    }
-
-  }
-
-  .nhsuk-header__logo a {
-
-    .custom-logo {
-      border: 2px solid transparent;
-      padding: 2px;
-    }
-
-    &:hover, &:focus, &:active {
-      & .custom-logo {
-        border: 2px solid $color_snow-white;
-      }
-    }
-  }
-
-  .nhsuk-search__close {
-    display: none;
-  }
-
-  .nhsuk-search__input {
-    border-radius: $nhsuk-border-radius 0 0 $nhsuk-border-radius;
-    border: $nhsuk-border-width-form-element solid $color_grey-2;
-    border-right: none;
-    height: 40px;
-
-    &:focus {
-      border: 3px solid $color_marine-blue;
-      background: #D9F1F0 !important;
-      box-shadow: 0 0 0 1px #fff;
-    }
-
-    &:active {
-      border: 3px solid $color_marine-blue;
-      background: #D9F1F0 !important;
-      box-shadow: 0 0 0 1px #fff;
-    }
-  }
-
-  & .nhsuk-header__search-form button.nhsuk-search__submit {
-    background-color: $color_southsea-blue;
-    height: 40px;
-
-    svg {
-      fill: $color_snow-white;
-      height: 27px;
-      width: 27px;
-    }
-
-    &:focus, &:hover {
-      background-color: $color_marine-blue;
-      background: $color_marine-blue;
-      fill: $color_snow-white;
-
-      & path {
-        fill: $color_snow-white;
-      }
-    }
-
-    &:focus, &:active {
-      box-shadow: 0 0 0 1px #fff;
-    }
-
-    &:active {
-        background-color:#403DD0;
-        fill: $color_snow-white;
-        top: 0;
-    }
-  }
-
-  .nhsuk-header__menu-toggle {
-    border: none;
-
-    span {
-      padding-top: 28px;
-      display: block;
-      font-weight: normal;
-    }
-      background-image: url("data:image/svg+xml,%3Csvg width='24' height='21' viewBox='0 0 24 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.857143 3.84437H23.1429C23.6163 3.84437 24 3.46191 24 2.99007V0.854305C24 0.382462 23.6163 0 23.1429 0H0.857143C0.383732 0 0 0.382462 0 0.854305V2.99007C0 3.46191 0.383732 3.84437 0.857143 3.84437ZM0.857143 12.3874H23.1429C23.6163 12.3874 24 12.005 24 11.5331V9.39735C24 8.92551 23.6163 8.54305 23.1429 8.54305H0.857143C0.383732 8.54305 0 8.92551 0 9.39735V11.5331C0 12.005 0.383732 12.3874 0.857143 12.3874ZM0.857143 20.9305H23.1429C23.6163 20.9305 24 20.548 24 20.0762V17.9404C24 17.4686 23.6163 17.0861 23.1429 17.0861H0.857143C0.383732 17.0861 0 17.4686 0 17.9404V20.0762C0 20.548 0.383732 20.9305 0.857143 20.9305Z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
-      width: auto;
-      height: 35px;
-      border: 2px solid transparent;
-
-      &[aria-expanded="true"] {
-        background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__close' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
-      }
-
-      &:hover, &:focus {
-        border: 2px solid $color_snow-white;
-      }
-  }
-
-  .nhsuk-header__search-toggle {
-    border: none;
-    background: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__search' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    width: auto;
-    height: 35px;
-    border: 2px solid transparent;
-
-    span {
-      padding-top: 31px;
-      display: block;
-      font-weight: normal;
-    }
-
-    &[aria-expanded="true"] {
-      background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__close' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z' fill='white'%3E%3C/path%3E%3C/svg%3E") !important;
-    }
-
-    &:hover, &:focus {
-      border: 2px solid $color_snow-white;
-    }
-  }
-
-  &.nhsuk-header--white {
-    .nhsuk-header__search-wrap input[type="text"] {
-      border: $nhsuk-border-width-form-element solid $nhsuk-border-color;
-    }
-
-    a.nhsuk-header__transactional-service-name--link {
-      color: $color_blue;
-      font-weight: $nhsuk-font-bold;
-    }
-
-
-    .nhsuk-header__menu {
-      .nhsuk-header__menu-toggle {
-        border: $nhsuk-border-width-form-element solid $color_blue;
-        color: $color_blue;
-      }
-
-      .nhsuk-header__menu-toggle.is-active {
-        color: $color_snow-white;
-        border: 0px;
-      }
-    }
-
-    .nhsuk-header__search-toggle {
-      background-color: $color_grey-5;
-      border-color: $color_blue;
-      color: $color_blue;
-
-      .nhsuk-icon__search {
-        fill: $color_blue;
-      }
-    }
-
-    .nhsuk-header__search-toggle.is_active {
-      background-color: $color_blue;
-      color: $color_snow-white;
-
-      .nhsuk-icon__search {
-        fill: $color_snow-white;
-      }
-    }
-  }
-
-  .nhsuk-header__menu-toggle {
-    margin-right: -nhsuk-spacing(1);
-  }
-
-  @media (min-width : 40.0625em) {
-    margin-top: 0;
-  }
-
-  @media (max-width : 40.0525em) {
-    .autocomplete__input {
-      height: 56px;
-    }
-
-  }
-
-  // desktop breakpoint and below
-
-  @media (max-width : 769px) {
-
-    .nhsuk-header__menu-toggle:focus,
-    .nhsuk-header__menu-toggle:hover,
-    .nhsuk-header__menu-toggle.is-active,
-    .nhsuk-header__menu-toggle:active,
-    .nhsuk-header__search-toggle:hover,
-    .nhsuk-header__search-toggle:focus,
-    .nhsuk-header__search-toggle.is-active,
-    .nhsuk-header__search-toggle:active {
-      background-color: darken($color_blue, 15%);
-      background: darken($color_blue, 15%);
-      color: $color_snow-white;
-    }
-
-    .nhsuk-header--white {
-      .nhsuk-header__menu-toggle {
-        background-color: $color_snow-white;
-        background: $color_snow-white;
-        color: $color_blue;
-      }
-
-      .nhsuk-header__menu-toggle:hover,
-      .nhsuk-header__search-toggle:hover,
-      .nhsuk-header__menu-toggle.is-active,
-      .nhsuk-header__menu-toggle:active,
-      .nhsuk-header__search-toggle.is-active,
-      .nhsuk-header__search-toggle:active {
-        color: $color_snow-white;
-      }
-    }
-
-    .nhsuk-header__navigation {
-      color: $color_black;
-      background: $color_snow-white;
-
-      .nhsuk-icon__close {
-        color: $color_blue;
-      }
-    }
-
-    .nhsuk-header__navigation ul li a,
-    .nhsuk-header__navigation-link {
-      color: $color_blue;
-      padding: 6px 16px;
-    }
-
-    .nhsuk-header__navigation,
-    .nhsuk-header__navigation-link:hover,
-    .nhsuk-header .nhsuk-header__navigation ul li a:hover {
-      background-color: $color_snow-white;
-      background: $color_snow-white;
-    }
-
-    .nhsuk-icon__search,
-    .nhsuk-header__search-toggle:focus .nhsuk-icon {
-      fill: $color_snow-white;
-    }
-
-    .nhsuk-header__container {
-      position: relative;
-      min-height: 110px;
-
-      .nhsuk-header__logo {
-        position: relative;
-        top: -10px;
-
-        &+.nhsuk-header__transactional-service-name {
-          position: absolute;
-          top: 50px;
-        }
-      }
-    }
-  }
-
-  &.nhsuk-header--transactional {
-    @media (max-width : 769px) {
-      .nhsuk-header__logo {
-        padding: 10px;
-      }
-
-      .nhsuk-header__transactional-service-name {
-        padding: 10px 10px 22px 10px;
-      }
-    }
-
-
-    .nhsuk-header__logo:focus,
-    .nhsuk-header__logo:active,
-    .nhsuk-header__logo:hover {
-      background: inherit;
-
-      &+.nhsuk-header__transactional-service-name {
-        background: inherit;
-
-        a {
-          color: $color_snow-white;
-        }
-      }
-    }
-
-    .nhsuk-header__transactional-service-name:focus,
-    .nhsuk-header__transactional-service-name:active,
-    .nhsuk-header__transactional-service-name:hover {
-      background: inherit;
 
       a {
-        color: $color_snow-white;
-        text-decoration: none;
-      }
-    }
-
-    &.nhsuk-header--white {
-
-      .nhsuk-header__logo:focus,
-      .nhsuk-header__logo:active,
-      .nhsuk-header__logo:hover {
-
-        &+.nhsuk-header__transactional-service-name {
-
-          a {
-            color: inherit;
-          }
-        }
-      }
-
-      .nhsuk-header__transactional-service-name:focus,
-      .nhsuk-header__transactional-service-name:active,
-      .nhsuk-header__transactional-service-name:hover {
-        background: inherit;
-
-        a {
-          color: inherit;
-        }
+        @extend .govuk-header__link;
+        height: 100%;
+        padding: 8px 0;
       }
     }
   }
-
-  .nhsuk-search__input#search-field {
-    width : 15rem;
-  }
 }
 
-.nhsuk-header__container {
-  padding-bottom: nhsuk-spacing(3);
-  min-height: 80px;
-}
+.hale-header {
+  padding-top: 2px; //wee bit of space above the logo
 
-.nhsuk-header--transactional {
-  .nhsuk-header__search {
-    @media (min-width : 40.0625em) {
-      height: 1rem;
+  .govuk-header__logotype-text {
+
+    margin-top: 13px;
+
+    @extend .govuk-header__link--homepage;
+    //copies the style for this as if it were a link
+
+    &:hover {
+      //BUT REMOVES THE UNDERLINE
+      border-bottom: none;
     }
   }
 
-  .nhsuk-header__link {
-    width: auto;
-    display: inline-block;
-    text-decoration: none;
-  }
-}
+  .govuk-header__logo {
+    //make this a min-width to account for the longer header texts than "GOV.UK"
+    width: unset;
+    min-width: 33.33%;
 
-.nhsuk-main-wrapper {
-  padding-top: 0px;
-}
+    .hale-header__logotype--custom {
+      //Remove the space for the GDS logo (background image) so the custom logo isn't inset
+      padding-left: 0;
 
-.custom-logo {
-  float: left;
-}
-
-.nhsuk-header__logo {
-  @include mq($until: tablet) {
-    max-width: 70%;
-  }
-}
-
-.nhsuk-header .nhsuk-header__container {
-  min-height: 60px;
-  padding: 9px 0 5px 0;
-
-  @include mq($until: tablet) {
-    min-height: 60px;
-  }
-}
-
-.nhsuk-header.nhsuk-header--transactional .nhsuk-header__transactional-service-name {
-  @include mq($until: tablet) {
-    padding-bottom: 0;
-    padding-top: 0;
-  }
-}
-
-.nhsuk-header.nhsuk-header--transactional .nhsuk-header__logo {
-  @include mq($until: tablet) {
-    padding: 0 0 0 10px;
-    position: static;
-  }
-}
-
-/* Styles for the search page's search */
-div.nhsuk-header__search--results-page {
-	float: unset;
-  margin-left: 0;
-  padding-bottom: 24px;
-
-  & .nhsuk-header__search-toggle {
-    @include mq($until: tablet) {
-			display: none;
-		}
-  }
-
-  & div.nhsuk-header__search-wrap {
-    @extend .nhsuk-grid-column-two-thirds;
-    padding: 0;
-  }
-
-	& .nhsuk-search__input {
-		float: none;
-		width: calc(100% - 44px);
-    float: left;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: 1px solid $color_southsea-blue;
-
-    &:focus {
-      border: 3px solid $color_marine-blue;
-      background: #D9F1F0 !important;
-      box-shadow: none;
-    }
-
-    &:active {
-      border: 3px solid $color_marine-blue;
-      background: #D9F1F0 !important;
-    }
-	}
-
-	& .nhsuk-search__submit {
-		float: right !important;
-    margin-top: 0 !important;
-    background-color: $color_southsea-blue;
-
-    @include mq($until: tablet) {
-			height: 40px;
-		}
-
-    svg {
-      fill: $color_snow-white;
-      height: 27px;
-      width: 27px;
-    }
-
-    &:focus, &:hover {
-      background-color: $color_marine-blue;
-      fill: $color_snow-white;
-
-      & path {
-        fill: $color_snow-white;
+      .hale-header__logo--custom {
+        float: left;
       }
     }
 
-    &:active {
-      background-color:#403DD0;
-      fill: $color_snow-white;
+    a:focus .moj-header__logotype-crest path {
+      fill: $govuk-focus-text-colour;
+    }
+  }
+
+  .hale-header--with-search {
+
+    //but for search bar, we revert to the GDS norm
+    .govuk-header__logo {
+      width: 50%;
+    }
+  }
+
+  .hale-header__search {
+    padding-bottom: 0.5em;
+  }
+
+  .govuk-header__content {
+    //remove the width restriction - doesn't work with wider logo (above)
+    width: unset;
+  }
+
+  .govuk-header__logotype {
+    //changes because of longer header text and their potential to wrap
+    padding-left: 47px;
+    position: relative;
+
+    .moj-header__logotype-crest {
+      position: absolute;
+      top: -7px;
+      left: 0;
+      margin-right: 5px;
+      vertical-align: top;
+    }
+  }
+
+  @media (min-width: 48.0625em) {
+    .govuk-header__content {
+      //with the longer header text, the menu now spans the bottom of the header, rather than only the last ⅔.
+      width: unset;
+      padding: 1em 0 0;
+    }
+  }
+
+  .hale-header__search-form {
+    position: relative;
+    width: calc(15rem + 44px);
+    max-width: 100%;
+
+    .hale-search__button-text {
+      @extend .govuk-visually-hidden;
+    }
+
+    .hale-search__input {
+      padding-right: 46px;
+      border-width: 0;
+    }
+
+    .hale-search__submit {
+      position: absolute;
+      right: -1px;
       top: 0;
+      padding-top: 6px;
+      margin-top: 0;
+      border: 0;
+      padding-left: 9px;
+      padding-top: 2px;
+      width: 44px;
+
+      svg.hale-icon__search {
+        display: inline;
+        position: relative;
+        top: 4px;
+        height: 27px;
+        width: 27px;
+      }
     }
+  }
 
-    &:focus, &:active {
-      box-shadow: 0 0 0 2px #fff,0 0 0 4px #00a0cc;
-      outline: none;
+  @media (min-width: 48.0625em) {
+    .hale-header__search-form {
+      margin-left: auto;
     }
-	}
-
-	& .nhsuk-header__search-wrap {
-		@include mq($until: tablet) {
-			display: unset;
-
-			& .nhsuk-search__close {
-				display: none;
-			}
-
-			& .autocomplete-container {
-				width: 0;
-			}
-
-			& .nhsuk-header__search-form {
-				padding: 0;
-			}
-		}
   }
 }
 
-/* end of header.scss include */
+.hale-search__submit {
+  margin-top: 30px; //to mimic the .govuk-form-group that we don't have here.
+}
+
+svg.hale-icon__search {
+  display: none; //display in header only;
+}
