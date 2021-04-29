@@ -16,11 +16,9 @@
 		}
 	}
 
-	//override download block button styling
-	.wp-block-file a.wp-block-file__button {
-		@extend .govuk-button;
-    margin: 0;
-    font-size: 1rem;
+	//override download block button styling /*
+	.wp-block-file a{
+    line-height: 2rem;
 	}
 
 	// any full width under primary (which already has the two-thirds class)
