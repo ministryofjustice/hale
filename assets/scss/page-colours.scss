@@ -35,8 +35,11 @@ $hale-neptune-text-secondary:#535A5E;
 
 /*
 
-mojblocks-accordion-section-heading
-mojblocks-accordion-section-heading-hover
+mojblocks-accordion-section-title
+mojblocks-accordion-section-title-hover
+mojblocks-accordion-section-title-focus
+mojblocks-accordion-section-title-focus-bg
+mojblocks-accordion-section-title-focus-shadow
 
 mojblocks-banner-btn-bg
 mojblocks-banner-btn-text
@@ -142,6 +145,7 @@ $brandings: (
     button-text:govuk-colour("white"),
     button-hover-text:govuk-colour("white"),
     button-border:none,
+    mojblocks-accordion-section-title: $colour_pine;
     mojblocks-cta-bg: $colour_grey,
     mojblocks-cta-title: govuk-colour("white"),
     mojblocks-cta-text: govuk-colour("white"),
