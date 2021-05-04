@@ -9,6 +9,7 @@ $colour_emerald: #096359;
 $colour_pine: #053429;
 $colour_grey: #34393E;
 $colour_orange: #D95619;
+
 //Uranus (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
 $hale-uranus-button: #FFE600;
@@ -145,7 +146,7 @@ $brandings: (
     button-text:govuk-colour("white"),
     button-hover-text:govuk-colour("white"),
     button-border:none,
-    mojblocks-accordion-section-title: $colour_pine;
+    mojblocks-accordion-section-title: $colour_pine,
     mojblocks-cta-bg: $colour_grey,
     mojblocks-cta-title: govuk-colour("white"),
     mojblocks-cta-text: govuk-colour("white"),
