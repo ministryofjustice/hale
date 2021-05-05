@@ -46,7 +46,6 @@
     }
 
     //Banner Block
-
     .mojblocks-banner {
       .mojblocks-banner__button {
         background-color: branded(mojblocks-banner-btn-bg);
@@ -88,6 +87,11 @@
       }
     }
 
+    .mojblocks-hero {
+      .mojblocks-hero__image {
+        background-color: branded(mojblocks-hero-bg);
+      }
+    }
     //Highlights List Block
     .mojblocks-highlights-list {
       background-color: branded(mojblocks-highlights-list-bg);
