@@ -180,10 +180,10 @@
   }
 
   .govuk-header__link:focus {
-    background-color: $hale-neptune-header-focus-colour;
+    background-color: $colour_capri_teal;
   }
   .govuk-header__navigation {
-    border-top: 1px solid $hale-neptune-header-border-colour;
+    border-top: 1px solid $colour_metal_grey_tint;
     li {
       padding:0;
       a {
@@ -213,7 +213,7 @@
           border-bottom-color: transparent;
 
           &:focus {
-            border-bottom-color: $hale-neptune-header-focus-colour;
+            border-bottom-color: $colour_capri_teal;
           }
         }
 
@@ -255,9 +255,9 @@
     +.govuk-button.hale-search__submit {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-      box-shadow: 0 1px 0 $hale-neptune-button;
+      box-shadow: 0 1px 0 $colour_sapphire_blue;
       &:focus {
-        box-shadow: 0 1px 0 $hale-neptune-focus-colour;
+        box-shadow: 0 1px 0 $colour_tropicana_teal;
       }
     }
     &:focus {

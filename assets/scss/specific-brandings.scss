@@ -45,7 +45,7 @@
 .hale-branding--neptune {
 
 	.govuk-skip-link:focus {
-		outline-color: $hale-neptune-header-focus-colour;
+		outline-color: $colour_capri_teal;
 	}
 
   .govuk-header .govuk-header__logo {
@@ -58,7 +58,7 @@
 		
 		&:focus {
 			background-color: $hale-neptune-focus-shading;
-			box-shadow: 0 -2px $hale-neptune-focus-shading, 0 4px $hale-neptune-focus-colour;
+			box-shadow: 0 -2px $hale-neptune-focus-shading, 0 4px $colour_tropicana_teal;
 			outline: 4px solid transparent;
 		}
 	}

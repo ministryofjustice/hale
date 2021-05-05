@@ -6,6 +6,8 @@
 
 $colour_light_grey: #e5e5e5;
 $colour_cloudy_grey: #D8DDE0;
+$colour_metal_grey: #535A5E;
+$colour_metal_grey_tint: 	hsl(202, 6%, 35%, 0.5);
 $colour_emerald_green: #096359;
 $colour_pine_green: #053429;
 $colour_midnight_green: #204D4F;
@@ -13,6 +15,9 @@ $colour_lead_grey: #34393E;
 $colour_salamander_orange: #D95619;
 $colour_jade_green: #03A391;
 $colour_jade_green_tint: rgba(#03A391, 0.15);
+$colour_capri_teal: #00A499;
+$colour_tropicana_teal: #00A19A;
+$colour_sapphire_blue: #005EB8;
 
 //Uranus (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
@@ -25,16 +30,12 @@ $hale-eris-brand-colour: #00A19A;
 //Neptune (IMA) branding
 $hale-neptune-brand-colour: #0C223F;
 $hale-neptune-header-hover-link-colour: govuk-colour("white");
-$hale-neptune-header-focus-colour: #00A499;
 $hale-neptune-header-focus-highlight: #B6bDC5;
 $hale-neptune-shading:#E5F5F5;
 $hale-neptune-header-border-colour:hsla(0,0%,100%,.2);
-$hale-neptune-footer-background: #D8DDE0;
 $hale-neptune-footer-link-focus-shading: #C2D6D9;
-$hale-neptune-focus-colour: #00A19A;
 $hale-neptune-focus-shading: rgba(0,161,154,.1);
 $hale-neptune-input-background: #D9F1F0;
-$hale-neptune-button:#005EB8;
 $hale-neptune-input-border:#768692;
 $hale-neptune-text-secondary:#535A5E;
 
@@ -93,7 +94,7 @@ $brandings: (
 	neptune: (
 		brand-colour: $hale-neptune-brand-colour,
 		header-link-current: govuk-colour("white"),
-		header-link-focus-underline: $hale-neptune-header-focus-colour,
+		header-link-focus-underline: $colour_capri_teal,
 		header-link-focus-highlight: $hale-neptune-header-focus-highlight,
 		header-link-focus: $hale-neptune-brand-colour,
 		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
@@ -101,15 +102,15 @@ $brandings: (
     page-body-bg: $hale-neptune-shading,
 		title-shading: $hale-neptune-shading,
 		secondary-text: $hale-neptune-text-secondary,
-		footer-background: $hale-neptune-footer-background,
+		footer-background: $colour_cloudy_grey,
 		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
-		link-focus-colour: $hale-neptune-focus-colour,
+		link-focus-colour: $colour_tropicana_teal,
 		link-focus-background: $hale-neptune-focus-shading,
 		input-background: $hale-neptune-input-background,
 		input-border: $hale-neptune-input-border,
-		button: $hale-neptune-button,
-		button-hover:$hale-neptune-focus-colour,
-		button-focus:$hale-neptune-focus-colour,
+		button: $colour_sapphire_blue,
+		button-hover: $colour_tropicana_teal,
+		button-focus: $colour_tropicana_teal,
 		button-text:govuk-colour("white"),
 		button-hover-text:govuk-colour("white"),
 		button-border:none,
