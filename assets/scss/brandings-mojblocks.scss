@@ -5,6 +5,65 @@
 *{
 	@include branding($brandings) {
 
+    //Accordion block
+    .govuk-accordion {
+      .govuk-accordion__controls {
+        .govuk-accordion__open-all {
+
+          color: branded(mojblocks-accordion-controls);
+
+          &:hover {
+            color: branded(mojblocks-accordion-controls-hover);
+          }
+        }
+      }
+      .govuk-accordion__section-heading {
+
+        &:before {
+          border-color: branded(mojblocks-accordion-section-title);
+        }
+
+        &:hover {
+          &:before {
+            border-color: branded(mojblocks-accordion-section-title-hover);
+          }
+        }
+
+        .govuk-accordion__section-button {
+          color: branded(mojblocks-accordion-section-title);
+
+          &:hover {
+            color: branded(mojblocks-accordion-section-title-hover);
+          }
+
+          &:focus {
+            color: branded(mojblocks-accordion-section-title-focus);
+            background-color: branded(mojblocks-accordion-section-title-focus-bg);
+            box-shadow: 0 -2px branded(mojblocks-accordion-section-title-focus-bg), 0 4px branded(mojblocks-accordion-section-title-focus-shadow);
+          }
+        }
+      }
+    }
+
+    //Banner Block
+
+    .mojblocks-banner {
+      .mojblocks-banner__button {
+        background-color: branded(mojblocks-banner-btn-bg);
+        color: branded(mojblocks-banner-btn-text);
+
+        &:hover {
+          background-color: branded(mojblocks-banner-btn-hover-bg);
+          color: branded(mojblocks-banner-btn-hover-text);
+        }
+
+        &:focus {
+          background-color: branded(mojblocks-banner-btn-focus-bg);
+          color: branded(mojblocks-banner-btn-focus-text);
+          outline: 3px solid branded(mojblocks-banner-btn-focus-outline);
+        }
+      }
+    }
     //CTA Block
     .mojblocks-cta {
       background-color: branded(mojblocks-cta-bg);
