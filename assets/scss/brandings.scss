@@ -41,7 +41,7 @@
 			border-bottom: none;
 		}
 		.govuk-header {
-			background: branded(brand-colour);
+			background: branded(header-bg);
 			border-bottom-width: 0;
 			.govuk-header__navigation {
 				margin-bottom: 0;
@@ -150,7 +150,7 @@
 		//footer
 		.govuk-footer {
 			border-top-width: 4px;
-			border-top-color: branded(brand-colour);
+			border-top-color: branded(footer-border);
 			background: branded(footer-background);
 
 			.govuk-footer__link:hover {

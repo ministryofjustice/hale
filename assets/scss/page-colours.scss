@@ -18,6 +18,7 @@ $colour_jade_green_tint: rgba(#03A391, 0.15);
 $colour_capri_teal: #00A499;
 $colour_tropicana_teal: #00A19A;
 $colour_sapphire_blue: #005EB8;
+$colour_sapphire_blue2: rgba(217,86,25, 0.10);
 
 //Uranus (Magistrates) branding
 $hale-uranus-brand-colour: #336C83;
@@ -98,7 +99,7 @@ mojblocks-reveal-title-focus-shadow
 
 $brandings: (
 	neptune: (
-		brand-colour: $hale-neptune-brand-colour,
+    header-bg: $hale-neptune-brand-colour,
 		header-link-current: govuk-colour("white"),
 		header-link-focus-underline: $colour_capri_teal,
 		header-link-focus-highlight: $hale-neptune-header-focus-highlight,
@@ -108,7 +109,8 @@ $brandings: (
     page-body-bg: $hale-neptune-shading,
 		title-shading: $hale-neptune-shading,
 		secondary-text: $hale-neptune-text-secondary,
-		footer-background: $colour_cloudy_grey,
+    footer-border: $hale-uranus-brand-colour,
+		footer-background: $hale-neptune-brand-colour,
 		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
 		link-focus-colour: $colour_tropicana_teal,
 		link-focus-background: $hale-neptune-focus-shading,
@@ -122,7 +124,7 @@ $brandings: (
 		button-border:none,
 	),
 	uranus: (
-		brand-colour: $hale-uranus-brand-colour,
+    header-bg: $hale-uranus-brand-colour,
 		header-link: $hale-uranus-button,
 		header-link-current: govuk-colour("white"),
 		header-link-focus: govuk-colour("black"),
@@ -139,9 +141,10 @@ $brandings: (
 		link-focus-colour: govuk-colour("black"),
 		footer-link-focus-background: govuk-colour("yellow"),
 		footer-background: $hale-uranus-footer-background,
+    footer-border: $hale-uranus-brand-colour
 	),
   pluto: (
-    brand-colour: govuk-colour("white"),
+    header-bg: govuk-colour("white"),
     header-link: govuk-colour("black"),
     header-link-current: govuk-colour("white"),
     header-link-focus-underline: $colour_jade_green,
@@ -149,6 +152,7 @@ $brandings: (
     header-link-focus: govuk-colour("black"),
     page-body-bg: $colour_jade_green_tint,
     title-shading: $colour_jade_green_tint,
+    footer-border: $colour_cloudy_grey,
     footer-background: $colour_cloudy_grey,
     footer-link-focus-background: $colour_jade_green_tint,
     link: $colour_emerald_green,
