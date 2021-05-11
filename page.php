@@ -35,7 +35,11 @@ while (have_posts()) :
         $show_title_section = 'yes';
     }
 
-    if($show_title_section == 'yes') {
+    if($show_title_section == 'yes') { ?>
+
+        <div class="page-header-section">
+
+            <?php
 
         /**
          * Category page list section
@@ -53,6 +57,9 @@ while (have_posts()) :
 				 <?php
 					}
 				}
+        ?>
+        </div>
+    <?php
     }
     ?>
       <div class="

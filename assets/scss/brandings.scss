@@ -64,8 +64,8 @@
         background: branded(header-search-input-bg);
 
         &:focus {
-          border: 1px solid branded(header-search-input-focus-border);
-          outline: 2px solid branded(header-search-input-focus-border);
+          border: none;
+          outline: 3px solid branded(header-search-input-focus-border);
           background: branded(header-search-input-focus-bg);
         }
 
@@ -191,23 +191,13 @@
 			background-color:branded(title-shading);
 		}
 
-    //shading for page title
     .hale-search-header,
-    .hale-heading--top,
-    article>h1 {
+    .page-header-section {
+
       position:relative;
       padding:0.2em 0;
 
-      +*:not(ul) {
-        margin-top:77px;
-      }
-
-      +ul {
-        position:relative;
-      }
-
-      &:before,
-      +ul:before {
+      &:before {
         @extend .hale-shaded; // gets the shading colour
         position: absolute;
         content: "";
@@ -218,13 +208,9 @@
         display: block;
         overflow: visible;
         transform: translate(-50%, -0.3em);
-
-        @media (hover: none) and (pointer: coarse) {
-          display:none;
-        }
       }
     }
-
+    
     ul.hale-list--top {
       li {
         background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E");
