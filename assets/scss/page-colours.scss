@@ -40,7 +40,6 @@ $hale-neptune-footer-link-focus-shading: #C2D6D9;
 $hale-neptune-focus-shading: rgba(0,161,154,.1);
 $hale-neptune-input-background: #D9F1F0;
 $hale-neptune-input-border:#768692;
-$hale-neptune-text-secondary:#535A5E;
 
 $brandings: (
 	neptune: (
@@ -55,7 +54,7 @@ $brandings: (
     cat-nav-arrows: $colour_tropicana_teal,
     page-body-bg: $hale-neptune-shading,
 		title-shading: $hale-neptune-shading,
-		secondary-text: $hale-neptune-text-secondary,
+		secondary-text: $colour_metal_grey,
     footer-border: $hale-uranus-brand-colour,
 		footer-background: $hale-neptune-brand-colour,
 		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
