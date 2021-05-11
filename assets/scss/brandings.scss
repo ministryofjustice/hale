@@ -49,13 +49,13 @@
 				margin-bottom: 0;
 
 				li {
-					border-bottom-color: branded(header-menu-border-colour);
+					border-bottom-color: branded(header-link-mobile-border);
 				}
 			}
 
 			.govuk-header__link:focus {
 				background-color: branded(link-focus-background);
-				box-shadow: 0px -2px branded(link-focus-background), 0px 4px branded(link-focus-colour);
+				box-shadow: 0px -2px branded(link-focus-background), 0px 4px branded(link-focus);
 				outline: transparent solid 4px;
 			}
 
@@ -117,7 +117,7 @@
 						color: branded(header-link-focus);
 						background-color: branded(header-link-focus-highlight);
 						border-bottom-color: branded(header-link-focus-underline);
-						box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
+						box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus);
 					}
 				}
 				.current-menu-item a:not(:focus) {
@@ -134,7 +134,7 @@
 				background-color: branded(button-hover);
 				color: branded(button-hover-text);
 				box-shadow: 0 1px 0 branded(button-hover);
-				border-color: branded(link-focus-colour);
+				border-color: branded(link-focus);
 				svg {
 					fill: branded(button-hover-text);
 				}
@@ -153,9 +153,10 @@
 
 		.govuk-input {
 			border: 2px solid branded(input-border);
+      background: branded(input-bg);
 
 			&:focus {
-				outline: 2px solid branded(link-focus-colour);
+				outline: 2px solid branded(link-focus);
 				outline-offset: 0;
 				box-shadow: none;
 			}
@@ -183,8 +184,9 @@
 		a.govuk-footer__link {
 
 			&:focus {
+        color: branded(link-focus);
 				background-color: branded(link-focus-background);
-				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-colour);
+				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus);
 				outline: 4px solid transparent;
 			}
 		}
@@ -265,8 +267,8 @@
 				box-shadow:
 					-4px 0 branded(footer-link-focus-background),
 					4px 0 branded(footer-link-focus-background),
-					-4px 4px branded(link-focus-colour),
-					4px 4px branded(link-focus-colour);
+					-4px 4px branded(link-focus),
+					4px 4px branded(link-focus);
 			}
 		}
 	}

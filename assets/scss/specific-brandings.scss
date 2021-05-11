@@ -57,8 +57,8 @@
 		@extend .govuk-link;
 		
 		&:focus {
-			background-color: $hale-neptune-focus-shading;
-			box-shadow: 0 -2px $hale-neptune-focus-shading, 0 4px $colour_tropicana_teal;
+			background-color: $colour_tropicana_teal_tint;
+			box-shadow: 0 -2px $colour_tropicana_teal_tint, 0 4px $colour_tropicana_teal;
 			outline: 4px solid transparent;
 		}
 	}
