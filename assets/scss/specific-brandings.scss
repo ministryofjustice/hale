@@ -63,50 +63,13 @@
 		}
 	}
 
-	.govuk-breadcrumbs {
-		padding: 0.7em 0;
-	}
-
-	//light blue shading for page title
-	.hale-search-header,
-	.hale-heading--top,
-	article>h1 {
-		position:relative;
-		padding:0.2em 0;
-
-		+*:not(ul) {
-			margin-top:77px;
-		}
-		
-		+ul {
-			position:relative;
-		}
-		
-		&:before,
-		+ul:before {
-			@extend .hale-shaded; // gets the shading colour
-			position: absolute;
-			content: "";
-			left: 50%;
-			width: 200vw;
-			height: calc(100% + 0.6em);
-			z-index: -1;
-			display: block;
-			overflow: visible;
-			transform: translate(-50%, -0.3em);
-
-			@media (hover: none) and (pointer: coarse) {
-				display:none;
-			}
-		}
-	}
 	.hale-search-header + div {
 		margin-top: 30px;
 	}
-	
+
 	//adjust the gem (government publishing component) navigation
 	.gem-c-pagination__item {
-	
+
 		.gem-c-pagination__link{
 			background-repeat: no-repeat;
 			background-position-y: center;
@@ -132,7 +95,7 @@
 
 		&.gem-c-pagination__item--next .gem-c-pagination__link {
 			background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 .438c7.492 0 13.563 6.07 13.563 13.562 0 7.492-6.07 13.563-13.563 13.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437zm6.229 12.632l-7.41-7.41a1.307 1.307 0 00-1.854 0l-.93.93a1.307 1.307 0 000 1.854L15.591 14l-5.556 5.556a1.307 1.307 0 000 1.854l.93.93a1.307 1.307 0 001.854 0l7.41-7.41a1.314 1.314 0 000-1.86z' fill='%2300A19A'/%3E%3C/svg%3E")
-		}		
+		}
 		&.gem-c-pagination__item--previous .gem-c-pagination__link {
 			background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 27.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437c7.492 0 13.563 6.07 13.563 13.563 0 7.492-6.07 13.563-13.563 13.563zM7.771 14.93l7.41 7.41a1.307 1.307 0 001.854 0l.93-.93a1.307 1.307 0 000-1.854L12.409 14l5.556-5.556a1.307 1.307 0 000-1.854l-.93-.93a1.307 1.307 0 00-1.854 0l-7.41 7.41a1.314 1.314 0 000 1.86z' fill='%2300a19a'/%3E%3C/svg%3E")
 		}

@@ -85,9 +85,15 @@
         background-color: branded(mojblocks-cta-btn-bg);
         color: branded(mojblocks-cta-btn-text);
 
-        &:focus, &:hover {
+         &:hover {
           background-color: branded(mojblocks-cta-btn-hover-bg);
           color: branded(mojblocks-cta-btn-hover-text);
+        }
+
+        &:focus {
+          background-color: branded(mojblocks-cta-btn-focus-bg);
+          color: branded(mojblocks-cta-btn-focus-text);
+          outline: 3px solid branded(mojblocks-cta-btn-focus-outline);
         }
       }
     }
