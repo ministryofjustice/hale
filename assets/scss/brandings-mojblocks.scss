@@ -69,15 +69,15 @@
       }
     }
     //CTA Block
-    .mojblocks-cta {
+    .wp-block-mojblocks-cta {
       background-color: branded(mojblocks-cta-bg);
 
-      &__heading-text {
+      .mojblocks-cta__heading-text {
         color: branded(mojblocks-cta-title);
 
       }
 
-      &__content p {
+      .mojblocks-cta__content p {
         color: branded(mojblocks-cta-text);
       }
 
