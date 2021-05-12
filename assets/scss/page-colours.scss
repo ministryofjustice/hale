@@ -1,79 +1,277 @@
 /**********************
-    Colours used
-      by the
-    specific brands
+    Colours
 **********************/
 
-$light_grey: #e5e5e5;
-
-//Uranus (Magistrates) branding
-$hale-uranus-brand-colour: #336C83;
-$hale-uranus-button: #FFE600;
-$hale-uranus-footer-background: #D8DDE0;
-
-//Eris (unused) branding
-$hale-eris-brand-colour: #00A19A;
-
-//Neptune (IMA) branding
-$hale-neptune-brand-colour: #0C223F;
-$hale-neptune-header-hover-link-colour: govuk-colour("white");
-$hale-neptune-header-focus-colour: #00A499;
-$hale-neptune-header-focus-highlight: #B6bDC5;
-$hale-neptune-shading:#E5F5F5;
-$hale-neptune-header-border-colour:hsla(0,0%,100%,.2);
-$hale-neptune-footer-background: #D8DDE0;
-$hale-neptune-footer-link-focus-shading: #C2D6D9;
-$hale-neptune-focus-colour: #00A19A;
-$hale-neptune-focus-shading: rgba(0,161,154,.1);
-$hale-neptune-input-background: #D9F1F0;
-$hale-neptune-button:#005EB8;
-$hale-neptune-input-border:#768692;
-$hale-neptune-text-secondary:#535A5E;
+$colour_snow_white_tint: rgba(255,255,255,0.70);
+$colour_snow_white_hsl_tint: hsla(0,0%,100%,.2);
+$colour_light_grey: #e5e5e5;
+$colour_cloudy_grey: #D8DDE0;
+$colour_concrete_grey: #B1B4B6;
+$colour_metal_grey: #535A5E;
+$colour_metal_grey_tint: 	hsl(202,6%,35%,0.5);
+$colour_lead_grey: #34393E;
+$colour_charcoal_black: #0B0C0C;
+$colour_emerald_green: #096359;
+$colour_pine_green: #053429;
+$colour_midnight_green: #204D4F;
+$colour_sunflower_yellow: #FFE600;
+$colour_salamander_orange: #D95619;
+$colour_salamander_orange_tint: rgba(217,86,25,0.10);
+$colour_jade_green: #03A391;
+$colour_jade_green_tint: rgba(3,163,145,0.10);
+$colour_capri_teal: #00A499;
+$colour_tropicana_teal: #00A19A;
+$colour_tropicana_teal_tint: rgba(0,161,154,0.10);
+$colour_deep_ocean_teal: #336C83;
+$colour_deep_ocean_teal_tint: rgba(51,108,131,0.10);
+$colour_sapphire_blue: #005EB8;
+$colour_southsea_blue: #1976D2;
+$colour_marine_blue: #0D47A1;
+$colour_space_blue: #0C223F;
+$colour_bluebell_blue: #403DD0;
 
 $brandings: (
 	neptune: (
-		brand-colour: $hale-neptune-brand-colour,
-		header-link-current: govuk-colour("white"),
-		header-link-focus-underline: $hale-neptune-header-focus-colour,
-		header-link-focus-highlight: $hale-neptune-header-focus-highlight,
-		header-link-focus: $hale-neptune-brand-colour,
-		header-link-hover-focus: $hale-neptune-header-hover-link-colour,
-		header-menu-border-colour: $hale-neptune-header-border-colour,
-    page-body-bg: $hale-neptune-shading,
-		title-shading: $hale-neptune-shading,
-		secondary-text: $hale-neptune-text-secondary,
-		footer-background: $hale-neptune-footer-background,
-		footer-link-focus-background: $hale-neptune-footer-link-focus-shading,
-		link-focus-colour: $hale-neptune-focus-colour,
-		link-focus-background: $hale-neptune-focus-shading,
-		input-background: $hale-neptune-input-background,
-		input-border: $hale-neptune-input-border,
-		button: $hale-neptune-button,
-		button-hover:$hale-neptune-focus-colour,
-		button-focus:$hale-neptune-focus-colour,
-		button-text:govuk-colour("white"),
-		button-hover-text:govuk-colour("white"),
+    header-bg: $colour_space_blue,
+    header-link: govuk-colour("white"),
+    header-link-current: govuk-colour("white"),
+		header-link-focus-underline: $colour_tropicana_teal,
+    header-link-focus-highlight: $colour_snow_white_tint,
+		header-link-focus: $colour_charcoal_black,
+    header-link-mobile-border: $colour_snow_white_hsl_tint,
+    header-search-input-bg: govuk-colour("white"),
+    header-search-input-border: $colour_concrete_grey,
+    header-search-input-focus-border: $colour_tropicana_teal,
+    header-search-input-active-border: $colour_bluebell_blue,
+    mobile-controls: govuk-colour("white"),
+    cat-nav-arrows: $colour_tropicana_teal,
+		title-shading: $colour_tropicana_teal_tint,
+    page-body-bg: $colour_tropicana_teal_tint,
+    footer-border: $colour_space_blue,
+		footer-background: $colour_cloudy_grey,
+		footer-link-focus-background: $colour_tropicana_teal_tint,
+    link: $colour_southsea_blue,
+    link-hover: $colour_marine_blue,
+    link-focus: $colour_marine_blue,
+    link-focus-background: $colour_tropicana_teal_tint,
+    input-bg: govuk-colour("white"),
+    input-border: $colour_concrete_grey,
+		button: $colour_southsea_blue,
+    button-text: govuk-colour("white"),
+    button-hover: $colour_tropicana_teal,
+    button-hover-text: govuk-colour("white"),
+    button-focus: $colour_tropicana_teal,
+    button-active: $colour_bluebell_blue,
 		button-border:none,
+    mojblocks-accordion-section-title: $colour_southsea_blue,
+    mojblocks-accordion-section-title-hover: $colour_marine_blue,
+    mojblocks-accordion-section-title-focus: $colour_marine_blue,
+    mojblocks-accordion-section-title-focus-bg: $colour_tropicana_teal_tint,
+    mojblocks-accordion-section-title-focus-shadow: $colour_tropicana_teal,
+    mojblocks-banner-btn-bg: $colour_southsea_blue,
+    mojblocks-banner-btn-text: govuk-colour("white"),
+    mojblocks-banner-btn-hover-bg: $colour_marine_blue,
+    mojblocks-banner-btn-hover-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-bg: $colour_marine_blue,
+    mojblocks-banner-btn-focus-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-outline: $colour_tropicana_teal,
+    mojblocks-cta-bg: $colour_tropicana_teal_tint,
+    mojblocks-cta-title: $colour_charcoal_black,
+    mojblocks-cta-text: $colour_charcoal_black,
+    mojblocks-cta-btn-bg: $colour_southsea_blue,
+    mojblocks-cta-btn-text: govuk-colour("white"),
+    mojblocks-cta-btn-hover-bg: $colour_marine_blue,
+    mojblocks-cta-btn-hover-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-bg: $colour_marine_blue,
+    mojblocks-cta-btn-focus-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-outline: $colour_tropicana_teal,
+    mojblocks-hero-bg: $colour_tropicana_teal_tint,
+    mojblocks-highlights-list-bg: $colour_tropicana_teal_tint,
+    mojblocks-highlights-list-title: $colour_charcoal_black,
+    mojblocks-highlights-list-text: $colour_charcoal_black,
+    mojblocks-highlights-list-divider: $colour_space_blue,
+    mojblocks-reveal-title: $colour_southsea_blue,
+    mojblocks-reveal-title-hover: $colour_marine_blue,
+    mojblocks-reveal-title-focus: $colour_marine_blue,
+    mojblocks-reveal-title-focus-bg: $colour_tropicana_teal_tint,
+    mojblocks-reveal-title-focus-shadow: $colour_tropicana_teal,
+    mojblocks-staggered-box-bg: $colour_metal_grey,
+    mojblocks-staggered-box-divider: $colour_sunflower_yellow,
+    mojblocks-staggered-box-title: govuk-colour("white"),
+    mojblocks-staggered-box-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-border: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-bg: $colour_metal_grey,
+    mojblocks-staggered-box-btn-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-hover-border: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-hover-bg: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-hover-text: $colour_charcoal_black,
+    mojblocks-staggered-box-btn-focus-border: $colour_deep_ocean_teal,
+    mojblocks-staggered-box-btn-focus-bg: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-focus-text: $colour_charcoal_black,
 	),
 	uranus: (
-		brand-colour: $hale-uranus-brand-colour,
-		header-link: $hale-uranus-button,
+    header-bg: $colour_deep_ocean_teal,
+		header-link: govuk-colour("white"),
 		header-link-current: govuk-colour("white"),
-		header-link-focus: govuk-colour("black"),
-		header-link-hover-focus: govuk-colour("black"),
-    title-shading: $light_grey,
-    page-body-bg: $light_grey,
-		button: $hale-uranus-button,
+    header-link-focus-underline: $colour_deep_ocean_teal_tint,
+    header-link-focus-highlight: $colour_snow_white_tint,
+		header-link-focus: $colour_charcoal_black,
+    header-search-input-bg: govuk-colour("white"),
+    header-search-input-border: $colour_concrete_grey,
+    header-search-input-focus-bg: $colour_snow_white_tint,
+    header-search-input-focus-border: $colour_sunflower_yellow,
+    header-search-input-active-bg: $colour_snow_white_tint,
+    header-search-input-active-border: $colour_sunflower_yellow,
+    mobile-controls: govuk-colour("white"),
+    cat-nav-arrows: $colour_charcoal_black,
+    title-shading: $colour_deep_ocean_teal_tint,
+    page-body-bg: $colour_deep_ocean_teal_tint,
+    footer-link-focus-background: govuk-colour("yellow"),
+    footer-background: $colour_cloudy_grey,
+    footer-border: $colour_deep_ocean_teal,
+    link: $colour_southsea_blue,
+    link-hover: $colour_marine_blue,
+    link-focus: $colour_charcoal_black,
+    link-focus-background: $colour_sunflower_yellow,
+    input-bg: govuk-colour("white"),
+    input-border: $colour_concrete_grey,
+		button: $colour_sunflower_yellow,
 		button-text: govuk-colour("black"),
-		button-hover: govuk-colour("black"),
-		button-focus: govuk-colour("black"),
-		button-active: govuk-colour("black"),
-		button-hover-text: govuk-colour("white"),
-		link-focus-background: govuk-colour("yellow"),
-		link-focus-colour: govuk-colour("black"),
-		footer-link-focus-background: govuk-colour("yellow"),
-		footer-background: $hale-uranus-footer-background,
+		button-hover: $colour_charcoal_black,
+    button-hover-text: govuk-colour("white"),
+		button-focus: $colour_charcoal_black,
+		button-active: $colour_charcoal_black,
+    button-border:none,
+    mojblocks-accordion-section-title: $colour_southsea_blue,
+    mojblocks-accordion-section-title-hover: $colour_marine_blue,
+    mojblocks-accordion-section-title-focus: $colour_charcoal_black,
+    mojblocks-accordion-section-title-focus-bg: $colour_sunflower_yellow,
+    mojblocks-accordion-section-title-focus-shadow: $colour_charcoal_black,
+    mojblocks-accordion-controls: $colour_southsea_blue,
+    mojblocks-accordion-controls-hover: $colour_marine_blue,
+    mojblocks-banner-btn-bg: $colour_sunflower_yellow,
+    mojblocks-banner-btn-text: $colour_charcoal_black,
+    mojblocks-banner-btn-hover-bg: $colour_charcoal_black,
+    mojblocks-banner-btn-hover-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-bg: $colour_sunflower_yellow,
+    mojblocks-banner-btn-focus-text: $colour_charcoal_black,
+    mojblocks-banner-btn-focus-outline: $colour_deep_ocean_teal,
+    mojblocks-cta-bg: $colour_deep_ocean_teal,
+    mojblocks-cta-title: $colour_sunflower_yellow,
+    mojblocks-cta-text: govuk-colour("white"),
+    mojblocks-cta-btn-bg: $colour_sunflower_yellow,
+    mojblocks-cta-btn-text: $colour_charcoal_black,
+    mojblocks-cta-btn-hover-bg: $colour_charcoal_black,
+    mojblocks-cta-btn-hover-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-bg: $colour_charcoal_black,
+    mojblocks-cta-btn-focus-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-outline: $colour_sunflower_yellow,
+    mojblocks-hero-bg: $colour_deep_ocean_teal_tint,
+    mojblocks-highlights-list-bg: $colour_deep_ocean_teal,
+    mojblocks-highlights-list-title: $colour_sunflower_yellow,
+    mojblocks-highlights-list-text: govuk-colour("white"),
+    mojblocks-highlights-list-divider: $colour_sunflower_yellow,
+    mojblocks-reveal-title: $colour_southsea_blue,
+    mojblocks-reveal-title-hover: $colour_marine_blue,
+    mojblocks-reveal-title-focus: $colour_charcoal_black,
+    mojblocks-reveal-title-focus-bg: $colour_sunflower_yellow,
+    mojblocks-reveal-title-focus-shadow: $colour_charcoal_black,
+    mojblocks-staggered-box-bg: $colour_metal_grey,
+    mojblocks-staggered-box-divider: $colour_sunflower_yellow,
+    mojblocks-staggered-box-title: govuk-colour("white"),
+    mojblocks-staggered-box-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-border: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-bg: $colour_metal_grey,
+    mojblocks-staggered-box-btn-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-hover-border: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-hover-bg: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-hover-text: $colour_charcoal_black,
+    mojblocks-staggered-box-btn-focus-border: $colour_deep_ocean_teal,
+    mojblocks-staggered-box-btn-focus-bg: $colour_sunflower_yellow,
+    mojblocks-staggered-box-btn-focus-text: $colour_charcoal_black,
+
 	),
+  pluto: (
+    header-bg: govuk-colour("white"),
+    header-link: $colour_lead_grey,
+    header-link-current: $colour_lead_grey,
+    header-link-focus-underline: $colour_jade_green,
+    header-link-focus-highlight: $colour_jade_green_tint,
+    header-link-focus: govuk-colour("black"),
+    header-search-input-bg: govuk-colour("white"),
+    header-search-input-border: $colour_concrete_grey,
+    header-search-input-focus-bg: $colour_jade_green_tint,
+    header-search-input-focus-border: $colour_emerald_green,
+    header-search-input-active-bg: $colour_jade_green_tint,
+    header-search-input-active-border: $colour_midnight_green,
+    mobile-controls: $colour_lead_grey,
+    page-body-bg: $colour_salamander_orange_tint,
+    title-shading: $colour_salamander_orange_tint,
+    cat-nav-arrows: $colour_salamander_orange,
+    footer-border: $colour_lead_grey,
+    footer-background: $colour_cloudy_grey,
+    footer-link-focus-background: $colour_jade_green_tint,
+    link: $colour_emerald_green,
+    link-hover: $colour_pine_green,
+    link-focus-colour: $colour_jade_green,
+    link-focus-background: $colour_jade_green_tint,
+    input-bg: govuk-colour("white"),
+    input-border: $colour_pine_green,
+    button: $colour_emerald_green,
+    button-hover:$colour_pine_green,
+    button-focus:$colour_pine_green,
+    button-active:$colour_midnight_green,
+    button-text:govuk-colour("white"),
+    button-hover-text:govuk-colour("white"),
+    button-border:none,
+    mojblocks-accordion-section-title: $colour_emerald_green,
+    mojblocks-accordion-section-title-hover: $colour_pine_green,
+    mojblocks-accordion-section-title-focus: $colour_pine_green,
+    mojblocks-accordion-section-title-focus-bg: $colour_jade_green_tint,
+    mojblocks-accordion-section-title-focus-shadow: $colour_jade_green,
+    mojblocks-accordion-controls: $colour_emerald_green,
+    mojblocks-accordion-controls-hover: $colour_pine_green,
+    mojblocks-banner-btn-bg: $colour_emerald_green,
+    mojblocks-banner-btn-text: govuk-colour("white"),
+    mojblocks-banner-btn-hover-bg: $colour_pine_green,
+    mojblocks-banner-btn-hover-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-bg: $colour_pine_green,
+    mojblocks-banner-btn-focus-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-outline: $colour_jade_green,
+    mojblocks-cta-bg: $colour_salamander_orange_tint,
+    mojblocks-cta-title: $colour_charcoal_black,
+    mojblocks-cta-text: $colour_charcoal_black,
+    mojblocks-cta-btn-bg: $colour_emerald_green,
+    mojblocks-cta-btn-text: govuk-colour("white"),
+    mojblocks-cta-btn-hover-bg: $colour_pine_green,
+    mojblocks-cta-btn-hover-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-bg: $colour_pine_green,
+    mojblocks-cta-btn-focus-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-outline: $colour_jade_green,
+    mojblocks-hero-bg: $colour_salamander_orange_tint,
+    mojblocks-highlights-list-bg: $colour_salamander_orange_tint,
+    mojblocks-highlights-list-title: $colour_charcoal_black,
+    mojblocks-highlights-list-text: $colour_charcoal_black,
+    mojblocks-highlights-list-divider: $colour_salamander_orange,
+    mojblocks-reveal-title: $colour_emerald_green,
+    mojblocks-reveal-title-hover: $colour_pine_green,
+    mojblocks-reveal-title-focus: $colour_pine_green,
+    mojblocks-reveal-title-focus-bg: $colour_jade_green_tint,
+    mojblocks-reveal-title-focus-shadow: $colour_jade_green,
+    mojblocks-staggered-box-bg: $colour_lead_grey,
+    mojblocks-staggered-box-divider: $colour_salamander_orange,
+    mojblocks-staggered-box-title: govuk-colour("white"),
+    mojblocks-staggered-box-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-border: $colour_jade_green,
+    mojblocks-staggered-box-btn-bg: $colour_lead_grey,
+    mojblocks-staggered-box-btn-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-hover-border: $colour_jade_green,
+    mojblocks-staggered-box-btn-hover-bg: $colour_jade_green,
+    mojblocks-staggered-box-btn-hover-text: $colour_charcoal_black,
+    mojblocks-staggered-box-btn-focus-border: $colour_jade_green,
+    mojblocks-staggered-box-btn-focus-bg: $colour_jade_green,
+    mojblocks-staggered-box-btn-focus-text: $colour_charcoal_black,
+  ),
 );
 
 @mixin branding($brandings: $brandings) {
@@ -95,34 +293,114 @@ $brandings: (
 @function branded($key) {
 	@return map-get($branding-map, $key);
 }
-
-//list of colours used - not all have to be declared.
 /*
-		brand-colour: 
-		header-link: 
-		header-link-current: 
-		header-link-focus-underline: 
-		header-link-focus-highlight: 
-		header-link-focus: 
-		header-link-hover-focus: 
-		title-shading: 
-		secondary-text: 
-		footer-background: 
-		footer-link-focus-background: 
-		link-focus-colour: 
-		link-focus-background: 
-		input-background: 
-		input-border: 
-		button: 
-		button-hover: 
-		button-text: 
-		button-hover-text: 
-		button-border: 
+
+    //Theme colours - Mandatory
+
+    mobile-controls: // due to svg icons
+		cat-nav-arrows: // due to svg icons
+
+		//Theme colours - Other
+
+		header-bg:
+    header-link:
+    header-link-current:
+		header-link-focus-underline:
+    header-link-focus-highlight:
+		header-link-focus:
+    header-link-mobile-border:
+    header-search-input-bg:
+    header-search-input-border:
+    header-search-input-focus-border:
+    header-search-input-active-border:
+		title-shading:
+    page-body-bg:
+    footer-border:
+		footer-background:
+		footer-link-focus-background:
+    link:
+    link-hover:
+    link-focus:
+    link-focus-background:
+    input-bg:
+    input-border:
+		button:
+    button-text:
+    button-hover:
+    button-hover-text:
+    button-focus:
+    button-active:
+		button-border:
+
+		//MOJ Block Colour Options
+
+		//Accordion Block
+		mojblocks-accordion-section-title
+    mojblocks-accordion-section-title-hover
+    mojblocks-accordion-section-title-focus
+    mojblocks-accordion-section-title-focus-bg
+    mojblocks-accordion-section-title-focus-shadow
+    mojblocks-accordion-controls
+    mojblocks-accordion-controls-hover
+
+    //Banner Block
+    mojblocks-banner-btn-bg
+    mojblocks-banner-btn-text
+    mojblocks-banner-btn-hover-bg
+    mojblocks-banner-btn-hover-text
+    mojblocks-banner-btn-focus-bg
+    mojblocks-banner-btn-focus-text
+    mojblocks-banner-btn-focus-outline
+
+    //CTA Block
+    mojblocks-cta-bg
+    mojblocks-cta-title
+    mojblocks-cta-text
+    mojblocks-cta-btn-bg
+    mojblocks-cta-btn-text
+    mojblocks-cta-btn-hover-bg
+    mojblocks-cta-btn-hover-text
+    mojblocks-cta-btn-focus-bg
+    mojblocks-cta-btn-focus-text
+
+    //Hero Block
+    mojblocks-hero-bg
+
+    //Highlights List Block
+    mojblocks-highlights-list-bg
+    mojblocks-highlights-list-title
+    mojblocks-highlights-list-text
+    mojblocks-highlights-list-divider
+
+    mojblocks-reveal-title
+    mojblocks-reveal-title-hover
+    mojblocks-reveal-title-focus
+    mojblocks-reveal-title-focus-bg
+    mojblocks-reveal-title-focus-shadow
+
+    //Staggered Box
+    mojblocks-staggered-box-bg
+    mojblocks-staggered-box-divider
+    mojblocks-staggered-box-title
+    mojblocks-staggered-box-text
+    mojblocks-staggered-box-btn-border
+    mojblocks-staggered-box-btn-bg
+    mojblocks-staggered-box-btn-text
+    mojblocks-staggered-box-btn-hover-border
+    mojblocks-staggered-box-btn-hover-bg
+    mojblocks-staggered-box-btn-hover-text
+    mojblocks-staggered-box-btn-focus-border
+    mojblocks-staggered-box-btn-focus-bg
+    mojblocks-staggered-box-btn-focus-text
 */
 
 
 //Old colours:
+
+
+
 /*
+
 $color_snow-white: #FFFFFF;
 $color_black: #000000;
 $color_charcoal-black: #0B0C0C;

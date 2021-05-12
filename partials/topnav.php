@@ -24,7 +24,7 @@ if ($show_header_menu == 'yes') {
         'container' => false,
         'container_class' => '',
         'container_id' => '',
-        'fallback_cb' => 'wp_page_menu',
+        'fallback_cb' => '',
         'before' => '',
         'after' => '',
         'link_before' => '',

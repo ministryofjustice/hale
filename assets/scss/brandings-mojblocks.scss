@@ -1,0 +1,188 @@
+@import 'page-colours';
+
+//brandings for MOj Blocks
+
+*{
+	@include branding($brandings) {
+
+    //Accordion block
+    .govuk-accordion {
+      .govuk-accordion__controls {
+        .govuk-accordion__open-all {
+
+          color: branded(mojblocks-accordion-controls);
+
+          &:hover {
+            color: branded(mojblocks-accordion-controls-hover);
+          }
+        }
+      }
+      .govuk-accordion__section-heading {
+
+        color: branded(mojblocks-accordion-section-title);
+
+        &:before {
+          border-color: branded(mojblocks-accordion-section-title);
+        }
+
+        &:hover {
+          color: branded(mojblocks-accordion-section-title-hover);
+
+          &:before {
+            border-color: branded(mojblocks-accordion-section-title-hover);
+          }
+        }
+
+        &:focus {
+          color: branded(mojblocks-accordion-section-title-focus);
+          background-color: branded(mojblocks-accordion-section-title-focus-bg);
+          box-shadow: 0 -2px branded(mojblocks-accordion-section-title-focus-bg), 0 4px branded(mojblocks-accordion-section-title-focus-shadow);
+        }
+
+        .govuk-accordion__section-button {
+          &:focus {
+            color: branded(mojblocks-accordion-section-title-focus);
+            background-color: branded(mojblocks-accordion-section-title-focus-bg);
+            box-shadow: 0 -2px branded(mojblocks-accordion-section-title-focus-bg), 0 4px branded(mojblocks-accordion-section-title-focus-shadow);
+          }
+        }
+
+      }
+    }
+
+    //Banner Block
+    .mojblocks-banner {
+      .mojblocks-banner__button {
+        background-color: branded(mojblocks-banner-btn-bg);
+        color: branded(mojblocks-banner-btn-text);
+
+        &:hover {
+          background-color: branded(mojblocks-banner-btn-hover-bg);
+          color: branded(mojblocks-banner-btn-hover-text);
+        }
+
+        &:focus {
+          background-color: branded(mojblocks-banner-btn-focus-bg);
+          color: branded(mojblocks-banner-btn-focus-text);
+          outline: 3px solid branded(mojblocks-banner-btn-focus-outline);
+        }
+      }
+    }
+    //CTA Block
+    .wp-block-mojblocks-cta {
+      background-color: branded(mojblocks-cta-bg);
+
+      .mojblocks-cta__heading-text {
+        color: branded(mojblocks-cta-title);
+
+      }
+
+      .mojblocks-cta__content p {
+        color: branded(mojblocks-cta-text);
+      }
+
+      a.mojblocks-button {
+        background-color: branded(mojblocks-cta-btn-bg);
+        color: branded(mojblocks-cta-btn-text);
+
+         &:hover {
+          background-color: branded(mojblocks-cta-btn-hover-bg);
+          color: branded(mojblocks-cta-btn-hover-text);
+        }
+
+        &:focus {
+          background-color: branded(mojblocks-cta-btn-focus-bg);
+          color: branded(mojblocks-cta-btn-focus-text);
+          outline: 3px solid branded(mojblocks-cta-btn-focus-outline);
+        }
+      }
+    }
+
+    .mojblocks-hero {
+      .mojblocks-hero__image {
+        background-color: branded(mojblocks-hero-bg);
+      }
+    }
+    //Highlights List Block
+    .mojblocks-highlights-list {
+      background-color: branded(mojblocks-highlights-list-bg);
+
+      &__heading-text {
+        color: branded(mojblocks-highlights-list-title);
+      }
+
+      .mojblocks-highlights-list__content li {
+        color: branded(mojblocks-highlights-list-text);
+
+        a,
+        a:link,
+        a:link:visited
+        a:link:visited:not([class]){
+          color: branded(mojblocks-highlights-list-text);
+        }
+
+        &:before {
+          background-color: branded(mojblocks-highlights-list-divider);
+        }
+      }
+    }
+
+    //Reveal Block
+    .wp-block-mojblocks-reveal {
+      .govuk-details__summary {
+        color: branded(mojblocks-reveal-title);
+
+        &:hover {
+          color: branded(mojblocks-reveal-title-hover);
+        }
+
+        &:focus {
+          color: branded(mojblocks-reveal-title-focus);
+          background-color: branded(mojblocks-reveal-title-focus-bg);
+          box-shadow: 0 -2px branded(mojblocks-reveal-title-focus-bg), 0 4px branded(mojblocks-reveal-title-focus-shadow);
+        }
+      }
+    }
+
+    //Staggered Box Block
+    .mojblocks-staggered-box {
+      .mojblocks-staggered-box__text-container {
+        background: branded(mojblocks-staggered-box-bg);
+
+        .mojblocks-staggered-box__title {
+
+          color: branded(mojblocks-staggered-box-title);
+
+          &:before {
+            background: branded(mojblocks-staggered-box-divider);
+          }
+        }
+
+        .mojblocks-staggered-box__content {
+          color: branded(mojblocks-staggered-box-text);
+        }
+
+        .mojblocks-staggered-box__button {
+          border-color: branded(mojblocks-staggered-box-btn-border);
+          color: branded(mojblocks-staggered-box-btn-text);
+          background: branded(mojblocks-staggered-box-btn-bg);
+
+          &:hover {
+            border-color: branded(mojblocks-staggered-box-btn-hover-border);
+            color: branded(mojblocks-staggered-box-btn-hover-text);
+            background: branded(mojblocks-staggered-box-btn-hover-bg);
+          }
+
+          &:focus {
+            border-color: branded(mojblocks-staggered-box-btn-focus-border);
+            color: branded(mojblocks-staggered-box-btn-focus-text);
+            background: branded(mojblocks-staggered-box-btn-focus-bg);
+          }
+
+        }
+      }
+    }
+
+  }
+
+}

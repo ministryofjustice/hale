@@ -100,31 +100,6 @@ function nightingale_customize_register( $wp_customize ) {
     );
 
     /*
-     * Header Styles
-     */
-	$wp_customize->add_setting(
-		'header_styles',
-		array(
-			'default'           => 'normal',
-			'sanitize_callback' => 'nightingale_sanitize_select',
-		)
-	);
-
-	$wp_customize->add_control(
-		'header_styles',
-		array(
-			'label'       => esc_html__( 'Header Colour', 'nightingale' ),
-			'description' => esc_html__( 'What background would you like for your header region?', 'nightingale' ),
-			'section'     => 'section_header',
-			'type'        => 'radio',
-			'choices'     => array(
-				'normal'   => esc_html__( 'Solid Colour', 'nightingale' ),
-				'inverted' => esc_html__( 'White Logo Bar', 'nightingale' ),
-			),
-		)
-	);
-
-    /*
      * -----------------------------------------------------------
      * SHOW / HIDE Breadcrumb
      * -----------------------------------------------------------

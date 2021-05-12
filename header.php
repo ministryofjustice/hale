@@ -45,22 +45,16 @@ wp_body_open();
 <a class="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
 
-$header_colour = get_theme_mod( 'header_styles', 'normal' );
 $header_search = get_theme_mod( 'show_search', 'yes' );
 $show_header_menu = get_theme_mod('show_header_menu', 'yes');
 
-if ( 'normal' !== $header_colour ) {
-	$header_colour_text = ' hale-header--white';
-} else {
-	$header_colour_text = '';
-}
 if ( 'yes' === $header_search && !is_search()) {
   $header_search_class = 'hale-header--with-search';
 } else {
   $header_search_class = '';
 }
 
-echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text . $header_search_class ) . '" data-module="govuk-header">';
+echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class ) . '" data-module="govuk-header">';
 ?>
 <div class="govuk-width-container govuk-header__container">
 	<?php
@@ -81,22 +75,24 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_colour_text 
           $headersearchextra = '';
         }
       ?>
+    <?php
+    if ($show_header_menu == 'yes') {
+    ?>
     <div class="govuk-header__content" id="content-header">
       <div class="hale-header__menu <?php echo esc_attr($headersearchextra); ?>">
 
       </div>
-      <?php
-        if ($show_header_menu == 'yes') {
-      ?>
+
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
       <?php get_template_part( 'partials/topnav' );
-      }
+
       ?>
 
     <div class="hale-header__header-controls">
 
     </div>
 	</div>
+    <?php } ?>
 </div>
 </header>
 <?php

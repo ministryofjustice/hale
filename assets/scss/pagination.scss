@@ -205,3 +205,42 @@
     margin-left: govuk-spacing(6);
   }
 }
+
+
+//adjust the gem (government publishing component) navigation
+.gem-c-pagination__item {
+
+  .gem-c-pagination__link{
+    background-repeat: no-repeat;
+    background-position-y: center;
+
+    .gem-c-pagination__link-title {
+      padding-left:30px;
+
+      .gem-c-pagination__link-text {
+        font-size:1.375rem;
+
+        @include govuk-media-query($from: tablet) {
+          font-size:1.5rem;
+        }
+      }
+    }
+    .gem-c-pagination__link-label {
+      color:$colour_metal_grey;
+      padding-left:10px;
+      text-decoration:none;
+      margin-left:30px;
+    }
+  }
+
+  &.gem-c-pagination__item--next .gem-c-pagination__link {
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 .438c7.492 0 13.563 6.07 13.563 13.562 0 7.492-6.07 13.563-13.563 13.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437zm6.229 12.632l-7.41-7.41a1.307 1.307 0 00-1.854 0l-.93.93a1.307 1.307 0 000 1.854L15.591 14l-5.556 5.556a1.307 1.307 0 000 1.854l.93.93a1.307 1.307 0 001.854 0l7.41-7.41a1.314 1.314 0 000-1.86z' fill='%2300A19A'/%3E%3C/svg%3E")
+  }
+  &.gem-c-pagination__item--previous .gem-c-pagination__link {
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 27.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437c7.492 0 13.563 6.07 13.563 13.563 0 7.492-6.07 13.563-13.563 13.563zM7.771 14.93l7.41 7.41a1.307 1.307 0 001.854 0l.93-.93a1.307 1.307 0 000-1.854L12.409 14l5.556-5.556a1.307 1.307 0 000-1.854l-.93-.93a1.307 1.307 0 00-1.854 0l-7.41 7.41a1.314 1.314 0 000 1.86z' fill='%2300a19a'/%3E%3C/svg%3E")
+  }
+
+  .gem-c-pagination__link-icon {
+    display:none;
+  }
+}

@@ -21,6 +21,12 @@
     line-height: 2rem;
 	}
 
+  .mojblocks-banner {
+    h1 {
+      margin-top: 0;
+    }
+  }
+
 	// any full width under primary (which already has the two-thirds class)
 	.govuk-grid-column-full {
 		padding-left:0;

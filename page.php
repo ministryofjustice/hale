@@ -35,7 +35,11 @@ while (have_posts()) :
         $show_title_section = 'yes';
     }
 
-    if($show_title_section == 'yes') {
+    if(is_front_page() === false && $show_title_section == 'yes') { ?>
+
+        <div class="page-header-section">
+
+            <?php
 
         /**
          * Category page list section
@@ -44,15 +48,17 @@ while (have_posts()) :
          * */
         include(locate_template('partials/category-list-section.php', false, false));
 
-        // Page title
-        if (is_front_page() === false) {
 
-			 // Header loads if category not selected on page
-					if (empty($is_cat_page)) { ?>
-					 <h1 class="govuk-heading-l"><?php the_title(); ?></h1>
-				 <?php
-					}
-				}
+
+         // Header loads if category not selected on page
+                if (empty($is_cat_page)) { ?>
+                 <h1 class="govuk-heading-l"><?php the_title(); ?></h1>
+             <?php
+                }
+
+        ?>
+        </div>
+    <?php
     }
     ?>
       <div class="
