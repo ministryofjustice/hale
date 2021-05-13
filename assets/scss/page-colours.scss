@@ -35,6 +35,7 @@ $brandings: (
     header-bg: $colour_space_blue,
     header-link: govuk-colour("white"),
     header-link-current: govuk-colour("white"),
+    header-link-hover-border: govuk-colour("white"),
 		header-link-focus-underline: $colour_tropicana_teal,
     header-link-focus-highlight: $colour_snow_white_tint,
 		header-link-focus: $colour_charcoal_black,
@@ -53,6 +54,7 @@ $brandings: (
     link: $colour_southsea_blue,
     link-hover: $colour_marine_blue,
     link-focus: $colour_marine_blue,
+    link-focus-shadow: $colour_tropicana_teal,
     link-focus-background: $colour_tropicana_teal_tint,
     input-bg: govuk-colour("white"),
     input-border: $colour_concrete_grey,
@@ -113,6 +115,7 @@ $brandings: (
     header-bg: $colour_deep_ocean_teal,
 		header-link: govuk-colour("white"),
 		header-link-current: govuk-colour("white"),
+    header-link-hover-border: govuk-colour("white"),
     header-link-focus-underline: $colour_deep_ocean_teal_tint,
     header-link-focus-highlight: $colour_snow_white_tint,
 		header-link-focus: $colour_charcoal_black,
@@ -132,6 +135,7 @@ $brandings: (
     link: $colour_southsea_blue,
     link-hover: $colour_marine_blue,
     link-focus: $colour_charcoal_black,
+    link-focus-shadow: $colour_charcoal_black,
     link-focus-background: $colour_sunflower_yellow,
     input-bg: govuk-colour("white"),
     input-border: $colour_concrete_grey,
@@ -195,6 +199,7 @@ $brandings: (
     header-bg: govuk-colour("white"),
     header-link: $colour_lead_grey,
     header-link-current: $colour_lead_grey,
+    header-link-hover-border: $colour_lead_grey,
     header-link-focus-underline: $colour_jade_green,
     header-link-focus-highlight: $colour_jade_green_tint,
     header-link-focus: govuk-colour("black"),
@@ -213,7 +218,8 @@ $brandings: (
     footer-link-focus-background: $colour_jade_green_tint,
     link: $colour_emerald_green,
     link-hover: $colour_pine_green,
-    link-focus-colour: $colour_jade_green,
+    link-focus: $colour_pine_green,
+    link-focus-shadow: $colour_jade_green,
     link-focus-background: $colour_jade_green_tint,
     input-bg: govuk-colour("white"),
     input-border: $colour_pine_green,
@@ -305,6 +311,7 @@ $brandings: (
 		header-bg:
     header-link:
     header-link-current:
+    header-link-hover-border:
 		header-link-focus-underline:
     header-link-focus-highlight:
 		header-link-focus:

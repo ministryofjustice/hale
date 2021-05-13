@@ -106,23 +106,36 @@
 			.govuk-header__logotype-text:not(.hale-header__logotype-text--custom) {
 				display:none;
 			}
+
 			.govuk-header__content {
-				.govuk-header__menu-button,
-				.govuk-header__navigation a {
-					color: branded(header-link);
-					&:hover:focus{
-						color: branded(header-link-hover-focus);
-					}
-					&:focus:not(:hover) {
-						color: branded(header-link-focus);
-						background-color: branded(header-link-focus-highlight);
-						border-bottom-color: branded(header-link-focus-underline);
-						box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus);
-					}
-				}
-				.current-menu-item a:not(:focus) {
-					color: branded(header-link-current);
-				}
+        .govuk-header__navigation {
+          li.current-menu-item a:link,
+          .govuk-header__menu-button,
+          a,
+          a:link
+          {
+            color: branded(header-link);
+
+            &:hover:focus {
+              color: branded(header-link-hover-focus);
+            }
+
+            &:focus:not(:hover) {
+              color: branded(header-link-focus);
+              background-color: branded(header-link-focus-highlight);
+              border-bottom-color: branded(header-link-focus-underline);
+              box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus);
+            }
+
+            &:hover {
+              border-bottom-color: branded(header-link-hover-border);
+            }
+          }
+
+          .current-menu-item a:not(:focus) {
+            color: branded(header-link-current);
+          }
+        }
 			}
 		}
 		.govuk-button {
@@ -186,7 +199,7 @@
 			&:focus {
         color: branded(link-focus);
 				background-color: branded(link-focus-background);
-				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus);
+				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-shadow);
 				outline: 4px solid transparent;
 			}
 		}
@@ -253,7 +266,7 @@
        footer-border
        footer-background
        footer-link-focus-background
-       link-focus-colour
+       link-focus
      */
 		.govuk-footer {
 			border-top-width: 4px;
