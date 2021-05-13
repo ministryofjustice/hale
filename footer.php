@@ -22,16 +22,37 @@ flush();
 
 <footer class="govuk-footer " role="contentinfo" id="footer">
   <div class="govuk-width-container">
-    <?php if ( is_active_sidebar( 'footer-region' ) ) : ?>
-      <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
-        <?php dynamic_sidebar( 'footer-region' ); ?>
-      </div>
-      <?php
-    endif;
-    ?>
+
+  <div class="govuk-grid-row">
+
+
+<?php if ( is_active_sidebar( 'footer-area-one' ) ) : ?>
+<div class="govuk-grid-column-one-half">
+    <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
+    <?php dynamic_sidebar( 'footer-area-one' ); ?>
+    </div>
+    </div>
+<?php
+endif;
+?>
+
+
+<?php if ( is_active_sidebar( 'footer-area-two' ) ) : ?>
+<div class="govuk-grid-column-one-half">
+    <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
+    <?php dynamic_sidebar( 'footer-area-two' ); ?>
+    </div>
+    </div>
+<?php
+endif;
+?>
+
+</div>
+
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         <?php
+          get_template_part( 'partials/footernav-secondary' );
           get_template_part( 'partials/footernav' );
           get_template_part( 'partials/footer-licence' );
           if ('yes' != $crown_copyright) {

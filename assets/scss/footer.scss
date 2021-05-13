@@ -1,22 +1,16 @@
-.govuk-footer .widget_social_widget {
-  //the styles here are just for the social media icon links.
-  font-size: 40px;
-  font-size: 2.5rem;
-  
-  .hale-social-link {
-    margin-right:12px;
-    
-    &:hover {
-      box-shadow: 0 4px $govuk-text-colour;
-    }
-    &:focus {
-      box-shadow: -4px 0px $govuk-focus-colour, 4px 0px $govuk-focus-colour, -4px 4px $govuk-text-colour, 4px 4px $govuk-text-colour;
-    }
-  }
-  .widgettitle {
-    @extend .govuk-heading-s;
+@import 'page-colours';
+
+.govuk-footer {
+
+  .hale-secondary-footer-menu {
+    display: block;
+    padding: 20px 0 6px;
+    margin-bottom: 30px;
+    border-top: 1px solid $colour_metal_grey;
+    border-bottom: 1px solid $colour_metal_grey;
   }
 }
+
 .hale-footer__copyright {
   margin-top: 1rem;
 }
