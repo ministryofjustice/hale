@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+  margin: 0 0 1em;
+
+  .widgettitle {
+    @extend .govuk-heading-s;
+  }
+}
+
+.hale-footer__widgets {
+  margin-bottom: 30px;
+
+  .widget_social_widget {
+    font-size: 40px;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+
+    .hale-social-link {
+      margin-right: 12px;
+
+      &:hover {
+        box-shadow: 0 4px $govuk-text-colour;
+      }
+
+      &:focus {
+        box-shadow: -4px 0px $govuk-focus-colour,
+        4px 0px $govuk-focus-colour,
+        -4px 4px $govuk-text-colour,
+        4px 4px $govuk-text-colour;
+      }
+    }
+
+    @media (min-width: 48.0625em) {
+      min-height: 130px;
+    }
+
+    .widgettitle {
+      @extend .govuk-heading-s;
+    }
+  }
+}
+
+.widget select {
+  /* Make sure select elements fit in widgets. */
+  max-width: 100%;
+}

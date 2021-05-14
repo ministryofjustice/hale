@@ -51,9 +51,10 @@ function hale_setup()
 
     // This theme uses wp_nav_menus() in two location.
     $locations = array(
-        'main-menu'   => __('The menu to show at the top of your site (does not show child options, only top level navigation)', 'hale'),
-        'secondary-top-menu'   => __('The secondary menu to show at the top of your site (does not show child options, only top level navigation)', 'hale'),
-        'footer-menu' => __('The footer navigation area - this is great for showing more detailed links and deeper navigation.', 'hale'),
+        'main-menu'   => __('Main site navigation, located in the header.', 'hale'),
+        'secondary-top-menu'   => __('Secondary navigation, under header.', 'hale'),
+        'footer-menu' => __('Main footer navigation area.', 'hale'),
+        'secondary-footer-menu' => __('Secondary footer navigation area.', 'hale')
     );
     register_nav_menus($locations);
 
@@ -193,38 +194,47 @@ add_action('after_setup_theme', 'hale_content_width', 0);
 function hale_widgets_init()
 {
     register_sidebar(
-        array(
-            'name'          => esc_html__('Sidebar', 'nightingale'),
+        [
+            'name'          => esc_html__('Sidebar', 'hale'),
             'id'            => 'sidebar-1',
             'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
             'before_widget' => '<section id="%1$s" class="%2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
-        )
+        ]
     );
     register_sidebar(
-        array(
-            'name'          => esc_html__('Post Sidebar', 'nightingale'),
+        [
+            'name'          => esc_html__('Post Sidebar', 'hale'),
             'id'            => 'sidebar-2',
             'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
             'before_widget' => '<section id="%1$s" class="%2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
-        )
+        ]
     );
     register_sidebar(
-        array(
-            'name'          => esc_html__('Footer Region', 'nightingale'),
-            'id'            => 'footer-region',
-            'description'   => esc_html__('Widgets to show in the footer zone. By default the footer will have a copyright notice and the footer menu (if configured) only.', 'hale'),
+        [
+            'name'          => esc_html__('Footer area one', 'hale'),
+            'id'            => 'footer-area-two',
+            'description'   => esc_html__('Footer area widget. Displays on lefthand side when two footer widgets are present.', 'hale'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
-        )
+        ]
     );
     register_sidebar(
-        array(
+        [
+            'name'          => esc_html__('Footer area two', 'hale'),
+            'id'            => 'footer-area-one',
+            'description'   => esc_html__('Footer area widget. Displays on the righthand side when two footer widgets are present.', 'hale'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+        ]
+    );
+    register_sidebar(
+        [
             'name'          => '404 Page',
             'id'            => '404-error',
             'description'   => esc_html__('Content for your 404 error page goes here.', 'hale'),
@@ -232,7 +242,7 @@ function hale_widgets_init()
             'after_widget'  => '</div>',
             'before_title'  => '<h3 class="govuk-heading-s">',
             'after_title'   => '</h3>',
-        )
+        ]
     );
 }
 
@@ -266,13 +276,14 @@ add_action('wp_enqueue_scripts', 'hale_scripts');
  * Hooked to the wp_print_scripts action, with a late priority (100),
  * so that it is after the script was enqueued.
  */
-function hale_dequeue_scripts() {
+function hale_dequeue_scripts()
+{
 
     // Stop a clash from MoJ Blocks plugin, as this theme already uses Gov UK JS
-    wp_dequeue_script( 'mojblocks-govuk-js' );
+    wp_dequeue_script('mojblocks-govuk-js');
 }
 
-add_action( 'wp_print_scripts', 'hale_dequeue_scripts', 100 );
+add_action('wp_print_scripts', 'hale_dequeue_scripts', 100);
 
 /**
  * @param $filename
