@@ -10,10 +10,12 @@
 }
 
 .hale-footer__widgets {
+  margin-bottom: 30px;
+
   .widget_social_widget {
-    //the styles here are just for the social media icon links.
     font-size: 40px;
     font-size: 2.5rem;
+    margin-bottom: 15px;
 
     .hale-social-link {
       margin-right: 12px;
@@ -28,6 +30,10 @@
         -4px 4px $govuk-text-colour,
         4px 4px $govuk-text-colour;
       }
+    }
+
+    @media (min-width: 48.0625em) {
+      min-height: 130px;
     }
 
     .widgettitle {

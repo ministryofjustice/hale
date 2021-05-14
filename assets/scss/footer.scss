@@ -2,12 +2,36 @@
 
 .govuk-footer {
 
+  .hale-primary-footer-menu {
+    display: block;
+    line-height: 2;
+
+    @media (min-width: 48.0625em) {
+      line-height: 1;
+      margin-bottom: 30px;
+    }
+  }
+
   .hale-secondary-footer-menu {
     display: block;
     padding: 20px 0 6px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    line-height: 2;
     border-top: 1px solid $colour_metal_grey;
     border-bottom: 1px solid $colour_metal_grey;
+
+    ul {
+      column-count: 2;
+    }
+
+    @media (min-width: 48.0625em) {
+      line-height: 1;
+      margin-bottom: 30px;
+
+      ul {
+        column-count: auto;
+      }
+    }
   }
 }
 

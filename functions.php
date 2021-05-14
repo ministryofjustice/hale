@@ -194,7 +194,7 @@ add_action('after_setup_theme', 'hale_content_width', 0);
 function hale_widgets_init()
 {
     register_sidebar(
-        array(
+        [
             'name'          => esc_html__('Sidebar', 'hale'),
             'id'            => 'sidebar-1',
             'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
@@ -202,10 +202,10 @@ function hale_widgets_init()
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
-        )
+        ]
     );
     register_sidebar(
-        array(
+        [
             'name'          => esc_html__('Post Sidebar', 'hale'),
             'id'            => 'sidebar-2',
             'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
@@ -213,28 +213,28 @@ function hale_widgets_init()
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="govuk-heading-m">',
             'after_title'   => '</h2>',
-        )
+        ]
     );
     register_sidebar(
-        array(
+        [
             'name'          => esc_html__('Footer area one', 'hale'),
             'id'            => 'footer-area-two',
             'description'   => esc_html__('Footer area widget. Displays on lefthand side when two footer widgets are present.', 'hale'),
-            'before_widget' => '<section id="%2$s" class="widget %2$s">',
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
-        )
+        ]
     );
     register_sidebar(
-        array(
+        [
             'name'          => esc_html__('Footer area two', 'hale'),
             'id'            => 'footer-area-one',
             'description'   => esc_html__('Footer area widget. Displays on the righthand side when two footer widgets are present.', 'hale'),
-            'before_widget' => '<section id="%2$s" class="widget %2$s">',
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
-        )
+        ]
     );
     register_sidebar(
-        array(
+        [
             'name'          => '404 Page',
             'id'            => '404-error',
             'description'   => esc_html__('Content for your 404 error page goes here.', 'hale'),
@@ -242,7 +242,7 @@ function hale_widgets_init()
             'after_widget'  => '</div>',
             'before_title'  => '<h3 class="govuk-heading-s">',
             'after_title'   => '</h3>',
-        )
+        ]
     );
 }
 
@@ -276,13 +276,14 @@ add_action('wp_enqueue_scripts', 'hale_scripts');
  * Hooked to the wp_print_scripts action, with a late priority (100),
  * so that it is after the script was enqueued.
  */
-function hale_dequeue_scripts() {
+function hale_dequeue_scripts()
+{
 
     // Stop a clash from MoJ Blocks plugin, as this theme already uses Gov UK JS
-    wp_dequeue_script( 'mojblocks-govuk-js' );
+    wp_dequeue_script('mojblocks-govuk-js');
 }
 
-add_action( 'wp_print_scripts', 'hale_dequeue_scripts', 100 );
+add_action('wp_print_scripts', 'hale_dequeue_scripts', 100);
 
 /**
  * @param $filename
