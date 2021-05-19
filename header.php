@@ -18,6 +18,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="theme" content="MOJ-hale-1.0.11">
 	<meta name="description" content="<?php bloginfo('description'); ?>" />
+    <meta name="facebook-domain-verification" content="0lhdveb8mme7fxebdskrlg6b5rlfsb" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php
 	wp_enqueue_script( 'jquery' );
@@ -98,7 +99,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 <?php
 get_template_part( 'partials/secondary-top-nav' );
 
-echo hale_breadcrumb(); 
+echo hale_breadcrumb();
 
 $page_colour = get_post_meta( get_the_id(), 'page-colour', true );
 
