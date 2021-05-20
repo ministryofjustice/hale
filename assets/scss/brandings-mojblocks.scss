@@ -3,7 +3,7 @@
 //brandings for MOj Blocks
 
 *{
-	@include branding($brandings) {
+	@include branding($brandings, $gutenberg-styles) {
 
     //Accordion block
     .govuk-accordion {
@@ -81,6 +81,7 @@
         color: branded(mojblocks-cta-text);
       }
 
+      .mojblocks-button,
       a.mojblocks-button {
         background-color: branded(mojblocks-cta-btn-bg);
         color: branded(mojblocks-cta-btn-text);
