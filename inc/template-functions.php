@@ -16,7 +16,7 @@
  *
  * @return array
  */
-function nightingale_body_classes( $classes ) {
+function hale_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -27,31 +27,31 @@ function nightingale_body_classes( $classes ) {
 		$classes[] = 'no-sidebar';
 	}
 
-	$classes[] = nightingale_get_header_style();
+	$classes[] = hale_get_header_style();
 
 	return $classes;
 }
 
-add_filter( 'body_class', 'nightingale_body_classes' );
+add_filter( 'body_class', 'hale_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function nightingale_pingback_header() {
+function hale_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
 	}
 }
 
-add_action( 'wp_head', 'nightingale_pingback_header' );
+add_action( 'wp_head', 'hale_pingback_header' );
 
-if ( ! function_exists( 'nightingale_get_header_style' ) ) {
+if ( ! function_exists( 'hale_get_header_style' ) ) {
 	/**
 	 * Figure whether we are using standard blue header with white text, or an inverse header which is white with blue / grey text.
 	 *
 	 * @return string $default_position.
 	 */
-	function nightingale_get_header_style() {
+	function hale_get_header_style() {
 
 		$themeoptions_header_style = get_theme_mod( 'theme-header-style', 'default' );
 
@@ -75,7 +75,7 @@ add_post_type_support( 'page', 'excerpt' );
  *
  * @param int $length length to shorten content to.
  */
-function nightingale_shorten_excerpt( $length ) {
+function hale_shorten_excerpt( $length ) {
 	if ( is_admin() ) {
 		return $length;
 	}
@@ -83,14 +83,14 @@ function nightingale_shorten_excerpt( $length ) {
 	return 20;
 }
 
-add_filter( 'excerpt_length', 'nightingale_shorten_excerpt', 10 );
+add_filter( 'excerpt_length', 'hale_shorten_excerpt', 10 );
 
 /**
  * Adds the readmore link to excerpts
  *
  * @param string $more the default more string.
  */
-function nightingale_excerpt_more( $more ) {
+function hale_excerpt_more( $more ) {
 	if ( is_admin() ) {
 		return $more;
 	}
@@ -98,10 +98,10 @@ function nightingale_excerpt_more( $more ) {
 	$link  = '';
 	$title = get_the_title( $post->ID );
 
-	return nightingale_read_more_posts( $title, $link );
+	return hale_read_more_posts( $title, $link );
 }
 
-add_filter( 'excerpt_more', 'nightingale_excerpt_more' );
+add_filter( 'excerpt_more', 'hale_excerpt_more' );
 /**
  * Customise the read more link.
  *
@@ -109,10 +109,10 @@ add_filter( 'excerpt_more', 'nightingale_excerpt_more' );
  * @param string $link  The href of the resource being linked to.
  *                      return string output html.
  */
-function nightingale_read_more_posts( $title, $link ) {
+function hale_read_more_posts( $title, $link ) {
   $readmorelink = '';
 	if ( '' !== $link ) {
-		$readmorelink .= '<a class="govuk-button" href="' . $link . '">' . esc_html__( 'Read more ', 'nightingale' ) . '</a>';
+		$readmorelink .= '<a class="govuk-button" href="' . $link . '">' . esc_html__( 'Read more ', 'hale' ) . '</a>';
 	}
 	return $readmorelink;
 }
@@ -120,7 +120,7 @@ function nightingale_read_more_posts( $title, $link ) {
 /**
  * Whether show sidebar returns true or false
  */
-function nightingale_show_sidebar() {
+function hale_show_sidebar() {
 	return ( 'true' === get_theme_mod( 'blog_sidebar' ) );
 }
 
@@ -129,7 +129,7 @@ function nightingale_show_sidebar() {
  *
  * @param string $sidebar location string for sidebar.
  */
-function nightingale_sidebar_location( $sidebar ) {
+function hale_sidebar_location( $sidebar ) {
 	$sidebar_location = get_theme_mod( 'sidebar_location', 'right' );
 	$sidefloat        = 'contentleft';
 	if ( 'right' !== $sidebar_location ) {
@@ -169,7 +169,7 @@ function hale_custom_page_colour( $classes ) {
 add_filter( 'body_class', 'hale_custom_page_colour' );
 
 
-function nightingale_custom_typography( $classes ) {
+function hale_custom_typography( $classes ) {
     $font = get_theme_mod( 'primary_font', 'frutiger' );
     if ( !empty($font) ) {
         $font_class = 'primary-font--'. $font;
@@ -179,7 +179,7 @@ function nightingale_custom_typography( $classes ) {
     return $classes;
 }
 
-add_filter( 'body_class', 'nightingale_custom_typography' );
+add_filter( 'body_class', 'hale_custom_typography' );
 
 function hale_admin_custom_typography( $classes ) {
 
@@ -238,16 +238,16 @@ add_filter( 'admin_body_class', 'hale_admin_custom_page_colour', 10, 1);
  *
  * @return mixed|string|string[]|void|null Return the sanitised output, or original output if flag set to false.
  */
-function nightingale_clean_bad_content( $b_print = false ) {
+function hale_clean_bad_content( $b_print = false ) {
 
 	global $post;
-	$nightingale_post_content  = $post->post_content;
-	$nightingale_remove_filter = array( '~<p[^>]*>\s?</p>~', '~<a[^>]*>\s?</a>~', '~<h[^>]*>\s?</h[^>]>~', '~<font[^>]*>~', '~<\/font>~' );
-	$nightingale_post_content  = preg_replace( $nightingale_remove_filter, '', $nightingale_post_content );
-	$nightingale_post_content  = apply_filters( 'the_content', $nightingale_post_content );
+	$hale_post_content  = $post->post_content;
+	$hale_remove_filter = array( '~<p[^>]*>\s?</p>~', '~<a[^>]*>\s?</a>~', '~<h[^>]*>\s?</h[^>]>~', '~<font[^>]*>~', '~<\/font>~' );
+	$hale_post_content  = preg_replace( $hale_remove_filter, '', $hale_post_content );
+	$hale_post_content  = apply_filters( 'the_content', $hale_post_content );
 	if ( false === $b_print ) {
-		return $nightingale_post_content;
+		return $hale_post_content;
 	} else {
-		echo $nightingale_post_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $hale_post_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

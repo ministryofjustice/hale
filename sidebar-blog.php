@@ -16,7 +16,7 @@ if ( ! is_active_sidebar( 'sidebar-2' ) ) {
 	return;
 }
 
-if ( ! nightingale_show_sidebar() ) {
+if ( ! hale_show_sidebar() ) {
 	return;
 }
 ?>

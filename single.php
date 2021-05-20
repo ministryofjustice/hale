@@ -17,8 +17,8 @@ get_header();
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<div class="
 		<?php
-		if ( nightingale_show_sidebar() ) :
-			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		if ( hale_show_sidebar() ) :
+			echo hale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>
 		single">
@@ -40,7 +40,7 @@ get_header();
 
 		</div>
 		<?php
-		if ( nightingale_show_sidebar() ) :
+		if ( hale_show_sidebar() ) :
 			get_sidebar( 'blog' );
 		endif;
 		?>

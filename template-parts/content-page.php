@@ -16,8 +16,8 @@
 
 	<div class="hale-entry-content">
 		<?php
-		if ( function_exists( 'nightingale_clean_bad_content' ) ) {
-			nightingale_clean_bad_content( true );
+		if ( function_exists( 'hale_clean_bad_content' ) ) {
+            hale_clean_bad_content( true );
 		}
 		?>
 

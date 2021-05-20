@@ -30,7 +30,7 @@
 				$readmoretitle = esc_html( get_the_title() );
 				if ( strlen( $readmoretitle ) < 1 ) {
 					$readmoretitle = esc_html__( 'this post', 'nightingale' );
-					echo '<div class="hale-readmore">' . nightingale_read_more_posts( $readmoretitle, $readmorelink ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '<div class="hale-readmore">' . hale_read_more_posts( $readmoretitle, $readmorelink ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 				?>
 				</p>
@@ -54,8 +54,8 @@
 
 	<article>
 		<?php
-		if ( function_exists( 'nightingale_clean_bad_content' ) ) {
-			nightingale_clean_bad_content( true );
+		if ( function_exists( 'hale_clean_bad_content' ) ) {
+            hale_clean_bad_content( true );
 		}
 
 		$defaults = array(
