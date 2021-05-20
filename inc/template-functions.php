@@ -141,6 +141,25 @@ function hale_sidebar_location( $sidebar ) {
 	return $sidefloat;
 }
 
+function hale_get_branding_class() {
+
+    $colour_array = [
+        '0c223f' => 'neptune',
+        'ffffff' => 'pluto',
+        '336c83' => 'uranus'
+    ];
+
+    $colour = get_theme_mod( 'theme_colour', '0c223f' );
+
+    if ( !empty($colour) ) {
+        $theme_colour_name = 'hale-branding--' . $colour_array[ $colour ];
+        return $theme_colour_name;
+    } else {
+        return 'hale-branding--neptune'; //none set = use Neptune
+    }
+
+}
+
 /**
  * Get the custom colour name to return into the body class if required
  *
@@ -148,20 +167,7 @@ function hale_sidebar_location( $sidebar ) {
  */
 function hale_custom_page_colour( $classes ) {
 
-    $colour_array = [
-			'0c223f' => 'neptune',
-            'ffffff' => 'pluto',
-			'336c83' => 'uranus'
-    ];
-
-	$colour = get_theme_mod( 'theme_colour', '0c223f' );
-
-	if ( !empty($colour) ) {
-		$theme_colour_name = 'hale-branding--' . $colour_array[ $colour ];
-		$classes[]         = $theme_colour_name;
-	} else {
-		$classes[]         = 'hale-branding--neptune'; //none set = use Neptune
-	}
+  $classes[] = hale_get_branding_class();
 
   return $classes;
 }
@@ -169,11 +175,37 @@ function hale_custom_page_colour( $classes ) {
 add_filter( 'body_class', 'hale_custom_page_colour' );
 
 
-function hale_custom_typography( $classes ) {
+function hale_admin_custom_page_colour( $classes ) {
+
+    global $pagenow;
+
+    if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow ) {
+        return;
+    }
+
+    $classes .= ' ' . hale_get_branding_class(); //none set = use Neptune
+
+    return $classes;
+
+}
+
+add_filter( 'admin_body_class', 'hale_admin_custom_page_colour', 10, 1);
+
+function hale_get_typography_class() {
+
+    $font_class = '';
     $font = get_theme_mod( 'primary_font', 'frutiger' );
     if ( !empty($font) ) {
         $font_class = 'primary-font--'. $font;
-        $classes[]         = $font_class;
+    }
+
+    return $font_class;
+}
+
+function hale_custom_typography( $classes ) {
+    $font_class = hale_get_typography_class();
+    if ( !empty($font_class) ) {
+        $classes[]  = $font_class;
     }
 
     return $classes;
@@ -189,12 +221,7 @@ function hale_admin_custom_typography( $classes ) {
         return;
     }
 
-    $font = get_theme_mod( 'primary_font', 'frutiger' );
-    if ( !empty($font) ) {
-        $font_class = 'primary-font-admin--' . $font;
-
-        $classes = "$classes $font_class";
-    }
+    $classes = ' ' . hale_get_typography_class();
 
     return $classes;
 
@@ -202,35 +229,6 @@ function hale_admin_custom_typography( $classes ) {
 
 add_filter( 'admin_body_class', 'hale_admin_custom_typography', 10, 1);
 
-
-function hale_admin_custom_page_colour( $classes ) {
-
-    global $pagenow;
-
-    if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow ) {
-        return;
-    }
-
-    $colour_array = [
-        '0c223f' => 'neptune',
-        'ffffff' => 'pluto',
-        '336c83' => 'uranus'
-    ];
-
-    $colour = get_theme_mod( 'theme_colour', '0c223f' );
-
-    if ( !empty($colour) ) {
-        $theme_colour_name = 'hale-branding--' . $colour_array[ $colour ];
-        $classes .= ' ' . $theme_colour_name;
-    } else {
-        $classes .= ' hale-branding--neptune'; //none set = use Neptune
-    }
-
-    return $classes;
-
-}
-
-add_filter( 'admin_body_class', 'hale_admin_custom_page_colour', 10, 1);
 /**
  * Function to sanitise content and remove empty elements that cause a11y and w3c validation errors.
  *
