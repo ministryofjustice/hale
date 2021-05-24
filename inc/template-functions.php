@@ -221,7 +221,7 @@ function hale_admin_custom_typography( $classes ) {
         return;
     }
 
-    $classes = ' ' . hale_get_typography_class();
+    $classes .= ' ' . hale_get_typography_class();
 
     return $classes;
 
