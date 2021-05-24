@@ -194,7 +194,7 @@ add_filter( 'admin_body_class', 'hale_admin_custom_page_colour', 10, 1);
 function hale_get_typography_class() {
 
     $font_class = '';
-    $font = get_theme_mod( 'primary_font', 'frutiger' );
+    $font = get_theme_mod( 'primary_font', 'pt-sans' );
     if ( !empty($font) ) {
         $font_class = 'primary-font--'. $font;
     }
