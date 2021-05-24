@@ -68,13 +68,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
         <?php echo esc_html( $logo_line_1 ); ?>
       </span>
     <?php
-    } else {
-    ?>
-      <span class="govuk-header__logotype-text">
-        Ministry of Justice
-      </span>
-   <?php
-    }
+    } 
     ?>
   </div>
 <?php if ( $logo_has_link === 'yes' ) { ?>

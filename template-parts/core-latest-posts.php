@@ -46,7 +46,7 @@ if ( ( isset( $categories ) ) && ( ! empty( $categories ) ) ) {
 }
 
 
-$sidebar = nightingale_show_sidebar();
+$sidebar = hale_show_sidebar();
 
 $the_query = new WP_Query( $args );
 

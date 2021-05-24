@@ -70,8 +70,10 @@ get_header();
               <p class="govuk-body">
                 <?php
                 $excerpt = get_the_excerpt();
-                $keys    = explode( ' ', $s );
-                $excerpt = preg_replace( '/(' . implode( '|', $keys ) . ')/iu', '<span class="search-terms">\0</span>', $excerpt );
+                if(!empty($s)) {
+                    $keys = explode(' ', $s);
+                    $excerpt = preg_replace('/(' . implode('|', $keys) . ')/iu', '<span class="search-terms">\0</span>', $excerpt);
+                }
                 echo $excerpt; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 ?>
               </p>

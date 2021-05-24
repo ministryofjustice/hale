@@ -13,7 +13,7 @@
 
 get_header();
 
-$sidebar = nightingale_show_sidebar();
+$sidebar = hale_show_sidebar();
 
 ?>
 	<div id="primary" class="govuk-grid-column-two-thirds">
@@ -25,7 +25,7 @@ $sidebar = nightingale_show_sidebar();
 		<div class="
 		<?php
 		if ( $sidebar ) :
-			echo nightingale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo hale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		endif;
 		?>
 		archive">

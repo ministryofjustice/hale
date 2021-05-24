@@ -76,7 +76,7 @@ while (have_posts()) :
         // Apply CSS class depending on sidebar status
         $full_column_class = ( $show_sidebar != 'yes' ) ? 'govuk-grid-column-full' : null;
 
-        echo nightingale_sidebar_location('sidebar-1'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo hale_sidebar_location('sidebar-1'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo ' ' . $full_column_class; ?>">
 
         <?php
