@@ -144,8 +144,9 @@ function hale_sidebar_location( $sidebar ) {
 function hale_get_branding_class() {
 
     $colour_array = [
+        '143859' => 'earth',
         '0c223f' => 'neptune',
-        'ffffff' => 'pluto',
+        '34393E' => 'pluto',
         '336c83' => 'uranus'
     ];
 
