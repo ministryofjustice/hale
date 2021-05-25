@@ -67,7 +67,7 @@ $sidebar = hale_show_sidebar();
 
 				<?php
 
-				nightingale_archive_pagination();
+				hale_archive_pagination();
 
 				else :
 

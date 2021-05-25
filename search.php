@@ -93,7 +93,7 @@ get_header();
 					?>
 				</div>
 				<?php
-				nightingale_archive_pagination();
+				hale_archive_pagination();
 				else :
 					get_template_part( 'template-parts/content', 'none' );
 			endif;
