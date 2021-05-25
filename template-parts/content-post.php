@@ -76,7 +76,7 @@ else :
 						echo '<span class="hale-post--date">' . get_the_date() . '</span>';
 					}
 
-					do_action( 'nightingale_before_archive_content' );
+					do_action( 'hale_before_archive_content' );
 					if ( 'latest-posts' === $parent_template_part ) { // this is the latest posts display with options.
 						if ( 0 !== $display_post_content ) { // only do something if we actually selected to display content.
 							if ( 'excerpt' === $display_full_post ) { // if we chose to display the excerpt, use the latest blocks excerpt length selection.
@@ -97,7 +97,7 @@ else :
 					}
 					?>
 
-					<?php do_action( 'nightingale_after_archive_content' ); ?>
+					<?php do_action( 'hale_after_archive_content' ); ?>
 
 				</div>
 			</a>

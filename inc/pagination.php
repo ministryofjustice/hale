@@ -1,6 +1,6 @@
 <?php
 /**
- * Replace css classes in standard navigation with Nightingale classes
+ * Replace css classes in standard navigation with Hale classes
  *
  * @package Hale
  * Theme Hale with GDS styles

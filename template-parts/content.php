@@ -29,7 +29,7 @@
 				$readmorelink  = esc_url( get_permalink() );
 				$readmoretitle = esc_html( get_the_title() );
 				if ( strlen( $readmoretitle ) < 1 ) {
-					$readmoretitle = esc_html__( 'this post', 'nightingale' );
+					$readmoretitle = esc_html__( 'this post', 'hale' );
 					echo '<div class="hale-readmore">' . hale_read_more_posts( $readmoretitle, $readmorelink ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 				?>
