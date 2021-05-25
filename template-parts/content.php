@@ -50,7 +50,7 @@
 	}
 	?>
 
-	<?php do_action( 'nightingale_before_single_content' ); ?>
+	<?php do_action( 'hale_before_single_content' ); ?>
 
 	<article>
 		<?php
@@ -59,14 +59,14 @@
 		}
 
 		$defaults = array(
-			'before'           => '<p>' . __( 'Pages:', 'nightingale' ),
+			'before'           => '<p>' . __( 'Pages:', 'hale' ),
 			'after'            => '</p>',
 			'link_before'      => '',
 			'link_after'       => '',
 			'next_or_number'   => 'number',
 			'separator'        => ' ',
-			'nextpagelink'     => __( 'Next page', 'nightingale' ),
-			'previouspagelink' => __( 'Previous page', 'nightingale' ),
+			'nextpagelink'     => __( 'Next page', 'hale' ),
+			'previouspagelink' => __( 'Previous page', 'hale' ),
 			'pagelink'         => '%',
 			'echo'             => 1,
 		);
@@ -76,7 +76,7 @@
 	</article><!-- .article-content -->
 	<div class="govuk-clearfix"></div>
 
-	<?php do_action( 'nightingale_after_single_content' ); ?>
+	<?php do_action( 'hale_after_single_content' ); ?>
 
 	<footer class="article-footer">
 

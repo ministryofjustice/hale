@@ -12,7 +12,7 @@
  */
 ?>
 
-	<?php do_action( 'nightingale_before_single_content' ); ?>
+	<?php do_action( 'hale_before_single_content' ); ?>
 
 	<div class="hale-entry-content">
 		<?php
@@ -25,4 +25,4 @@
 	</div>
 	<div class="govuk-clearfix"></div>
 
-	<?php do_action( 'nightingale_after_single_content' ); ?>
+	<?php do_action( 'hale_after_single_content' ); ?>
