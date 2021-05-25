@@ -15,8 +15,8 @@
 function nightingale_archive_pagination() {
 
 	$args = array(
-		'prev_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Previous', 'nightingale' ) . '</span>',
-		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'nightingale' ) . '</span>',
+		'prev_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Previous', 'hale' ) . '</span>',
+		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'hale' ) . '</span>',
 	);
 
 	$paginate = paginate_links(

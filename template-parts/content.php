@@ -24,8 +24,8 @@
 			?>
 			<div class="hale-review-date">
 				<?php
-				nightingale_posted_by();
-				nightingale_posted_on();
+				hale_posted_by();
+				hale_posted_on();
 				$readmorelink  = esc_url( get_permalink() );
 				$readmoretitle = esc_html( get_the_title() );
 				if ( strlen( $readmoretitle ) < 1 ) {
@@ -44,7 +44,7 @@
 		if ( 'true' === $featured_img_display ) {
 			$blog_fimage_display = get_theme_mod( 'blog_fimage_display', 'top' );
 			echo '<span class="featured-' . $blog_fimage_display . '">';
-			nightingale_post_thumbnail();
+			hale_post_thumbnail();
 			echo '</span>';
 		}
 	}
@@ -80,6 +80,6 @@
 
 	<footer class="article-footer">
 
-		<?php nightingale_entry_footer(); ?>
+		<?php hale_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -33,10 +33,10 @@ if ( post_password_required() ) {
 		<h2 class="comments-title">
 			<?php
 			if ( ! have_comments() ) {
-				esc_html_e( 'Leave a comment', 'nightingale' );
+				esc_html_e( 'Leave a comment', 'hale' );
 			} elseif ( '1' === $comments_number ) {
 				/* translators: %s: post title */
-				printf( esc_html_x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'nightingale' ), esc_html( get_the_title() ) );
+				printf( esc_html_x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'hale' ), esc_html( get_the_title() ) );
 			} else {
 				echo sprintf(
 					esc_html(
@@ -46,7 +46,7 @@ if ( post_password_required() ) {
 							'%1$s replies on &ldquo;%2$s&rdquo;',
 							$comments_number,
 							'comments title',
-							'nightingale'
+							'hale'
 						)
 					),
 					esc_html( number_format_i18n( $comments_number ) ),
@@ -60,7 +60,7 @@ if ( post_password_required() ) {
 		<?php the_comments_navigation(); ?>
 
 		<ul class="govuk-list">
-			<?php wp_list_comments( 'type=all&callback=nightingale_comment_display' ); ?>
+			<?php wp_list_comments( 'type=all&callback=hale_comment_display' ); ?>
 		</ul><!-- .comment-list -->
 
 		<?php
