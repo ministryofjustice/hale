@@ -69,7 +69,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'nightingale' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'hale' ); ?></p>
 			<?php
 		endif;
 
@@ -77,7 +77,7 @@ if ( post_password_required() ) {
 
 	// Customized strings for the comment form.
 	$commentform_args = [
-		'title_reply' => __( 'Leave a Comment', 'nightingale' ),
+		'title_reply' => __( 'Leave a Comment', 'hale' ),
 	];
 	comment_form( $commentform_args );
 	?>

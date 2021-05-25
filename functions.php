@@ -145,7 +145,7 @@ function hale_setup()
         'nav_menus'  => array(
             // Assign a menu to the "main-menu" location.
             'main-menu'   => array(
-                'name'  => __('Main Menu', 'nightingale'),
+                'name'  => __('Main Menu', 'hale'),
                 'items' => array(
                     'link_home',
                     // Note that the core "home" page is actually a link in case a static front page is not used.
@@ -154,7 +154,7 @@ function hale_setup()
             ),
             // Assign a menu to the "footer-menu" location.
             'footer-menu' => array(
-                'name'  => __('Footer Links', 'nightingale'),
+                'name'  => __('Footer Links', 'hale'),
                 'items' => array(
                     'link_home',
                     'page-blog',

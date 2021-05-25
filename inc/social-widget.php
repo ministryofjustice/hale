@@ -4,8 +4,8 @@ class social_widget extends WP_Widget {
     function __construct() {
         parent::__construct(
             'social_widget',
-            __('Social Widget', 'nightingale'),
-            array( 'description' => __( 'Widget to show social links', 'nightingale' ), )
+            __('Social Widget', 'hale'),
+            array( 'description' => __( 'Widget to show social links', 'hale' ), )
         );
     }
 

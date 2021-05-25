@@ -122,7 +122,7 @@ function nightingale_the_post_navigation( $args = array() ) {
 			'in_same_term'       => false,
 			'excluded_terms'     => '',
 			'taxonomy'           => 'category',
-			'screen_reader_text' => __( 'Post navigation', 'nightingale' ),
+			'screen_reader_text' => __( 'Post navigation', 'hale' ),
 		)
 	);
 

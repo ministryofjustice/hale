@@ -35,7 +35,7 @@ if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
   <svg class="hale-icon hale-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
   </svg>
-  <span><?php echo esc_html__( 'Search', 'nightingale' ); ?></span>
+  <span><?php echo esc_html__( 'Search', 'hale' ); ?></span>
 </button>
 <div class="hale-header__search-wrap" <?php echo esc_attr( $wrap_search ); ?>>
 	<form class="hale-header__search-form" <?php echo esc_attr( $search_form ); ?> action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
@@ -45,7 +45,7 @@ if ( ! isset( $GLOBALS['nightingale_search_form_counter'] ) ) {
 			<svg class="hale-icon hale-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 				<path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
 			</svg>
-			<span class="hale-search__button-text"><?php esc_html_e( 'Search', 'nightingale' ); ?></span>
+			<span class="hale-search__button-text"><?php esc_html_e( 'Search', 'hale' ); ?></span>
 		</button>
 	</form>
 </div>

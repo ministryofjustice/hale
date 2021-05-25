@@ -102,7 +102,7 @@ function hale_breadcrumb() {
 
 
 		if ( ! is_front_page() &&  $show_page_breadcrumb == 'yes') {
-			$back_one_level = array( esc_url( home_url() ), __( 'Home', 'nightingale' ) );
+			$back_one_level = array( esc_url( home_url() ), __( 'Home', 'hale' ) );
 			?>
 			<nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
 				<div class="govuk-width-container">
@@ -113,7 +113,7 @@ function hale_breadcrumb() {
 
 						<p class="hale-width--show-narrow-40 govuk-!-margin-0">
 							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
-								<?php echo esc_html( __( 'Back to ', 'nightingale' ) ) . esc_html( $back_one_level[1] ); ?>
+								<?php echo esc_html( __( 'Back to ', 'hale' ) ) . esc_html( $back_one_level[1] ); ?>
 							</a>
 						</p>
 						<style>
@@ -136,7 +136,7 @@ function hale_breadcrumb() {
 						<ol class="govuk-breadcrumbs__list hale-width--hide-narrow-40">
 							<li class="govuk-breadcrumbs__list-item">
 								<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( home_url() ); ?>">
-									<?php echo esc_html( __( 'Home', 'nightingale' ) ); ?>
+									<?php echo esc_html( __( 'Home', 'hale' ) ); ?>
 								</a>
 							</li>
 							<?php
@@ -164,7 +164,7 @@ function hale_breadcrumb() {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
 									<?php
-									esc_html_e( 'Archives', 'nightingale' );
+									esc_html_e( 'Archives', 'hale' );
 									?>
 								</li>
 								<?php
@@ -172,7 +172,7 @@ function hale_breadcrumb() {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
 									<?php
-									esc_html_e( 'Search Results', 'nightingale' );
+									esc_html_e( 'Search Results', 'hale' );
 									?>
 								</li>
 								<?php
@@ -180,7 +180,7 @@ function hale_breadcrumb() {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
 									<?php
-									esc_html_e( '404 Not Found', 'nightingale' );
+									esc_html_e( '404 Not Found', 'hale' );
 									?>
 								</li>
 								<?php
@@ -244,7 +244,7 @@ function hale_breadcrumb() {
 						</ol>
 						<p class="hale-width--show-narrow-40 govuk-!-margin-0">
 							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
-								<?php echo esc_html_e( 'Go back to ', 'nightingale' ) . esc_html( $back_one_level[1] ); ?>
+								<?php echo esc_html_e( 'Go back to ', 'hale' ) . esc_html( $back_one_level[1] ); ?>
 							</a>
 						</p>
 					<?php } // end of LearnDash / Uncanny Toolkit conditional ?>

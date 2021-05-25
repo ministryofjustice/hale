@@ -224,7 +224,7 @@ class Nightingale_Subpages_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="title"><?php esc_html_e( 'Title:', 'nightingale' ); ?></label>
+			<label for="title"><?php esc_html_e( 'Title:', 'hale' ); ?></label>
 			<input class="widefat" type="text" id="title" <?php echo 'name="' . esc_attr( $this->get_field_name( 'title' ) ) . '" value="' . esc_attr( $instance['title'] ) . '"'; ?> />
 		</p>
 
@@ -245,7 +245,7 @@ class Nightingale_Subpages_Widget extends WP_Widget {
 
 		<p>
 			<input class="checkbox" type="checkbox" value="1" <?php checked( $instance['nest_subpages'], 1 ); ?> id="nest_subpages" name="<?php echo esc_attr( $this->get_field_name( 'nest_subpages' ) ); ?>"/>
-			<label for="nest_subpages"><?php echo esc_html( __( 'Nest sub-page inside parent ', 'nightingale' ) ) . esc_html( __( "(only if 'Include the current pages subpages' is checked)", 'nightingale' ) ); ?></label>
+			<label for="nest_subpages"><?php echo esc_html( __( 'Nest sub-page inside parent ', 'hale' ) ) . esc_html( __( "(only if 'Include the current pages subpages' is checked)", 'hale' ) ); ?></label>
 		</p>
 
 		<?php
