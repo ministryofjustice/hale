@@ -4,7 +4,7 @@
  *
  * Sanitization callback functions for various data types. Original source at https://github.com/WPTRT/code-examples/blob/master/customizer/sanitization-callbacks.php
  *
- * @package   nightingale
+ * @package   hale
  * @copyright Copyright (c) 2015, WordPress Theme Review Team
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  */
@@ -18,7 +18,7 @@
  * @param bool $checked Whether the checkbox is checked.
  * @return bool Whether the checkbox is checked.
  */
-function nightingale_sanitize_checkbox( $checked ) {
+function hale_sanitize_checkbox( $checked ) {
 	// Boolean check.
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
 }
@@ -40,7 +40,7 @@ function nightingale_sanitize_checkbox( $checked ) {
  * @param string $css CSS to sanitize.
  * @return string Sanitized CSS.
  */
-function nightingale_sanitize_css( $css ) {
+function hale_sanitize_css( $css ) {
 	return wp_strip_all_tags( $css );
 }
 
@@ -60,7 +60,7 @@ function nightingale_sanitize_css( $css ) {
  * @param WP_Customize_Setting $setting Setting instance.
  * @return int|string Page ID if the page is published; otherwise, the setting default.
  */
-function nightingale_sanitize_dropdown_pages( $page_id, $setting ) {
+function hale_sanitize_dropdown_pages( $page_id, $setting ) {
 	// Ensure $input is an absolute integer.
 	$page_id = absint( $page_id );
 
@@ -84,7 +84,7 @@ function nightingale_sanitize_dropdown_pages( $page_id, $setting ) {
  * @param WP_Customize_Setting $setting Setting instance.
  * @return string The sanitized email if not null; otherwise, the setting default.
  */
-function nightingale_sanitize_email( $email, $setting ) {
+function hale_sanitize_email( $email, $setting ) {
 	// Strips out all characters that are not allowable in an email address.
 	$email = sanitize_email( $email );
 
@@ -108,7 +108,7 @@ function nightingale_sanitize_email( $email, $setting ) {
  * @param WP_Customize_Setting $setting   Setting instance.
  * @return string The sanitized hex color if not null; otherwise, the setting default.
  */
-function nightingale_sanitize_hex_color( $hex_color, $setting ) {
+function hale_sanitize_hex_color( $hex_color, $setting ) {
 	// Sanitize $input as a hex value without the hash prefix.
 	$hex_color = sanitize_hex_color( $hex_color );
 
@@ -133,7 +133,7 @@ function nightingale_sanitize_hex_color( $hex_color, $setting ) {
  * @param string $html HTML to sanitize.
  * @return string Sanitized HTML.
  */
-function nightingale_sanitize_html( $html ) {
+function hale_sanitize_html( $html ) {
 	return wp_filter_post_kses( $html );
 }
 
@@ -152,7 +152,7 @@ function nightingale_sanitize_html( $html ) {
  * @param WP_Customize_Setting $setting Setting instance.
  * @return string The image filename if the extension is allowed; otherwise, the setting default.
  */
-function nightingale_sanitize_image( $image, $setting ) {
+function hale_sanitize_image( $image, $setting ) {
 	/*
 	 * Array of valid image file types.
 	 *
@@ -191,7 +191,7 @@ function nightingale_sanitize_image( $image, $setting ) {
  * @param string $nohtml The no-HTML content to sanitize.
  * @return string Sanitized no-HTML content.
  */
-function nightingale_sanitize_nohtml( $nohtml ) {
+function hale_sanitize_nohtml( $nohtml ) {
 	return wp_filter_nohtml_kses( $nohtml );
 }
 
@@ -213,7 +213,7 @@ function nightingale_sanitize_nohtml( $nohtml ) {
  * @param WP_Customize_Setting $setting Setting instance.
  * @return int Sanitized number; otherwise, the setting default.
  */
-function nightingale_sanitize_number_absint( $number, $setting ) {
+function hale_sanitize_number_absint( $number, $setting ) {
 	// Ensure $number is an absolute integer (whole number, zero or greater).
 	$number = absint( $number );
 
@@ -237,7 +237,7 @@ function nightingale_sanitize_number_absint( $number, $setting ) {
  * @return int|string The number, if it is zero or greater and falls within the defined range; otherwise,
  *                    the setting default.
  */
-function nightingale_sanitize_number_range( $number, $setting ) {
+function hale_sanitize_number_range( $number, $setting ) {
 
 	// Ensure input is an absolute integer.
 	$number = absint( $number );
@@ -274,7 +274,7 @@ function nightingale_sanitize_number_range( $number, $setting ) {
  * @param WP_Customize_Setting $setting Setting instance.
  * @return string Sanitized slug if it is a valid choice; otherwise, the setting default.
  */
-function nightingale_sanitize_select( $input, $setting ) {
+function hale_sanitize_select( $input, $setting ) {
 
 	// Ensure input is a slug.
 	$input = sanitize_key( $input );
@@ -302,6 +302,6 @@ function nightingale_sanitize_select( $input, $setting ) {
  * @param string $url URL to sanitize.
  * @return string Sanitized URL.
  */
-function nightingale_sanitize_url( $url ) {
+function hale_sanitize_url( $url ) {
 	return esc_url_raw( $url );
 }
