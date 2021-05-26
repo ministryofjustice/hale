@@ -1,6 +1,6 @@
 <?php
 /**
- * Replace css classes in standard navigation with Nightingale classes
+ * Replace css classes in standard navigation with Hale classes
  *
  * @package Hale
  * Theme Hale with GDS styles
@@ -12,11 +12,11 @@
 /**
  * Paginate archived pages
  */
-function nightingale_archive_pagination() {
+function hale_archive_pagination() {
 
 	$args = array(
-		'prev_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Previous', 'nightingale' ) . '</span>',
-		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'nightingale' ) . '</span>',
+		'prev_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Previous', 'hale' ) . '</span>',
+		'next_text' => '<span class="search__pagination-button-text">' . esc_html__( 'Next', 'hale' ) . '</span>',
 	);
 
 	$paginate = paginate_links(
@@ -74,10 +74,10 @@ function nightingale_archive_pagination() {
 /**
  * Add in a previous and next functionality
  */
-function nightingale_get_prev_next() {
+function hale_get_prev_next() {
 	echo '<nav role="navigation" aria-label="Pagination" class="gem-c-pagination">
   <ul class="gem-c-pagination__list">';
-	echo nightingale_the_post_navigation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo hale_the_post_navigation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</ul></nav>';
 }
 
@@ -89,7 +89,7 @@ function nightingale_get_prev_next() {
  * @return string the output.
  */
 
-function nightingale_the_post_navigation( $args = array() ) {
+function hale_the_post_navigation( $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
@@ -122,7 +122,7 @@ function nightingale_the_post_navigation( $args = array() ) {
 			'in_same_term'       => false,
 			'excluded_terms'     => '',
 			'taxonomy'           => 'category',
-			'screen_reader_text' => __( 'Post navigation', 'nightingale' ),
+			'screen_reader_text' => __( 'Post navigation', 'hale' ),
 		)
 	);
 
@@ -156,13 +156,13 @@ function nightingale_the_post_navigation( $args = array() ) {
  * Filter wp_link_pages to do both next and number for post broken into multiple pages.
  */
 
-add_filter( 'wp_link_pages_args', 'nightingale_link_pages_args_prevnext_add' );
+add_filter( 'wp_link_pages_args', 'hale_link_pages_args_prevnext_add' );
 /**
  * Add prev and next links to a numbered link list
  *
  * @param array $args the values passed in to create the links.
  */
-function nightingale_link_pages_args_prevnext_add( $args ) {
+function hale_link_pages_args_prevnext_add( $args ) {
 	global $page, $numpages;
 	$args['before'] .= '<nav class="pagination_split_post">'; // Put the pagenav links into their own region.
 	$args['after']  .= '</nav>'; // End pagenav links.

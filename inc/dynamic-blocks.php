@@ -1,13 +1,15 @@
 <?php
 /**
- * Style core blocks in the Nightingale Way
+ * Style core blocks in the Hale Way
  *
- * @package   Nightingale-2-0
- * @copyright NHS Leadership Academy, Tony Blacker
- * @version   1.0 27th February 2020
+ * @package   Hale
+ * @copyright Ministry Of Justice
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
+ * @version   2.0
  */
 
-add_filter( 'render_block', 'nightingale_filter_blocks', 10, 2 );
+
+add_filter( 'render_block', 'hale_filter_blocks', 10, 2 );
 
 
 /**
@@ -16,9 +18,9 @@ add_filter( 'render_block', 'nightingale_filter_blocks', 10, 2 );
  * @param array $block_content the contents of the block itself.
  * @param array $block         information about block being modified.
  *
- * @return function nightingale_block_renderer to send back the modified block content.
+ * @return function hale_block_renderer to send back the modified block content.
  */
-function nightingale_filter_blocks( $block_content, $block ) {
+function hale_filter_blocks( $block_content, $block ) {
 
 	if ( is_admin() ) {
 		return;
@@ -28,7 +30,7 @@ function nightingale_filter_blocks( $block_content, $block ) {
 		return $block_content;
 	}
 
-	return nightingale_block_renderer( $block['blockName'], $block['attrs'] );
+	return hale_block_renderer( $block['blockName'], $block['attrs'] );
 
 }
 
@@ -40,7 +42,7 @@ function nightingale_filter_blocks( $block_content, $block ) {
  *
  * @return string $object.
  */
-function nightingale_block_renderer( $name, $attributes ) {
+function hale_block_renderer( $name, $attributes ) {
 
 	// change template name slash to scores.
 	$template_name = str_replace( '/', '-', $name );

@@ -66,7 +66,7 @@ get_header();
                 </a>
               </h2>
 
-              <?php do_action( 'nightingale_before_archive_content' ); ?>
+              <?php do_action( 'hale_before_archive_content' ); ?>
               <p class="govuk-body">
                 <?php
                 $excerpt = get_the_excerpt();
@@ -77,7 +77,7 @@ get_header();
                 echo $excerpt; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 ?>
               </p>
-              <?php do_action( 'nightingale_after_archive_content' ); ?>
+              <?php do_action( 'hale_after_archive_content' ); ?>
 
               <?php
               // Get and display the last updated time of the search result
@@ -93,7 +93,7 @@ get_header();
 					?>
 				</div>
 				<?php
-				nightingale_archive_pagination();
+				hale_archive_pagination();
 				else :
 					get_template_part( 'template-parts/content', 'none' );
 			endif;

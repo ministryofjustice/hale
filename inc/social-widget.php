@@ -4,8 +4,8 @@ class social_widget extends WP_Widget {
     function __construct() {
         parent::__construct(
             'social_widget',
-            __('Social Widget', 'nightingale'),
-            array( 'description' => __( 'Widget to show social links', 'nightingale' ), )
+            __('Social Widget', 'hale'),
+            array( 'description' => __( 'Widget to show social links', 'hale' ), )
         );
     }
 
@@ -113,7 +113,7 @@ class social_widget extends WP_Widget {
 
 
 // Register and load the widget
-function nightingale_load_widget() {
+function hale_load_widget() {
     register_widget( 'social_widget' );
 }
-add_action( 'widgets_init', 'nightingale_load_widget' );
+add_action( 'widgets_init', 'hale_load_widget' );

@@ -3,7 +3,7 @@
  * Set the theme colors
  *
  * @package   Hale
- * @copyright NHS Leadership Academy, Tony Blacker
+ * Adapted from version from NHS Leadership Academy, Tony Blacker
  * @version   1.0, March 2021
  */
 

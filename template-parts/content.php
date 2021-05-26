@@ -24,12 +24,12 @@
 			?>
 			<div class="hale-review-date">
 				<?php
-				nightingale_posted_by();
-				nightingale_posted_on();
+				hale_posted_by();
+				hale_posted_on();
 				$readmorelink  = esc_url( get_permalink() );
 				$readmoretitle = esc_html( get_the_title() );
 				if ( strlen( $readmoretitle ) < 1 ) {
-					$readmoretitle = esc_html__( 'this post', 'nightingale' );
+					$readmoretitle = esc_html__( 'this post', 'hale' );
 					echo '<div class="hale-readmore">' . hale_read_more_posts( $readmoretitle, $readmorelink ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 				?>
@@ -44,13 +44,13 @@
 		if ( 'true' === $featured_img_display ) {
 			$blog_fimage_display = get_theme_mod( 'blog_fimage_display', 'top' );
 			echo '<span class="featured-' . $blog_fimage_display . '">';
-			nightingale_post_thumbnail();
+			hale_post_thumbnail();
 			echo '</span>';
 		}
 	}
 	?>
 
-	<?php do_action( 'nightingale_before_single_content' ); ?>
+	<?php do_action( 'hale_before_single_content' ); ?>
 
 	<article>
 		<?php
@@ -59,14 +59,14 @@
 		}
 
 		$defaults = array(
-			'before'           => '<p>' . __( 'Pages:', 'nightingale' ),
+			'before'           => '<p>' . __( 'Pages:', 'hale' ),
 			'after'            => '</p>',
 			'link_before'      => '',
 			'link_after'       => '',
 			'next_or_number'   => 'number',
 			'separator'        => ' ',
-			'nextpagelink'     => __( 'Next page', 'nightingale' ),
-			'previouspagelink' => __( 'Previous page', 'nightingale' ),
+			'nextpagelink'     => __( 'Next page', 'hale' ),
+			'previouspagelink' => __( 'Previous page', 'hale' ),
 			'pagelink'         => '%',
 			'echo'             => 1,
 		);
@@ -76,10 +76,10 @@
 	</article><!-- .article-content -->
 	<div class="govuk-clearfix"></div>
 
-	<?php do_action( 'nightingale_after_single_content' ); ?>
+	<?php do_action( 'hale_after_single_content' ); ?>
 
 	<footer class="article-footer">
 
-		<?php nightingale_entry_footer(); ?>
+		<?php hale_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
