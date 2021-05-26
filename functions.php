@@ -10,13 +10,6 @@
  */
 
 /**
- * Auto deploy subpages widget.
- * Moved to top of file to allow template to initialise widget in sidebar
- */
-require get_template_directory() . '/inc/class-nightingale-subpages-widget.php';
-
-
-/**
  * Add in customizer sanitizer functions
  */
 require get_template_directory() . '/inc/sanitization-callbacks.php';
