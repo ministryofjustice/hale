@@ -41,7 +41,7 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 }
 wp_body_open();
 ?>
-<?php do_action( 'nightingale_after_body' ); ?>
+<?php do_action( 'hale_after_body' ); ?>
 <a class="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
 
