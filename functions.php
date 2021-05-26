@@ -419,18 +419,6 @@ if (in_array('the-events-calendar/the-events-calendar.php', $active_plugins, tru
     }
 }
 
-/*
- * Google Tag Manager.
- * N.B. This is not a plugin, nor does it provide any plugin-like changes. This is a file for
- * the Google Tag Manager to fit it into the theme.
- */
-
-if (function_exists('gtm4wp_the_gtm_tag')) {
-    if (! is_admin()) {
-        require get_template_directory() . '/inc/google-tag-manager.php';
-    }
-}
-
 /**
  * Restrict Blocks
  */
@@ -440,12 +428,6 @@ require get_template_directory() . '/inc/restrict-blocks.php';
  * Taxonomies
  */
 require get_template_directory() . '/inc/tax-page-category.php';
-
-
-/**
- * Add a pill next to comment author name showing their user role.
- */
-require get_template_directory() . '/inc/class-comment-author-role-label.php';
 
 /**
  * Hijack core/posts block and force own output
