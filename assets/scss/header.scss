@@ -254,10 +254,6 @@
     +.govuk-button.hale-search__submit {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-      box-shadow: 0 1px 0 $colour_sapphire_blue;
-      &:focus {
-        box-shadow: 0 1px 0 $colour_turquoise;
-      }
     }
     &:focus {
       outline-width: 3px;

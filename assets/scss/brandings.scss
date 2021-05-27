@@ -76,15 +76,35 @@
             outline: 2px solid branded(header-search-input-active-border);
             background: branded(header-search-input-active-bg);
           }
+        }
 
-          + .govuk-button.hale-search__submit {
-            box-shadow: 0 1px 0 branded(button);
+        .hale-search__submit {
+          background: branded(header-search-btn-bg);
+          box-shadow: 0 1px 0 branded(header-search-btn-bg);
 
-            &:focus {
-              box-shadow: 0 1px 0 branded(button-focus);
+          svg {
+            fill: branded(header-search-btn-icon);
+          }
+
+          &:hover {
+            background: branded( header-search-btn-hover-bg);
+            box-shadow: 0 1px 0 branded(header-search-btn-hover-bg);
+
+            svg {
+              fill: branded(header-search-btn-hover-icon);
+            }
+          }
+
+          &:focus, &:active {
+            background: branded( header-search-btn-focus-bg);
+            box-shadow: 0 1px 0 branded(header-search-btn-focus-bg);
+
+            svg {
+              fill: branded(header-search-btn-focus-icon);
             }
           }
         }
+
       }
 
       .govuk-header__menu-button {
@@ -177,7 +197,7 @@
 			box-shadow: 0 1px 0 branded(button);
 			color:branded(button-text);
 			background-color:branded(button);
-			&:hover, &:focus:not(:active):not(:hover) {
+			&:hover {
 				background-color: branded(button-hover);
 				color: branded(button-hover-text);
 				box-shadow: 0 1px 0 branded(button-hover);
@@ -210,9 +230,7 @@
 		}
 
     .govuk-main-wrapper a:link:not([class]),
-    .govuk-main-wrapper a:visited:not([class]),
     .gem-c-pagination__link:link,
-    .gem-c-pagination__link:visited
     {
 
       color: branded(link);
@@ -222,6 +240,17 @@
         color: branded(link-hover);
       }
 
+    }
+
+    .govuk-main-wrapper a:visited:not([class]),
+    .gem-c-pagination__link:visited {
+
+      color: branded(link-visited);
+
+
+      &:hover {
+        color: branded(link-hover);
+      }
     }
 
 		//link focus state
