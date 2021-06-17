@@ -26,12 +26,11 @@ function hale_filter_blocks( $block_content, $block ) {
 		return;
 	}
 
-	if ( 'core/latest-posts' !== $block['blockName'] ) {
+	if ( 'core/file' !== $block['blockName'] ) {
 		return $block_content;
 	}
 
 	return hale_block_renderer( $block['blockName'], $block['attrs'] );
-
 }
 
 /**
@@ -52,7 +51,17 @@ function hale_block_renderer( $name, $attributes ) {
 		set_query_var( $name . '/' . $attribute_name, $attribute_value );
 	}
 
-	$output = '';
+    $file = get_attached_file($attributes["id"]);
+    $filesize = file_exists($file) ? ", " . size_format(filesize($file)) : null;
+    $filename = basename(get_the_title($attributes["id"]));
+    $filetype = wp_check_filetype($attributes["href"]);
+
+    $output = '<i class="fas fa-file-download"></i> ';
+    $output .= '<a href="' . $attributes["href"] . '">' . $filename .'</a>';
+    $output .= ' (';
+    $output .= strtoupper($filetype["ext"]);
+	$output .=  $filesize;
+    $output .= ')';
 
 	// Load the template part in an output buffer.
 	ob_start();
