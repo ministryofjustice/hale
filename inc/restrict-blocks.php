@@ -32,8 +32,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/intro',
             'mojblocks/quote',
             'mojblocks/reveal',
-            'mojblocks/staggered-box',
-            'mojblocks/file-download'
+            'mojblocks/staggered-box'
         );
     }
     else {
