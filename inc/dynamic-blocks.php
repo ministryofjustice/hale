@@ -56,12 +56,13 @@ function hale_block_renderer( $name, $attributes ) {
     $filename = basename(get_the_title($attributes["id"]));
     $filetype = wp_check_filetype($attributes["href"]);
 
-    $output = '<i class="fas fa-file-download"></i> ';
+    $output = '<i class="hale-file-download" style="font-size: 1.8em; position:relative; top:7px; padding-right:4px; margin-top:8px;" aria-hidden="true"></i> ';
     $output .= '<a href="' . $attributes["href"] . '">' . $filename .'</a>';
     $output .= ' (';
     $output .= strtoupper($filetype["ext"]);
 	$output .=  $filesize;
     $output .= ')';
+    $output .= '<br>';
 
 	// Load the template part in an output buffer.
 	ob_start();
