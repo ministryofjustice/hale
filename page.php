@@ -61,23 +61,7 @@ while (have_posts()) :
     <?php
     }
     ?>
-      <div class="
-
-        <?php
-
-        // Get sidebar value, is it set to display or not
-        $show_sidebar = get_post_meta($post->ID, 'hale_metabox_page_sidebar', true);
-
-        // If it's a new page, set sidebar to "on" by default
-        if (empty($show_sidebar)) {
-            $show_sidebar = 'yes';
-        }
-
-        // Apply CSS class depending on sidebar status
-        $full_column_class = ( $show_sidebar != 'yes' ) ? 'govuk-grid-column-full' : null;
-
-        echo hale_sidebar_location('sidebar-1'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo ' ' . $full_column_class; ?>">
+      <div class=" <?php echo hale_sidebar_location('sidebar-1'); ?>">
 
         <?php
 
@@ -113,9 +97,8 @@ while (have_posts()) :
      * Load page sidebar
      *
      * */
-    if ($show_sidebar === 'yes') {
-        get_sidebar('page');
-    }
+    get_sidebar('page');
+
     ?>
 </div>
 <?php endwhile;

@@ -328,11 +328,6 @@ require get_template_directory() . '/inc/pagination.php';
 require get_template_directory() . '/inc/breadcrumbs.php';
 
 /**
- * Page sidebar toggle on/off.
- */
-require get_template_directory() . '/inc/metabox-page-sidebar.php';
-
-/**
  * Last reviewed.
  */
 require get_template_directory() . '/inc/metabox-page-last-reviewed.php';
