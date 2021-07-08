@@ -42,3 +42,17 @@ function hale_allowed_block_types( $allowed_blocks ) {
 }
 
 add_filter( 'allowed_block_types', 'hale_allowed_block_types' );
+
+function hale_restrict_embed_blocks() {
+
+    $restrict_blocks = get_theme_mod('restrict_blocks', "yes");
+
+    if($restrict_blocks == "yes") {
+        wp_enqueue_script(
+            'restrict-embed-blocks',
+            hale_mix_asset('/js/restrict-embed-blocks.js'),
+            array('wp-blocks', 'wp-dom-ready', 'wp-edit-post')
+        );
+    }
+}
+add_action( 'enqueue_block_editor_assets', 'hale_restrict_embed_blocks' );
