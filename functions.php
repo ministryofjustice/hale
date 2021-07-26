@@ -350,7 +350,7 @@ require get_template_directory() . '/inc/metabox-page-title-section.php';
 /**
  * Social Widget.
  */
-require get_template_directory() . '/inc/social-widget.php';
+require get_template_directory() . '/inc/widgets/social-widget.php';
 
 /**
  * Create an array of active plugins.
@@ -402,9 +402,14 @@ function hale_learndash_admin_fix()
 require get_template_directory() . '/inc/restrict-blocks.php';
 
 /**
+ * Custom Post Types
+ */
+require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
+
+/**
  * Taxonomies
  */
-require get_template_directory() . '/inc/tax-page-category.php';
+require get_template_directory() . '/inc/taxonomies/tax-page-category.php';
 
 /**
  * Hijack core/posts block and force own output
