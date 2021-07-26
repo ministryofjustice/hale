@@ -4,9 +4,15 @@
     @extend .govuk-link;
   }
   ul:not([class]), ul[class=""] {
-    //deals with any lists that aren't classed - makes them GDS links
+    //deals with any lists that aren't classed
     @extend .govuk-list;
     @extend .govuk-list--bullet;
+  }
+
+  ol:not([class]), ol[class=""] {
+    //deals with any numbered lists that aren't classed
+    @extend .govuk-list;
+    @extend .govuk-list--number;
   }
 
 	//override for the sovial media links (ootb wordpress)
