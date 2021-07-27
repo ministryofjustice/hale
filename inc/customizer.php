@@ -415,6 +415,35 @@ function hale_customize_register( $wp_customize ) {
 			),
 		)
 	);
+	$wp_customize->add_setting(
+	// $id
+		'landing_title_inset_into_image',
+		// $args
+		array(
+			'default'           => 'yes',
+			'type'              => 'theme_mod',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+
+	$wp_customize->add_control(
+	// $id
+		'landing_title_inset_into_image',
+		// $args
+		array(
+			'settings'    => 'landing_title_inset_into_image',
+			'section'     => 'section_layout',
+			'priority'    => '111',
+			'type'        => 'radio',
+			'label'       => esc_html__( 'Title inset', 'hale' ),
+			'description' => esc_html__( 'Insets the title into the Hero image', 'hale' ),
+			'choices'     => array(
+				'yes'   => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
 }
 
 add_action( 'customize_register', 'hale_customize_register' );
