@@ -1,6 +1,6 @@
 <?php
 // Register News Post Type
-function register_news_post_type()
+function hale_register_news_post_type()
 {
 
     $labels = array(
@@ -53,8 +53,13 @@ function register_news_post_type()
         'publicly_queryable' => true,
         'capability_type' => 'page',
     );
-    register_post_type('news', $args);
+
+    //Check if post type is deactived
+    $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes");
+    if($deactivate_news == "no") {
+        register_post_type('news', $args);
+    }
 
 }
 
-add_action('init', 'register_news_post_type', 0);
+add_action('init', 'hale_register_news_post_type', 0);
