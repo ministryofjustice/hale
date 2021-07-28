@@ -52,6 +52,10 @@ function hale_register_news_post_type()
         'exclude_from_search' => false,
         'publicly_queryable' => true,
         'capability_type' => 'page',
+        'rewrite' => array(
+            'slug' => 'news',
+            'with_front' => false
+        ),
     );
 
     //Check if post type is deactived
