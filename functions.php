@@ -412,9 +412,4 @@ require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
  */
 require get_template_directory() . '/inc/taxonomies/tax-page-category.php';
 
-/**
- * Hijack core/posts block and force own output
- */
-if (! is_admin()) {
-    require get_template_directory() . '/inc/dynamic-blocks.php';
-}
+
