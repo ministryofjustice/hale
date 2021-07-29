@@ -659,8 +659,8 @@ function hale_add_blocks_settings( $wp_customize )
         $wp_customize->add_section(
             'blocks_panel',
             array(
-                'title' => esc_html__('Blocks', 'hale'),
-                'description' => esc_html__('Blocks settings', 'hale'),
+                'title' => esc_html__('CPTs and Blocks', 'hale'),
+                'description' => esc_html__('CPTs and Blocks settings', 'hale'),
                 'capability' => 'edit_theme_options',
                 'theme-supports' => '',
                 'priority' => '151',
@@ -691,5 +691,33 @@ function hale_add_blocks_settings( $wp_customize )
                 ),
             )
         );
+
+        $cpts = array('news' => 'News Stories');
+
+        foreach ($cpts as $cpt_slug => $cpt_name){
+            /*
+               *  Restrict CPT Settings
+             */
+            $wp_customize->add_setting(
+                'deactivate_cpt_'.$cpt_slug,
+                array(
+                    'default' => 'yes',
+                )
+            );
+
+            $wp_customize->add_control(
+                'deactivate_cpt_'.$cpt_slug,
+                array(
+                    'label' => esc_html__('Deactivate '.$cpt_name, 'hale'),
+                    'section' => 'blocks_panel',
+                    'priority' => '100',
+                    'type' => 'radio',
+                    'choices' => array(
+                        'yes' => esc_html__('Yes', 'hale'),
+                        'no' => esc_html__('No', 'hale'),
+                    ),
+                )
+            );
+        }
     }
 }
