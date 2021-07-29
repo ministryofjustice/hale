@@ -19,6 +19,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'core/columns',
             'core/group',
             'core/spacer',
+            'core/legacy-widget',
             'core/social-links',
             'core/social-link',
             'core/embed',
@@ -51,7 +52,7 @@ function hale_restrict_embed_blocks() {
         wp_enqueue_script(
             'restrict-embed-blocks',
             hale_mix_asset('/js/restrict-embed-blocks.js'),
-            array('wp-blocks', 'wp-dom-ready', 'wp-edit-post')
+            array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'), null, true
         );
     }
 }
