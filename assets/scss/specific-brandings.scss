@@ -83,3 +83,24 @@
 		}
 	}
 }
+
+/**********************
+    Pluto branding
+        CCRC
+**********************/
+.hale-branding--pluto {
+
+	.govuk-breadcrumbs__link,
+	.govuk-back-link {
+		
+		&:focus {
+			background-color: $colour_flame_orange_tint;
+			box-shadow: 0 -2px $colour_flame_orange_tint, 0 4px $colour_flame_orange;
+			outline: 4px solid transparent;
+		}
+	}
+
+	.hale-search-header + div {
+		margin-top: 30px;
+	}
+}
