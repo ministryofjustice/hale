@@ -7,6 +7,10 @@
 	.govuk-header {
 		padding-bottom: 1em;
 
+		a:focus img {
+			filter: invert(1) hue-rotate(180deg);
+		}
+
 		.hale-header__logotype-text--custom {
 			font-weight: 400;
 			font-size: 22px;
@@ -48,9 +52,13 @@
 		outline-color: $colour_capri_teal;
 	}
 
-  .govuk-header .govuk-header__logo {
-    min-height: 49px;
-  }
+	.govuk-header .govuk-header__logo {
+		min-height: 49px;
+
+		a:focus img {
+			filter: invert(1) hue-rotate(180deg);
+		}
+	}
 
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
