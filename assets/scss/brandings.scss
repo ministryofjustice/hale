@@ -257,16 +257,25 @@
 		#primary a:not([class]),
 		#primary a[class=""],
 		.hale-article-nav,
-		a.govuk-footer__link {
-
+		a.govuk-link,
+		a.govuk-footer__link,
+		.moj-pagination__link {
 			&:focus {
-        color: branded(link-focus);
+				color: branded(link-focus);
 				background-color: branded(link-focus-background);
 				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-shadow);
 				outline: 4px solid transparent;
 			}
 		}
-		
+		a.govuk-breadcrumbs__link,
+		a.govuk-back-link {
+			&:focus {
+				background-color: branded(link-focus-background);
+				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-shadow);
+				outline: 4px solid transparent;
+			}
+		}
+
 		//shading colour - set here and use @extend to shade elements below
 		.hale-shaded {
 			background-color:branded(title-shading);

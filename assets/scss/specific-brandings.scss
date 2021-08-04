@@ -63,18 +63,7 @@
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
 		@extend .govuk-link;
-		
-		&:focus {
-			background-color: $colour_turquoise_tint;
-			box-shadow: 0 -2px $colour_turquoise_tint, 0 4px $colour_turquoise;
-			outline: 4px solid transparent;
-		}
 	}
-
-	.hale-search-header + div {
-		margin-top: 30px;
-	}
-
 
 	.govuk-footer__inline-list-item {
 		display: block;
