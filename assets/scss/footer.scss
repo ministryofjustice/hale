@@ -2,6 +2,11 @@
 
 .govuk-footer {
 
+  a:not([class]), a[class=""] {
+    //deals with any links that aren't classed - makes them GDS footer links
+    @extend .govuk-footer__link;
+  }
+
   .hale-primary-footer-menu {
     display: block;
     line-height: 2;
