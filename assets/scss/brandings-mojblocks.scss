@@ -94,7 +94,7 @@
         &:focus {
           background-color: branded(mojblocks-cta-btn-focus-bg);
           color: branded(mojblocks-cta-btn-focus-text);
-          outline: 3px solid branded(mojblocks-cta-btn-focus-outline);
+          box-shadow: 0 0 0 3px branded(mojblocks-cta-btn-focus-outline);
         }
       }
     }

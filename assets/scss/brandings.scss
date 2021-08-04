@@ -212,6 +212,13 @@
 			}
 			&:focus {
 				background-color: branded(button-focus);
+				color: branded(button-focus-text);
+				box-shadow: 0 0 0 3px branded(button-focus-outline);
+			}
+			&:focus:not(:active):not(:hover) {
+				background-color: branded(button-focus);
+				color: branded(button-focus-text);
+				box-shadow: 0 0 0 3px branded(button-focus-outline);
 			}
 			svg {
 				fill: branded(button-text);
