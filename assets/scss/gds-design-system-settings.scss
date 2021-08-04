@@ -9,7 +9,9 @@ $govuk-font-family: 'PT Sans', sans-serif;
     //the full width cover images go slightly off the pagem this is the easiest fix.
     overflow-x: hidden;
   }
-  
+  .hale-search-header + div {
+		margin-top: 30px;
+	}
   #primary {
     font-family: $govuk-font-family;
 
@@ -73,6 +75,9 @@ $govuk-font-family: 'PT Sans', sans-serif;
 			}
 		}
 	}
+}
+.hale-search-header + div {
+  margin-top: 30px;
 }
 .hale-search-results__last-updated-date{
   color: $govuk-secondary-text-colour;
