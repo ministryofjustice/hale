@@ -17,7 +17,8 @@
           }
         }
       }
-      .govuk-accordion__section-heading {
+      .govuk-accordion__section-heading,
+      .govuk-accordion__section-button {
 
         color: branded(mojblocks-accordion-section-title);
 
