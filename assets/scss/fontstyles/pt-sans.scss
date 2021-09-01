@@ -79,6 +79,25 @@
     @extend .hale-heading-s;
   }
 
+  h1,h2,h3,h4 {
+    &.has-huge-font-size {
+      @extend .hale-heading-xl;
+    }
+
+    &.has-large-font-size {
+      @extend .hale-heading-l;
+    }
+
+    &.has-medium-font-size {
+      @extend .hale-heading-m;
+    }
+
+    &.has-small-font-size {
+      @extend .hale-heading-s;
+    }
+  }
+
+
   p {
     font-size: 16px;
     font-size: 1rem;
