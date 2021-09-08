@@ -20,11 +20,8 @@
           }
         },
         "core/list": {
-            
           "typography": {
             "customFontSize": true,
-            "customLineHeight": false,
-            "dropCap": true,
             "fontSizes": []
           }
         }
