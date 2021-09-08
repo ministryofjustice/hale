@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "settings": {
+      "color": {
+        "custom": false,
+        "customDuotone": false,
+        "customGradient": false,
+        "duotone": [],
+        "gradients": [],
+        "link": false,
+        "palette": []
+      },
+      "blocks": {
+        "core/paragraph": {
+          "typography": {
+            "customFontSize": true,
+            "customLineHeight": false,
+            "dropCap": true,
+            "fontSizes": []
+          }
+        },
+        "core/list": {
+          "typography": {
+            "customFontSize": true,
+            "fontSizes": []
+          }
+        }
+      }
+    }
+  }
