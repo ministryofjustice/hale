@@ -36,8 +36,8 @@ function hale_register_news_post_type()
         'label' => __('News story', 'hale'),
         'description' => __('Contains details of News stories', 'hale'),
         'labels' => $labels,
-        'supports' => array('title', 'editor'),
-        'taxonomies' => array(), //array( 'category', 'post_tag' ),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'taxonomies' => array('category', 'post_tag'),
         'hierarchical' => false,
         'public' => true,
         'show_ui' => true,
@@ -60,10 +60,39 @@ function hale_register_news_post_type()
 
     //Check if post type is deactived
     $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes");
-    if($deactivate_news == "no") {
+    if ($deactivate_news == "no") {
         register_post_type('news', $args);
     }
 
 }
 
 add_action('init', 'hale_register_news_post_type', 0);
+
+function hale_news_archive_query($query)
+{
+
+    if ($query->is_main_query() && !is_admin()) {
+
+        if (is_post_type_archive('news')) {
+            if (array_key_exists('subtopic', $query->query) && is_numeric($query->query['subtopic'])) {
+                unset($query->query['cat']);
+
+                $query->set('category__in', $query->query['subtopic']);
+            }
+        }
+        if ($query->is_tag || $query->is_category) {
+            $query->set('post_type', 'news');
+        }
+    }
+    return;
+}
+
+add_action('pre_get_posts', 'hale_news_archive_query');
+
+function hale_news_add_query_vars_filter($vars)
+{
+    $vars[] = "subtopic";
+    return $vars;
+}
+
+add_filter('query_vars', 'hale_news_add_query_vars_filter');

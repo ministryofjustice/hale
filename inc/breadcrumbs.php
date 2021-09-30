@@ -141,7 +141,16 @@ function hale_breadcrumb() {
 							</li>
 							<?php
 							// Check for categories, archives, search page, single posts, pages, the 404 page, and attachments.
-							if ( is_category() ) {
+							if ( is_post_type_archive('news') ) {
+                                ?>
+                            <li class="govuk-breadcrumbs__list-item">
+                                <?php
+                                esc_html_e( 'News', 'hale' );
+                                ?>
+                            </li>
+                            <?php
+                            }
+                            elseif ( is_category() ) {
 								$cat_obj    = $wp_query->get_queried_object();
 								$this_cat   = get_category( $cat_obj->term_id );
 								$parent_cat = get_category( $this_cat->parent );
@@ -199,7 +208,15 @@ function hale_breadcrumb() {
 									?>
 								</li>
 								<?php
-							} elseif ( is_singular( 'tribe_events' ) ) {
+							} elseif ( is_singular( 'news' ) ) {
+                                ?>
+                                <li class="govuk-breadcrumbs__list-item">
+                                    <a href="<?php echo get_post_type_archive_link('news');?>" class="govuk-breadcrumbs__link">
+                                    News
+                                    </a>
+                                </li>
+                                <?php
+                            } elseif ( is_singular( 'tribe_events' ) ) {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
 									<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( tribe_get_events_link() ); ?>">
@@ -243,9 +260,19 @@ function hale_breadcrumb() {
 							<?php } ?>
 						</ol>
 						<p class="hale-width--show-narrow-40 govuk-!-margin-0">
+                            <?php
+                            if ( is_singular( 'news' ) ) { ?>
+
+                            <a class="govuk-back-link" href="<?php echo get_post_type_archive_link('news'); ?>">
+                                <?php echo esc_html( __( 'Go back to News', 'hale' ) ); ?>
+                            </a>
+                            <?php
+                            }
+                            else { ?>
 							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
 								<?php echo esc_html_e( 'Go back to ', 'hale' ) . esc_html( $back_one_level[1] ); ?>
 							</a>
+                            <?php } ?>
 						</p>
 					<?php } // end of LearnDash / Uncanny Toolkit conditional ?>
 				</div>
