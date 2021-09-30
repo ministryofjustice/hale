@@ -17,7 +17,10 @@ get_header();
 ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
-        <?php  the_archive_title( '<h1 class="govuk-heading-xl">', '</h1>' ); ?>
+        <h1 class="govuk-heading-xl"><?php
+            echo '#' . single_tag_title('', false);
+            ?>
+        </h1>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <?php
@@ -59,7 +62,7 @@ get_header();
                                                 <li class="news-story-categories-list-item">
                                                     <a href="<?php echo get_tag_link($story_tag->term_id); ?>"
                                                        class="news-story-category-link">
-                                                        <?php echo $story_tag->name; ?>
+                                                        #<?php echo $story_tag->name; ?>
                                                     </a>
                                                 </li>
                                                 <?php

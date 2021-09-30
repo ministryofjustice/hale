@@ -48,7 +48,7 @@
                             <li class="news-story-categories-list-item">
                                 <a href="<?php echo get_tag_link($story_tag->term_id); ?>"
                                    class="news-story-category-link">
-                                    <?php echo $story_tag->name; ?>
+                                    #<?php echo $story_tag->name; ?>
                                 </a>
                             </li>
                             <?php
