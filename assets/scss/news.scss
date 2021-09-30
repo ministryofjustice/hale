@@ -57,6 +57,10 @@
   .news-story-list-item {
     border-bottom: 1px solid $colour_concrete_grey;
 
+    &:last-child {
+      border: none;
+    }
+
     .news-story-list-item-title {
       a {
         color: $colour_metal_grey;

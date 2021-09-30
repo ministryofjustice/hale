@@ -91,11 +91,12 @@ get_header();
             <div class="govuk-grid-column-two-thirds">
                 <?php
                 if (have_posts()) {
-                    $news_story_count = $GLOBALS['wp_query']->post_count;
+                    $news_story_count = $GLOBALS['wp_query']->found_posts;
                     ?>
                     <div class="news-story-count">
                         <?php echo $news_story_count; ?> articles
                     </div>
+                    <div class="news-story-list">
                     <?php
                     while (have_posts()) {
                         the_post(); ?>
@@ -151,7 +152,10 @@ get_header();
                             </div>
                         </div>
                         <?php
-                    }
+                    } ?>
+                    </div>
+                    <?php
+                    hale_archive_pagination();
                 } else { ?>
                     <p><?php _e('No news articles found', 'hale'); ?></p>
                     <?php
