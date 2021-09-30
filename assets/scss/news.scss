@@ -5,6 +5,7 @@
       margin-bottom: 25px;
       font-weight: normal;
     }
+
     .news-story-details {
       font-size: 16px;
       font-size: 1rem;
@@ -38,6 +39,7 @@
       #news-archive-filter-topic {
         margin-bottom: 20px;
       }
+
       .govuk-select {
         width: 100%;
       }
@@ -47,6 +49,7 @@
       }
     }
   }
+
   .news-story-count {
     font-weight: bold;
     border-bottom: 1px solid $colour_concrete_grey;
@@ -54,6 +57,7 @@
     font-size: 1.5rem;
     padding-bottom: 16px;
   }
+
   .news-story-list-item {
     border-bottom: 1px solid $colour_concrete_grey;
 

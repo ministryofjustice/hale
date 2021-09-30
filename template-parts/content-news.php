@@ -1,13 +1,6 @@
 <?php
 /**
- * Template part for displaying posts
- *
- * @link      https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package Hale
- * Theme Hale with GDS styles
- * ©Crown Copyright
- * Adapted from version from NHS Leadership Academy, Tony Blacker
- * @version 2.0 February 2021
+ * Template part for displaying news
  */
 ?>
 
