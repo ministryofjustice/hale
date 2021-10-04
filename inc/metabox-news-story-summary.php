@@ -72,10 +72,6 @@ function hale_save_news_story_summary_settings($post_id)
     if (isset($_POST['newsStorySummary'])) {
         $news_story_summary = sanitize_text_field(wp_unslash($_POST['newsStorySummary']));
 
-        $news_story = array(
-            'ID'           => $post_id,//the ID of the Post
-            'post_excerpt' => $news_story_summary,
-        );
         update_post_meta($post_id, 'news_story_summary', $news_story_summary);
     }
 
