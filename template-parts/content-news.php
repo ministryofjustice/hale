@@ -81,7 +81,7 @@
     ?>
 	<?php do_action( 'hale_before_single_content' ); ?>
 
-	<div class="">
+	<div class="news-story-content">
 		<?php
 		if ( function_exists( 'hale_clean_bad_content' ) ) {
             hale_clean_bad_content( true );

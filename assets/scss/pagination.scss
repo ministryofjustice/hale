@@ -244,3 +244,33 @@
     display:none;
   }
 }
+
+
+.archive-pagination {
+
+  border-top: 1px solid $colour_concrete_grey;
+  padding-top: 30px;
+
+  .archive-pagination-prev-btn {
+    @include govuk-media-query($from: tablet) {
+      float: left;
+      margin-top: -30px;
+    }
+  }
+  .archive-pagination-next-btn {
+    @include govuk-media-query($from: tablet) {
+      float: right;
+      margin-top: -30px;
+    }
+  }
+  .archive-pagination-current-page {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+
+  }
+}

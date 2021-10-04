@@ -23,12 +23,11 @@ get_header();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
                 <div class="news-archive-filter-section">
-                    <p>You can use the filters to show only news items that match your interests.</p>
+                    <p>Filter news by topic.</p>
 
                     <div class="news-archive-filter-form">
                         <form method="GET">
 
-                            <div></div>
                             <label class="govuk-label" for="news-archive-filter-topic">Topic</label>
                             <?php
                             $dropdown_args = array(
@@ -92,70 +91,26 @@ get_header();
                 <?php
                 if (have_posts()) {
                     $news_story_count = $GLOBALS['wp_query']->found_posts;
+
+                    if($news_story_count > 1){
+                        $news_story_count_text = $news_story_count . ' articles';
+                    }
+                    elseif($news_story_count == 1) {
+                        $news_story_count_text = '1 article';
+                    }
                     ?>
                     <div class="news-story-count">
-                        <?php echo $news_story_count; ?> articles
+                        <?php echo $news_story_count_text; ?>
                     </div>
                     <div class="news-story-list">
                         <?php
                         while (have_posts()) {
-                            the_post(); ?>
-                            <div class="news-story-list-item">
-                                <h2 class="news-story-list-item-title hale-heading-s"><a
-                                        href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
-                                <div class="news-story-published-date">
-                                    Published: <?php hale_posted_on(); ?>
-                                </div>
-                                <?php
-                                $story_categories = get_the_category();
-
-                                $story_tags = get_the_tags();
-
-                                if (!empty($story_categories) || !empty($story_tags)) { ?>
-                                    <div class="news-story-categories">
-                                        <ul class="news-story-categories-list">
-                                            <?php
-                                            if (!empty($story_categories)) {
-                                                foreach ($story_categories as $story_category) {
-                                                    ?>
-                                                    <li class="news-story-categories-list-item">
-                                                        <a href="<?php echo get_category_link($story_category->term_id); ?>"
-                                                           class="news-story-category-link">
-                                                            <?php echo $story_category->name; ?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                            <?php
-                                            if (!empty($story_tags)) {
-                                                foreach ($story_tags as $story_tag) {
-                                                    ?>
-                                                    <li class="news-story-categories-list-item">
-                                                        <a href="<?php echo get_tag_link($story_tag->term_id); ?>"
-                                                           class="news-story-category-link">
-                                                            #<?php echo $story_tag->name; ?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                                <div class="news-story-excerpt">
-                                    <?php the_excerpt(); ?>
-                                </div>
-                            </div>
-                            <?php
+                            the_post();
+                            get_template_part( 'template-parts/content', 'news-list-item' );
                         } ?>
                     </div>
                     <?php
-                    hale_archive_pagination();
+                    hale_archive_pagination('archive');
                 } else { ?>
                     <p><?php _e('No news articles found', 'hale'); ?></p>
                     <?php

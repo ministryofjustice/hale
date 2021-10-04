@@ -108,6 +108,7 @@ function hale_breadcrumb() {
 				<div class="govuk-width-container">
 					<?php
 					if ( true === hale_uncanny_breadcrumb_check() ) {
+
 						echo esc_html( uo_breadcrumbs() );
 						?>
 
@@ -161,7 +162,17 @@ function hale_breadcrumb() {
 									echo $cat_parents; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								}
 								echo '<li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="' . esc_url( get_category_link( $this_cat ) ) . '">' . esc_html( single_cat_title( '', false ) ) . '</a></li>';
-							} elseif ( is_post_type_archive( 'tribe_events' ) ) {
+							}
+                            elseif ( is_tag() ) {
+                                $tag_obj    = $wp_query->get_queried_object();
+
+                                ?>
+                                <li class="govuk-breadcrumbs__list-item">
+                                    #<?php echo $tag_obj->name?>
+                                </li>
+                                <?php
+                            }
+							elseif ( is_post_type_archive( 'tribe_events' ) ) {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
 									<?php
