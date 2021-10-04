@@ -71,9 +71,12 @@
 
 	}
 	?>
-    <?php if(has_excerpt()){ ?>
+    <?php
+
+        $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
+        if(!empty($news_story_summary)){ ?>
         <div class="news-story-excerpt intro">
-            <?php the_excerpt(); ?>
+            <?php echo wpautop($news_story_summary); ?>
         </div>
 
     <?php

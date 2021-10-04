@@ -396,6 +396,11 @@ require get_template_directory() . '/inc/metabox-page-breadcrumb.php';
 require get_template_directory() . '/inc/metabox-page-title-section.php';
 
 /**
+ * Custom Page Title Section Metabox
+ */
+require get_template_directory() . '/inc/metabox-news-story-summary.php';
+
+/**
  * Social Widget.
  */
 require get_template_directory() . '/inc/widgets/social-widget.php';
