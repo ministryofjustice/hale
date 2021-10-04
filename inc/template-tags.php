@@ -39,13 +39,21 @@ if ( ! function_exists( 'hale_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function hale_posted_by() {
-		$author_enabled = get_theme_mod( 'blog_author_display', 'true' );
-		if ( 'true' === $author_enabled ) {
-			echo '<span class="govuk-visually-hidden">Posted by: </span><a class="url fn n" 
- href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>&nbsp;-&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}
-	}
+    function hale_posted_by($has_link = false) {
+        $author_enabled = get_theme_mod( 'blog_author_display', 'true' );
+        if ( 'true' === $author_enabled ) {
+            echo '<span>Author: </span>';
+
+            if($has_link) {
+                echo '<a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">';
+            }
+            echo esc_html( get_the_author() );
+
+            if($has_link) {
+                echo '</a>';
+            }
+        }
+    }
 endif;
 
 if ( ! function_exists( 'hale_entry_footer' ) ) :
