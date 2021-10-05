@@ -147,7 +147,8 @@ function hale_get_branding_class() {
         '143859' => 'earth',
         '0c223f' => 'neptune',
         '34393e' => 'pluto',
-        '336c83' => 'uranus'
+        '336c83' => 'uranus',
+        '0f0228' => 'venus'
     ];
 
     $colour = get_theme_mod( 'theme_colour', '0c223f' );

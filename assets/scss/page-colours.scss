@@ -13,6 +13,7 @@ $colour_pluto_grey: #34393E;
 $colour_charcoal_black: #0B0C0C;
 $colour_gold: #DAC777;
 $colour_gold_tint: #F8F4E4;
+$colour_honey: #FFC773;
 $colour_sunflower_yellow: #FFE600;
 $colour_flame_orange: #D95619;
 $colour_flame_orange_tint: #FBEEE8;
@@ -34,11 +35,14 @@ $colour_marine_blue: #0D47A1;
 $colour_deep_sea_blue: #00346A;
 $colour_neptune_blue: #0C223F;
 $colour_earth_blue: #143859;
+$colour_venus_blue: #0F0228;
 $colour_bluebell_blue: #403DD0;
 $colour_lavender: #7E57C2;
 $colour_purple: #6D298F;
 $colour_violet: #592B5E;
 $colour_indigo: #4C1566;
+$colour_magenta: #B51058;
+$colour_pink: #F8E7EE;
 
 $brandings: (
   earth: (
@@ -410,6 +414,99 @@ $brandings: (
     mojblocks-staggered-box-btn-focus-bg: $colour_flame_orange,
     mojblocks-staggered-box-btn-focus-text: $colour_charcoal_black,
   ),
+  venus: (
+    header-bg: $colour_venus_blue,
+    header-link: govuk-colour("white"),
+    header-link-current: govuk-colour("white"),
+    header-link-hover-border: govuk-colour("white"),
+    header-link-focus-underline: $colour_magenta,
+    header-link-focus-highlight: $colour_pink,
+    header-link-focus: $colour_venus_blue,
+    header-link-mobile-border: $colour_concrete_grey,
+    header-search-input-bg: govuk-colour("white"),
+    header-search-input-border: $colour_concrete_grey,
+    header-search-input-focus-bg: $colour_pink,
+    header-search-input-focus-border: $colour_magenta,
+    header-search-input-active-bg: $colour_pink,
+    header-search-input-active-border: $colour_magenta,
+    header-search-btn-bg: $colour_magenta,
+    header-search-btn-icon: govuk-colour("white"),
+    header-search-btn-hover-bg: $colour_indigo,
+    header-search-btn-hover-icon: govuk-colour("white"),
+    header-search-btn-focus-bg: $colour_indigo,
+    header-search-btn-focus-icon: govuk-colour("white"),
+    mobile-controls: govuk-colour("white"),
+    page-body-bg: $colour_pink,
+    title-shading: $colour_pink,
+    cat-nav-arrows: $colour_venus_blue,
+    footer-border: $colour_venus_blue,
+    footer-background: $colour_cloudy_grey,
+    footer-link-focus-background: $colour_pink,
+    link: $colour_magenta,
+    link-visited: $colour_lavender,
+    link-hover: $colour_indigo,
+    link-focus: $colour_indigo,
+    link-focus-shadow: $colour_magenta,
+    link-focus-background: $colour_pink,
+    input-bg: govuk-colour("white"),
+    input-border: $colour_magenta,
+    button: $colour_magenta,
+    button-hover:$colour_indigo,
+    button-focus:$colour_indigo,
+    button-focus-text: govuk-colour("white"),
+    button-focus-outline: $colour_magenta,
+    button-active:$colour_indigo,
+    button-text:govuk-colour("white"),
+    button-hover-text:govuk-colour("white"),
+    button-border:none,
+    mojblocks-accordion-section-title: $colour_magenta,
+    mojblocks-accordion-section-title-hover: $colour_indigo,
+    mojblocks-accordion-section-title-focus: $colour_indigo,
+    mojblocks-accordion-section-title-focus-bg: $colour_pink,
+    mojblocks-accordion-section-title-focus-shadow: $colour_magenta,
+    mojblocks-accordion-controls: $colour_magenta,
+    mojblocks-accordion-controls-hover: $colour_indigo,
+    mojblocks-banner-btn-bg: $colour_magenta,
+    mojblocks-banner-btn-text: govuk-colour("white"),
+    mojblocks-banner-btn-hover-bg: $colour_indigo,
+    mojblocks-banner-btn-hover-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-bg: $colour_indigo,
+    mojblocks-banner-btn-focus-text: govuk-colour("white"),
+    mojblocks-banner-btn-focus-outline: $colour_magenta,
+    mojblocks-cta-bg: $colour_pink,
+    mojblocks-cta-title: $colour_charcoal_black,
+    mojblocks-cta-text: $colour_charcoal_black,
+    mojblocks-cta-btn-bg: $colour_magenta,
+    mojblocks-cta-btn-text: govuk-colour("white"),
+    mojblocks-cta-btn-hover-bg: $colour_indigo,
+    mojblocks-cta-btn-hover-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-bg: $colour_indigo,
+    mojblocks-cta-btn-focus-text: govuk-colour("white"),
+    mojblocks-cta-btn-focus-outline: $colour_magenta,
+    mojblocks-hero-bg: $colour_pink,
+    mojblocks-highlights-list-bg: $colour_pink,
+    mojblocks-highlights-list-title: $colour_charcoal_black,
+    mojblocks-highlights-list-text: $colour_charcoal_black,
+    mojblocks-highlights-list-divider: $colour_magenta,
+    mojblocks-reveal-title: $colour_magenta,
+    mojblocks-reveal-title-hover: $colour_indigo,
+    mojblocks-reveal-title-focus: $colour_indigo,
+    mojblocks-reveal-title-focus-bg: $colour_pink,
+    mojblocks-reveal-title-focus-shadow: $colour_magenta,
+    mojblocks-staggered-box-bg: $colour_pink,
+    mojblocks-staggered-box-divider: $colour_magenta,
+    mojblocks-staggered-box-title: $colour_charcoal_black,
+    mojblocks-staggered-box-text: $colour_charcoal_black,
+    mojblocks-staggered-box-btn-border: $colour_magenta,
+    mojblocks-staggered-box-btn-bg: $colour_pink,
+    mojblocks-staggered-box-btn-text: $colour_charcoal_black,
+    mojblocks-staggered-box-btn-hover-border: $colour_indigo,
+    mojblocks-staggered-box-btn-hover-bg: $colour_indigo,
+    mojblocks-staggered-box-btn-hover-text: govuk-colour("white"),
+    mojblocks-staggered-box-btn-focus-border: $colour_indigo,
+    mojblocks-staggered-box-btn-focus-bg: $colour_indigo,
+    mojblocks-staggered-box-btn-focus-text: govuk-colour("white"),
+  )
 );
 
 @mixin branding($brandings: $brandings, $gutenberg-styles: false) {

@@ -16,7 +16,8 @@ function hale_get_theme_colours() {
         '143859' => esc_html__( 'Earth', 'hale' ),
 		'0c223f' => esc_html__( 'Neptune', 'hale' ),
 		'34393e' => esc_html__( 'Pluto', 'hale' ),
-        '336c83' => esc_html__( 'Uranus', 'hale' )
+        '336c83' => esc_html__( 'Uranus', 'hale' ),
+        '0f0228' => esc_html__( 'Venus', 'hale' )
 	);
 }
 
