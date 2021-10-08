@@ -2,6 +2,12 @@
 /**
  * Template part for displaying news
  */
+
+$show_author = get_post_meta($post->ID, 'hale_show_news_story_author', true);
+
+if (empty($show_author)) {
+    $show_author = 'no';
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -13,11 +19,13 @@
         ?>
         <div class="news-story-details">
             <div class="news-story-published-date">
-                <?php hale_posted_on(); ?>
+                Published: <?php hale_posted_on(); ?>
             </div>
-            <div class="news-story-author">
-                <?php hale_posted_by(); ?>
-            </div>
+            <?php if($show_author == 'yes'){ ?>
+                <div class="news-story-author">
+                    <?php hale_posted_by(); ?>
+                </div>
+            <?php } ?>
         </div>
         <?php
         $story_categories = get_the_category();
