@@ -470,4 +470,7 @@ require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
  */
 require get_template_directory() . '/inc/taxonomies/tax-page-category.php';
 
-
+/**
+ * Image management
+ */
+require get_template_directory() . '/inc/image-management.php';
