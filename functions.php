@@ -396,9 +396,14 @@ require get_template_directory() . '/inc/metabox-page-breadcrumb.php';
 require get_template_directory() . '/inc/metabox-page-title-section.php';
 
 /**
- * Custom Page Title Section Metabox
+ * Custom News Story Summary Metabox
  */
 require get_template_directory() . '/inc/metabox-news-story-summary.php';
+
+/**
+ * Custom News Story Author Metabox
+ */
+require get_template_directory() . '/inc/metabox-news-story-author.php';
 
 /**
  * Social Widget.
