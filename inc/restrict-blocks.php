@@ -36,7 +36,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/staggered-box'
         );
 
-        //Check if news post type is deactived
+        //Check if news post type is deactivated
         $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes");
         if ($deactivate_news == "no") {
             $allowed_blocks[] = 'mojblocks/latest-news';
