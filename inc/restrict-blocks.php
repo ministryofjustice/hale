@@ -8,7 +8,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
     if($restrict_blocks == "yes") {
 
-        return array(
+        $allowed_blocks = array(
             'core/image',
             'core/paragraph',
             'core/heading',
@@ -35,6 +35,14 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/reveal',
             'mojblocks/staggered-box'
         );
+
+        //Check if news post type is deactivated
+        $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes");
+        if ($deactivate_news == "no") {
+            $allowed_blocks[] = 'mojblocks/latest-news';
+            $allowed_blocks[] = 'mojblocks/featured-news';
+        }
+        return  $allowed_blocks;
     }
     else {
         return $allowed_blocks;
