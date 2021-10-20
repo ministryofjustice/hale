@@ -474,3 +474,8 @@ require get_template_directory() . '/inc/taxonomies/tax-page-category.php';
  * Image management
  */
 require get_template_directory() . '/inc/image-management.php';
+
+/**
+ * Manage uploads
+ */
+require get_template_directory() . '/inc/uploads.php';
