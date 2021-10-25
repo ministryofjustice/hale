@@ -51,24 +51,6 @@
       }
     }
 
-    //Banner Block
-    .mojblocks-banner {
-      .mojblocks-banner__button {
-        background-color: branded(mojblocks-banner-btn-bg);
-        color: branded(mojblocks-banner-btn-text);
-
-        &:hover {
-          background-color: branded(mojblocks-banner-btn-hover-bg);
-          color: branded(mojblocks-banner-btn-hover-text);
-        }
-
-        &:focus {
-          background-color: branded(mojblocks-banner-btn-focus-bg);
-          color: branded(mojblocks-banner-btn-focus-text);
-          outline: 3px solid branded(mojblocks-banner-btn-focus-outline);
-        }
-      }
-    }
     //CTA Block
     .wp-block-mojblocks-cta {
       background-color: branded(mojblocks-cta-bg);
@@ -80,23 +62,6 @@
 
       .mojblocks-cta__content p {
         color: branded(mojblocks-cta-text);
-      }
-
-      .mojblocks-button,
-      a.mojblocks-button {
-        background-color: branded(mojblocks-cta-btn-bg);
-        color: branded(mojblocks-cta-btn-text);
-
-         &:hover {
-          background-color: branded(mojblocks-cta-btn-hover-bg);
-          color: branded(mojblocks-cta-btn-hover-text);
-        }
-
-        &:focus {
-          background-color: branded(mojblocks-cta-btn-focus-bg);
-          color: branded(mojblocks-cta-btn-focus-text);
-          box-shadow: 0 0 0 3px branded(mojblocks-cta-btn-focus-outline);
-        }
       }
     }
 
@@ -185,6 +150,40 @@
       }
     }
 
+    //all buttons in blocks
+    .mojblocks-button,
+    a.mojblocks-button,
+    .govuk-button {
+			border:branded(button-border);
+			box-shadow: 0 1px 0 branded(button);
+			color:branded(button-text);
+			background-color:branded(button);
+			&:hover {
+				background-color: branded(button-hover);
+				color: branded(button-hover-text);
+				box-shadow: 0 1px 0 branded(button-hover);
+				border-color: branded(link-focus);
+				svg {
+					fill: branded(button-hover-text);
+				}
+			}
+			&:active {
+				background-color: branded(button-active);
+				box-shadow: none;
+			}
+			&:focus {
+				background-color: branded(button-focus);
+				color: branded(button-focus-text);
+				box-shadow: 0 0 0 3px branded(button-focus-outline);
+			}
+			&:focus:not(:active):not(:hover) {
+				background-color: branded(button-focus);
+				color: branded(button-focus-text);
+				box-shadow: 0 0 0 3px branded(button-focus-outline);
+			}
+			svg {
+				fill: branded(button-text);
+			}
+		}
   }
-
 }
