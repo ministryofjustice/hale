@@ -90,6 +90,7 @@ $brandings: (
     button-focus-outline: $colour_gold_tint,
     button-active: $colour_earth_blue,
     button-border:none,
+    mojblocks-divider: $colour_earth_blue,
     mojblocks-accordion-section-title: $colour_sapphire_blue,
     mojblocks-accordion-section-title-hover: $colour_earth_blue,
     mojblocks-accordion-section-title-focus: $colour_earth_blue,
@@ -167,6 +168,7 @@ $brandings: (
     button-focus-outline: $colour_turquoise,
     button-active: $colour_bluebell_blue,
 		button-border:none,
+    mojblocks-divider: $colour_neptune_blue,
     mojblocks-accordion-section-title: $colour_lagoon_blue,
     mojblocks-accordion-section-title-hover: $colour_deep_sea_blue,
     mojblocks-accordion-section-title-focus: $colour_deep_sea_blue,
@@ -244,6 +246,7 @@ $brandings: (
     button-focus-outline: $colour_sunflower_yellow,
 		button-active: $colour_charcoal_black,
     button-border:none,
+    mojblocks-divider: $colour_sunflower_yellow,
     mojblocks-accordion-section-title: $colour_southsea_blue,
     mojblocks-accordion-section-title-hover: $colour_marine_blue,
     mojblocks-accordion-section-title-focus: $colour_charcoal_black,
@@ -324,6 +327,7 @@ $brandings: (
     button-text:govuk-colour("white"),
     button-hover-text:govuk-colour("white"),
     button-border:none,
+    mojblocks-divider: $colour_flame_orange,
     mojblocks-accordion-section-title: $colour_purple,
     mojblocks-accordion-section-title-hover: $colour_indigo,
     mojblocks-accordion-section-title-focus: $colour_indigo,
@@ -403,6 +407,7 @@ $brandings: (
     button-text:govuk-colour("white"),
     button-hover-text:govuk-colour("white"),
     button-border:none,
+    mojblocks-divider: $colour_magenta,
     mojblocks-accordion-section-title: $colour_magenta,
     mojblocks-accordion-section-title-hover: $colour_indigo,
     mojblocks-accordion-section-title-focus: $colour_indigo,
@@ -521,6 +526,9 @@ $brandings: (
 		button-border:
 
 		//MOJ Block Colour Options
+
+		//more than one block
+		mojblocks-divider
 
 		//Accordion Block
 		mojblocks-accordion-section-title

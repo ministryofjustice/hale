@@ -150,6 +150,29 @@
       }
     }
 
+    //coloured divider bar above
+    .mojblocks-divider-bar-before,
+    .mojblocks-divider-bar-before-shaded {
+      margin-top: 1rem;
+      position: relative;
+
+      &:before { //bar
+        content: "";
+        width: 3.5rem;
+        height: 0.5rem;
+        position: absolute;
+        top: -1rem;
+        pointer-events: none;
+      }
+    }
+    //bar colour
+    .mojblocks-divider-bar-before-shaded:before {
+      background: branded(mojblocks-divider);
+    }
+    .mojblocks-divider-bar-before:before {
+      background: currentColor;
+    }
+
     //all buttons in blocks
     .mojblocks-button,
     a.mojblocks-button,
