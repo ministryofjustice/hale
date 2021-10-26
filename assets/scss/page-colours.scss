@@ -103,14 +103,12 @@ $brandings: (
     mojblocks-highlights-list-bg: $colour_gold_tint,
     mojblocks-highlights-list-title: $colour_charcoal_black,
     mojblocks-highlights-list-text: $colour_charcoal_black,
-    mojblocks-highlights-list-divider: $colour_earth_blue,
     mojblocks-reveal-title: $colour_sapphire_blue,
     mojblocks-reveal-title-hover: $colour_earth_blue,
     mojblocks-reveal-title-focus: $colour_earth_blue,
     mojblocks-reveal-title-focus-bg: $colour_gold_tint,
     mojblocks-reveal-title-focus-shadow: $colour_gold,
     mojblocks-staggered-box-bg: $colour_gold_tint,
-    mojblocks-staggered-box-divider: $colour_earth_blue,
     mojblocks-staggered-box-title: $colour_charcoal_black,
     mojblocks-staggered-box-text: $colour_charcoal_black,
     mojblocks-staggered-box-btn-border: $colour_earth_blue,
@@ -181,14 +179,12 @@ $brandings: (
     mojblocks-highlights-list-bg: $colour_turquoise_tint,
     mojblocks-highlights-list-title: $colour_charcoal_black,
     mojblocks-highlights-list-text: $colour_charcoal_black,
-    mojblocks-highlights-list-divider: $colour_neptune_blue,
     mojblocks-reveal-title: $colour_lagoon_blue,
     mojblocks-reveal-title-hover: $colour_deep_sea_blue,
     mojblocks-reveal-title-focus: $colour_deep_sea_blue,
     mojblocks-reveal-title-focus-bg: $colour_turquoise_tint,
     mojblocks-reveal-title-focus-shadow: $colour_turquoise,
     mojblocks-staggered-box-bg: $colour_turquoise_tint,
-    mojblocks-staggered-box-divider: $colour_neptune_blue,
     mojblocks-staggered-box-title: $colour_charcoal_black,
     mojblocks-staggered-box-text: $colour_charcoal_black,
     mojblocks-staggered-box-btn-border: $colour_lagoon_blue,
@@ -261,14 +257,12 @@ $brandings: (
     mojblocks-highlights-list-bg: $colour_uranus_teal,
     mojblocks-highlights-list-title: $colour_sunflower_yellow,
     mojblocks-highlights-list-text: govuk-colour("white"),
-    mojblocks-highlights-list-divider: $colour_sunflower_yellow,
     mojblocks-reveal-title: $colour_southsea_blue,
     mojblocks-reveal-title-hover: $colour_marine_blue,
     mojblocks-reveal-title-focus: $colour_charcoal_black,
     mojblocks-reveal-title-focus-bg: $colour_sunflower_yellow,
     mojblocks-reveal-title-focus-shadow: $colour_charcoal_black,
     mojblocks-staggered-box-bg: $colour_metal_grey,
-    mojblocks-staggered-box-divider: $colour_sunflower_yellow,
     mojblocks-staggered-box-title: govuk-colour("white"),
     mojblocks-staggered-box-text: govuk-colour("white"),
     mojblocks-staggered-box-btn-border: $colour_sunflower_yellow,
@@ -342,14 +336,12 @@ $brandings: (
     mojblocks-highlights-list-bg: $colour_flame_orange_tint,
     mojblocks-highlights-list-title: $colour_charcoal_black,
     mojblocks-highlights-list-text: $colour_charcoal_black,
-    mojblocks-highlights-list-divider: $colour_flame_orange,
     mojblocks-reveal-title: $colour_purple,
     mojblocks-reveal-title-hover: $colour_indigo,
     mojblocks-reveal-title-focus: $colour_indigo,
     mojblocks-reveal-title-focus-bg: $colour_flame_orange_tint,
     mojblocks-reveal-title-focus-shadow: $colour_flame_orange,
     mojblocks-staggered-box-bg: $colour_flame_orange_tint,
-    mojblocks-staggered-box-divider: $colour_flame_orange,
     mojblocks-staggered-box-title: $colour_charcoal_black,
     mojblocks-staggered-box-text: $colour_charcoal_black,
     mojblocks-staggered-box-btn-border: $colour_flame_orange,
@@ -422,14 +414,12 @@ $brandings: (
     mojblocks-highlights-list-bg: $colour_magenta_tint,
     mojblocks-highlights-list-title: $colour_charcoal_black,
     mojblocks-highlights-list-text: $colour_charcoal_black,
-    mojblocks-highlights-list-divider: $colour_magenta,
     mojblocks-reveal-title: $colour_magenta,
     mojblocks-reveal-title-hover: $colour_indigo,
     mojblocks-reveal-title-focus: $colour_indigo,
     mojblocks-reveal-title-focus-bg: $colour_magenta_tint,
     mojblocks-reveal-title-focus-shadow: $colour_magenta,
     mojblocks-staggered-box-bg: $colour_magenta_tint,
-    mojblocks-staggered-box-divider: $colour_magenta,
     mojblocks-staggered-box-title: $colour_charcoal_black,
     mojblocks-staggered-box-text: $colour_charcoal_black,
     mojblocks-staggered-box-btn-border: $colour_magenta,
@@ -553,7 +543,7 @@ $brandings: (
     mojblocks-highlights-list-bg
     mojblocks-highlights-list-title
     mojblocks-highlights-list-text
-    mojblocks-highlights-list-divider
+      (also uses mojblocks-divider)
 
     mojblocks-reveal-title
     mojblocks-reveal-title-hover
@@ -563,7 +553,6 @@ $brandings: (
 
     //Staggered Box
     mojblocks-staggered-box-bg
-    mojblocks-staggered-box-divider
     mojblocks-staggered-box-title
     mojblocks-staggered-box-text
     mojblocks-staggered-box-btn-border
@@ -575,6 +564,7 @@ $brandings: (
     mojblocks-staggered-box-btn-focus-border
     mojblocks-staggered-box-btn-focus-bg
     mojblocks-staggered-box-btn-focus-text
+      (also uses mojblocks-divider)
 */
 
 

@@ -89,7 +89,7 @@
         }
 
         &:before {
-          background-color: branded(mojblocks-highlights-list-divider);
+          background-color: branded(mojblocks-divider);
         }
       }
     }
@@ -121,7 +121,7 @@
           color: branded(mojblocks-staggered-box-title);
 
           &:before {
-            background: branded(mojblocks-staggered-box-divider);
+            background: branded(mojblocks-divider);
           }
         }
 
