@@ -21,7 +21,7 @@ get_header();
             News
         </h1>
         <?php if ( is_active_sidebar( 'news-listing' ) ) { ?>
-            <div id="hale-news-listing-widgets" class="hale-news_listing__widgets" role="complementary">
+            <div id="hale-news-listing-widgets" class="hale-news_listing__widgets">
                 <?php dynamic_sidebar( 'news-listing' ); ?>
             </div>
         <?php } ?>
