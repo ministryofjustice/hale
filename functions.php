@@ -211,69 +211,6 @@ function hale_content_width()
 add_action('after_setup_theme', 'hale_content_width', 0);
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function hale_widgets_init()
-{
-    register_sidebar(
-        [
-            'name'          => esc_html__('Sidebar', 'hale'),
-            'id'            => 'sidebar-1',
-            'description'   => esc_html__('Elements to show in the sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="%2$s">',
-            'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="govuk-heading-m">',
-            'after_title'   => '</h2>',
-        ]
-    );
-    register_sidebar(
-        [
-            'name'          => esc_html__('Post Sidebar', 'hale'),
-            'id'            => 'sidebar-2',
-            'description'   => esc_html__('Elements to show in the post sidebar. Each widget will show as a panel. If empty you will have a blank right hand panel.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="%2$s">',
-            'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="govuk-heading-m">',
-            'after_title'   => '</h2>',
-        ]
-    );
-    register_sidebar(
-        [
-            'name'          => esc_html__('Footer area one', 'hale'),
-            'id'            => 'footer-area-two',
-            'description'   => esc_html__('Footer area widget. Displays on lefthand side when two footer widgets are present.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</section>',
-        ]
-    );
-    register_sidebar(
-        [
-            'name'          => esc_html__('Footer area two', 'hale'),
-            'id'            => 'footer-area-one',
-            'description'   => esc_html__('Footer area widget. Displays on the righthand side when two footer widgets are present.', 'hale'),
-            'before_widget' => '<section id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</section>',
-        ]
-    );
-    register_sidebar(
-        [
-            'name'          => '404 Page',
-            'id'            => '404-error',
-            'description'   => esc_html__('Content for your 404 error page goes here.', 'hale'),
-            'before_widget' => '<div id="%1$s" class="%2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h3 class="govuk-heading-s">',
-            'after_title'   => '</h3>',
-        ]
-    );
-}
-
-add_action('widgets_init', 'hale_widgets_init');
-
-
-/**
  * Enqueue scripts and styles.
  */
 function hale_scripts()
@@ -404,6 +341,11 @@ require get_template_directory() . '/inc/metabox-news-story-summary.php';
  * Custom News Story Author Metabox
  */
 require get_template_directory() . '/inc/metabox-news-story-author.php';
+
+/**
+ * Widget functions
+ */
+require get_template_directory() . '/inc/widgets.php';
 
 /**
  * Social Widget.

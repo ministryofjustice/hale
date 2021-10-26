@@ -20,6 +20,11 @@ get_header();
         <h1 class="govuk-heading-xl">
             News
         </h1>
+        <?php if ( is_active_sidebar( 'news-listing' ) ) { ?>
+            <div id="hale-news-listing-widgets" class="hale-news_listing__widgets">
+                <?php dynamic_sidebar( 'news-listing' ); ?>
+            </div>
+        <?php } ?>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
                 <div class="news-archive-filter-section">
