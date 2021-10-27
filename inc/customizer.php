@@ -126,7 +126,7 @@ function hale_customize_register( $wp_customize ) {
     );
 
     /*
-        Show/Hide Site name or Logo
+        Show/Hide Site Name or Logo
     */
     $wp_customize->add_setting(
         'logo_configuration',

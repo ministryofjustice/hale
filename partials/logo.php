@@ -16,8 +16,8 @@
 $org_name_checkbox = get_theme_mod( 'org_name_checkbox', 'no' );
 $org_name_field    = get_theme_mod( 'org_name_field' );
 
-$show_sitelogo = get_theme_mod( 'logo_configuration' ) == 'logo' || get_theme_mod( 'logo_configuration') == 'both' ? "yes" : "";
-$show_sitename = get_theme_mod( 'logo_configuration') == 'name' || get_theme_mod( 'logo_configuration') == 'both' ? "yes" : "";
+$show_sitelogo = get_theme_mod( 'logo_configuration' ) == 'logo' || get_theme_mod( 'logo_configuration' ) == 'both' ? "yes" : "";
+$show_sitename = get_theme_mod( 'logo_configuration' ) == 'name' || get_theme_mod( 'logo_configuration' ) == 'both' ? "yes" : "";
 $logo_has_link = get_theme_mod( 'logo_has_link', 'yes' );
 $logo_custom_link = get_theme_mod( 'logo_custom_link', '' );
 
