@@ -234,7 +234,7 @@ $brandings: (
     header-link-hover-border: govuk-colour("white"),
     header-link-focus-underline: $colour_sunflower_yellow,
     header-link-focus-highlight: $colour_uranus_teal_tint,
-    header-link-focus: $colour_uranus_teal,
+    header-link-focus: govuk-colour("black"),
     header-link-mobile-border: $colour_concrete_grey,
     header-search-input-bg: govuk-colour("white"),
     header-search-input-border: $colour_concrete_grey,

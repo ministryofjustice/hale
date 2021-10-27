@@ -20,7 +20,7 @@
   &__logotype:not(.hale-header__logotype--custom) {
     min-height:40px; //height of default SVG logo
   }
-  
+
   .hale-header__logotype-text--custom {
     font-weight: 400;
     font-size: 22px;
@@ -62,10 +62,6 @@
       .hale-header__logo--custom {
         float: left;
       }
-    }
-
-    a:focus .moj-header__logotype-crest path {
-      fill: $govuk-focus-text-colour;
     }
   }
 
