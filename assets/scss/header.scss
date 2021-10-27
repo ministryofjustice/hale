@@ -17,21 +17,30 @@
       }
     }
   }
+  &__logotype:not(.hale-header__logotype--custom) {
+    min-height:40px; //height of default SVG logo
+  }
+  
+  .hale-header__logotype-text--custom {
+    font-weight: 400;
+    font-size: 22px;
+    padding-left: 0.5em;
+  }
 }
 
 .hale-header {
   padding-top: 2px; //wee bit of space above the logo
 
   .govuk-header__logotype-text {
-
-    margin-top: 13px;
+    display:block;
 
     @extend .govuk-header__link--homepage;
     //copies the style for this as if it were a link
 
     &:hover {
-      //BUT REMOVES THE UNDERLINE
+      //BUT REMOVES THE UNDERLINE & hover margin
       border-bottom: none;
+      margin-bottom: 0;
     }
   }
 
@@ -39,6 +48,12 @@
     //make this a min-width to account for the longer header texts than "GOV.UK"
     width: unset;
     min-width: 33.33%;
+
+    .govuk-header__logotype {
+      //centre logo and text
+      display:flex;
+      align-items: center;
+    }
 
     .hale-header__logotype--custom {
       //Remove the space for the GDS logo (background image) so the custom logo isn't inset
@@ -78,7 +93,7 @@
 
     .moj-header__logotype-crest {
       position: absolute;
-      top: -7px;
+      top: -0.1rem;
       left: 0;
       margin-right: 5px;
       vertical-align: top;
