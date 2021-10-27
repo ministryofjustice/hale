@@ -126,25 +126,27 @@ function hale_customize_register( $wp_customize ) {
     );
 
     /*
-        Show/Hide Site Title
+        Show/Hide Site name or Logo
     */
     $wp_customize->add_setting(
-        'show_sitename',
+        'logo_configuration',
         array(
-            'default'           => 'yes',
+            'default'           => 'both',
             'sanitize_callback' => 'hale_sanitize_select',
         )
     );
     $wp_customize->add_control(
-        'show_sitename',
+        'logo_configuration',
         array(
-            'label'       => esc_html__( 'Show Site Name?', 'hale' ),
-            'description' => esc_html__( 'Would you like to show the site name in the header?', 'hale' ),
+            'label'       => esc_html__( 'Show Logo and Site Name?', 'hale' ),
+            'description' => esc_html__( 'Would you like to show a logo and/or the site name in the header?', 'hale' ),
             'section'     => 'title_tagline',
             'type'        => 'radio',
             'choices'     => array(
-                'yes' => esc_html__( 'Yes', 'hale' ),
-                'no'  => esc_html__( 'No', 'hale' ),
+                'both' => esc_html__( 'Logo and site name', 'hale' ),
+                'logo' => esc_html__( 'Logo only', 'hale' ),
+                'name' => esc_html__( 'Site name only', 'hale' ),
+                'no'  => esc_html__( 'Neither', 'hale' ),
             ),
         )
     );
@@ -163,9 +165,12 @@ function hale_customize_register( $wp_customize ) {
         'logo_has_link',
         array(
             'label'       => esc_html__( 'Logo/Site Name Link?', 'hale' ),
-            'description' => esc_html__( 'Would you like the site name and/or logo  to be a link? You can set a custom link or the default link is to the homepage.', 'hale' ),
+            'description' => esc_html__( 'Would you like the site name and/or logo to be a link? You can set a custom link or the default link is to the homepage.', 'hale' ),
             'section'     => 'title_tagline',
             'type'        => 'radio',
+            'active_callback' => function () use ( $wp_customize ) {
+                return 'no' !== $wp_customize->get_setting( 'logo_configuration' )->value();
+            },
             'choices'     => array(
                 'yes' => esc_html__( 'Yes', 'hale' ),
                 'no'  => esc_html__( 'No', 'hale' ),
@@ -191,7 +196,10 @@ function hale_customize_register( $wp_customize ) {
             'section'         => 'title_tagline',
             'type'            => 'text',
             'active_callback' => function () use ( $wp_customize ) {
-                return 'yes' === $wp_customize->get_setting( 'logo_has_link' )->value();
+                return (
+                    ( $wp_customize->get_setting('logo_has_link')->value() === 'yes' ) &&
+                    ( $wp_customize->get_setting('logo_configuration')->value() !== 'no' )
+                );
             },
         )
     );
@@ -222,7 +230,7 @@ function hale_customize_register( $wp_customize ) {
   );
 
 	/*
-	 * Show Organisation Name? (if not Crown Copyright)
+	 * Show Organisation Name? (if not Crown Copyright and no text in logo)
 	 */
 	$wp_customize->add_setting(
 		'org_name_checkbox',
@@ -236,40 +244,22 @@ function hale_customize_register( $wp_customize ) {
 		'org_name_checkbox',
 		array(
 			'label'       => esc_html__( 'Do you wish to add an organisation name to the logo and copyright?', 'hale' ),
-			'description' => esc_html__( 'This is used if your oganisation name should be different from the site title. It is also picked up for the copyright statement in your footer', 'hale' ),
+			'description' => esc_html__( 'This is used if your oganisation name should be different from the site title. It is also picked up for the copyright statement in your footer.', 'hale' ),
 			'section'     => 'title_tagline',
 			'type'        => 'radio',
-      'active_callback' => function () use ( $wp_customize ) {
-        return 'no' === $wp_customize->get_setting( 'crown_copyright' )->value();
-      },
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					( $wp_customize->get_setting('crown_copyright')->value() === 'no' ) ||
+					( $wp_customize->get_setting('logo_configuration')->value() === 'both' ) ||
+					( $wp_customize->get_setting('logo_configuration')->value() === 'name' )
+				);
+			},
 			'choices'     => array(
 				'yes' => esc_html__( 'Yes', 'hale' ),
 				'no'  => esc_html__( 'No', 'hale' ),
 			),
 		)
 	);
-
-  $wp_customize->add_setting(
-		'include_licence',
-		array(
-			'default'           => 'yes',
-			'sanitize_callback' => 'hale_sanitize_select',
-		)
-	);
-
-	$wp_customize->add_control(
-      'include_licence',
-      array(
-          'label'       => esc_html__( 'OGL Licence', 'hale' ),
-          'description' => esc_html__( 'Is the content published under an Open Government Licence', 'hale' ),
-          'section'     => 'title_tagline',
-          'type'        => 'radio',
-          'choices'     => array(
-              'yes'   => esc_html__( 'Yes (show OGL link in footer)', 'hale' ),
-              'no' => esc_html__( 'No', 'hale' ),
-          ),
-      )
-  );
 
 	$wp_customize->add_setting(
 		'org_name_field',
@@ -285,8 +275,36 @@ function hale_customize_register( $wp_customize ) {
 			'section'         => 'title_tagline',
 			'type'            => 'text',
 			'active_callback' => function () use ( $wp_customize ) {
-				return 'yes' === $wp_customize->get_setting( 'org_name_checkbox' )->value();
+				return (
+					( $wp_customize->get_setting( 'org_name_checkbox' )->value() === 'yes' ) && (
+						( $wp_customize->get_setting('crown_copyright')->value() === 'no' ) ||
+						( $wp_customize->get_setting('logo_configuration')->value() === 'both' ) ||
+						( $wp_customize->get_setting('logo_configuration')->value() === 'name' )
+					)
+				);
 			},
+		)
+	);
+
+	$wp_customize->add_setting(
+		'include_licence',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+
+	$wp_customize->add_control(
+		'include_licence',
+		array(
+			'label'       => esc_html__( 'OGL Licence', 'hale' ),
+			'description' => esc_html__( 'Is the content published under an Open Government Licence', 'hale' ),
+			'section'     => 'title_tagline',
+			'type'        => 'radio',
+			'choices'     => array(
+				'yes'   => esc_html__( 'Yes (show OGL link in footer)', 'hale' ),
+				'no' => esc_html__( 'No', 'hale' ),
+			),
 		)
 	);
 
