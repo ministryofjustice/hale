@@ -22,8 +22,6 @@
   }
 
   .hale-header__logotype-text--custom {
-    font-weight: 400;
-    font-size: 22px;
     padding-left: 0.5em;
   }
 }
@@ -87,9 +85,18 @@
     padding-left: 47px;
     position: relative;
 
+    &.hale-header__logotype--no-logo {
+      padding-left: 0;
+
+      .govuk-header__logotype-text {
+        padding-left:0;
+        margin-right: 0;
+      }
+    }
+
     .moj-header__logotype-crest {
       position: absolute;
-      top: -0.1rem;
+      top: -0.05rem;
       left: 0;
       margin-right: 5px;
       vertical-align: top;

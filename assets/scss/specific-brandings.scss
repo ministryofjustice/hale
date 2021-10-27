@@ -10,6 +10,11 @@
 		a:focus img {
 			filter: invert(1) hue-rotate(180deg);
 		}
+
+		.hale-header__logotype-text--custom {
+			font-weight: 400;
+			font-size: 22px;
+		}
 	}
 
 	.govuk-button {
