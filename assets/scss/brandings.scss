@@ -45,6 +45,14 @@
 
 			background: branded(header-bg);
 			border-bottom-width: 0;
+
+			.govuk-header__logotype {
+				color: branded(header-link);
+			}
+			.govuk-header__link:focus .govuk-header__logotype {
+				color: branded(header-link-focus);
+			}
+
 			.govuk-header__navigation {
 				margin-bottom: 0;
 
@@ -237,8 +245,7 @@
 		}
 
     .govuk-main-wrapper a:link:not([class]),
-    .gem-c-pagination__link:link,
-    {
+    .gem-c-pagination__link:link {
 
       color: branded(link);
 
