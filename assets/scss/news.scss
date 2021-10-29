@@ -111,7 +111,7 @@
 }
 
 .hale-news_listing__widgets {
-  //only direct decedents so not to restrict text length if in column
+  //only direct descendants so not to restrict text length if in column
   > .widget_text {
     @include mq($from: desktop) {
       max-width: 66.6666%;
