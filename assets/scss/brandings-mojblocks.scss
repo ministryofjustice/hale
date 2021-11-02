@@ -51,24 +51,6 @@
       }
     }
 
-    //Banner Block
-    .mojblocks-banner {
-      .mojblocks-banner__button {
-        background-color: branded(mojblocks-banner-btn-bg);
-        color: branded(mojblocks-banner-btn-text);
-
-        &:hover {
-          background-color: branded(mojblocks-banner-btn-hover-bg);
-          color: branded(mojblocks-banner-btn-hover-text);
-        }
-
-        &:focus {
-          background-color: branded(mojblocks-banner-btn-focus-bg);
-          color: branded(mojblocks-banner-btn-focus-text);
-          outline: 3px solid branded(mojblocks-banner-btn-focus-outline);
-        }
-      }
-    }
     //CTA Block
     .wp-block-mojblocks-cta {
       background-color: branded(mojblocks-cta-bg);
@@ -80,23 +62,6 @@
 
       .mojblocks-cta__content p {
         color: branded(mojblocks-cta-text);
-      }
-
-      .mojblocks-button,
-      a.mojblocks-button {
-        background-color: branded(mojblocks-cta-btn-bg);
-        color: branded(mojblocks-cta-btn-text);
-
-         &:hover {
-          background-color: branded(mojblocks-cta-btn-hover-bg);
-          color: branded(mojblocks-cta-btn-hover-text);
-        }
-
-        &:focus {
-          background-color: branded(mojblocks-cta-btn-focus-bg);
-          color: branded(mojblocks-cta-btn-focus-text);
-          box-shadow: 0 0 0 3px branded(mojblocks-cta-btn-focus-outline);
-        }
       }
     }
 
@@ -124,7 +89,7 @@
         }
 
         &:before {
-          background-color: branded(mojblocks-highlights-list-divider);
+          background-color: branded(mojblocks-divider);
         }
       }
     }
@@ -156,7 +121,7 @@
           color: branded(mojblocks-staggered-box-title);
 
           &:before {
-            background: branded(mojblocks-staggered-box-divider);
+            background: branded(mojblocks-divider);
           }
         }
 
@@ -185,6 +150,63 @@
       }
     }
 
-  }
+    //coloured divider bar above
+    .mojblocks-divider-bar-before,
+    .mojblocks-divider-bar-before-shaded {
+      margin-top: 1rem;
+      position: relative;
 
+      &:before { //bar
+        content: "";
+        width: 3.5rem;
+        height: 0.5rem;
+        position: absolute;
+        top: -1rem;
+        pointer-events: none;
+      }
+    }
+    //bar colour
+    .mojblocks-divider-bar-before-shaded:before {
+      background: branded(mojblocks-divider);
+    }
+    .mojblocks-divider-bar-before:before {
+      background: currentColor;
+    }
+
+    //all buttons in blocks
+    .mojblocks-button,
+    a.mojblocks-button,
+    .govuk-button {
+			border:branded(button-border);
+			box-shadow: 0 1px 0 branded(button);
+			color:branded(button-text);
+			background-color:branded(button);
+			&:hover {
+				background-color: branded(button-hover);
+				color: branded(button-hover-text);
+				box-shadow: 0 1px 0 branded(button-hover);
+				border-color: branded(link-focus);
+				svg {
+					fill: branded(button-hover-text);
+				}
+			}
+			&:active {
+				background-color: branded(button-active);
+				box-shadow: none;
+			}
+			&:focus {
+				background-color: branded(button-focus);
+				color: branded(button-focus-text);
+				box-shadow: 0 0 0 3px branded(button-focus-outline);
+			}
+			&:focus:not(:active):not(:hover) {
+				background-color: branded(button-focus);
+				color: branded(button-focus-text);
+				box-shadow: 0 0 0 3px branded(button-focus-outline);
+			}
+			svg {
+				fill: branded(button-text);
+			}
+		}
+  }
 }
