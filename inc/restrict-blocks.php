@@ -23,6 +23,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'core/social-links',
             'core/social-link',
             'core/embed',
+            'core/button',
             'core/buttons',
             'mojblocks/accordion',
             'mojblocks/accordion-section',
