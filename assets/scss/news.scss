@@ -25,6 +25,11 @@
 
 
 .news-archive-filter-section {
+
+  @include mq($from: desktop) {
+    margin-top: 65px;
+  }
+
   p {
     margin-top: 0;
   }
@@ -105,4 +110,12 @@
   }
 }
 
+.hale-news_listing__widgets {
+  //only direct descendants so not to restrict text length if in column
+  > .widget_text {
+    @include mq($from: desktop) {
+      max-width: 66.6666%;
+    }
+  }
+}
 
