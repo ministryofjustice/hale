@@ -173,9 +173,11 @@
       background: currentColor;
     }
 
-    //all buttons in blocks
+    // all buttons in blocks
+    // .wp-block-button__link is used here to extend our colours to the core WP button block
     .mojblocks-button,
     a.mojblocks-button,
+    .wp-block-button__link,
     .govuk-button {
 			border:branded(button-border);
 			box-shadow: 0 1px 0 branded(button);
