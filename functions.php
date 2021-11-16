@@ -406,6 +406,7 @@ require get_template_directory() . '/inc/restrict-blocks.php';
  * When adding a new cpt make sure to add it to the cpts array in customizer
  */
 require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
+require get_template_directory() . '/inc/custom-post-types/cpt-documents.php';
 
 /**
  * Taxonomies
