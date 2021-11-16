@@ -1,5 +1,5 @@
 <?php
-// Register News Post Type
+// Register Document Post Type
 function hale_register_doc_post_type()
 {
 
