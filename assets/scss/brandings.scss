@@ -300,6 +300,7 @@
 
       position:relative;
       padding:0.2em 0;
+      margin-bottom:2rem;
 
       &:before {
         @extend .hale-shaded; // gets the shading colour
@@ -316,6 +317,10 @@
         @media (hover: none) and (pointer: coarse) {
           display: none;
         }
+      }
+      > * {
+        position:relative;
+        top:1rem;
       }
     }
 
