@@ -3,6 +3,7 @@
 *{
 	@include branding($brandings, $gutenberg-styles) {
 
+    .govuk-link,
     a,
     a:not([class]) {
 
