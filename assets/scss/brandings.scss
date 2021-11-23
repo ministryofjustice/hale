@@ -246,6 +246,7 @@
 			}
 		}
 
+    .govuk-main-wrapper .govuk-link:link,
     .govuk-main-wrapper a:link:not([class]),
     .gem-c-pagination__link:link {
       color: branded(link);
@@ -253,14 +254,13 @@
       &:hover {
         color: branded(link-hover);
       }
-
     }
 
+    .govuk-main-wrapper .govuk-link:visited,
     .govuk-main-wrapper a:visited:not([class]),
     .gem-c-pagination__link:visited {
 
       color: branded(link-visited);
-
 
       &:hover {
         color: branded(link-hover);
