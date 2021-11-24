@@ -238,10 +238,10 @@
 		.govuk-select,
 		.govuk-input {
 			border: 2px solid branded(input-border);
-      background: branded(input-bg);
+			background: branded(input-bg);
 
 			&:focus {
-				outline: 2px solid branded(link-focus);
+				outline: 2px solid branded(input-focus);
 				outline-offset: 0;
 				box-shadow: inset 0 0 0 1px branded(input-border);
 			}
