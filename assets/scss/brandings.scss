@@ -77,6 +77,7 @@
             border: none;
             outline: 3px solid branded(header-search-input-focus-border);
             background: branded(header-search-input-focus-bg);
+            box-shadow: none;
           }
 
           &:active {
