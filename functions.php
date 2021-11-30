@@ -47,7 +47,8 @@ function hale_setup()
         'main-menu'   => __('Main site navigation, located in the header.', 'hale'),
         'secondary-top-menu'   => __('Secondary navigation, under header.', 'hale'),
         'footer-menu' => __('Main footer navigation area.', 'hale'),
-        'secondary-footer-menu' => __('Secondary footer navigation area.', 'hale')
+        'secondary-footer-menu' => __('Secondary footer navigation area.', 'hale'),
+        'language-footer-menu' => __('Language footer navigation area.', 'hale')
     );
     register_nav_menus($locations);
 
