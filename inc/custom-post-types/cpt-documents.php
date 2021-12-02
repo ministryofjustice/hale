@@ -58,7 +58,7 @@ function hale_register_doc_post_type()
     );
 
     //Check if post type is deactived
-    $deactivate_doc = get_theme_mod('deactivate_cpt_document', "no");
+    $deactivate_doc = get_theme_mod('deactivate_cpt_document', "yes");
     if ($deactivate_doc == "no") {
         register_post_type('document', $args);
     }

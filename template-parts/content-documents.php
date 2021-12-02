@@ -13,13 +13,13 @@ if ($file) {
 	if ($filesize < 1000) {
 		$size = $filesize . " bytes";
 	} elseif ($filesize < 1000000) {
-		$filesize = round($filesize / 1024 ,1);
+		$filesize = round($filesize / 1024, 1);
 		$size = $filesize . " KB";
 	} elseif ($filesize < 1000000000) {
-		$filesize = round($filesize / 1024 / 1024 ,1);
+		$filesize = round($filesize / 1024 / 1024, 1);
 		$size = $filesize . " MB";
 	} else {
-		$filesize = round($filesize / 1024 / 1024 / 1024 ,1);
+		$filesize = round($filesize / 1024 / 1024 / 1024, 1);
 		$size = $filesize . " GB";
 	}
 	$filenameArray = explode(".",$file['filename']);
@@ -45,14 +45,6 @@ if ($file) {
 			<path fill="#107C41" d="M12,74h32c2.2091,0,4-1.7909,4-4V38c0-2.2091-1.7909-4-4-4H12c-2.2091,0-4,1.7909-4,4v32 C8,72.2091,9.7909,74,12,74z"/>
 			<path d="M16.9492,66l7.8848-12.0337L17.6123,42h5.8115l3.9424,7.6486c0.3623,0.7252,0.6113,1.2668,0.7471,1.6236 h0.0508c0.2617-0.58,0.5332-1.1436,0.8164-1.69L33.1943,42h5.335l-7.4082,11.9L38.7168,66H33.041l-4.5537-8.4017 c-0.1924-0.3116-0.374-0.6858-0.5439-1.1215H27.876c-0.0791,0.2684-0.2549,0.631-0.5264,1.0878L22.6592,66H16.9492z"/>
 			</svg>';
-		}
-		if ($metadata == "PDF" ) {
-	//		$pdfThumb = new Imagick();
-	//		$pdfThumb->setResolution(10, 10);
-	//		$pdfThumb->readImage($file['url']);
-	//		$pdfThumb->setImageFormat('jpg');
-	//		header("Content-Type: image/jpeg");
-	//		echo $pdfThumb;
 		}
 	}
 	//if image isn't set by now, it is either a rare filetype or something has gone wrong.
