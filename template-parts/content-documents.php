@@ -6,9 +6,7 @@
 
 $file = get_field('document_file');
 if ($file) {
-	$image = wp_get_attachment_image($file['id']);
-
-    $link = "<a class='govuk-link' href='".$file['url']."'>".$file['title']."</a>";
+	$link = "<a class='govuk-link' href='".$file['url']."'>".$file['title']."</a>";
 	$filesize = $file['filesize'];
 	if ($filesize < 1000) {
 		$size = $filesize . " bytes";
@@ -25,10 +23,17 @@ if ($file) {
 	$filenameArray = explode(".",$file['filename']);
 	$metadata = strtoupper($filenameArray[count($filenameArray)-1]);
 	
+	$image = "";
+	$icon_image = false;
+
+	if ($metadata == "PDF" ) {
+		$image = wp_get_attachment_image($file['id'],"medium",true);
+	}
 	if (!$image) {
+		$icon_image = true;
 		if ($metadata == "DOC" || $metadata == "DOCX" ) {
 			$image = '
-			<svg style="width:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="#FFF" stroke-miterlimit="10" stroke-width="2">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="#FFF" stroke-miterlimit="10" stroke-width="2">
 			<path stroke="#979593" d="M67.1716,7H27c-1.1046,0-2,0.8954-2,2v78 c0,1.1046,0.8954,2,2,2h58c1.1046,0,2-0.8954,2-2V26.8284c0-0.5304-0.2107-1.0391-0.5858-1.4142L68.5858,7.5858 C68.2107,7.2107,67.702,7,67.1716,7z"/>
 			<path fill="none" stroke="#979593" d="M67,7v18c0,1.1046,0.8954,2,2,2h18"/>
 			<path fill="#C8C6C4" d="M79 61H48v-2h31c.5523 0 1 .4477 1 1l0 0C80 60.5523 79.5523 61 79 61zM79 55H48v-2h31c.5523 0 1 .4477 1 1l0 0C80 54.5523 79.5523 55 79 55zM79 49H48v-2h31c.5523 0 1 .4477 1 1l0 0C80 48.5523 79.5523 49 79 49zM79 43H48v-2h31c.5523 0 1 .4477 1 1l0 0C80 42.5523 79.5523 43 79 43zM79 67H48v-2h31c.5523 0 1 .4477 1 1l0 0C80 66.5523 79.5523 67 79 67z"/>
@@ -38,7 +43,7 @@ if ($file) {
 		}
 		if ($metadata == "XLS" || $metadata == "XLSX" ) {
 			$image = '
-			<svg style="width:100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="#FFF" stroke-miterlimit="10" stroke-width="2">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="#FFF" stroke-miterlimit="10" stroke-width="2">
 			<path stroke="#979593" d="M67.1716,7H27c-1.1046,0-2,0.8954-2,2v78 c0,1.1046,0.8954,2,2,2h58c1.1046,0,2-0.8954,2-2V26.8284c0-0.5304-0.2107-1.0391-0.5858-1.4142L68.5858,7.5858 C68.2107,7.2107,67.702,7,67.1716,7z"/>
 			<path fill="none" stroke="#979593" d="M67,7v18c0,1.1046,0.8954,2,2,2h18"/>
 			<path fill="#C8C6C4" d="M51 61H41v-2h10c.5523 0 1 .4477 1 1l0 0C52 60.5523 51.5523 61 51 61zM51 55H41v-2h10c.5523 0 1 .4477 1 1l0 0C52 54.5523 51.5523 55 51 55zM51 49H41v-2h10c.5523 0 1 .4477 1 1l0 0C52 48.5523 51.5523 49 51 49zM51 43H41v-2h10c.5523 0 1 .4477 1 1l0 0C52 42.5523 51.5523 43 51 43zM51 67H41v-2h10c.5523 0 1 .4477 1 1l0 0C52 66.5523 51.5523 67 51 67zM79 61H69c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C80 60.5523 79.5523 61 79 61zM79 67H69c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C80 66.5523 79.5523 67 79 67zM79 55H69c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C80 54.5523 79.5523 55 79 55zM79 49H69c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C80 48.5523 79.5523 49 79 49zM79 43H69c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C80 42.5523 79.5523 43 79 43zM65 61H55c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C66 60.5523 65.5523 61 65 61zM65 67H55c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C66 66.5523 65.5523 67 65 67zM65 55H55c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C66 54.5523 65.5523 55 65 55zM65 49H55c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C66 48.5523 65.5523 49 65 49zM65 43H55c-.5523 0-1-.4477-1-1l0 0c0-.5523.4477-1 1-1h10c.5523 0 1 .4477 1 1l0 0C66 42.5523 65.5523 43 65 43z"/>
@@ -65,21 +70,23 @@ if ($file) {
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="document-header">
-		<?php
-
-        the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
-        ?>
-    </header>
+	<?php
+		the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
+	?>
 	<div class="document-summary">
+		<?php if (!$icon_image) { ?>
 		<div class="document-summary__image">
 			<?php
 				echo $image;
 			?>
 		</div>
-		<div class="document-summary__link govuk-!-margin-top-4">
+		<?php } ?>
+		<div class="document-summary__link">
 			<p class="govuk-body">
 			<?php
+				if ($icon_image) {
+					echo "<span class='document-summary__icon'>$image</span>";
+				}
 				echo "<b>$link</b> ($metadata)";
 			?>
 			</p>
@@ -91,7 +98,7 @@ if ($file) {
 	<div class="document-content">
 		<?php
 		if ( function_exists( 'hale_clean_bad_content' ) ) {
-            hale_clean_bad_content( true );
+			hale_clean_bad_content( true );
 		}
 		?>
 	</div><!-- .article-content -->

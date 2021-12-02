@@ -1,4 +1,24 @@
-.document-summary__image {
-  width:198px;
-  height:264px;
+.document-title {
+  margin-bottom: govuk-spacing(7);
+}
+.document-summary__link {
+  margin-top: govuk-spacing(6);
+}
+.document-summary {
+  &__image {
+    width:198px;
+    overflow:hidden;
+    padding-bottom:2px;
+
+    img {
+      max-width: 100%;
+      max-height: 264px;
+    }
+  }
+  &__icon svg {
+    height:1.2em;
+    position:relative;
+    top:3px;
+    padding-right:0.5em;
+  }
 }
