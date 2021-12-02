@@ -72,7 +72,7 @@ if ($file) {
         ?>
     </header>
 	<div class="document-summary">
-		<div class="document-summary__image" style="max-width:180px;">
+		<div class="document-summary__image">
 			<?php
 				echo $image;
 			?>
