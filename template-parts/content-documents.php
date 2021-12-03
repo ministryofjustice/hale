@@ -11,7 +11,6 @@ if ($file) {
 	$filenameArray = explode(".",$file['filename']);
 	$metadata = strtoupper($filenameArray[count($filenameArray)-1]);
 	
-	$image = "";
 	$image = wp_get_attachment_image($file['id'],"medium",true);
 
 	$icon_image = true;
