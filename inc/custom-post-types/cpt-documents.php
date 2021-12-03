@@ -36,7 +36,7 @@ function hale_register_doc_post_type()
         'label' => __('Document', 'hale'),
         'description' => __('Contains details of documents', 'hale'),
         'labels' => $labels,
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor'),
         'hierarchical' => false,
         'public' => true,
         'show_ui' => true,
@@ -66,32 +66,3 @@ function hale_register_doc_post_type()
 }
 
 add_action('init', 'hale_register_doc_post_type', 0);
-
-function hale_doc_archive_query($query)
-{
-
-    if ($query->is_main_query() && !is_admin()) {
-
-        if (is_post_type_archive('document')) {
-            if (array_key_exists('subtopic', $query->query) && is_numeric($query->query['subtopic'])) {
-                unset($query->query['cat']);
-
-                $query->set('category__in', $query->query['subtopic']);
-            }
-        }
-        if ($query->is_tag || $query->is_category) {
-            $query->set('post_type', 'document');
-        }
-    }
-    return;
-}
-
-add_action('pre_get_posts', 'hale_doc_archive_query');
-
-function hale_doc_add_query_vars_filter($vars)
-{
-    $vars[] = "subtopic";
-    return $vars;
-}
-
-add_filter('query_vars', 'hale_doc_add_query_vars_filter');
