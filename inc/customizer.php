@@ -710,7 +710,7 @@ function hale_add_blocks_settings( $wp_customize )
             )
         );
 
-        $cpts = array('news' => 'News Stories');
+        $cpts = array('news' => 'News Stories', 'documents' => 'Documents');
 
         foreach ($cpts as $cpt_slug => $cpt_name){
             /*
