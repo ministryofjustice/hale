@@ -267,6 +267,9 @@
       &:hover {
         color: branded(link-hover);
       }
+      &:focus {
+        color: branded(link-focus);
+      }
     }
 
 		//link focus state
