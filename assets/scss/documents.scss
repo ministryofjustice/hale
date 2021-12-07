@@ -15,10 +15,18 @@
       max-height: 264px;
     }
   }
-  &__icon svg {
-    height:1.2em;
-    position:relative;
-    top:3px;
-    padding-right:0.5em;
+  &__icon {
+    svg,img {
+      position:relative;
+      top:3px;
+      padding-right:0.5em;
+    }
+    svg {
+      height:1.2em;
+    }
+    img {
+      height:1em;
+      width: auto;
+    }
   }
 }
