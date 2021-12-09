@@ -272,6 +272,11 @@
       }
     }
 
+		.govuk-breadcrumbs__link,
+		.govuk-back-link {
+			@extend .govuk-link;
+		}
+
 		//link focus state
 		#primary a:not([class]),
 		#primary a[class=""],
