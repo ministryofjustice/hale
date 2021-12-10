@@ -443,6 +443,10 @@ $brandings: (
     cookie-button-hover-text: govuk-colour("white"),
     cookie-button-focus-bg: $colour_indigo,
     cookie-button-focus-border: $colour_magenta,
+    cookie-settings-hover-bg: $colour_magenta,
+    cookie-settings-hover-text: govuk-colour("white"),
+    cookie-settings-focus-bg: $colour_indigo,
+    cookie-settings-focus-text: govuk-colour("white"),
   )
 );
 
