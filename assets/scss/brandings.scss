@@ -31,6 +31,28 @@
 			background-color: branded(header-link-focus-highlight);
 		}
 
+		#ccfw-page-banner {
+			.ccfw-banner__button {
+				background-color: branded(cookie-button-bg);
+				color: branded(cookie-button-text);
+
+				&:hover {
+					background-color: branded(cookie-button-hover-bg);
+					color: branded(cookie-button-hover-text);
+				}
+				&:focus {
+					background-color: branded(cookie-button-focus-bg);
+					box-shadow: 0 0 0 1px #fff, 0 0 0 4px branded(cookie-button-focus-border);
+				}
+
+				&.ccfw-banner__button--expand-options {
+					background-color: branded(cookie-secondary-button-bg);
+					color: branded(cookie-secondary-button-text);
+					border: solid 1px branded(cookie-secondary-button-text);
+				}
+			}
+		}
+
 		.govuk-main-wrapper {
 			//remove gap at top of page
 			padding-top:0;

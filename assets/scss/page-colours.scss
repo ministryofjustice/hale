@@ -435,6 +435,14 @@ $brandings: (
     mojblocks-staggered-box-btn-focus-border: $colour_indigo,
     mojblocks-staggered-box-btn-focus-bg: $colour_indigo,
     mojblocks-staggered-box-btn-focus-text: govuk-colour("white"),
+    cookie-button-bg: $colour_magenta,
+    cookie-button-text: govuk-colour("white"),
+    cookie-secondary-button-bg: $colour_magenta_tint,
+    cookie-secondary-button-text: $colour_magenta,
+    cookie-button-hover-bg: $colour_indigo,
+    cookie-button-hover-text: govuk-colour("white"),
+    cookie-button-focus-bg: $colour_indigo,
+    cookie-button-focus-border: $colour_magenta,
   )
 );
 
