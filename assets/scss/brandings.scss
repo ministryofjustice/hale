@@ -32,7 +32,7 @@
 		}
 
 		#ccfw-page-banner {
-			.ccfw-banner__button {
+			.ccfw-banner__button:not(.ccfw-banner__button--close) {
 				background-color: branded(cookie-button-bg);
 				color: branded(cookie-button-text);
 				-webkit-text-fill-color: branded(cookie-button-text);
@@ -47,7 +47,7 @@
 				}
 			}
 
-			.ccfw-banner__button,
+			.ccfw-banner__button:not(.ccfw-banner__button--close),
 			.ccfw-banner__button--expand-options {
 				cursor: pointer;
 
