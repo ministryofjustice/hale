@@ -31,6 +31,7 @@
 			background-color: branded(header-link-focus-highlight);
 		}
 
+		//cookie banner styling
 		#ccfw-page-banner {
 			.ccfw-banner__button:not(.ccfw-banner__button--close) {
 				background-color: branded(cookie-button-bg);
@@ -47,6 +48,11 @@
 				}
 			}
 
+			.ccfw-banner__toggle-slider {
+				&:focus,&:active {
+					box-shadow: 0 0 0 1px #fff, 0 0 0 4px branded(cookie-button-focus-border);
+				}
+			}
 			.ccfw-banner__button:not(.ccfw-banner__button--close),
 			.ccfw-banner__button--expand-options {
 				cursor: pointer;
@@ -79,8 +85,27 @@
 						fill: branded(cookie-button-hover-text);
 					}
 				}
+			}
+			.ccfw-banner__third-party-section-link,
+			.ccfw-banner__expanding-section-summary,
+			.ccfw-banner__button--close {
 
-				
+				color: branded(link);
+				-webkit-text-fill-color: branded(link);
+
+				&:hover {
+					color: branded(link-hover);
+					-webkit-text-fill-color: branded(link-hover);
+				}
+
+				&:focus {
+					color: branded(link-focus);
+					-webkit-text-fill-color: branded(link-focus);
+					background-color: branded(link-focus-background);
+					box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-shadow);
+					outline: 4px solid transparent;
+					border-bottom: none;
+				}
 			}
 		}
 
@@ -109,6 +134,7 @@
 				}
 			}
 		}
+		//end cookie banner styling
 
 		.govuk-main-wrapper {
 			//remove gap at top of page
