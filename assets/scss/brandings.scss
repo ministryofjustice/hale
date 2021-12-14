@@ -47,8 +47,18 @@
 					fill: branded(cookie-secondary-button-text);
 				}
 			}
-
 			.ccfw-banner__toggle-slider {
+				&[aria-checked=true] {
+					background-color: branded(cookie-toggle-bg);
+
+					.ccfw-banner__toggle-slider--on-text {
+						color: branded(cookie-toggle-text);
+						-webkit-text-fill-color: branded(cookie-toggle-text);
+					}
+					&:focus,&:active {
+						background-color: branded(cookie-toggle-focus-bg);
+					}
+				}
 				&:focus,&:active {
 					box-shadow: 0 0 0 1px #fff, 0 0 0 4px branded(cookie-button-focus-border);
 				}
@@ -92,6 +102,7 @@
 
 				color: branded(link);
 				-webkit-text-fill-color: branded(link);
+				border-bottom: none;
 
 				&:hover {
 					color: branded(link-hover);
