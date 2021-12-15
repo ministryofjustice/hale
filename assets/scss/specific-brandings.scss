@@ -57,11 +57,6 @@
 		}
 	}
 
-	.govuk-breadcrumbs__link,
-	.govuk-back-link {
-		@extend .govuk-link;
-	}
-
 	.govuk-footer__inline-list-item {
 		display: block;
 		@include govuk-media-query($from: tablet) {
