@@ -11,6 +11,10 @@
 
     a {
       display:block;
+
+      &:focus img {
+        border: none;
+      }
     }
 
     img {
