@@ -12,7 +12,7 @@ if ($file) {
 	$filenameArray = explode(".",$file['filename']);
 	$metadata = strtoupper($filenameArray[count($filenameArray)-1]);
 	
-	$image = wp_get_attachment_image($file['id'],"medium",true);
+	$image = wp_get_attachment_image($file['id'],"medium",true,array('alt'=>"document preview"));
 
 	$icon_image = true;
 	if ($metadata == "PDF" ) {
