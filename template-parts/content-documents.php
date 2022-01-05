@@ -6,12 +6,13 @@
 
 $file = get_field('document_file');
 if ($file) {
-	$link = "<a class='govuk-link' href='".$file['url']."'>".$file['title']."</a>";
+	$link_uri = $file['url'];
+	$link = "<a class='govuk-link' href='$link_uri'>".$file['title']."</a>";
 	$size = size_format($file['filesize'],1);
 	$filenameArray = explode(".",$file['filename']);
 	$metadata = strtoupper($filenameArray[count($filenameArray)-1]);
 	
-	$image = wp_get_attachment_image($file['id'],"medium",true);
+	$image = wp_get_attachment_image($file['id'],"medium",true,array('alt'=>"document preview"));
 
 	$icon_image = true;
 	if ($metadata == "PDF" ) {
@@ -62,7 +63,7 @@ if ($file) {
 		<?php if (!$icon_image) { ?>
 		<div class="document-summary__image">
 			<?php
-				echo $image;
+				echo "<a class='govuk-link' href='$link_uri'>$image</a>";
 			?>
 		</div>
 		<?php } ?>
