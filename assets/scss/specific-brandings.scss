@@ -64,3 +64,16 @@
 		}
 	}
 }
+
+/**********************
+    Venus branding
+        VC
+**********************/
+.hale-branding--venus {
+	.govuk-header .govuk-header__logo {
+
+		a:focus img {
+			filter: invert(1) hue-rotate(180deg);
+		}
+	}
+}
