@@ -196,9 +196,6 @@
     }
   }
 
-  .govuk-header__link:focus {
-    background-color: $colour_capri_teal;
-  }
   .govuk-header__navigation {
     border-top: 1px solid $colour_metal_grey_tint;
     li {
@@ -236,7 +233,6 @@
 
         &:hover {
           border-bottom-color: govuk-colour("white");
-          background-color: unset;
         }
 
         &:focus:not(:active):not(:hover),

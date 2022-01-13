@@ -144,11 +144,12 @@ function hale_sidebar_location( $sidebar ) {
 function hale_get_branding_class() {
 
     $colour_array = [
+        '0f0228' => 'venus',
         '143859' => 'earth',
+        '336c83' => 'uranus',
         '0c223f' => 'neptune',
         '34393e' => 'pluto',
-        '336c83' => 'uranus',
-        '0f0228' => 'venus'
+        '0b0c0c' => 'eris'
     ];
 
     $colour = get_theme_mod( 'theme_colour', '0c223f' );

@@ -19,6 +19,7 @@ $colour_flame_orange: #D95619;
 $colour_flame_orange_tint: #FBEEE8;
 $colour_emerald_green: #096359;
 $colour_pine_green: #053429;
+$colour_gds_button_hover_green: #005a30;
 $colour_deep_sea_green: #23606B;
 $colour_midnight_green: #204D4F;
 $colour_jade_green: #03A391;
@@ -416,6 +417,28 @@ $brandings: (
     cookie-settings-hover-text: govuk-colour("white"),
     cookie-settings-focus-bg: $colour_indigo,
     cookie-settings-focus-text: govuk-colour("white"),
+  ),
+  eris: (
+    link-focus: govuk-colour("black"),
+    link-focus-background: govuk-colour("yellow"),
+    footer-link-focus-background: govuk-colour("yellow"),
+    mojblocks-accordion-section-title-focus-bg: govuk-colour("yellow"),
+    mojblocks-reveal-title-focus-bg: govuk-colour("yellow"),
+    cookie-button-bg: govuk-colour("green"),
+    cookie-button-text: govuk-colour("white"),
+    cookie-secondary-button-bg: govuk-colour("light-grey"),
+    cookie-secondary-button-text: govuk-colour("black"),
+    cookie-button-hover-bg: $colour_gds_button_hover_green,
+    cookie-button-hover-text: govuk-colour("white"),
+    cookie-button-focus-bg: govuk-colour("yellow"),
+    cookie-button-focus-border: govuk-colour("black"),
+    cookie-toggle-bg: govuk-colour("green"),
+    cookie-toggle-focus-bg: $colour_gds_button_hover_green,
+    cookie-toggle-text: govuk-colour("white"),
+    cookie-settings-hover-bg: govuk-colour("black"),
+    cookie-settings-hover-text: govuk-colour("white"),
+    cookie-settings-focus-bg: govuk-colour("yellow"),
+    cookie-settings-focus-text: govuk-colour("black"),
   ),
   venus: (
     header-bg: $colour_venus_purple,
