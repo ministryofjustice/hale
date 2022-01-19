@@ -92,19 +92,12 @@
       margin: 24px 0 0 0;
 
       .news-story-category-link {
-        color: $colour_metal_grey;
         font-weight: bold;
-        background: $colour_cloudy_grey;
         border-radius: 4px;
         padding: 4px 8px;
         text-decoration: none;
         margin-right: 15px;
         text-align: center;
-
-        &:hover, &:focus {
-          color: govuk-colour("white");
-          background: $colour_metal_grey;
-        }
       }
     }
   }
