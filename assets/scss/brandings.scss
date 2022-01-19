@@ -26,6 +26,20 @@
 *{
 	@include branding($brandings) {
 
+		.news-story-category-link {
+			color: branded(tag-text);
+			background: branded(tag-bg);
+
+			&:focus {
+				color: branded(tag-focus-text);
+				background: branded(tag-focus-bg);
+			}
+			&:hover, &:active {
+				color: branded(tag-hover-text);
+				background: branded(tag-hover-bg);
+			}
+		}
+
 		.govuk-skip-link:focus {
 			outline-color: branded(header-link-focus-highlight);
 			background-color: branded(header-link-focus-highlight);
