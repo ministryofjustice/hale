@@ -447,6 +447,11 @@ $brandings: (
     tag-focus-text: govuk-colour("white"),
   ),
   eris: (
+    header-search-input-border: govuk-colour("white"),
+    header-search-input-focus-bg: govuk-colour("white"),
+    header-search-input-focus-border: govuk-colour("yellow"),
+    header-search-input-active-bg: govuk-colour("white"),
+    header-search-input-active-border: govuk-colour("yellow"),
     link-focus: govuk-colour("black"),
     link-focus-background: govuk-colour("yellow"),
     footer-link-focus-background: govuk-colour("yellow"),
