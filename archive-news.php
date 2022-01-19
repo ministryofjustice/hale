@@ -40,6 +40,8 @@ get_header();
                                 "class" => "govuk-select",
                                 'show_option_all' => "All topics",
                                 'depth' => 1,
+                                'orderby'           => 'name',
+                                'order'             => 'ASC',
                                 'hierarchical' => 1,
                             );
                             wp_dropdown_categories($dropdown_args);
