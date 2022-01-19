@@ -225,10 +225,6 @@
 
         &:not(:hover) {
           border-bottom-color: transparent;
-
-          &:focus {
-            border-bottom-color: $colour_capri_teal;
-          }
         }
 
         &:hover {

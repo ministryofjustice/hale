@@ -33,6 +33,7 @@
 			&:focus {
 				color: branded(tag-focus-text);
 				background: branded(tag-focus-bg);
+				outline-color: branded(tag-focus-outline)
 			}
 			&:hover, &:active {
 				color: branded(tag-hover-text);
