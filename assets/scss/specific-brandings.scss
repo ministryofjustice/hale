@@ -50,6 +50,12 @@
 	.wp-block-button__link:not(.govuk-button) {
 		@extend .govuk-button;
 	}
+	.govuk-header .hale-header__search-form button.hale-search__submit {
+		box-shadow: none;
+	}
+	.hale-search__submit:focus:not(:active):not(:hover) {
+		box-shadow: 0px 1px 0 0px govuk-colour("yellow");
+	}
 }
 
 /**********************

@@ -3,8 +3,8 @@
 //branding colours and styles
 
 /**********************
-    Common styles
-    All brandings
+	Common styles
+	All brandings
 **********************/
 
 //space out menu for all brandings
@@ -25,6 +25,21 @@
 
 *{
 	@include branding($brandings) {
+
+		.news-story-category-link {
+			color: branded(tag-text);
+			background: branded(tag-bg);
+
+			&:focus {
+				color: branded(tag-focus-text);
+				background: branded(tag-focus-bg);
+				outline-color: branded(tag-focus-outline)
+			}
+			&:hover, &:active {
+				color: branded(tag-hover-text);
+				background: branded(tag-hover-bg);
+			}
+		}
 
 		.govuk-skip-link:focus {
 			outline-color: branded(header-link-focus-highlight);
@@ -186,84 +201,92 @@
 				outline: transparent solid 4px;
 			}
 
-      .hale-header__search-form {
+			.hale-header__search-form {
 
-        .hale-search__input {
-          border: 1px solid branded(header-search-input-border);
-          background: branded(header-search-input-bg);
+				.hale-search__input {
+				border: 1px solid branded(header-search-input-border);
+				background: branded(header-search-input-bg);
 
-          &:focus {
-            border: none;
-            outline: 3px solid branded(header-search-input-focus-border);
-            background: branded(header-search-input-focus-bg);
-            box-shadow: none;
-          }
+				&:focus {
+					border: none;
+					outline: 3px solid branded(header-search-input-focus-border);
+					background: branded(header-search-input-focus-bg);
+					box-shadow: none;
+				}
 
-          &:active {
-            border: 1px solid branded(header-search-input-active-border);
-            outline: 2px solid branded(header-search-input-active-border);
-            background: branded(header-search-input-active-bg);
-          }
-        }
+				&:active {
+					border: 1px solid branded(header-search-input-active-border);
+					outline: 2px solid branded(header-search-input-active-border);
+					background: branded(header-search-input-active-bg);
+				}
+				}
 
-        .hale-search__submit {
-          background: branded(header-search-btn-bg);
-          box-shadow: 0 1px 0 branded(header-search-btn-bg);
+				.hale-search__submit {
+				background: branded(header-search-btn-bg);
+				box-shadow: 0 1px 0 branded(header-search-btn-bg);
 
-          svg {
-            fill: branded(header-search-btn-icon);
-          }
+				svg {
+					fill: branded(header-search-btn-icon);
+				}
 
-          &:hover {
-            background: branded( header-search-btn-hover-bg);
-            box-shadow: 0 1px 0 branded(header-search-btn-hover-bg);
+				&:hover {
+					background: branded( header-search-btn-hover-bg);
+					box-shadow: 0 1px 0 branded(header-search-btn-hover-bg);
 
-            svg {
-              fill: branded(header-search-btn-hover-icon);
-            }
-          }
+					svg {
+					fill: branded(header-search-btn-hover-icon);
+					}
+				}
 
-          &:focus, &:active {
-            background: branded( header-search-btn-focus-bg);
-            box-shadow: 0 1px 0 branded(header-search-btn-focus-bg);
+				&:focus, &:active {
+					background: branded( header-search-btn-focus-bg);
+					box-shadow: 0 1px 0 branded(header-search-btn-focus-bg);
 
-            svg {
-              fill: branded(header-search-btn-focus-icon);
-            }
-          }
-        }
+					svg {
+					fill: branded(header-search-btn-focus-icon);
+					}
+				}
+				}
 
-      }
+			}
 
-      .govuk-header__menu-button {
-        color: branded(mobile-controls);
-        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
+			.govuk-header__menu-button {
+				color: branded(mobile-controls);
+				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
 
-        &[aria-expanded=true] {
-          background-position-y: -7px;
-          background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
-        }
+				&[aria-expanded=true] {
+					background-position-y: -7px;
+					background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
 
-        &:focus,
-        &:not(:hover):focus {
-          color: branded(mobile-controls);
-        }
-      }
+					&:not(:hover):focus {
+						background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ branded(mobile-controls-focus) + "'/%3E%3C/svg%3E");
+					}
+				}
 
-      .hale-header__mobile-controls--search {
-        color: branded(mobile-controls);
-        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
+				&:not(:hover):focus {
+					color: branded(mobile-controls-focus);
+					background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='"+ branded(mobile-controls-focus) + "'/%3E%3C/svg%3E");
+				}
+			}
 
-        &[aria-expanded=true] {
-          background-position-y: -7px;
-          background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
-        }
+			.hale-header__mobile-controls--search {
+				color: branded(mobile-controls);
+				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
 
-        &:focus,
-        &:not(:hover):focus {
-          color: branded(mobile-controls);
-        }
-      }
+				&[aria-expanded=true] {
+					background-position-y: -7px;
+					background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ branded(mobile-controls) + "'/%3E%3C/svg%3E");
+					&:not(:hover):focus {
+						background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ branded(mobile-controls-focus) + "'/%3E%3C/svg%3E");
+					}
+				}
+				&:not(:hover):focus {
+					color: branded(mobile-controls-focus);
+					background-color: branded(header-link-focus-highlight);
+					box-shadow: 0 -2px branded(header-link-focus-highlight), 0 4px branded(header-link-focus-underline);
+					background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='"+ branded(mobile-controls-focus) + "'/%3E%3C/svg%3E");
+				}
+			}
 			//remove MoJ logo text
 			.govuk-header__logotype-text:not(.hale-header__logotype-text--custom) {
 				display:none;
@@ -271,53 +294,53 @@
 
 			.govuk-header__content {
 
-        .govuk-header__menu-button {
+				.govuk-header__menu-button {
 
-          color: branded(header-link);
+					color: branded(header-link);
 
-          &:hover:focus {
-            color: branded(header-link-hover-focus);
-          }
+					&:hover:focus {
+						color: branded(header-link-hover-focus);
+					}
 
-          &:focus:not(:hover) {
-            color: branded(header-link-focus);
-            background-color: branded(header-link-focus-highlight);
-            border-bottom-color: branded(header-link-focus-underline);
-            box-shadow: 0 -2px branded(header-link-focus-highlight), 0 4px branded(header-link-focus-underline);
-          }
+					&:focus:not(:hover) {
+						color: branded(header-link-focus);
+						background-color: branded(header-link-focus-highlight);
+						border-bottom-color: branded(header-link-focus-underline);
+						box-shadow: 0 -2px branded(header-link-focus-highlight), 0 4px branded(header-link-focus-underline);
+					}
 
-          &:hover {
-            border-bottom-color: branded(header-link-hover-border);
-          }
+					&:hover {
+						border-bottom-color: branded(header-link-hover-border);
+					}
 
-        }
-        .govuk-header__navigation {
-          li.current-menu-item a:link,
-          a,
-          a:link
-          {
-            color: branded(header-link);
+				}
+				.govuk-header__navigation {
+					li.current-menu-item a:link,
+					a,
+					a:link
+					{
+						color: branded(header-link);
 
-            &:hover:focus {
-              color: branded(header-link);
-            }
+						&:hover:focus {
+						color: branded(header-link);
+						}
 
-            &:focus:not(:hover) {
-              color: branded(header-link-focus);
-              background-color: branded(header-link-focus-highlight);
-              border-bottom-color: branded(header-link-focus-underline);
-              box-shadow: 0 -2px branded(header-link-focus-highlight), 0 4px branded(header-link-focus-underline);
-            }
+						&:focus:not(:hover) {
+						color: branded(header-link-focus);
+						background-color: branded(header-link-focus-highlight);
+						border-bottom-color: branded(header-link-focus-underline);
+						box-shadow: 0 -2px branded(header-link-focus-highlight), 0 4px branded(header-link-focus-underline);
+						}
 
-            &:hover {
-              border-bottom-color: branded(header-link-hover-border);
-            }
-          }
+						&:hover {
+						border-bottom-color: branded(header-link-hover-border);
+						}
+					}
 
-          .current-menu-item a:not(:focus) {
-            color: branded(header-link-current);
-          }
-        }
+					.current-menu-item a:not(:focus) {
+						color: branded(header-link-current);
+					}
+				}
 			}
 		}
 		.mojblocks-button,
@@ -367,29 +390,29 @@
 			}
 		}
 
-    .govuk-main-wrapper .govuk-link:link,
-    .govuk-main-wrapper a:link:not([class]),
-    .gem-c-pagination__link:link {
-      color: branded(link);
+		.govuk-main-wrapper .govuk-link:link,
+		.govuk-main-wrapper a:link:not([class]),
+		.gem-c-pagination__link:link {
+			color: branded(link);
 
-      &:hover {
-        color: branded(link-hover);
-      }
-    }
+			&:hover {
+				color: branded(link-hover);
+			}
+		}
 
-    .govuk-main-wrapper .govuk-link:visited,
-    .govuk-main-wrapper a:visited:not([class]),
-    .gem-c-pagination__link:visited {
+		.govuk-main-wrapper .govuk-link:visited,
+		.govuk-main-wrapper a:visited:not([class]),
+		.gem-c-pagination__link:visited {
 
-      color: branded(link-visited);
+			color: branded(link-visited);
 
-      &:hover {
-        color: branded(link-hover);
-      }
-      &:focus {
-        color: branded(link-focus);
-      }
-    }
+			&:hover {
+				color: branded(link-hover);
+			}
+			&:focus {
+				color: branded(link-focus);
+			}
+		}
 
 		.govuk-breadcrumbs__link,
 		.govuk-back-link {
@@ -431,74 +454,71 @@
 			background-color:branded(title-shading);
 		}
 
-    .hale-search-header,
-    .page-header-section {
+		.hale-search-header,
+		.page-header-section {
 
-      position:relative;
-      padding:0.2em 0;
-      margin-bottom:2rem;
+			position:relative;
+			padding:0.2em 0;
+			margin-bottom:2rem;
 
-      &:before {
-        @extend .hale-shaded; // gets the shading colour
-        position: absolute;
-        content: "";
-        left: 50%;
-        width: 200vw;
-        height: calc(100% + 0.6em);
-        z-index: -1;
-        display: block;
-        overflow: visible;
-        transform: translate(-50%, -0.3em);
+			&:before {
+				@extend .hale-shaded; // gets the shading colour
+				position: absolute;
+				content: "";
+				left: 50%;
+				width: 200vw;
+				height: calc(100% + 0.6em);
+				z-index: -1;
+				display: block;
+				overflow: visible;
+				transform: translate(-50%, -0.3em);
 
-        @media (hover: none) and (pointer: coarse) {
-          display: none;
-        }
-      }
-      > * {
-        position:relative;
-        top:1rem;
-      }
-    }
+				@media (hover: none) and (pointer: coarse) {
+				display: none;
+				}
+			}
+			> * {
+				position:relative;
+				top:1rem;
+			}
+		}
 
-    /* Category Navigation
-       Colour Options used: cat-nav-arrows
-     */
-    ul.hale-list--top {
-      li {
-        background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E");
-      }
-    }
-    &.page-body-colour {
-      background-color:branded(page-body-bg);
+		/* Category Navigation
+		Colour Options used: cat-nav-arrows
+		*/
+		ul.hale-list--top {
+			li {
+				background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E");
+			}
+		}
+		&.page-body-colour {
+			background-color:branded(page-body-bg);
 
-      .hale-search-header,
-      .page-header-section {
-        &:before
-        {
-          content: none;
-        }
-      }
+			.hale-search-header,
+			.page-header-section {
+				&:before
+				{
+				content: none;
+				}
+			}
+		}
 
-    }
+		.gem-c-pagination__item {
+			&.gem-c-pagination__item--next .gem-c-pagination__link {
+				background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 .438c7.492 0 13.563 6.07 13.563 13.562 0 7.492-6.07 13.563-13.563 13.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437zm6.229 12.632l-7.41-7.41a1.307 1.307 0 00-1.854 0l-.93.93a1.307 1.307 0 000 1.854L15.591 14l-5.556 5.556a1.307 1.307 0 000 1.854l.93.93a1.307 1.307 0 001.854 0l7.41-7.41a1.314 1.314 0 000-1.86z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E")
+			}
+			&.gem-c-pagination__item--previous .gem-c-pagination__link {
+				background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 27.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437c7.492 0 13.563 6.07 13.563 13.563 0 7.492-6.07 13.563-13.563 13.563zM7.771 14.93l7.41 7.41a1.307 1.307 0 001.854 0l.93-.93a1.307 1.307 0 000-1.854L12.409 14l5.556-5.556a1.307 1.307 0 000-1.854l-.93-.93a1.307 1.307 0 00-1.854 0l-7.41 7.41a1.314 1.314 0 000 1.86z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E")
+			}
+		}
 
-    .gem-c-pagination__item {
-
-      &.gem-c-pagination__item--next .gem-c-pagination__link {
-        background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 .438c7.492 0 13.563 6.07 13.563 13.562 0 7.492-6.07 13.563-13.563 13.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437zm6.229 12.632l-7.41-7.41a1.307 1.307 0 00-1.854 0l-.93.93a1.307 1.307 0 000 1.854L15.591 14l-5.556 5.556a1.307 1.307 0 000 1.854l.93.93a1.307 1.307 0 001.854 0l7.41-7.41a1.314 1.314 0 000-1.86z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E")
-      }
-      &.gem-c-pagination__item--previous .gem-c-pagination__link {
-        background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 27.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437c7.492 0 13.563 6.07 13.563 13.563 0 7.492-6.07 13.563-13.563 13.563zM7.771 14.93l7.41 7.41a1.307 1.307 0 001.854 0l.93-.93a1.307 1.307 0 000-1.854L12.409 14l5.556-5.556a1.307 1.307 0 000-1.854l-.93-.93a1.307 1.307 0 00-1.854 0l-7.41 7.41a1.314 1.314 0 000 1.86z' fill='" + branded(cat-nav-arrows) + "'/%3E%3C/svg%3E")
-      }
-
-    }
-
-    /* Footer Section
-       Colour Options used:
-       footer-border
-       footer-background
-       footer-link-focus-background
-       link-focus
-     */
+		/* Footer Section
+		Colour Options used:
+		footer-border
+		footer-background
+		footer-link-focus-background
+		link-focus
+		*/
 		.govuk-footer {
 			border-top-width: 4px;
 			border-top-color: branded(footer-border);
