@@ -24,19 +24,21 @@ function hale_archive_pagination($template = '')
 
         if ($max_pages > 1) {
             ?>
-            <div class="archive-pagination">
-                <div class="archive-pagination-current-page">
-                    <?php
-                    echo "Page " . $current_page_number . " of " . $max_pages; ?>
+            <nav class="archive-pagination-nav" aria-label="pagination">
+                <ul class="archive-pagination">
+                    <li class="archive-pagination-current-page">
+                        <?php
+                        echo "Page " . $current_page_number . " of " . $max_pages; ?>
 
-                </div>
-                <div class="archive-pagination-prev-btn">
-                <?php previous_posts_link('< Previous'); ?>
-                </div>
-                <div class="archive-pagination-next-btn">
-                    <?php next_posts_link('Next >'); ?>
-                </div>
-            </div>
+                    </li>
+                    <li class="archive-pagination-prev-btn">
+                    <?php previous_posts_link('< Previous'); ?>
+                    </li>
+                    <li class="archive-pagination-next-btn">
+                        <?php next_posts_link('Next >'); ?>
+                </li>
+                </ul>
+            </nav>
             <?php
         }
 
