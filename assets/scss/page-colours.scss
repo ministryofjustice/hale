@@ -68,6 +68,7 @@ $brandings: (
     header-search-btn-focus-bg: $colour_gold,
     header-search-btn-focus-icon: $colour_earth_blue,
     mobile-controls: govuk-colour("white"),
+    mobile-controls-focus: $colour_earth_blue,
     cat-nav-arrows: $colour_charcoal_black,
     title-shading: $colour_gold_tint,
     page-body-bg: $colour_gold_tint,
@@ -167,12 +168,13 @@ $brandings: (
     header-search-btn-focus-bg: $colour_deep_sea_blue,
     header-search-btn-focus-icon: govuk-colour("white"),
     mobile-controls: govuk-colour("white"),
+    mobile-controls-focus: $colour_neptune_blue,
     cat-nav-arrows: $colour_turquoise,
-		title-shading: $colour_turquoise_tint,
+    title-shading: $colour_turquoise_tint,
     page-body-bg: $colour_turquoise_tint,
     footer-border: $colour_neptune_blue,
-		footer-background: $colour_cloudy_grey,
-		footer-link-focus-background: $colour_turquoise_tint,
+    footer-background: $colour_cloudy_grey,
+    footer-link-focus-background: $colour_turquoise_tint,
     link: $colour_lagoon_blue,
     link-visited: $colour_violet,
     link-hover: $colour_deep_sea_blue,
@@ -266,6 +268,7 @@ $brandings: (
     header-search-btn-focus-bg: $colour_charcoal_black,
     header-search-btn-focus-icon: govuk-colour("white"),
     mobile-controls: govuk-colour("white"),
+    mobile-controls-focus: govuk-colour("black"),
     cat-nav-arrows: $colour_charcoal_black,
     title-shading: $colour_uranus_teal_tint,
     page-body-bg: $colour_uranus_teal_tint,
@@ -367,6 +370,7 @@ $brandings: (
     header-search-btn-focus-bg: $colour_indigo,
     header-search-btn-focus-icon: govuk-colour("white"),
     mobile-controls: $colour_pluto_grey,
+    mobile-controls-focus: $colour_pluto_grey,
     page-body-bg: $colour_flame_orange_tint,
     title-shading: $colour_flame_orange_tint,
     cat-nav-arrows: $colour_flame_orange,
@@ -447,6 +451,11 @@ $brandings: (
     tag-focus-text: govuk-colour("white"),
   ),
   eris: (
+    mobile-controls: govuk-colour("white"),
+    mobile-controls-focus: govuk-colour("black"),
+    header-link-focus-underline: govuk-colour("black"),
+    header-link-focus-highlight: govuk-colour("yellow"),
+    header-link-focus: govuk-colour("black"),
     header-search-input-border: govuk-colour("white"),
     header-search-input-focus-bg: govuk-colour("white"),
     header-search-input-focus-border: govuk-colour("yellow"),
@@ -502,6 +511,7 @@ $brandings: (
     header-search-btn-focus-bg: $colour_indigo,
     header-search-btn-focus-icon: govuk-colour("white"),
     mobile-controls: govuk-colour("white"),
+    mobile-controls-focus: $colour_venus_purple,
     page-body-bg: $colour_magenta_tint,
     title-shading: $colour_magenta_tint,
     cat-nav-arrows: $colour_venus_purple,
@@ -622,6 +632,7 @@ $brandings: (
     //Theme colours - Mandatory
 
     mobile-controls: // due to svg icons
+    mobile-controls-focus: // due to svg icons
 		cat-nav-arrows: // due to svg icons
 
 		//Theme colours - Other
