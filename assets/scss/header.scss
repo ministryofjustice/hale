@@ -24,6 +24,12 @@
   .hale-header__logotype-text--custom {
     padding-left: 0.5em;
   }
+
+  //overrides the govuk nowrap and centres text for the longer menus found on hale
+  &.hale-header .govuk-header__navigation li a {
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 .hale-header {
