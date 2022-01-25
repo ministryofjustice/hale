@@ -97,17 +97,17 @@
 				}
 				&:focus,&:active {
 					background-color: branded(cookie-button-focus-bg);
-					color: branded(cookie-button-hover-text);
-					-webkit-text-fill-color: branded(cookie-button-hover-text);
+					color: branded(cookie-button-focus-text);
+					-webkit-text-fill-color: branded(cookie-button-focus-text);
 					box-shadow: 0 0 0 1px #fff, 0 0 0 4px branded(cookie-button-focus-border);
 					outline-color: branded(cookie-button-focus-border);
 
 					.ccfw-settings-button__text {
-						color: branded(cookie-settings-hover-text);
+						color: branded(cookie-settings-focus-text);
 					}
 
 					path {
-						fill: branded(cookie-button-hover-text);
+						fill: branded(cookie-button-focus-text);
 					}
 				}
 			}
