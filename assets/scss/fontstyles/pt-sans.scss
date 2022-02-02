@@ -9,7 +9,7 @@
     font-size: 4.25rem;
     line-height: 120%;
 
-    @include mq($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       font-size: 76px;
       font-size: 4.75rem;
     }
@@ -21,7 +21,7 @@
     font-size: 3.125rem;
     line-height: 120%;
 
-    @include mq($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       font-size: 56px;
       font-size: 3.5rem;
     }
@@ -33,7 +33,7 @@
     font-size: 2.375rem;
     line-height: 120%;
 
-    @include mq($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       font-size: 42px;
       font-size: 2.625rem;
     }
@@ -45,7 +45,7 @@
     font-size: 1.75rem;
     line-height: 130%;
 
-    @include mq($from: desktop) {
+    @include govuk-media-query($from: tablet) {
       font-size: 32px;
       font-size: 2.0rem;
     }
@@ -53,14 +53,10 @@
 
   //Normally used for H4
   .hale-heading-s {
-    font-size: 22px;
-    font-size: 1.375rem;
+    @include govuk-font(24);
+    font-weight:700;
     line-height: 145%;
 
-    @include mq($from: desktop) {
-      font-size: 24px;
-      font-size: 1.5rem;
-    }
   }
 
   h1 {
@@ -99,14 +95,8 @@
 
 
   p {
-    font-size: 16px;
-    font-size: 1rem;
+    @include govuk-font(19);
     line-height: 155%;
-
-    @include mq($from: desktop) {
-      font-size: 18px;
-      font-size: 1.125rem;
-    }
   }
 
 
@@ -117,13 +107,7 @@
   }
 
   .intro, .intro p {
-    font-size: 22px;
-    font-size: 1.375rem;
+    @include govuk-font(24);
     line-height: 150%;
-
-    @include mq($from: desktop) {
-      font-size: 24px;
-      font-size: 1.5rem;
-    }
   }
 }

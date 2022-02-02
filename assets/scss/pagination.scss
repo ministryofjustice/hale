@@ -218,11 +218,7 @@
       padding-left:30px;
 
       .gem-c-pagination__link-text {
-        font-size:1.375rem;
-
-        @include govuk-media-query($from: tablet) {
-          font-size:1.5rem;
-        }
+        @include govuk-font(24);
       }
     }
     .gem-c-pagination__link-label {
