@@ -6,15 +6,8 @@
   }
 
   .news-story-details {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 155%;
+    @include govuk-font(19);
     font-weight: bold;
-
-    @include mq($from: desktop) {
-      font-size: 18px;
-      font-size: 1.125rem;
-    }
   }
 
 }
@@ -55,8 +48,7 @@
 .news-story-count {
   font-weight: bold;
   border-bottom: 1px solid $colour_concrete_grey;
-  font-size: 24px;
-  font-size: 1.5rem;
+  @include govuk-font(24);
   padding-bottom: 16px;
 }
 
