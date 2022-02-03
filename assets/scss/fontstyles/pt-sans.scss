@@ -55,8 +55,6 @@
   .hale-heading-s {
     @include govuk-font(24);
     font-weight:700;
-    line-height: 145%;
-
   }
 
   h1 {
@@ -96,7 +94,6 @@
 
   p {
     @include govuk-font(19);
-    line-height: 155%;
   }
 
 
@@ -108,6 +105,5 @@
 
   .intro, .intro p {
     @include govuk-font(24);
-    line-height: 150%;
   }
 }
