@@ -56,6 +56,9 @@
 	.hale-search__submit:focus:not(:active):not(:hover) {
 		box-shadow: 0px 1px 0 0px govuk-colour("yellow");
 	}
+	.mojblocks-hero__image {
+		margin-top: -3px;
+	}
 }
 
 /**********************
