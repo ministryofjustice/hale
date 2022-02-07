@@ -1,15 +1,15 @@
 .condolence-banner {
-  background: #000000;
-  color: #FFFFFF;
+  background: govuk-colour("black");
+  color: govuk-colour("white");
   padding: 20px;
 
 
   a {
-    color: #FFFFFF;
+    color: govuk-colour("white");
     text-decoration: underline;
 
     &:focus, &:visited, &:hover,  #primary &:visited  {
-      color: #FFFFFF;
+      color: govuk-colour("white");
       text-decoration: underline;
     }
   }

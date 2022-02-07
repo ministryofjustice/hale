@@ -61,10 +61,10 @@
 
   .news-story-list-item-title {
     a {
-      color: $colour_metal_grey;
+      color: govuk-colour("dark-grey");
 
       &:visited {
-        color: $colour_metal_grey;
+        color: govuk-colour("dark-grey");
       }
     }
   }
