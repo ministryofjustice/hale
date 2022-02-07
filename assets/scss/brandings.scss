@@ -438,6 +438,10 @@
 				background-color: branded(link-focus-background);
 				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-shadow);
 				outline: 4px solid transparent;
+
+				.gem-c-pagination__link-label {
+					color: branded(link-focus);
+				}
 			}
 		}
 		a.govuk-breadcrumbs__link,
