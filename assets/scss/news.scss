@@ -47,28 +47,17 @@
 
 .news-story-count {
   font-weight: bold;
-  border-bottom: 1px solid $colour_concrete_grey;
+  border-bottom: 1px solid $govuk-border-colour;
   @include govuk-font(24);
   padding-bottom: 16px;
 }
 
 .news-story-list-item {
-  border-bottom: 1px solid $colour_concrete_grey;
+  border-bottom: 1px solid $govuk-border-colour;
 
   &:last-child {
     border: none;
   }
-
-  .news-story-list-item-title {
-    a {
-      color: $colour_metal_grey;
-
-      &:visited {
-        color: $colour_metal_grey;
-      }
-    }
-  }
-
 }
 
 

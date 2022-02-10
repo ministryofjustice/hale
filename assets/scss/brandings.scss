@@ -22,6 +22,11 @@
 		}
 	}
 }
+//remove gap at top of page
+.govuk-main-wrapper {
+	padding-top:0;
+}
+
 
 *{
 	@include branding($brandings) {
@@ -70,6 +75,9 @@
 						color: branded(cookie-toggle-text);
 						-webkit-text-fill-color: branded(cookie-toggle-text);
 					}
+					&:before {
+						border-color: branded(cookie-toggle-text);
+					}
 					&:focus,&:active {
 						background-color: branded(cookie-toggle-focus-bg);
 					}
@@ -95,11 +103,11 @@
 						fill: branded(cookie-button-hover-text);
 					}
 				}
-				&:focus,&:active {
+				&:focus:hover,&:active,&:focus:not(:hover) {
 					background-color: branded(cookie-button-focus-bg);
 					color: branded(cookie-button-focus-text);
 					-webkit-text-fill-color: branded(cookie-button-focus-text);
-					box-shadow: 0 0 0 1px #fff, 0 0 0 4px branded(cookie-button-focus-border);
+					box-shadow: 0 0 0 4px branded(cookie-button-focus-border);
 					outline-color: branded(cookie-button-focus-border);
 
 					.ccfw-settings-button__text {
@@ -164,11 +172,6 @@
 			}
 		}
 		//end cookie banner styling
-
-		.govuk-main-wrapper {
-			//remove gap at top of page
-			padding-top:0;
-		}
 
 		//remove GDS brand colour bar
 		.govuk-header__container {
@@ -438,6 +441,10 @@
 				background-color: branded(link-focus-background);
 				box-shadow: 0 -2px branded(link-focus-background), 0 4px branded(link-focus-shadow);
 				outline: 4px solid transparent;
+
+				.gem-c-pagination__link-label {
+					color: branded(link-focus);
+				}
 			}
 		}
 		a.govuk-breadcrumbs__link,
