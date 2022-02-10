@@ -33,10 +33,12 @@
 /**********************
   Magirec new theme
 **********************/
+.hale-branding--eris .govuk-header__container {
+	border-bottom: #336C83 solid 10px;
+}
+
+.hale-branding--default,
 .hale-branding--eris {
-	.govuk-header__container {
-		border-bottom: #336C83 solid 10px;
-	}
 	.govuk-header {
 		border-bottom-width: unset;
 		.govuk-header__logo {

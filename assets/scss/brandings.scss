@@ -70,6 +70,9 @@
 						color: branded(cookie-toggle-text);
 						-webkit-text-fill-color: branded(cookie-toggle-text);
 					}
+					&:before {
+						border-color: branded(cookie-toggle-text);
+					}
 					&:focus,&:active {
 						background-color: branded(cookie-toggle-focus-bg);
 					}
