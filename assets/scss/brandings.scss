@@ -22,6 +22,11 @@
 		}
 	}
 }
+//remove gap at top of page
+.govuk-main-wrapper {
+	padding-top:0;
+}
+
 
 *{
 	@include branding($brandings) {
@@ -167,11 +172,6 @@
 			}
 		}
 		//end cookie banner styling
-
-		.govuk-main-wrapper {
-			//remove gap at top of page
-			padding-top:0;
-		}
 
 		//remove GDS brand colour bar
 		.govuk-header__container {
