@@ -18,9 +18,8 @@ add_filter(
         $filetypes = explode(' ', $filetypes);
         if (! in_array('webp', $filetypes, true)) {
             $filetypes[] = 'webp';
-            $filetypes   = implode(' ', $filetypes);
         }
-
+        $filetypes   = implode(' ', $filetypes);
         return $filetypes;
     }
 );

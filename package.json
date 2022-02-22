@@ -27,7 +27,7 @@
     "laravel-mix-imagemin": "^1.0.3",
     "node-normalize-scss": "^8.1.2",
     "postcss-cli": "^8.3.1",
-    "resolve-url-loader": "^4.0.0",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.35.2",
     "sass-loader": "^12.1.0",
     "vue-template-compiler": "^2.6.14"
