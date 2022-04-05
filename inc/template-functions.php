@@ -143,6 +143,17 @@ function hale_sidebar_location( $sidebar ) {
 
 function hale_get_branding_class() {
 
+	$H2colour = get_theme_mod( 'h2_colour', '#0b0c0c' );
+
+	if ( !empty($H2colour) ) {
+		$css_file = fopen("./wp/wp-includes/css/MjB-test.css", "w") or die("Unable to open file!");
+		$css = "h2 {color:$H2colour!important;}";
+		fwrite($css_file, $css);
+		$css = "h1 {color:$H2colour!important;}";
+		fwrite($css_file, $css);
+		fclose($css_file);
+	}
+
     $colour_array = [
         '0f0228' => 'venus',
         '143859' => 'earth',
@@ -160,7 +171,6 @@ function hale_get_branding_class() {
     } else {
         return 'hale-branding--neptune'; //none set = use Neptune
     }
-
 }
 
 /**

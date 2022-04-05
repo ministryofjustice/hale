@@ -363,6 +363,23 @@ function hale_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'h2_colour',
+		array(
+			'default'           => '#0b0c0c',
+			'sanitize_callback'  => 'hale_sanitize_nohtml',
+		)
+	);
+	$wp_customize->add_control(
+		'h2_colour',
+		array(
+			'label'       => esc_html__( 'H2 colour', 'hale' ),
+			'description' => esc_html__( 'Choose a colour for H2 fields', 'hale' ),
+			'section'     => 'colors',
+			'type'        => 'text',
+		)
+	);
+
 	/*
 	 * ------------------------------------------------------------
 	 * SECTION: Layout
