@@ -7,6 +7,8 @@
 	All brandings
 **********************/
 
+
+
 //space out menu for all brandings
 .govuk-header {
 	@include govuk-media-query($from: desktop) {
@@ -55,6 +57,7 @@
 		#ccfw-page-banner {
 			.ccfw-banner__button:not(.ccfw-banner__button--close) {
 				background-color: branded(cookie-button-bg);
+				background-color: var(--cookie-button-background);
 				color: branded(cookie-button-text);
 				-webkit-text-fill-color: branded(cookie-button-text);
 			}

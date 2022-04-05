@@ -364,17 +364,34 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
-		'h2_colour',
+		'heading_colour',
 		array(
 			'default'           => '#0b0c0c',
-			'sanitize_callback'  => 'hale_sanitize_nohtml',
+			'sanitize_callback' => 'sanitize_hex_color',
 		)
 	);
 	$wp_customize->add_control(
-		'h2_colour',
+		'heading_colour',
 		array(
-			'label'       => esc_html__( 'H2 colour', 'hale' ),
-			'description' => esc_html__( 'Choose a colour for H2 fields', 'hale' ),
+			'label'       => esc_html__( 'Heading colour', 'hale' ),
+			'description' => esc_html__( 'Choose a colour for H1 and H2 titles', 'hale' ),
+			'section'     => 'colors',
+			'type'        => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'cookie_button_colour',
+		array(
+			'default'           => '#00703c',
+			'sanitize_callback' => 'hale_sanitize_nohtml',
+		)
+	);
+	$wp_customize->add_control(
+		'cookie_button_colour',
+		array(
+			'label'       => esc_html__( 'Cookie button colour', 'hale' ),
+			'description' => esc_html__( 'Choose a colour for cookie button', 'hale' ),
 			'section'     => 'colors',
 			'type'        => 'text',
 		)
