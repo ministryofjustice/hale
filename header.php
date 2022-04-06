@@ -19,7 +19,7 @@
 	<meta name="theme" content="MOJ-hale-1.0.11">
 	<meta name="description" content="<?php bloginfo('description'); ?>" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-  <link rel="stylesheet" id="custom-colour-css" href="https://jotwpublic.docker/wp-includes/css/MjB-test.css?time=<?php date_timestamp_get(date_create()); ?>" media="all">
+  <link rel="stylesheet" id="custom-colour-css" href="https://jotwpublic.docker/wp-includes/css/MjB-test.css?time=<?php echo $_SERVER['REQUEST_TIME']; ?>" media="all">
 	<?php
 	wp_enqueue_script( 'jquery' );
 	wp_head();
