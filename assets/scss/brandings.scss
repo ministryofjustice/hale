@@ -7,7 +7,10 @@
 	All brandings
 **********************/
 
-
+//TEST - DELETE WHEN DONE
+h1, h2 {
+	color: var(--heading-colour);
+}
 
 //space out menu for all brandings
 .govuk-header {
@@ -57,7 +60,7 @@
 		#ccfw-page-banner {
 			.ccfw-banner__button:not(.ccfw-banner__button--close) {
 				background-color: branded(cookie-button-bg);
-				background-color: var(--cookie-button-background);
+				background-color: var(--cookie-button-bg);
 				color: branded(cookie-button-text);
 				-webkit-text-fill-color: branded(cookie-button-text);
 			}

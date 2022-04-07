@@ -143,23 +143,24 @@ function hale_sidebar_location( $sidebar ) {
 
 function hale_get_branding_class() {
 
-	$css_file_path = "./wp/wp-includes/css/MjB-test.css";
-	$css_file_exists = file_exists($css_file_path);
-	$headingColour = get_theme_mod( 'heading_colour', '#0b0c0c' );
-	$cookieButtonColour = get_theme_mod( 'cookie_button_colour', '#0b0c0c' );
+	$css_file_path = "./wp/wp-includes/css";
+	$css_file_path_exists = is_dir($css_file_path);
+	$colour_array = get_colours();
+	$css = ":root {";
 
-	if ( $css_file_exists ) {
-		$css_file = fopen($css_file_path, "w") or die("Unable to open file!");
-		if (!empty($headingColour) ) {
-			$css = "h1, h2 {color:$headingColour!important;}";
-			fwrite($css_file, $css);
+	if ( $css_file_path_exists ) {
+		$css_file = fopen($css_file_path."/MjB-test.css", "w") or die("Unable to open file!");
+		for($i=0;$i<count($colour_array);$i++) {
+			$colour_id = $colour_array[$i][0];
+			$colour_default = $colour_array[$i][1];
+			$theme_mod = get_theme_mod($colour_id,$colour_default);
+			if (!empty($theme_mod) ) {
+				$css .= "--$colour_id:$theme_mod;";
+			}
 		}
-		if (!empty($cookieButtonColour) ) {
-			$css = ":root {--cookie-button-background:$cookieButtonColour;}";
-			fwrite($css_file, $css);
-		}
-		fclose($css_file);
 	}
+	$css .= "}";
+	fwrite($css_file, $css);
 
     $colour_array = [
         '0f0228' => 'venus',

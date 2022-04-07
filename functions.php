@@ -285,6 +285,10 @@ function hale_mix_asset($filename)
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Functions which enable custom colours for sites.
+ */
+require get_template_directory() . '/inc/colours.php';
+/**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
