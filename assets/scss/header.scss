@@ -38,9 +38,7 @@
 
           &:focus {
             &:before {
-              border: solid govuk-colour("black");
-              border-width: 0 3px 3px 0;
-              padding: 3px;
+              border-color: govuk-colour("black");
             }
           }
         }
@@ -49,6 +47,7 @@
           > a {
             &:before {
               transform: rotate(-135deg);
+              -webkit-transform: rotate(-135deg);
               margin: 6px 10px 0 5px;
             }
           }
