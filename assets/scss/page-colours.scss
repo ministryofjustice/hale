@@ -360,6 +360,12 @@ $brandings: (
     header-link-focus-highlight: $colour_flame_orange_tint,
     header-link-focus: $colour_pluto_grey,
     header-link-mobile-border: $colour_concrete_grey,
+    header-submenu-bg: $colour_flame_orange_tint,
+    header-submenu-link: $colour_pluto_grey,
+    header-submenu-link-hover-border: $colour_flame_orange,
+    header-submenu-link-mobile: $colour_pluto_grey,
+    header-submenu-arrow: $colour_flame_orange,
+    header-submenu-arrow-focus: $colour_charcoal_black,
     header-search-input-bg: govuk-colour("white"),
     header-search-input-border: $colour_concrete_grey,
     header-search-input-focus-bg: $colour_flame_orange_tint,
@@ -652,6 +658,12 @@ $brandings: (
     header-link-focus-highlight:
 		header-link-focus:
     header-link-mobile-border:
+    header-submenu-bg:
+    header-submenu-link:
+    header-submenu-link-hover-border:
+    header-submenu-link-mobile:
+    header-submenu-arrow:
+    header-submenu-arrow-focus:
     header-search-input-bg:
     header-search-input-border:
     header-search-input-focus-border:

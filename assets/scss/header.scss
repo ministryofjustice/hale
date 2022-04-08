@@ -4,18 +4,161 @@
     max-width: 100%;
 
     li {
-      @extend .govuk-header__navigation-item;
 
-      &.current-menu-item {
-        @extend .govuk-header__navigation-item--active
-      }
+      @extend .govuk-header__navigation-item;
 
       a {
         @extend .govuk-header__link;
         height: 100%;
         padding: 8px 0;
+
+        @media (min-width: 48.0625em) {
+          height: 40px;
+        }
+      }
+
+      &.menu-item-has-children {
+
+        > a {
+          &:before {
+            content: "";
+            border: solid govuk-colour("white");
+            border-width: 0 3px 3px 0;
+            display: block;
+            padding: 3px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            float: left;
+            margin: 3px 10px 0 5px;
+
+            @media (min-width: 48.0625em) {
+              content: none;
+            }
+          }
+
+          &:focus {
+            &:before {
+              border-color: govuk-colour("black");
+            }
+          }
+        }
+
+        &.sub-menu-open {
+          > a {
+            &:before {
+              transform: rotate(-135deg);
+              -webkit-transform: rotate(-135deg);
+              margin: 6px 10px 0 5px;
+            }
+          }
+        }
+      }
+
+      // If current menu item or parent of current menu item
+      &.current-menu-item,
+      &.current-menu-parent {
+        @extend .govuk-header__navigation-item--active;
+
+        &.menu-item-has-children {
+          @media (min-width: 48.0625em) {
+            margin-bottom: 40px;
+          }
+
+          &.sub-menu-open {
+            .sub-menu {
+              @media (min-width: 48.0625em) {
+                display: block;
+              }
+            }
+          }
+        }
+
+        //Sub Menu - current item styles
+        .sub-menu {
+
+          @media (min-width: 48.0625em) {
+
+            display: block;
+
+          }
+        }
+      }
+
+      //Sub Menu - Mobile Open Styles
+      &.sub-menu-open {
+        .sub-menu {
+          display: block;
+
+          @media (min-width: 48.0625em) {
+            display: none;
+          }
+        }
+      }
+
+      //Sub Menu Styles
+      .sub-menu {
+
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: none;
+
+        @media (min-width: 48.0625em) {
+
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          right: 0;
+
+          &:before {
+            content: "";
+            background: govuk-colour("light-grey");
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            height: 100%;
+            z-index: -1;
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+
+          }
+
+        }
+
+        li {
+          border-bottom: 0;
+        }
+
+        li a,
+        li a:visited,
+        li a:link,
+        li a:link:visited,
+        li.current-menu-item a,
+        li.current-menu-item a:visited,
+        li.current-menu-item a:link,
+        li.current-menu-item a:link:visited{
+          color:  govuk-colour("white");
+          padding-left: 25px;
+
+          @media (min-width: 48.0625em) {
+            padding-left: 0px;
+            color:  govuk-colour("black");
+          }
+
+          &:hover {
+            border-bottom-color: govuk-colour("black");
+          }
+
+          &:focus {
+            color:  govuk-colour("black");
+          }
+        }
       }
     }
+
   }
   &__logotype:not(.hale-header__logotype--custom) {
     min-height:40px; //height of default SVG logo
@@ -28,7 +171,11 @@
   //overrides the govuk nowrap and centres text for the longer menus found on hale
   &.hale-header .govuk-header__navigation li a {
     white-space: normal;
-    text-align: center;
+    text-align: left;
+
+    @media (min-width: 48.0625em) {
+      text-align: center;
+    }
   }
 }
 
