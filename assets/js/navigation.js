@@ -150,3 +150,21 @@ function guideNavClick(id) {
 		document.getElementById(id).style.display = "block";
 	}
 }
+
+jQuery( document ).ready(function( $ ) {
+  $( "#menu-menu-top-menu li.menu-item-has-children > a" ).click(function( event ) {
+
+    if($('.govuk-header__menu-button').is(':visible')) {
+
+      event.preventDefault();
+
+      if ($(this).parent().hasClass('sub-menu-open')) {
+        $(this).parent().removeClass("sub-menu-open");
+      } else {
+        $("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
+        $(this).parent().addClass("sub-menu-open");
+      }
+    }
+
+  });
+});
