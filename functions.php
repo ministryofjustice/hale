@@ -218,6 +218,7 @@ function hale_scripts()
     // CSS
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
+    wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . "/custom-colours.css");
 
     // JS
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "3.11.0", true);
