@@ -439,7 +439,7 @@
 
 		.govuk-main-wrapper .govuk-link:link,
 		.govuk-main-wrapper a:link:not([class]),
-		.govuk-main-wrapper a.customize-unpreviewable:link, // for wordpress customizer
+		.govuk-main-wrapper a[class="customize-unpreviewable"]:link, // for wordpress customizer
 		.gem-c-pagination__link:link {
 			color: var(--link);
 

@@ -397,7 +397,7 @@ function hale_customize_register( $wp_customize ) {
 		'colour_bar',
 		array(
 			'label'       => esc_html__( 'Header bar colour', 'hale' ),
-			'description' => esc_html__( 'Beneath the black header is a colour bar which can be a departmental colour', 'hale' ),
+			'description' => esc_html__( 'Beneath the black header is a colour bar which can be a departmental or brand colour (#FFF for none)', 'hale' ),
 			'section'     => 'colors',
 			'type'        => 'color',
 			'active_callback' => function () use ( $wp_customize ) {
@@ -432,23 +432,6 @@ function hale_customize_register( $wp_customize ) {
 			)
 		);
 	}
-
-/*	$wp_customize->add_setting(
-		'cookie_button_colour',
-		array(
-			'default'           => '#00703c',
-			'sanitize_callback' => 'hale_sanitize_nohtml',
-		)
-	);
-	$wp_customize->add_control(
-		'cookie_button_colour',
-		array(
-			'label'       => esc_html__( 'Cookie button colour', 'hale' ),
-			'description' => esc_html__( 'Choose a colour for cookie button', 'hale' ),
-			'section'     => 'colors',
-			'type'        => 'text',
-		)
-	);
 
 	/*
 	 * ------------------------------------------------------------

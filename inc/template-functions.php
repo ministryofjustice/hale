@@ -145,7 +145,7 @@ function generate_custom_colours() {
 
 	$upload_file_path = wp_get_upload_dir()["basedir"];
 	$upload_file_path_exists = is_dir($upload_file_path);
-	$main_css_file = 'app/themes/hale/dist/css/custom-branding.min.css';
+	$main_css_file = get_template_directory().'/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
 	$colour_array = get_colours() or die("no colour array");
 	$custom_colours_set = ! get_theme_mod("gds_style_checkbox");
@@ -171,10 +171,15 @@ function generate_custom_colours() {
 			}
 			$css .= "}\n";
 			$theme_mod = get_theme_mod('colour_bar','#1D70B8');
-			if (!empty($theme_mod) ) {
-				$css .= ".govuk-header__container {\n\t";
-				$css .= "border-bottom: 10px solid $theme_mod!important;\n";
-				$css .= "}\n";
+			if (!empty($theme_mod) && strcasecmp($theme_mod, "#FFF") != 0 && strcasecmp($theme_mod, "#FFFFFF") != 0) {
+				$colour_bar_style = ".govuk-header__container {\n\t";
+				$colour_bar_style .= "border-bottom: 10px solid $theme_mod!important;\n";
+				$colour_bar_style .= "}\n";
+				$colour_bar_style .= ".govuk-header {\n\t";
+				$colour_bar_style .= "border-bottom-width: unset!important;\n\t";
+				$colour_bar_style .= "margin-bottom: 7px;\n";
+				$colour_bar_style .= "}\n";
+				$css .= $colour_bar_style;
 			}
 		}
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w") or die("Unable to create file!");
@@ -188,7 +193,7 @@ function generate_custom_colours() {
 			$level .= "../";
 		}
 		//Really awkward way of getting the main css file :(
-		copy(__DIR__ ."/../../../../".$main_css_file,$upload_file_path."/temp-colours-ie.css") or die("That didn't work");
+		copy($main_css_file,$upload_file_path."/temp-colours-ie.css") or die("That didn't work");
 		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or die("unable to get file contents");
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = $colour_array[$i][0];
@@ -199,18 +204,17 @@ function generate_custom_colours() {
 				$colour_to_use = $colour_default;
 			}
 			if (!empty($colour_to_use) ) {
+				if ($colour_array[$i][4] == "svg") {
+					$colour_to_use = str_replace('#',"%23",$colour_to_use);
+				}
 				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 			}
 		}
 		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w") or die("Unable to read file!");
-		fwrite($css_file, $css) or die("oh no!!!");
+		if (isset($colour_bar_style)) $css .= $colour_bar_style;
+		fwrite($css_file, $css) or die("Unable to write file!");
 		fclose($css_file);
 	}
-}
-
-function save_custom_colours() {
-	rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to save custom colours!");
-	rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to save custom colours for IE!");
 }
 
 function hale_get_branding_class() {

@@ -48,12 +48,12 @@
 			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 
 			//mobile controls
-			['mobile-controls',$white,'Mobile controls','The menu and the search icon','',''],
-			['mobile-controls-focus',$black,'Mobile controls (focussed)','The menu and the search icon','',''],
+			['mobile-controls',$white,'Mobile controls','The menu and the search icon','svg'],
+			['mobile-controls-focus',$black,'Mobile controls (focussed)','The menu and the search icon','svg'],
 
 			//Misc
 			['title-shading',$white,'Title shading','',''],
-			['cat-nav-arrows',$black,'Category navication arrows','',''],
+			['cat-nav-arrows',$black,'Category navication arrows','','svg'],
 
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
