@@ -10,6 +10,7 @@
 		$purple = '#4C2C92';
 		$green = '#00703C';
 		$buttonHoverGreen = '#005A30';
+		$buttonHoverGrey = '#DBDAD9';
 		$lightGrey = '#F3F2F1';
 		$midGrey = '#B1B4B6';
 		$darkGrey = '#505A5F';
@@ -45,7 +46,7 @@
 			['header-search-input-active-border',$yellow,'Search box active border','',''],
 			['header-search-btn-bg',$lightGrey,'Search button background','',''],
 			['header-search-btn-icon',$black,'Search button icon','',''],
-			['header-search-btn-hover-bg',$midGrey,'Search button hover background','',''],
+			['header-search-btn-hover-bg',$buttonHoverGrey,'Search button hover background','',''],
 			['header-search-btn-hover-icon',$black,'Search button hover icon','',''],
 			['header-search-btn-focus-bg',$yellow,'Search button focus background','',''],
 			['header-search-btn-focus-icon',$black,'Search button focus icon','',''],

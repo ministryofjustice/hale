@@ -1,7 +1,14 @@
+.mojblocks-hero {
+	@include govuk-media-query($until: desktop) {
+		margin-top:10px;
+	}
+}
+
+
 /**********************
   Uranus branding
     Magistrates
-**********************/
+**********************
 .hale-branding--uranus {
 	//header colour.
 	.govuk-header {
@@ -34,15 +41,15 @@
   Magirec new theme
 **********************/
 .hale-branding--eris .govuk-header__container {
-	border-bottom: #336C83 solid 10px;
+//	border-bottom: #336C83 solid 10px;
 }
 
 .hale-branding--default,
 .hale-branding--eris {
 	.govuk-header {
-		border-bottom-width: unset;
+	//	border-bottom-width: unset;
 		.govuk-header__logo {
-			min-height: 49px;
+	//		min-height: 49px;
 
 			a:focus img {
 	//			filter: invert(1) hue-rotate(180deg);
@@ -50,16 +57,16 @@
 		}
 	}
 	.wp-block-button__link:not(.govuk-button) {
-		@extend .govuk-button;
+	//	@extend .govuk-button;
 	}
 	.govuk-header .hale-header__search-form button.hale-search__submit {
-		box-shadow: none;
+	//	box-shadow: none;
 	}
 	.hale-search__submit:focus:not(:active):not(:hover) {
-		box-shadow: 0px 1px 0 0px govuk-colour("yellow");
+	//	box-shadow: 0px 1px 0 0px govuk-colour("yellow");
 	}
 	.mojblocks-hero__image {
-		margin-top: -3px;
+	//	margin-top: -3px;
 	}
 }
 
@@ -74,7 +81,7 @@
 	}
 
 	.govuk-header .govuk-header__logo {
-		min-height: 49px;
+//		min-height: 49px;
 
 		a:focus img {
 //			filter: invert(1) hue-rotate(180deg);
@@ -82,9 +89,9 @@
 	}
 
 	.govuk-footer__inline-list-item {
-		display: block;
+//		display: block;
 		@include govuk-media-query($from: tablet) {
-			display: inline-block;
+//			display: inline-block;
 		}
 	}
 }
@@ -97,7 +104,7 @@
 	.govuk-header .govuk-header__logo {
 
 		a:focus img {
-			filter: invert(1) hue-rotate(180deg);
+	//		filter: invert(1) hue-rotate(180deg);
 		}
 	}
 }

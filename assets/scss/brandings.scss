@@ -187,6 +187,10 @@
 		background: var(--header-bg);
 		border-bottom-width: 0;
 
+		&__logo {
+			min-height: 49px;
+		}
+
 		.govuk-header__logotype {
 			color: var(--header-link);
 		}
@@ -211,50 +215,53 @@
 		.hale-header__search-form {
 
 			.hale-search__input {
-			border: 1px solid var(--header-search-input-border);
-			background: var(--header-search-input-bg);
+				border: 1px solid var(--header-search-input-border);
+				background: var(--header-search-input-bg);
 
-			&:focus {
-				border: none;
-				outline: 3px solid var(--header-search-input-focus-border);
-				background: var(--header-search-input-focus-bg);
-				box-shadow: none;
-			}
+				&:focus {
+					border: none;
+					outline: 3px solid var(--header-search-input-focus-border);
+					background: var(--header-search-input-focus-bg);
+					box-shadow: none;
+				}
 
-			&:active {
-				border: 1px solid var(--header-search-input-active-border);
-				outline: 2px solid var(--header-search-input-active-border);
-				background: var(--header-search-input-active-bg);
-			}
+				&:active {
+					border: 1px solid var(--header-search-input-active-border);
+					outline: 2px solid var(--header-search-input-active-border);
+					background: var(--header-search-input-active-bg);
+				}
 			}
 
 			.hale-search__submit {
-			background: var(--header-search-btn-bg);
-			box-shadow: 0 1px 0 var(--header-search-btn-bg);
-
-			svg {
-				fill: var(--header-search-btn-icon);
-			}
-
-			&:hover {
-				background: var(--header-search-btn-hover-bg);
-				box-shadow: 0 1px 0 var(--header-search-btn-hover-bg);
+				background: var(--header-search-btn-bg);
+				box-shadow: 0 1px 0 var(--header-search-btn-bg);
 
 				svg {
-				fill: var(--header-search-btn-hover-icon);
+					fill: var(--header-search-btn-icon);
+				}
+
+				&:hover {
+					background: var(--header-search-btn-hover-bg);
+					box-shadow: 0 1px 0 var(--header-search-btn-hover-bg);
+
+					svg {
+						fill: var(--header-search-btn-hover-icon);
+					}
+				}
+
+				&:focus, &:active {
+					background: var(--header-search-btn-focus-bg);
+					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
+
+					svg {
+						fill: var(--header-search-btn-focus-icon);
+					}
+				}
+
+				&:focus:not(:active):not(:hover) {
+					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
 				}
 			}
-
-			&:focus, &:active {
-				background: var(--header-search-btn-focus-bg);
-				box-shadow: 0 1px 0 var(--header-search-btn-focus-bg);
-
-				svg {
-				fill: var(--header-search-btn-focus-icon);
-				}
-			}
-			}
-
 		}
 
 		.govuk-header__menu-button {
