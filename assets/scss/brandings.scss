@@ -476,8 +476,11 @@
 	.gem-c-pagination__link:link {
 		color: var(--link);
 
-		&:hover {
+		&:hover:not(:focus) {
 			color: var(--link-hover);
+		}
+		&:focus {
+			color: var(--link-focus);
 		}
 	}
 
@@ -487,7 +490,7 @@
 
 		color: var(--link-visited);
 
-		&:hover {
+		&:hover:not(:focus) {
 			color: var(--link-hover);
 		}
 		&:focus {

@@ -95,16 +95,16 @@
 	//Reveal Block
 	.wp-block-mojblocks-reveal {
 		.govuk-details__summary {
-			color: var(--mojblocks-reveal-title);
+			color: var(--link);
 
 			&:hover {
-				color: var(--mojblocks-reveal-title-hover);
+				color: var(--link-hover);
 			}
 
 			&:focus {
-				color: var(--mojblocks-reveal-title-focus);
-				background-color: var(--mojblocks-reveal-title-focus-bg);
-				box-shadow: 0 -2px var(--mojblocks-reveal-title-focus-bg), 0 4px var(--mojblocks-reveal-title-focus-shadow);
+				color: var(--link-focus);
+				background-color: var(--link-focus-background);
+				box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
 			}
 		}
 	}

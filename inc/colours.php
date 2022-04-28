@@ -116,12 +116,6 @@
 			['mojblocks-highlights-list-title',$black,'Highlights list title','',''],
 			['mojblocks-highlights-list-text',$black,'Highlights list text','',''],
 
-			['mojblocks-reveal-title',$blue,'Reveal title','',''],
-			['mojblocks-reveal-title-hover',$darkBlue,'Reveal title hover','',''],
-			['mojblocks-reveal-title-focus',$black,'Reveal title focus','',''],
-			['mojblocks-reveal-title-focus-bg',$yellow,'Reveal title focus background','',''],
-			['mojblocks-reveal-title-focus-shadow',$black,'Reveal title focus underline','',''],
-
 			['mojblocks-staggered-box-bg',$darkGrey,'Staggered box background','',''],
 			['mojblocks-staggered-box-title',$white,'Staggered box title','',''],
 			['mojblocks-staggered-box-text',$white,'Staggered box text','',''],
