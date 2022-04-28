@@ -8,10 +8,10 @@
 		.govuk-accordion__controls {
 			.govuk-accordion__open-all {
 
-				color: var(--mojblocks-accordion-controls);
+				color: var(--mojblocks-accordion-section-title);
 
 				&:hover {
-					color: var(--mojblocks-accordion-controls-hover);
+					color: var(--mojblocks-accordion-section-title-hover);
 				}
 			}
 		}

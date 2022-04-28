@@ -98,13 +98,11 @@
 			//mojblocks - these are usually things not found in GOV.UK sites
 			['mojblocks-divider',$yellow,'Little divider bar','',''],
 
-			['mojblocks-accordion-section-title',$blue,'Accordion titles and links','',''],
-			['mojblocks-accordion-section-title-hover',$darkBlue,'Accordion titles and links hover','',''],
+			['mojblocks-accordion-section-title',$blue,'Accordion titles/links/controls','',''],
+			['mojblocks-accordion-section-title-hover',$darkBlue,'Accordion titles/links/controls hover','',''],
 			['mojblocks-accordion-section-title-focus',$black,'Accordion titles and links focus','',''],
 			['mojblocks-accordion-section-title-focus-bg',$yellow,'Accordion titles and links focus background','',''],
 			['mojblocks-accordion-section-title-focus-shadow',$black,'Accordion titles and links focus underline','',''],
-			['mojblocks-accordion-controls',$blue,'Accordion controls','',''],
-			['mojblocks-accordion-controls-hover',$darkBlue,'Accordion controls hover','',''],
 
 			['mojblocks-hero-bg',$white,'Hero background','This is usually obscured by the Hero image',''],
 
