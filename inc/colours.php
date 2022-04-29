@@ -127,24 +127,6 @@
 			['mojblocks-staggered-box-btn-focus-bg',$yellow,'Staggered box button focus text','',''],
 			['mojblocks-staggered-box-btn-focus-text',$black,'Staggered box button focus text','',''],
 
-			//Cookie banner
-			['cookie-button-bg',$green,'Cookie banner button background','',''],
-			['cookie-button-text',$white,'Cookie banner button text','',''],
-			['cookie-secondary-button-bg',$lightGrey,'Cookie banner secondary button background','',''],
-			['cookie-secondary-button-text',$black,'Cookie banner secondary button text','',''],
-			['cookie-button-hover-bg',$buttonHoverGreen,'Cookie banner button hover background','',''],
-			['cookie-button-hover-text',$white,'Cookie banner button hover text','',''],
-			['cookie-button-focus-bg',$yellow,'Cookie banner button focus background','',''],
-			['cookie-button-focus-border',$black,'Cookie banner button focus border','',''],
-			['cookie-button-focus-text',$black,'Cookie banner button focus text','',''],
-			['cookie-toggle-bg',$green,'Cookie toggle background','',''],
-			['cookie-toggle-focus-bg',$buttonHoverGreen,'Cookie toggle focus background','',''],
-			['cookie-toggle-text',$white,'Cookie toggle text','',''],
-			['cookie-settings-hover-bg',$black,'Cookie settings hover background','',''],
-			['cookie-settings-hover-text',$white,'Cookie settings hover text','',''],
-			['cookie-settings-focus-bg',$yellow,'Cookie settings focus background','',''],
-			['cookie-settings-focus-text',$black,'Cookie settings focus text','',''],
-
 			//Tags
 			['tag-bg',$lightGrey,'Tag background','',''],
 			['tag-text',$black,'Tag text','',''],
@@ -153,6 +135,24 @@
 			['tag-focus-bg',$yellow,'Tag focus background','',''],
 			['tag-focus-outline',$black,'Tag focus outline','',''],
 			['tag-focus-text',$black,'Tag focus text','','']
+
+			//Cookie banner
+			['cookie-settings-hover-bg',$black,'Cookie settings (triangle) hover background','',''],
+			['cookie-settings-hover-text',$white,'Cookie settings (triangle) hover text','',''],
+			['cookie-settings-focus-bg',$yellow,'Cookie settings (triangle) focus background','',''],
+			['cookie-settings-focus-text',$black,'Cookie settings (triangle) focus text','',''],
+			['cookie-button-bg',$green,'Cookie banner button background','',''],
+			['cookie-button-text',$white,'Cookie banner button text','',''],
+			['cookie-button-hover-bg',$buttonHoverGreen,'Cookie banner button hover background','',''],
+			['cookie-button-hover-text',$white,'Cookie banner button hover text','',''],
+			['cookie-button-focus-bg',$yellow,'Cookie banner button focus background','',''],
+			['cookie-button-focus-border',$black,'Cookie banner button focus border','',''],
+			['cookie-button-focus-text',$black,'Cookie banner button focus text','',''],
+			['cookie-secondary-button-bg',$lightGrey,'Cookie banner secondary button background','',''],
+			['cookie-secondary-button-text',$black,'Cookie banner secondary button text','',''],
+			['cookie-toggle-bg',$green,'Cookie toggle background','',''],
+			['cookie-toggle-focus-bg',$buttonHoverGreen,'Cookie toggle focus background','',''],
+			['cookie-toggle-text',$white,'Cookie toggle text','',''],
 		);
 
 		return $colour_array;
