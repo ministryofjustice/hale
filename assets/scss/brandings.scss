@@ -349,8 +349,7 @@
 				.govuk-header__navigation {
 					> li.current-menu-item > a:link,
 					> li > a,
-					> li > a:link
-					{
+					> li > a:link {
 						color: var(--header-link);
 
 						&:hover:focus {
