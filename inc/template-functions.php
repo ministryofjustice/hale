@@ -148,7 +148,8 @@ function generate_custom_colours() {
 	$main_css_file = get_template_directory().'/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
 	$colour_array = get_colours() or die("no colour array");
-	$custom_colours_set = ! get_theme_mod("gds_style_checkbox");
+	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
+	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
 
 	if ($upload_file_path_exists) {
 		if ($custom_colours_set) {
@@ -172,15 +173,21 @@ function generate_custom_colours() {
 			$css .= "}\n";
 			$theme_mod = get_theme_mod('colour_bar','#1D70B8');
 			if (!empty($theme_mod) && strcasecmp($theme_mod, "#FFF") != 0 && strcasecmp($theme_mod, "#FFFFFF") != 0) {
-				$colour_bar_style = ".govuk-header__container {\n\t";
-				$colour_bar_style .= "border-bottom: 10px solid $theme_mod!important;\n";
+				$colour_bar_style  = ".govuk-header__container {\n\t";
+				$colour_bar_style .= 	"border-bottom: 10px solid $theme_mod!important;\n";
 				$colour_bar_style .= "}\n";
 				$colour_bar_style .= ".govuk-header {\n\t";
-				$colour_bar_style .= "border-bottom-width: unset!important;\n\t";
-				$colour_bar_style .= "margin-bottom: 7px;\n";
+				$colour_bar_style .= 	"border-bottom-width: unset!important;\n\t";
+				$colour_bar_style .= 	"margin-bottom: 7px;\n";
 				$colour_bar_style .= "}\n";
 				$css .= $colour_bar_style;
 			}
+		}
+		if (!$custom_colours_set || $logo_focus_invert) {
+			$logo_focus_invert_style  = ".govuk-header a:focus img {\n\t";
+			$logo_focus_invert_style .= 	"filter: invert(1) hue-rotate(180deg);\n";
+			$logo_focus_invert_style .= "}\n";
+			$css .= $logo_focus_invert_style;
 		}
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w") or die("Unable to create file!");
 		fwrite($css_file, $css);
@@ -204,7 +211,7 @@ function generate_custom_colours() {
 				$colour_to_use = $colour_default;
 			}
 			if (!empty($colour_to_use) ) {
-				if ($colour_array[$i][4] == "svg") {
+				if (preg_match("/svg/i", $colour_array[$i][4])) {
 					$colour_to_use = str_replace('#',"%23",$colour_to_use);
 				}
 				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);

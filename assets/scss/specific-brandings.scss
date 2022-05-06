@@ -8,7 +8,7 @@
 		padding-bottom: 1em;
 
 		a:focus img {
-			filter: invert(1) hue-rotate(180deg);
+//			filter: invert(1) hue-rotate(180deg);
 		}
 
 		.hale-header__logotype-text--custom {
@@ -45,7 +45,7 @@
 			min-height: 49px;
 
 			a:focus img {
-				filter: invert(1) hue-rotate(180deg);
+	//			filter: invert(1) hue-rotate(180deg);
 			}
 		}
 	}
@@ -70,14 +70,14 @@
 .hale-branding--neptune {
 
 	.govuk-skip-link:focus {
-		outline-color: $colour_capri_teal;
+//		outline-color: $colour_capri_teal;
 	}
 
 	.govuk-header .govuk-header__logo {
 		min-height: 49px;
 
 		a:focus img {
-			filter: invert(1) hue-rotate(180deg);
+//			filter: invert(1) hue-rotate(180deg);
 		}
 	}
 

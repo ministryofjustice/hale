@@ -346,7 +346,7 @@ function hale_customize_register( $wp_customize ) {
 	 * -----------------------------------------------------------
 	 */
 	$wp_customize->add_setting(
-		'gds_style_checkbox',
+		'gds_style_tickbox',
 		array(
 			'default'			=> '',
 			'sanitize_callback'	=> 'hale_sanitize_checkbox',
@@ -354,12 +354,12 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'gds_style_checkbox',
+		'gds_style_tickbox',
 		array(
 			'label'			=> esc_html__( 'Use Government Colours', 'hale' ),
 			'section'		=> 'colors',
 			'type'			=> 'checkbox',
-			'settings'		=> 'gds_style_checkbox',
+			'settings'		=> 'gds_style_tickbox',
 		)
 	);
 
@@ -380,7 +380,7 @@ function hale_customize_register( $wp_customize ) {
 			'choices'     => hale_get_theme_colours(),
 			'active_callback' => function () use ( $wp_customize ) {
 				return (
-					( $wp_customize->get_setting('gds_style_checkbox')->value() == 0)
+					( $wp_customize->get_setting('gds_style_tickbox')->value() == 0)
 				);
 			},
 		)
@@ -402,7 +402,31 @@ function hale_customize_register( $wp_customize ) {
 			'type'        => 'color',
 			'active_callback' => function () use ( $wp_customize ) {
 				return (
-					( $wp_customize->get_setting('gds_style_checkbox')->value() == 1 )
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 1 )
+				);
+			},
+		)
+	);
+
+	$wp_customize->add_setting(
+		'logo_focus_invert_tickbox',
+		array(
+			'default'			=> 'yes',
+			'sanitize_callback'	=> 'hale_sanitize_checkbox',
+		)
+	);
+
+	$wp_customize->add_control(
+		'logo_focus_invert_tickbox',
+		array(
+			'label'			=> esc_html__( 'Invert logo on focus', 'hale' ),
+			'description'	=> esc_html__( 'This will depend on the focus colour. The logo might not contrast well with the focus colour so it might need to be inverted for correct colour contrast.', 'hale' ),
+			'section'		=> 'colors',
+			'type'			=> 'checkbox',
+			'settings'		=> 'logo_focus_invert_tickbox',
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
 				);
 			},
 		)
@@ -426,7 +450,7 @@ function hale_customize_register( $wp_customize ) {
 				'type'        => 'text',
 				'active_callback' => function () use ( $wp_customize ) {
 					return (
-						( $wp_customize->get_setting('gds_style_checkbox')->value() == 0)
+						( $wp_customize->get_setting('gds_style_tickbox')->value() == 0)
 					);
 				},
 			)

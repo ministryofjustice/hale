@@ -16,6 +16,16 @@
 		$currentPageBlue = '#1D8FEB'; //this has to be okay contrast against black, so is separated out from other blues
 		$headerMenuLineGrey = '#2E3133';
 
+		/*
+		array format
+		0 = colour ID
+		1 = default value
+		2 = title for entry
+		3 = description/hint text
+		4 = options
+			svg = the colour is used as part of an SVG value and the # is replaced with %23
+			text = accepts non-colour values
+		*/
 		$colour_array = array(
 			//header
 			['header-bg',$black,'Header background','',''],
