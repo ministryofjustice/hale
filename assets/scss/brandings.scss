@@ -234,7 +234,7 @@
 				}
 
 				&:hover {
-					background: var(-- header-search-btn-hover-bg);
+					background: var(--header-search-btn-hover-bg);
 					box-shadow: 0 1px 0 var(--header-search-btn-hover-bg);
 
 					svg {
@@ -243,7 +243,7 @@
 				}
 
 				&:focus, &:active {
-					background: var(-- header-search-btn-focus-bg);
+					background: var(--header-search-btn-focus-bg);
 					box-shadow: 0 1px 0 var(--header-search-btn-focus-bg);
 
 					svg {
@@ -260,10 +260,10 @@
 
 				&[aria-expanded=true] {
 					background-position-y: -7px;
-					background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ var(--mobile-controls) + "'/%3E%3C/svg%3E");
+					background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='" + var(--mobile-controls) + "'/%3E%3C/svg%3E");
 
 					&:not(:hover):focus {
-						background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ var(--mobile-controls-focus) + "'/%3E%3C/svg%3E");
+						background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='" + var(--mobile-controls-focus) + "'/%3E%3C/svg%3E");
 					}
 				}
 
@@ -301,10 +301,6 @@
 				.govuk-header__menu-button {
 
 					color: var(--header-link);
-
-					&:hover:focus {
-						color: var(--header-link-hover-focus);
-					}
 
 					&:focus:not(:hover) {
 						color: var(--header-link-focus);

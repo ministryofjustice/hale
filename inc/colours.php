@@ -25,6 +25,7 @@
 			['header-link-focus',$black,'Header link focus','',''],
 			['header-link-focus-highlight',$yellow,'Header link focus highlight','',''],
 			['header-link-focus-underline',$black,'Header link focus underline','',''],
+			['header-link-hover-focus',$black,'Header link hover when focussed','',''],
 			['header-link-mobile-border',$headerMenuLineGrey,'Mobile menu divider line','',''],
 			['header-search-input-bg',$white,'Search box background','',''],
 			['header-search-input-border',$white,'Search box border','',''],
@@ -102,7 +103,7 @@
 
 			['mojblocks-highlights-list-bg',$white,'Highlights list background','',''],
 			['mojblocks-highlights-list-title',$black,'Highlights list title','',''],
-			['mojblocks-highlights-list-title',$black,'Highlights list text','',''],
+			['mojblocks-highlights-list-text',$black,'Highlights list text','',''],
 
 			['mojblocks-reveal-title',$blue,'Reveal title','',''],
 			['mojblocks-reveal-title-hover',$darkBlue,'Reveal title hover','',''],

@@ -145,7 +145,7 @@ function generate_custom_colours() {
 
 	$upload_file_path = wp_get_upload_dir()["basedir"];
 	$upload_file_path_exists = is_dir($upload_file_path);
-	$main_css_file = 'app/themes/hale/dist/css/style.min.css';
+	$main_css_file = 'app/themes/hale/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
 	$colour_array = get_colours() or die("no colour array");
 	$custom_colours_set = ! get_theme_mod("gds_style_checkbox");

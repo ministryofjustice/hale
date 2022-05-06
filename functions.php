@@ -226,8 +226,9 @@ function hale_scripts() {
     // CSS
     $browser_is_IE = (isset($_SERVER['HTTP_USER_AGENT']) && ( (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false ) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false) ) );
 
-    if (!$browser_is_IE) wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
+    wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
+    if (!$browser_is_IE) wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
     if (is_customize_preview()) {
         $css_file_name = "/temp-colours.css";
