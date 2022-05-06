@@ -52,10 +52,10 @@
 			['header-search-btn-focus-icon',$black,'Search button focus icon','',''],
 			['header-submenu-arrow',$black,'Submenu arrow','',''],
 			['header-submenu-arrow-focus',$black,'Submenu arrow focus','',''],
-			['header-submenu-bg',$black,'Submenu background','Desktop only, narrow displays extend the main colour',''],
-			['header-submenu-link-mobile',$black,'Submenu link (mobile)','',''],
+			['header-submenu-bg',$lightGrey,'Submenu background','Desktop only, narrow displays extend the main colour',''],
+			['header-submenu-top-border',$headerMenuLineGrey,'Submenu top dividing line','',''],
+			['header-submenu-link-mobile',$white,'Submenu link (mobile)','',''],
 			['header-submenu-link',$black,'Submenu link (desktop)','',''],
-			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 
 			//mobile controls
