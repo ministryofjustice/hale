@@ -1,7 +1,7 @@
 /**********************
     Colours
 **********************/
-
+/*
 $colour_snow_white_tint: rgba(255,255,255,0.70);
 $colour_snow_white_hsl_tint: hsla(0,0%,100%,.2);
 $colour_light_grey: #e5e5e5;
@@ -605,6 +605,7 @@ $brandings: (
     tag-focus-text: govuk-colour("white"),
   )
 );
+//*/
 
 @mixin branding($brandings: $brandings, $gutenberg-styles: false) {
 	@each $brand, $map in $brandings {
@@ -636,7 +637,7 @@ $brandings: (
 
 	}
 }
-
+/*
 @function branded($key) {
 	@return map-get($branding-map, $key);
 }

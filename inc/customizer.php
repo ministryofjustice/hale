@@ -364,29 +364,6 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
-		'theme_colour',
-		array(
-			'default'           => 'neptune',
-			'sanitize_callback' => 'hale_sanitize_select',
-		)
-	);
-	$wp_customize->add_control(
-		'theme_colour',
-		array(
-			'label'       => esc_html__( 'Theme Branding', 'hale' ),
-			'description' => esc_html__( 'Select the look and feel of the site.', 'hale' ),
-			'section'     => 'colors',
-			'type'        => 'select',
-			'choices'     => hale_get_theme_colours(),
-			'active_callback' => function () use ( $wp_customize ) {
-				return (
-					( $wp_customize->get_setting('gds_style_tickbox')->value() == 0)
-				);
-			},
-		)
-	);
-
-	$wp_customize->add_setting(
 		'colour_bar',
 		array(
 			'default'           => '#1D70B8',

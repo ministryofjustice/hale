@@ -55,7 +55,9 @@
 			['header-submenu-bg',$lightGrey,'Submenu background','Desktop only, narrow displays extend the main colour',''],
 			['header-submenu-top-border',$headerMenuLineGrey,'Submenu top dividing line','',''],
 			['header-submenu-link-mobile',$white,'Submenu link (mobile)','',''],
+			['header-submenu-link-mobile-current',$white,'Submenu link (mobile) current page','',''],
 			['header-submenu-link',$black,'Submenu link (desktop)','',''],
+			['header-submenu-link-current',$black,'Submenu link (desktop) current page','',''],
 			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 
 			//mobile controls

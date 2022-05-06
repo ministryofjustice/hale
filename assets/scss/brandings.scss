@@ -361,6 +361,7 @@
 							color: var(--header-link-focus);
 							background-color: var(--header-link-focus-highlight);
 							border-bottom-color: var(--header-link-focus-underline);
+							box-shadow: 0 -2px var(--header-link-focus-highlight), 0 4px var(--header-link-focus-underline);
 						}
 
 						&:hover {
@@ -410,6 +411,9 @@
 
 							&:hover {
 								border-bottom-color: var(--header-submenu-link-hover-underline);
+							}
+							&:focus:not(:hover) {
+								box-shadow: none;
 							}
 						}
 						li.current-menu-item a,
@@ -512,6 +516,11 @@
 		max-width: 500px;
 		white-space: nowrap;
 		text-overflow: ellipsis;
+		border-bottom: 3px solid transparent;
+
+		&:focus-within {
+			border-bottom-color: var(--link-focus);
+		}
 	}
 
 	//link focus state
