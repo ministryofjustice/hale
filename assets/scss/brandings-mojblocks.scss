@@ -10,41 +10,41 @@
       .govuk-accordion__controls {
         .govuk-accordion__open-all {
 
-          color: branded(mojblocks-accordion-controls);
+          color: var(--mojblocks-accordion-controls);
 
           &:hover {
-            color: branded(mojblocks-accordion-controls-hover);
+            color: var(--mojblocks-accordion-controls-hover);
           }
         }
       }
       .govuk-accordion__section-heading,
       .govuk-accordion__section-button {
 
-        color: branded(mojblocks-accordion-section-title);
+        color: var(--mojblocks-accordion-section-title);
 
         &:before {
-          border-color: branded(mojblocks-accordion-section-title);
+          border-color: var(--mojblocks-accordion-section-title);
         }
 
         &:hover {
-          color: branded(mojblocks-accordion-section-title-hover);
+          color: var(--mojblocks-accordion-section-title-hover);
 
           &:before {
-            border-color: branded(mojblocks-accordion-section-title-hover);
+            border-color: var(--mojblocks-accordion-section-title-hover);
           }
         }
 
         &:focus {
-          color: branded(mojblocks-accordion-section-title-focus);
-          background-color: branded(mojblocks-accordion-section-title-focus-bg);
-          box-shadow: 0 -2px branded(mojblocks-accordion-section-title-focus-bg), 0 4px branded(mojblocks-accordion-section-title-focus-shadow);
+          color: var(--mojblocks-accordion-section-title-focus);
+          background-color: var(--mojblocks-accordion-section-title-focus-bg);
+          box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
         }
 
         .govuk-accordion__section-button {
           &:focus {
-            color: branded(mojblocks-accordion-section-title-focus);
-            background-color: branded(mojblocks-accordion-section-title-focus-bg);
-            box-shadow: 0 -2px branded(mojblocks-accordion-section-title-focus-bg), 0 4px branded(mojblocks-accordion-section-title-focus-shadow);
+            color: var(--mojblocks-accordion-section-title-focus);
+            background-color: var(--mojblocks-accordion-section-title-focus-bg);
+            box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
           }
         }
 
@@ -53,43 +53,43 @@
 
     //CTA Block
     .wp-block-mojblocks-cta {
-      background-color: branded(mojblocks-cta-bg);
+      background-color: var(--mojblocks-cta-bg);
 
       .mojblocks-cta__heading-text {
-        color: branded(mojblocks-cta-title);
+        color: var(--mojblocks-cta-title);
 
       }
 
       .mojblocks-cta__content p {
-        color: branded(mojblocks-cta-text);
+        color: var(--mojblocks-cta-text);
       }
     }
 
     .mojblocks-hero {
       .mojblocks-hero__image {
-        background-color: branded(mojblocks-hero-bg);
+        background-color: var(--mojblocks-hero-bg);
       }
     }
     //Highlights List Block
     .mojblocks-highlights-list {
-      background-color: branded(mojblocks-highlights-list-bg);
+      background-color: var(--mojblocks-highlights-list-bg);
 
       &__heading-text {
-        color: branded(mojblocks-highlights-list-title);
+        color: var(--mojblocks-highlights-list-title);
       }
 
       .mojblocks-highlights-list__content li {
-        color: branded(mojblocks-highlights-list-text);
+        color: var(--mojblocks-highlights-list-text);
 
         a,
         a:link,
         a:link:visited
         a:link:visited:not([class]){
-          color: branded(mojblocks-highlights-list-text);
+          color: var(--mojblocks-highlights-list-text);
         }
 
         &:before {
-          background-color: branded(mojblocks-divider);
+          background-color: var(--mojblocks-divider);
         }
       }
     }
@@ -97,16 +97,16 @@
     //Reveal Block
     .wp-block-mojblocks-reveal {
       .govuk-details__summary {
-        color: branded(mojblocks-reveal-title);
+        color: var(--mojblocks-reveal-title);
 
         &:hover {
-          color: branded(mojblocks-reveal-title-hover);
+          color: var(--mojblocks-reveal-title-hover);
         }
 
         &:focus {
-          color: branded(mojblocks-reveal-title-focus);
-          background-color: branded(mojblocks-reveal-title-focus-bg);
-          box-shadow: 0 -2px branded(mojblocks-reveal-title-focus-bg), 0 4px branded(mojblocks-reveal-title-focus-shadow);
+          color: var(--mojblocks-reveal-title-focus);
+          background-color: var(--mojblocks-reveal-title-focus-bg);
+          box-shadow: 0 -2px var(--mojblocks-reveal-title-focus-bg), 0 4px var(--mojblocks-reveal-title-focus-shadow);
         }
       }
     }
@@ -114,36 +114,36 @@
     //Staggered Box Block
     .mojblocks-staggered-box {
       .mojblocks-staggered-box__text-container {
-        background: branded(mojblocks-staggered-box-bg);
+        background: var(--mojblocks-staggered-box-bg);
 
         .mojblocks-staggered-box__title {
 
-          color: branded(mojblocks-staggered-box-title);
+          color: var(--mojblocks-staggered-box-title);
 
           &:before {
-            background: branded(mojblocks-divider);
+            background: var(--mojblocks-divider);
           }
         }
 
         .mojblocks-staggered-box__content {
-          color: branded(mojblocks-staggered-box-text);
+          color: var(--mojblocks-staggered-box-text);
         }
 
         .mojblocks-staggered-box__button {
-          border-color: branded(mojblocks-staggered-box-btn-border);
-          color: branded(mojblocks-staggered-box-btn-text);
-          background: branded(mojblocks-staggered-box-btn-bg);
+          border-color: var(--mojblocks-staggered-box-btn-border);
+          color: var(--mojblocks-staggered-box-btn-text);
+          background: var(--mojblocks-staggered-box-btn-bg);
 
           &:hover {
-            border-color: branded(mojblocks-staggered-box-btn-hover-border);
-            color: branded(mojblocks-staggered-box-btn-hover-text);
-            background: branded(mojblocks-staggered-box-btn-hover-bg);
+            border-color: var(--mojblocks-staggered-box-btn-hover-border);
+            color: var(--mojblocks-staggered-box-btn-hover-text);
+            background: var(--mojblocks-staggered-box-btn-hover-bg);
           }
 
           &:focus {
-            border-color: branded(mojblocks-staggered-box-btn-focus-border);
-            color: branded(mojblocks-staggered-box-btn-focus-text);
-            background: branded(mojblocks-staggered-box-btn-focus-bg);
+            border-color: var(--mojblocks-staggered-box-btn-focus-border);
+            color: var(--mojblocks-staggered-box-btn-focus-text);
+            background: var(--mojblocks-staggered-box-btn-focus-bg);
           }
 
         }
@@ -167,7 +167,7 @@
     }
     //bar colour
     .mojblocks-divider-bar-before-shaded:before {
-      background: branded(mojblocks-divider);
+      background: var(--mojblocks-divider);
     }
     .mojblocks-divider-bar-before:before {
       background: currentColor;
@@ -179,35 +179,35 @@
     a.mojblocks-button,
     .wp-block-button__link,
     .govuk-button {
-			border:branded(button-border);
-			box-shadow: 0 1px 0 branded(button);
-			color:branded(button-text);
-			background-color:branded(button);
+			border:var(--button-border);
+			box-shadow: 0 1px 0 var(--button);
+			color:var(--button-text);
+			background-color:var(--button);
 			&:hover {
-				background-color: branded(button-hover);
-				color: branded(button-hover-text);
-				box-shadow: 0 1px 0 branded(button-hover);
-				border-color: branded(link-focus);
+				background-color: var(--button-hover);
+				color: var(--button-hover-text);
+				box-shadow: 0 1px 0 var(--button-hover);
+				border-color: var(--link-focus);
 				svg {
-					fill: branded(button-hover-text);
+					fill: var(--button-hover-text);
 				}
 			}
 			&:active {
-				background-color: branded(button-active);
+				background-color: var(--button-active);
 				box-shadow: none;
 			}
 			&:focus {
-				background-color: branded(button-focus);
-				color: branded(button-focus-text);
-				box-shadow: 0 0 0 3px branded(button-focus-outline);
+				background-color: var(--button-focus);
+				color: var(--button-focus-text);
+				box-shadow: 0 0 0 3px var(--button-focus-outline);
 			}
 			&:focus:not(:active):not(:hover) {
-				background-color: branded(button-focus);
-				color: branded(button-focus-text);
-				box-shadow: 0 0 0 3px branded(button-focus-outline);
+				background-color: var(--button-focus);
+				color: var(--button-focus-text);
+				box-shadow: 0 0 0 3px var(--button-focus-outline);
 			}
 			svg {
-				fill: branded(button-text);
+				fill: var(--button-text);
 			}
 		}
   }

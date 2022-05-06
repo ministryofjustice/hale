@@ -213,12 +213,40 @@ add_action('after_setup_theme', 'hale_content_width', 0);
 /**
  * Enqueue scripts and styles.
  */
-function hale_scripts()
-{
+
+function action_customize_save_after( $array ) {
+    $upload_file_path = wp_get_upload_dir()["basedir"];
+    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
+    rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to rename file!");
+};
+
+add_action( 'customize_save_after', 'action_customize_save_after', 10, 1 );
+
+function hale_scripts() {
     // CSS
-    wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
+    $browser_is_IE = (isset($_SERVER['HTTP_USER_AGENT']) && ( (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false ) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false) ) );
+
+    if (!$browser_is_IE) wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
-    wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . "/custom-colours.css");
+
+    if (is_customize_preview()) {
+        $css_file_name = "/temp-colours.css";
+        $css_file_name_IE = "/temp-colours-ie.css";
+    } else {
+        $css_file_name = "/custom-colours.css";
+        $css_file_name_IE = "/custom-colours-ie.css";
+    }
+
+
+    if (is_ssl()) {
+        //wp_get_upload_dir()["baseurl"] only returns http.
+        $baseURL = str_replace('http://','https://',wp_get_upload_dir()["baseurl"]);
+        if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
+        wp_enqueue_style('hale-custom-colours-ie', $baseURL . $css_file_name_IE);
+    } else {
+        if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
+        wp_enqueue_style('hale-custom-colours-ie', wp_get_upload_dir()["baseurl"] . $css_file_name_IE);
+    }
 
     // JS
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "3.11.0", true);

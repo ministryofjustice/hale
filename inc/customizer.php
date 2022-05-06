@@ -346,6 +346,24 @@ function hale_customize_register( $wp_customize ) {
 	 * -----------------------------------------------------------
 	 */
 	$wp_customize->add_setting(
+		'gds_style_checkbox',
+		array(
+			'default'			=> '',
+			'sanitize_callback'	=> 'hale_sanitize_checkbox',
+		)
+	);
+
+	$wp_customize->add_control(
+		'gds_style_checkbox',
+		array(
+			'label'			=> esc_html__( 'Use Government Colours', 'hale' ),
+			'section'		=> 'colors',
+			'type'			=> 'checkbox',
+			'settings'		=> 'gds_style_checkbox',
+		)
+	);
+
+	$wp_customize->add_setting(
 		'theme_colour',
 		array(
 			'default'           => 'neptune',
@@ -360,6 +378,33 @@ function hale_customize_register( $wp_customize ) {
 			'section'     => 'colors',
 			'type'        => 'select',
 			'choices'     => hale_get_theme_colours(),
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					( $wp_customize->get_setting('gds_style_checkbox')->value() == 0)
+				);
+			},
+		)
+	);
+
+	$wp_customize->add_setting(
+		'colour_bar',
+		array(
+			'default'           => '#1D70B8',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		'colour_bar',
+		array(
+			'label'       => esc_html__( 'Header bar colour', 'hale' ),
+			'description' => esc_html__( 'Beneath the black header is a colour bar which can be a departmental colour', 'hale' ),
+			'section'     => 'colors',
+			'type'        => 'color',
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					( $wp_customize->get_setting('gds_style_checkbox')->value() == 1 )
+				);
+			},
 		)
 	);
 
@@ -369,7 +414,7 @@ function hale_customize_register( $wp_customize ) {
 			$colour_array[$i][0],
 			array(
 				'default'           => $colour_array[$i][1],
-				'sanitize_callback' => 'sanitize_hex_color',
+				'sanitize_callback' => $colour_array[$i][4] == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
 			)
 		);
 		$wp_customize->add_control(
@@ -379,6 +424,11 @@ function hale_customize_register( $wp_customize ) {
 				'description' => esc_html__( $colour_array[$i][3], 'hale' ),
 				'section'     => 'colors',
 				'type'        => 'text',
+				'active_callback' => function () use ( $wp_customize ) {
+					return (
+						( $wp_customize->get_setting('gds_style_checkbox')->value() == 0)
+					);
+				},
 			)
 		);
 	}

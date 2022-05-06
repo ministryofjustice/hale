@@ -141,32 +141,85 @@ function hale_sidebar_location( $sidebar ) {
 	return $sidefloat;
 }
 
-function hale_get_branding_class() {
-	$css_file_path = wp_get_upload_dir()["basedir"];
-	$css_file_path_exists = is_dir($css_file_path);
-	$colour_array = get_colours();
+function generate_custom_colours() {
 
-	if ( $css_file_path_exists ) {
-		$css = ":root {\n";
+	$upload_file_path = wp_get_upload_dir()["basedir"];
+	$upload_file_path_exists = is_dir($upload_file_path);
+	$main_css_file = 'app/themes/hale/dist/css/style.min.css';
+	$main_css_file_exists = file_exists($main_css_file);
+	$colour_array = get_colours() or die("no colour array");
+	$custom_colours_set = ! get_theme_mod("gds_style_checkbox");
+
+	if ($upload_file_path_exists) {
+		if ($custom_colours_set) {
+			$css = ":root {\n";
+			for($i=0;$i<count($colour_array);$i++) {
+				$colour_id = $colour_array[$i][0];
+				$colour_default = $colour_array[$i][1];
+				$theme_mod = get_theme_mod($colour_id,$colour_default);
+				if (!empty($theme_mod) ) {
+					$css .= "\t--$colour_id:$theme_mod;\n";
+				}
+			}
+			$css .= "}\n";
+		} else {
+			$css = ":root {\n";
+			for($i=0;$i<count($colour_array);$i++) {
+				$colour_id = $colour_array[$i][0];
+				$colour_default = $colour_array[$i][1];
+				$css .= "\t--$colour_id:$colour_default;\n";
+			}
+			$css .= "}\n";
+			$theme_mod = get_theme_mod('colour_bar','#1D70B8');
+			if (!empty($theme_mod) ) {
+				$css .= ".govuk-header__container {\n\t";
+				$css .= "border-bottom: 10px solid $theme_mod!important;\n";
+				$css .= "}\n";
+			}
+		}
+		$css_file = fopen($upload_file_path."/temp-colours.css", "w") or die("Unable to create file!");
+		fwrite($css_file, $css);
+		fclose($css_file);
+
+		//IE compatible way
+		$level_count = substr_count($_SERVER['PHP_SELF'], '/');
+		$level = "/";
+		for($i = $level_count; $i--; $i<=0) {
+			$level .= "../";
+		}
+		//Really awkward way of getting the main css file :(
+		copy(__DIR__ ."/../../../../".$main_css_file,$upload_file_path."/temp-colours-ie.css") or die("That didn't work");
+		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or die("unable to get file contents");
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = $colour_array[$i][0];
 			$colour_default = $colour_array[$i][1];
-			$theme_mod = get_theme_mod($colour_id,$colour_default);
-			if (!empty($theme_mod) ) {
-				$css .= "\t--$colour_id:$theme_mod;\n";
+			if ($custom_colours_set) {
+				$colour_to_use = get_theme_mod($colour_id,$colour_default);
+			} else {
+				$colour_to_use = $colour_default;
+			}
+			if (!empty($colour_to_use) ) {
+				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 			}
 		}
-		$css .= "}\n";
-		$css .= 'h1, h2 {
-			color: red!important;
-		}'; //temporary probe to check whether CSS is being picked up
-		$css_file = fopen($css_file_path."/temp.css", "w") or die("Unable to open file!");
-		if (fwrite($css_file, $css)) {
-			rename ($css_file_path."/temp.css", $css_file_path."/custom-colours.css") or die ("Unable to rename file!");
-		};
+		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w") or die("Unable to read file!");
+		fwrite($css_file, $css) or die("oh no!!!");
+		fclose($css_file);
 	}
-/**/
-    $colour_array = [
+}
+
+function save_custom_colours() {
+	rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to save custom colours!");
+	rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to save custom colours for IE!");
+}
+
+function hale_get_branding_class() {
+
+    if (is_customize_preview()) {
+		generate_custom_colours();
+	}
+
+	$colour_array = [
         '0f0228' => 'venus',
         '143859' => 'earth',
         '336c83' => 'uranus',
@@ -198,7 +251,6 @@ function hale_custom_page_colour( $classes ) {
 }
 
 add_filter( 'body_class', 'hale_custom_page_colour' );
-
 
 function hale_admin_custom_page_colour( $classes ) {
 
