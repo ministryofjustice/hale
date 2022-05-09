@@ -14,10 +14,10 @@ add_action('template_redirect', 'hale_disable_archives_function');
 
 function hale_disable_archives_function()
 {
-    // Allow specific archives to display
-    $post_types = ['news'];
 
-  if ( (is_archive() && !is_post_type_archive( $post_types )) )
+  // Currently only apply to specific archive pages,
+  // as others are being used on other sites
+  if ((is_archive() && is_tax('page_category')))
   {
       global $wp_query;
       $wp_query->set_404();
