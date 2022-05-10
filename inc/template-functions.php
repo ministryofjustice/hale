@@ -160,6 +160,8 @@ function generate_custom_colours() {
 				$theme_mod = get_theme_mod($colour_id,$colour_default);
 				if (!empty($theme_mod) ) {
 					$css .= "\t--$colour_id:$theme_mod;\n";
+				} else {
+					$css .= "\t--$colour_id:$colour_default;\n";
 				}
 			}
 			$css .= "}\n";
@@ -230,23 +232,7 @@ function hale_get_branding_class() {
 		generate_custom_colours();
 	}
 
-	$colour_array = [
-        '0f0228' => 'venus',
-        '143859' => 'earth',
-        '336c83' => 'uranus',
-        '0c223f' => 'neptune',
-        '34393e' => 'pluto',
-        '0b0c0c' => 'eris'
-    ];
-
-    $colour = get_theme_mod( 'theme_colour', '0c223f' );
-
-    if ( !empty($colour) ) {
-        $theme_colour_name = 'hale-branding--' . $colour_array[ $colour ];
-        return $theme_colour_name;
-    } else {
-        return 'hale-branding--neptune'; //none set = use Neptune
-    }
+    return "hale-site-" . get_current_blog_id();
 }
 
 /**
