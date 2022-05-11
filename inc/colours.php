@@ -24,7 +24,6 @@
 		2 = title for entry
 		3 = description/hint text
 		4 = options
-			svg = the colour is used as part of an SVG value and the # is replaced with %23
 			text = accepts non-colour values
 		*/
 		$colour_array = array(
@@ -60,13 +59,9 @@
 			['header-submenu-link-current',$black,'Submenu link (desktop) current page','',''],
 			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 
-			//mobile controls
-			['mobile-controls',$white,'Mobile controls','The menu and the search icon','svg'],
-			['mobile-controls-focus',$black,'Mobile controls (focussed)','The menu and the search icon','svg'],
-
 			//Misc
 			['title-shading',$white,'Title shading','',''],
-			['cat-nav-arrows',$black,'Category navication arrows','','svg'],
+			['cat-nav-arrows',$black,'Category navication arrows','',''],
 
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
