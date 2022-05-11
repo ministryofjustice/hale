@@ -212,13 +212,13 @@ function generate_custom_colours() {
 			} else {
 				$colour_to_use = $colour_default;
 			}
-			if (!empty($colour_to_use) ) {
-				//first checks for any svg colours that need dealing with, these need the # replaced with %23
-				//(These are identified by the suffix -svg in the colour variable)
-				$colour_to_use_SVG = str_replace('#',"%23",$colour_to_use);
-				$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
-				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
-			}
+			if (empty($colour_to_use)) $colour_to_use = $colour_default;
+
+			//first checks for any svg colours that need dealing with, these need the # replaced with %23
+			//(These are identified by the suffix -svg in the colour variable)
+			$colour_to_use_SVG = str_replace('#',"%23",$colour_to_use);
+			$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
+			$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 		}
 		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w") or die("Unable to read file!");
 		if (isset($colour_bar_style)) $css .= $colour_bar_style;

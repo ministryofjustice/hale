@@ -140,20 +140,10 @@
         li.current-menu-item a:visited,
         li.current-menu-item a:link,
         li.current-menu-item a:link:visited{
-          color:  govuk-colour("white");
           padding-left: 25px;
 
           @media (min-width: 48.0625em) {
             padding-left: 0px;
-            color:  govuk-colour("black");
-          }
-
-          &:hover {
-            border-bottom-color: govuk-colour("black");
-          }
-
-          &:focus {
-            color:  govuk-colour("black");
           }
         }
       }
@@ -340,7 +330,6 @@
     &:focus,
     &:not(:hover):focus {
       background-color: unset;
-      color: govuk-colour("white");
       box-shadow: none;
       border-bottom:none;
     }
@@ -350,7 +339,6 @@
   }
 
   .govuk-header__navigation {
-    border-top: 1px solid hsl(202,6%,35%,0.5);;
     li {
       padding:0;
       a {
@@ -378,10 +366,6 @@
 
         &:not(:hover) {
           border-bottom-color: transparent;
-        }
-
-        &:hover {
-          border-bottom-color: govuk-colour("white");
         }
 
         &:focus:not(:active):not(:hover),

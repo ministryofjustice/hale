@@ -36,7 +36,7 @@
 			['header-link-focus-highlight',$yellow,'Header link focus highlight','',''],
 			['header-link-focus-underline',$black,'Header link focus underline','',''],
 			['header-link-hover-focus',$black,'Header link hover when focussed','',''],
-			['header-link-mobile-border',$headerMenuLineGrey,'Mobile menu divider line','',''],
+			['header-divider-line',$headerMenuLineGrey,'Menu divider lines','',''],
 			['header-search-input-bg',$white,'Search box background','',''],
 			['header-search-input-border',$white,'Search box border','',''],
 			['header-search-input-focus-bg',$white,'Search box focus background','',''],
