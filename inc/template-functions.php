@@ -151,10 +151,11 @@ function get_colours_from_json() {
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = $colour_array[$i][0];
 			$jason_colour = $jason[$colour_id];
-			$colour_default = $colour_array[$i][1];
-			set_theme_mod($colour_id,$jason_colour); //sets the colours to those in the JSON
+			if (get_theme_mod($colour_id) != $jason_colour) //if JSON colour is different from current colour
+				set_theme_mod($colour_id,$jason_colour); //sets the colours to those in the JSON
 		}
 		//wp_delete_attachment("customizer_setting_json");
+		//set_theme_mod("customizer_setting_json","");
 		return $jason;
 	} else {
 		return false;
