@@ -63,6 +63,7 @@
 		}
 	}
 
+	//Hero Block
 	.mojblocks-hero {
 		.mojblocks-hero__image {
 			background-color: var(--mojblocks-hero-bg);
@@ -174,7 +175,8 @@
 	// all buttons in blocks
 	// .wp-block-button__link is used here to extend our colours to the core WP button block
 	.mojblocks-button,
-	a.mojblocks-button,
+	a.mojblocks-button:link,
+	a.mojblocks-button:visited,
 	.wp-block-button__link,
 	.govuk-button {
 		border:var(--button-border);

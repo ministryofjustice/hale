@@ -235,7 +235,7 @@
 
 			.hale-search__submit {
 				background: var(--header-search-btn-bg);
-				box-shadow: 0 1px 0 var(--header-search-btn-bg);
+				box-shadow: 0 1px 0 0 var(--header-search-btn-bg);
 
 				svg {
 					fill: var(--header-search-btn-icon);
@@ -243,7 +243,7 @@
 
 				&:hover {
 					background: var(--header-search-btn-hover-bg);
-					box-shadow: 0 1px 0 var(--header-search-btn-hover-bg);
+					box-shadow: 0 1px 0 0 var(--header-search-btn-hover-bg);
 
 					svg {
 						fill: var(--header-search-btn-hover-icon);
@@ -260,6 +260,7 @@
 				}
 
 				&:focus:not(:active):not(:hover) {
+					background: var(--header-search-btn-focus-bg);
 					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
 				}
 			}
