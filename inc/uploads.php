@@ -23,3 +23,9 @@ add_filter(
         return $filetypes;
     }
 );
+
+function add_upload_mimes( $types ) {
+    $types['json'] = 'application/json';
+    return $types;
+}
+add_filter( 'upload_mimes', 'add_upload_mimes' );

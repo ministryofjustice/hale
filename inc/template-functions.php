@@ -141,7 +141,28 @@ function hale_sidebar_location( $sidebar ) {
 	return $sidefloat;
 }
 
+function get_colours_from_json() {
+	$jason_file = get_theme_mod("customizer_setting_json");
+	if ($jason_file) {
+		$jason_string = file_get_contents($jason_file);
+		$jason = json_decode($jason_string, true);
+		$colour_array = get_colours() or die("no colour array");
+
+		for($i=0;$i<count($colour_array);$i++) {
+			$colour_id = $colour_array[$i][0];
+			$jason_colour = $jason[$colour_id];
+			$colour_default = $colour_array[$i][1];
+			set_theme_mod($colour_id,$jason_colour); //sets the colours to those in the JSON
+		}
+		//wp_delete_attachment("customizer_setting_json");
+		return $jason;
+	} else {
+		return false;
+	}
+}
+
 function generate_custom_colours() {
+	$jason = get_colours_from_json();
 
 	$upload_file_path = wp_get_upload_dir()["basedir"];
 	$upload_file_path_exists = is_dir($upload_file_path);
@@ -152,7 +173,15 @@ function generate_custom_colours() {
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
 
 	if ($upload_file_path_exists) {
-		if ($custom_colours_set) {
+		if ($jason) {
+			$css = ":root {\n";
+			for($i=0;$i<count($colour_array);$i++) {
+				$colour_id = $colour_array[$i][0];
+				$jason_colour = $jason[$colour_id];
+				$css .= "\t--$colour_id:$jason_colour;\n";
+			}
+			$css .= "}\n";
+		} elseif ($custom_colours_set) {
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = $colour_array[$i][0];
@@ -207,7 +236,9 @@ function generate_custom_colours() {
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = $colour_array[$i][0];
 			$colour_default = $colour_array[$i][1];
-			if ($custom_colours_set) {
+			if ($jason) {
+				$colour_to_use = $jason[$colour_id];
+			} elseif ($custom_colours_set) {
 				$colour_to_use = get_theme_mod($colour_id,$colour_default);
 			} else {
 				$colour_to_use = $colour_default;
