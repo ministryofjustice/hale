@@ -163,9 +163,7 @@ function get_colours_from_json() {
 }
 
 function generate_custom_colours() {
-	$jason = get_colours_from_json();
-
-	$upload_file_path = wp_get_upload_dir()["basedir"];
+	$upload_file_path = wp_get_upload_dir()["basedir"]; //for PHP-created CSS file
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$main_css_file = get_template_directory().'/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
@@ -173,8 +171,14 @@ function generate_custom_colours() {
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
 
+	if ($custom_colours_set) {
+		$jason = get_colours_from_json();
+	} else {
+		$jason = false;
+	}
+
 	if ($upload_file_path_exists) {
-		if ($jason) {
+		if ($jason) { // JSON file
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = $colour_array[$i][0];
@@ -182,7 +186,7 @@ function generate_custom_colours() {
 				$css .= "\t--$colour_id:$jason_colour;\n";
 			}
 			$css .= "}\n";
-		} elseif ($custom_colours_set) {
+		} elseif ($custom_colours_set) { //custom scheme
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = $colour_array[$i][0];
@@ -195,18 +199,20 @@ function generate_custom_colours() {
 				}
 			}
 			$css .= "}\n";
-		} else {
+		} else { //GDS Scheme
+			$colour_bar_colour = get_theme_mod('colour_bar','#1D70B8');
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = $colour_array[$i][0];
 				$colour_default = $colour_array[$i][1];
+				$colour_options = $colour_array[$i][4];
+				if ($colour_options == "brand-colour") $colour_default = $colour_bar_colour;
 				$css .= "\t--$colour_id:$colour_default;\n";
 			}
 			$css .= "}\n";
-			$theme_mod = get_theme_mod('colour_bar','#1D70B8');
-			if (!empty($theme_mod) && strcasecmp($theme_mod, "#FFF") != 0 && strcasecmp($theme_mod, "#FFFFFF") != 0) {
+			if (!empty($colour_bar_colour) && strcasecmp($colour_bar_colour, "#FFF") != 0 && strcasecmp($colour_bar_colour, "#FFFFFF") != 0) {
 				$colour_bar_style  = ".govuk-header__container {\n\t";
-				$colour_bar_style .= 	"border-bottom: 10px solid $theme_mod!important;\n";
+				$colour_bar_style .= 	"border-bottom: 10px solid $colour_bar_colour!important;\n";
 				$colour_bar_style .= "}\n";
 				$colour_bar_style .= ".govuk-header {\n\t";
 				$colour_bar_style .= 	"border-bottom-width: unset!important;\n\t";
@@ -237,11 +243,14 @@ function generate_custom_colours() {
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = $colour_array[$i][0];
 			$colour_default = $colour_array[$i][1];
-			if ($jason) {
+			$colour_options = $colour_array[$i][4];
+			if ($jason) { //JSON file uploaded
 				$colour_to_use = $jason[$colour_id];
-			} elseif ($custom_colours_set) {
+			} elseif ($custom_colours_set) { //custom colours set
 				$colour_to_use = get_theme_mod($colour_id,$colour_default);
-			} else {
+			} else { //GDS colours
+				$colour_bar_colour = get_theme_mod('colour_bar','#1D70B8');
+				if ($colour_options == "brand-colour") $colour_default = $colour_bar_colour;
 				$colour_to_use = $colour_default;
 			}
 			if (empty($colour_to_use)) $colour_to_use = $colour_default;

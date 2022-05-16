@@ -19,11 +19,12 @@ add_filter(
         if (! in_array('webp', $filetypes, true)) {
             $filetypes[] = 'webp';
         }
-        $filetypes   = implode(' ', $filetypes);
+        $filetypes = implode(' ', $filetypes);
         return $filetypes;
     }
 );
 
+//Add if admin condition to this !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function add_upload_mimes( $types ) {
     $types['json'] = 'application/json';
     return $types;

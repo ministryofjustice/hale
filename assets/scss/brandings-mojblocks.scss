@@ -88,7 +88,7 @@
 			}
 
 			&:before {
-				background-color: var(--mojblocks-divider);
+				background-color: var(--mojblocks-highlights-list-bar);
 			}
 		}
 	}
@@ -120,7 +120,7 @@
 				color: var(--mojblocks-staggered-box-title);
 
 				&:before {
-					background: var(--mojblocks-divider);
+					background: var(--mojblocks-staggered-box-bar);
 				}
 			}
 
@@ -147,29 +147,6 @@
 
 			}
 		}
-	}
-
-	//coloured divider bar above
-	.mojblocks-divider-bar-before,
-	.mojblocks-divider-bar-before-shaded {
-		margin-top: 1rem;
-		position: relative;
-
-		&:before { //bar
-			content: "";
-			width: 3.5rem;
-			height: 0.5rem;
-			position: absolute;
-			top: -1rem;
-			pointer-events: none;
-		}
-	}
-	//bar colour
-	.mojblocks-divider-bar-before-shaded:before {
-		background: var(--mojblocks-divider);
-	}
-	.mojblocks-divider-bar-before:before {
-		background: currentColor;
 	}
 
 	// all buttons in blocks

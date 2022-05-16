@@ -25,6 +25,8 @@
 		3 = description/hint text
 		4 = options
 			text = accepts non-colour values
+			brand-colour = uses the brand colour as the default in GDS mode
+			We can use this to add more options if needed
 		*/
 		$colour_array = array(
 			//header
@@ -93,8 +95,6 @@
 			['button-active',$buttonHoverGreen,'Button active','',''],
 
 			//mojblocks - these are usually things not found in GOV.UK sites
-			['mojblocks-divider',$yellow,'Little divider bar','',''],
-
 			['mojblocks-accordion-section-title',$blue,'Accordion titles/links/controls','',''],
 			['mojblocks-accordion-section-title-hover',$darkBlue,'Accordion titles/links/controls hover','',''],
 			['mojblocks-accordion-section-title-focus',$black,'Accordion titles and links focus','',''],
@@ -110,6 +110,7 @@
 			['mojblocks-highlights-list-bg',$white,'Highlights list background','',''],
 			['mojblocks-highlights-list-title',$black,'Highlights list title','',''],
 			['mojblocks-highlights-list-text',$black,'Highlights list text','',''],
+			['mojblocks-highlights-list-bar',$blue,'Little bar','','brand-colour'],
 
 			['mojblocks-staggered-box-bg',$darkGrey,'Staggered box background','',''],
 			['mojblocks-staggered-box-title',$white,'Staggered box title','',''],
@@ -123,6 +124,7 @@
 			['mojblocks-staggered-box-btn-focus-border',$black,'Staggered box button focus text','',''],
 			['mojblocks-staggered-box-btn-focus-bg',$yellow,'Staggered box button focus text','',''],
 			['mojblocks-staggered-box-btn-focus-text',$black,'Staggered box button focus text','',''],
+			['mojblocks-staggered-box-bar',$yellow,'Little bar','',''],
 
 			//Tags
 			['tag-bg',$lightGrey,'Tag background','',''],
