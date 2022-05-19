@@ -44,7 +44,8 @@ function hale_get_current_colour_branding() {
     for( $i=0; $i < count($colour_array); $i++) {
         $colour_id = $colour_array[$i][0];
         $colour_default = $colour_array[$i][1];
-        $colour_key_value_pairs[] .= $colour_id . '"' .':'. '"' . $colour_default;
+        $theme_mod = get_theme_mod($colour_id, $colour_default);
+        $colour_key_value_pairs[] .= $colour_id . '"' .':'. '"' . $theme_mod;
     }
    
     // Encode into JSON format
