@@ -8,6 +8,11 @@
  */
 
 /**
+ * Export theme color branding class
+ */
+require get_template_directory() . '/inc/colour-branding-export.php';
+
+/**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
@@ -389,7 +394,6 @@ function hale_customize_register( $wp_customize ) {
 		'transport'         => 'refresh'
 	));
 
-
 	$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'customizer_setting_json', array(
 		'label'             => __('Import JSON file', 'hale'),
 		'section'           => 'colors',
@@ -400,6 +404,20 @@ function hale_customize_register( $wp_customize ) {
 			);
 		},
 	)));
+
+	// Export controls
+	$wp_customize->add_setting('customizer_export_json', array(
+		'default' => '',
+		'type'	  => 'none'
+	));
+
+	// Title and description are handled in the Hale_Export_Color_Brand_Control class
+	$wp_customize->add_control( new Hale_Export_Color_Brand_Control( $wp_customize, 
+		'customizer_export_json', 
+		array(
+			'section' => 'colors',
+			'settings' => 'customizer_export_json',
+		)));
 
 	$wp_customize->add_setting(
 		'logo_focus_invert_tickbox',
