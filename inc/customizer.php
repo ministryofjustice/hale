@@ -394,16 +394,19 @@ function hale_customize_register( $wp_customize ) {
 		'transport'         => 'refresh'
 	));
 
-	$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'customizer_setting_json', array(
-		'label'             => __('Import JSON file', 'hale'),
-		'section'           => 'colors',
-		'settings'          => 'customizer_setting_json',
-		'active_callback' => function () use ( $wp_customize ) {
-			return (
-				($wp_customize->get_setting('gds_style_tickbox')->value() == 0 )
-			);
-		},
-	)));
+	$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 
+		'customizer_setting_json', 
+		array(
+			'label'             => __('Import JSON file', 'hale'),
+			'section'           => 'colors',
+			'settings'          => 'customizer_setting_json',
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0 )
+				);
+			},
+		)
+	));
 
 	// Export controls
 	$wp_customize->add_setting('customizer_export_json', array(
@@ -417,7 +420,13 @@ function hale_customize_register( $wp_customize ) {
 		array(
 			'section' => 'colors',
 			'settings' => 'customizer_export_json',
-		)));
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0 )
+				);
+			},
+		)
+	));
 
 	$wp_customize->add_setting(
 		'logo_focus_invert_tickbox',

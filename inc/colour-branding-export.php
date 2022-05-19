@@ -39,6 +39,8 @@ add_action( 'admin_post_export_color_branding_json', 'hale_init_file_export' );
 function hale_get_current_colour_branding() {
 
     $colour_array = get_colours();
+
+    $colour_key_value_pairs = array();
     
     // Build the JSON structure from colours array
     for( $i=0; $i < count($colour_array); $i++) {
@@ -84,8 +86,8 @@ function hale_init_file_export() {
     $site_id = get_current_blog_id();
 
     // Set the download headers
-    // Example file output "hale-5-color-brand-export-20220517230228.json"
-    header( 'Content-disposition: attachment; filename=' . $theme . '-' . $site_id . '-' . 'color-brand-export' . '-' . $time_stamp . '.json' );
+    // Example file output "hale-5-colour-brand-export-20220517230228.json"
+    header( 'Content-disposition: attachment; filename=' . $theme . '-' . $site_id . '-' . 'colour-brand-export' . '-' . $time_stamp . '.json' );
     header( 'Content-Type: application/octet-stream; charset=' . $charset );
 
     // Export data to file
