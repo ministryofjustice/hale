@@ -435,6 +435,7 @@
 	}
 	.mojblocks-button,
 	a.mojblocks-button,
+	.govuk-button:link,
 	.govuk-button {
 		border:var(--button-border);
 		box-shadow: 0 1px 0 var(--button);
