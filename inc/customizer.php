@@ -350,136 +350,138 @@ function hale_customize_register( $wp_customize ) {
 	 * Theme colour chooser
 	 * -----------------------------------------------------------
 	 */
-	$wp_customize->add_setting(
-		'gds_style_tickbox',
-		array(
-			'default'			=> '',
-			'sanitize_callback'	=> 'hale_sanitize_checkbox',
-		)
-	);
+    if( current_user_can('administrator') ) {
+        $wp_customize->add_setting(
+            'gds_style_tickbox',
+            array(
+                'default' => '',
+                'sanitize_callback' => 'hale_sanitize_checkbox',
+            )
+        );
 
-	$wp_customize->add_control(
-		'gds_style_tickbox',
-		array(
-			'label'			=> esc_html__( 'Use Government Colours', 'hale' ),
-			'section'		=> 'colors',
-			'type'			=> 'checkbox',
-			'settings'		=> 'gds_style_tickbox',
-		)
-	);
+        $wp_customize->add_control(
+            'gds_style_tickbox',
+            array(
+                'label' => esc_html__('Use Government Colours', 'hale'),
+                'section' => 'colors',
+                'type' => 'checkbox',
+                'settings' => 'gds_style_tickbox',
+            )
+        );
 
-	$wp_customize->add_setting(
-		'colour_bar',
-		array(
-			'default'           => '#1D70B8',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		'colour_bar',
-		array(
-			'label'       => esc_html__( 'Header bar colour', 'hale' ),
-			'description' => esc_html__( 'Beneath the black header is a colour bar which can be a departmental or brand colour (#FFF for none)', 'hale' ),
-			'section'     => 'colors',
-			'type'        => 'color',
-			'active_callback' => function () use ( $wp_customize ) {
-				return (
-					($wp_customize->get_setting('gds_style_tickbox')->value() == 1 )
-				);
-			},
-		)
-	);
+        $wp_customize->add_setting(
+            'colour_bar',
+            array(
+                'default' => '#1D70B8',
+                'sanitize_callback' => 'sanitize_hex_color',
+            )
+        );
+        $wp_customize->add_control(
+            'colour_bar',
+            array(
+                'label' => esc_html__('Header bar colour', 'hale'),
+                'description' => esc_html__('Beneath the black header is a colour bar which can be a departmental or brand colour (#FFF for none)', 'hale'),
+                'section' => 'colors',
+                'type' => 'color',
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('gds_style_tickbox')->value() == 1)
+                    );
+                },
+            )
+        );
 
-	$wp_customize->add_setting('customizer_setting_json', array(
-		'transport'         => 'refresh'
-	));
+        $wp_customize->add_setting('customizer_setting_json', array(
+            'transport' => 'refresh'
+        ));
 
-	$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 
-		'customizer_setting_json', 
-		array(
-			'label'             => __('Import JSON file', 'hale'),
-			'section'           => 'colors',
-			'settings'          => 'customizer_setting_json',
-			'active_callback' => function () use ( $wp_customize ) {
-				return (
-					($wp_customize->get_setting('gds_style_tickbox')->value() == 0 )
-				);
-			},
-		)
-	));
+        $wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,
+            'customizer_setting_json',
+            array(
+                'label' => __('Import JSON file', 'hale'),
+                'section' => 'colors',
+                'settings' => 'customizer_setting_json',
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+                    );
+                },
+            )
+        ));
 
-	// Export controls
-	$wp_customize->add_setting('customizer_export_json', array(
-		'default' => '',
-		'type'	  => 'none'
-	));
+        // Export controls
+        $wp_customize->add_setting('customizer_export_json', array(
+            'default' => '',
+            'type' => 'none'
+        ));
 
-	// Title and description are handled in the Hale_Export_Color_Brand_Control class
-	$wp_customize->add_control( new Hale_Export_Color_Brand_Control( $wp_customize, 
-		'customizer_export_json', 
-		array(
-			'section' => 'colors',
-			'settings' => 'customizer_export_json',
-			'active_callback' => function () use ( $wp_customize ) {
-				return (
-					($wp_customize->get_setting('gds_style_tickbox')->value() == 0 )
-				);
-			},
-		)
-	));
+        // Title and description are handled in the Hale_Export_Color_Brand_Control class
+        $wp_customize->add_control(new Hale_Export_Color_Brand_Control($wp_customize,
+            'customizer_export_json',
+            array(
+                'section' => 'colors',
+                'settings' => 'customizer_export_json',
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+                    );
+                },
+            )
+        ));
 
-	$wp_customize->add_setting(
-		'logo_focus_invert_tickbox',
-		array(
-			'default'			=> 'yes',
-			'sanitize_callback'	=> 'hale_sanitize_checkbox',
-		)
-	);
+        $wp_customize->add_setting(
+            'logo_focus_invert_tickbox',
+            array(
+                'default' => 'yes',
+                'sanitize_callback' => 'hale_sanitize_checkbox',
+            )
+        );
 
-	$wp_customize->add_control(
-		'logo_focus_invert_tickbox',
-		array(
-			'label'			=> esc_html__( 'Invert logo on focus', 'hale' ),
-			'description'	=> esc_html__( 'This will depend on the focus colour. The logo might not contrast well with the focus colour so it might need to be inverted for correct colour contrast.', 'hale' ),
-			'section'		=> 'colors',
-			'type'			=> 'checkbox',
-			'settings'		=> 'logo_focus_invert_tickbox',
-			'active_callback' => function () use ( $wp_customize ) {
-				return (
-					($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
-				);
-			},
-		)
-	);
+        $wp_customize->add_control(
+            'logo_focus_invert_tickbox',
+            array(
+                'label' => esc_html__('Invert logo on focus', 'hale'),
+                'description' => esc_html__('This will depend on the focus colour. The logo might not contrast well with the focus colour so it might need to be inverted for correct colour contrast.', 'hale'),
+                'section' => 'colors',
+                'type' => 'checkbox',
+                'settings' => 'logo_focus_invert_tickbox',
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+                    );
+                },
+            )
+        );
 
-	$colour_array = get_colours();
-	for($i=0;$i<count($colour_array);$i++) {
-		$wp_customize->add_setting(
-			$colour_array[$i][0],
-			array(
-				'default'           => $colour_array[$i][1],
-				'sanitize_callback' => $colour_array[$i][4] == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control(
-			$colour_array[$i][0],
-			array(
-				'label'       => esc_html__( $colour_array[$i][2], 'hale' ),
-				'description' => esc_html__( $colour_array[$i][3], 'hale' ),
-				'section'     => 'colors',
-				'type'        => 'text',
-				'active_callback' => function () use ( $wp_customize ) {
-			//		return ($wp_customize->get_setting('gds_style_tickbox')->value() == 0);
-					return (
-						($wp_customize->get_setting('gds_style_tickbox')->value() == 0
-						 &&
-						 !$wp_customize->get_setting('customizer_setting_json')->value())
-					);
-				},
-			)
-		);
-	}
+        $colour_array = get_colours();
+        for ($i = 0; $i < count($colour_array); $i++) {
+            $wp_customize->add_setting(
+                $colour_array[$i][0],
+                array(
+                    'default' => $colour_array[$i][1],
+                    'sanitize_callback' => $colour_array[$i][4] == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
+                )
+            );
+            $wp_customize->add_control(
+                $colour_array[$i][0],
+                array(
+                    'label' => esc_html__($colour_array[$i][2], 'hale'),
+                    'description' => esc_html__($colour_array[$i][3], 'hale'),
+                    'section' => 'colors',
+                    'type' => 'text',
+                    'active_callback' => function () use ($wp_customize) {
+                        //		return ($wp_customize->get_setting('gds_style_tickbox')->value() == 0);
+                        return (
+                        ($wp_customize->get_setting('gds_style_tickbox')->value() == 0
+                            &&
+                            !$wp_customize->get_setting('customizer_setting_json')->value())
+                        );
+                    },
+                )
+            );
+        }
 
+    }
 	/*
 	 * ------------------------------------------------------------
 	 * SECTION: Layout
