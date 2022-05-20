@@ -40,6 +40,7 @@ function hale_get_current_colour_branding() {
 
     $colour_array = get_colours();
 
+    // Declare blank array to be used in the for loop
     $colour_key_value_pairs = array();
     
     // Build the JSON structure from colours array
