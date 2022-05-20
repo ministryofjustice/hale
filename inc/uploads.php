@@ -24,9 +24,10 @@ add_filter(
     }
 );
 
-//Add if admin condition to this !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-function add_upload_mimes( $types ) {
-    $types['json'] = 'application/json';
-    return $types;
+if( current_user_can('administrator') ) {
+    function add_upload_mimes( $types ) {
+        $types['json'] = 'application/json';
+        return $types;
+    }
+    add_filter( 'upload_mimes', 'add_upload_mimes' );
 }
-add_filter( 'upload_mimes', 'add_upload_mimes' );
