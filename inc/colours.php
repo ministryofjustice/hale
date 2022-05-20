@@ -156,4 +156,20 @@
 
 		return $colour_array;
 	}
+
+	function get_colour_id($colour_array_item) {
+		return $colour_array_item[0];
+	}
+	function get_colour_default($colour_array_item) {
+		return $colour_array_item[1];
+	}
+	function get_colour_designation($colour_array_item) {
+		return $colour_array_item[2];
+	}
+	function get_colour_hint($colour_array_item) {
+		return $colour_array_item[3];
+	}
+	function get_colour_options($colour_array_item) {
+		return $colour_array_item[4];
+	}
 ?>

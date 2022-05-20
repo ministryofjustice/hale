@@ -4,9 +4,9 @@
  * Export Colour Branding Class
  *
  * @param WP_Customize_Control Customizer object.
- */
+*/
 
- add_action( 'customize_register', 'hale_export_color_customize_register' );
+add_action( 'customize_register', 'hale_export_color_customize_register' );
 
 function hale_export_color_customize_register( $wp_customize ) {
 
@@ -45,8 +45,8 @@ function hale_get_current_colour_branding() {
 
 	// Build the JSON structure from colours array
 	for( $i=0; $i < count($colour_array); $i++) {
-		$colour_id = $colour_array[$i][0];
-		$colour_default = $colour_array[$i][1];
+		$colour_id = get_colour_id($colour_array[$i]);
+		$colour_default = get_colour_default($colour_array[$i]);
 		$theme_mod = get_theme_mod($colour_id, $colour_default);
 		$colour_key_value_pairs[] .= $colour_id . '"' .':'. '"' . $theme_mod;
 	}

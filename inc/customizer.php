@@ -458,18 +458,24 @@ function hale_customize_register( $wp_customize ) {
 
 		$colour_array = get_colours();
 		for ($i = 0; $i < count($colour_array); $i++) {
+			$colour_id = get_colour_id($colour_array[$i]);
+			$colour_default = get_colour_default($colour_array[$i]);
+			$colour_desig = get_colour_designation($colour_array[$i]);
+			$colour_hint = get_colour_hint($colour_array[$i]);
+			$colour_options = get_colour_options($colour_array[$i]);
+
 			$wp_customize->add_setting(
-				$colour_array[$i][0],
+				$colour_id,
 				array(
-					'default' => $colour_array[$i][1],
-					'sanitize_callback' => $colour_array[$i][4] == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
+					'default' => $colour_default,
+					'sanitize_callback' => $colour_options == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
 				)
 			);
 			$wp_customize->add_control(
-				$colour_array[$i][0],
+				$colour_id,
 				array(
-					'label' => esc_html__($colour_array[$i][2], 'hale'),
-					'description' => esc_html__($colour_array[$i][3], 'hale'),
+					'label' => esc_html__($colour_desig, 'hale'),
+					'description' => esc_html__($colour_hint, 'hale'),
 					'section' => 'colors',
 					'type' => 'text',
 					'active_callback' => function () use ($wp_customize) {

@@ -8,7 +8,7 @@ function get_colours_from_json() {
 		$colour_array = get_colours() or die("no colour array");
 
 		for($i=0;$i<count($colour_array);$i++) {
-			$colour_id = $colour_array[$i][0];
+			$colour_id = get_colour_id($colour_array[$i]);
 			$jason_colour = $jason[$colour_id];
 			if (get_theme_mod($colour_id) != $jason_colour) //if JSON colour is different from current colour
 				set_theme_mod($colour_id,$jason_colour); //sets the colours to those in the JSON
