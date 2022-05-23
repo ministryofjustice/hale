@@ -34,6 +34,11 @@
 		@extend .govuk-button;
 	}
 
+	//search page only style (affects search in header but not adversely so
+	.hale-search__input {
+		margin-bottom: 30px;
+	}
+
 	.news-story-category-link {
 		color: var(--tag-text);
 		background: var(--tag-bg);
@@ -261,7 +266,7 @@
 
 				&:focus:not(:active):not(:hover) {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
+					box-shadow: 0 0 0 3px var(--button-focus-outline);
 				}
 			}
 		}
