@@ -456,13 +456,13 @@ function hale_customize_register( $wp_customize ) {
 			)
 		);
 
-		$colour_array = get_colours();
+		$colour_array = hale_get_colours();
 		for ($i = 0; $i < count($colour_array); $i++) {
-			$colour_id = get_colour_id($colour_array[$i]);
-			$colour_default = get_colour_default($colour_array[$i]);
-			$colour_desig = get_colour_designation($colour_array[$i]);
-			$colour_hint = get_colour_hint($colour_array[$i]);
-			$colour_options = get_colour_options($colour_array[$i]);
+			$colour_id = hale_get_colour_id($colour_array[$i]);
+			$colour_default = hale_get_colour_default($colour_array[$i]);
+			$colour_desig = hale_get_colour_designation($colour_array[$i]);
+			$colour_hint = hale_get_colour_hint($colour_array[$i]);
+			$colour_options = hale_get_colour_options($colour_array[$i]);
 
 			$wp_customize->add_setting(
 				$colour_id,

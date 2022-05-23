@@ -12,17 +12,17 @@
 require get_template_directory() . '/inc/colour-branding-import.php';
 
 // This code creates the CSS files that are used to turn the colour options into a stylesheet
-function generate_custom_colours() {
+function hale_generate_custom_colours() {
 	$upload_file_path = wp_get_upload_dir()["basedir"]; //for PHP-created CSS file
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$main_css_file = get_template_directory().'/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
-	$colour_array = get_colours() or die("no colour array");
+	$colour_array = hale_get_colours() or die("no colour array");
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
 
 	if ($custom_colours_set) {
-		$jason = get_colours_from_json();
+		$jason = hale_get_colours_from_jason();
 	} else {
 		$jason = false;
 	}
@@ -31,7 +31,7 @@ function generate_custom_colours() {
 		if ($jason) { // JSON file
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
-				$colour_id = get_colour_id($colour_array[$i]);
+				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$jason_colour = $jason[$colour_id];
 				$css .= "\t--$colour_id:$jason_colour;\n";
 			}
@@ -39,8 +39,8 @@ function generate_custom_colours() {
 		} elseif ($custom_colours_set) { //custom scheme
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
-				$colour_id = get_colour_id($colour_array[$i]);
-				$colour_default = get_colour_default($colour_array[$i]);
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_default = hale_get_colour_default($colour_array[$i]);
 				$theme_mod = get_theme_mod($colour_id,$colour_default);
 				if (!empty($theme_mod) ) {
 					$css .= "\t--$colour_id:$theme_mod;\n";
@@ -53,9 +53,9 @@ function generate_custom_colours() {
 			$colour_bar_colour = get_theme_mod('colour_bar','#1D70B8');
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
-				$colour_id = get_colour_id($colour_array[$i]);
-				$colour_default = get_colour_default($colour_array[$i]);
-				$colour_options = get_colour_options($colour_array[$i]);
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_default = hale_get_colour_default($colour_array[$i]);
+				$colour_options = hale_get_colour_options($colour_array[$i]);
 				if ($colour_options == "brand-colour") $colour_default = $colour_bar_colour;
 				$css .= "\t--$colour_id:$colour_default;\n";
 			}
@@ -92,9 +92,9 @@ function generate_custom_colours() {
 		copy($main_css_file,$upload_file_path."/temp-colours-ie.css") or die("That didn't work");
 		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or die("unable to get file contents");
 		for($i=0;$i<count($colour_array);$i++) {
-			$colour_id = get_colour_id($colour_array[$i]);
-			$colour_default = get_colour_default($colour_array[$i]);
-			$colour_options = get_colour_options($colour_array[$i]);
+			$colour_id = hale_get_colour_id($colour_array[$i]);
+			$colour_default = hale_get_colour_default($colour_array[$i]);
+			$colour_options = hale_get_colour_options($colour_array[$i]);
 			if ($jason) { //JSON file uploaded
 				$colour_to_use = $jason[$colour_id];
 			} elseif ($custom_colours_set) { //custom colours set

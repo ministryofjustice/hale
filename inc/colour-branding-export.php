@@ -38,15 +38,15 @@ add_action( 'admin_post_export_color_branding_json', 'hale_init_file_export' );
  */
 function hale_get_current_colour_branding() {
 
-	$colour_array = get_colours();
+	$colour_array = hale_get_colours();
 
 	// Declare blank array to be used in the for loop
 	$colour_key_value_pairs = array();
 
 	// Build the JSON structure from colours array
 	for( $i=0; $i < count($colour_array); $i++) {
-		$colour_id = get_colour_id($colour_array[$i]);
-		$colour_default = get_colour_default($colour_array[$i]);
+		$colour_id = hale_get_colour_id($colour_array[$i]);
+		$colour_default = hale_get_colour_default($colour_array[$i]);
 		$theme_mod = get_theme_mod($colour_id, $colour_default);
 		$colour_key_value_pairs[] .= $colour_id . '"' .':'. '"' . $theme_mod;
 	}
