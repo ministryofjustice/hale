@@ -8,6 +8,11 @@
  */
 
 /**
+ * Export theme color branding class
+ */
+require get_template_directory() . '/inc/colour-branding-export.php';
+
+/**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.

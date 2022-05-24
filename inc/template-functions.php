@@ -141,6 +141,8 @@ function hale_sidebar_location( $sidebar ) {
 	return $sidefloat;
 }
 
+require get_template_directory() . '/inc/colour-branding.php';
+
 function hale_get_branding_class() {
 
 	if (is_customize_preview()) {
