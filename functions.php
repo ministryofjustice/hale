@@ -219,8 +219,8 @@ function action_customize_save_after( $array ) {
     // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.
 
     $upload_file_path = wp_get_upload_dir()["basedir"];
-    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
-    rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to rename file!");
+    if (file_exists($upload_file_path."/temp-colours.css")) rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
+    if (file_exists($upload_file_path."/temp-colours-ie.css")) rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css");
 };
 
 add_action( 'customize_save_after', 'action_customize_save_after', 10, 1 );
