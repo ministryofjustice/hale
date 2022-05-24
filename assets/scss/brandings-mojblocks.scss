@@ -13,6 +13,12 @@
 				&:hover {
 					color: var(--mojblocks-accordion-section-title-hover);
 				}
+
+				&:focus {
+					color: var(--mojblocks-accordion-section-title-focus);
+					background-color: var(--mojblocks-accordion-section-title-focus-bg);
+					box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
+				}
 			}
 		}
 		.govuk-accordion__section-heading,
