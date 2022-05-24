@@ -456,6 +456,15 @@ function hale_customize_register( $wp_customize ) {
 			)
 		);
 
+		$show_colours = function () use ($wp_customize) {
+			return (
+				(
+					$wp_customize->get_setting('gds_style_tickbox')->value() == 0
+					&&
+					!$wp_customize->get_setting('customizer_setting_json')->value()
+				)
+			);
+		};
 		$colour_array = hale_get_colours();
 		for ($i = 0; $i < count($colour_array); $i++) {
 			$colour_id = hale_get_colour_id($colour_array[$i]);
@@ -478,13 +487,7 @@ function hale_customize_register( $wp_customize ) {
 					'description' => esc_html__($colour_hint, 'hale'),
 					'section' => 'colors',
 					'type' => 'text',
-					'active_callback' => function () use ($wp_customize) {
-						return (
-						($wp_customize->get_setting('gds_style_tickbox')->value() == 0
-							&&
-							!$wp_customize->get_setting('customizer_setting_json')->value())
-						);
-					},
+					'active_callback' => $show_colours,
 				)
 			);
 		}
