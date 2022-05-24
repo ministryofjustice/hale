@@ -1,9 +1,9 @@
 <?php
 
 function hale_get_colours_from_jason() {
-	$jason_file = get_theme_mod("customizer_setting_json");
-	if ($jason_file) {
-		$jason_string = file_get_contents($jason_file);
+	$custom_colours_json = get_theme_mod("customizer_setting_json");
+	if ($custom_colours_json) {
+		$jason_string = file_get_contents($custom_colours_json);
 		$jason = json_decode($jason_string, true);
 		$colour_array = hale_get_colours() or die("no colour array");
 
