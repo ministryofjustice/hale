@@ -233,12 +233,13 @@ function hale_scripts() {
 //    wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
     if (!$browser_is_IE) wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
+    $t=time();
     if (is_customize_preview()) {
-        $css_file_name = "/temp-colours.css";
-        $css_file_name_IE = "/temp-colours-ie.css";
+        $css_file_name = "/temp-colours.css?t=$t";
+        $css_file_name_IE = "/temp-colours-ie.css?t=$t";
     } else {
-        $css_file_name = "/custom-colours.css";
-        $css_file_name_IE = "/custom-colours-ie.css";
+        $css_file_name = "/custom-colours.css?t=$t";
+        $css_file_name_IE = "/custom-colours-ie.css?t=$t";
     }
 
 
