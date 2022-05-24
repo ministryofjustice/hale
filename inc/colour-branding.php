@@ -28,6 +28,22 @@ function hale_generate_custom_colours() {
 	}
 
 	if ($upload_file_path_exists) {
+
+		//Create colour array with values from get_theme_mod for use in following for loops
+		$colour_value = array();
+		if ($custom_colours_set) {
+			for($i=0;$i<count($colour_array);$i++) {
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_default = hale_get_colour_default($colour_array[$i]);
+				$colour_options = hale_get_colour_options($colour_array[$i]);
+				$colour_value[$i] = array(
+										"id"=>$colour_id,
+										"value"=>get_theme_mod($colour_id,$colour_default),
+										"options"=>$colour_options
+									);
+			}
+		}
+
 		if ($jason) { // JSON file
 			$css = ":root {\n";
 			for($i=0;$i<count($colour_array);$i++) {
@@ -41,7 +57,7 @@ function hale_generate_custom_colours() {
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$colour_default = hale_get_colour_default($colour_array[$i]);
-				$theme_mod = get_theme_mod($colour_id,$colour_default);
+				$theme_mod = $colour_value[$i]["value"];
 				if (!empty($theme_mod) ) {
 					$css .= "\t--$colour_id:$theme_mod;\n";
 				} else {
@@ -91,6 +107,7 @@ function hale_generate_custom_colours() {
 		//Copy the main CSS file so it can be changed into an IE-friendly file
 		copy($main_css_file,$upload_file_path."/temp-colours-ie.css") or die("That didn't work");
 		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or die("unable to get file contents");
+
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = hale_get_colour_id($colour_array[$i]);
 			$colour_default = hale_get_colour_default($colour_array[$i]);
@@ -98,7 +115,7 @@ function hale_generate_custom_colours() {
 			if ($jason) { //JSON file uploaded
 				$colour_to_use = $jason[$colour_id];
 			} elseif ($custom_colours_set) { //custom colours set
-				$colour_to_use = get_theme_mod($colour_id,$colour_default);
+				$colour_to_use = $colour_value[$i]["value"];
 			} else { //GDS colours
 				$colour_bar_colour = get_theme_mod('colour_bar','#1D70B8');
 				if ($colour_options == "brand-colour") $colour_default = $colour_bar_colour;
