@@ -302,67 +302,189 @@ function hale_customize_register( $wp_customize ) {
 			'section'     => 'title_tagline',
 			'type'        => 'radio',
 			'choices'     => array(
-				'yes'   => esc_html__( 'Yes (show OGL link in footer)', 'hale' ),
-				'no' => esc_html__( 'No', 'hale' ),
+				'yes'     => esc_html__( 'Yes (show OGL link in footer)', 'hale' ),
+				'no'      => esc_html__( 'No', 'hale' ),
 			),
 		)
 	);
 
-    $wp_customize->add_setting('copyright_img', array(
-        'sanitize_callback' => 'hale_sanitize_image'
-    ));
+	$wp_customize->add_setting('copyright_img', array(
+		'sanitize_callback' => 'hale_sanitize_image'
+	));
 
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'copyright_img_control', array(
-        'label'       => esc_html__( 'Footer Copyright Image?', 'hale' ),
-        'description' => esc_html__( 'Select a copyright image for the footer', 'hale' ),
-        'settings'  => 'copyright_img',
-        'section'   => 'title_tagline'
-    ) ));
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,
+		'copyright_img_control',
+		array(
+			'label'       => esc_html__( 'Footer Copyright Image?', 'hale' ),
+			'description' => esc_html__( 'Select a copyright image for the footer', 'hale' ),
+			'settings'  => 'copyright_img',
+			'section'   => 'title_tagline'
+		)
+	));
 
-    $wp_customize->add_setting(
-        'copyright_additional_text',
-        array(
-            'sanitize_callback' => 'wp_kses_post',
-            'transport'   => 'refresh'
-        )
-    );
+	$wp_customize->add_setting(
+		'copyright_additional_text',
+		array(
+			'sanitize_callback' => 'wp_kses_post',
+			'transport'   => 'refresh'
+		)
+	);
 
-    $wp_customize->add_control(
-        'copyright_additional_text',
-        array(
-            'label'           => esc_html__( 'Copyright Additional Text', 'hale' ),
-            'description' => esc_html__( 'This text is shown next to copyright. It can include links.', 'hale' ),
-            'section'         => 'title_tagline',
-            'type'            => 'textarea',
-            'active_callback' => function () use ( $wp_customize ) {
-              return 'no' === $wp_customize->get_setting( 'crown_copyright' )->value();
-            },
-        )
-    );
+	$wp_customize->add_control(
+		'copyright_additional_text',
+		array(
+			'label'           => esc_html__( 'Copyright Additional Text', 'hale' ),
+			'description' => esc_html__( 'This text is shown next to copyright. It can include links.', 'hale' ),
+			'section'         => 'title_tagline',
+			'type'            => 'textarea',
+			'active_callback' => function () use ( $wp_customize ) {
+				return 'no' === $wp_customize->get_setting( 'crown_copyright' )->value();
+			},
+		)
+	);
 
 	/*
 	 * -----------------------------------------------------------
 	 * Theme colour chooser
 	 * -----------------------------------------------------------
 	 */
-	$wp_customize->add_setting(
-		'theme_colour',
-		array(
-			'default'           => 'neptune',
-			'sanitize_callback' => 'hale_sanitize_select',
-		)
-	);
-	$wp_customize->add_control(
-		'theme_colour',
-		array(
-			'label'       => esc_html__( 'Theme Branding', 'hale' ),
-			'description' => esc_html__( 'Select the look and feel of the site.', 'hale' ),
-			'section'     => 'colors',
-			'type'        => 'select',
-			'choices'     => hale_get_theme_colours(),
-		)
-	);
+	if( current_user_can('administrator') ) {
+		$wp_customize->add_setting(
+			'gds_style_tickbox',
+			array(
+				'default' => '',
+				'sanitize_callback' => 'hale_sanitize_checkbox',
+			)
+		);
 
+		$wp_customize->add_control(
+			'gds_style_tickbox',
+			array(
+				'label' => esc_html__('Use Government Colours', 'hale'),
+				'section' => 'colors',
+				'type' => 'checkbox',
+				'settings' => 'gds_style_tickbox',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'colour_bar',
+			array(
+				'default' => '#1D70B8',
+				'sanitize_callback' => 'sanitize_hex_color',
+			)
+		);
+		$wp_customize->add_control(
+			'colour_bar',
+			array(
+				'label' => esc_html__('Header bar colour', 'hale'),
+				'description' => esc_html__('Beneath the black header is a colour bar which can be a departmental or brand colour (#FFF for none)', 'hale'),
+				'section' => 'colors',
+				'type' => 'color',
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 1)
+					);
+				},
+			)
+		);
+
+		$wp_customize->add_setting('customizer_setting_json', array(
+			'transport' => 'refresh'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,
+			'customizer_setting_json',
+			array(
+				'label' => __('Import JSON file', 'hale'),
+				'section' => 'colors',
+				'settings' => 'customizer_setting_json',
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+					);
+				},
+			)
+		));
+
+		// Export controls
+		$wp_customize->add_setting('customizer_export_json', array(
+			'default' => '',
+			'type' => 'none'
+		));
+
+		// Title and description are handled in the Hale_Export_Color_Brand_Control class
+		$wp_customize->add_control(new Hale_Export_Color_Brand_Control($wp_customize,
+			'customizer_export_json',
+			array(
+				'section' => 'colors',
+				'settings' => 'customizer_export_json',
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+					);
+				},
+			)
+		));
+
+		$wp_customize->add_setting(
+			'logo_focus_invert_tickbox',
+			array(
+				'default' => 'yes',
+				'sanitize_callback' => 'hale_sanitize_checkbox',
+			)
+		);
+
+		$wp_customize->add_control(
+			'logo_focus_invert_tickbox',
+			array(
+				'label' => esc_html__('Invert logo on focus', 'hale'),
+				'description' => esc_html__('This will depend on the focus colour. The logo might not contrast well with the focus colour so it might need to be inverted for correct colour contrast.', 'hale'),
+				'section' => 'colors',
+				'type' => 'checkbox',
+				'settings' => 'logo_focus_invert_tickbox',
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+					);
+				},
+			)
+		);
+
+		$colour_array = hale_get_colours();
+		for ($i = 0; $i < count($colour_array); $i++) {
+			$colour_id = hale_get_colour_id($colour_array[$i]);
+			$colour_default = hale_get_colour_default($colour_array[$i]);
+			$colour_desig = hale_get_colour_designation($colour_array[$i]);
+			$colour_hint = hale_get_colour_hint($colour_array[$i]);
+			$colour_options = hale_get_colour_options($colour_array[$i]);
+
+			$wp_customize->add_setting(
+				$colour_id,
+				array(
+					'default' => $colour_default,
+					'sanitize_callback' => $colour_options == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
+				)
+			);
+			$wp_customize->add_control(
+				$colour_id,
+				array(
+					'label' => esc_html__($colour_desig, 'hale'),
+					'description' => esc_html__($colour_hint, 'hale'),
+					'section' => 'colors',
+					'type' => 'text',
+					'active_callback' => function () use ($wp_customize) {
+						return (
+						($wp_customize->get_setting('gds_style_tickbox')->value() == 0
+							&&
+							!$wp_customize->get_setting('customizer_setting_json')->value())
+						);
+					},
+				)
+			);
+		}
+
+	}
 	/*
 	 * ------------------------------------------------------------
 	 * SECTION: Layout

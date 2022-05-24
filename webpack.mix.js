@@ -7,6 +7,7 @@ mix_.setPublicPath('./dist')
   .sass('./assets/scss/style.scss', 'css/style.min.css')
   .sass('./assets/scss/style-gutenburg.scss', 'css/style-gutenburg.min.css')
   .sass('./assets/scss/page-colours.scss', 'css/page-colours.min.css')
+  .sass('./assets/scss/custom-branding.scss', 'css/custom-branding.min.css')
   .copy('./assets/js/*', 'dist/js/')
   .options({
     processCssUrls: false
