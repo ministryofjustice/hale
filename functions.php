@@ -313,6 +313,18 @@ function hale_mix_asset($filename)
 }
 
 /**
+ * Colour generate for preview and return site-specific class
+ */
+function hale_get_branding_class() {
+
+	if (is_customize_preview()) {
+		hale_generate_custom_colours();
+	}
+
+	return "hale-site-" . get_current_blog_id();
+}
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';

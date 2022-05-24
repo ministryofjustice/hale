@@ -143,15 +143,6 @@ function hale_sidebar_location( $sidebar ) {
 
 require get_template_directory() . '/inc/colour-branding.php';
 
-function hale_get_branding_class() {
-
-    if (is_customize_preview()) {
-		hale_generate_custom_colours();
-	}
-
-    return "hale-site-" . get_current_blog_id();
-}
-
 /**
  * Get the custom colour name to return into the body class if required
  *
