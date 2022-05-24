@@ -1,5 +1,7 @@
 <?php
 
+	require get_template_directory() . '/inc/colour-branding.php';
+
 	function hale_get_colours() {
 		//defaults
 		$white = '#FFF';

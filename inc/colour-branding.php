@@ -11,6 +11,11 @@
 // JSON import code
 require get_template_directory() . '/inc/colour-branding-import.php';
 
+/**
+ * Export theme color branding class - used in customizer
+ */
+require get_template_directory() . '/inc/colour-branding-export.php';
+
 // This code creates the CSS files that are used to turn the colour options into a stylesheet
 function hale_generate_custom_colours() {
 	$upload_file_path = wp_get_upload_dir()["basedir"]; //for PHP-created CSS file
