@@ -3,8 +3,8 @@
 function hale_get_colours_from_jason() {
 	$custom_colours_json = get_theme_mod("customizer_setting_json");
 	if ($custom_colours_json) {
-		$jason_string = file_get_contents($custom_colours_json);
-		$jason = json_decode($jason_string, true);
+		$custom_colours_json_string = file_get_contents($custom_colours_json);
+		$jason = json_decode($custom_colours_json_string, true);
 		$colour_array = hale_get_colours() or die("no colour array");
 
 		for($i=0;$i<count($colour_array);$i++) {
