@@ -17,7 +17,7 @@ function hale_generate_custom_colours() {
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$main_css_file = get_template_directory().'/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
-	$colour_array = hale_get_colours() or die("no colour array");
+	$colour_array = hale_get_colours() or print_r("no colour array");
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
 
@@ -93,7 +93,7 @@ function hale_generate_custom_colours() {
 			$logo_focus_invert_style .= "}\n";
 			$css .= $logo_focus_invert_style;
 		}
-		$css_file = fopen($upload_file_path."/temp-colours.css", "w") or die("Unable to create file!");
+		$css_file = fopen($upload_file_path."/temp-colours.css", "w") or print_r("Unable to create file!");
 		fwrite($css_file, $css);
 		fclose($css_file);
 
@@ -105,8 +105,8 @@ function hale_generate_custom_colours() {
 		}
 		
 		//Copy the main CSS file so it can be changed into an IE-friendly file
-		copy($main_css_file,$upload_file_path."/temp-colours-ie.css") or die("That didn't work");
-		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or die("unable to get file contents");
+		copy($main_css_file,$upload_file_path."/temp-colours-ie.css") or print_r("That didn't work");
+		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or print_r("unable to get file contents");
 
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = hale_get_colour_id($colour_array[$i]);
@@ -129,9 +129,9 @@ function hale_generate_custom_colours() {
 			$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
 			$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 		}
-		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w") or die("Unable to read file!");
+		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w") or print_r("Unable to read file!");
 		if (isset($colour_bar_style)) $css .= $colour_bar_style;
-		fwrite($css_file, $css) or die("Unable to write file!");
+		fwrite($css_file, $css) or print_r("Unable to write file!");
 		fclose($css_file);
 	}
 }
