@@ -105,7 +105,20 @@ function hale_generate_custom_colours() {
 		}
 		
 		//Copy the main CSS file so it can be changed into an IE-friendly file
-		if ($main_css_file_exists) copy($main_css_file,$upload_file_path."/temp-colours-ie.css");
+		if ($main_css_file_exists && $upload_file_path_exists) {
+			copy(
+				$main_css_file,
+				$upload_file_path."/temp-colours-ie.css"
+			);
+			trigger_error("Good: Main CSS file or Upload Path found!");
+		} else {
+			trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
+		}
+		if (file_exists($upload_file_path."/temp-colours-ie.css")) {
+			trigger_error("Good: CSS file copied successfully!");
+		} else {
+			trigger_error("!!!!! CSS file NOT copied successfully!");
+		}
 		$css = file_get_contents($upload_file_path."/temp-colours-ie.css");
 
 		for($i=0;$i<count($colour_array);$i++) {
@@ -129,6 +142,17 @@ function hale_generate_custom_colours() {
 			$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
 			$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 		}
+		trigger_error("Last colour = ".$colour_to_use); //should be white
+		if (str_contains($css, "var(--")) {
+			trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
+		} else {
+			trigger_error("Good: All CSS vars replaced."); //disconnect betwixt colours.php and css file
+		}
+		if (str_contains($css, "-svg")) {
+			trigger_error("!!!!! SVG variable replaced with non-SVG value!!!"); //Some SVG variables not replaced correctly
+		}
+
+
 		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w");
 		if (isset($colour_bar_style)) $css .= $colour_bar_style;
 		fwrite($css_file, $css);
