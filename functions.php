@@ -215,7 +215,6 @@ add_action('after_setup_theme', 'hale_content_width', 0);
  */
 
 function action_customize_save_after( $array ) {
-    // Proof of concept,
     // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.
 
     $upload_file_path = wp_get_upload_dir()["basedir"];
