@@ -17,7 +17,7 @@ function hale_generate_custom_colours() {
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$main_css_file = get_template_directory().'/dist/css/custom-branding.min.css';
 	$main_css_file_exists = file_exists($main_css_file);
-	$colour_array = hale_get_colours() or print_r("no colour array");
+	$colour_array = hale_get_colours();
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
 
@@ -93,7 +93,7 @@ function hale_generate_custom_colours() {
 			$logo_focus_invert_style .= "}\n";
 			$css .= $logo_focus_invert_style;
 		}
-		$css_file = fopen($upload_file_path."/temp-colours.css", "w") or print_r("Unable to create file!");
+		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
 		fwrite($css_file, $css);
 		fclose($css_file);
 
@@ -105,8 +105,21 @@ function hale_generate_custom_colours() {
 		}
 		
 		//Copy the main CSS file so it can be changed into an IE-friendly file
-		copy($main_css_file,$upload_file_path."/temp-colours-ie.css") or print_r("That didn't work");
-		$css = file_get_contents($upload_file_path."/temp-colours-ie.css") or print_r("unable to get file contents");
+		if ($main_css_file_exists && $upload_file_path_exists) {
+			copy(
+				$main_css_file,
+				$upload_file_path."/temp-colours-ie.css"
+			);
+			trigger_error("Good: Main CSS file or Upload Path found!");
+		} else {
+			trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
+		}
+		if (file_exists($upload_file_path."/temp-colours-ie.css")) {
+			trigger_error("Good: CSS file copied successfully!");
+		} else {
+			trigger_error("!!!!! CSS file NOT copied successfully!");
+		}
+		$css = file_get_contents($upload_file_path."/temp-colours-ie.css");
 
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = hale_get_colour_id($colour_array[$i]);
@@ -129,9 +142,20 @@ function hale_generate_custom_colours() {
 			$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
 			$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 		}
-		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w") or print_r("Unable to read file!");
+		trigger_error("Last colour = ".$colour_to_use); //should be white
+		if (str_contains($css, "var(--")) {
+			trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
+		} else {
+			trigger_error("Good: All CSS vars replaced."); //disconnect betwixt colours.php and css file
+		}
+		if (str_contains($css, "-svg")) {
+			trigger_error("!!!!! SVG variable replaced with non-SVG value!!!"); //Some SVG variables not replaced correctly
+		}
+
+
+		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w");
 		if (isset($colour_bar_style)) $css .= $colour_bar_style;
-		fwrite($css_file, $css) or print_r("Unable to write file!");
+		fwrite($css_file, $css);
 		fclose($css_file);
 	}
 }
