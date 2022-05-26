@@ -220,9 +220,9 @@ function action_customize_save_after( $array ) {
     clearstatcache();
     $upload_file_path = wp_get_upload_dir()["basedir"];
     // if (file_exists($upload_file_path."/temp-colours.css")) rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
-    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or print_r ("Unable to rename file!");
+    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
     // if (file_exists($upload_file_path."/temp-colours-ie.css")) rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to rename IE file!");
-    rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or print_r ("Unable to rename IE file!");
+    rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css");
 };
 
 add_action( 'customize_save_after', 'action_customize_save_after', 10, 1 );
