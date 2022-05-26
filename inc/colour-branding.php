@@ -104,23 +104,20 @@ function hale_generate_custom_colours() {
 			$level .= "../";
 		}
 		
+		clearstatcache();
+		
 		//Copy the main CSS file so it can be changed into an IE-friendly file
 		if ($main_css_file_exists && $upload_file_path_exists) {
-			copy(
-				$main_css_file,
-				$upload_file_path."/temp-colours-ie.css"
-			);
+			$css = file_get_contents($main_css_file);
 			trigger_error("Good: Main CSS file or Upload Path found!");
 		} else {
 			trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
 		}
-        clearstatcache();
-		if (file_exists($upload_file_path."/temp-colours-ie.css")) {
-			trigger_error("Good: CSS file copied successfully!");
+		if ($css) {
+			trigger_error("Good: CSS file contents successfully read!");
 		} else {
-			trigger_error("!!!!! CSS file NOT copied successfully!");
+			trigger_error("!!!!! CSS file NOT read successfully!");
 		}
-		$css = file_get_contents($upload_file_path."/temp-colours-ie.css");
 
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = hale_get_colour_id($colour_array[$i]);
@@ -152,7 +149,6 @@ function hale_generate_custom_colours() {
 		if (str_contains($css, "-svg")) {
 			trigger_error("!!!!! SVG variable replaced with non-SVG value!!!"); //Some SVG variables not replaced correctly
 		}
-
 
 		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w");
 		if (isset($colour_bar_style)) $css .= $colour_bar_style;
