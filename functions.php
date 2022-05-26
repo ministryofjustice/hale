@@ -217,6 +217,7 @@ add_action('after_setup_theme', 'hale_content_width', 0);
 function action_customize_save_after( $array ) {
     // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.
 
+    clearstatcache();
     $upload_file_path = wp_get_upload_dir()["basedir"];
     // if (file_exists($upload_file_path."/temp-colours.css")) rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
     rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or print_r ("Unable to rename file!");

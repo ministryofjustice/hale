@@ -114,6 +114,7 @@ function hale_generate_custom_colours() {
 		} else {
 			trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
 		}
+        clearstatcache();
 		if (file_exists($upload_file_path."/temp-colours-ie.css")) {
 			trigger_error("Good: CSS file copied successfully!");
 		} else {
