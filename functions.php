@@ -214,18 +214,18 @@ add_action('after_setup_theme', 'hale_content_width', 0);
  * Enqueue scripts and styles.
  */
 
-function action_customize_save_after( $array ) {
+function hale_action_customize_save_after( $array ) {
     // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.
 
     clearstatcache();
     $upload_file_path = wp_get_upload_dir()["basedir"];
-    // if (file_exists($upload_file_path."/temp-colours.css")) rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
-    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
     // if (file_exists($upload_file_path."/temp-colours-ie.css")) rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to rename IE file!");
     rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css");
+    // if (file_exists($upload_file_path."/temp-colours.css")) rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
+    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
 };
 
-add_action( 'customize_save_after', 'action_customize_save_after', 10, 1 );
+add_action( 'customize_save_after', 'hale_action_customize_save_after', 10, 1 );
 
 function hale_scripts() {
     // CSS
