@@ -219,9 +219,7 @@ function hale_action_customize_save_after( $array ) {
 
     clearstatcache();
     $upload_file_path = wp_get_upload_dir()["basedir"];
-    // if (file_exists($upload_file_path."/temp-colours-ie.css")) rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css") or die ("Unable to rename IE file!");
     rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css");
-    // if (file_exists($upload_file_path."/temp-colours.css")) rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css") or die ("Unable to rename file!");
     rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
 };
 
@@ -232,7 +230,6 @@ function hale_scripts() {
     $browser_is_IE = (isset($_SERVER['HTTP_USER_AGENT']) && ( (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false ) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false) ) );
 
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
-//    wp_enqueue_style('hale-page-colours', hale_mix_asset('/css/page-colours.min.css'));
     if (!$browser_is_IE) wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
     $t=time();
