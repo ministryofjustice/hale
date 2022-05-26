@@ -134,7 +134,6 @@ function hale_generate_custom_colours() {
 			$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
 			$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 		}
-		trigger_error("Last colour = ".$colour_to_use); //should be white
 		if (str_contains($css, "var(--")) {
 			trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
 		}
