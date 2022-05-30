@@ -136,6 +136,7 @@
 			['tag-focus-text',$black,'Tag focus text','',''],
 
 			//Cookie banner
+			['cookie-settings-text',$white,'Cookie settings (triangle) text and symbol','',''],
 			['cookie-settings-hover-bg',$black,'Cookie settings (triangle) hover background','',''],
 			['cookie-settings-hover-text',$white,'Cookie settings (triangle) hover text','',''],
 			['cookie-settings-focus-bg',$yellow,'Cookie settings (triangle) focus background','',''],
