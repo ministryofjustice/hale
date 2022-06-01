@@ -221,6 +221,9 @@ function hale_action_customize_save_after( $array ) {
     $upload_file_path = wp_get_upload_dir()["basedir"];
     rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css");
     rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
+  //  unlink(get_theme_mod("customizer_setting_json")); //deletes the file
+  //  remove_theme_mod("customizer_setting_json"); //sets the json file to nothing so individual colours can be set
+
 };
 
 add_action( 'customize_save_after', 'hale_action_customize_save_after', 10, 1 );

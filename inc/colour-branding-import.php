@@ -5,7 +5,7 @@ function hale_get_colours_from_jason() {
 	if ($custom_colours_json) {
 		$custom_colours_json_string = file_get_contents($custom_colours_json);
 		$jason = json_decode($custom_colours_json_string, true);
-		$colour_array = hale_get_colours() or die("no colour array");
+		$colour_array = hale_get_colours();
 
 		for($i=0;$i<count($colour_array);$i++) {
 			$colour_id = hale_get_colour_id($colour_array[$i]);

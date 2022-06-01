@@ -146,5 +146,34 @@ function hale_generate_custom_colours() {
 		fwrite($css_file, $css);
 		fclose($css_file);
 	}
+
+	trigger_error("ABC: ".get_theme_mod("customizer_setting_json"));
+	trigger_error("ABCD: ".wp_get_upload_dir()["basedir"]);
+	// this is a way of turning "http://jotwpublic.docker/app/uploads/sites/4/2022/05/Uranus.json"
+	// into "/bedrock/web/app/uploads/sites/4/2022/05/Uranus.json"
+	$json_location_path_array = explode("/",get_theme_mod("customizer_setting_json"));
+	$upload_path_array = explode("/",wp_get_upload_dir()["basedir"]);
+	trigger_error($json_location_path_array);
+	trigger_error("ZZZ".count($json_location_path_array));
+	for ($i=count($json_location_path_array)-1;$i>=0;$i--) {
+		if (
+			$upload_path_array[count($upload_path_array)-1] == $json_location_path_array[$i]
+			&&
+			$upload_path_array[count($upload_path_array)-2] == $json_location_path_array[$i-1]
+			&&
+			$upload_path_array[count($upload_path_array)-3] == $json_location_path_array[$i-2]
+			&&
+			$upload_path_array[count($upload_path_array)-4] == $json_location_path_array[$i-3]
+		) {
+			$relative_json_location = wp_get_upload_dir()["basedir"];
+			for ($j=$i+1; $j<count($json_location_path_array); $j++) {
+				$relative_json_location .= "/" . $json_location_path_array[$j];
+				trigger_error($j);
+			}
+			break;
+		}
+	}
+	trigger_error($relative_json_location); //deletes the file
+    remove_theme_mod("customizer_setting_json"); //sets the json file to nothing so individual colours can be set
+	trigger_error("PQR: ".get_theme_mod("customizer_setting_json"));
 }
-?>
