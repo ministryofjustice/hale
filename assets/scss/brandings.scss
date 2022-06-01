@@ -156,6 +156,16 @@
 	}
 
 	.ccfw-settings-button {
+		svg.ccfw-settings-button__background-triangle path {
+			fill: var(--cookie-settings-bg);
+		}
+		svg.ccfw-settings-button__icon path {
+			fill: var(--cookie-settings-text);
+		}
+		span.ccfw-settings-button__text {
+			color: var(--cookie-settings-text);
+		}
+
 		&:hover{
 			svg.ccfw-settings-button__background-triangle path {
 				fill: var(--cookie-settings-hover-bg);
