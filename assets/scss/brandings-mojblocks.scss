@@ -4,7 +4,8 @@
 
 *{
 	//Accordion block
-	.govuk-accordion {
+	.govuk-accordion,
+  .js-enabled .govuk-accordion {
 		.govuk-accordion__controls {
 			.govuk-accordion__open-all {
 
@@ -30,7 +31,8 @@
 				border-color: var(--mojblocks-accordion-section-title);
 			}
 
-			&:hover {
+			&:hover,
+      &:hover:not(:focus){
 				color: var(--mojblocks-accordion-section-title-hover);
 
 				&:before {
