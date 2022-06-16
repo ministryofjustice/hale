@@ -146,5 +146,18 @@ function hale_generate_custom_colours() {
 		fwrite($css_file, $css);
 		fclose($css_file);
 	}
+
+	if (get_theme_mod("customizer_setting_json")) {
+		// Delete the file, now it has been used
+		// unlink() and wp_delete_file() unsuitable here as they do not remove the file from the list of files
+		// This still only removes the file from the list of files on page refresh
+		wp_delete_attachment(
+			attachment_url_to_postid(
+				get_theme_mod("customizer_setting_json")),
+				true
+			);
+		//sets the json file to nothing so individual colours can be set
+		remove_theme_mod("customizer_setting_json");
+	}
+
 }
-?>

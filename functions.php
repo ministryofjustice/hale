@@ -464,4 +464,3 @@ require get_template_directory() . '/inc/uploads.php';
  * Disable archives 
  */
 require get_template_directory() . '/inc/disable-archives.php';
-

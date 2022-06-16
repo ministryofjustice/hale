@@ -403,6 +403,7 @@ function hale_customize_register( $wp_customize ) {
 			array(
 				'label' => __('Import JSON file', 'hale'),
 				'section' => 'colors',
+				'mime_type' => 'application/json',
 				'settings' => 'customizer_setting_json',
 				'active_callback' => function () use ($wp_customize) {
 					return (
