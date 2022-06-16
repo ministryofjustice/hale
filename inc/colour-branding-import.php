@@ -18,5 +18,3 @@ function hale_get_colours_from_jason() {
 		return false;
 	}
 }
-
-?>
