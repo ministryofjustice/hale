@@ -174,4 +174,38 @@
 	function hale_get_colour_options($colour_array_item) {
 		return $colour_array_item[4];
 	}
-?>
+
+	function hale_new_colour_check() {
+		// This function checks for any newly created colours that haven't been set in the customizer and applies the default.
+		// The amended CSS file will be overwritten when the colours are next amended.
+		// This does not protect against new colours being added to the SASS and not added to colours.php.
+		// This is for non-IE only as this particular bug doesn't occur in IE.
+
+		$CSSfileURL = wp_get_upload_dir()["basedir"]."/custom-colours.css"; //non-IE CSS file (variable values)
+		$ColourFileURL = get_template_directory()."/inc/colours.php"; //colours CSS file
+
+		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {
+			//The colours CSS for this site is older than the last colours build - doesn't necessarily mean that the CSS is incomplete
+			//But if the colours CSS is newer, that means the colours have been set since the last update and the error cannot occur
+			//Tbis check won't help in most situations
+			$missing_colours = "";
+			$colour_array = hale_get_colours();
+			$CSS_string = file_get_contents($CSSfileURL);
+			for ($i=0;$i<count($colour_array);$i++) {
+				if (strpos($CSS_string, $colour_array[$i][0]) === false) {
+					trigger_error("Colour not found: ".$colour_array[$i][0]." auto-creating colour, set to default (".$colour_array[$i][1].")");
+					$missing_colours .= "\t--".$colour_array[$i][0].": ".$colour_array[$i][1].";\n"; //we add the missing colour variable with default value to missing colour string
+				}
+			}
+			if ($missing_colours != "") {
+				$css_file = fopen($CSSfileURL, "a");
+				//append the new CSS to the end of the file
+				fwrite($css_file, ":root {\n");
+				fwrite($css_file, $missing_colours);
+				fwrite($css_file, "}");
+				fclose($css_file);
+			}
+		}
+	}
+
+hale_new_colour_check();
