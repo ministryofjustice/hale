@@ -187,14 +187,14 @@
 		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {
 			//The colours CSS for this site is older than the last colours build - doesn't necessarily mean that the CSS is incomplete
 			//But if the colours CSS is newer, that means the colours have been set since the last update and the error cannot occur
-			//Tbis check won't help in most situations
 			$missing_colours = "";
 			$colour_array = hale_get_colours();
 			$CSS_string = file_get_contents($CSSfileURL);
 			for ($i=0;$i<count($colour_array);$i++) {
 				if (strpos($CSS_string, $colour_array[$i][0]) === false) {
 					trigger_error("Colour not found: ".$colour_array[$i][0]." auto-creating colour, set to default (".$colour_array[$i][1].")");
-					$missing_colours .= "\t--".$colour_array[$i][0].": ".$colour_array[$i][1].";\n"; //we add the missing colour variable with default value to missing colour string
+					//we add the missing colour variable with default value to missing colour string
+					$missing_colours .= "\t--".$colour_array[$i][0].": ".$colour_array[$i][1].";\n";
 				}
 			}
 			if ($missing_colours != "") {
@@ -204,8 +204,12 @@
 				fwrite($css_file, $missing_colours);
 				fwrite($css_file, "}");
 				fclose($css_file);
+			} else {
+				//if there are no missing colours, nothing needs to be done.
+				//but we still touch the file so the surrounding if statement is not triggered and we don't have to do the get_file_contents each time
+				touch($CSSfileURL);
 			}
 		}
 	}
 
-hale_new_colour_check();
+	hale_new_colour_check();
