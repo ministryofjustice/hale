@@ -5,7 +5,11 @@
 *{
 	//Accordion block
 	.govuk-accordion,
-  .js-enabled .govuk-accordion {
+	.js-enabled .govuk-accordion {
+		h1, h2, h3, h4, h5, h6 {
+			color: unset;
+		}
+
 		.govuk-accordion__controls {
 			.govuk-accordion__open-all {
 
