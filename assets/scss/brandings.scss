@@ -431,6 +431,7 @@
 							> a:visited,
 							> a:link,
 							> a:link:visited {
+								background-color: var(--header-submenu-link-current-bg);
 								color: var(--header-submenu-link-mobile-current);
 
 								@include govuk-media-query($from: desktop) {
