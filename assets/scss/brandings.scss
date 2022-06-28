@@ -213,15 +213,6 @@
 			color: var(--header-link-focus);
 		}
 
-		.govuk-header__navigation {
-			margin-bottom: 0;
-			border-top: 1px solid var(--header-divider-line);
-
-			li {
-				border-bottom-color: var(--header-divider-line);
-			}
-		}
-
 		.govuk-header__link:focus {
 			background-color: var(--link-focus-background);
 			box-shadow: 0px -2px var(--link-focus-background), 0px 4px var(--link-focus);
@@ -355,6 +346,8 @@
 
 			}
 			.govuk-header__navigation {
+				margin-bottom: 0;
+				border-top: 1px solid var(--header-divider-line);
 
 				> .current-menu-item > a {
 					font-weight: 700;
@@ -365,6 +358,8 @@
 				}
 
 				li {
+					border-bottom-color: var(--header-divider-line);
+
 					> a,
 					> a:visited,
 					> a:link,
