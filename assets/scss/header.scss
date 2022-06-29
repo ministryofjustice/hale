@@ -22,12 +22,16 @@
         border-right: solid 1px;
 
         @include govuk-media-query($from: desktop) {
-          margin-right: 30px;
+          margin-right: 0;
           border-right: none;
         }
 
         > a {
           position: relative;
+
+          @include govuk-media-query($from: desktop) {
+            padding-right: 23px;
+          }
 
           &:after {
             content: "";
@@ -43,7 +47,7 @@
             top: 10px;
             right: -45px;
             @include govuk-media-query($from: desktop) {
-              right: -30px;
+              right: -4px;
             }
           }
 
@@ -57,8 +61,7 @@
             background-color: transparent;
             cursor: pointer;
             @include govuk-media-query($from: desktop) {
-              width: 30px;
-              right: -30px;
+              display:none;
             }
           }
         }
@@ -156,6 +159,10 @@
 
         li {
           border-bottom: 0;
+
+          @include govuk-media-query($from: desktop) {
+            padding: 0 20px;
+          }
         }
 
         li a,

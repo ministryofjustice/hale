@@ -151,6 +151,8 @@ function guideNavClick(id) {
 }
 
 jQuery( document ).ready(function( $ ) {
+	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
+
 	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
 		"<span class='hale__dropdown-arrow'></span>"
 	);
