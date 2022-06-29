@@ -154,10 +154,10 @@ jQuery( document ).ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
 	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
-		"<span class='hale__dropdown-arrow'></span>"
+		"<span class='hale-header__dropdown-arrow'></span>"
 	);
 
-	$( "#menu-menu-top-menu li.menu-item-has-children > a > .hale__dropdown-arrow" ).click(function( event ) {
+	$( "#menu-menu-top-menu li.menu-item-has-children > a > .hale-header__dropdown-arrow" ).click(function( event ) {
 
 		event.preventDefault();
 

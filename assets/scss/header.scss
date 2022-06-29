@@ -19,7 +19,8 @@
 
       &.menu-item-has-children {
         margin-right: 60px;
-        border-right: solid 1px;
+        border-right-style: solid;
+        border-right-width: 1px;
 
         @include govuk-media-query($from: desktop) {
           margin-right: 0;
@@ -51,15 +52,20 @@
             }
           }
 
-          > span.hale__dropdown-arrow {
+          > span.hale-header__dropdown-arrow {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
             position: absolute;
             z-index: 20;
             top: 0;
             right: -60px;
             width: 60px;
-            height: 40px;
+            height: 37px;
             background-color: transparent;
             cursor: pointer;
+            @include govuk-media-query($from: tablet) {
+              height: 41px;
+            }
             @include govuk-media-query($from: desktop) {
               display:none;
             }
