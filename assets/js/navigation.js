@@ -129,7 +129,6 @@
 		}
 	}( container ) );
 
-
 } )();
 
 /**
@@ -152,19 +151,19 @@ function guideNavClick(id) {
 }
 
 jQuery( document ).ready(function( $ ) {
-  $( "#menu-menu-top-menu li.menu-item-has-children > a" ).click(function( event ) {
+	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
+		"<span class='hale__dropdown-arrow'></span>"
+	);
 
-    if($('.govuk-header__menu-button').is(':visible')) {
+	$( "#menu-menu-top-menu li.menu-item-has-children > a > .hale__dropdown-arrow" ).click(function( event ) {
 
-      event.preventDefault();
+		event.preventDefault();
 
-      if ($(this).parent().hasClass('sub-menu-open')) {
-        $(this).parent().removeClass("sub-menu-open");
-      } else {
-        $("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
-        $(this).parent().addClass("sub-menu-open");
-      }
-    }
-
-  });
+		if ($(this).parent().parent().hasClass('sub-menu-open')) {
+			$(this).parent().parent().removeClass("sub-menu-open");
+		} else {
+			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
+			$(this).parent().parent().addClass("sub-menu-open");
+		}
+	});
 });
