@@ -56,7 +56,7 @@
 			['header-submenu-arrow-focus',$black,'Submenu arrow focus','',''],
 			['header-submenu-bg',$lightGrey,'Submenu background','Desktop only, narrow displays extend the main colour',''],
 			['header-submenu-link-current-bg',$lightGrey,'Submenu link current page background','',''],
-			['header-submenu-top-border',$headerMenuLineGrey,'Submenu top dividing line','',''],
+			['header-submenu-top-border',$headerMenuLineGrey,'Submenu dividing line','',''],
 			['header-submenu-link-mobile',$white,'Submenu link (mobile)','',''],
 			['header-submenu-link-mobile-current',$white,'Submenu link (mobile) current page','',''],
 			['header-submenu-link',$black,'Submenu link (desktop)','',''],
