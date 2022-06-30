@@ -33,6 +33,7 @@
 			['header-bg',$black,'Header background','',''],
 			['header-link',$white,'Header link','',''],
 			['header-link-current',$currentPageBlue,'Header current page','',''],
+			['header-link-current-bg',$black,'Header current page background','Main menu and submenu (not used)',''],
 			['header-link-hover-border',$white,'Header link hover underline','',''],
 			['header-link-focus',$black,'Header link focus','',''],
 			['header-link-focus-highlight',$yellow,'Header link focus highlight','',''],
