@@ -354,6 +354,7 @@
 
 					&:not(:focus) {
 						color: var(--header-link-current);
+						background-color: var(--header-link-current-bg);
 					}
 				}
 
