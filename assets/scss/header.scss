@@ -100,20 +100,11 @@
           @include govuk-media-query($from: desktop) {
             margin-bottom: 40px;
           }
-
-          &.sub-menu-open {
-            .sub-menu {
-              @include govuk-media-query($from: desktop) {
-                display: flex;
-              }
-            }
-          }
         }
 
         //Sub Menu - current item styles
-        .sub-menu {
-
-          @include govuk-media-query($from: desktop) {
+        @include govuk-media-query($from: desktop) {
+          .sub-menu {
             display: flex;
           }
         }
@@ -123,10 +114,6 @@
       &.sub-menu-open {
         .sub-menu {
           display: block;
-          z-index: 5; //less than 10 so the hover still overrides it
-          @include govuk-media-query($from: desktop) {
-            display: flex;
-          }
         }
       }
 
