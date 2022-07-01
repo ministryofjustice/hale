@@ -189,15 +189,15 @@ jQuery( document ).ready(function( $ ) {
 
 		let menuItem = $(this).parent().parent();
 
+		$(".hale-header__dropdown-arrow").css("height","");
+
 		if (menuItem.hasClass('sub-menu-open')) {
 			menuItem.removeClass("sub-menu-open");
 		} else {
 			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
 			menuItem.addClass("sub-menu-open");
+			let numberOfMenuItems = menuItem.find(".sub-menu > li").length + 1; // gets the number of menu options including the main link
+			$(this).height("calc("+numberOfMenuItems+" * (100% + 4px) + 1px)");
 		}
-
-		$(".hale-header__dropdown-arrow").css("height","");
-		console.log(menuItem.height());
-		$(this).height(menuItem.height());
 	});
 });
