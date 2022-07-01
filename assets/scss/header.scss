@@ -102,6 +102,14 @@
           }
         }
 
+        &.sub-menu-open {
+          .sub-menu {
+            @include govuk-media-query($from: desktop) {
+              display: flex;
+            }
+          }
+        }
+
         //Sub Menu - current item styles
         @include govuk-media-query($from: desktop) {
           .sub-menu {
@@ -152,9 +160,11 @@
 
         li {
           border-bottom: 0;
+          border-top-width: 1px;
+          border-top-style: solid;
 
           @include govuk-media-query($from: desktop) {
-            padding: 0 20px;
+            border-top:0;
           }
         }
 
@@ -169,7 +179,8 @@
           padding-left: 25px;
 
           @include govuk-media-query($from: desktop) {
-            padding-left: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
           }
         }
       }
