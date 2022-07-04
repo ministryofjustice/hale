@@ -59,7 +59,6 @@
 			['header-submenu-link-mobile',$white,'Submenu link (mobile)','',''],
 			['header-submenu-link-mobile-current',$white,'Submenu link (mobile) current page','',''],
 			['header-submenu-link',$black,'Submenu link (desktop)','',''],
-			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 
 			//Misc
 			['title-shading',$white,'Title shading','',''],

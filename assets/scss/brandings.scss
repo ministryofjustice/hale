@@ -349,13 +349,9 @@
 				margin-bottom: 0;
 				border-top: 1px solid var(--header-divider-line);
 
-				> .current-menu-item > a {
-					font-weight: 700;
-
-					&:not(:focus) {
-						color: var(--header-link-current);
-						background-color: var(--header-link-current-bg);
-					}
+				> .current-menu-item > a:not(:focus) {
+					color: var(--header-link-current);
+					background-color: var(--header-link-current-bg);
 				}
 
 				li {
@@ -427,11 +423,8 @@
 								color: var(--header-submenu-link);
 								
 								&:hover {
-									border-bottom-color: var(--header-submenu-link-hover-underline);
+									border-bottom-color: currentColor;
 								}
-							}
-							&:focus:not(:hover) {
-								box-shadow: none;
 							}
 						}
 
@@ -445,10 +438,15 @@
 								@include govuk-media-query($from: desktop) {
 									background-color: var(--header-link-current-bg);
 									color: var(--header-link-current);
-								}
-								&:focus {
-									color:var(--link-focus);
-									background-color:var(--link-focus-background);
+									box-shadow: 10px 0px 0 0px var(--header-link-current-bg), -10px 0px 0 0px var(--header-link-current-bg);
+
+									&:focus,
+									&:focus:not(:hover),
+									&:focus:hover {
+										color:var(--link-focus);
+										background-color:var(--link-focus-background);
+										box-shadow: 10px 0px 0 0px var(--link-focus-background), -10px 0px 0 0px var(--link-focus-background);
+									}
 								}
 							}
 						}
