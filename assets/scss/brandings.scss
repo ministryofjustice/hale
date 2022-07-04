@@ -399,6 +399,11 @@
 								}
 							}
 						}
+						&.current-menu-item > a {
+							&:after {
+								border-color: var(--header-submenu-arrow-current);
+							}
+						}
 					}
 				}
 
