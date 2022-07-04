@@ -52,7 +52,7 @@
 			['header-search-btn-hover-icon',$black,'Search button hover icon','',''],
 			['header-search-btn-focus-bg',$yellow,'Search button focus background','',''],
 			['header-search-btn-focus-icon',$black,'Search button focus icon','',''],
-			['header-submenu-arrow',$white,'Submenu arrow','',''],
+			['header-submenu-arrow',"currentColor",'Submenu arrow','to mimic text colour, leave blank',''],
 			['header-submenu-arrow-focus',$black,'Submenu arrow focus','',''],
 			['header-submenu-bg',$lightGrey,'Submenu background','Desktop only, narrow displays extend the main colour',''],
 			['header-submenu-top-border',$headerMenuLineGrey,'Submenu dividing line','',''],
