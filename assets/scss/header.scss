@@ -1,5 +1,15 @@
 // This is required as unable to add classes to the header navigation
 .govuk-header {
+
+  .govuk-header__content .govuk-header__navigation .current-menu-item > {
+    a,
+    a:link,
+    a:visited,
+    a:link:visited {
+      font-weight: 700;
+    }
+  }
+
   .govuk-header__navigation {
     max-width: 100%;
 
@@ -12,17 +22,31 @@
         height: 100%;
         padding: 8px 0;
 
-        @media (min-width: 48.0625em) {
+        @include govuk-media-query($from: desktop) {
           height: 40px;
         }
       }
 
       &.menu-item-has-children {
+        margin-right: 60px;
+        border-right-style: solid;
+        border-right-width: 1px;
+
+        @include govuk-media-query($from: desktop) {
+          margin-right: 0;
+          border-right: none;
+        }
 
         > a {
-          &:before {
+          position: relative;
+
+          @include govuk-media-query($from: desktop) {
+            padding-right: 23px;
+          }
+
+          &:after {
             content: "";
-            border: solid govuk-colour("white");
+            border-style: solid;
             border-width: 0 3px 3px 0;
             display: block;
             padding: 3px;
@@ -30,22 +54,45 @@
             -webkit-transform: rotate(45deg);
             float: left;
             margin: 3px 10px 0 5px;
-
-            @media (min-width: 48.0625em) {
-              content: none;
+            position: absolute;
+            top: 10px;
+            right: -45px;
+            @include govuk-media-query($from: desktop) {
+              right: -4px;
             }
           }
 
-          &:focus {
-            &:before {
-              border-color: govuk-colour("black");
+          > span.hale-header__dropdown-arrow {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            right: -60px;
+            width: 60px;
+            height: 37px;
+            background-color: transparent;
+            cursor: pointer;
+            @include govuk-media-query($from: tablet) {
+              height: 41px;
+            }
+            @include govuk-media-query($from: desktop) {
+              display:none;
+            }
+          }
+        }
+        @include govuk-media-query($from: desktop) {
+          &:hover {
+            > a + .sub-menu {
+              display:flex;
+              z-index: 10;
             }
           }
         }
 
         &.sub-menu-open {
           > a {
-            &:before {
+            &:after {
               transform: rotate(-135deg);
               -webkit-transform: rotate(-135deg);
               margin: 6px 10px 0 5px;
@@ -60,26 +107,23 @@
         @extend .govuk-header__navigation-item--active;
 
         &.menu-item-has-children {
-          @media (min-width: 48.0625em) {
+          @include govuk-media-query($from: desktop) {
             margin-bottom: 40px;
           }
+        }
 
-          &.sub-menu-open {
-            .sub-menu {
-              @media (min-width: 48.0625em) {
-                display: block;
-              }
+        &.sub-menu-open {
+          .sub-menu {
+            @include govuk-media-query($from: desktop) {
+              display: flex;
             }
           }
         }
 
         //Sub Menu - current item styles
-        .sub-menu {
-
-          @media (min-width: 48.0625em) {
-
-            display: block;
-
+        @include govuk-media-query($from: desktop) {
+          .sub-menu {
+            display: flex;
           }
         }
       }
@@ -88,22 +132,18 @@
       &.sub-menu-open {
         .sub-menu {
           display: block;
-
-          @media (min-width: 48.0625em) {
-            display: none;
-          }
         }
       }
 
       //Sub Menu Styles
       .sub-menu {
-
+        justify-content: space-around;
         padding: 0;
         margin: 0;
         list-style: none;
         display: none;
 
-        @media (min-width: 48.0625em) {
+        @include govuk-media-query($from: desktop) {
 
           position: absolute;
           z-index: 1;
@@ -130,6 +170,12 @@
 
         li {
           border-bottom: 0;
+          border-top-width: 1px;
+          border-top-style: solid;
+
+          @include govuk-media-query($from: desktop) {
+            border-top:0;
+          }
         }
 
         li a,
@@ -142,8 +188,8 @@
         li.current-menu-item a:link:visited{
           padding-left: 25px;
 
-          @media (min-width: 48.0625em) {
-            padding-left: 0px;
+          @include govuk-media-query($from: desktop) {
+            padding-left: 0;
           }
         }
       }
@@ -163,7 +209,7 @@
     white-space: normal;
     text-align: left;
 
-    @media (min-width: 48.0625em) {
+    @include govuk-media-query($from: desktop) {
       text-align: center;
     }
   }
@@ -246,7 +292,7 @@
     }
   }
 
-  @media (min-width: 48.0625em) {
+  @include govuk-media-query($from: desktop) {
     .govuk-header__content {
       //with the longer header text, the menu now spans the bottom of the header, rather than only the last ⅔.
       width: unset;
@@ -288,7 +334,7 @@
     }
   }
 
-  @media (min-width: 48.0625em) {
+  @include govuk-media-query($from: desktop) {
     .hale-header__search-form {
       margin-left: auto;
     }

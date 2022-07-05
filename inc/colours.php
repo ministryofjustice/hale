@@ -32,8 +32,8 @@
 			//header
 			['header-bg',$black,'Header background','',''],
 			['header-link',$white,'Header link','',''],
-			['header-link-current',$currentPageBlue,'Header current page','',''],
-			['header-link-current-bg',$black,'Header current page background','Main menu and submenu (not used)',''],
+			['header-link-current',$currentPageBlue,'Header current page','Main menu and submenu',''],
+			['header-link-current-bg',$black,'Header current page background','Main menu and submenu',''],
 			['header-link-hover-border',$white,'Header link hover underline','',''],
 			['header-link-focus',$black,'Header link focus','',''],
 			['header-link-focus-highlight',$yellow,'Header link focus highlight','',''],
@@ -53,14 +53,13 @@
 			['header-search-btn-focus-bg',$yellow,'Search button focus background','',''],
 			['header-search-btn-focus-icon',$black,'Search button focus icon','',''],
 			['header-submenu-arrow',$white,'Submenu arrow','',''],
+			['header-submenu-arrow-current',$currentPageBlue,'Submenu arrow for current page','',''],
 			['header-submenu-arrow-focus',$black,'Submenu arrow focus','',''],
 			['header-submenu-bg',$lightGrey,'Submenu background','Desktop only, narrow displays extend the main colour',''],
-			['header-submenu-top-border',$headerMenuLineGrey,'Submenu top dividing line','',''],
+			['header-submenu-top-border',$headerMenuLineGrey,'Submenu dividing line','',''],
 			['header-submenu-link-mobile',$white,'Submenu link (mobile)','',''],
 			['header-submenu-link-mobile-current',$white,'Submenu link (mobile) current page','',''],
 			['header-submenu-link',$black,'Submenu link (desktop)','',''],
-			['header-submenu-link-current',$black,'Submenu link (desktop) current page','',''],
-			['header-submenu-link-hover-underline',$black,'Submenu link hover underline','',''],
 
 			//Misc
 			['title-shading',$white,'Title shading','',''],

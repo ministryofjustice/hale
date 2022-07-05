@@ -129,7 +129,6 @@
 		}
 	}( container ) );
 
-
 } )();
 
 /**
@@ -152,19 +151,53 @@ function guideNavClick(id) {
 }
 
 jQuery( document ).ready(function( $ ) {
-  $( "#menu-menu-top-menu li.menu-item-has-children > a" ).click(function( event ) {
+	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
-    if($('.govuk-header__menu-button').is(':visible')) {
+	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
+		"<span class='hale-header__dropdown-arrow'></span>"
+	);
 
-      event.preventDefault();
+	//Keyboard functionailty (requires mouse functionality)
+	$("#menu-menu-top-menu li.menu-item-has-children > a").keydown(function(e){
 
-      if ($(this).parent().hasClass('sub-menu-open')) {
-        $(this).parent().removeClass("sub-menu-open");
-      } else {
-        $("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
-        $(this).parent().addClass("sub-menu-open");
-      }
-    }
+		let openCloseControl = $(this).find(".hale-header__dropdown-arrow");
 
-  });
+		if (openCloseControl.is(":visible")) {
+			if (e.keyCode == "32") {
+				e.preventDefault();
+				openCloseControl.click();
+			}
+			if (e.keyCode == "40") {
+				if (!$(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
+					openCloseControl.click();
+				}
+			}
+			if (e.keyCode == "38") {
+				if ($(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
+					openCloseControl.click();
+				}
+			}
+		}
+	});
+
+	//Mouse functionality
+	$( "#menu-menu-top-menu li.menu-item-has-children > a > .hale-header__dropdown-arrow" ).click(function( event ) {
+
+		event.preventDefault();
+
+		let menuItem = $(this).parent().parent();
+
+		$(".hale-header__dropdown-arrow").css("height","");
+
+		if (menuItem.hasClass('sub-menu-open')) {
+			menuItem.removeClass("sub-menu-open");
+		} else {
+			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
+			menuItem.addClass("sub-menu-open");
+			let numberOfMenuItems = menuItem.find(".sub-menu > li").length + 1; // gets the number of menu options including the main link
+			$(this).height("calc("+numberOfMenuItems+" * (100% + 5px) )");
+		}
+	});
 });
