@@ -440,6 +440,11 @@
 							> a:link:visited {
 								color: var(--header-submenu-link-mobile-current);
 
+								&:focus {
+									color: var(--link-focus);
+									background-color:var(--link-focus-background);
+								}
+
 								@include govuk-media-query($from: desktop) {
 									background-color: var(--header-link-current-bg);
 									color: var(--header-link-current);
@@ -448,8 +453,6 @@
 									&:focus,
 									&:focus:not(:hover),
 									&:focus:hover {
-										color:var(--link-focus);
-										background-color:var(--link-focus-background);
 										box-shadow: 10px 0px 0 0px var(--link-focus-background), -10px 0px 0 0px var(--link-focus-background);
 									}
 								}
