@@ -62,6 +62,8 @@
 			['header-submenu-link',$black,'Submenu link (desktop)','',''],
 
 			//Misc
+			['header-link-hover',$white,'Header link hover','',''],
+			['header-link-current-hover-border',$currentPageBlue,'Header current page hover underline','',''],
 			['title-shading',$white,'Title shading','',''],
 			['cat-nav-arrows',$black,'Category navication arrows','',''],
 
