@@ -32,10 +32,12 @@
 			//header
 			['header-bg',$black,'Header background','',''],
 			['header-link',$white,'Header link','',''],
+			['header-link-hover',$white,'Header link hover','',''],
 			['header-link-hover-border',$white,'Header link hover underline','',''],
 			['header-link-hover-focus',$black,'Header link hover when focussed','',''],
 			['header-link-current',$currentPageBlue,'Header current page','Main menu and submenu',''],
 			['header-link-current-bg',$black,'Header current page background','Main menu and submenu',''],
+			['header-link-current-hover-border',$currentPageBlue,'Header current page hover underline','',''],
 			['header-link-focus',$black,'Header link focus','',''],
 			['header-link-focus-highlight',$yellow,'Header link focus highlight','',''],
 			['header-link-focus-underline',$black,'Header link focus underline','',''],
@@ -66,8 +68,6 @@
 			['header-search-btn-focus-icon',$black,'Search button focus icon','',''],
 
 			//Misc
-			['header-link-hover',$white,'Header link hover','',''],
-			['header-link-current-hover-border',$currentPageBlue,'Header current page hover underline','',''],
 			['title-shading',$white,'Title shading','',''],
 			['cat-nav-arrows',$black,'Category navication arrows','',''],
 
