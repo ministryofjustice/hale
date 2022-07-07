@@ -1,15 +1,6 @@
 // This is required as unable to add classes to the header navigation
 .govuk-header {
 
-  .govuk-header__content .govuk-header__navigation .current-menu-item > {
-    a,
-    a:link,
-    a:visited,
-    a:link:visited {
-      font-weight: 700;
-    }
-  }
-
   .govuk-header__navigation {
     max-width: 100%;
 
@@ -17,9 +8,13 @@
 
       @extend .govuk-header__navigation-item;
 
-      a {
+      a,
+      a:link,
+      a:visited,
+      a:link:visited {
         @extend .govuk-header__link;
         height: 100%;
+        font-weight: 700;
         padding: 8px 0;
 
         @include govuk-media-query($from: desktop) {
