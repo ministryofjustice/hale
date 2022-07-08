@@ -1,29 +1,27 @@
 // This is required as unable to add classes to the header navigation
 .govuk-header {
 
-  .govuk-header__content .govuk-header__navigation .current-menu-item > {
-    a,
-    a:link,
-    a:visited,
-    a:link:visited {
-      font-weight: 700;
-    }
-  }
-
-  .govuk-header__navigation {
+  .govuk-header__content .govuk-header__navigation {
     max-width: 100%;
 
     li {
 
       @extend .govuk-header__navigation-item;
 
-      a {
+      a,
+      a:link,
+      a:visited,
+      a:link:visited {
+        text-align: left;
+
         @extend .govuk-header__link;
         height: 100%;
-        padding: 8px 0;
+        padding: 8px 15px;
+        text-decoration: none;
 
         @include govuk-media-query($from: desktop) {
-          height: 40px;
+          min-height: 40px;
+          height: auto;
         }
       }
 
@@ -37,7 +35,10 @@
           border-right: none;
         }
 
-        > a {
+        > a,
+        > a:link,
+        > a:visited,
+        > a:link:visited {
           position: relative;
 
           @include govuk-media-query($from: desktop) {
@@ -46,6 +47,7 @@
 
           &:after {
             content: "";
+            border-color: currentColor;
             border-style: solid;
             border-width: 0 3px 3px 0;
             display: block;
@@ -152,7 +154,6 @@
 
           &:before {
             content: "";
-            background: govuk-colour("light-grey");
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -187,9 +188,11 @@
         li.current-menu-item a:link,
         li.current-menu-item a:link:visited{
           padding-left: 25px;
+          padding-right: 0;
 
           @include govuk-media-query($from: desktop) {
-            padding-left: 0;
+            padding-left: 15px;
+            padding-right: 15px;
           }
         }
       }
@@ -384,22 +387,20 @@
     }
   }
 
-  .govuk-header__navigation {
-    li {
-      padding:0;
-      a {
-        width:100%;
-      }
-    }
-  }
   .govuk-header__content {
     width:100%;
     min-height: 15px;
 
-    .govuk-header__navigation a:link {
-      display:inline-block;
-      font-weight: 400;
+    .govuk-header__navigation {
+      li {
+        padding:0;
+        a {
+          width:100%;
+          display:inline-block;
+        }
+      }
     }
+
     //header arrangement
     .govuk-header__navigation {
       li.current-menu-item a:link,

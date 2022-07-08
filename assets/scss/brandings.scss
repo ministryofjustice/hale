@@ -343,19 +343,29 @@
 				&:hover {
 					border-bottom-color: var(--header-link-hover-border);
 				}
-
 			}
 			.govuk-header__navigation {
 				margin-bottom: 0;
 				border-top: 1px solid var(--header-divider-line);
 
-				> .current-menu-item > a:not(:focus) {
-					color: var(--header-link-current);
-					background-color: var(--header-link-current-bg);
+				> .current-menu-item {
+					> a,
+					> a:visited,
+					> a:link,
+					> a:link:visited {
+						&:not(:focus) {
+							color: var(--header-link-current);
+							background-color: var(--header-link-current-bg);
+
+							&:hover {
+								color: var(--header-link-current);
+								border-bottom-color: var(--header-link-current-hover-border);
+							}
+						}
+					}
 				}
 
 				li {
-
 					&, .hale-header__dropdown-arrow {
 						border-color: var(--header-divider-line);
 					}
@@ -379,6 +389,7 @@
 						}
 
 						&:hover {
+							color: var(--header-link-hover);
 							border-bottom-color: var(--header-link-hover-border);
 						}
 					}
@@ -386,29 +397,28 @@
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
-						> a {
-							&:after {
-								border-color: var(--header-submenu-arrow);
+						> a:focus:after {
+							border-color: var(--header-link);
+						}
+
+						@include govuk-media-query($from: desktop) {
+							> a:focus:after {
+								border-color: currentColor;
 							}
 
-							@include govuk-media-query($from: desktop) {
-								&:focus {
-									&:after {
-										border-color: var(--header-submenu-arrow-focus);
-									}
+							&.current-menu-ancestor > a {
+								background-color: var(--header-link-ancestor-bg);
+								color: var(--header-link-ancestor);
+
+								&:hover{
+									border-bottom-color:var(--header-link-ancestor-hover-border);
 								}
-							}
-						}
-						&.current-menu-item > a {
-							&:after {
-								border-color: var(--header-submenu-arrow-current);
 							}
 						}
 					}
 				}
 
 				.sub-menu {
-
 					box-shadow: 0px -1px 0px 0px var(--header-submenu-top-border);
 
 					@include govuk-media-query($from: desktop) {
@@ -446,14 +456,12 @@
 								}
 
 								@include govuk-media-query($from: desktop) {
-									background-color: var(--header-link-current-bg);
-									color: var(--header-link-current);
-									box-shadow: 10px 0px 0 0px var(--header-link-current-bg), -10px 0px 0 0px var(--header-link-current-bg);
+									background-color: var(--header-submenu-link-current-bg);
+									color: var(--header-submenu-link-current);
 
-									&:focus,
-									&:focus:not(:hover),
-									&:focus:hover {
-										box-shadow: 10px 0px 0 0px var(--link-focus-background), -10px 0px 0 0px var(--link-focus-background);
+									&:hover {
+										color: var(--header-submenu-link-current);
+										border-bottom-color: var(--header-submenu-link-current-hover-border);
 									}
 								}
 							}
