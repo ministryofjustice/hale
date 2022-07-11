@@ -409,7 +409,6 @@
 							border-bottom-color: var(--header-link-focus-underline);
 
 							@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
-
 						}
 
 						&:hover {
@@ -417,7 +416,6 @@
 							border-bottom-color: var(--header-link-hover-border);
 
 							@include hale-heading-link-underline-restrictor($colour: --header-bg);
-
 						}
 					}
 
