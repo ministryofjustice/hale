@@ -402,6 +402,12 @@
 						}
 
 						@include govuk-media-query($from: desktop) {
+							> a:hover {
+								border-color: var(--header-link-with-children-hover-border);
+								background-color: var(--header-link-with-children-hover-bg);
+								color: var(--header-link-with-children-hover);
+							}
+
 							> a:focus:after {
 								border-color: currentColor;
 							}
@@ -424,6 +430,7 @@
 					@include govuk-media-query($from: desktop) {
 						&:before {
 							background-color: var(--header-submenu-bg);
+							border-bottom: 1px solid var(--header-divider-line);
 						}
 					}
 
