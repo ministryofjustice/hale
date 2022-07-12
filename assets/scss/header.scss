@@ -23,6 +23,15 @@
           min-height: 40px;
           height: auto;
         }
+
+        &:before {
+          display:block;
+          position:absolute;
+          width:100%;
+          height:calc(100% + 4px);
+          left:0;
+          top:0;
+        }
       }
 
       &.menu-item-has-children {
