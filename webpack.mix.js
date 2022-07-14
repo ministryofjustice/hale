@@ -9,6 +9,7 @@ mix_.setPublicPath('./dist')
   .sass('./assets/scss/page-colours.scss', 'css/page-colours.min.css')
   .sass('./assets/scss/custom-branding.scss', 'css/custom-branding.min.css')
   .copy('./assets/js/*', 'dist/js/')
+  .copy('./node_modules/govuk-frontend/govuk/all.js', 'dist/js/govuk-frontend.js')
   .options({
     processCssUrls: false
   });
