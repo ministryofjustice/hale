@@ -32,20 +32,31 @@
 				color: var(--mojblocks-accordion-section-title-focus);
 				background-color: var(--mojblocks-accordion-section-title-focus-bg);
 				box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
-			}
-		}
-		&-nav__chevron {
-			color: var(--mojblocks-accordion-section-title-focus);
-			background-color: var(--mojblocks-accordion-section-title-focus);
 
-			&:after {
-				color: var(--mojblocks-accordion-section-title-focus-bg);
+				.govuk-accordion-nav__chevron {
+					color: var(--mojblocks-accordion-section-title-focus);
+					background-color: var(--mojblocks-accordion-section-title-focus);
+
+					&:after {
+						color: var(--mojblocks-accordion-section-title-focus-bg);
+					}
+				}
 			}
 		}
+
 		&__show-all:focus {
 			color: var(--mojblocks-accordion-section-title-focus);
 			background-color: var(--mojblocks-accordion-section-title-focus-bg);
 			box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
+
+			.govuk-accordion-nav__chevron {
+				color: var(--mojblocks-accordion-section-title-focus);
+				background-color: var(--mojblocks-accordion-section-title-focus);
+
+				&:after {
+					color: var(--mojblocks-accordion-section-title-focus-bg);
+				}
+			}
 		}
 	}
 
