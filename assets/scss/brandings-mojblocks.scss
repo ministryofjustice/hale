@@ -10,7 +10,7 @@
 			color: unset;
 		}
 
-		.govuk-accordion__controls {
+		&__controls {
 			.govuk-accordion__open-all {
 
 				color: var(--mojblocks-accordion-section-title);
@@ -26,13 +26,26 @@
 				}
 			}
 		}
-		.govuk-accordion__section-button:focus {
+		&__section-button:focus {
 			.govuk-accordion__section-heading-text-focus,
 			.govuk-accordion__section-toggle-focus {
 				color: var(--mojblocks-accordion-section-title-focus);
 				background-color: var(--mojblocks-accordion-section-title-focus-bg);
 				box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
 			}
+		}
+		&-nav__chevron {
+			color: var(--mojblocks-accordion-section-title-focus);
+			background-color: var(--mojblocks-accordion-section-title-focus);
+
+			&:after {
+				color: var(--mojblocks-accordion-section-title-focus-bg);
+			}
+		}
+		&__show-all:focus {
+			color: var(--mojblocks-accordion-section-title-focus);
+			background-color: var(--mojblocks-accordion-section-title-focus-bg);
+			box-shadow: 0 -2px var(--mojblocks-accordion-section-title-focus-bg), 0 4px var(--mojblocks-accordion-section-title-focus-shadow);
 		}
 	}
 
