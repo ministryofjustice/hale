@@ -404,16 +404,19 @@
     width:100%;
     min-height: 15px;
 
-    .govuk-header__navigation-list {
-      li {
-        padding:0;
-        a {
-          width:100%;
-          display:inline-block;
+    .govuk-header__navigation {
+      margin-bottom: 0;
+
+      &-list {
+        li {
+          padding:0;
+          a {
+            width:100%;
+            display:inline-block;
+          }
         }
       }
     }
-
     //header arrangement
     .govuk-header__navigation-list {
       li.current-menu-item a:link,
