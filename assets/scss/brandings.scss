@@ -2,7 +2,7 @@
 
 //mixins
 @mixin hale-heading-link-underline-restrictor($colour, $width: 15px) {
-	@include govuk-media-query($from: desktop) {
+	@include govuk-media-query($from: 1024px) {
 		position:relative;
 
 		&:before {

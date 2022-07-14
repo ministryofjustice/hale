@@ -12,8 +12,6 @@
       a:link,
       a:visited,
       a:link:visited {
-        text-align: left;
-
         @extend .govuk-header__link;
         height: 100%;
         padding: 8px 15px;
@@ -23,7 +21,10 @@
           min-height: 40px;
           height: auto;
         }
-
+        @include govuk-media-query($from: desktop, $until: 1024px) {
+          padding-left: 0;
+          padding-right: 0;
+        }
         &:before {
           display:block;
           position:absolute;
@@ -200,6 +201,10 @@
           padding-right: 0;
 
           @include govuk-media-query($from: desktop) {
+            padding-left: 0;
+            padding-right: 0;
+          }
+          @include govuk-media-query($from: 1024px) {
             padding-left: 15px;
             padding-right: 15px;
           }
