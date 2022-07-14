@@ -83,7 +83,6 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 
       </div>
 
-        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
       <?php get_template_part( 'partials/topnav' );
 
       ?>

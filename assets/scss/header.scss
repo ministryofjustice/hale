@@ -1,7 +1,7 @@
 // This is required as unable to add classes to the header navigation
 .govuk-header {
 
-  .govuk-header__content .govuk-header__navigation {
+  .govuk-header__content .govuk-header__navigation-list {
     max-width: 100%;
 
     li {
@@ -217,7 +217,7 @@
   }
 
   //overrides the govuk nowrap and centres text for the longer menus found on hale
-  &.hale-header .govuk-header__navigation li a {
+  &.hale-header .govuk-header__navigation-list li a {
     white-space: normal;
     text-align: left;
 
@@ -247,6 +247,10 @@
     //make this a min-width to account for the longer header texts than "GOV.UK"
     width: unset;
     min-width: 33.33%;
+
+    .govuk-header__link--homepage {
+      display: inline-block;
+    }
 
     .govuk-header__logotype {
       //centre logo and text
@@ -400,7 +404,7 @@
     width:100%;
     min-height: 15px;
 
-    .govuk-header__navigation {
+    .govuk-header__navigation-list {
       li {
         padding:0;
         a {
@@ -411,7 +415,7 @@
     }
 
     //header arrangement
-    .govuk-header__navigation {
+    .govuk-header__navigation-list {
       li.current-menu-item a:link,
       .govuk-header__menu-button,
       a:link {
