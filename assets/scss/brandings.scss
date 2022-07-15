@@ -422,6 +422,12 @@
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
+						> a:focus-within > span.hale-header__dropdown-arrow:focus {
+								color: var(--header-link-hover-focus);
+								border-bottom: 4px solid var(--header-link-hover-focus);
+								background-color: var(--header-link-focus-highlight);
+						}
+
 						> a:focus:after {
 							border-color: var(--header-link);
 						}
