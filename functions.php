@@ -254,6 +254,7 @@ function hale_scripts() {
 
     // JS
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "4.2.0", true);
+    wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
     wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', null, true);
