@@ -19,7 +19,7 @@ if ($show_header_menu == 'yes') {
 
     $topmenu_args = array(
         'menu' => 'main-menu',
-        'menu_class' => 'govuk-header__navigation',
+        'menu_class' => 'govuk-header__navigation-list',
         'menu_id' => 'menu-menu-top-menu',
         'container' => false,
         'container_class' => '',
@@ -37,7 +37,8 @@ if ($show_header_menu == 'yes') {
         'item_spacing' => 'preserve',
     );
     ?>
-    <nav class="hale-header__topnav" id="header-navigation" role="navigation" aria-label="Primary navigation">
+    <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation">
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
         <?php
         wp_nav_menu($topmenu_args);
         ?>

@@ -154,7 +154,7 @@ jQuery( document ).ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
 	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
-		"<span class='hale-header__dropdown-arrow'></span>"
+		"<span tabindex='0' class='hale-header__dropdown-arrow'></span>"
 	);
 
 	//Keyboard functionailty (requires mouse functionality)
@@ -199,5 +199,7 @@ jQuery( document ).ready(function( $ ) {
 			let numberOfMenuItems = menuItem.find(".sub-menu > li").length + 1; // gets the number of menu options including the main link
 			$(this).height("calc("+numberOfMenuItems+" * (100% + 5px) )");
 		}
+	}).keydown(function(e){
+		if (e.keyCode == "13") $(this).click();
 	});
 });

@@ -2,7 +2,7 @@
 
 //mixins
 @mixin hale-heading-link-underline-restrictor($colour, $width: 15px) {
-	@include govuk-media-query($from: desktop) {
+	@include govuk-media-query($from: 1024px) {
 		position:relative;
 
 		&:before {
@@ -21,11 +21,12 @@
 **********************/
 
 //space out menu for all brandings
+.js-enabled .govuk-header,
 .govuk-header {
 	@include govuk-media-query($from: desktop) {
 		padding-bottom: 0;
 
-		.govuk-header__navigation {
+		.govuk-header__navigation-list {
 			display: flex;
 			justify-content: space-between;
 
@@ -361,8 +362,7 @@
 					@include hale-heading-link-underline-restrictor($colour: --header-bg);
 				}
 			}
-			.govuk-header__navigation {
-				margin-bottom: 0;
+			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
 
 				> .current-menu-item {
@@ -421,6 +421,12 @@
 
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
+
+						> a:focus-within > span.hale-header__dropdown-arrow:focus {
+								color: var(--header-link-hover-focus);
+								border-bottom: 4px solid var(--header-link-hover-focus);
+								background-color: var(--header-link-focus-highlight);
+						}
 
 						> a:focus:after {
 							border-color: var(--header-link);

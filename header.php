@@ -42,7 +42,7 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 wp_body_open();
 ?>
 <?php do_action( 'hale_after_body' ); ?>
-<a class="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
+<a class="govuk-skip-link" data-module="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
 
 $header_search = get_theme_mod( 'show_search', 'yes' );
@@ -83,7 +83,6 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 
       </div>
 
-        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
       <?php get_template_part( 'partials/topnav' );
 
       ?>
