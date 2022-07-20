@@ -1,13 +1,13 @@
 @import 'page-colours';
 
 //mixins
-@mixin hale-heading-link-underline-restrictor($colour, $width: 15px) {
+@mixin hale-heading-link-underline-restrictor($colour) {
 	@include govuk-media-query($from: 1024px) {
 		position:relative;
 
 		&:before {
 			content:"";
-			border-right:$width solid var($colour);
+			border-right:15px solid var($colour);
 			border-left:15px solid var($colour);
 		}
 	}
@@ -370,6 +370,10 @@
 					> a:visited,
 					> a:link,
 					> a:link:visited {
+						@include govuk-media-query($from: desktop) {
+							border-bottom-color: var(--header-link-current-border);
+						}
+
 						&:not(:focus) {
 							color: var(--header-link-current);
 							background-color: var(--header-link-current-bg);
@@ -433,36 +437,47 @@
 						}
 
 						@include govuk-media-query($from: desktop) {
-							> a:hover {
-								border-color: var(--header-link-with-children-hover-border);
-								background-color: var(--header-link-with-children-hover-bg);
-								color: var(--header-link-with-children-hover);
-
-								@include hale-heading-link-underline-restrictor($colour: --header-link-with-children-hover-bg, $width: 23px);
+							&:not(.current-menu-ancestor):not(.current-menu-item):hover {
+								> a:not(:focus),
+								> a:not(:focus):visited,
+								> a:not(:focus):link,
+								> a:not(:focus):link:visited {
+									background-color: var(--header-link-with-children-hover-bg);
+									color: var(--header-link-with-children-hover);
+									border-color: currentColor;
+									@include hale-heading-link-underline-restrictor($colour: --header-link-with-children-hover-bg);
+								}
 							}
 
 							> a:focus {
+								color: var(--header-link-hover-focus);
+								background-color: var(--header-link-focus-highlight);
+
 								&:after {
 									border-color: currentColor;
 								}
-								&:hover,
-								&:not(:hover) {
-									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $width: 23px);
-								}
+								@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 							}
 
-							&.current-menu-ancestor > a {
-								background-color: var(--header-link-ancestor-bg);
-								color: var(--header-link-ancestor);
+							&.current-menu-item,
+							&.current-menu-ancestor {
+								> a:not(:focus),
+								> a:not(:focus):visited,
+								> a:not(:focus):link,
+								> a:not(:focus):link:visited {
+									background-color: var(--header-link-ancestor-bg);
+									color: var(--header-link-ancestor);
 
-								&:hover {
-									border-bottom-color:var(--header-link-ancestor-hover-border);
+									&:hover {
+										color: var(--header-link-ancestor);
+										border-bottom-color:var(--header-link-ancestor-hover-border);
 
-									@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg, $width: 23px);
-									&:focus {
-										border-bottom-color: currentColor;
+										@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+										&:focus {
+											border-bottom-color: currentColor;
 
-										@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $width: 23px);
+											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+										}
 									}
 								}
 							}
@@ -521,6 +536,9 @@
 								@include govuk-media-query($from: desktop) {
 									background-color: var(--header-submenu-link-current-bg);
 									color: var(--header-submenu-link-current);
+									border-bottom-color: var(--header-submenu-link-current-border);
+
+									@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg);
 
 									&:hover {
 										color: var(--header-submenu-link-current);
@@ -708,7 +726,7 @@
 		.page-header-section {
 			&:before
 			{
-			content: none;
+				content: none;
 			}
 		}
 	}
