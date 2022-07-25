@@ -52,7 +52,10 @@
           position: relative;
 
           @include govuk-media-query($from: desktop) {
-            padding-right: 23px;
+            padding-right: 19px;
+          }
+          @include govuk-media-query($from: 1024px) {
+            padding-right: 34px;
           }
 
           &:after {
@@ -70,7 +73,10 @@
             top: 10px;
             right: -45px;
             @include govuk-media-query($from: desktop) {
-              right: -4px;
+              right: -8px;
+            }
+            @include govuk-media-query($from: 1024px) {
+              right: 7px;
             }
           }
 
@@ -433,6 +439,7 @@
       &-list {
         li {
           padding:0;
+          margin-right:0;
           a {
             width:100%;
             display:inline-block;
