@@ -285,6 +285,9 @@
       //centre logo and text
       display:flex;
       align-items: center;
+
+      //very narrow screens
+      max-width: calc(100vw - 150px);
     }
 
     .hale-header__logotype--custom {
