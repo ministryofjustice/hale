@@ -5,9 +5,10 @@ Overrides core block styling so GDS styling can take effect
 ***/
 
 //Table borders
-//Only adjust is-style-regular
+//Only adjust default pattern (:not(.is-style-stripes))
+//Targetting .is-style-regular isn't robust as the class doesn't appear by default
 //revert settings which override GDS
-.wp-block-table.is-style-regular {
+.wp-block-table:not(.is-style-stripes) {
 	td, th {
 		border: unset;
 	}
