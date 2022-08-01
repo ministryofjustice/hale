@@ -89,7 +89,7 @@ $govuk-font-family: 'PT Sans', sans-serif;
 /*--------------------------------------------------------------
 ## GDS Tables
 --------------------------------------------------------------*/
-.wp-block-table.is-style-regular {
+.wp-block-table:not(.is-style-stripes) {
   table {
     @extend .govuk-table;
 
