@@ -1,4 +1,7 @@
 $govuk-font-family: 'PT Sans', sans-serif;
+
+//removes wordpress styling for core blocks
+@import 'core-wp-blocks-overrides';
 @import "node_modules/govuk-frontend/govuk/all";
 @import url(https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);
 
@@ -81,4 +84,49 @@ $govuk-font-family: 'PT Sans', sans-serif;
 }
 .hale-search-results__last-updated-date{
   color: $govuk-secondary-text-colour;
+}
+
+/*--------------------------------------------------------------
+## GDS Tables
+--------------------------------------------------------------*/
+.wp-block-table.is-style-regular {
+  table {
+    @extend .govuk-table;
+
+    thead {
+      @extend .govuk-table__head !optional;
+    }
+
+    tbody {
+      @extend .govuk-table__body !optional;
+    }
+
+    tr {
+      @extend .govuk-table__row !optional;
+    }
+
+    th {
+      @extend .govuk-table__header;
+    }
+
+    td {
+      @extend .govuk-table__cell;
+    }
+
+    // WordPress default core block puts tables in a figure and uses a figcaption, so we must
+    // style these as needed here, including overriding the margins which put too much spacing
+    // betwixt them.
+
+    margin-bottom:10px;
+
+    + figcaption {
+      @extend .govuk-body-s;
+
+      margin-bottom:20px;
+
+      @include govuk-media-query($from: desktop) {
+        margin-bottom:30px;
+      }
+    }
+  }
 }

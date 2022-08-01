@@ -1,0 +1,23 @@
+/***
+
+Overrides core block styling so GDS styling can take effect
+
+***/
+
+//Table borders
+//Only adjust is-style-regular
+//revert settings which override GDS
+.wp-block-table.is-style-regular {
+	td, th {
+		border: unset;
+	}
+	thead {
+		border-bottom: unset;
+	}
+	tfoot {
+		border-top: unset;
+	}
+	figcaption {
+		text-align: unset;
+	}
+}
