@@ -353,10 +353,6 @@
     width: calc(15rem + 44px);
     max-width: 100%;
 
-    .hale-search__button-text {
-      @extend .govuk-visually-hidden;
-    }
-
     .hale-search__input {
       padding-right: 46px;
     }
