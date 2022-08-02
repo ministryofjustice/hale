@@ -235,6 +235,20 @@
 
 		.hale-header__search-form {
 
+			&.hale-search-invisible-contrast-correction {
+				// These styles are to prevent false-positives with the automated colour contrast checkers,
+				// (although the text is hidden so contrast is irrelivent).
+
+				.hale-search__hidden-search-label {
+					// header-link will contrast with the header background so should pass
+					color: var(--header-link);
+				}
+				.hale-search__button-text {
+					// header-search-btn-icon will contrast with the button background so should pass
+					color: var(--header-search-btn-icon);
+				}
+			}
+
 			.hale-search__input {
 				border: 1px solid var(--header-search-input-border);
 				background: var(--header-search-input-bg);
