@@ -69,7 +69,43 @@ flush();
 </footer>
 <?php wp_footer(); ?>
   <script>
-    window.GOVUKFrontend.initAll()
+    window.GOVUKFrontend.initAll({
+      accordion: {
+        i18n: {
+          locale: "gd",
+          translations: {
+            show_all_sections: "XXX",
+            hide_all_sections: "YYY",
+            show_this_section: "ZZZ",
+            hide_this_section: "ÆÆÆ"
+          },
+          locale: "cy",
+          translations: {
+            show_all_sections: "Dangoswch bob adran",
+            hide_all_sections: "Cuddiwch bob adran",
+            show_this_section: "Dangoswch yr adran hon",
+            hide_this_section: "Cuddio'r adran hon"
+          }
+        }
+      },
+      character_count: {
+        i18n: {
+          locale: "en",
+          translations: {
+            characters_over_limit_one: "Thou have writen %{count} letter too many",
+            characters_over_limit_other: "Thou have writen %{count} letters too many",
+            characters_under_limit_one: "Thou have %{count} letter remainen",
+            characters_under_limit_other: "Thou have %{count} letters remainen"
+          },
+          locale: "zh",
+          translations: {
+            characters_under_limit_two: "XXXX",
+            characters_over_limit_other: "Thou have writen %{count} letters too many",
+            characters_under_limit_other: "%{count} nodau ar ôl",
+          }
+        }
+      }
+    })
   </script>
 </body>
 </html>

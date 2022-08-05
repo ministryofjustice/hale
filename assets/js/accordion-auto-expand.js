@@ -26,19 +26,7 @@
 	}
 })();
 
-new window.GOVUKFrontend.Accordion(
-	document.getElementById("#custom-accordion"), {
-	  i18n: {
-		locale: "en-GB",
-		translations: {
-		  show_all_sections: "Dangoswch bob adran",
-		  hide_all_sections: "Cuddiwch bob adran",
-		  show_this_section: "Dangoswch yr adran hon",
-		  hide_this_section: "Cuddio'r adran hon"
-		}
-	  }
-	}
-  ).init()
+
 
 function haleAccordionDirectID() {
 	if (window.location.href.split("#").length == 2) {

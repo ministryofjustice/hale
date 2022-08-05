@@ -11,7 +11,7 @@
 
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="hale-page">
+<html lang="en" class="hale-page">
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,22 @@
 	?>
 </head>
 <body <?php body_class(""); ?>>
+<div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="10">
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="with-hint">
+        Can you provide more detail?
+      </label>
+    </h1>
+    <div id="with-hint-hint" class="govuk-hint">
+      Do not include personal or financial information like your National Insurance number or credit card details.
+    </div>
+    <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="with-hint" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+  </div>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+    You can enter up to 100 characters
+  </div>
+
+</div>
 <script>
 	// add in js-enabled by JavaScript - no JS, JS not enabled
 	document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
