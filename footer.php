@@ -92,15 +92,14 @@ flush();
         i18n: {
           locale: "en",
           translations: {
-            characters_over_limit_one: "Thou have writen %{count} letter too many",
-            characters_over_limit_other: "Thou have writen %{count} letters too many",
-            characters_under_limit_one: "Thou have %{count} letter remainen",
-            characters_under_limit_other: "Thou have %{count} letters remainen"
+            characters_over_limit_other: "Thou hast writen %{count} letters too many",
+            characters_under_limit_one: "Thou hast %{count} letter remainen",
+            characters_under_limit_other: "Thou hast %{count} letters remainen"
           },
           locale: "zh",
           translations: {
             characters_under_limit_two: "XXXX",
-            characters_over_limit_other: "Thou have writen %{count} letters too many",
+            characters_over_limit_other: "Thou hast writen %{count} letters too many",
             characters_under_limit_other: "%{count} nodau ar ôl",
           }
         }
