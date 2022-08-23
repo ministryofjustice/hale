@@ -13,6 +13,7 @@ jobs:
         run: npm run build
   create-release:
     runs-on: ubuntu-latest
+    needs: build-project
     permissions:
       contents: write
     steps:
@@ -30,7 +31,7 @@ jobs:
           name: Hale release function
           tag_name: r2d2
           body_path: ${{ github.workspace }}-CHANGELOG.txt
-          token: ${{ secrets.HALE_COMPILE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
