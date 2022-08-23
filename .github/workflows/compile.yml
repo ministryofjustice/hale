@@ -20,8 +20,6 @@ jobs:
           name: Hale release function
           body_path: ${{ github.workspace }}-CHANGELOG.txt
           token: ${{ secrets.HALE_COMPILE_TOKEN }}
-          with:
-            files: .
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
