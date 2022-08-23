@@ -1,7 +1,17 @@
 name: Hale compiler (c-bot) 
 on: [push]
 jobs:
-  compile:
+  build-project:
+    name: Compile Hale site using Node JS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Compile assets
+        run: npm run build
+  create-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
