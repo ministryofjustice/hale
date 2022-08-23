@@ -15,10 +15,13 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/heads/')
         with:
+          name: Hale release function
           body_path: ${{ github.workspace }}-CHANGELOG.txt
           token: ${{ secrets.HALE_COMPILE_TOKEN }}
+          with:
+            files: .
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
