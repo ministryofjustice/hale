@@ -15,7 +15,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: compiled-hale
-          path: .
+          path: ${{ github.workspace }} 
           if-no-files-found: error
   create-release:
     name: Create release
