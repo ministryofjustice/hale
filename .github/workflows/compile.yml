@@ -15,7 +15,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: compiled-hale
-          path: ${{ github.repository }}/* 
+          path: /home/runner/work/wp-hale/wp-hale/* 
           if-no-files-found: error
   create-release:
     name: Create release
@@ -38,23 +38,6 @@ jobs:
       - name: Archive site
         uses: thedoctor0/zip-release@main
         with:
-          filename: 'site.zip'
-      - name: Create github release
-        uses: actions/create-release@v1
-        id: create_release
-        with:
-          draft: false
-          prerelease: false
-          tag_name: ${{ github.ref }}
-          body_path: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: upload artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .test.tar.gz
-          asset_name: .test.tar.gz
-          asset_content_type: application/gzip
+          type: 'zip'
+          filename: 'hale.zip'
+
