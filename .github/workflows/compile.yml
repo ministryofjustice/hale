@@ -15,7 +15,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: compiled-hale
-          path: /home/runner/work/wp-hale/wp-hale/* 
+          path: | 
+            .
+            !./node_modules
           if-no-files-found: error
   create-release:
     name: Create release
