@@ -29,11 +29,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: Hale release function
-          tag_name: r2d2
-          body_path: ${{ github.workspace }}-CHANGELOG.txt
-          token: ${{ secrets.GITHUB_TOKEN }}
           files: package.json
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
