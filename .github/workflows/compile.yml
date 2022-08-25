@@ -23,7 +23,7 @@ jobs:
             !.env
           if-no-files-found: error
   create-release:
-    name: Create release
+    name: Create release.
     runs-on: ubuntu-latest
     needs: build-project
     permissions:
