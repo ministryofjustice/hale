@@ -14,10 +14,13 @@ jobs:
       - name: Upload compiled site
         uses: actions/upload-artifact@v3
         with:
-          name: compiled-hale
+          name: hale-theme-prod 
           path: | 
             .
             !./node_modules
+            !.git
+            !.sql
+            !.env
           if-no-files-found: error
   create-release:
     name: Create release
@@ -36,7 +39,7 @@ jobs:
       - name: Download site content
         uses: actions/download-artifact@v3
         with:
-          name: compiled-hale
+          name: hale-theme-prod
       - name: Archive site
         uses: thedoctor0/zip-release@main
         with:
