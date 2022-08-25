@@ -43,12 +43,13 @@ jobs:
       - name: Archive site
         uses: thedoctor0/zip-release@main
         with:
+          name: hale-theme-prod
           type: 'zip'
           filename: 'hale.zip'
       - name: Upload Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.zip"
+          artifacts: hale.zip
           id: create_release
           token: ${{ secrets.GITHUB_TOKEN }}
           upload_url: ${{ steps.create_release.outputs.upload_url }}
