@@ -14,7 +14,7 @@ jobs:
       - name: Upload compiled site
         uses: actions/upload-artifact@v3
         with:
-          name: hale-theme-prod 
+          name: hale-compiled 
           path: | 
             .
             !./node_modules
@@ -44,12 +44,21 @@ jobs:
         uses: thedoctor0/zip-release@main
         with:
           name: hale-theme-prod
-          type: 'zip'
-          filename: 'hale.zip'
+          filename: hale.zip
       - name: Upload Release
-        uses: ncipollo/release-action@v1
+        id: create-github-release
+        uses: actions/create-release@v1
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          artifacts: hale.zip
-          id: create_release
-          token: ${{ secrets.GITHUB_TOKEN }}
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          tag_name: tagv1
+          release_name: Release v1
+      - name: Upload assets to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        with:
+          upload_url: ${{ steps.create-github-release.outputs.url }}
+          asset_path: ./hale.zip
+          asset_name: hale-compiled-theme.zip
+          asset_content_type: application/zip
