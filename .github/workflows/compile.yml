@@ -39,12 +39,12 @@ jobs:
       - name: Download site content
         uses: actions/download-artifact@v3
         with:
-          name: hale-theme-prod
+          name: hale-compiled
       - name: Archive site
         uses: thedoctor0/zip-release@main
         with:
-          name: hale-theme-prod
-          filename: hale.zip
+          name: hale-compiled
+          filename: hale-compiled.zip
       - name: Upload Release
         id: create-github-release
         uses: actions/create-release@v1
@@ -59,6 +59,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{ steps.create-github-release.outputs.url }}
-          asset_path: ./hale.zip
-          asset_name: hale-compiled-theme.zip
+          asset_path: ./hale-compiled.zip
+          asset_name: hale-compiled.zip
           asset_content_type: application/zip
