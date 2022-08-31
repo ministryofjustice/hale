@@ -40,25 +40,25 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: hale-compiled
-      - name: Archive site
+      - name: Compress theme into .zip format 
         uses: thedoctor0/zip-release@main
         with:
           name: hale-compiled
           filename: hale-compiled.zip
-      - name: Upload Release
-        id: create-github-release
+      - name: Generate release and attach .zip
+        id: create_release
         uses: actions/create-release@v1
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: tagv123
-          release_name: Release v123
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
       - name: Upload assets to github release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
-          upload_url: ${{ steps.create-github-release.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./hale-compiled.zip
           asset_name: hale-compiled.zip
           asset_content_type: application/gzip
