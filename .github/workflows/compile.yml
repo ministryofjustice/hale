@@ -49,10 +49,10 @@ jobs:
         id: create-github-release
         uses: actions/create-release@v1
         env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HALE_COMPILE_TOKEN }}
         with:
-          tag_name: tagv1
-          release_name: Release v1
+          tag_name: tagv12
+          release_name: Release v12
       - name: Upload assets to github release
         uses: actions/upload-release-asset@v1
         env:
