@@ -2,5 +2,6 @@
     "name": "ministryofjustice/wp-hale",
     "description": "Hale theme",
     "type": "wordpress-theme",
-    "require": {}
+    "require": {},
+    "version": "1.0.0"
 }
