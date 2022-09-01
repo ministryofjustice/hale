@@ -1,1 +1,1 @@
-# Hale v2
+# Hale
