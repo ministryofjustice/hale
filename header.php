@@ -44,6 +44,9 @@ wp_body_open();
 <?php do_action( 'hale_after_body' ); ?>
 <a class="govuk-skip-link" data-module="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
+include "inc/emergency-banner.php";
+?>
+<?php
 
 $header_search = get_theme_mod( 'show_search', 'yes' );
 $show_header_menu = get_theme_mod('show_header_menu', 'yes');
