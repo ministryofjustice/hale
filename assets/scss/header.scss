@@ -375,6 +375,11 @@
         height: 27px;
         width: 27px;
       }
+
+      .hale-search__button-text {
+        //when in the header, the button text is SR only
+        @extend .govuk-visually-hidden;
+      }
     }
   }
 
