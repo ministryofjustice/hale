@@ -58,6 +58,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./hale-compiled.zip
-          asset_name: hale-compiled.zip
+          asset_path: ./hale-5.0.0.zip
+          asset_name: hale-5.0.0.zip
           asset_content_type: application/gzip
