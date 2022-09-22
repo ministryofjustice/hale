@@ -43,7 +43,7 @@ jobs:
       - name: Compress theme into .zip format 
         uses: thedoctor0/zip-release@main
         with:
-          filename: hale-compiled.zip
+          filename: hale-5.0.0.zip
       - name: Generate release and attach .zip
         id: create_release
         uses: actions/create-release@v1
