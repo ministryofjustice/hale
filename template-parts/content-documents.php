@@ -59,6 +59,11 @@ if ($file) {
 	<?php
 		the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
 	?>
+    <div class="document-details">
+        <div class="document-published-date">
+            Published: <?php hale_posted_on(); ?>
+        </div>
+    </div>
 	<div class="document-summary">
 		<?php if (!$icon_image) { ?>
 		<div class="document-summary__image">

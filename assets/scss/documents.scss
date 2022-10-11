@@ -1,6 +1,16 @@
 .document-title {
   margin-bottom: govuk-spacing(7);
 }
+
+.document-details {
+  @include govuk-font(19);
+  font-weight: bold;
+
+  .document-published-date {
+    margin-bottom: 20px;
+  }
+}
+
 .document-summary__link {
   margin-top: govuk-spacing(6);
 }
