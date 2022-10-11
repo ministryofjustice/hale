@@ -3,7 +3,6 @@
  * Template part for displaying documents
  */
 
-
 $file = get_field('document_file');
 if ($file) {
 	$link_uri = $file['url'];
@@ -82,6 +81,16 @@ if ($file) {
 			?>
 			</p>
 		</div>
+
+        <?php
+        $document_summary = get_post_meta($post->ID, 'document_summary', true);
+        if(!empty($document_summary)){ ?>
+        <div class="document-summary-text">
+            <?php echo wpautop($document_summary); ?>
+        </div>
+        <?php
+        }
+        ?>
 	</div>
 	
     <?php do_action( 'hale_before_single_content' ); ?>

@@ -14,7 +14,7 @@
 .document-summary__link {
   margin-top: govuk-spacing(6);
 }
-.document-summary {
+#primary .document-summary {
   &__image {
     width:198px;
     padding-bottom:2px;
@@ -47,5 +47,10 @@
       height:1em;
       width: auto;
     }
+  }
+
+  .document-summary-text p {
+    font-weight: bold;
+    margin-bottom: 20px;
   }
 }
