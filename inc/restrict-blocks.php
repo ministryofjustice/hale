@@ -4,9 +4,9 @@
  */
 function hale_allowed_block_types( $allowed_blocks ) {
 
-    $restrict_blocks = get_theme_mod('restrict_blocks', "yes");
+    $restrict_blocks = get_theme_mod('restrict_blocks', 1);
 
-    if($restrict_blocks == "yes") {
+    if($restrict_blocks) {
 
         $allowed_blocks = array(
             'core/image',
@@ -40,8 +40,8 @@ function hale_allowed_block_types( $allowed_blocks ) {
         );
 
         //Check if news post type is deactivated
-        $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes");
-        if ($deactivate_news == "no") {
+        $cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
+        if ($cpt_news_activated) {
             $allowed_blocks[] = 'mojblocks/latest-news';
             $allowed_blocks[] = 'mojblocks/featured-news';
         }
@@ -57,9 +57,9 @@ add_filter( 'allowed_block_types_all', 'hale_allowed_block_types' );
 
 function hale_restrict_embed_blocks() {
 
-    $restrict_blocks = get_theme_mod('restrict_blocks', "yes");
+    $restrict_blocks = get_theme_mod('restrict_blocks', 1);
 
-    if($restrict_blocks == "yes") {
+    if($restrict_blocks) {
         wp_enqueue_script(
             'restrict-embed-blocks',
             hale_mix_asset('/js/restrict-embed-blocks.js'),

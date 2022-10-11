@@ -58,11 +58,8 @@ function hale_register_news_post_type()
         ),
     );
 
-    //Check if post type is deactived
-    $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes");
-    if ($deactivate_news == "no") {
-        register_post_type('news', $args);
-    }
+
+    register_post_type('news', $args);
 
 }
 
