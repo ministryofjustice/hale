@@ -445,11 +445,43 @@ function hale_learndash_admin_fix()
 require get_template_directory() . '/inc/restrict-blocks.php';
 
 /**
- * Custom Post Types
- * When adding a new cpt make sure to add it to the cpts array in customizer
+ * News Custom Post Type
  */
-require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
-require get_template_directory() . '/inc/custom-post-types/cpt-documents.php';
+
+//Check if post type is deactived
+$cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
+$deactivate_news = get_theme_mod('deactivate_cpt_news', "yes"); //old way to be deleted once new settings saved
+
+if ($cpt_news_activated || $deactivate_news == "no") {
+    require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
+}
+
+/**
+ * Document Custom Post Type
+ */
+
+//Check if post type is deactived
+$cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
+$deactivate_doc = get_theme_mod('deactivate_cpt_documents', "yes"); //old way to be deleted once new settings saved
+if ($cpt_documents_activated || $deactivate_doc == "no") {
+
+    require get_template_directory() . '/inc/custom-post-types/cpt-documents.php';
+
+    $tax_document_category_activated = get_theme_mod('tax_document_category_activated', 0);
+    if ($tax_document_category_activated) {
+        require get_template_directory() . '/inc/taxonomies/tax-document-category.php';
+    }
+
+    $tax_document_type_activated = get_theme_mod('tax_document_type_activated', 0);
+    if ($tax_document_type_activated) {
+        require get_template_directory() . '/inc/taxonomies/tax-document-type.php';
+    }
+
+    $tax_document_location_activated = get_theme_mod('tax_document_location_activated', 0);
+    if ($tax_document_location_activated) {
+        require get_template_directory() . '/inc/taxonomies/tax-document-location.php';
+    }
+}
 
 /**
  * Taxonomies

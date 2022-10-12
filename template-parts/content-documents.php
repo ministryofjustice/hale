@@ -3,7 +3,6 @@
  * Template part for displaying documents
  */
 
-
 $file = get_field('document_file');
 if ($file) {
 	$link_uri = $file['url'];
@@ -59,6 +58,11 @@ if ($file) {
 	<?php
 		the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
 	?>
+    <div class="document-details">
+        <div class="document-published-date">
+            Published: <?php hale_posted_on(); ?>
+        </div>
+    </div>
 	<div class="document-summary">
 		<?php if (!$icon_image) { ?>
 		<div class="document-summary__image">
@@ -77,6 +81,16 @@ if ($file) {
 			?>
 			</p>
 		</div>
+
+        <?php
+        $document_summary = get_post_meta($post->ID, 'document_summary', true);
+        if(!empty($document_summary)){ ?>
+        <div class="document-summary-text">
+            <?php echo wpautop($document_summary); ?>
+        </div>
+        <?php
+        }
+        ?>
 	</div>
 	
     <?php do_action( 'hale_before_single_content' ); ?>

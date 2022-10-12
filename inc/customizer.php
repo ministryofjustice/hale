@@ -805,7 +805,7 @@ function hale_add_blocks_settings( $wp_customize )
 
     if( current_user_can('administrator') ) {
 
-        $wp_customize->add_section(
+        $wp_customize->add_panel(
             'blocks_panel',
             array(
                 'title' => esc_html__('CPTs and Blocks', 'hale'),
@@ -816,57 +816,191 @@ function hale_add_blocks_settings( $wp_customize )
             )
         );
 
+        /* Blocks Settings */
+
+        $wp_customize->add_section(
+            'blocks_settings',
+            array(
+                'title' => esc_html__('Blocks', 'hale'),
+                'description' => esc_html__('Blocks settings', 'hale'),
+                'capability' => 'edit_theme_options',
+                'theme-supports' => '',
+                'priority' => '160',
+                'panel' => 'blocks_panel'
+            )
+        );
+
         /*
         *  Restrict Blocks Settings
         */
         $wp_customize->add_setting(
             'restrict_blocks',
             array(
-                'default' => 'yes',
+                'default' => 1,
             )
         );
 
-        $wp_customize->add_control(
+       $wp_customize->add_control(
             'restrict_blocks',
             array(
                 'label' => esc_html__('Restrict Blocks', 'hale'),
                 'description' => esc_html__('Hides some core Wordpress blocks that are not currently compatible with Hale theme', 'hale'),
-                'section' => 'blocks_panel',
+                'section' => 'blocks_settings',
                 'priority' => '100',
                 'type' => 'radio',
                 'choices' => array(
-                    'yes' => esc_html__('Yes', 'hale'),
-                    'no' => esc_html__('No', 'hale'),
+                    1 => esc_html__('On', 'hale'),
+                    0 => esc_html__('Off', 'hale'),
                 ),
             )
         );
 
-        $cpts = array('news' => 'News Stories', 'documents' => 'Documents');
+        /* Documents CPT Settings */
 
-        foreach ($cpts as $cpt_slug => $cpt_name){
-            /*
-               *  Restrict CPT Settings
-             */
-            $wp_customize->add_setting(
-                'deactivate_cpt_'.$cpt_slug,
-                array(
-                    'default' => 'yes',
-                )
-            );
+        $wp_customize->add_section(
+            'documents_cpt_settings',
+            array(
+                'title' => esc_html__('Documents', 'hale'),
+                'description' => esc_html__('Document CPT settings', 'hale'),
+                'capability' => 'edit_theme_options',
+                'theme-supports' => '',
+                'priority' => '160',
+                'panel' => 'blocks_panel'
+            )
+        );
 
-            $wp_customize->add_control(
-                'deactivate_cpt_'.$cpt_slug,
-                array(
-                    'label' => esc_html__('Deactivate '.$cpt_name, 'hale'),
-                    'section' => 'blocks_panel',
-                    'priority' => '100',
-                    'type' => 'radio',
-                    'choices' => array(
-                        'yes' => esc_html__('Yes', 'hale'),
-                        'no' => esc_html__('No', 'hale'),
-                    ),
-                )
-            );
-        }
+        $wp_customize->add_setting(
+            'cpt_documents_activated',
+            array(
+                'default' => 0,
+            )
+        );
+
+        $wp_customize->add_control(
+            'cpt_documents_activated',
+            array(
+                'label' => esc_html__('Documents', 'hale'),
+                'section' => 'documents_cpt_settings',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    1 => esc_html__('On', 'hale'),
+                    0 => esc_html__('Off', 'hale'),
+                ),
+            )
+        );
+
+        $wp_customize->add_setting(
+            'tax_document_category_activated',
+            array(
+                'default' => 0,
+            )
+        );
+
+        $wp_customize->add_control(
+            'tax_document_category_activated',
+            array(
+                'label' => esc_html__('Document Category Taxonomy', 'hale'),
+                'section' => 'documents_cpt_settings',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    1 => esc_html__('On', 'hale'),
+                    0 => esc_html__('Off', 'hale'),
+                ),
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('cpt_documents_activated')->value() == true)
+                    );
+                },
+            )
+        );
+
+        $wp_customize->add_setting(
+            'tax_document_type_activated',
+            array(
+                'default' => 0,
+            )
+        );
+
+        $wp_customize->add_control(
+            'tax_document_type_activated',
+            array(
+                'label' => esc_html__('Document Type Taxonomy', 'hale'),
+                'section' => 'documents_cpt_settings',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    1 => esc_html__('On', 'hale'),
+                    0 => esc_html__('Off', 'hale'),
+                ),
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('cpt_documents_activated')->value() == true)
+                    );
+                },
+            )
+        );
+
+        $wp_customize->add_setting(
+            'tax_document_location_activated',
+            array(
+                'default' => 0,
+            )
+        );
+
+        $wp_customize->add_control(
+            'tax_document_location_activated',
+            array(
+                'label' => esc_html__('Document Location Taxonomy', 'hale'),
+                'section' => 'documents_cpt_settings',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    1 => esc_html__('On', 'hale'),
+                    0 => esc_html__('Off', 'hale'),
+                ),
+                'active_callback' => function () use ($wp_customize) {
+                    return (
+                    ($wp_customize->get_setting('cpt_documents_activated')->value() == true)
+                    );
+                },
+            )
+        );
+        /* News CPT Settings */
+
+        $wp_customize->add_section(
+            'news_cpt_settings',
+            array(
+                'title' => esc_html__('News Stories', 'hale'),
+                'description' => esc_html__('News Stories CPT settings', 'hale'),
+                'capability' => 'edit_theme_options',
+                'theme-supports' => '',
+                'priority' => '160',
+                'panel' => 'blocks_panel'
+            )
+        );
+
+        $wp_customize->add_setting(
+            'cpt_news_activated',
+            array(
+                'default' => 0,
+            )
+        );
+
+        $wp_customize->add_control(
+            'cpt_news_activated',
+            array(
+                'label' => esc_html__('News Stories', 'hale'),
+                'section' => 'news_cpt_settings',
+                'priority' => '100',
+                'type' => 'radio',
+                'choices' => array(
+                    1 => esc_html__('On', 'hale'),
+                    0 => esc_html__('Off', 'hale'),
+                ),
+            )
+        );
+
     }
 }

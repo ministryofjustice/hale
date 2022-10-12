@@ -11,9 +11,9 @@ function hale_register_doc_post_type()
         'archives' => __('Document archives', 'hale'),
         'attributes' => __('Document attributes', 'hale'),
         'parent_item_colon' => __('Parent document:', 'hale'),
-        'all_items' => __('All documents', 'hale'),
+        'all_items' => __('All Documents', 'hale'),
         'add_new_item' => __('Add new documents', 'hale'),
-        'add_new' => __('Add new', 'hale'),
+        'add_new' => __('Add New', 'hale'),
         'new_item' => __('New document', 'hale'),
         'edit_item' => __('Edit document', 'hale'),
         'update_item' => __('Update document', 'hale'),
@@ -51,17 +51,14 @@ function hale_register_doc_post_type()
         'exclude_from_search' => false,
         'publicly_queryable' => true,
         'capability_type' => 'page',
+        'taxonomies' => array('post_tag'),
         'rewrite' => array(
             'slug' => 'document',
             'with_front' => false
         ),
     );
 
-    //Check if post type is deactived
-    $deactivate_doc = get_theme_mod('deactivate_cpt_documents', "yes");
-    if ($deactivate_doc == "no") {
-        register_post_type('document', $args);
-    }
+    register_post_type('document', $args);
 
 }
 
