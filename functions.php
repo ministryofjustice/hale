@@ -450,7 +450,9 @@ require get_template_directory() . '/inc/restrict-blocks.php';
 
 //Check if post type is deactived
 $cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
-if ($cpt_news_activated) {
+$deactivate_news = get_theme_mod('deactivate_cpt_news', "yes"); //old way to be deleted once new settings saved
+
+if ($cpt_news_activated || $deactivate_news == "no") {
     require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
 }
 
@@ -460,7 +462,8 @@ if ($cpt_news_activated) {
 
 //Check if post type is deactived
 $cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
-if ($cpt_documents_activated) {
+$deactivate_doc = get_theme_mod('deactivate_cpt_documents', "yes"); //old way to be deleted once new settings saved
+if ($cpt_documents_activated || $deactivate_doc == "no") {
 
     require get_template_directory() . '/inc/custom-post-types/cpt-documents.php';
 
