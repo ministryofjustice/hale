@@ -227,37 +227,3 @@ function hale_link_pages_args_prevnext_add($args)
 
     return $args;
 }
-
-
-function hale_custom_query_pagination($custom_query){
-
-    $current_page_number = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-    $max_pages = $custom_query->max_num_pages;
-
-    next_posts_link('&laquo; Older Entries', $custom_query->max_num_pages);
-
-    if ($max_pages > 1) {
-        ?>
-        <nav class="archive-pagination-nav" aria-label="pagination">
-            <ul class="archive-pagination">
-                <li class="archive-pagination-current-page">
-                    <?php
-                    echo "Page " . $current_page_number . " of " . $max_pages; ?>
-
-                </li>
-                <li class="archive-pagination-prev-btn">
-                    <?php if($current_page_number > 1){ ?>
-                        <a href="https://victimscommissioner.org.uk/news/" class="govuk-button">&lt; Previous</a>
-                    <?php } ?>
-                </li>
-                <li class="archive-pagination-next-btn">
-                    <?php if($current_page_number < $max_pages){ ?>
-                    <a href="https://victimscommissioner.org.uk/news/page/2/" class="govuk-button">Next &gt;</a>
-                    <?php } ?>
-                </li>
-            </ul>
-        </nav>
-        <?php
-    }
-}
