@@ -84,7 +84,7 @@ function hale_news_archive_query($query)
     return;
 }
 
-add_action('pre_get_posts', 'hale_news_archive_query');
+//add_action('pre_get_posts', 'hale_news_archive_query');
 
 function hale_news_add_query_vars_filter($vars)
 {
