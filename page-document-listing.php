@@ -168,9 +168,7 @@ while (have_posts()) :
 
 
                             //Taxonomy Document Location Search Filter
-
-                            $tax_document_location_activated = get_theme_mod('tax_document_location_activated', 0);
-                            $document_location_filter_activated = get_post_meta( get_the_ID(), 'document_location_filter_activated', true);
+                            
                             if ($show_doc_location_filter) {
 
                                 $doc_locations = get_terms('document_location', array('hide_empty' => true));
@@ -221,19 +219,7 @@ while (have_posts()) :
                 if (!empty($doc_search_text)) {
 
                    $doc_args['s'] = $doc_search_text;
-
-                   /* $doc_args['meta_query'] = array(
-                        array(
-                            'key'     => 'document_summary',
-                            'value'   => $doc_search_text,
-                            'compare' => 'LIKE',
-                        )
-                    );*/
-
-                   //$doc_args['meta_key'] = 'document_summary';
-                   //$doc_args['meta_compare'] = 'LIKE';
-                   //$doc_args['meta_value'] = '%'.$doc_search_text.'%';
-
+                   //Meta fields (such as summary) are searched using relevanssi
                 }
 
                 if (!empty($selected_doc_type_id)) {
