@@ -63,3 +63,16 @@ function hale_register_doc_post_type()
 }
 
 add_action('init', 'hale_register_doc_post_type', 0);
+
+function hale_documents_add_query_vars_filter($vars)
+{
+    $vars[] = "doc_search";
+    $vars[] = "doc_type";
+    $vars[] = "doc_category";
+    $vars[] = "doc_location";
+    return $vars;
+}
+
+add_filter('query_vars', 'hale_documents_add_query_vars_filter');
+
+
