@@ -168,7 +168,7 @@ while (have_posts()) :
 
 
                             //Taxonomy Document Location Search Filter
-                            
+
                             if ($show_doc_location_filter) {
 
                                 $doc_locations = get_terms('document_location', array('hide_empty' => true));
@@ -211,7 +211,9 @@ while (have_posts()) :
                     'post_type' => 'document',
                     'posts_per_page' => 10,
                     'relevanssi' => true,
-                    'paged' => $paged
+                    'paged' => $paged,
+                    'orderby' => 'post_date',
+                    'order' => 'DESC'
                 );
 
                 $tax_qry_ary = [];
