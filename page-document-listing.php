@@ -70,6 +70,12 @@ while (have_posts()) :
         <h1 class="govuk-heading-xl">
             <?php echo get_the_title(); ?>
         </h1>
+
+        <?php
+        // Page body content
+        get_template_part('template-parts/content', 'page');
+        ?>
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
                 <div class="document-listing-search-section">
