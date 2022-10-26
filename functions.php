@@ -502,3 +502,29 @@ require get_template_directory() . '/inc/uploads.php';
  * Disable archives 
  */
 require get_template_directory() . '/inc/disable-archives.php';
+
+function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
+{
+
+    if(is_admin()) {
+        $screen = get_current_screen();
+
+        //Checks if on page edit screen - means all templates show on acf settings
+        if ($screen->base == "post" && $screen->post_type ==  "page") {
+
+            //Checks if page templates are being requested
+            if ($post_type == 'page') {
+                //Check if document post type is deactivateded
+                $cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
+
+                if (!$cpt_documents_activated) {
+                    unset($post_templates['page-document-listing.php']);
+                }
+
+            }
+        }
+    }
+    return $post_templates;
+}
+
+add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
