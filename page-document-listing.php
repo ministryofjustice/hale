@@ -9,7 +9,7 @@
 
 get_header();
 
-//Get Search text Vale
+//Get Search text Value
 
 $doc_search_text = '';
 
@@ -49,9 +49,9 @@ if (get_query_var('doc_category')) {
     }
 }
 
-if (get_query_var('document_location')) {
+if (get_query_var('doc_location')) {
 
-    $doc_loc_id = get_query_var('document_location');
+    $doc_loc_id = get_query_var('doc_location');
     if (is_numeric($doc_loc_id)) {
 
         $doc_loc_id = intval($doc_loc_id);
@@ -62,8 +62,13 @@ if (get_query_var('document_location')) {
     }
 }
 
+
 while (have_posts()) :
     the_post();
+
+    //Check if documents are restricted
+    $restrict_documents = get_post_meta(get_the_ID(), 'restrict_documents', true);
+
     ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
@@ -91,7 +96,7 @@ while (have_posts()) :
                             $show_doc_type_filter = false;
 
                             $tax_document_type_activated = get_theme_mod('tax_document_type_activated', 0);
-                            $document_type_filter_activated = get_post_meta( get_the_ID(), 'document_type_filter_activated', true);
+                            $document_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
 
                             if ($tax_document_type_activated && $document_type_filter_activated) {
                                 $show_doc_type_filter = true;
@@ -109,14 +114,14 @@ while (have_posts()) :
                             $show_doc_location_filter = false;
 
                             $tax_document_location_activated = get_theme_mod('tax_document_location_activated', 0);
-                            $document_location_filter_activated = get_post_meta( get_the_ID(), 'document_location_filter_activated', true);
+                            $document_location_filter_activated = get_post_meta(get_the_ID(), 'document_location_filter_activated', true);
 
                             if ($tax_document_location_activated && $document_location_filter_activated) {
                                 $show_doc_location_filter = true;
                             }
 
 
-                            if($show_doc_type_filter || $show_doc_category_filter || $show_doc_location_filter) {
+                            if ($show_doc_type_filter || $show_doc_category_filter || $show_doc_location_filter) {
                                 ?>
                                 <p>Filters</p>
                                 <?php
@@ -124,79 +129,91 @@ while (have_posts()) :
 
                             //Taxonomy Document Type Search Filter
 
-                            if ($show_doc_type_filter) {
+                            if ($show_doc_type_filter && $restrict_documents != "document_type") {
 
-                                $doc_types = get_terms('document_type', array('hide_empty' => true));
+                                $dropdown_html = wp_dropdown_categories(
+                                    array(
+                                        'name' => 'doc_type',
+                                        'id' => 'document-search-filter-type',
+                                        'class' => 'govuk-select',
+                                        'taxonomy' => 'document_type',
+                                        'show_option_all' => 'Select option',
+                                        'orderby' => 'name',
+                                        'echo' => 0,
+                                        'hide_if_empty' => 1,
+                                        'selected' => $selected_doc_type_id
 
-                                if (is_array($doc_types) && !empty($doc_types)) {
-                                    ?>
+                                    )
+                                );
+
+                                if (!empty($dropdown_html)) { ?>
+
                                     <label class="govuk-label" for="document-search-filter-type">Type</label>
-                                    <select name="doc_type" id="document-search-filter-type" class="govuk-select">
-                                        <option value="0"
-                                                <?php if ($selected_doc_type_id == 0) { ?>selected="selected"<?php } ?>>
-                                            Select option
-                                        </option>
-                                        <?php foreach ($doc_types as $doc_type) { ?>
-                                            <option
-                                                value="<?php echo $doc_type->term_id; ?>"
-                                                <?php if ($selected_doc_type_id == $doc_type->term_id) { ?>selected="selected"<?php } ?>><?php echo $doc_type->name; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <?php
+                                    <?php echo $dropdown_html; ?>
 
+                                    <?php
                                 }
                             }
 
                             //Taxonomy Document Category Search Filter
 
-                            if ($show_doc_category_filter) {
-                                $doc_categories = get_terms('document_category', array('hide_empty' => true));
+                            if ($show_doc_category_filter && $restrict_documents != "document_category") {
 
-                                if (!empty($doc_categories)) {
-                                    ?>
+                                $dropdown_html = wp_dropdown_categories(
+                                    array(
+                                        'name' => 'doc_category',
+                                        'id' => 'document-search-filter-category',
+                                        'class' => 'govuk-select',
+                                        'taxonomy' => 'document_category',
+                                        'show_option_all' => 'Select option',
+                                        'orderby' => 'name',
+                                        'echo' => 0,
+                                        'hide_if_empty' => 1,
+                                        'selected' => $selected_doc_category_id
+
+                                    )
+                                );
+
+                                if (!empty($dropdown_html)) { ?>
+
                                     <label class="govuk-label" for="document-search-filter-category">Category</label>
-                                    <select name="doc_category" id="document-search-filter-category"
-                                            class="govuk-select">
-                                        <option value="0"
-                                                <?php if ($selected_doc_category_id == 0) { ?>selected="selected"<?php } ?>>
-                                            Select option
-                                        </option>
-                                        <?php foreach ($doc_categories as $doc_category) { ?>
-                                            <option
-                                                value="<?php echo $doc_category->term_id; ?>"
-                                                <?php if ($selected_doc_category_id == $doc_category->term_id) { ?>selected="selected"<?php } ?>><?php echo $doc_category->name; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <?php
+                                    <?php echo $dropdown_html; ?>
 
+                                    <?php
                                 }
                             }
 
 
                             //Taxonomy Document Location Search Filter
 
-                            if ($show_doc_location_filter) {
+                            if ($show_doc_location_filter && $restrict_documents != "document_location") {
 
-                                $doc_locations = get_terms('document_location', array('hide_empty' => true));
+                                ?>
+                                <?php
 
-                                if (!empty($doc_locations)) {
-                                    ?>
-                                    <label class="govuk-label" for="document-search-option-location">Location</label>
-                                    <select name="doc_location" id="document-search-filter-location"
-                                            class="govuk-select">
-                                        <option value="0"
-                                                <?php if ($selected_doc_location_id == 0) { ?>selected="selected"<?php } ?>>
-                                            Select option
-                                        </option>
-                                        <?php foreach ($doc_locations as $doc_location) { ?>
-                                            <option
-                                                value="<?php echo $doc_location->term_id; ?>"
-                                                <?php if ($selected_doc_location_id == $doc_location->term_id) { ?>selected="selected"<?php } ?>><?php echo $doc_location->name; ?></option>
-                                        <?php } ?>
-                                    </select>
+                                $dropdown_html = wp_dropdown_categories(
+                                    array(
+                                        'name' => 'doc_location',
+                                        'id' => 'document-search-filter-location',
+                                        'class' => 'govuk-select',
+                                        'taxonomy' => 'document_location',
+                                        'show_option_all' => 'Select option',
+                                        'orderby' => 'name',
+                                        'echo' => 0,
+                                        'hide_if_empty' => 1,
+                                        'selected' => $selected_doc_location_id
+
+                                    )
+                                );
+
+                                if (!empty($dropdown_html)) { ?>
+
+                                    <label class="govuk-label" for="document-search-filter-location">Location</label>
+                                    <?php echo $dropdown_html; ?>
+
                                     <?php
-
                                 }
+
                             }
                             ?>
 
@@ -211,53 +228,107 @@ while (have_posts()) :
 
                 <?php
 
-                $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+                $show_document_summaries = get_post_meta(get_the_ID(), 'show_document_summaries', true);
+
+                $restrict_by_type = get_post_meta(get_the_ID(), 'restrict_by_type', true);
+
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
                 $doc_args = array(
                     'post_type' => 'document',
                     'posts_per_page' => 10,
                     'relevanssi' => true,
-                    'paged' => $paged,
-                    'orderby' => 'post_date',
-                    'order' => 'DESC'
+                    'paged' => $paged
                 );
 
-                $tax_qry_ary = [];
+                //Set Number of Documents to be displayed per page
+                $documents_per_page = get_post_meta(get_the_ID(), 'documents_per_page', true);
 
+                if (!empty($documents_per_page)) {
+                    $doc_args['posts_per_page'] = $documents_per_page;
+                } else {
+                    $doc_args['posts_per_page'] = 10;
+                }
+
+                //Search by text
                 if (!empty($doc_search_text)) {
 
-                   $doc_args['s'] = $doc_search_text;
-                   //Meta fields (such as summary) are searched using relevanssi
+                    $doc_args['s'] = $doc_search_text;
+                    //Meta fields (such as summary) are searched using relevanssi
+                } else {
+                    //Documents are sorted be relevance if text search is used. If not the default sort is used.
+                    $document_listing_sort = get_post_meta(get_the_ID(), 'document_listing_default_sort', true);
+
+                    if ($document_listing_sort == 'title') {
+                        $doc_args['orderby'] = 'title';
+                        $doc_args['order'] = 'ASC';
+                    } else {
+                        $doc_args['orderby'] = 'post_date';
+                        $doc_args['order'] = 'DESC';
+                    }
                 }
 
-                if (!empty($selected_doc_type_id)) {
+                // Construct Taxonomy query depending on filters and restrictions
+                $tax_qry_ary = [];
 
-                    $tax_qry_ary[] = array(
-                        'taxonomy' => 'document_type',
-                        'field' => 'term_id',
-                        'terms' => $selected_doc_type_id
-                    );
+                //Add Document Restriction
+                if (!empty($restrict_documents) && $restrict_documents != 'no') {
 
+                    if (taxonomy_exists($restrict_documents)) {
+
+                        //Documents will only display with the given term ids - from a set taxonomy
+                        $restrict_term_ids = get_post_meta(get_the_ID(), 'restrict_documents_by_' . $restrict_documents, true);
+
+                        if (!empty($restrict_term_ids)) {
+                            $tax_qry_ary[] = array(
+                                'taxonomy' => $restrict_documents,
+                                'field' => 'term_id',
+                                'terms' => $restrict_term_ids
+                            );
+                        }
+                    }
                 }
 
-                if (!empty($selected_doc_category_id)) {
+                //Document Type Filter
+                if ($restrict_documents != "document_type") {
 
-                    $tax_qry_ary[] = array(
-                        'taxonomy' => 'document_category',
-                        'field' => 'term_id',
-                        'terms' => $selected_doc_category_id
-                    );
+                    if (!empty($selected_doc_type_id)) {
 
+                        $tax_qry_ary[] = array(
+                            'taxonomy' => 'document_type',
+                            'field' => 'term_id',
+                            'terms' => $selected_doc_type_id
+                        );
+
+                    }
                 }
 
-                if (!empty($selected_doc_location_id)) {
+                //Document Category Filter
+                if ($restrict_documents != "document_category") {
 
-                    $tax_qry_ary[] = array(
-                        'taxonomy' => 'document_location',
-                        'field' => 'term_id',
-                        'terms' => $selected_doc_location_id
-                    );
+                    if (!empty($selected_doc_category_id)) {
 
+                        $tax_qry_ary[] = array(
+                            'taxonomy' => 'document_category',
+                            'field' => 'term_id',
+                            'terms' => $selected_doc_category_id
+                        );
+
+                    }
+                }
+
+                //Document Location Filter
+                if ($restrict_documents != "document_location") {
+
+                    if (!empty($selected_doc_location_id)) {
+
+                        $tax_qry_ary[] = array(
+                            'taxonomy' => 'document_location',
+                            'field' => 'term_id',
+                            'terms' => $selected_doc_location_id
+                        );
+
+                    }
                 }
 
                 if (!empty($tax_qry_ary)) {
@@ -267,7 +338,7 @@ while (have_posts()) :
                 }
 
                 $doc_query = new WP_Query($doc_args);
-
+                $document_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
                 if ($doc_query->have_posts()) {
 
                     if ($doc_query->found_posts > 1) {
@@ -283,7 +354,7 @@ while (have_posts()) :
                         <?php
                         while ($doc_query->have_posts()) {
                             $doc_query->the_post();
-                            get_template_part('template-parts/content', 'document-list-item');
+                            get_template_part('template-parts/content', 'document-list-item', array('show_document_summaries' => $show_document_summaries));
                         } ?>
                     </div>
                     <?php
