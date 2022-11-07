@@ -11,6 +11,9 @@
         Published: <?php hale_posted_on(); ?>
     </div>
 
+    <?php
+    if (!empty($args['show_document_summaries']) && $args['show_document_summaries'] == true) {
+    ?>
     <div class="document-excerpt">
         <?php
         $document_summary = get_post_meta( get_the_ID(), 'document_summary', true);
@@ -19,4 +22,5 @@
         }
         ?>
     </div>
+    <?php } ?>
 </div>
