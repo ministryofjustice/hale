@@ -50,7 +50,7 @@ function hale_render_news_story_summary_metabox($post)
 
     <p><?php esc_html_e('Show summary on news article', 'hale'); ?></p>
 
-    <input type="radio" id="page-summary-on" name="displayNewsSummary" value="yes"
+    <input type="radio" id="news-summary-on" name="displayNewsSummary" value="yes"
         <?php
         if ($news_story_show_summary == 'yes') :
             echo 'checked';
@@ -58,15 +58,15 @@ function hale_render_news_story_summary_metabox($post)
         ?>
     >
 
-    <label for="page-breadcrumb-on"><?php esc_html_e('Yes', 'hale'); ?></label><br>
-    <input type="radio" id="page-summary-off" name="displayNewsSummary" value="no"
+    <label for="news-summary-on"><?php esc_html_e('Yes', 'hale'); ?></label><br>
+    <input type="radio" id="news-summary-off" name="displayNewsSummary" value="no"
         <?php
         if ($news_story_show_summary == 'no') :
             echo 'checked';
         endif;
         ?>
     >
-    <label for="page-breadcrumb-off"><?php esc_html_e('No', 'hale'); ?></label><br>
+    <label for="news-summary-off"><?php esc_html_e('No', 'hale'); ?></label><br>
     <?php
 }
 
