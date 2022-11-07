@@ -35,11 +35,38 @@ function hale_render_news_story_summary_metabox($post)
     // get previously saved meta values (if any).
     $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
 
+    $news_story_show_summary = get_post_meta($post->ID, 'news_story_show_summary', true);
+
+    if (empty($news_story_show_summary)) {
+        $news_story_show_summary = 'yes';
+    }
     ?>
 
     <p><?php esc_html_e('Please enter a short summary about the news story', 'hale'); ?></p>
 
     <textarea name="newsStorySummary" class="css-1806jio-StyledTextarea-inputStyleNeutral-inputStyleFocus-inputControl" rows="4"><?php echo $news_story_summary; ?></textarea>
+
+    <br/><br/>
+
+    <p><?php esc_html_e('Show summary on news article', 'hale'); ?></p>
+
+    <input type="radio" id="news-summary-on" name="displayNewsSummary" value="yes"
+        <?php
+        if ($news_story_show_summary == 'yes') :
+            echo 'checked';
+        endif;
+        ?>
+    >
+
+    <label for="news-summary-on"><?php esc_html_e('Yes', 'hale'); ?></label><br>
+    <input type="radio" id="news-summary-off" name="displayNewsSummary" value="no"
+        <?php
+        if ($news_story_show_summary == 'no') :
+            echo 'checked';
+        endif;
+        ?>
+    >
+    <label for="news-summary-off"><?php esc_html_e('No', 'hale'); ?></label><br>
     <?php
 }
 
@@ -73,6 +100,18 @@ function hale_save_news_story_summary_settings($post_id)
         $news_story_summary = sanitize_text_field(wp_unslash($_POST['newsStorySummary']));
 
         update_post_meta($post_id, 'news_story_summary', $news_story_summary);
+    }
+
+    if (isset($_POST['displayNewsSummary'])) {
+
+        $news_story_show_summary = sanitize_text_field(wp_unslash($_POST['displayNewsSummary']));
+
+        //Makes sure yes/no can only be passed
+        if(empty($news_story_show_summary) || $news_story_show_summary != 'no'){
+            $news_story_show_summary = 'yes';
+        }
+
+        update_post_meta($post_id, 'news_story_show_summary', $news_story_show_summary);
     }
 
 }

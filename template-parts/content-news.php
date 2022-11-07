@@ -11,17 +11,17 @@ if (empty($show_author)) {
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="news-story-header">
-		<?php
+    <header class="news-story-header">
+        <?php
 
-        the_title( '<h1 class="news-story-title govuk-heading-xl">', '</h1>' );
+        the_title('<h1 class="news-story-title govuk-heading-xl">', '</h1>');
 
         ?>
         <div class="news-story-details">
             <div class="news-story-published-date">
                 Published: <?php hale_posted_on(); ?>
             </div>
-            <?php if($show_author == 'yes'){ ?>
+            <?php if ($show_author == 'yes') { ?>
                 <div class="news-story-author">
                     <?php hale_posted_by(); ?>
                 </div>
@@ -32,7 +32,7 @@ if (empty($show_author)) {
 
         $story_tags = get_the_tags();
 
-        if(!empty($story_categories) || !empty($story_tags) ){ ?>
+        if (!empty($story_categories) || !empty($story_tags)) { ?>
             <div class="news-story-categories">
                 <ul class="news-story-categories-list">
                     <?php
@@ -65,44 +65,53 @@ if (empty($show_author)) {
                     ?>
                 </ul>
             </div>
-        <?php
+            <?php
         }
         ?>
-	</header>
+    </header>
 
-	<?php
-	if ( has_post_thumbnail() ) {
+    <?php
+    if (has_post_thumbnail()) {
 
         echo '<div class="news-story-featured-image">';
         hale_post_thumbnail();
         echo '</div>';
 
-	}
-	?>
-    <?php
-
-        $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
-        if(!empty($news_story_summary)){ ?>
-        <div class="news-story-excerpt intro">
-            <?php echo wpautop($news_story_summary); ?>
-        </div>
-
-    <?php
     }
     ?>
-	<?php do_action( 'hale_before_single_content' ); ?>
+    <?php
 
-	<div class="news-story-content">
-		<?php
-		if ( function_exists( 'hale_clean_bad_content' ) ) {
-            hale_clean_bad_content( true );
-		}
-		?>
-	</div><!-- .article-content -->
-	<div class="govuk-clearfix"></div>
+    $news_story_show_summary = get_post_meta($post->ID, 'news_story_show_summary', true);
 
-	<?php do_action( 'hale_after_single_content' ); ?>
+    if (empty($news_story_show_summary)) {
+        $news_story_show_summary = 'yes';
+    }
 
-	<footer class="news-story-footer">
-	</footer><!-- .entry-footer -->
+    if($news_story_show_summary == 'yes') {
+
+        $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
+        if (!empty($news_story_summary)) { ?>
+            <div class="news-story-excerpt intro">
+                <?php echo wpautop($news_story_summary); ?>
+            </div>
+
+            <?php
+        }
+    }
+    ?>
+    <?php do_action('hale_before_single_content'); ?>
+
+    <div class="news-story-content">
+        <?php
+        if (function_exists('hale_clean_bad_content')) {
+            hale_clean_bad_content(true);
+        }
+        ?>
+    </div><!-- .article-content -->
+    <div class="govuk-clearfix"></div>
+
+    <?php do_action('hale_after_single_content'); ?>
+
+    <footer class="news-story-footer">
+    </footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
