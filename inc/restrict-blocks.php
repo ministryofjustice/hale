@@ -46,6 +46,13 @@ function hale_allowed_block_types( $allowed_blocks ) {
             $allowed_blocks[] = 'mojblocks/latest-news';
             $allowed_blocks[] = 'mojblocks/featured-news';
         }
+
+        $cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
+
+        if($cpt_documents_activated) {
+            $allowed_blocks[] = 'mojblocks/featured-document';
+        }
+
         return  $allowed_blocks;
     }
     else {
