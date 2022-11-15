@@ -528,3 +528,14 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 }
 
 add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
+
+
+// Remove Yoast `SEO Manager` role
+if ( get_role('wpseo_manager') ) {
+    remove_role( 'wpseo_manager' );
+}
+
+// Remove Yoast `SEO Editor` role
+if ( get_role('wpseo_editor') ) {
+    remove_role( 'wpseo_editor' );
+}
