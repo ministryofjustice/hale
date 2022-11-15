@@ -171,14 +171,9 @@ function wpse_remove_custom_colors() {
     // specifies the options (removed "normal")
     add_theme_support('editor-font-sizes', array(
         array(
-            'name' => 'Huge',
-            'size' => '50',
-            'slug' => 'huge'
-        ),
-        array(
-            'name' => 'Large',
-            'size' => '38',
-            'slug' => 'large'
+            'name' => 'Small',
+            'size' => '22',
+            'slug' => 'small'
         ),
         array(
             'name' => 'Medium',
@@ -186,9 +181,14 @@ function wpse_remove_custom_colors() {
             'slug' => 'medium'
         ),
         array(
-            'name' => 'Small',
-            'size' => '22',
-            'slug' => 'small'
+            'name' => 'Large',
+            'size' => '38',
+            'slug' => 'large'
+        ),
+        array(
+            'name' => 'Huge',
+            'size' => '50',
+            'slug' => 'huge'
         )
     ) );
 }
@@ -528,3 +528,14 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 }
 
 add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
+
+
+// Remove Yoast `SEO Manager` role
+if ( get_role('wpseo_manager') ) {
+    remove_role( 'wpseo_manager' );
+}
+
+// Remove Yoast `SEO Editor` role
+if ( get_role('wpseo_editor') ) {
+    remove_role( 'wpseo_editor' );
+}

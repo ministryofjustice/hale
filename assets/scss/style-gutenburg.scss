@@ -47,3 +47,9 @@ $gutenberg-styles: true;
     }
   }
 }
+
+//Hides Add Template Button - Hopefully Wordpress will add an option to disable
+// https://wordpress.org/support/article/template-editor/
+.edit-post-post-template__form .components-button[aria-label="Add template"] {
+  display: none;
+}
