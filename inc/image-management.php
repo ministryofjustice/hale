@@ -69,10 +69,12 @@ final class ExtendedWpImageEditorImagick extends WP_Image_Editor_Imagick
  *
  * @param array $editors
  * @return array
+ *
+ * 70 priority to run after eww image plugin
  */
 
 add_filter('wp_image_editors', function (array $editors): array {
     array_unshift($editors, ExtendedWpImageEditorImagick::class);
 
     return $editors;
-});
+}, 70);
