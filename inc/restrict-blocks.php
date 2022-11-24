@@ -62,7 +62,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
 }
 
-//add_filter( 'allowed_block_types_all', 'hale_allowed_block_types' );
+add_filter( 'allowed_block_types_all', 'hale_allowed_block_types' );
 
 function hale_restrict_embed_blocks() {
 
