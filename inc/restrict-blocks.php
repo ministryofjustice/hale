@@ -13,6 +13,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'core/paragraph',
             'core/heading',
             'core/list',
+            'core/list-item',
             'core/code',
             'core/file',
             'core/video',
