@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "govuk-frontend": "^4.2.0",
+    "govuk-frontend": "^4.5.0",
     "grunt": "^1.4.1",
     "nunjucks": "^3.2.3"
   },
