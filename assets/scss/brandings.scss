@@ -209,6 +209,10 @@
 	//remove GDS brand colour bar
 	.govuk-header__container {
 		border-bottom: none;
+
+		&:after {
+			height: 10px;
+		}
 	}
 
 	.govuk-header {
@@ -374,6 +378,10 @@
 					border-bottom-color: var(--header-link-hover-border);
 
 					@include hale-heading-link-underline-restrictor($colour: --header-bg);
+				}
+
+				&:after {
+					content: none; // removes little arrow from dropdown menu - Hale uses an icon
 				}
 			}
 			.govuk-header__navigation-list {
