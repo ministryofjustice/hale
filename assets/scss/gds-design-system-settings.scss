@@ -65,10 +65,7 @@ $govuk-font-family: 'PT Sans', sans-serif;
 	}
 	&[aria-expanded="true"] {
 		&:after {
-			-webkit-clip-path: polygon(50% 0,0 100%,100% 100%);
-			clip-path: polygon(50% 0,0 100%,100% 100%);
-			border-width: 0 5px 8.66px;
-			border-bottom-color: inherit;
+			content:none;
 		}
 		+ .hale-header__search-wrap {
 			display:block;
