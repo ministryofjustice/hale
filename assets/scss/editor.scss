@@ -1,0 +1,10 @@
+/**
+ * This is designed to only effect the backend editor.  
+ * Therefore all styles should be a child of class .edit-post-layout
+*/
+
+.edit-post-visual-editor {
+	.editor-styles-wrapper {
+		margin: 0 2rem;
+	}
+}
