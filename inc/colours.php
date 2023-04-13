@@ -200,12 +200,6 @@ function hale_new_colour_check()
     // This is for non-IE only as this particular bug doesn't occur in IE.
 
     $CSSfileURL = wp_get_upload_dir()["basedir"]."/custom-colours.css"; //non-IE CSS file (variable values)
-
-    # Create directory if doesn't exist
-    if (!is_file($CSSfileURL)) {
-        mkdir(wp_get_upload_dir()["basedir"], 0777, true);
-    }
-
     $ColourFileURL = get_template_directory()."/inc/colours.php"; //colours CSS file
 
     if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {
