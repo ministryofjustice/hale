@@ -201,8 +201,9 @@ function hale_new_colour_check()
 
     $CSSfileURL = wp_get_upload_dir()["basedir"]."/custom-colours.css"; //non-IE CSS file (variable values)
 
-    if (!file_exists($CSSfileURL)) {
-        return;
+    # Create directory if doesn't exist
+    if (!is_file($CSSfileURL)) {
+        mkdir(wp_get_upload_dir()["basedir"], 0777, true);
     }
 
     $ColourFileURL = get_template_directory()."/inc/colours.php"; //colours CSS file
