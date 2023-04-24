@@ -153,6 +153,7 @@
 			['cookie-settings-hover-text',$white,'Cookie settings (triangle) hover text','',''],
 			['cookie-settings-focus-bg',$yellow,'Cookie settings (triangle) focus background','',''],
 			['cookie-settings-focus-text',$black,'Cookie settings (triangle) focus text','',''],
+			['cookie-settings-focus-outline','transparent','Cookie settings (triangle) focus outline, leave blank for none','',''],
 			['cookie-button-bg',$green,'Cookie banner button background','',''],
 			['cookie-button-text',$white,'Cookie banner button text','',''],
 			['cookie-button-hover-bg',$buttonHoverGreen,'Cookie banner button hover background','',''],
