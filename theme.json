@@ -10,6 +10,9 @@
         "link": false,
         "palette": []
       },
+      "typography": {
+        "textTransform": false
+      },
       "blocks": {
         "core/paragraph": {
           "typography": {
