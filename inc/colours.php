@@ -132,8 +132,8 @@
 			['mojblocks-staggered-box-btn-hover-border',$black,'Staggered box button hover border','',''],
 			['mojblocks-staggered-box-btn-hover-bg',$midGrey,'Staggered box button hover background','',''],
 			['mojblocks-staggered-box-btn-hover-text',$black,'Staggered box button hover text','',''],
-			['mojblocks-staggered-box-btn-focus-border',$black,'Staggered box button focus text','',''],
-			['mojblocks-staggered-box-btn-focus-bg',$yellow,'Staggered box button focus text','',''],
+			['mojblocks-staggered-box-btn-focus-border',$black,'Staggered box button focus border','',''],
+			['mojblocks-staggered-box-btn-focus-bg',$yellow,'Staggered box button focus background','',''],
 			['mojblocks-staggered-box-btn-focus-text',$black,'Staggered box button focus text','',''],
 			['mojblocks-staggered-box-bar',$yellow,'Little bar','',''],
 
