@@ -79,7 +79,7 @@
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
 			['footer-background',$lightGrey,'Footer background','',''],
-			['footer-link',$black,'Footer link hover','',''],
+			['footer-link',$black,'Footer link','',''],
 			['footer-link-focus',$black,'Footer link focus','',''],
 			['footer-link-focus-shadow',$black,'Footer link focus underline','',''],
 			['footer-link-focus-background',$yellow,'Footer link focus background','',''],

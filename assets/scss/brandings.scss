@@ -654,6 +654,10 @@
 		a[class=""],
 		.govuk-footer__link {
 
+			&:not(:focus) {
+				color: var(--footer-link);
+			}
+
 			&:hover {
 				text-decoration:none;
 			}
