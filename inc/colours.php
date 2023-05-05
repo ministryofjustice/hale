@@ -44,7 +44,7 @@
 			['header-link-focus-underline',$black,'Header link focus underline','',''],
 			['header-link-with-children-hover',$black,'Header link with children hover text','',''],
 			['header-link-with-children-hover-bg',$lightGrey,'Header link with children hover background','',''],
-			['header-link-with-children-hover-border',$black,'Header link with children hover underline','',''],
+			['header-link-with-children-hover-border',"currentColor",'Header link with children hover underline','Leave blank to match text colour',''],
 			['header-link-ancestor',$blue,'Ancestor link','Including current page if it has children',''],
 			['header-link-ancestor-bg',$lightGrey,'Ancestor background','',''],
 			['header-link-ancestor-hover-border',$blue,'Ancestor hover underline','',''],
