@@ -544,9 +544,6 @@
 	#primary a[class=""],
 	.hale-article-nav,
 	a.govuk-link,
-	a.govuk-footer__link,
-	.govuk-footer a:not([class]),
-	.govuk-footer a[class=""],
 	.moj-pagination__link {
 		&:focus {
 			color: var(--link-focus);
@@ -643,9 +640,21 @@
 		border-top-color: var(--footer-border);
 		background: var(--footer-background);
 
-		.govuk-footer__link:hover {
-			text-decoration:none;
+		a:not([class]),
+		a[class=""],
+		.govuk-footer__link {
+
+			&:hover {
+				text-decoration:none;
+			}
+			&:focus {
+				color: var(--footer-link-focus);
+				background-color: var(--footer-link-focus-background);
+				box-shadow: 0 -2px var(--footer-link-focus-background), 0 4px var(--footer-link-focus-shadow);
+				outline: 4px solid transparent;
+			}
 		}
+
 		.widget_social_widget .hale-social-link:focus {
 			box-shadow:
 				-4px 0 var(--footer-link-focus-background),
