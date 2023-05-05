@@ -34,7 +34,7 @@
 			['header-link',$white,'Header link','',''],
 			['header-link-hover',$white,'Header link hover','',''],
 			['header-link-hover-border',$white,'Header link hover underline','',''],
-			['header-link-hover-focus',$black,'Header link hover when focussed','',''],
+			['header-link-hover-focus',$black,'Header link hover when focussed (mouse click)','',''],
 			['header-link-current',$currentPageBlue,'Header current page','',''],
 			['header-link-current-bg',$black,'Header current page background','',''],
 			['header-link-current-border',$black,'Header current page underline','',''],
