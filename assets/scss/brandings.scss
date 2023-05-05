@@ -261,9 +261,6 @@
 					> a:visited,
 					> a:link,
 					> a:link:visited {
-						@include govuk-media-query($from: desktop) {
-							border-bottom-color: var(--header-link-current-border);
-						}
 
 						&:not(:focus) {
 							color: var(--header-link-current);
@@ -274,6 +271,13 @@
 								border-bottom-color: var(--header-link-current-hover-border);
 
 								@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
+							}
+
+							&:not(:hover) {
+								@include govuk-media-query($from: desktop) {
+									border-bottom-color: var(--header-link-current-border) ! important;
+									@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
+								}
 							}
 						}
 					}
