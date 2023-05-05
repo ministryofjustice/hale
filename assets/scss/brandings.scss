@@ -374,6 +374,12 @@
 											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 										}
 									}
+
+									&:not(:hover) {
+										@include govuk-media-query($from: desktop) {
+											@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+										}
+									}
 								}
 							}
 						}
