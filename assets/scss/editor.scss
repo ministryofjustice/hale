@@ -7,4 +7,33 @@
 	.editor-styles-wrapper {
 		margin: 0 2rem;
 	}
+
+	/**
+	 * Editor overrides
+	 * These styles are overrides to make wordpress blocks easier to manage in the editor interface
+	*/
+
+	// Table block
+	.wp-block-table {
+		&:not(.is-style-stripes) td,
+		td {
+			// adding dashed borders to aid editors visulisation of the table
+			border: 1px #b1b4b6;
+			border-style: dashed;
+			border-bottom-style: solid;
+			// overriding the normal padding to ease reading with the new dashed borders
+			padding: 10px;
+
+			&:last-child {
+				// overriding the normal padding to ease reading with the new dashed borders
+				// also makes table looked more uniform in the editor
+				padding: 10px;
+			}
+		}
+		&.is-style-stripes td {
+			// top and bottom are not needed for striped design
+			border-top-style: none;
+			border-bottom-style: none;
+		}
+	}
 }
