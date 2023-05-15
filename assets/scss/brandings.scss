@@ -261,9 +261,6 @@
 					> a:visited,
 					> a:link,
 					> a:link:visited {
-						@include govuk-media-query($from: desktop) {
-							border-bottom-color: var(--header-link-current-border);
-						}
 
 						&:not(:focus) {
 							color: var(--header-link-current);
@@ -274,6 +271,13 @@
 								border-bottom-color: var(--header-link-current-hover-border);
 
 								@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
+							}
+
+							&:not(:hover) {
+								@include govuk-media-query($from: desktop) {
+									border-bottom-color: var(--header-link-current-border) ! important;
+									@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
+								}
 							}
 						}
 					}
@@ -335,7 +339,7 @@
 								> a:not(:focus):link:visited {
 									background-color: var(--header-link-with-children-hover-bg);
 									color: var(--header-link-with-children-hover);
-									border-color: currentColor;
+									border-color: var(--header-link-with-children-hover-border);;
 									@include hale-heading-link-underline-restrictor($colour: --header-link-with-children-hover-bg);
 								}
 							}
@@ -368,6 +372,12 @@
 											border-bottom-color: currentColor;
 
 											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+										}
+									}
+
+									&:not(:hover) {
+										@include govuk-media-query($from: desktop) {
+											@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
 										}
 									}
 								}
@@ -403,7 +413,7 @@
 								}
 								&:focus:hover,
 								&:focus:not(:hover) {
-									@include hale-heading-link-underline-restrictor($colour: --link-focus-background);
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 								}
 							}
 						}
@@ -544,9 +554,6 @@
 	#primary a[class=""],
 	.hale-article-nav,
 	a.govuk-link,
-	a.govuk-footer__link,
-	.govuk-footer a:not([class]),
-	.govuk-footer a[class=""],
 	.moj-pagination__link {
 		&:focus {
 			color: var(--link-focus);
@@ -643,9 +650,25 @@
 		border-top-color: var(--footer-border);
 		background: var(--footer-background);
 
-		.govuk-footer__link:hover {
-			text-decoration:none;
+		a:not([class]),
+		a[class=""],
+		.govuk-footer__link {
+
+			&:not(:focus) {
+				color: var(--footer-link);
+			}
+
+			&:hover {
+				text-decoration:none;
+			}
+			&:focus {
+				color: var(--footer-link-focus);
+				background-color: var(--footer-link-focus-background);
+				box-shadow: 0 -2px var(--footer-link-focus-background), 0 4px var(--footer-link-focus-shadow);
+				outline: 4px solid transparent;
+			}
 		}
+
 		.widget_social_widget .hale-social-link:focus {
 			box-shadow:
 				-4px 0 var(--footer-link-focus-background),
