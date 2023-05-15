@@ -36,7 +36,7 @@
 			}
 		}
 		.ccfw-banner__button:not(.ccfw-banner__button--close),
-		.ccfw-banner__button--expand-options {
+		button.ccfw-banner__button--expand-options {
 			cursor: pointer;
 
 			&:hover {
@@ -58,6 +58,7 @@
 				-webkit-text-fill-color: var(--cookie-button-focus-text);
 				box-shadow: 0 0 0 4px var(--cookie-button-focus-border);
 				outline-color: var(--cookie-button-focus-border);
+				border-color: var(--cookie-button-focus-bg);
 
 				.ccfw-settings-button__text {
 					color: var(--cookie-settings-focus-text);
