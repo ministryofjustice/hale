@@ -67,6 +67,8 @@
 
 .news-story-categories {
 
+  margin-bottom: 1rem;
+
   .news-story-categories-list {
     list-style: none;
     padding: 0;
@@ -74,7 +76,6 @@
 
     .news-story-categories-list-item {
       display: inline-block;
-      margin: 24px 0 0 0;
 
       .news-story-category-link {
         font-weight: bold;
