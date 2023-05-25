@@ -539,3 +539,6 @@ if ( get_role('wpseo_manager') ) {
 if ( get_role('wpseo_editor') ) {
     remove_role( 'wpseo_editor' );
 }
+
+//Remove relevanssi throttle as it prevents some documents and pages showing on listing and search pages
+remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
