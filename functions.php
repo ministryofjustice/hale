@@ -503,6 +503,11 @@ require get_template_directory() . '/inc/uploads.php';
  */
 require get_template_directory() . '/inc/disable-archives.php';
 
+/**
+ * Remove default post type 
+ */
+require get_template_directory() . '/inc/remove-default-post-type.php';
+
 function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 {
 
