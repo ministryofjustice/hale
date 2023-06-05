@@ -503,6 +503,11 @@ require get_template_directory() . '/inc/uploads.php';
  */
 require get_template_directory() . '/inc/disable-archives.php';
 
+/**
+ * Remove default post type 
+ */
+require get_template_directory() . '/inc/remove-default-post-type.php';
+
 function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 {
 
@@ -539,3 +544,6 @@ if ( get_role('wpseo_manager') ) {
 if ( get_role('wpseo_editor') ) {
     remove_role( 'wpseo_editor' );
 }
+
+//Remove relevanssi throttle as it prevents some documents and pages showing on listing and search pages
+remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
