@@ -15,20 +15,20 @@
 function hale_archive_pagination($template = '', $custom_query = '')
 {
 
+    if(!empty($custom_query)){
+
+        $query_to_paginate = $custom_query;
+    }
+    else {
+        global $wp_query;
+
+        $query_to_paginate = $wp_query;
+    }
+    $max_pages = $query_to_paginate->max_num_pages;
+
     if ($template == 'archive') {
 
         $current_page_number = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-        if(!empty($custom_query)){
-
-            $query_to_paginate = $custom_query;
-        }
-        else {
-            global $wp_query;
-
-            $query_to_paginate = $wp_query;
-        }
-        $max_pages = $query_to_paginate->max_num_pages;
 
         if ($max_pages > 1) {
             ?>
@@ -101,7 +101,7 @@ function hale_archive_pagination($template = '', $custom_query = '')
             $pagination .= "Showing page <b>";
             $pagination .= (get_query_var('paged')) ? get_query_var('paged') : 1;
             $pagination .= "</b> of <b>";
-            $pagination .= count($paginate);
+            $pagination .= $max_pages;
 
             $pagination .= '</b></p></nav>';
 
