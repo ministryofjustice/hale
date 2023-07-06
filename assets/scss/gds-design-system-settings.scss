@@ -54,12 +54,12 @@ $govuk-font-family: 'PT Sans', sans-serif;
 }
 .js-enabled .hale-header .hale-header__mobile-controls--search {
 	right: 60px;
-	@include govuk-media-query($from: tablet) {
+	@include govuk-media-query($from: desktop) {
 		display:none;
 	}
 	+ .hale-header__search-wrap {
 		display:none;
-		@include govuk-media-query($from: tablet) {
+		@include govuk-media-query($from: desktop) {
 			display:block;
 		}
 	}
@@ -70,7 +70,7 @@ $govuk-font-family: 'PT Sans', sans-serif;
 		+ .hale-header__search-wrap {
 			display:block;
 			margin-top: 2em;
-			@include govuk-media-query($from: tablet) {
+			@include govuk-media-query($from: desktop) {
 				margin-top: 0;
 			}
 		}
