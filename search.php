@@ -17,9 +17,10 @@ get_header();
 
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<header class="hale-search-header" style="">
-      <h1 class="govuk-heading-l hale-heading-xl">
-        Search Results
-        <p class="govuk-body-l">
+      <h1 class="govuk-heading-l hale-heading-xl" style="line-height:0;">
+        <span class="govuk-heading-l hale-heading-xl govuk-!-margin-bottom-0">Search Results</span>
+        <br />
+        <span class="govuk-body-l">
           <?php 
             /* translators: %s: search term */
             if (get_search_query() == "") {
@@ -30,7 +31,7 @@ get_header();
 
             $header_search = get_theme_mod( 'show_search', 'yes' );
           ?>
-        </p>
+        </span>
       </h1>
       <?php get_search_form(); ?>
 		</header>
