@@ -1,7 +1,8 @@
 .hale-page {
   // Deals with the Hero and the highlight/shaded blocks (e.g. CTA, highlighted list)
-  // The shading for these have (need) widths of over 100vw which leads to poor horizontal
-  // This prevents this from being an issue (no content, just highlighting) by preventing horizontal scroll
+  // The shading for these have (need) widths of over 100vw which leads to undesirable horizontal scrolling
+  // No content is outside of the page area, just highlighting.
+  // This prevents this from being an issue by preventing horizontal scroll
   overflow-x: hidden;
 }
 
