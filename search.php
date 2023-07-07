@@ -62,7 +62,7 @@ get_header();
 
               <h3 class="govuk-heading-m">
                 <a class="govuk-link" href="<?php the_permalink(); ?>">
-                  <?php the_title( ); ?>
+                  <?php echo strip_tags(get_the_title()); ?>
                 </a>
               </h2>
 
