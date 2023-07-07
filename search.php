@@ -17,15 +17,15 @@ get_header();
 
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<header class="hale-search-header" style="">
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-l hale-heading-xl">
         Search Results
-        <span class="govuk-caption-m">for 
+        <p class="govuk-body-l">for
           <?php 
             /* translators: %s: search term */
             printf(get_search_query());
             $header_search = get_theme_mod( 'show_search', 'yes' );
           ?>
-        </span>
+        </p>
       </h1>
       <?php get_search_form(); ?>
 		</header>
