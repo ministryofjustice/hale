@@ -272,6 +272,13 @@
     }
   }
 
+  &.hale-header--with-search .govuk-header__logo {
+    @include govuk-media-query($from: desktop) {
+      // space for search box
+      max-width: calc(100% - 285px);
+    }
+  }
+
   .govuk-header__logo {
     //make this a min-width to account for the longer header texts than "GOV.UK"
     width: unset;
@@ -296,6 +303,7 @@
 
       .hale-header__logo--custom {
         float: left;
+        min-width: 43px;
       }
     }
   }
@@ -478,14 +486,9 @@
 .hale-header .hale-header__search-form {
   margin-right:66px;
   width: 100%;
-  @include govuk-media-query($from: tablet) {
-    //space for menu button
-    width: calc(15rem + 44px);
-    margin-left:auto;
-    position:relative;
-    top: -37px;
-  }
   @include govuk-media-query($from: desktop) {
+    width: 284px;
+    position:relative;
     top: 0;
     margin-left:auto;
     margin-right:0;

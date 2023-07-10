@@ -17,12 +17,18 @@ get_header();
 
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<header class="hale-search-header" style="">
-      <h1 class="govuk-heading-l">
-        Search Results
-        <span class="govuk-caption-m">for 
+      <h1 class="govuk-heading-l hale-heading-xl" style="line-height:0;">
+        <span class="govuk-heading-l hale-heading-xl govuk-!-margin-bottom-0">Search Results</span>
+        <br />
+        <span class="govuk-body-l">
           <?php 
             /* translators: %s: search term */
-            printf(get_search_query());
+            if (get_search_query() == "") {
+              printf("No search words entered");
+            } else {
+              printf("for ".get_search_query());
+            }
+
             $header_search = get_theme_mod( 'show_search', 'yes' );
           ?>
         </span>
@@ -62,7 +68,7 @@ get_header();
 
               <h3 class="govuk-heading-m">
                 <a class="govuk-link" href="<?php the_permalink(); ?>">
-                  <?php the_title( ); ?>
+                  <?php echo strip_tags(get_the_title()); ?>
                 </a>
               </h2>
 

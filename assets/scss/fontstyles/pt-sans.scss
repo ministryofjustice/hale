@@ -57,19 +57,20 @@
     font-weight:700;
   }
 
-  h1 {
+  // only classless
+  h1:not([class]) {
     @extend .hale-heading-xl;
   }
 
-  h2 {
+  h2:not([class]) {
     @extend .hale-heading-l;
   }
 
-  h3 {
+  h3:not([class]) {
     @extend .hale-heading-m;
   }
 
-  h4 {
+  h4:not([class]) {
     @extend .hale-heading-s;
   }
 
@@ -92,7 +93,7 @@
   }
 
 
-  p {
+  p:not([class|="govuk"]) {
     @include govuk-font(19);
   }
 
