@@ -456,19 +456,20 @@
 			}
 		}
 	}
+	// some button styles are in brandings-mojblocks.scss
 	.mojblocks-button,
 	a.mojblocks-button,
 	.govuk-button:link,
 	.govuk-button {
 		border:var(--button-border);
-		box-shadow: 0 1px 0 var(--button);
+		box-shadow: none;
 		color:var(--button-text);
 		background-color:var(--button);
 		&:hover {
 			background-color: var(--button-hover);
 			color: var(--button-hover-text);
-			box-shadow: 0 1px 0 var(--button-hover);
-			border-color: var(--link-focus);
+			box-shadow: none;
+			border-color: var(--button-hover-border);
 			svg {
 				fill: var(--button-hover-text);
 			}
@@ -480,11 +481,13 @@
 		&:focus {
 			background-color: var(--button-focus);
 			color: var(--button-focus-text);
+			border-color: var(--button-focus-outline);
 			box-shadow: 0 0 0 3px var(--button-focus-outline);
 		}
 		&:focus:not(:active):not(:hover) {
 			background-color: var(--button-focus);
 			color: var(--button-focus-text);
+			border-color: var(--button-focus-outline);
 			box-shadow: 0 0 0 3px var(--button-focus-outline);
 		}
 		svg {

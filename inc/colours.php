@@ -1,7 +1,7 @@
 <?php
 
 	function hale_get_colours() {
-		//defaults
+		//defaults - GDS colours
 		$white = '#FFF';
 		$black = '#0B0C0C';
 		$yellow = '#FD0';
@@ -103,9 +103,10 @@
 			['button-border',"none",'Button border','Enter a complete CSS value for border, e.g. "solid 2px #0b0c0c", "none"','text'], // not a colour
 			['button-hover',$buttonHoverGreen,'Button hover','',''],
 			['button-hover-text',$white,'Button hover text','',''],
+			['button-hover-border','transparent','Button hover border','Leave blank for none. Requires there to be a button border set',''],
 			['button-focus',$yellow,'Button focus','',''],
 			['button-focus-text',$black,'Button focus text','',''],
-			['button-focus-outline',$yellow,'Button focus outline','',''],
+			['button-focus-outline',$yellow,'Button focus outline','This will always be thicker than any set button border',''],
 			['button-active',$buttonHoverGreen,'Button active','',''],
 
 			//mojblocks - these are usually things not found in GOV.UK sites
