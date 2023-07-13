@@ -110,9 +110,13 @@
 			['button-active',$buttonHoverGreen,'Button active','',''],
 
 			//mojblocks - these are usually things not found in GOV.UK sites
-			['mojblocks-accordion-section-title',$blue,'Accordion titles/links/controls','',''],
-			['mojblocks-accordion-section-title-hover',$darkBlue,'Accordion titles/links/controls hover','',''],
-			['mojblocks-accordion-section-title-focus',$black,'Accordion titles and links focus','',''],
+			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],
+			['mojblocks-accordion-section-shew',$blue,'Accordion show links','',''],
+			['mojblocks-accordion-section-title-hover',$black,'Accordion titles hover','',''],
+			['mojblocks-accordion-section-shew-hover',$black,'Accordion show links hover','',''],
+			['mojblocks-accordion-section-item-hover-bg',$lightGrey,'Accordion item hover background','',''],
+			['mojblocks-accordion-section-title-focus',$black,'Accordion titles focus','',''],
+			['mojblocks-accordion-section-shew-focus',$black,'Accordion show links focus','',''],
 			['mojblocks-accordion-section-title-focus-bg',$yellow,'Accordion titles and links focus background','',''],
 			['mojblocks-accordion-section-title-focus-shadow',$black,'Accordion titles and links focus underline','',''],
 
