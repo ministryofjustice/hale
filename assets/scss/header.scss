@@ -120,10 +120,26 @@
           }
         }
         @include govuk-media-query($from: desktop) {
-          &:hover {
-            > a + .sub-menu {
-              display:flex;
+          &:not(.current_page_ancestor):not(.current_page_item):hover > a,
+          &:not(.current_page_ancestor):not(.current_page_item):focus-within > a {
+            + .sub-menu {
+              display:block;
               z-index: 10;
+              right: unset;
+              width: auto;
+
+              &:before {
+                content: unset;
+              }
+
+              > li {
+                display:block;
+                > a {
+                  padding-left:2px;
+                  padding-right:8px;
+                  text-align: left;
+                }
+              }
             }
           }
         }
