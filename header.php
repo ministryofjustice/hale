@@ -9,9 +9,15 @@
  * @version   1.0
  */
 
+	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
+	if (!$custom_colours_set) {
+		$style_class = "hale-colours-gds-standard";
+	} else {
+		$style_class = "hale-colours-variable";
+	}
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="hale-page">
+<html <?php language_attributes(); ?> class="hale-page <?php printf($style_class); ?>">
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">

@@ -42,7 +42,10 @@
 }
 
 
-*{
+/***
+* These styles are applied to all sites
+*/
+* {
 	//style WP button block as GDS button
 	.wp-block-button__link:not(.govuk-button) {
 		@extend .govuk-button;
@@ -51,37 +54,6 @@
 	//search page only style (affects search in header but not adversely so
 	.hale-search__input {
 		margin-bottom: 30px;
-	}
-
-	.news-story-category-link {
-		color: var(--tag-text);
-		background: var(--tag-bg);
-
-		&:focus {
-			color: var(--tag-focus-text);
-			background: var(--tag-focus-bg);
-			outline-color: var(--tag-focus-outline)
-		}
-		&:hover, &:active {
-			color: var(--tag-hover-text);
-			background: var(--tag-hover-bg);
-		}
-	}
-
-	.govuk-skip-link:focus {
-		outline-color: var(--header-link-focus-underline);
-		background-color: var(--header-link-focus-highlight);
-	}
-
-	//Cookie banner styling formerly here, but have been moved to new file - brandings-cookies.scss
-
-	//remove GDS brand colour bar
-	.govuk-header__container {
-		border-bottom: none;
-
-		&:after {
-			height: 10px;
-		}
 	}
 
 	.govuk-header {
@@ -456,6 +428,89 @@
 			}
 		}
 	}
+	.news-story-category-link {
+		color: var(--tag-text);
+		background: var(--tag-bg);
+
+		&:focus {
+			color: var(--tag-focus-text);
+			background: var(--tag-focus-bg);
+			outline-color: var(--tag-focus-outline)
+		}
+		&:hover, &:active {
+			color: var(--tag-hover-text);
+			background: var(--tag-hover-bg);
+		}
+	}
+
+	//link focus state
+	#primary a:not([class]),
+	#primary a[class="customize-unpreviewable"],
+	#primary a[class=""],
+	.hale-article-nav,
+	a.govuk-link,
+	.moj-pagination__link {
+		&:focus {
+			color: var(--link-focus);
+			background-color: var(--link-focus-background);
+			box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
+			outline: 4px solid transparent;
+
+			.gem-c-pagination__link-label {
+				color: var(--link-focus);
+			}
+		}
+	}
+	.govuk-main-wrapper .govuk-link:link,
+	.govuk-main-wrapper a:link:not([class]),
+	.govuk-main-wrapper a[class="customize-unpreviewable"]:link, // for wordpress customizer
+	.gem-c-pagination__link:link {
+		color: var(--link);
+
+		&:hover:not(:focus) {
+			color: var(--link-hover);
+		}
+		&:focus {
+			color: var(--link-focus);
+		}
+	}
+
+	.govuk-main-wrapper .govuk-link:visited,
+	.govuk-main-wrapper a:visited:not([class]),
+	.gem-c-pagination__link:visited {
+
+		color: var(--link-visited);
+
+		&:hover:not(:focus) {
+			color: var(--link-hover);
+		}
+		&:focus {
+			color: var(--link-focus);
+		}
+	}
+}
+
+/***
+* These styles are only applied to sites which have not opted for GDS styles
+*/
+html.hale-colours-variable {
+
+	.govuk-skip-link:focus {
+		outline-color: var(--header-link-focus-underline);
+		background-color: var(--header-link-focus-highlight);
+	}
+
+	//Cookie banner styling formerly here, but have been moved to new file - brandings-cookies.scss
+
+	//remove GDS brand colour bar
+	.govuk-header__container {
+		border-bottom: none;
+
+		&:after {
+			height: 10px;
+		}
+	}
+
 	// some button styles are in brandings-mojblocks.scss
 	.mojblocks-button,
 	a.mojblocks-button,
@@ -507,34 +562,6 @@
 		}
 	}
 
-	.govuk-main-wrapper .govuk-link:link,
-	.govuk-main-wrapper a:link:not([class]),
-	.govuk-main-wrapper a[class="customize-unpreviewable"]:link, // for wordpress customizer
-	.gem-c-pagination__link:link {
-		color: var(--link);
-
-		&:hover:not(:focus) {
-			color: var(--link-hover);
-		}
-		&:focus {
-			color: var(--link-focus);
-		}
-	}
-
-	.govuk-main-wrapper .govuk-link:visited,
-	.govuk-main-wrapper a:visited:not([class]),
-	.gem-c-pagination__link:visited {
-
-		color: var(--link-visited);
-
-		&:hover:not(:focus) {
-			color: var(--link-hover);
-		}
-		&:focus {
-			color: var(--link-focus);
-		}
-	}
-
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
 		@extend .govuk-link;
@@ -552,24 +579,7 @@
 		}
 	}
 
-	//link focus state
-	#primary a:not([class]),
-	#primary a[class="customize-unpreviewable"],
-	#primary a[class=""],
-	.hale-article-nav,
-	a.govuk-link,
-	.moj-pagination__link {
-		&:focus {
-			color: var(--link-focus);
-			background-color: var(--link-focus-background);
-			box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
-			outline: 4px solid transparent;
-
-			.gem-c-pagination__link-label {
-				color: var(--link-focus);
-			}
-		}
-	}
+	//link focus state (breadcrumbs)
 	a.govuk-breadcrumbs__link,
 	a.govuk-back-link {
 		&:focus {

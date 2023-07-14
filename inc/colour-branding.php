@@ -86,29 +86,6 @@ function hale_generate_custom_colours() {
 				$colour_bar_style .= "}\n";
 				$css .= $colour_bar_style;
 			}
-			// Here we apply the GDS button styles which are different from non-GDS
-			// We remove rounded corners
-			// We add a box shadow for bottom
-			// We deal with their strange hover-focus combinations
-			$gov_button_style_override  = ".wp-block-button__link,";
-			$gov_button_style_override .= ".mojblocks-button,";
-			$gov_button_style_override .= ".govuk-button:not(.govuk-button--secondary) { \n\t";
-			$gov_button_style_override .= 	"border-radius:0!important;;\n\t";
-			$gov_button_style_override .= 	"box-shadow:0 2px 0 #002d18!important;\n";
-			$gov_button_style_override .= "}\n";
-			$gov_button_style_override .= ".wp-block-button__link:focus:not(:active):not(:hover),";
-			$gov_button_style_override .= ".mojblocks-button:focus:not(:active):not(:hover),";
-			$gov_button_style_override .= ".govuk-button:not(.govuk-button--secondary):focus:not(:active):not(:hover) { \n\t";
-			$gov_button_style_override .= 	"box-shadow:0 2px 0 #0b0c0c!important;\n";
-			$gov_button_style_override .= "}\n";
-			$gov_button_style_override .= ".wp-block-button__link:focus:hover,";
-			$gov_button_style_override .= ".mojblocks-button:focus:hover,";
-			$gov_button_style_override .= ".govuk-button:not(.govuk-button--secondary):focus:hover { \n\t";
-			$gov_button_style_override .= 	"box-shadow: 0 0 0 3px #FD0!important;\n";
-			$gov_button_style_override .= 	"background-color: #005a30!important;\n";
-			$gov_button_style_override .= 	"color: #fff!important;\n";
-			$gov_button_style_override .= "}\n";
-			$css .= $gov_button_style_override;
 		}
 		if (!$custom_colours_set || $logo_focus_invert) {
 			$logo_focus_invert_style  = ".govuk-header a:focus img {\n\t";

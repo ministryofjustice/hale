@@ -151,7 +151,7 @@
 			['tag-hover-bg',$midGrey,'Tag hover background','',''],
 			['tag-hover-text',$black,'Tag hover text','',''],
 			['tag-focus-bg',$yellow,'Tag focus background','',''],
-			['tag-focus-outline',$black,'Tag focus outline','',''],
+			['tag-focus-outline',$yellow,'Tag focus outline','',''],
 			['tag-focus-text',$black,'Tag focus text','',''],
 
 			//Cookie banner
