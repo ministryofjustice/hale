@@ -1,7 +1,7 @@
 <?php
 
 	function hale_get_colours() {
-		//defaults
+		//defaults - GDS colours
 		$white = '#FFF';
 		$black = '#0B0C0C';
 		$yellow = '#FD0';
@@ -103,15 +103,20 @@
 			['button-border',"none",'Button border','Enter a complete CSS value for border, e.g. "solid 2px #0b0c0c", "none"','text'], // not a colour
 			['button-hover',$buttonHoverGreen,'Button hover','',''],
 			['button-hover-text',$white,'Button hover text','',''],
+			['button-hover-border','transparent','Button hover border','Leave blank for none. Requires there to be a button border set',''],
 			['button-focus',$yellow,'Button focus','',''],
 			['button-focus-text',$black,'Button focus text','',''],
-			['button-focus-outline',$yellow,'Button focus outline','',''],
+			['button-focus-outline',$yellow,'Button focus outline','This will always be thicker than any set button border',''],
 			['button-active',$buttonHoverGreen,'Button active','',''],
 
 			//mojblocks - these are usually things not found in GOV.UK sites
-			['mojblocks-accordion-section-title',$blue,'Accordion titles/links/controls','',''],
-			['mojblocks-accordion-section-title-hover',$darkBlue,'Accordion titles/links/controls hover','',''],
-			['mojblocks-accordion-section-title-focus',$black,'Accordion titles and links focus','',''],
+			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],
+			['mojblocks-accordion-section-shew',$blue,'Accordion show links','',''],
+			['mojblocks-accordion-section-title-hover',$black,'Accordion titles hover','',''],
+			['mojblocks-accordion-section-shew-hover',$black,'Accordion show links hover','',''],
+			['mojblocks-accordion-section-item-hover-bg',$lightGrey,'Accordion item hover background','',''],
+			['mojblocks-accordion-section-title-focus',$black,'Accordion titles focus','',''],
+			['mojblocks-accordion-section-shew-focus',$black,'Accordion show links focus','',''],
 			['mojblocks-accordion-section-title-focus-bg',$yellow,'Accordion titles and links focus background','',''],
 			['mojblocks-accordion-section-title-focus-shadow',$black,'Accordion titles and links focus underline','',''],
 
@@ -146,7 +151,7 @@
 			['tag-hover-bg',$midGrey,'Tag hover background','',''],
 			['tag-hover-text',$black,'Tag hover text','',''],
 			['tag-focus-bg',$yellow,'Tag focus background','',''],
-			['tag-focus-outline',$black,'Tag focus outline','',''],
+			['tag-focus-outline',$yellow,'Tag focus outline','',''],
 			['tag-focus-text',$black,'Tag focus text','',''],
 
 			//Cookie banner
