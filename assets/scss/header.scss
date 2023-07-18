@@ -138,6 +138,17 @@
         }
       }
 
+      &.menu-item-has-children:last-child {
+        > a,
+        > a:link,
+        > a:visited,
+        > a:link:visited {
+          > span.hale-header__dropdown-arrow {
+            border-bottom-width: 0px;
+          }
+        }
+      }
+
       //Sub Menu - Mobile Open Styles
       &.sub-menu-open {
         .sub-menu {
@@ -157,6 +168,12 @@
           position: absolute;
           z-index: 1;
           padding: 5px 0;
+
+          &:last-child {
+            //last option is constricted by the end of the menu, this allows a little extra space to avoid in-word wrapping if the secondary menu has words longer than the primary menu option which reveals it
+            margin-right: -40px;
+            //40px allows for the 30px gap between menu and screen edge and the 15px padding, 5px is left to separate text from screen edge
+          }
         }
 
         li {

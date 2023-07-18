@@ -74,7 +74,7 @@
 
 			//Misc
 			['title-shading',$white,'Title shading','',''],
-			['cat-nav-arrows',$black,'Category navication arrows','',''],
+			['cat-nav-arrows',$black,'Category navigation arrows','',''],
 
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
