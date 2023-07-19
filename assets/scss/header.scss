@@ -18,6 +18,9 @@
           flex-grow: 1;
           align-items: stretch;
           display:flex;
+          > a {
+            max-width: fit-content;
+          }
         }
       }
     }
@@ -37,7 +40,7 @@
       a:link,
       a:visited,
       a:link:visited {
-        word-break: keep-all;
+      //  word-break: keep-all;
         text-align: left;
 
         @extend .govuk-header__link;
