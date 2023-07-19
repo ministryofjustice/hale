@@ -1,14 +1,14 @@
 @import 'page-colours';
 
 //mixins
-@mixin hale-heading-link-underline-restrictor($colour, $width: 1024px) {
+@mixin hale-heading-link-underline-restrictor($colour, $width: 1024px, $padding: 15px) {
 	@include govuk-media-query($from: $width) {
 		position:relative;
 
 		&:before {
 			content:"";
-			border-right:15px solid var($colour);
-			border-left:15px solid var($colour);
+			border-right:$padding solid var($colour);
+			border-left:$padding solid var($colour);
 		}
 	}
 }
@@ -20,22 +20,6 @@
 	All brandings
 **********************/
 
-//space out menu for all brandings
-.js-enabled .govuk-header,
-.govuk-header {
-	@include govuk-media-query($from: desktop) {
-		padding-bottom: 0;
-
-		.govuk-header__navigation-list {
-			display: flex;
-			justify-content: space-between;
-
-			li {
-				padding:0;
-			}
-		}
-	}
-}
 //remove gap at top of page
 .govuk-main-wrapper {
 	padding-top:0;

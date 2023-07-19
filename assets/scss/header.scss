@@ -1,4 +1,29 @@
 // This is required as unable to add classes to the header navigation
+.js-enabled .govuk-header,
+.govuk-header {
+	@include govuk-media-query($from: desktop) {
+		padding-bottom: 0;
+
+		.govuk-header__navigation-list {
+			display: flex;
+			justify-content:flex-start;
+
+			li {
+				padding:0;
+
+        @include govuk-media-query($from: desktop) {
+          margin-right:15px;
+          flex-basis: min-content;
+          flex-shrink: 0;
+          flex-grow: 1;
+          align-items: stretch;
+          display:flex;
+        }
+      }
+    }
+  }
+}
+
 .govuk-header {
 
   .govuk-header__content .govuk-header__navigation-list {
@@ -12,6 +37,9 @@
       a:link,
       a:visited,
       a:link:visited {
+        word-break: keep-all;
+        text-align: left;
+
         @extend .govuk-header__link;
         height: 100%;
         padding: 8px 15px;
@@ -74,9 +102,11 @@
             right: -45px;
             @include govuk-media-query($from: desktop) {
               right: -8px;
+              top: calc(50% - 8px);
             }
             @include govuk-media-query($from: 1024px) {
               right: 7px;
+              top: calc(50% - 8px);
             }
           }
 
@@ -158,7 +188,6 @@
 
       //Sub Menu Styles
       .sub-menu {
-        justify-content: space-around;
         padding: 0;
         margin: 0;
         list-style: none;
@@ -419,7 +448,6 @@
         li {
           padding:0;
           margin-right:0;
-          display:block;
           a {
             width:100%;
             display:inline-block;
