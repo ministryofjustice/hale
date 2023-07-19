@@ -70,9 +70,10 @@
         margin-right: 60px;
         border-right-style: solid;
         border-right-width: 1px;
+        position:relative;
 
         @include govuk-media-query($from: desktop) {
-          margin-right: 0;
+          margin-right: 15px;
           border-right: none;
         }
 
@@ -157,6 +158,8 @@
           &:focus-within {
             > a + .sub-menu {
               display:block;
+              top: 100%;
+              min-width: 100%;
             }
           }
         }
@@ -450,7 +453,6 @@
       &-list {
         li {
           padding:0;
-          margin-right:0;
           a {
             width:100%;
             display:inline-block;
