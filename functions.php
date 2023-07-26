@@ -579,8 +579,8 @@ function lang_attribute( $item_id, $item ) {
                 </ul>
             </div>
         </details>
-	</div>
-	<?php
+    </div>
+<?php
 }
 add_action( 'wp_nav_menu_item_custom_fields', 'lang_attribute', 10, 2 );
 
