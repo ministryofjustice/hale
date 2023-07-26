@@ -551,13 +551,13 @@ remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
 //Extra option in menus to specify language tag
 function lang_attribute( $item_id, $item ) {
 	$lang_attribute = get_post_meta( $item_id, '_lang_attribute', true );
-	?>
-	<div style="clear: both;">
-	    <span class="description"><?php _e( "Language attribute "); ?></span><br />
-	    <span class="description"><?php _e( "(only for different languages)"); ?></span><br />
-	    <input type="hidden" class="nav-menu-id" value="<?php echo $item_id ;?>" />
-	    <div class="logged-input-holder">
-	        <input
+    ?>
+    <div style="clear: both;">
+        <span class="description"><?php _e( "Language attribute "); ?></span><br />
+        <span class="description"><?php _e( "(only for different language links in the footer)"); ?></span><br />
+        <input type="hidden" class="nav-menu-id" value="<?php echo $item_id ;?>" />
+        <div class="logged-input-holder">
+            <input
                 type="text"
                 name="lang_attribute[<?php echo $item_id ;?>]"
                 id="lang-attr-<?php echo $item_id ;?>"
@@ -570,11 +570,11 @@ function lang_attribute( $item_id, $item ) {
 add_action( 'wp_nav_menu_item_custom_fields', 'lang_attribute', 10, 2 );
 
 function save_lang_attribute( $menu_id, $menu_item_db_id ) {
-	if ( isset( $_POST['lang_attribute'][$menu_item_db_id]  ) ) {
-		$sanitized_data = sanitize_text_field( $_POST['lang_attribute'][$menu_item_db_id] );
-		update_post_meta( $menu_item_db_id, '_lang_attribute', $sanitized_data );
-	} else {
-		delete_post_meta( $menu_item_db_id, '_lang_attribute' );
-	}
+    if ( isset( $_POST['lang_attribute'][$menu_item_db_id]  ) ) {
+        $sanitized_data = sanitize_text_field( $_POST['lang_attribute'][$menu_item_db_id] );
+        update_post_meta( $menu_item_db_id, '_lang_attribute', $sanitized_data );
+    } else {
+        delete_post_meta( $menu_item_db_id, '_lang_attribute' );
+    }
 }
 add_action( 'wp_update_nav_menu_item', 'save_lang_attribute', 10, 2 );
