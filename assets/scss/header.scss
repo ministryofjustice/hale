@@ -1,208 +1,7 @@
-// This is required as unable to add classes to the header navigation
 .govuk-header {
 
-  .govuk-header__content .govuk-header__navigation-list {
+  .govuk-header__content {
     max-width: 100%;
-
-    li {
-
-      @extend .govuk-header__navigation-item;
-
-      a,
-      a:link,
-      a:visited,
-      a:link:visited {
-        @extend .govuk-header__link;
-        height: 100%;
-        padding: 8px 15px;
-        text-decoration: none;
-
-        @include govuk-media-query($from: desktop) {
-          min-height: 40px;
-          height: auto;
-        }
-        @include govuk-media-query($from: desktop, $until: 1023px) { //"desktop" is 769px (GDS v4.2)
-          padding-left: 0;
-          padding-right: 0;
-        }
-        &:before {
-          display:block;
-          position:absolute;
-          width:100%;
-          height:calc(100% + 4px);
-          left:0;
-          top:0;
-        }
-      }
-
-      &.menu-item-has-children {
-        margin-right: 60px;
-        border-right-style: solid;
-        border-right-width: 1px;
-
-        @include govuk-media-query($from: desktop) {
-          margin-right: 0;
-          border-right: none;
-        }
-
-        > a,
-        > a:link,
-        > a:visited,
-        > a:link:visited {
-          position: relative;
-
-          @include govuk-media-query($from: desktop) {
-            padding-right: 19px;
-          }
-          @include govuk-media-query($from: 1024px) {
-            padding-right: 34px;
-          }
-
-          &:after {
-            content: "";
-            border-color: currentColor;
-            border-style: solid;
-            border-width: 0 3px 3px 0;
-            display: block;
-            padding: 3px;
-            transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-            float: left;
-            margin: 3px 10px 0 5px;
-            position: absolute;
-            top: 10px;
-            right: -45px;
-            @include govuk-media-query($from: desktop) {
-              right: -8px;
-            }
-            @include govuk-media-query($from: 1024px) {
-              right: 7px;
-            }
-          }
-
-          > span.hale-header__dropdown-arrow {
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            position: absolute;
-            z-index: 20;
-            top: 0;
-            right: -60px;
-            width: 60px;
-            height: 37px;
-            background-color: transparent;
-            cursor: pointer;
-            @include govuk-media-query($from: tablet) {
-              height: 41px;
-            }
-            @include govuk-media-query($from: desktop) {
-              display:none;
-            }
-          }
-
-          &:focus-within > span.hale-header__dropdown-arrow:focus {
-            outline: none;
-
-            &:after {
-              border-color: currentcolor;
-              border-style: solid;
-              border-width: 0 3px 3px 0;
-              content: "";
-              display: block;
-              float: left;
-              margin: 3px 10px 0 5px;
-              padding: 3px;
-              position: absolute;
-              right: 15px;
-              top: 10px;
-              transform: rotate(45deg);
-              -webkit-transform: rotate(45deg);
-            }
-          }
-        }
-        @include govuk-media-query($from: desktop) {
-          &:hover,
-          &:focus-within {
-            > a + .sub-menu {
-              display:block;
-            }
-          }
-        }
-
-        &.sub-menu-open {
-          > a:after,
-          > a:focus-within > span.hale-header__dropdown-arrow:focus:after {
-              transform: rotate(-135deg);
-              -webkit-transform: rotate(-135deg);
-              margin: 6px 10px 0 5px;
-          }
-        }
-      }
-
-      &.menu-item-has-children:last-child {
-        > a,
-        > a:link,
-        > a:visited,
-        > a:link:visited {
-          > span.hale-header__dropdown-arrow {
-            border-bottom-width: 0px;
-          }
-        }
-      }
-
-      //Sub Menu - Mobile Open Styles
-      &.sub-menu-open {
-        .sub-menu {
-          display: block;
-        }
-      }
-
-      //Sub Menu Styles
-      .sub-menu {
-        justify-content: space-around;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        display: none;
-
-        @include govuk-media-query($from: desktop) {
-          position: absolute;
-          z-index: 1;
-          padding: 5px 0;
-          //options are constricted by the end of the menu, this allows a little extra space to avoid in-word wrapping if the secondary menu has words longer than the primary menu (last) option which reveals it
-          margin-right: -40px;
-          //40px allows for the 30px gap between menu and screen edge and the 15px padding, 5px is left to separate text from screen edge
-        }
-
-        li {
-          border-bottom: 0;
-          border-top-width: 1px;
-          border-top-style: solid;
-
-          @include govuk-media-query($from: desktop) {
-            border-top:0;
-          }
-        }
-
-        li a,
-        li a:visited,
-        li a:link,
-        li a:link:visited,
-        li.current-menu-item a,
-        li.current-menu-item a:visited,
-        li.current-menu-item a:link,
-        li.current-menu-item a:link:visited{
-          text-align: left;
-          padding-left: 25px;
-          padding-right: 0;
-
-          @include govuk-media-query($from: desktop) { //"desktop" is 769px (GDS v4.2)
-            padding-left: 15px;
-            padding-right: 15px;
-          }
-        }
-      }
-    }
-
   }
   &__logotype:not(.hale-header__logotype--custom) {
     min-height:40px; //height of default SVG logo
@@ -210,16 +9,6 @@
 
   .hale-header__logotype-text--custom {
     padding-left: 0.5em;
-  }
-
-  //overrides the govuk nowrap and centres text for the longer menus found on hale
-  &.hale-header .govuk-header__navigation-list li a {
-    white-space: normal;
-    text-align: left;
-
-    @include govuk-media-query($from: desktop) {
-      text-align: center;
-    }
   }
 }
 
@@ -365,8 +154,6 @@
   }
 }
 
-//header
-
 .govuk-header {
 
   .govuk-header__menu-button {
@@ -411,42 +198,6 @@
   .govuk-header__content {
     width:100%;
     min-height: 15px;
-
-    .govuk-header__navigation {
-      margin-bottom: 0;
-
-      &-list {
-        li {
-          padding:0;
-          margin-right:0;
-          display:block;
-          a {
-            width:100%;
-            display:inline-block;
-          }
-        }
-      }
-    }
-    //header arrangement
-    .govuk-header__navigation-list {
-      li.current-menu-item a:link,
-      .govuk-header__menu-button,
-      a:link {
-        border-bottom-width: 4px;
-        border-bottom-style: solid;
-        text-decoration: none;
-        box-shadow: none;
-
-        &:not(:hover) {
-          border-bottom-color: transparent;
-        }
-
-        &:focus:not(:active):not(:hover),
-        &:focus {
-          box-shadow: none;
-        }
-      }
-    }
   }
 }
 
