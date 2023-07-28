@@ -547,3 +547,8 @@ if ( get_role('wpseo_editor') ) {
 
 //Remove relevanssi throttle as it prevents some documents and pages showing on listing and search pages
 remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
+
+/**
+ * Add options for lang attribute for footer menu links
+ */
+require get_template_directory() . '/inc/footer-language-attributes.php';

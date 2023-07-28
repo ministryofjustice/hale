@@ -27,9 +27,15 @@ if ( has_nav_menu( 'secondary-footer-menu' ) ) {
             <ul class="govuk-footer__inline-list">
                 <?php
                 foreach ( $menu_item as $nav_item ) {
+                    if( is_object( $nav_item ) && isset( $nav_item->ID )) {
+                        $lang_tag = get_post_meta( $nav_item->ID, '_lang_attribute', true );
+                        $lang_tag = ($lang_tag) ? 'lang = "' . esc_attr($lang_tag) . '" ' : "";
+                    } else {
+                        $lang_tag = "";
+                    }
                     echo '
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="' . esc_url( $nav_item->url ) . '">' . esc_html( $nav_item->title ) . '</a>
+                        <a '.$lang_tag.'class="govuk-footer__link" href="' . esc_url( $nav_item->url ) . '">' . esc_html( $nav_item->title ) . '</a>
                     </li>';
                 }
                 // below div is a horrible hacky workaround to stop safari from jumping links all over the show on hover. As and when upstream library gets fixed, this div can come out.
