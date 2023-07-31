@@ -34,6 +34,10 @@
 
   &:before {
     content: fa-content($fa-var-twitter-square);
+    content: "𝕏"; // temporary, until Font Awesome get their act together
+    position: relative; // temporary, until Font Awesome get their act together
+    top: -2px; // temporary, until Font Awesome get their act together
+    padding: 2px; // temporary, until Font Awesome get their act together
   }
 }
 
