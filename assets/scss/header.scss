@@ -1,22 +1,7 @@
-.govuk-header {
-
-  .govuk-header__content {
-    max-width: 100%;
-  }
-  &__logotype:not(.hale-header__logotype--custom) {
-    min-height:40px; //height of default SVG logo
-  }
-
-  .hale-header__logotype-text--custom {
-    padding-left: 0.5em;
-  }
-}
-
 .hale-header {
   padding-top: 2px; //wee bit of space above the logo
 
   .govuk-header__logotype-text {
-    display:block;
 
     @extend .govuk-header__link--homepage;
     //copies the style for this as if it were a link
@@ -116,9 +101,34 @@
     position: relative;
     width: calc(15rem + 44px);
     max-width: 100%;
+    margin-right:66px;
+    width: 100%;
+
+    @include govuk-media-query($from: desktop) {
+      width: 284px;
+      top: 0;
+      margin-left:auto;
+      margin-right:0;
+    }
 
     .hale-search__input {
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
       padding-right: 46px;
+
+      +.govuk-button.hale-search__submit {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+      &:focus {
+        outline-width: 3px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+
+        +.hale-search__submit {
+          border-radius: 0;
+        }
+      }
     }
 
     .hale-search__submit {
@@ -154,7 +164,25 @@
   }
 }
 
+/*
+  Overrides the headers styles for the search form page
+*/
+.hale-search__submit {
+  margin-top: 30px; //to mimic the .govuk-form-group that we don't have here.
+}
+
+svg.hale-icon__search {
+  display: none; //display in header only;
+}
+
 .govuk-header {
+  &__logotype:not(.hale-header__logotype--custom) {
+    min-height:40px; //height of default SVG logo
+  }
+
+  .hale-header__logotype-text--custom {
+    padding-left: 0.5em;
+  }
 
   .govuk-header__menu-button {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='%23fff'/%3E%3C/svg%3E");
@@ -199,44 +227,4 @@
     width:100%;
     min-height: 15px;
   }
-}
-
-
-.hale-header .hale-header__search-form {
-  margin-right:66px;
-  width: 100%;
-  @include govuk-media-query($from: desktop) {
-    width: 284px;
-    position:relative;
-    top: 0;
-    margin-left:auto;
-    margin-right:0;
-  }
-
-  .hale-search__input {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-
-    +.govuk-button.hale-search__submit {
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
-    }
-    &:focus {
-      outline-width: 3px;
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-
-      +.hale-search__submit {
-        border-radius: 0;
-      }
-    }
-  }
-}
-
-.hale-search__submit {
-  margin-top: 30px; //to mimic the .govuk-form-group that we don't have here.
-}
-
-svg.hale-icon__search {
-  display: none; //display in header only;
 }
