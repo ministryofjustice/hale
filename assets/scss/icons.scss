@@ -60,3 +60,10 @@
     content: fa-content($fa-var-youtube);
   }
 }
+
+// This is to make the editor interface look a little more representative of the final display
+
+.site > .site-content > .widget_social_widget .hale-social-link {
+  font-size: 2em;
+  padding: 6px;
+}
