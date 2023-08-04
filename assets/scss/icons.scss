@@ -8,6 +8,9 @@
   &:before {
     content: fa-content($fa-var-facebook-square);
   }
+  &.unharmonized:before{
+    content: fa-content($fa-var-facebook);
+  }
 }
 
 .instagram {
@@ -16,6 +19,9 @@
 
   &:before {
     content: fa-content($fa-var-instagram-square);
+  }
+  &.unharmonized:before{
+    content: fa-content($fa-var-instagram);
   }
 }
 
@@ -26,6 +32,9 @@
   &:before {
     content: fa-content($fa-var-linkedin);
   }
+  &.unharmonized:before{
+    content: fa-content($fa-var-linkedin-in);
+  }
 }
 
 .twitter {
@@ -33,11 +42,10 @@
   @extend .fab;
 
   &:before {
-    content: fa-content($fa-var-twitter-square);
-    content: "𝕏"; // temporary, until Font Awesome get their act together
-    position: relative; // temporary, until Font Awesome get their act together
-    top: -2px; // temporary, until Font Awesome get their act together
-    padding: 2px; // temporary, until Font Awesome get their act together
+    content: fa-content($fa-var-square-x-twitter);
+  }
+  &.unharmonized:before{
+    content: fa-content($fa-var-x-twitter);
   }
 }
 
@@ -47,5 +55,8 @@
 
   &:before {
     content: fa-content($fa-var-youtube-square);
+  }
+  &.unharmonized:before{
+    content: fa-content($fa-var-youtube);
   }
 }
