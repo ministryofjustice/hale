@@ -10,6 +10,9 @@ class social_widget extends WP_Widget {
     }
 
     public function widget( $args, $instance ) {
+        $harmonized_icons = apply_filters( 'widget_title', $instance['harmonized_icons'] );
+        if ($harmonized_icons != "harmonized") $harmonized_icons = "unharmonized";
+
         $title = apply_filters( 'widget_title', $instance['title'] );
 
         echo $args['before_widget'];
@@ -17,23 +20,23 @@ class social_widget extends WP_Widget {
             echo $args['before_title'] . $title . $args['after_title'];
 
         if ( ! empty( $instance['facebook_url'] ) ){
-            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['facebook_url']  . '"><span class="govuk-visually-hidden">Facebook</span><i class="facebook" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['facebook_url']  . '"><span class="govuk-visually-hidden">Facebook</span><i class="facebook ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['instagram_url'] ) ){
-            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['instagram_url']  . '"><span class="govuk-visually-hidden">Instagram</span><i class="instagram" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['instagram_url']  . '"><span class="govuk-visually-hidden">Instagram</span><i class="instagram ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['linkedin_url'] ) ){
-            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['linkedin_url']  . '"><span class="govuk-visually-hidden">Linkedin</span><i class="linkedin" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['linkedin_url']  . '"><span class="govuk-visually-hidden">Linkedin</span><i class="linkedin ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['twitter_url'] ) ){
-            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['twitter_url']  . '"><span class="govuk-visually-hidden">Twitter</span><i class="twitter" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['twitter_url']  . '"><span class="govuk-visually-hidden">Twitter</span><i class="twitter ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['youtube_url'] ) ){
-            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['youtube_url']  . '"><span class="govuk-visually-hidden">YouTube</span><i class="youtube" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['youtube_url']  . '"><span class="govuk-visually-hidden">YouTube</span><i class="youtube ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
         echo $args['after_widget'];
@@ -41,6 +44,7 @@ class social_widget extends WP_Widget {
 
     public function form( $instance ) {
         $title = '';
+        $harmonized_icons = '';
         $facebook_url = '';
         $instagram_url = '';
         $linkedin_url = '';
@@ -49,6 +53,10 @@ class social_widget extends WP_Widget {
 
         if ( isset( $instance[ 'title' ] ) ) {
             $title = $instance[ 'title' ];
+        }
+
+        if ( isset( $instance[ 'harmonized_icons' ] ) ) {
+            $harmonized_icons = $instance[ 'harmonized_icons' ];
         }
 
         if ( isset( $instance[ 'facebook_url' ] ) ) {
@@ -72,27 +80,31 @@ class social_widget extends WP_Widget {
         }
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'facebook_url' ); ?>"><?php _e( 'Facebook Url:' ); ?></label>
+            <input type="checkbox" id=<?php echo $this->get_field_id( "harmonized_icons");?> name=<?php echo $this->get_field_name( "harmonized_icons");?> value="harmonized" <?php printf($harmonized_icons == "harmonized" ? "checked" : "");?>>
+            <label for=<?php echo $this->get_field_id( "harmonized_icons");?>>Harmonize icons</label><br>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'facebook_url' ); ?>"><?php _e( 'Facebook URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'facebook_url' ); ?>" name="<?php echo $this->get_field_name( 'facebook_url' ); ?>" type="text" value="<?php echo esc_attr( $facebook_url ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'instagram_url' ); ?>"><?php _e( 'Instagram Url:' ); ?></label>
+            <label for="<?php echo $this->get_field_id( 'instagram_url' ); ?>"><?php _e( 'Instagram URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'instagram_url' ); ?>" name="<?php echo $this->get_field_name( 'instagram_url' ); ?>" type="text" value="<?php echo esc_attr( $instagram_url ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'linkedin_url' ); ?>"><?php _e( 'Linkedin Url:' ); ?></label>
+            <label for="<?php echo $this->get_field_id( 'linkedin_url' ); ?>"><?php _e( 'LinkedIn URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'linkedin_url' ); ?>" name="<?php echo $this->get_field_name( 'linkedin_url' ); ?>" type="text" value="<?php echo esc_attr( $linkedin_url ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'twitter_url' ); ?>"><?php _e( 'Twitter Url:' ); ?></label>
+            <label for="<?php echo $this->get_field_id( 'twitter_url' ); ?>"><?php _e( 'Twitter URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'twitter_url' ); ?>" name="<?php echo $this->get_field_name( 'twitter_url' ); ?>" type="text" value="<?php echo esc_attr( $twitter_url ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'youtube_url' ); ?>"><?php _e( 'YouTube Url:' ); ?></label>
+            <label for="<?php echo $this->get_field_id( 'youtube_url' ); ?>"><?php _e( 'YouTube URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'youtube_url' ); ?>" name="<?php echo $this->get_field_name( 'youtube_url' ); ?>" type="text" value="<?php echo esc_attr( $youtube_url ); ?>" />
         </p>
         <?php
@@ -101,6 +113,7 @@ class social_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['harmonized_icons'] = ( ! empty( $new_instance['harmonized_icons'] ) ) ? strip_tags( $new_instance['harmonized_icons']) : '';
         $instance['facebook_url'] = ( ! empty( $new_instance['facebook_url'] ) ) ? strip_tags( $new_instance['facebook_url'] ) : '';
         $instance['instagram_url'] = ( ! empty( $new_instance['instagram_url'] ) ) ? strip_tags( $new_instance['instagram_url'] ) : '';
         $instance['linkedin_url'] = ( ! empty( $new_instance['linkedin_url'] ) ) ? strip_tags( $new_instance['linkedin_url'] ) : '';
