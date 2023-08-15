@@ -109,6 +109,10 @@
 			['button-focus-outline',$yellow,'Button focus outline','This will always be thicker than any set button border',''],
 			['button-active',$buttonHoverGreen,'Button active','',''],
 
+			//Job listings
+			['job-item-bg',$white,'Job listing background','',''],
+			['job-item-border',$midGrey,'Job listing separating line','',''],
+			
 			//mojblocks - these are usually things not found in GOV.UK sites
 			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],
 			['mojblocks-accordion-section-shew',$blue,'Accordion show links','',''],

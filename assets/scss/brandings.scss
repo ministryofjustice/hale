@@ -714,4 +714,8 @@ html.hale-colours-variable {
 				4px 4px var(--link-focus);
 		}
 	}
+	.job-list-item {
+		background-color: var(--job-item-bg);
+		border-color: var(--job-item-border);
+	}
 }

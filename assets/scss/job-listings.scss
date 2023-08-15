@@ -1,0 +1,22 @@
+.job-list-item {
+	padding: 1rem;
+	margin: 1rem 0;
+	border-bottom: 1px solid;
+
+	&--section {
+		
+		> div {
+			padding-right: 1rem;
+			vertical-align: top;
+			display: inline-block;
+		}
+
+		&--label {
+			width:125px;
+		}
+		&--detail {
+			width:calc(100% - 135px);
+		}
+	}
+	
+}
