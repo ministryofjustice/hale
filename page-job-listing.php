@@ -43,7 +43,10 @@ while (have_posts()) :
                     'post_type' => 'job',
                     'posts_per_page' => 25,
                     'relevanssi' => true,
-                    'paged' => $paged
+                    'paged' => $paged,
+                    'meta_key' => 'job_closing_date',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'ASC'
                 );
 
                 $job_query = new WP_Query($job_args);
