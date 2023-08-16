@@ -9,6 +9,9 @@
 
 get_header();
 
+//Get Search Filter Values
+$selected_job_region_id = 0;
+
 while (have_posts()) :
     the_post();
 ?>
@@ -27,8 +30,29 @@ while (have_posts()) :
             <div class="govuk-grid-column-one-third">
                 <div class="job-listing-filter-section">
                     <div class="job-listing-filter-form">
-                        <strong>Filters</strong>
+                        <h2 class="govuk-heading-s">Filters</h2>
+                        <?php
+                            $dropdown_html = wp_dropdown_categories(
+                                array(
+                                    'name' => 'job_region',
+                                    'id' => 'job-search-filter-region',
+                                    'class' => 'govuk-select',
+                                    'taxonomy' => 'job_region',
+                                    'show_option_all' => 'Select option',
+                                    'orderby' => 'name',
+                                    'echo' => 0,
+                                    'hide_if_empty' => 1,
+                                    'selected' => $selected_job_region_id
+                                )
+                            );
+                        if (!empty($dropdown_html)) { ?>
 
+                                <label class="govuk-label" for="job-search-filter-region">Region</label>
+                                <?php echo $dropdown_html; ?>
+
+                                <?php
+                            }
+                        ?>
                     </div>
 
                 </div>
@@ -50,7 +74,7 @@ while (have_posts()) :
                 );
 
                 $job_query = new WP_Query($job_args);
-
+                $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
                 if ($job_query->have_posts()) {
 
                     if ($job_query->found_posts > 1) {
@@ -60,7 +84,7 @@ while (have_posts()) :
                     }
                     ?>
                     <div class="job-count">
-                        <?php echo $job_count_text; ?>
+                        <p class="govuk-body"><?php echo $job_count_text; ?></p>
                     </div>
                     <div class="job-list">
                         <?php
