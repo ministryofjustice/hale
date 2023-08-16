@@ -41,7 +41,7 @@ if (!include_once 'content-job-list-item-html.php'){
         } elseif ($yearDiff == 0 && $dayDiff == 0) {
             $expiryDateField = "Today at ".date_format($expiryDate,"h:ia");
         } else {
-            $expiryDateField = date_format($expiryDate,"h:ia") . " on " . date_format($expiryDate,"D jS F ");
+            $expiryDateField = date_format($expiryDate,"h:ia") . " on " . date_format($expiryDate,"D j F ");
             if (date_format($expiryDate,"Y") > date_format($today,"Y")) {
                 $expiryDateField .= date_format($expiryDate," Y");
             }
@@ -53,7 +53,7 @@ if (!include_once 'content-job-list-item-html.php'){
         $min = numfmt_format_currency($currencyFormat, $salaryMin, "GBP");
         if (is_numeric($salaryMax) && $salaryMin != $salaryMax) {
             $max = numfmt_format_currency($currencyFormat, $salaryMax, "GBP");
-            $salaryField = "$min &ndash; $max";
+            $salaryField = "$min to $max";
         } else {
             $salaryField = $min;
         }
