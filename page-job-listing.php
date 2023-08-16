@@ -41,7 +41,7 @@ while (have_posts()) :
 
                 $job_args = array(
                     'post_type' => 'job',
-                    'posts_per_page' => 10,
+                    'posts_per_page' => 25,
                     'relevanssi' => true,
                     'paged' => $paged
                 );

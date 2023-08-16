@@ -42,16 +42,24 @@
         //Format salary
         $currencyFormat = numfmt_create( 'en_GB', NumberFormatter::CURRENCY );
         $currencyFormat -> setAttribute(NumberFormatter::FRACTION_DIGITS, 0);
-        $min = numfmt_format_currency($currencyFormat, $salaryMin, "GBP");
-        if (is_numeric($salaryMax) && $salaryMin != $salaryMax) {
-            $max = numfmt_format_currency($currencyFormat, $salaryMax, "GBP");
-            $salaryField = "$min to $max";
+        if (is_numeric($salaryMin)) {
+            $min = numfmt_format_currency($currencyFormat, $salaryMin, "GBP");
+            if (is_numeric($salaryMax) && $salaryMin != $salaryMax) {
+                $max = numfmt_format_currency($currencyFormat, $salaryMax, "GBP");
+                $salaryField = "$min to $max";
+            } else {
+                $salaryField = $min;
+            }
+            if (is_numeric($salaryLdn)) {
+                $ldn = numfmt_format_currency($currencyFormat, $salaryLdn, "GBP");
+                $salaryField .= " (plus $ldn London weighting allowance)";
+            }
+        } elseif ($salaryMin == "") {
+            $salaryField = "TBC";
+        } elseif ($salaryMin == $salaryMax) {
+            $salaryField = $salaryMin;
         } else {
-            $salaryField = $min;
-        }
-        if (is_numeric($salaryLdn)) {
-            $ldn = numfmt_format_currency($currencyFormat, $salaryLdn, "GBP");
-            $salaryField .= " (plus $ldn London weighting allowance)";
+            $salaryField = $salaryMin . " " . $salaryMax;
         }
 
         //Contract type
