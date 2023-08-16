@@ -24,13 +24,14 @@
         $now = date("Y-m-d",$now);
         $today = new DateTime($now, new DateTimeZone('Europe/London'));
         $expiry = date("Y-m-d H:i:s",$expiry);
-        $expiryDate = new DateTime($expiry, new DateTimeZone('GMT'));
+        $expiryDate = new DateTime("$expiry", new DateTimeZone('GMT'));
         $expiryDate->setTimezone(new DateTimeZone('Europe/London'));
         $dayDiff=date_diff($today,$expiryDate)->d;
+        $monthDiff=date_diff($today,$expiryDate)->m;
         $yearDiff=date_diff($today,$expiryDate)->y;
-        if ($yearDiff == 0 && $dayDiff == 1) {
+        if ($yearDiff+$monthDiff == 0 && $dayDiff == 1) {
             $expiryDateField = "Tomorrow at ".date_format($expiryDate,"h:ia");
-        } elseif ($yearDiff == 0 && $dayDiff == 0) {
+        } elseif ($yearDiff+$monthDiff+$dayDiff == 0) {
             $expiryDateField = "Today at ".date_format($expiryDate,"h:ia");
         } else {
             $expiryDateField = date_format($expiryDate,"h:ia") . " on " . date_format($expiryDate,"D j F ");
