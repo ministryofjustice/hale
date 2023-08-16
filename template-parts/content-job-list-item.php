@@ -2,14 +2,6 @@
 /**
  * Template part for displaying document list item
  */
-
-if (!include_once 'address-management.php'){
-    function sanitizeAddress($x) {return $x;};
-}
-if (!include_once 'content-job-list-item-html.php'){
-    trigger_error("HTML structure file not found",E_USER_WARNING);
-}
-
 ?>
 
 <?php
@@ -117,12 +109,12 @@ if (!include_once 'content-job-list-item-html.php'){
             </a>
         </h2>
         <?php
-            echo jobListingHTML("Salary",$salaryField);
-            echo jobListingHTML("Contract type",$contractField);
-            if ($showAddress) echo jobListingHTML("Address",$addressField);
-            if ($showCity) echo jobListingHTML("Location",$cityField);
-            echo jobListingHTML("Region",$regionField);
-            echo jobListingHTML("Closing date",$expiryDateField);
+            echo jobItemRowHTML("Salary",$salaryField);
+            echo jobItemRowHTML("Contract type",$contractField);
+            if ($showAddress) echo jobItemRowHTML("Address",$addressField);
+            if ($showCity) echo jobItemRowHTML("Location",$cityField);
+            echo jobItemRowHTML("Region",$regionField);
+            echo jobItemRowHTML("Closing date",$expiryDateField);
         ?>
     </div>
 
