@@ -75,6 +75,7 @@
 			//Misc
 			['title-shading',$white,'Title shading','',''],
 			['cat-nav-arrows',$black,'Category navigation arrows','',''],
+			['pagination-border',$midGrey,'Pagination separating line','',''],
 
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
@@ -111,7 +112,7 @@
 
 			//Job listings
 			['job-item-bg',$white,'Job listing background','',''],
-			['job-item-border',$midGrey,'Job listing separating line','',''],
+			['job-item-border',$midGrey,'Job listing separating line','Should ideally match pagination separating line',''],
 			
 			//mojblocks - these are usually things not found in GOV.UK sites
 			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],

@@ -718,4 +718,7 @@ html.hale-colours-variable {
 		background-color: var(--job-item-bg);
 		border-color: var(--job-item-border);
 	}
+	.archive-pagination {
+		border-top-color: var(--pagination-border);
+	}
 }
