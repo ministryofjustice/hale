@@ -9,6 +9,8 @@
 
 get_header();
 
+$page_size = 25;
+
 //Get Search Filter Values
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
@@ -135,9 +137,114 @@ while (have_posts()) :
         <?php
         // Page body content
         get_template_part('template-parts/content', 'page');
+
+        $tax_qry_ary = [];
+        //Rôle type filter
+        if ($selected_job_role_id != 0) {
+
+            $tax_qry_ary[] = array(
+                'taxonomy' => 'role_type',
+                'field' => 'term_id',
+                'terms' => $selected_job_role_id
+            );
+        }
+
+        //Job Region Filter
+        if ($selected_job_region_id != 0) {
+
+            $tax_qry_ary[] = array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'job_region',
+                    'field' => 'term_id',
+                    'terms' => $selected_job_region_id
+                ),
+                array(
+                    'taxonomy' => 'job_region',
+                    'field' => 'term_id',
+                    'terms' => $national_term_ID
+                ),
+            );
+        }
+
+        $meta_query = [];
+        //don't include jobs in the past (with 1 hour's grace)
+        $meta_query[] = array(
+            'key' => 'job_closing_date',
+            'value' => (time() - 60*60),
+            'compare' => '>='
+        );
+
+        if ($selected_job_min_salary_id) {
+            //either min or max salary is more than minimum specified salary (max salary might not be specified)
+            $meta_query[] = array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'job_salary_max',
+                    'value' => $selected_job_min_salary_id,
+                    'compare' => '>='
+                ),
+                array(
+                    'key' => 'job_salary_min',
+                    'value' => $selected_job_min_salary_id,
+                    'compare' => '>='
+                )
+            );
+        }
+        if ($selected_job_max_salary_id) {
+            //min salary is less than maximum specified salary
+            $meta_query[] = array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'job_salary_min',
+                    'value' => $selected_job_max_salary_id,
+                    'compare' => '<='
+                ),
+                // Unpaid and zero-length string = 0
+                array(
+                    'key' => 'job_salary_min',
+                    'value' => array("","Unpaid"),
+                    'compare' => 'IN'
+                ),
+                // Deal with no specified min salary and assume they mean 0
+                array(
+                    'key' => 'job_salary_min',
+                    'compare' => 'NOT EXISTS'
+                ),
+            );
+        }
+        //if there is more than one meta query 'AND' them
+        if(count($meta_query) > 1) {
+            $meta_query['relation'] = 'AND';
+        }
+
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+        $job_args = array(
+            'post_type' => 'job',
+            'posts_per_page' => $page_size,
+            'relevanssi' => true,
+            'paged' => $paged,
+            'meta_key' => 'job_closing_date',
+            'orderby' => array( 'meta_value_num' => 'ASC', 'title' => 'ASC' ),
+            'tax_query' => $tax_qry_ary,
+            'meta_query' =>  $meta_query
+        );
+
+        $job_query = new WP_Query($job_args);
+        $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
+
+        $current_page_number = (get_query_var('paged')) ? get_query_var('paged') : 1;
+        $total_job_count = $job_query->found_posts;
+        $page_job_count_lower = ($current_page_number) * $page_size - $page_size + 1;
+        $page_job_count_upper = min(($current_page_number) * $page_size,$total_job_count);
+
         ?>
 
         <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-padding-left-5">
+                <?php echo "<p class='govuk-body-l'>Showing <strong>$page_job_count_lower</strong> to <strong>$page_job_count_upper</strong> of <strong>$total_job_count</strong> jobs</p>"; ?>
+            </div>
             <div class="govuk-grid-column-one-third">
                 <div class="job-listing-filter-section">
                     <div class="job-listing-filter-form">
@@ -191,112 +298,19 @@ while (have_posts()) :
                                 <?php
                                     }
                                 ?>
-                            <button class="govuk-button">Search</button>
+                            <button class="govuk-button">Update results</button>
+                            <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
+                                <a href="<?php echo get_permalink(); ?>" class="govuk-link">Clear</a>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="govuk-grid-column-two-thirds">
 
-                <?php
+            <?php
 
-                $tax_qry_ary = [];
-                //Rôle type filter
-                if ($selected_job_role_id != 0) {
-
-                    $tax_qry_ary[] = array(
-                        'taxonomy' => 'role_type',
-                        'field' => 'term_id',
-                        'terms' => $selected_job_role_id
-                    );
-                }
-
-                //Job Region Filter
-                if ($selected_job_region_id != 0) {
-
-                    $tax_qry_ary[] = array(
-                        'relation' => 'OR',
-                        array(
-                            'taxonomy' => 'job_region',
-                            'field' => 'term_id',
-                            'terms' => $selected_job_region_id
-                        ),
-                        array(
-                            'taxonomy' => 'job_region',
-                            'field' => 'term_id',
-                            'terms' => $national_term_ID
-                        ),
-                    );
-                }
-
-                $meta_query = [];
-                //don't include jobs in the past (with 1 hour's grace)
-                $meta_query[] = array(
-                    'key' => 'job_closing_date',
-                    'value' => (time() - 60*60),
-                    'compare' => '>='
-                );
-
-                if ($selected_job_min_salary_id) {
-                    //either min or max salary is more than minimum specified salary (max salary might not be specified)
-                    $meta_query[] = array(
-                        'relation' => 'OR',
-                        array(
-                            'key' => 'job_salary_max',
-                            'value' => $selected_job_min_salary_id,
-                            'compare' => '>='
-                        ),
-                        array(
-                            'key' => 'job_salary_min',
-                            'value' => $selected_job_min_salary_id,
-                            'compare' => '>='
-                        )
-                    );
-                }
-                if ($selected_job_max_salary_id) {
-                    //min salary is less than maximum specified salary
-                    $meta_query[] = array(
-                        'relation' => 'OR',
-                        array(
-                            'key' => 'job_salary_min',
-                            'value' => $selected_job_max_salary_id,
-                            'compare' => '<='
-                        ),
-                        // Unpaid and zero-length string = 0
-                        array(
-                            'key' => 'job_salary_min',
-                            'value' => array("","Unpaid"),
-                            'compare' => 'IN'
-                        ),
-                        // Deal with no specified min salary and assume they mean 0
-                        array(
-                            'key' => 'job_salary_min',
-                            'compare' => 'NOT EXISTS'
-                        ),
-                    );
-                }
-                //if there is more than one meta query 'AND' them
-                if(count($meta_query) > 1) {
-                    $meta_query['relation'] = 'AND';
-                }
-
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-                $job_args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 25,
-                    'relevanssi' => true,
-                    'paged' => $paged,
-                    'meta_key' => 'job_closing_date',
-                    'orderby' => array( 'meta_value_num' => 'ASC', 'title' => 'ASC' ),
-                    'tax_query' => $tax_qry_ary,
-                    'meta_query' =>  $meta_query
-                );
-
-                $job_query = new WP_Query($job_args);
-                $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
                 if ($job_query->have_posts()) {
-
                     if ($job_query->found_posts > 1) {
                         $job_count_text = $job_query->found_posts . ' jobs';
                     } elseif ($job_query->found_posts == 1) {
