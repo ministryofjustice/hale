@@ -8,13 +8,13 @@
     $expiry = $post -> job_closing_date;
     $now = time();
 
-    if ($expiry > $now) {
-
         $title = get_the_title();
+        $id = $post -> job_id;
         $url = $post -> job_url;
         $salaryMin = $post -> job_salary_min;
         $salaryMax = $post -> job_salary_max;
         $salaryLdn = $post -> job_salary_london;
+        $roleArray = get_the_terms( get_the_ID(), 'role_type' );
         $contractArray = get_the_terms( get_the_ID(), 'contract_type' );
         $addressObjectArray = get_the_terms( get_the_ID(), 'job_address' );
         $cityObjectArray = get_the_terms( get_the_ID(), 'job_city' );
@@ -103,6 +103,10 @@
             // We display up to this many cities before changing to "multiple locations"
             $cityField = "Multiple locations ";
         }
+        if (strtoupper($cityField) == strtoupper($regionField)) {
+            // City == Region (Only ever likely to be London)
+            $showCity = false;
+        }
         if (str_contains(strtoupper($addressField.$cityField.$regionField),"NATIONAL")) {
             // If any field has "national" in it, we exclude all address information and just write "National"
             $showAddress = $showCity = false;
@@ -111,7 +115,7 @@
     ?>
 
 
-    <div class="job-list-item">
+    <div class="job-list-item" id="job-".$id>
         <h2 class="job-list-item--title hale-heading-s">
             <a class="govuk-link" href="<?php printf($url);?>">
                 <?php echo get_the_title(); ?>
@@ -128,4 +132,3 @@
     </div>
 
     <?php
-    }
