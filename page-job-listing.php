@@ -9,9 +9,9 @@
 
 get_header();
 
-$page_size = 25;
 
 //Get Search Filter Values
+$page_size = 25;
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
 $selected_job_min_salary_id = 0;
@@ -48,6 +48,13 @@ if (isset($_GET) && $_GET['max_salary']) {
     }
 }
 
+if (isset($_GET) && $_GET['page_size']) {
+    $page_size_get = $_GET['page_size'];
+    if (is_numeric($page_size_get)) {
+        $page_size = intval($page_size_get);
+    }
+}
+
 
 
 $dropdown_html_role = wp_dropdown_categories(
@@ -65,8 +72,10 @@ $dropdown_html_role = wp_dropdown_categories(
 );
 
 foreach (get_terms(array( 'taxonomy' => 'job_region')) as $region) {
-    if ($region->name == "National")
+    if (strtoupper($region->name) == "NATIONAL") {
         $national_term_ID = $region->term_id;
+        break;
+    }
 }
 $dropdown_html_region = wp_dropdown_categories(
     array(
@@ -124,6 +133,18 @@ $dropdown_html_max_salary =
 </select>
 ";
 
+$selected12 = $selected25 = $selected50 = $selected100 = "";
+$sizeSelected = "selected$page_size";
+$$sizeSelected = "selected";
+$dropdown_html_page_count =
+"
+<select class='govuk-select' name='page_size' id='job-filter-page-size'>
+    <option value='12' $selected12>12</option>
+    <option value='25' $selected25>25</option>
+    <option value='50' $selected50>50</option>
+    <option value='100' $selected100>100</option>
+</select>
+";
 
 while (have_posts()) :
     the_post();
@@ -238,12 +259,20 @@ while (have_posts()) :
         $total_job_count = $job_query->found_posts;
         $page_job_count_lower = ($current_page_number) * $page_size - $page_size + 1;
         $page_job_count_upper = min(($current_page_number) * $page_size,$total_job_count);
-
+        if ($total_job_count === 0) {
+            $job_count_text = "No jobs found";
+        } elseif ($total_job_count == 1) {
+            $job_count_text = "<strong>1</strong> job found";
+        } elseif ($total_job_count <= $page_size) {
+            $job_count_text = "<strong>$total_job_count</strong> jobs found";
+        } else {
+            $job_count_text = "Showing <strong>$page_job_count_lower</strong> to <strong>$page_job_count_upper</strong> of <strong>$total_job_count</strong> jobs found.";
+        }
         ?>
 
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full govuk-!-padding-left-5">
-                <?php echo "<p class='govuk-body-l'>Showing <strong>$page_job_count_lower</strong> to <strong>$page_job_count_upper</strong> of <strong>$total_job_count</strong> jobs</p>"; ?>
+            <div class="govuk-grid-column-full govuk-!-padding-left-3">
+                <?php echo "<p class='govuk-body-l'>$job_count_text</p>"; ?>
             </div>
             <div class="govuk-grid-column-one-third">
                 <div class="job-listing-filter-section">
@@ -298,6 +327,18 @@ while (have_posts()) :
                                 <?php
                                     }
                                 ?>
+                                <?php
+                                    if (!empty($dropdown_html_page_count)) {
+                                ?>
+
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="job-filter-page-size">Number of results per page</label>
+                                        <?php echo $dropdown_html_page_count; ?>
+                                    </div>
+
+                                <?php
+                                    }
+                                ?>
                             <button class="govuk-button">Update results</button>
                             <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
                                 <a href="<?php echo get_permalink(); ?>" class="govuk-link">Clear</a>
@@ -311,15 +352,7 @@ while (have_posts()) :
             <?php
 
                 if ($job_query->have_posts()) {
-                    if ($job_query->found_posts > 1) {
-                        $job_count_text = $job_query->found_posts . ' jobs';
-                    } elseif ($job_query->found_posts == 1) {
-                        $job_count_text = '1 job';
-                    }
                     ?>
-                    <div class="job-count">
-                        <p class="govuk-body"><?php echo $job_count_text; ?></p>
-                    </div>
                     <div class="job-list">
                         <?php
                         while ($job_query->have_posts()) {
