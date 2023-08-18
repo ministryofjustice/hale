@@ -39,21 +39,21 @@ if (get_query_var('job_region')) {
         }
     }
 }
-if (isset($_GET) && $_GET['min_salary']) {
-    $min_salary_id = $_GET['min_salary'];
+if (get_query_var('min_salary')) {
+    $min_salary_id = get_query_var('min_salary');
     if (is_numeric($min_salary_id)) {
         $selected_job_min_salary_id = intval($min_salary_id);
     }
 }
-if (isset($_GET) && $_GET['max_salary']) {
-    $max_salary_id = $_GET['max_salary'];
+if (get_query_var('max_salary')) {
+    $max_salary_id = get_query_var('max_salary');
     if (is_numeric($max_salary_id)) {
         $selected_job_max_salary_id = intval($max_salary_id);
     }
 }
 
-if (isset($_GET) && $_GET['page_size']) {
-    $page_size_get = $_GET['page_size'];
+if (get_query_var('page_size')) {
+    $page_size_get = get_query_var('page_size');
     if (is_numeric($page_size_get)) {
         $page_size = intval($page_size_get);
     }
@@ -231,24 +231,28 @@ while (have_posts()) :
                 array(
                     'key' => 'job_salary_max',
                     'value' => $selected_job_min_salary_id,
-                    'compare' => '>='
+                    'compare' => '>=',
+                    'type' => 'NUMERIC'
                 ),
                 array(
                     'key' => 'job_salary_min',
                     'value' => $selected_job_min_salary_id,
-                    'compare' => '>='
+                    'compare' => '>=',
+                    'type' => 'NUMERIC'
                 )
             );
         } else {
             // Unpaid and zero-length string = 0
             $meta_query_part_salary_max[] = array(
                 'key' => 'job_salary_min',
-                'value' => array("","Unpaid"),
-                'compare' => 'IN'
+                'value' => '',
+                'compare' => 'LIKE',
+                'type' => 'STRING'
             );
             // Deal with no specified min salary and assume they mean 0
             $meta_query_part_salary_max[] = array(
                 'key' => 'job_salary_min',
+                'value' => '',
                 'compare' => 'NOT EXISTS'
             );
         }
@@ -257,8 +261,11 @@ while (have_posts()) :
             $meta_query_part_salary_max[] = array(
                 'key' => 'job_salary_min',
                 'value' => $selected_job_max_salary_id,
-                'compare' => '<='
+                'compare' => '<=',
+                'type' => 'NUMERIC'
             );
+            $meta_query_part_salary_max['relation'] = 'OR';
+
             $meta_query[] = array(
                 'relation' => 'OR',
                 $meta_query_part_salary_max,

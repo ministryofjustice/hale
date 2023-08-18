@@ -12,7 +12,6 @@
     $salaryMin = empty($post -> job_salary_min) ? "" : $post -> job_salary_min;
     $salaryMax = empty($post -> job_salary_max) ? "" : $post -> job_salary_max;
     $salaryLdn = empty($post -> job_salary_london) ? "" : $post -> job_salary_london;
-    $roleArray = get_the_terms( get_the_ID(), 'role_type' );
     $contractArray = get_the_terms( get_the_ID(), 'contract_type' );
     $addressObjectArray = get_the_terms( get_the_ID(), 'job_address' );
     $cityObjectArray = get_the_terms( get_the_ID(), 'job_city' );
@@ -64,8 +63,10 @@
 
     //Contract type
     $contractField = "";
-    foreach($contractArray as $contractObject) {
-        $contractField .= $contractObject->name."<br />";
+    if ($contractArray) {
+        foreach($contractArray as $contractObject) {
+            $contractField .= $contractObject->name."<br />";
+        }
     }
 
     //Location handling
@@ -73,19 +74,25 @@
     $cityArray = $regionArray = array();
     $showAddress = $showCity = true;
 
-    foreach($addressObjectArray as $addressObject) {
-        $addressField.=sanitizeAddress($addressObject -> name);
-        $addressField.=" <br />";
+    if ($addressObjectArray) {
+        foreach($addressObjectArray as $addressObject) {
+            $addressField.=sanitizeAddress($addressObject -> name);
+            $addressField.=" <br />";
+        }
     }
-    foreach($cityObjectArray as $cityObject) {
-        $city=$cityObject -> name;
-        array_push($cityArray,$city);
+    if ($cityObjectArray) {
+        foreach($cityObjectArray as $cityObject) {
+            $city=$cityObject -> name;
+            array_push($cityArray,$city);
+        }
     }
     $cityArray = array_unique($cityArray);
     $cityField=join(" <br />",$cityArray);
-    foreach($regionObjectArray as $regionObject) {
-        $region=$regionObject -> name;
-        array_push($regionArray,$region);
+    if ($regionObjectArray) {
+        foreach($regionObjectArray as $regionObject) {
+            $region=$regionObject -> name;
+            array_push($regionArray,$region);
+        }
     }
     $regionArray = array_unique($regionArray);
     $regionField=join(" <br />",$regionArray);
