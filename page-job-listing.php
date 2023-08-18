@@ -245,8 +245,8 @@ while (have_posts()) :
             // Unpaid and zero-length string = 0
             $meta_query_part_salary_max[] = array(
                 'key' => 'job_salary_min',
-                'value' => '',
-                'compare' => 'LIKE',
+                'value' => '[0-9]',
+                'compare' => 'NOT REGEXP',
                 'type' => 'STRING'
             );
             // Deal with no specified min salary and assume they mean 0
