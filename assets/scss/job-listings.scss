@@ -7,10 +7,17 @@
 	padding: 1rem;
 	margin: 1rem 0;
 	border-bottom: 1px solid;
+	&:first-child {
+		margin-top: 0;
+		padding-top: 0;
+	}
 	&:last-child {
 		border-bottom: none;
 	}
 
+	&--title {
+		margin-top: 0;
+	}
 	&--section {
 		> div {
 			padding-right: 1rem;

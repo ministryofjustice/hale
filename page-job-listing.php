@@ -224,18 +224,18 @@ while (have_posts()) :
             'compare' => '>='
         );
 
-        if ($selected_job_min_salary_id && is_numeric($selected_job_min_salary_id)) {
+        if ($selected_job_min_salary_id > 0) {
             //either min or max salary is more than minimum specified salary (max salary might not be specified)
             $meta_query[] = array(
                 'relation' => 'OR',
                 array(
                     'key' => 'job_salary_max',
-                    'value' => intval($selected_job_min_salary_id),
+                    'value' => $selected_job_min_salary_id,
                     'compare' => '>='
                 ),
                 array(
                     'key' => 'job_salary_min',
-                    'value' => intval($selected_job_min_salary_id),
+                    'value' => $selected_job_min_salary_id,
                     'compare' => '>='
                 )
             );
@@ -252,16 +252,16 @@ while (have_posts()) :
                 'compare' => 'NOT EXISTS'
             );
         }
-        if ($selected_job_max_salary_id) {
+        if ($selected_job_max_salary_id > 0) {
             //min salary is less than maximum specified salary
             $meta_query_part_salary_max[] = array(
                 'key' => 'job_salary_min',
-                'value' => intval($selected_job_max_salary_id),
+                'value' => $selected_job_max_salary_id,
                 'compare' => '<='
             );
             $meta_query[] = array(
                 'relation' => 'OR',
-                $meta_query_array_salary_max,
+                $meta_query_part_salary_max,
             );
         }
         //if there is more than one meta query 'AND' them
@@ -308,12 +308,12 @@ while (have_posts()) :
                 <div class="job-listing-filter-section">
                     <div class="job-listing-filter-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
-                            <h2 class="govuk-heading-s">Filters</h2>
+                            <h2 class="govuk-heading-m">Filters</h2>
                                 <?php
                                     if (!empty($dropdown_html_role)) {
                                 ?>
 
-                                    <div class="govuk-form-group">
+                                    <div class="govuk-form-group govuk-!-margin-bottom-4">
                                         <label class="govuk-label" for="job-filter-role">Role</label>
                                         <?php echo $dropdown_html_role; ?>
                                     </div>
@@ -325,7 +325,7 @@ while (have_posts()) :
                                     if (!empty($dropdown_html_region)) {
                                 ?>
 
-                                    <div class="govuk-form-group">
+                                    <div class="govuk-form-group govuk-!-margin-bottom-4">
                                         <label class="govuk-label" for="job-filter-region">Region</label>
                                         <?php echo $dropdown_html_region; ?>
                                     </div>
@@ -337,7 +337,7 @@ while (have_posts()) :
                                     if (!empty($dropdown_html_min_salary)) {
                                 ?>
 
-                                    <div class="govuk-form-group <?php if ($salaryError) echo 'govuk-form-group--error';?>">
+                                    <div class="govuk-form-group govuk-!-margin-bottom-4 <?php if ($salaryError) echo 'govuk-form-group--error';?>">
                                         <label class="govuk-label" for="job-filter-min-salary">Minimum salary</label>
                                         <?php if ($salaryError) {?>
                                         <p id="job-filter-min-salary-error" class="govuk-error-message">
@@ -354,7 +354,7 @@ while (have_posts()) :
                                     if (!empty($dropdown_html_max_salary)) {
                                 ?>
 
-                                    <div class="govuk-form-group  <?php if ($salaryError) echo 'govuk-form-group--error';?>">
+                                    <div class="govuk-form-group govuk-!-margin-bottom-4  <?php if ($salaryError) echo 'govuk-form-group--error';?>">
                                         <label class="govuk-label" for="job-filter-max-salary">Maximum salary</label>
                                         <?php if ($salaryError) {?>
                                         <p id="job-filter-max-salary-error" class="govuk-error-message">
@@ -404,7 +404,7 @@ while (have_posts()) :
                     hale_archive_pagination('archive', $job_query);
                 } elseif ($selected_job_role_id + $selected_job_region_id + $selected_job_min_salary_id + $selected_job_max_salary_id == 0) {
                     // No filters and no jobs found ?>
-                    <h2 class="job-list-item--title hale-heading-m">
+                    <h2 class="job-list-item--title govuk-heading-l">
                         No jobs found
                     </h2>
                     <p class="govuk-body">
@@ -413,7 +413,7 @@ while (have_posts()) :
                     <?php
                 } else {
                     // Filters applied but no jobs found ?>
-                    <h2 class="job-list-item--title hale-heading-m">
+                    <h2 class="job-list-item--title govuk-heading-l">
                         Your search matched no current vacancies
                     </h2>
                     <p class="govuk-body">
