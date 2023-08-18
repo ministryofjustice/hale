@@ -5,6 +5,8 @@
 		$white = '#FFF';
 		$black = '#0B0C0C';
 		$yellow = '#FD0';
+		$red = '#D4351C';
+		$darkRed = '#942514';
 		$blue = '#1D70B8';
 		$darkBlue = '#003078';
 		$purple = '#4C2C92';
@@ -76,6 +78,8 @@
 			['title-shading',$white,'Title shading','',''],
 			['cat-nav-arrows',$black,'Category navigation arrows','',''],
 			['pagination-border',$midGrey,'Pagination separating line','',''],
+			['error',$red,'Error colour','',''],
+			['error-link-hover',$darkRed,'Error link hover','',''],
 
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
