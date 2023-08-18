@@ -242,10 +242,10 @@ while (have_posts()) :
                 )
             );
         } else {
-            // Unpaid and zero-length string = 0
+            // Min salary is not a string of only numbers
             $meta_query_part_salary_max[] = array(
                 'key' => 'job_salary_min',
-                'value' => '[0-9]',
+                'value' => '^\d+$',
                 'compare' => 'NOT REGEXP',
                 'type' => 'STRING'
             );
