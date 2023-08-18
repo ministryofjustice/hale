@@ -213,7 +213,8 @@ while (have_posts()) :
             );
         }
 
-        $meta_query = [];
+        $meta_query = $meta_query_part_salary_max = [];
+
         //don't include jobs in the past (with 1 hour's grace)
         $meta_query[] = array(
             'key' => 'job_closing_date',
@@ -221,42 +222,44 @@ while (have_posts()) :
             'compare' => '>='
         );
 
-        if ($selected_job_min_salary_id) {
+        if ($selected_job_min_salary_id && is_numeric($selected_job_min_salary_id)) {
             //either min or max salary is more than minimum specified salary (max salary might not be specified)
             $meta_query[] = array(
                 'relation' => 'OR',
                 array(
                     'key' => 'job_salary_max',
-                    'value' => $selected_job_min_salary_id,
+                    'value' => intval($selected_job_min_salary_id),
                     'compare' => '>='
                 ),
                 array(
                     'key' => 'job_salary_min',
-                    'value' => $selected_job_min_salary_id,
+                    'value' => intval($selected_job_min_salary_id),
                     'compare' => '>='
                 )
+            );
+        } else {
+            // Unpaid and zero-length string = 0
+            $meta_query_part_salary_max[] = array(
+                'key' => 'job_salary_min',
+                'value' => array("","Unpaid"),
+                'compare' => 'IN'
+            );
+            // Deal with no specified min salary and assume they mean 0
+            $meta_query_part_salary_max[] = array(
+                'key' => 'job_salary_min',
+                'compare' => 'NOT EXISTS'
             );
         }
         if ($selected_job_max_salary_id) {
             //min salary is less than maximum specified salary
+            $meta_query_part_salary_max[] = array(
+                'key' => 'job_salary_min',
+                'value' => intval($selected_job_max_salary_id),
+                'compare' => '<='
+            );
             $meta_query[] = array(
                 'relation' => 'OR',
-                array(
-                    'key' => 'job_salary_min',
-                    'value' => $selected_job_max_salary_id,
-                    'compare' => '<='
-                ),
-                // Unpaid and zero-length string = 0
-                array(
-                    'key' => 'job_salary_min',
-                    'value' => array("","Unpaid"),
-                    'compare' => 'IN'
-                ),
-                // Deal with no specified min salary and assume they mean 0
-                array(
-                    'key' => 'job_salary_min',
-                    'compare' => 'NOT EXISTS'
-                ),
+                $meta_query_array_salary_max,
             );
         }
         //if there is more than one meta query 'AND' them
@@ -392,7 +395,6 @@ while (have_posts()) :
                         <?php
                         while ($job_query->have_posts()) {
                             $job_query->the_post();
-                        
                             get_template_part('template-parts/content', 'job-list-item');
                         } ?>
                     </div>
