@@ -1,17 +1,17 @@
 <?php
 /**
- * Template part for displaying document list item
+ * Template part for displaying job list item
  */
 ?>
 
 <?php
-    $title = get_the_title();
-    $expiry = $post -> job_closing_date;
-    $id = $post -> job_id;
-    $url = $post -> job_url;
-    $salaryMin = $post -> job_salary_min;
-    $salaryMax = $post -> job_salary_max;
-    $salaryLdn = $post -> job_salary_london;
+    $title = empty(get_the_title()) ? "" : get_the_title();
+    $expiry = empty($post -> job_closing_date) ? "" : $post -> job_closing_date;
+    $id = empty($post -> job_id) ? "" : $post -> job_id;
+    $url = empty($post -> job_url) ? "" : $post -> job_url;
+    $salaryMin = empty($post -> job_salary_min) ? "" : $post -> job_salary_min;
+    $salaryMax = empty($post -> job_salary_max) ? "" : $post -> job_salary_max;
+    $salaryLdn = empty($post -> job_salary_london) ? "" : $post -> job_salary_london;
     $roleArray = get_the_terms( get_the_ID(), 'role_type' );
     $contractArray = get_the_terms( get_the_ID(), 'contract_type' );
     $addressObjectArray = get_the_terms( get_the_ID(), 'job_address' );
@@ -54,11 +54,12 @@
             $salaryField .= " (plus $ldn London weighting allowance)";
         }
     } elseif ($salaryMin == "") {
+        // If min currency not set, we say TBC
         $salaryField = "TBC";
-    } elseif ($salaryMin == $salaryMax) {
-        $salaryField = $salaryMin;
     } else {
-        $salaryField = $salaryMin . " " . $salaryMax;
+        // If salary is non-numeric and not blank, we write it in.
+        // Currently, there the parser will only allow "Unpaid" through, but if this changes, no changes needed here.
+        $salaryField = $salaryMin;
     }
 
     //Contract type
@@ -94,7 +95,7 @@
             $showCity = false;
         }
     } elseif (count($addressObjectArray) > 1) {
-        // If there are many addresses, we only shew cities
+        // If there are many addresses, we only show cities
         $showAddress = false;
     }
     if (count($cityArray) > 4) {
