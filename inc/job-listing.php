@@ -32,15 +32,16 @@
 		foreach ($matches as $match){
 			if ($match[1] > $postcodeLocation) $postcodeLocation = $match[1];
 		}
-		if ($postcodeLocation > -1) {
+		if ($postcodeLocation > 0) {
 			$postcode = substr($address,$postcodeLocation);
+			$addressWithoutPostcode = substr($address,0,$postcodeLocation);
 		} else {
 			$postcode = ""; //no postcode
+			$addressWithoutPostcode = $address;
 		}
 		$postcode = strtoupper($postcode);
 		$postcode = str_replace(" ","&nbsp;",$postcode); //postcodes shouldn't be broken
 
-		$addressWithoutPostcode = substr($address,0,$postcodeLocation);
 		$addressBits = explode(" ",$addressWithoutPostcode);
 		$sanitizedAddress = "";
 		foreach($addressBits as $bit) {
