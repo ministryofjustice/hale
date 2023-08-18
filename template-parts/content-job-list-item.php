@@ -32,7 +32,7 @@
     } elseif ($yearDiff+$monthDiff+$dayDiff == 0) {
         $expiryDateField = "Today at ".date_format($expiryDate,"h:ia");
     } else {
-        $expiryDateField = date_format($expiryDate,"h:ia") . " on " . date_format($expiryDate,"D j F ");
+        $expiryDateField = date_format($expiryDate,"h:ia") . " on " . date_format($expiryDate,"l j F ");
         if (date_format($expiryDate,"Y") > date_format($today,"Y")) {
             $expiryDateField .= date_format($expiryDate," Y");
         }
@@ -74,7 +74,7 @@
 
     foreach($addressObjectArray as $addressObject) {
         $addressField.=sanitizeAddress($addressObject -> name);
-        $addressField.="<br />";
+        $addressField.=" <br />";
     }
     foreach($cityObjectArray as $cityObject) {
         $city=$cityObject -> name;
