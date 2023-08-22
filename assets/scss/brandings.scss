@@ -714,4 +714,43 @@ html.hale-colours-variable {
 				4px 4px var(--link-focus);
 		}
 	}
+	.job-list-item {
+		background-color: var(--job-item-bg);
+		border-color: var(--job-item-border);
+	}
+	.archive-pagination {
+		border-top-color: var(--pagination-border);
+	}
+
+	.govuk-form-group--error {
+		border-left-color: var(--error);
+
+		.govuk-select,
+		.govuk-input {
+			&--error{
+				border-color: var(--error);
+			}
+		}
+	}
+	.govuk-error-message {
+		color: var(--error);
+	}
+	.govuk-error-summary {
+		border-color: var(--error);
+
+		&__list{
+			a:not(:focus) {
+				&:link,
+				&:visited,
+				&:link:visited {
+					color: var(--error);
+
+					&:hover {
+						color: var(--error-link-hover);
+					}
+				}
+			}
+		}
+
+	}
 }

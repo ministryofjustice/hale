@@ -5,6 +5,8 @@
 		$white = '#FFF';
 		$black = '#0B0C0C';
 		$yellow = '#FD0';
+		$red = '#D4351C';
+		$darkRed = '#942514';
 		$blue = '#1D70B8';
 		$darkBlue = '#003078';
 		$purple = '#4C2C92';
@@ -75,6 +77,9 @@
 			//Misc
 			['title-shading',$white,'Title shading','',''],
 			['cat-nav-arrows',$black,'Category navigation arrows','',''],
+			['pagination-border',$midGrey,'Pagination separating line','',''],
+			['error',$red,'Error colour','',''],
+			['error-link-hover',$darkRed,'Error link hover','',''],
 
 			//footer
 			['footer-border',$midGrey,'Footer border','',''],
@@ -109,6 +114,10 @@
 			['button-focus-outline',$yellow,'Button focus outline','This will always be thicker than any set button border',''],
 			['button-active',$buttonHoverGreen,'Button active','',''],
 
+			//Job listings
+			['job-item-bg',$white,'Job listing background','',''],
+			['job-item-border',$midGrey,'Job listing separating line','Should ideally match pagination separating line',''],
+			
 			//mojblocks - these are usually things not found in GOV.UK sites
 			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],
 			['mojblocks-accordion-section-shew',$blue,'Accordion show links','',''],
