@@ -116,6 +116,10 @@ $dropdown_html_page_count =
     <option value='00' $selected0>Show all</option>
 </select>
 ";
+// show all is "00" so:
+//  - get_query_var() returns false if single 0
+//  - intval then sets it to numeric 0
+//  - "-1" cannot be used because a php var cannot have a hyphen
 
 while (have_posts()) :
     the_post();
@@ -241,9 +245,15 @@ while (have_posts()) :
 
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
+        if ($page_size === 0) {
+            $count_per_page = -1;
+        } else {
+            $count_per_page = $page_size;
+        }
+
         $job_args = array(
             'post_type' => 'job',
-            'posts_per_page' => $page_size,
+            'posts_per_page' => $count_per_page,
             'relevanssi' => true,
             'paged' => $paged,
             'meta_key' => 'job_closing_date',
@@ -252,27 +262,18 @@ while (have_posts()) :
             'meta_query' =>  $meta_query
         );
 
-        $job_query = new WP_Query($job_args); // do query to get total number for page numbering
-
-        if ($page_size === 0) {
-            $job_args['posts_per_page']=$job_query->found_posts;
-            $page_size=$job_query->found_posts;
-        } else {
-            $job_args['posts_per_page']=$page_size;
-        }
-
         $job_query = new WP_Query($job_args);
         $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
 
         $current_page_number = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $total_job_count = $job_query->found_posts;
-        $page_job_count_lower = ($current_page_number) * $page_size - $page_size + 1;
-        $page_job_count_upper = min(($current_page_number) * $page_size,$total_job_count);
+        $page_job_count_lower = ($current_page_number) * $count_per_page - $count_per_page + 1;
+        $page_job_count_upper = min(($current_page_number) * $count_per_page,$total_job_count);
         if ($total_job_count === 0) {
             $job_count_text = "No jobs found";
         } elseif ($total_job_count == 1) {
             $job_count_text = "<strong>1</strong> job found";
-        } elseif ($total_job_count <= $page_size) {
+        } elseif ($total_job_count <= $count_per_page || $page_size === 0) {
             $job_count_text = "<strong>$total_job_count</strong> jobs found";
         } else {
             $job_count_text = "Showing <strong>$page_job_count_lower</strong> to <strong>$page_job_count_upper</strong> of <strong>$total_job_count</strong> jobs found.";
