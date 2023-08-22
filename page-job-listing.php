@@ -10,7 +10,7 @@
 get_header();
 
 //Get Search Filter Values
-$page_size = 25;
+$page_size = 12;
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
 $selected_job_min_salary_id = 0;
@@ -102,24 +102,6 @@ if ($selected_job_max_salary_id != "0" && $selected_job_max_salary_id < $selecte
 
 $dropdown_html_min_salary = salaryFilter($selected_job_min_salary_id,'min_salary','job-filter-min-salary',$salaryErrorClass,'No minimum');
 $dropdown_html_max_salary = salaryFilter($selected_job_max_salary_id,'max_salary','job-filter-max-salary',$salaryErrorClass,'No maximum');
-
-$selected0 = $selected12 = $selected25 = $selected50 = $selected100 = "";
-$sizeSelected = "selected$page_size";
-$$sizeSelected = "selected";
-$dropdown_html_page_count =
-"
-<select class='govuk-select' name='page_size' id='job-filter-page-size'>
-    <option value='12' $selected12>12</option>
-    <option value='25' $selected25>25</option>
-    <option value='50' $selected50>50</option>
-    <option value='100' $selected100>100</option>
-    <option value='00' $selected0>Show all</option>
-</select>
-";
-// show all is "00" so:
-//  - get_query_var() returns false if single 0
-//  - intval then sets it to numeric 0
-//  - "-1" cannot be used because a php var cannot have a hyphen
 
 while (have_posts()) :
     the_post();
@@ -334,7 +316,7 @@ while (have_posts()) :
                                     if (!empty($dropdown_html_max_salary)) {
                                 ?>
 
-                                    <div class="govuk-form-group govuk-!-margin-bottom-4  <?php if ($salaryError) echo 'govuk-form-group--error';?>">
+                                    <div class="govuk-form-group <?php if ($salaryError) echo 'govuk-form-group--error';?>">
                                         <label class="govuk-label" for="job-filter-max-salary">Maximum salary</label>
                                         <?php if ($salaryError) {?>
                                         <p id="job-filter-max-salary-error" class="govuk-error-message">
@@ -342,18 +324,6 @@ while (have_posts()) :
                                         </p>
                                         <?php } ?>
                                         <?php echo $dropdown_html_max_salary; ?>
-                                    </div>
-
-                                <?php
-                                    }
-                                ?>
-                                <?php
-                                    if (!empty($dropdown_html_page_count)) {
-                                ?>
-
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label" for="job-filter-page-size">Number of results per page</label>
-                                        <?php echo $dropdown_html_page_count; ?>
                                     </div>
 
                                 <?php
