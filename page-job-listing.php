@@ -9,7 +9,6 @@
 
 get_header();
 
-
 //Get Search Filter Values
 $page_size = 25;
 $selected_job_role_id = 0;
@@ -101,45 +100,10 @@ if ($selected_job_max_salary_id != "0" && $selected_job_max_salary_id < $selecte
     $salaryErrorMax = "Maximum salary cannot be lower than minimum salary.";
 }
 
-$selected0 = $selected20000 = $selected30000 = $selected40000 = $selected50000 = $selected60000 = $selected70000 = $selected80000 = $selected90000 = $selected100000 = "";
-$salarySelected = "selected$selected_job_min_salary_id";
-$$salarySelected = "selected";
-$dropdown_html_min_salary =
-"
-<select class='govuk-select $salaryErrorClass' name='min_salary' id='job-filter-min-salary'>
-    <option value='0' $selected0>No minimum</option>
-    <option value='20000' $selected20000>£20,000</option>
-    <option value='30000' $selected30000>£30,000</option>
-    <option value='40000' $selected40000>£40,000</option>
-    <option value='50000' $selected50000>£50,000</option>
-    <option value='60000' $selected60000>£60,000</option>
-    <option value='70000' $selected70000>£70,000</option>
-    <option value='80000' $selected80000>£80,000</option>
-    <option value='90000' $selected90000>£90,000</option>
-    <option value='100000' $selected100000>£100,000</option>
-</select>
-";
+$dropdown_html_min_salary = salaryFilter($selected_job_min_salary_id,'min_salary','job-filter-min-salary',$salaryErrorClass,'No minimum');
+$dropdown_html_max_salary = salaryFilter($selected_job_max_salary_id,'max_salary','job-filter-max-salary',$salaryErrorClass,'No maximum');
 
-$selected0 = $selected20000 = $selected30000 = $selected40000 = $selected50000 = $selected60000 = $selected70000 = $selected80000 = $selected90000 = $selected100000 = "";
-$salarySelected = "selected$selected_job_max_salary_id";
-$$salarySelected = "selected";
-$dropdown_html_max_salary =
-"
-<select class='govuk-select $salaryErrorClass' name='max_salary' id='job-filter-max-salary'>
-    <option value='0' $selected0>No maximum</option>
-    <option value='20000' $selected20000>£20,000</option>
-    <option value='30000' $selected30000>£30,000</option>
-    <option value='40000' $selected40000>£40,000</option>
-    <option value='50000' $selected50000>£50,000</option>
-    <option value='60000' $selected60000>£60,000</option>
-    <option value='70000' $selected70000>£70,000</option>
-    <option value='80000' $selected80000>£80,000</option>
-    <option value='90000' $selected90000>£90,000</option>
-    <option value='100000' $selected100000>£100,000</option>
-</select>
-";
-
-$selected12 = $selected25 = $selected50 = $selected100 = "";
+$selected0 = $selected12 = $selected25 = $selected50 = $selected100 = "";
 $sizeSelected = "selected$page_size";
 $$sizeSelected = "selected";
 $dropdown_html_page_count =
@@ -149,6 +113,7 @@ $dropdown_html_page_count =
     <option value='25' $selected25>25</option>
     <option value='50' $selected50>50</option>
     <option value='100' $selected100>100</option>
+    <option value='00' $selected0>Show all</option>
 </select>
 ";
 
@@ -286,6 +251,15 @@ while (have_posts()) :
             'tax_query' => $tax_qry_ary,
             'meta_query' =>  $meta_query
         );
+
+        $job_query = new WP_Query($job_args); // do query to get total number for page numbering
+
+        if ($page_size === 0) {
+            $job_args['posts_per_page']=$job_query->found_posts;
+            $page_size=$job_query->found_posts;
+        } else {
+            $job_args['posts_per_page']=$page_size;
+        }
 
         $job_query = new WP_Query($job_args);
         $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
