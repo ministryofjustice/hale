@@ -7,8 +7,6 @@
  * @version 2.0
  */
 
-error_reporting(E_ALL);
-
 get_header();
 
 
