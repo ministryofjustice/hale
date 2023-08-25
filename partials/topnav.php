@@ -17,6 +17,18 @@ $show_header_menu = get_theme_mod('show_header_menu', 'yes');
 if ($show_header_menu == 'yes') {
     $menu_locations = get_nav_menu_locations(); // Get our nav locations (set in our theme, usually functions.php).
 
+    $main_menu_count = 0;
+    foreach(wp_get_nav_menu_items($menu_locations['main-menu']) as $item) {
+        if ($item->menu_item_parent == 0) {
+            $main_menu_count++;
+        }
+    }
+    if ($main_menu_count >= 6) {
+        $main_menu_count_data = "many";
+    } else {
+        $main_menu_count_data = "few";
+    }
+
     $topmenu_args = array(
         'menu' => 'main-menu',
         'menu_class' => 'govuk-header__navigation-list',
@@ -33,10 +45,12 @@ if ($show_header_menu == 'yes') {
         'depth' => 2,
         'walker' => '',
         'theme_location' => 'main-menu',
-        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'items_wrap' => '<ul id="%1$s" class="%2$s" data-menu-count="'.$main_menu_count.'">%3$s</ul>',
         'item_spacing' => 'preserve',
     );
+
     ?>
+    
     <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation">
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
         <?php
