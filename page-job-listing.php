@@ -10,7 +10,7 @@
 get_header();
 
 //Get Search Filter Values
-$page_size = 12;
+$page_size = 50;
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
 $selected_job_min_salary_id = 0;

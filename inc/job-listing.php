@@ -9,7 +9,7 @@
 	 **/
 
 	function sanitizeAddress($address) {
-		$allCaps = ["HM","HMP","YOI","HMP/YOI","HMYOI","HMPYOI","NPS","NMS","RCJ","OPG","JCP","LAA","HMCTS","HMPPS","CTS","LG"];
+		$allCaps = ["HM","HMP","YOI","HMP/YOI","HMYOI","HMPYOI","NPS","NMS","RCJ","OPG","JCP","LAA","HMCTS","HMPPS","CTS","LG,"];
 		$specialCases = ["&amp;", "MoJ", "(MoJ)", "MacMillan"]; //instances where the capitalization isn't quite normal
 		$commonSeparators = [
 			// These are separators which are not capitalised at all
