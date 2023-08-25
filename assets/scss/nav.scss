@@ -667,17 +667,23 @@
               a:link,
               a:link:visited {
                 height: 100%;
-                display: flex;
-                align-items: center;
                 text-align: left!important;
+                border: none!important;
                 &:hover {
-                  border-bottom-color: white!important;
-
                   span:not([class]){
-                    border-bottom: 2px solid #832529;
+                    border-bottom: 2px solid currentColor;
                   }
                 }
-
+                &:not(:hover) {
+                  span:not([class]){
+                    padding-bottom: 2px;
+                  }
+                }
+                > div {
+                  position: relative;
+                  top: 50%;
+                  transform: translateY(-50%);
+                }
               }
             }
 
@@ -708,12 +714,11 @@
                 a:visited,
                 a:link,
                 a:link:visited {
-                  border-bottom-color: #B32F32!important;
+                  border-bottom: none!important;
                   &:hover {
                   
                     span:not([class]){
-                      background: #B32F32;
-                      border-bottom-color: white;
+                      border-bottom: 2px solid currentColor;
                     }
                   }
                 }
