@@ -109,7 +109,6 @@
 
 	function hale_job_listings_add_query_vars_filter($vars)
 	{
-		$vars[] = "type";
 		$vars[] = "page_size";
 		$vars[] = "min_salary";
 		$vars[] = "max_salary";
