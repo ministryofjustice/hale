@@ -27,11 +27,11 @@ if (get_query_var('search')) {
 }
 
 if (get_query_var('role_type')) {
-    $job_rôle_id = get_query_var('role_type');
-    if (is_numeric($job_rôle_id)) {
-        $job_rôle_id = intval($job_rôle_id);
-        if (term_exists($job_rôle_id, 'role_type')) {
-            $selected_job_role_id = $job_rôle_id;
+    $job_role_id = get_query_var('role_type');
+    if (is_numeric($job_role_id)) {
+        $job_role_id = intval($job_role_id);
+        if (term_exists($job_role_id, 'role_type')) {
+            $selected_job_role_id = $job_role_id;
         }
     }
 }
