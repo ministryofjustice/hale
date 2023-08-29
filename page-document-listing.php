@@ -86,7 +86,7 @@ while (have_posts()) :
                 <div class="document-listing-search-section">
                     <div class="document-listing-search-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
-
+                            <label for="doc-search-field" class="govuk-visually-hidden">Search</label>
                             <input class="govuk-input" id="doc-search-field" name="doc_search"
                                    value="<?php echo $doc_search_text; ?>" type="search"
                                    placeholder="Search">
