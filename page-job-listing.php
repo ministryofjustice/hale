@@ -10,6 +10,7 @@
 get_header();
 
 //Get Search Filter Values
+$search_text = '';
 $page_size = 50;
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
@@ -18,34 +19,41 @@ $selected_job_max_salary_id = 0;
 $salaryError = false;
 $salaryErrorClass = $salaryErrorMin = $salaryErrorMax = "";
 
-if (get_query_var('role_type')) {
-    $job_rôle_id = get_query_var('role_type');
-    if (is_numeric($job_rôle_id)) {
-        $job_rôle_id = intval($job_rôle_id);
-        if (term_exists($job_rôle_id, 'role_type')) {
-            $selected_job_role_id = $job_rôle_id;
+if (get_query_var('search')) {
+    $search_text = sanitize_text_field(get_query_var('search'));
+}
+
+if (get_query_var('type') != "Search") {
+    // if the "search" button is clicked - we ignore other filters
+    if (get_query_var('role_type')) {
+        $job_rôle_id = get_query_var('role_type');
+        if (is_numeric($job_rôle_id)) {
+            $job_rôle_id = intval($job_rôle_id);
+            if (term_exists($job_rôle_id, 'role_type')) {
+                $selected_job_role_id = $job_rôle_id;
+            }
         }
     }
-}
-if (get_query_var('job_region')) {
-    $job_region_id = get_query_var('job_region');
-    if (is_numeric($job_region_id)) {
-        $job_region_id = intval($job_region_id);
-        if (term_exists($job_region_id, 'job_region')) {
-            $selected_job_region_id = $job_region_id;
+    if (get_query_var('job_region')) {
+        $job_region_id = get_query_var('job_region');
+        if (is_numeric($job_region_id)) {
+            $job_region_id = intval($job_region_id);
+            if (term_exists($job_region_id, 'job_region')) {
+                $selected_job_region_id = $job_region_id;
+            }
         }
     }
-}
-if (get_query_var('min_salary')) {
-    $min_salary_id = get_query_var('min_salary');
-    if (is_numeric($min_salary_id)) {
-        $selected_job_min_salary_id = intval($min_salary_id);
+    if (get_query_var('min_salary')) {
+        $min_salary_id = get_query_var('min_salary');
+        if (is_numeric($min_salary_id)) {
+            $selected_job_min_salary_id = intval($min_salary_id);
+        }
     }
-}
-if (get_query_var('max_salary')) {
-    $max_salary_id = get_query_var('max_salary');
-    if (is_numeric($max_salary_id)) {
-        $selected_job_max_salary_id = intval($max_salary_id);
+    if (get_query_var('max_salary')) {
+        $max_salary_id = get_query_var('max_salary');
+        if (is_numeric($max_salary_id)) {
+            $selected_job_max_salary_id = intval($max_salary_id);
+        }
     }
 }
 
@@ -243,7 +251,10 @@ while (have_posts()) :
             'tax_query' => $tax_qry_ary,
             'meta_query' =>  $meta_query
         );
-
+        if (!empty($search_text)) {
+            $job_args['s'] = $search_text;
+            //Meta fields (such as summary) are searched using relevanssi
+        }
         $job_query = new WP_Query($job_args);
         $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
 
@@ -269,7 +280,15 @@ while (have_posts()) :
             <div class="govuk-grid-column-one-third">
                 <div class="job-listing-filter-section">
                     <div class="job-listing-filter-form">
-                        <form action="<?php echo get_permalink(); ?>" method="GET">
+                        <form action="<?php echo get_permalink(); ?>" method="GET" novalidate>
+                            <div class="govuk-form-group govuk-!-margin-bottom-6">
+                                <label for="search-field" class="govuk-label"><h2 class="govuk-heading-m">Search</h2></label>
+                                <input class="govuk-input" id="search-field" name="search"
+                                value="<?php echo $search_text; ?>" type="search"
+                                placeholder="Search">
+                            </div>
+                            <input class="govuk-button" type="submit" name="type" value="Search"/>
+
                             <h2 class="govuk-heading-m">Filters</h2>
                                 <?php
                                     if (!empty($dropdown_html_role)) {
@@ -329,7 +348,7 @@ while (have_posts()) :
                                 <?php
                                     }
                                 ?>
-                            <button class="govuk-button">Update results</button>
+                            <input class="govuk-button" type="submit" name="type" value="Update results"/>
                             <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
                                 <a href="<?php echo get_permalink(); ?>" class="govuk-link">Clear</a>
                             </div>
