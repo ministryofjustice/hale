@@ -24,6 +24,7 @@ if (get_query_var('search')) {
     $search_text = sanitize_text_field($search_text);
     $search_text_HTML = htmlspecialchars($search_text, ENT_QUOTES);
     $search_text_HTML = str_replace('\\', '', $search_text_HTML); // kill backslashes
+    $search_text_HTML = str_replace('%', '&percnt;', $search_text_HTML); // deal with percentages
 }
 
 if (get_query_var('role_type')) {

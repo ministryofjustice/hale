@@ -16,6 +16,9 @@ $doc_search_text = '';
 if (get_query_var('doc_search')) {
 
     $doc_search_text = sanitize_text_field(get_query_var('doc_search'));
+    $search_text_HTML = htmlspecialchars($doc_search_text, ENT_QUOTES);
+    $search_text_HTML = str_replace('\\', '', $search_text_HTML); // kill backslashes
+    $search_text_HTML = str_replace('%', '&percnt;', $search_text_HTML); // deal with percentages
 }
 
 //Get Search Filter Values
@@ -88,7 +91,7 @@ while (have_posts()) :
                         <form action="<?php echo get_permalink(); ?>" method="GET">
                             <label for="doc-search-field" class="govuk-visually-hidden">Search</label>
                             <input class="govuk-input" id="doc-search-field" name="doc_search"
-                                   value="<?php echo $doc_search_text; ?>" type="search"
+                                   value="<?php echo $search_text_HTML; ?>" type="search"
                                    placeholder="Search">
 
                             <?php
