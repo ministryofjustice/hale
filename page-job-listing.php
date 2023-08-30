@@ -10,6 +10,7 @@
 get_header();
 
 //Get Search Filter Values
+$search_text = '';
 $page_size = 50;
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
@@ -18,12 +19,19 @@ $selected_job_max_salary_id = 0;
 $salaryError = false;
 $salaryErrorClass = $salaryErrorMin = $salaryErrorMax = "";
 
+if (get_query_var('search')) {
+    $search_text = get_query_var('search');
+    $search_text = sanitize_text_field($search_text);
+    $search_text_HTML = htmlspecialchars($search_text, ENT_QUOTES);
+    $search_text_HTML = str_replace('\\', '', $search_text_HTML); // kill backslashes
+}
+
 if (get_query_var('role_type')) {
-    $job_rôle_id = get_query_var('role_type');
-    if (is_numeric($job_rôle_id)) {
-        $job_rôle_id = intval($job_rôle_id);
-        if (term_exists($job_rôle_id, 'role_type')) {
-            $selected_job_role_id = $job_rôle_id;
+    $job_role_id = get_query_var('role_type');
+    if (is_numeric($job_role_id)) {
+        $job_role_id = intval($job_role_id);
+        if (term_exists($job_role_id, 'role_type')) {
+            $selected_job_role_id = $job_role_id;
         }
     }
 }
@@ -243,7 +251,10 @@ while (have_posts()) :
             'tax_query' => $tax_qry_ary,
             'meta_query' =>  $meta_query
         );
-
+        if (!empty($search_text)) {
+            $job_args['s'] = $search_text;
+            //Meta fields (such as summary) are searched using relevanssi
+        }
         $job_query = new WP_Query($job_args);
         $job_type_filter_activated = get_post_meta(get_the_ID(), 'document_type_filter_activated', true);
 
@@ -269,8 +280,19 @@ while (have_posts()) :
             <div class="govuk-grid-column-one-third">
                 <div class="job-listing-filter-section">
                     <div class="job-listing-filter-form">
-                        <form action="<?php echo get_permalink(); ?>" method="GET">
+                        <form action="<?php echo get_permalink(); ?>" method="GET" novalidate>
                             <h2 class="govuk-heading-m">Filters</h2>
+                            <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                <label for="search-field" class="govuk-label">
+                                    Keyword search
+                                </label>
+                                <div id="search-field-hint" class="govuk-hint">
+                                    For example, prison officer
+                                </div>
+                                <input class="govuk-input" id="search-field" name="search"
+                                value="<?php printf($search_text_HTML); ?>" type="search"
+                                placeholder="" aria-describedby="search-field-hint">
+                            </div>
                                 <?php
                                     if (!empty($dropdown_html_role)) {
                                 ?>
@@ -329,7 +351,7 @@ while (have_posts()) :
                                 <?php
                                     }
                                 ?>
-                            <button class="govuk-button">Update results</button>
+                            <input class="govuk-button" type="submit" name="type" value="Update results"/>
                             <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
                                 <a href="<?php echo get_permalink(); ?>" class="govuk-link">Clear</a>
                             </div>
@@ -352,7 +374,7 @@ while (have_posts()) :
                     </div>
                     <?php
                     hale_archive_pagination('archive', $job_query);
-                } elseif ($selected_job_role_id + $selected_job_region_id + $selected_job_min_salary_id + $selected_job_max_salary_id == 0) {
+                } elseif ($search_text == "" && $selected_job_role_id + $selected_job_region_id + $selected_job_min_salary_id + $selected_job_max_salary_id == 0) {
                     // No filters and no jobs found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
                         No jobs found
@@ -361,8 +383,17 @@ while (have_posts()) :
                         There are currently no jobs to display, try again later.
                     </p>
                     <?php
+                } elseif ($search_text != "") {
+                    // Search term entered but no results found ?>
+                    <h2 class="job-list-item--title govuk-heading-l">
+                        Your search for &ldquo;<?php printf($search_text_HTML); ?>&rdquo; matched no current vacancies
+                    </h2>
+                    <p class="govuk-body">
+                        Try searching again with expanded criteria.
+                    </p>
+                    <?php
                 } else {
-                    // Filters applied but no jobs found ?>
+                    // No search term, but some filters applied but no jobs found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
                         Your search matched no current vacancies
                     </h2>
