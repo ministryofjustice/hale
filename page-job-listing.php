@@ -377,10 +377,10 @@ while (have_posts()) :
                 } elseif ($search_text == "" && $selected_job_role_id + $selected_job_region_id + $selected_job_min_salary_id + $selected_job_max_salary_id == 0) {
                     // No filters and no jobs found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
-                        No jobs found
+                        <?php _e('No jobs found', 'hale'); ?>
                     </h2>
                     <p class="govuk-body">
-                        There are currently no jobs to display, try again later.
+                        <?php _e('There are currently no jobs to display, try again later.', 'hale'); ?>
                     </p>
                     <?php
                 } elseif ($search_text != "") {
@@ -389,16 +389,16 @@ while (have_posts()) :
                         Your search for &ldquo;<?php echo $search_text_HTML; ?>&rdquo; matched no current vacancies
                     </h2>
                     <p class="govuk-body">
-                        Try searching again with expanded criteria.
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
                     </p>
                     <?php
                 } else {
                     // No search term, but some filters applied but no jobs found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
-                        Your search matched no current vacancies
+                        <?php _e('Your search matched no current vacancies', 'hale'); ?>
                     </h2>
                     <p class="govuk-body">
-                        Try searching again with expanded criteria.
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
                     </p>
                     <?php
                 }
