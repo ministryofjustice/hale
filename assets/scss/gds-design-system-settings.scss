@@ -15,6 +15,9 @@ $govuk-font-family: 'PT Sans', sans-serif;
   .hale-search-header + div {
 		margin-top: 30px;
 	}
+  h1,h2,h3,h4,h5,h6 {
+    font-family: $govuk-font-family;
+  }
   #primary {
     font-family: $govuk-font-family;
 
@@ -24,9 +27,6 @@ $govuk-font-family: 'PT Sans', sans-serif;
         width: 150%;
         padding:0;
       }
-    }
-    h1,h2,h3,h4,h5,h6 {
-      font-family: $govuk-font-family;
     }
   }
   .hale-footer__copyright a {
