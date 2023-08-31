@@ -120,15 +120,15 @@ while (have_posts()) :
             <div class="govuk-error-summary" data-module="govuk-error-summary">
                 <div role="alert">
                     <h2 class="govuk-error-summary__title">
-                        There is a problem
+                        <?php _e('There is a problem', 'hale'); ?>
                     </h2>
                     <div class="govuk-error-summary__body">
                         <ul class="govuk-list govuk-error-summary__list">
                             <li>
-                                <a href="#job-filter-min-salary"><?php echo $salaryErrorMin; ?></a>
+                                <a href="#job-filter-min-salary"><?php _e($salaryErrorMin,"hale"); ?></a>
                             </li>
                             <li>
-                                <a href="#job-filter-max-salary"><?php echo $salaryErrorMax; ?></a>
+                                <a href="#job-filter-max-salary"><?php _e($salaryErrorMax,"hale"); ?></a>
                             </li>
                         </ul>
                     </div>
@@ -281,13 +281,15 @@ while (have_posts()) :
                 <div class="job-listing-filter-section">
                     <div class="job-listing-filter-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET" novalidate>
-                            <h2 class="govuk-heading-m">Filters</h2>
+                            <h2 class="govuk-heading-m">
+                                <?php _e('Filters', 'hale'); ?>
+                            </h2>
                             <div class="govuk-form-group govuk-!-margin-bottom-4">
                                 <label for="search-field" class="govuk-label">
-                                    Keyword search
+                                    <?php _e('Keyword search', 'hale'); ?>
                                 </label>
                                 <div id="search-field-hint" class="govuk-hint">
-                                    For example, prison officer
+                                    <?php _e('For example, prison officer', 'hale'); ?>
                                 </div>
                                 <input class="govuk-input" id="search-field" name="search"
                                 value="<?php echo $search_text_HTML; ?>" type="search"
@@ -298,7 +300,9 @@ while (have_posts()) :
                                 ?>
 
                                     <div class="govuk-form-group govuk-!-margin-bottom-4">
-                                        <label class="govuk-label" for="job-filter-role">Role</label>
+                                        <label class="govuk-label" for="job-filter-role">
+                                            <?php _e('Role', 'hale'); ?>
+                                        </label>
                                         <?php echo $dropdown_html_role; ?>
                                     </div>
 
@@ -310,7 +314,9 @@ while (have_posts()) :
                                 ?>
 
                                     <div class="govuk-form-group govuk-!-margin-bottom-4">
-                                        <label class="govuk-label" for="job-filter-region">Region</label>
+                                        <label class="govuk-label" for="job-filter-region">
+                                            <?php _e('Region', 'hale'); ?>
+                                        </label>
                                         <?php echo $dropdown_html_region; ?>
                                     </div>
 
@@ -322,10 +328,15 @@ while (have_posts()) :
                                 ?>
 
                                     <div class="govuk-form-group govuk-!-margin-bottom-4 <?php if ($salaryError) echo 'govuk-form-group--error';?>">
-                                        <label class="govuk-label" for="job-filter-min-salary">Minimum salary</label>
+                                        <label class="govuk-label" for="job-filter-min-salary">
+                                            <?php _e('Minimum salary', 'hale'); ?>
+                                        </label>
                                         <?php if ($salaryError) {?>
                                         <p id="job-filter-min-salary-error" class="govuk-error-message">
-                                            <span class="govuk-visually-hidden">Error: </span><?php echo $salaryErrorMin; ?>
+                                            <span class="govuk-visually-hidden">
+                                                <?php _e('Error:', 'hale'); ?>
+                                            </span>
+                                            <?php _e($salaryErrorMin,"hale"); ?>
                                         </p>
                                         <?php } ?>
                                         <?php echo $dropdown_html_min_salary; ?>
@@ -339,10 +350,15 @@ while (have_posts()) :
                                 ?>
 
                                     <div class="govuk-form-group <?php if ($salaryError) echo 'govuk-form-group--error';?>">
-                                        <label class="govuk-label" for="job-filter-max-salary">Maximum salary</label>
+                                        <label class="govuk-label" for="job-filter-max-salary">
+                                            <?php _e('Maximum salary', 'hale'); ?>
+                                        </label>
                                         <?php if ($salaryError) {?>
                                         <p id="job-filter-max-salary-error" class="govuk-error-message">
-                                            <span class="govuk-visually-hidden">Error: </span><?php echo $salaryErrorMax; ?>
+                                            <span class="govuk-visually-hidden">
+                                                <?php _e('Error:', 'hale'); ?>
+                                            </span>
+                                            <?php _e($salaryErrorMax,"hale"); ?>
                                         </p>
                                         <?php } ?>
                                         <?php echo $dropdown_html_max_salary; ?>
@@ -351,9 +367,11 @@ while (have_posts()) :
                                 <?php
                                     }
                                 ?>
-                            <input class="govuk-button" type="submit" name="type" value="Update results"/>
+                            <input class="govuk-button" type="submit" name="type" value="<?php _e('Update results', 'hale'); ?>"/>
                             <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
-                                <a href="<?php echo get_permalink(); ?>" class="govuk-link">Clear</a>
+                                <a href="<?php echo get_permalink(); ?>" class="govuk-link">
+                                    <?php _e('Clear', 'hale'); ?>
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -381,6 +399,15 @@ while (have_posts()) :
                     </h2>
                     <p class="govuk-body">
                         <?php _e('There are currently no jobs to display, try again later.', 'hale'); ?>
+                    </p>
+                    <?php
+                } elseif ($salaryError) {
+                    // Salary error ?>
+                    <h2 class="job-list-item--title govuk-heading-l">
+                        <?php _e('Your search matched no current vacancies', 'hale'); ?>
+                    </h2>
+                    <p class="govuk-body">
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
                     </p>
                     <?php
                 } elseif ($search_text != "") {
