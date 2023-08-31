@@ -363,7 +363,9 @@ while (have_posts()) :
                     hale_archive_pagination('archive', $doc_query);
                 } elseif (!empty($doc_search_text)) { ?>
                     <h2 class="govuk-heading-l">
-                        Your search for &ldquo;<?php echo $search_text_HTML; ?>&rdquo; matched no documents
+                        <?php
+                        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no documents', 'hale' ), $search_text_HTML);
+                        ?>
                     </h2>
                     <p class="govuk-body">
                         <?php _e('Try searching again with expanded criteria.', 'hale'); ?>

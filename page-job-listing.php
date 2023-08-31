@@ -386,7 +386,9 @@ while (have_posts()) :
                 } elseif ($search_text != "") {
                     // Search term entered but no results found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
-                        Your search for &ldquo;<?php echo $search_text_HTML; ?>&rdquo; matched no current vacancies
+                        <?php
+                        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no current vacancies', 'hale' ), $search_text_HTML);
+                        ?>
                     </h2>
                     <p class="govuk-body">
                         <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
