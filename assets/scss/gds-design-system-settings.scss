@@ -25,6 +25,9 @@ $govuk-font-family: 'PT Sans', sans-serif;
         padding:0;
       }
     }
+    h1,h2,h3,h4,h5,h6 {
+      font-family: $govuk-font-family;
+    }
   }
   .hale-footer__copyright a {
     @extend .govuk-footer__link;
