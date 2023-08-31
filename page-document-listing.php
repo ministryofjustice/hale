@@ -362,8 +362,21 @@ while (have_posts()) :
                     </div>
                     <?php
                     hale_archive_pagination('archive', $doc_query);
+                } elseif (!empty($doc_search_text)) { ?>
+                    <h2 class="govuk-heading-l">
+                        Your search for &ldquo;<?php echo $search_text_HTML; ?>&rdquo; matched no documents
+                    </h2>
+                    <p class="govuk-body">
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+                    </p>
+                    <?php
                 } else { ?>
-                    <p><?php _e('No Documents found', 'hale'); ?></p>
+                    <h2 class="job-list-item--title govuk-heading-l">
+                        <?php _e('Your search matched no documents', 'hale'); ?>
+                    </h2>
+                    <p class="govuk-body">
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+                    </p>
                     <?php
                 }
                 wp_reset_postdata();
