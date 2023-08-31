@@ -16,9 +16,8 @@ $doc_search_text = '';
 if (get_query_var('doc_search')) {
 
     $doc_search_text = sanitize_text_field(get_query_var('doc_search'));
-    $search_text_HTML = htmlspecialchars($doc_search_text, ENT_QUOTES);
+    $search_text_HTML = esc_html($doc_search_text);
     $search_text_HTML = str_replace('\\', '', $search_text_HTML); // kill backslashes
-    $search_text_HTML = str_replace('%', '&percnt;', $search_text_HTML); // deal with percentages
 }
 
 //Get Search Filter Values
