@@ -291,7 +291,7 @@ while (have_posts()) :
                                     For example, prison officer
                                 </div>
                                 <input class="govuk-input" id="search-field" name="search"
-                                value="<?php printf($search_text_HTML); ?>" type="search"
+                                value="<?php echo $search_text_HTML; ?>" type="search"
                                 placeholder="" aria-describedby="search-field-hint">
                             </div>
                                 <?php
@@ -387,7 +387,7 @@ while (have_posts()) :
                 } elseif ($search_text != "") {
                     // Search term entered but no results found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
-                        Your search for &ldquo;<?php printf($search_text_HTML); ?>&rdquo; matched no current vacancies
+                        Your search for &ldquo;<?php echo $search_text_HTML; ?>&rdquo; matched no current vacancies
                     </h2>
                     <p class="govuk-body">
                         Try searching again with expanded criteria.
