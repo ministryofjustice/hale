@@ -2,7 +2,7 @@
 
 //mixins
 @mixin hale-heading-link-underline-restrictor($colour, $width: 1024px) {
-/*	@include govuk-media-query($from: $width) {
+	@include govuk-media-query($from: $width) {
 		position:relative;
 
 		&:before {
@@ -10,7 +10,7 @@
 			border-right:15px solid var($colour);
 			border-left:15px solid var($colour);
 		}
-	}*/
+	}
 }
 
 //branding colours and styles
@@ -25,15 +25,6 @@
 .govuk-header {
 	@include govuk-media-query($from: desktop) {
 		padding-bottom: 0;
-
-		.govuk-header__navigation-list {
-			display: flex;
-			justify-content: space-between;
-
-			li {
-				padding:0;
-			}
-		}
 	}
 }
 //remove gap at top of page
@@ -278,7 +269,7 @@
 						&:focus:not(:hover) {
 							color: var(--header-link-focus);
 							background-color: var(--header-link-focus-highlight);
-							border-bottom-color: var(--header-link-focus-underline);
+							box-shadow: 0 4px 0 0 var(--header-link-focus-underline);
 
 							@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 						}
