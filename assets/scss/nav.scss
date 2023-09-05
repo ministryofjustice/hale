@@ -108,7 +108,6 @@
             }
           }
 
-
           &.sub-menu-open {
             > a:after,
             > a:focus-within > span.hale-header__dropdown-arrow:focus:after {
@@ -316,6 +315,11 @@
             }
           }
         }
+      }
+    }
+    @include govuk-media-query($from: desktop) {
+      &.hale-header__topnav {
+        margin-bottom: 5px;
       }
     }
   }

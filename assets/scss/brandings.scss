@@ -519,10 +519,6 @@ html.hale-colours-variable {
 	//remove GDS brand colour bar
 	.govuk-header__container {
 		border-bottom: none;
-
-		&:after {
-			height: 10px;
-		}
 	}
 
 	// some button styles are in brandings-mojblocks.scss
@@ -742,6 +738,5 @@ html.hale-colours-variable {
 				}
 			}
 		}
-
 	}
 }

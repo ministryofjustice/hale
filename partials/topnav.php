@@ -23,11 +23,6 @@ if ($show_header_menu == 'yes') {
             $main_menu_count++;
         }
     }
-    if ($main_menu_count >= 6) {
-        $main_menu_count_data = "many";
-    } else {
-        $main_menu_count_data = "few";
-    }
 
     $topmenu_args = array(
         'menu' => 'main-menu',
@@ -48,9 +43,8 @@ if ($show_header_menu == 'yes') {
         'items_wrap' => '<ul id="%1$s" class="%2$s" data-menu-count="'.$main_menu_count.'">%3$s</ul>',
         'item_spacing' => 'preserve',
     );
-
     ?>
-    
+
     <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation">
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu">Menu</button>
         <?php
