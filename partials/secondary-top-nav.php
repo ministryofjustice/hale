@@ -8,7 +8,7 @@ if (has_nav_menu('secondary-top-menu')) {
     $menu_args = array(
         'menu_id' => 'secondary-top-menu',
         'container' => false,
-        'depth' => 1,
+        'depth' => 2,
         'theme_location' => 'secondary-top-menu'
     );
     ?>

@@ -30,7 +30,7 @@ if ($show_header_menu == 'yes') {
         'link_before' => '<span>',
         'link_after' => '</span>',
         'echo' => true,
-        'depth' => 2,
+        'depth' => 3,
         'walker' => '',
         'theme_location' => 'main-menu',
         'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
