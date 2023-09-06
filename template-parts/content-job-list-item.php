@@ -121,8 +121,8 @@
 ?>
 
 
-<div class="job-list-item" id="job-".$id>
-    <h2 class="job-list-item--title hale-heading-m">
+<div class="job-list-item" id="job-"<?php echo $id; ?>>
+    <h2 class="job-list-item--title govuk-heading-m">
         <a class="govuk-link" href="<?php printf($url);?>">
             <?php echo get_the_title(); ?>
         </a>
