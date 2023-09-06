@@ -1,6 +1,18 @@
 @import "fontawesome/scss/fontawesome.scss";
 @import "fontawesome/scss/brands.scss";
 
+.blog {
+  @extend %fa-icon;
+  @extend .fab;
+
+  &:before {
+    content: fa-content($fa-var-blogger);
+  }
+  &.unharmonized:before{
+    content: fa-content($fa-var-blogger-b);
+  }
+}
+
 .facebook {
   @extend %fa-icon;
   @extend .fab;
