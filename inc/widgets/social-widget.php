@@ -19,6 +19,10 @@ class social_widget extends WP_Widget {
         if ( ! empty( $title ) )
             echo $args['before_title'] . $title . $args['after_title'];
 
+        if ( ! empty( $instance['blog_url'] ) ){
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['blog_url']  . '"><span class="govuk-visually-hidden">Blog</span><i class="blog ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
+        }
+
         if ( ! empty( $instance['facebook_url'] ) ){
             echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['facebook_url']  . '"><span class="govuk-visually-hidden">Facebook</span><i class="facebook ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
@@ -45,6 +49,7 @@ class social_widget extends WP_Widget {
     public function form( $instance ) {
         $title = '';
         $harmonized_icons = '';
+        $blog_url = '';
         $facebook_url = '';
         $instagram_url = '';
         $linkedin_url = '';
@@ -57,6 +62,10 @@ class social_widget extends WP_Widget {
 
         if ( isset( $instance[ 'harmonized_icons' ] ) ) {
             $harmonized_icons = $instance[ 'harmonized_icons' ];
+        }
+
+        if ( isset( $instance[ 'blog_url' ] ) ) {
+            $blog_url = $instance[ 'blog_url' ];
         }
 
         if ( isset( $instance[ 'facebook_url' ] ) ) {
@@ -88,6 +97,10 @@ class social_widget extends WP_Widget {
             <label for=<?php echo $this->get_field_id( "harmonized_icons");?>>Harmonize icons</label><br>
         </p>
         <p>
+            <label for="<?php echo $this->get_field_id( 'blog_url' ); ?>"><?php _e( 'Blog URL' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'blog_url' ); ?>" name="<?php echo $this->get_field_name( 'blog_url' ); ?>" type="text" value="<?php echo esc_attr( $blog_url ); ?>" />
+        </p>
+        <p>
             <label for="<?php echo $this->get_field_id( 'facebook_url' ); ?>"><?php _e( 'Facebook URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'facebook_url' ); ?>" name="<?php echo $this->get_field_name( 'facebook_url' ); ?>" type="text" value="<?php echo esc_attr( $facebook_url ); ?>" />
         </p>
@@ -114,6 +127,7 @@ class social_widget extends WP_Widget {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
         $instance['harmonized_icons'] = ( ! empty( $new_instance['harmonized_icons'] ) ) ? strip_tags( $new_instance['harmonized_icons']) : '';
+        $instance['blog_url'] = ( ! empty( $new_instance['blog_url'] ) ) ? strip_tags( $new_instance['blog_url'] ) : '';
         $instance['facebook_url'] = ( ! empty( $new_instance['facebook_url'] ) ) ? strip_tags( $new_instance['facebook_url'] ) : '';
         $instance['instagram_url'] = ( ! empty( $new_instance['instagram_url'] ) ) ? strip_tags( $new_instance['instagram_url'] ) : '';
         $instance['linkedin_url'] = ( ! empty( $new_instance['linkedin_url'] ) ) ? strip_tags( $new_instance['linkedin_url'] ) : '';
