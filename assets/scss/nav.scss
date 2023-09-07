@@ -10,10 +10,12 @@
   &__navigation {
     margin-bottom: 0;
 
-    //Move so the menu text is in line with the website text - otherwise the click area is in line and it looks indented
-    width: calc(100% + 28px);
-    position: relative;
-    left: -14px;
+    @include govuk-media-query($from: desktop) {
+      //Move so the menu text is in line with the website text - otherwise the click area is in line and it looks indented
+      width: calc(100% + 28px);
+      position: relative;
+      left: -14px;
+    }
 
     &-list {
       max-width: 100%;
