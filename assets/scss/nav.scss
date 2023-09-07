@@ -10,6 +10,11 @@
   &__navigation {
     margin-bottom: 0;
 
+    //Move so the menu text is in line with the website text - otherwise the click area is in line and it looks indented
+    width: calc(100% + 28px);
+    position: relative;
+    left: -14px;
+
     &-list {
       max-width: 100%;
       li {
@@ -186,7 +191,7 @@
         align-items: stretch;
         flex-wrap: wrap;
 
-        &[data-menu-count]:not([data-menu-count="2"]):not([data-menu-count="3"]):not([data-menu-count="4"]):not([data-menu-count="6"]):not([data-menu-count="7"]):not([data-menu-count="8"]):not([data-menu-count="11"]):not([data-menu-count="12"]) {
+        &[data-menu-count]:not([data-menu-count="2"]):not([data-menu-count="3"]):not([data-menu-count="4"]):not([data-menu-count="6"]):not([data-menu-count="7"]):not([data-menu-count="8"]):not([data-menu-count="11"]):not([data-menu-count="12"]):not([data-menu-count="13"]):not([data-menu-count="14"]) {
           > li {
             width: calc(0.88 * (100% - 50px) / 5);
             max-width: calc(0.88 * (100% - 50px) / 5);
@@ -196,7 +201,6 @@
         &[data-menu-count="2"],
         &[data-menu-count="3"],
         &[data-menu-count="4"],
-        &[data-menu-count="7"],
         &[data-menu-count="8"] {
           > li {
             width: calc(0.88 * (100% - 50px) / 4);
@@ -213,6 +217,15 @@
             margin-right: calc(0.11 * (99% - 50px) / 6);
           }
         }
+        &[data-menu-count="7"],
+        &[data-menu-count="13"],
+        &[data-menu-count="14"] {
+          > li {
+            width: calc(0.88 * (100% - 50px) / 7);
+            max-width: calc(0.88 * (100% - 50px) / 7);
+            margin-right: calc(0.11 * (99% - 50px) / 7);
+          }
+        }
 
         > li {
           padding: 0;
@@ -227,18 +240,9 @@
               min-height: 40px;
               height: 100%;
               text-align: left;
-              border: none;
-              &:hover,
-              &:focus {
-                span:not([class]){
-                  border-bottom: 2px solid currentColor;
-                }
-              }
-              &:not(:hover):not(:focus) {
-                span:not([class]){
-                  padding-bottom: 2px;
-                }
-              }
+              border-bottom-width: 4px;
+              border-bottom-style: solid;
+
               > div {
                 position: relative;
                 top: 50%;
@@ -303,14 +307,8 @@
               a:link:visited {
                 padding-left: 15px;
                 padding-right: 15px;
-                border-bottom: none;
-                &:hover,
-                &:focus {
-
-                  span:not([class]){
-                    border-bottom: 2px solid currentColor;
-                  }
-                }
+                border-bottom-width: 4px;
+                border-bottom-style: solid;
               }
             }
           }

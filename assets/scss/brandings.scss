@@ -269,7 +269,7 @@
 						&:focus:not(:hover) {
 							color: var(--header-link-focus);
 							background-color: var(--header-link-focus-highlight);
-							box-shadow: 0 4px 0 0 var(--header-link-focus-underline);
+							border-bottom-color: var(--header-link-focus-underline);
 
 							@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 						}
