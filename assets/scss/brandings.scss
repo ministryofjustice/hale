@@ -1,7 +1,7 @@
 @import 'page-colours';
 
 //mixins
-@mixin hale-heading-link-underline-restrictor($colour, $width: 1024px, $gap: 15px) {
+@mixin hale-heading-link-underline-restrictor($colour, $width: desktop, $gap: 15px) {
 	@include govuk-media-query($from: $width) {
 		position:relative;
 
@@ -392,11 +392,11 @@
 								&:hover {
 									border-bottom-color: currentColor;
 
-									@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg, $width: desktop, $gap: 9px);
+									@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg, $gap: 9px);
 								}
 								&:focus:hover,
 								&:focus:not(:hover) {
-									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $width: desktop, $gap: 9px);
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $gap: 9px);
 								}
 							}
 						}
