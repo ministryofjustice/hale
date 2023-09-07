@@ -305,7 +305,6 @@
             position: absolute;
             z-index: 1;
             padding: 5px 0 9px;
-            //options are constricted by the end of the menu, this allows a little extra space to avoid in-word wrapping if the secondary menu has words longer than the primary menu (last) option which reveals it
             margin-right: 0;
             min-width: 100%;
             max-width: 150%;
