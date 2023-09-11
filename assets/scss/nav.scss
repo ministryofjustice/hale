@@ -306,7 +306,7 @@
             z-index: 1;
             padding: 5px 0 9px;
             margin-right: 0;
-            min-width: 100%;
+            min-width: calc(112.5% + 15px);
             max-width: 150%;
             width: max-content;
             li {
