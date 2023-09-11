@@ -61,6 +61,18 @@
   }
 }
 
+.vimeo {
+  @extend %fa-icon;
+  @extend .fab;
+
+  &:before {
+    content: fa-content($fa-var-square-vimeo);
+  }
+  &.unharmonized:before{
+    content: fa-content($fa-var-vimeo-v);
+  }
+}
+
 .youtube {
   @extend %fa-icon;
   @extend .fab;

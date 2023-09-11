@@ -39,6 +39,10 @@ class social_widget extends WP_Widget {
             echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['twitter_url']  . '"><span class="govuk-visually-hidden">Twitter</span><i class="twitter ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
+        if ( ! empty( $instance['vimeo_url'] ) ){
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['vimeo_url']  . '"><span class="govuk-visually-hidden">Vimeo</span><i class="vimeo ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
+        }
+
         if ( ! empty( $instance['youtube_url'] ) ){
             echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['youtube_url']  . '"><span class="govuk-visually-hidden">YouTube</span><i class="youtube ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
@@ -54,6 +58,7 @@ class social_widget extends WP_Widget {
         $instagram_url = '';
         $linkedin_url = '';
         $twitter_url = '';
+        $vimeo_url = '';
         $youtube_url = '';
 
         if ( isset( $instance[ 'title' ] ) ) {
@@ -82,6 +87,10 @@ class social_widget extends WP_Widget {
 
         if ( isset( $instance[ 'twitter_url' ] ) ) {
             $twitter_url = $instance[ 'twitter_url' ];
+        }
+
+        if ( isset( $instance[ 'vimeo_url' ] ) ) {
+            $vimeo_url = $instance[ 'vimeo_url' ];
         }
 
         if ( isset( $instance[ 'youtube_url' ] ) ) {
@@ -117,6 +126,10 @@ class social_widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id( 'twitter_url' ); ?>" name="<?php echo $this->get_field_name( 'twitter_url' ); ?>" type="text" value="<?php echo esc_attr( $twitter_url ); ?>" />
         </p>
         <p>
+            <label for="<?php echo $this->get_field_id( 'vimeo_url' ); ?>"><?php _e( 'Vimeo URL' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'vimeo_url' ); ?>" name="<?php echo $this->get_field_name( 'vimeo_url' ); ?>" type="text" value="<?php echo esc_attr( $vimeo_url ); ?>" />
+        </p>
+        <p>
             <label for="<?php echo $this->get_field_id( 'youtube_url' ); ?>"><?php _e( 'YouTube URL' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'youtube_url' ); ?>" name="<?php echo $this->get_field_name( 'youtube_url' ); ?>" type="text" value="<?php echo esc_attr( $youtube_url ); ?>" />
         </p>
@@ -132,6 +145,7 @@ class social_widget extends WP_Widget {
         $instance['instagram_url'] = ( ! empty( $new_instance['instagram_url'] ) ) ? strip_tags( $new_instance['instagram_url'] ) : '';
         $instance['linkedin_url'] = ( ! empty( $new_instance['linkedin_url'] ) ) ? strip_tags( $new_instance['linkedin_url'] ) : '';
         $instance['twitter_url'] = ( ! empty( $new_instance['twitter_url'] ) ) ? strip_tags( $new_instance['twitter_url'] ) : '';
+        $instance['vimeo_url'] = ( ! empty( $new_instance['vimeo_url'] ) ) ? strip_tags( $new_instance['vimeo_url'] ) : '';
         $instance['youtube_url'] = ( ! empty( $new_instance['youtube_url'] ) ) ? strip_tags( $new_instance['youtube_url'] ) : '';
         return $instance;
     }
