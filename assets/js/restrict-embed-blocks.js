@@ -41,6 +41,7 @@ youtube
 wp.domReady(function () {
   const allowedEmbedBlocks = [
     'youtube',
+    'vimeo',
     'twitter'
   ];
   wp.blocks.getBlockVariations('core/embed').forEach(function (blockVariation) {
