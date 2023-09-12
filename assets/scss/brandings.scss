@@ -1,14 +1,14 @@
 @import 'page-colours';
 
 //mixins
-@mixin hale-heading-link-underline-restrictor($colour, $width: 1024px) {
+@mixin hale-heading-link-underline-restrictor($colour, $width: desktop, $gap: 15px) {
 	@include govuk-media-query($from: $width) {
 		position:relative;
 
 		&:before {
 			content:"";
-			border-right:15px solid var($colour);
-			border-left:15px solid var($colour);
+			border-right:$gap solid var($colour);
+			border-left:$gap solid var($colour);
 		}
 	}
 }
@@ -25,15 +25,6 @@
 .govuk-header {
 	@include govuk-media-query($from: desktop) {
 		padding-bottom: 0;
-
-		.govuk-header__navigation-list {
-			display: flex;
-			justify-content: space-between;
-
-			li {
-				padding:0;
-			}
-		}
 	}
 }
 //remove gap at top of page
@@ -329,7 +320,7 @@
 								> a:not(:focus):link:visited {
 									background-color: var(--header-link-with-children-hover-bg);
 									color: var(--header-link-with-children-hover);
-									border-color: var(--header-link-with-children-hover-border);;
+									border-color: var(--header-link-with-children-hover-border);
 									@include hale-heading-link-underline-restrictor($colour: --header-link-with-children-hover-bg);
 								}
 							}
@@ -401,11 +392,11 @@
 								&:hover {
 									border-bottom-color: currentColor;
 
-									@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg, $width: desktop);
+									@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg, $gap: 9px);
 								}
 								&:focus:hover,
 								&:focus:not(:hover) {
-									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $width: desktop);
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $gap: 9px);
 								}
 							}
 						}
@@ -528,10 +519,6 @@ html.hale-colours-variable {
 	//remove GDS brand colour bar
 	.govuk-header__container {
 		border-bottom: none;
-
-		&:after {
-			height: 10px;
-		}
 	}
 
 	// some button styles are in brandings-mojblocks.scss
@@ -751,6 +738,5 @@ html.hale-colours-variable {
 				}
 			}
 		}
-
 	}
 }
