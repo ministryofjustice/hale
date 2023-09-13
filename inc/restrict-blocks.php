@@ -36,6 +36,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/highlights-list',
             'mojblocks/intro',
             'mojblocks/quote',
+            'mojblocks/separator',
             'mojblocks/reveal',
             'mojblocks/staggered-box'
         );
