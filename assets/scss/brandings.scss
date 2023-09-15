@@ -219,6 +219,7 @@
 			}
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
+				box-shadow: 0 1px 0px 0 var(--header-divider-line-bottom);
 
 				> .current-menu-item {
 					> a,
@@ -247,6 +248,26 @@
 					}
 				}
 
+				> li {
+					> a,
+					> a:visited,
+					> a:link,
+					> a:link:visited {
+						color: var(--header-link);
+						border-bottom-color: var(--header-link-border);
+						background-color: var(--header-link-highlight);
+						@include hale-heading-link-underline-restrictor($colour: --header-link-highlight);
+
+						&:hover {
+							color: var(--header-link-hover);
+							background-color: var(--header-link-hover-highlight);
+							border-bottom-color: var(--header-link-hover-border);
+
+							@include hale-heading-link-underline-restrictor($colour: --header-link-hover-highlight);
+						}
+					}
+				}
+
 				li {
 					&, .hale-header__dropdown-arrow {
 						border-color: var(--header-divider-line);
@@ -256,7 +277,6 @@
 					> a:visited,
 					> a:link,
 					> a:link:visited {
-						color: var(--header-link);
 
 						&:hover:focus {
 							color: var(--header-link-hover-focus);
@@ -274,12 +294,6 @@
 							@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 						}
 
-						&:hover {
-							color: var(--header-link-hover);
-							border-bottom-color: var(--header-link-hover-border);
-
-							@include hale-heading-link-underline-restrictor($colour: --header-bg);
-						}
 					}
 
 					&.menu-item-has-children {
