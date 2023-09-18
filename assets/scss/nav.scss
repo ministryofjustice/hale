@@ -58,23 +58,23 @@
           > a:visited,
           > a:link:visited {
             position: relative;
-
-            &:after {
-              content: "";
-              border-color: currentColor;
-              border-style: solid;
-              border-width: 0 3px 3px 0;
-              display: block;
-              padding: 3px;
-              transform: rotate(45deg);
-              -webkit-transform: rotate(45deg);
-              float: left;
-              margin: 3px 10px 0 5px;
-              position: absolute;
-              top: 10px;
-              right: -45px;
+            @include govuk-media-query($until: desktop) {
+              &:after {
+                content: "";
+                border-color: currentColor;
+                border-style: solid;
+                border-width: 0 3px 3px 0;
+                display: block;
+                padding: 3px;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                float: left;
+                margin: 3px 10px 0 5px;
+                position: absolute;
+                top: 10px;
+                right: -45px;
+              }
             }
-
             > span.hale-header__dropdown-arrow {
               border-bottom-width: 1px;
               border-bottom-style: solid;
@@ -282,18 +282,6 @@
               a:link,
               a:link:visited {
                 padding-right: 19px;
-                @include govuk-media-query($from: 1024px) {
-                  padding-right: 34px;
-                }
-                &:after {
-                  right: -2px;
-                  @include govuk-media-query($from: 1024px) {
-                    right: 7px;
-                  }
-                  transform: rotate(45deg) translateY(-50%);
-                  -webkit-transform: rotate(45deg) translateY(-50%);
-                  top: calc(50% - 6px);
-                }
                 > span.hale-header__dropdown-arrow {
                   display:none;
                 }

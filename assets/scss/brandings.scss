@@ -305,17 +305,6 @@
 								background-color: var(--header-link-focus-highlight);
 						}
 
-						> a,
-						> a:link,
-						> a:visited,
-						> a:link:visited {
-							&:after {
-								border-color: var(--header-link-arrow);
-							}
-							&:hover:after {
-								border-color: var(--header-link-arrow-hover);
-							}
-						}
 						@include govuk-media-query($until: desktop) {
 							&.current_page_item,
 							&.current_page_ancestor {
@@ -348,9 +337,6 @@
 								color: var(--header-link-hover-focus);
 								background-color: var(--header-link-focus-highlight);
 
-								&:after {
-									border-color: var(--header-link-arrow-focus);
-								}
 								@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 							}
 
@@ -381,9 +367,6 @@
 									@include govuk-media-query($from: desktop) {
 										@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
 									}
-								}
-								&:after {
-									border-color: var(--header-link-arrow-current-page);
 								}
 							}
 						}
