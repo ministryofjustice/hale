@@ -305,11 +305,16 @@
 								background-color: var(--header-link-focus-highlight);
 						}
 
-						> a:after,
-						> a:link:after,
-						> a:visited:after,
-						> a:link:visited:after {
-							border-color: currentColor;;
+						> a,
+						> a:link,
+						> a:visited,
+						> a:link:visited {
+							&:after {
+								border-color: var(--header-link-arrow);
+							}
+							&:hover:after {
+								border-color: var(--header-link-arrow-hover);
+							}
 						}
 						@include govuk-media-query($until: desktop) {
 							&.current_page_item,
@@ -344,7 +349,7 @@
 								background-color: var(--header-link-focus-highlight);
 
 								&:after {
-									border-color: currentColor;
+									border-color: var(--header-link-arrow-focus);
 								}
 								@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 							}
@@ -376,6 +381,9 @@
 									@include govuk-media-query($from: desktop) {
 										@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
 									}
+								}
+								&:after {
+									border-color: var(--header-link-arrow-current-page);
 								}
 							}
 						}
@@ -432,7 +440,7 @@
 									background-color:var(--link-focus-background);
 									border-bottom-color: var(--link-focus);
 
-									@include hale-heading-link-underline-restrictor($colour: --link-focus-background, $width: desktop);
+									@include hale-heading-link-underline-restrictor($colour: --link-focus-background, $gap: 9px);
 								}
 
 								@include govuk-media-query($from: desktop) {
@@ -440,13 +448,13 @@
 									color: var(--header-submenu-link-current);
 									border-bottom-color: var(--header-submenu-link-current-border);
 
-									@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg, $width: desktop);
+									@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg, $gap: 9px);
 
 									&:hover {
 										color: var(--header-submenu-link-current);
 										border-bottom-color: var(--header-submenu-link-current-hover-border);
 
-										@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg, $width: desktop);
+										@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg, $gap: 9px);
 									}
 								}
 							}
