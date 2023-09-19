@@ -329,7 +329,7 @@
 								> a:not(:focus):link:visited {
 									background-color: var(--header-link-with-children-hover-bg);
 									color: var(--header-link-with-children-hover);
-									border-color: var(--header-link-with-children-hover-border);;
+									border-color: var(--header-link-with-children-hover-border);
 									@include hale-heading-link-underline-restrictor($colour: --header-link-with-children-hover-bg);
 								}
 							}
