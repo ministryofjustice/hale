@@ -710,8 +710,8 @@ html.hale-colours-variable {
 			box-shadow:
 				-4px 0 var(--footer-link-focus-background),
 				4px 0 var(--footer-link-focus-background),
-				-4px 4px var(--link-focus),
-				4px 4px var(--link-focus);
+				-4px 4px var(--footer-link-focus-shadow),
+				4px 4px var(--footer-link-focus-shadow);
 		}
 	}
 	.job-list-item {
