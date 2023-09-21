@@ -591,15 +591,10 @@ html.hale-colours-variable {
 
 	}
 	.govuk-breadcrumbs__list-item {
-		overflow: hidden;
 		max-width: 500px;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		border-bottom: 3px solid transparent;
-
-		&:focus-within {
-			border-bottom-color: var(--link-focus-shadow);
-		}
 	}
 
 	//link focus state (breadcrumbs)
@@ -607,7 +602,7 @@ html.hale-colours-variable {
 	a.govuk-back-link {
 		&:focus {
 			background-color: var(--link-focus-background);
-			box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
+			box-shadow: 0 -2px var(--link-focus-background), 0 3px var(--link-focus-shadow);
 			outline: 4px solid transparent;
 		}
 	}
