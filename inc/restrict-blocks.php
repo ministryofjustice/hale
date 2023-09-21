@@ -27,6 +27,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'core/button',
             'core/buttons',
             'core/table',
+            'core/footnotes',
             'mojblocks/accordion',
             'mojblocks/accordion-section',
             'mojblocks/banner',
