@@ -327,6 +327,10 @@ require get_template_directory() . '/inc/colours.php';
  */
 require get_template_directory() . '/inc/job-listing.php';
 /**
+ * Functions which holds the prison location data.
+ */
+require get_template_directory() . '/inc/job-prison-locations.php';
+/**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';

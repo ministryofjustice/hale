@@ -137,3 +137,27 @@
 		";
 		return $output;
 	}
+
+	function get_prison_names($title, $address) {
+		$address = str_replace("  ", " ", $address); //Addresses seem to often have double spaces in them
+		$locations = get_prison_location_data();
+		$list = [];
+		foreach ($locations as $location) {
+			$name = $location["name"];
+			if (strpos($title,$name) !== false) {
+				$list[] = $name;
+			} elseif (strpos($address,$name) !== false) {
+				$list[] = $name;
+			} else {
+				foreach ($location["name_variations"] as $alias) {
+					if (strpos($title,$alias) !== false) {
+						$list[] = $name;
+					} elseif (strpos($address,$alias) !== false) {
+						$list[] = $name;
+					}
+				}
+			}
+		}
+		$list = array_unique($list);
+		if (count($list) > 0) return 'data-location-id="'.implode(" ",$list).'"';
+	}
