@@ -135,6 +135,8 @@
 			['mojblocks-cta-title',$black,'Call to action title','',''],
 			['mojblocks-cta-text',$black,'Call to action text','',''],
 
+			['mojblocks-card-bg',$white,'Card background','',''],
+
 			['mojblocks-highlights-list-bg',$white,'Highlights list background','',''],
 			['mojblocks-highlights-list-title',$black,'Highlights list title','',''],
 			['mojblocks-highlights-list-text',$black,'Highlights list text','',''],
