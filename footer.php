@@ -59,7 +59,13 @@ flush();
         if ('yes' == $crown_copyright) {
       ?>
         <div class="govuk-footer__meta-item">
-          <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+          <a
+            class="govuk-footer__link govuk-footer__copyright-logo"
+            href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+            style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/govuk-crest-2x.png);"
+          >
+            © Crown copyright
+          </a>
         </div>
       <?php
         }
