@@ -632,9 +632,8 @@
 			   "name_variations":[
 				  "HM Prison New Hall",
 				  "HMP New Hall",
-				  "HMP\/YOI New Hall &",
-				  "HMP & YOI New Hall &",
-				  "HMYOI New Hall &"
+				  "HMP & YOI New Hall",
+				  "HMYOI New Hall"
 			   ]
 			},
 			{
