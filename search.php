@@ -18,15 +18,18 @@ get_header();
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<header class="hale-search-header" style="">
       <h1 class="govuk-heading-l hale-heading-xl" style="line-height:0;">
-        <span class="govuk-heading-l hale-heading-xl govuk-!-margin-bottom-0">Search Results</span>
+        <span class="govuk-heading-l hale-heading-xl govuk-!-margin-bottom-0">
+          <?php _e("Search Results","hale");?>
+        </span>
         <br />
         <span class="govuk-body-l">
           <?php 
             /* translators: %s: search term */
             if (get_search_query() == "") {
-              printf("No search words entered");
+              _e("No search words entered","hale");
             } else {
-              printf("for ".get_search_query());
+              $search_query_HTML = esc_html(get_search_query());
+              echo sprintf(__('for %s', 'hale' ), $search_query_HTML);
             }
 
             $header_search = get_theme_mod( 'show_search', 'yes' );
@@ -42,8 +45,7 @@ get_header();
 
 				<h2 class="govuk-heading-m">
 					<?php /* Search Count */
-						echo $wp_query->found_posts . ' ';
-						_e('results');
+						echo sprintf(__('%s results', 'hale' ), $wp_query->found_posts);
 					?>
 				</h2>
 
@@ -89,8 +91,8 @@ get_header();
               // Get and display the last updated time of the search result
                 $u_time = get_the_time('U');
                 $u_modified_time = get_the_modified_time('U');
-                echo "<p class='govuk-body hale-search-results__last-updated-date'>Updated on ";
-                the_modified_time('j<\s\up>S</\s\up> F Y');
+                echo "<p class='govuk-body hale-search-results__last-updated-date'>";
+                echo sprintf(__('Updated on %s', 'hale' ), get_the_modified_time('j<\s\up>S</\s\up> F Y'));
                 echo "</p> ";
               ?>
 						</div>

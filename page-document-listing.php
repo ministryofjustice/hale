@@ -16,6 +16,8 @@ $doc_search_text = '';
 if (get_query_var('doc_search')) {
 
     $doc_search_text = sanitize_text_field(get_query_var('doc_search'));
+    $search_text_HTML = esc_html($doc_search_text);
+    $search_text_HTML = str_replace('\\', '', $search_text_HTML); // kill backslashes
 }
 
 //Get Search Filter Values
@@ -86,10 +88,12 @@ while (have_posts()) :
                 <div class="document-listing-search-section">
                     <div class="document-listing-search-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
-                            <label for="doc-search-field" class="govuk-visually-hidden">Search</label>
+                            <label for="doc-search-field" class="govuk-visually-hidden">
+                                <?php _e('Search', 'hale'); ?>
+                            </label>
                             <input class="govuk-input" id="doc-search-field" name="doc_search"
-                                   value="<?php echo $doc_search_text; ?>" type="search"
-                                   placeholder="Search">
+                                   value="<?php echo $search_text_HTML; ?>" type="search"
+                                   placeholder="<?php _e('Search', 'hale'); ?>">
 
                             <?php
 
@@ -148,7 +152,9 @@ while (have_posts()) :
 
                                 if (!empty($dropdown_html)) { ?>
 
-                                    <label class="govuk-label" for="document-search-filter-type">Type</label>
+                                    <label class="govuk-label" for="document-search-filter-type">
+                                        <?php _e('Type', 'hale'); ?>
+                                    </label>
                                     <?php echo $dropdown_html; ?>
 
                                     <?php
@@ -176,7 +182,9 @@ while (have_posts()) :
 
                                 if (!empty($dropdown_html)) { ?>
 
-                                    <label class="govuk-label" for="document-search-filter-category">Category</label>
+                                    <label class="govuk-label" for="document-search-filter-category">
+                                        <?php _e('Category', 'hale'); ?>
+                                    </label>
                                     <?php echo $dropdown_html; ?>
 
                                     <?php
@@ -208,7 +216,9 @@ while (have_posts()) :
 
                                 if (!empty($dropdown_html)) { ?>
 
-                                    <label class="govuk-label" for="document-search-filter-location">Location</label>
+                                    <label class="govuk-label" for="document-search-filter-location">
+                                        <?php _e('Location', 'hale'); ?>
+                                    </label>
                                     <?php echo $dropdown_html; ?>
 
                                     <?php
@@ -217,7 +227,9 @@ while (have_posts()) :
                             }
                             ?>
 
-                            <button class="govuk-button">Search</button>
+                            <button class="govuk-button">
+                                <?php _e('Search', 'hale'); ?>
+                            </button>
                         </form>
 
                     </div>
@@ -359,8 +371,23 @@ while (have_posts()) :
                     </div>
                     <?php
                     hale_archive_pagination('archive', $doc_query);
+                } elseif (!empty($doc_search_text)) { ?>
+                    <h2 class="govuk-heading-l">
+                        <?php
+                        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no documents', 'hale' ), $search_text_HTML);
+                        ?>
+                    </h2>
+                    <p class="govuk-body">
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+                    </p>
+                    <?php
                 } else { ?>
-                    <p><?php _e('No Documents found', 'hale'); ?></p>
+                    <h2 class="job-list-item--title govuk-heading-l">
+                        <?php _e('Your search matched no documents', 'hale'); ?>
+                    </h2>
+                    <p class="govuk-body">
+                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+                    </p>
                     <?php
                 }
                 wp_reset_postdata();
