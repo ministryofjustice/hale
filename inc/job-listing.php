@@ -138,7 +138,7 @@
 		return $output;
 	}
 
-	function get_prison_names($title, $address) {
+	function get_prison_names($title, $address, $dataname) {
 		$address = str_replace("  ", " ", $address); //Addresses seem to often have double spaces in them
 		$locations = get_prison_location_data();
 		$list = [];
@@ -159,5 +159,5 @@
 			}
 		}
 		$list = array_unique($list);
-		if (count($list) > 0) return 'data-location-id="'.implode(" ",$list).'"';
+		if (count($list) > 0) return $dataname.'="'.implode("; ",$list).'"';
 	}

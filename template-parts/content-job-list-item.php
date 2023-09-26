@@ -120,10 +120,9 @@
     }
 ?>
 
-<?php // find-a-job__view-list-element class added for Google Tag Manager consistency with old site ?>
-<div class="job-list-item find-a-job__view-list-element" id="job-<?php echo $id; ?>" <?php echo get_prison_names(get_the_title(),$addressField);?>>
+<div class="job-list-item" id="job-<?php echo $id; ?>" <?php echo get_prison_names(get_the_title(),$addressField,"data-location-id");?>>
     <h2 class="job-list-item--title govuk-heading-m">
-        <a class="govuk-link" href="<?php printf($url);?>">
+        <a class="govuk-link" href="<?php printf($url);?>" <?php echo get_prison_names(get_the_title(),$addressField,"data-prison-name");?>>
             <?php echo get_the_title(); ?>
         </a>
     </h2>
