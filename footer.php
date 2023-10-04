@@ -12,7 +12,7 @@
  * Adapted from version from NHS Leadership Academy, Tony Blacker
  * @version 2.0 February 2021
  */
-$crown_copyright = get_theme_mod('crown_copyright', 'Yes');
+$crown_copyright = get_theme_mod('crown_copyright', 'yes');
 
 flush();
 ?>
@@ -64,7 +64,13 @@ flush();
             href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
             style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/govuk-crest-2x.png);"
           >
-            © Crown copyright
+          <?php
+              if (get_locale() == 'cy') {
+                  echo esc_html__('&copy; Hawlfraint y Goron', 'hale');
+              } else {
+                  echo esc_html__('&copy; Crown copyright', 'hale');
+              }
+          ?>
           </a>
         </div>
       <?php

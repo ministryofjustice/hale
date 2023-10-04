@@ -28,7 +28,13 @@ $copyright_additional_text = get_theme_mod('copyright_additional_text', '');
             <img src="<?php echo $copyright_img; ?>"/>
         </div>
     <?php } ?>
-    <?php echo esc_html__('&copy; Copyright', 'hale'); ?>,
+    <?php
+        if (get_locale() == 'cy') {
+            echo esc_html__('&copy; Hawlfraint', 'hale');
+        } else {
+            echo esc_html__('&copy; Copyright', 'hale');
+        }
+    ?>,
     <?php
     if ('' !== $organisation_name) {
         echo esc_html($organisation_name);
