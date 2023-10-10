@@ -399,11 +399,6 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/widgets/social-widget.php';
 
 /**
- * Emergency banner
- */
-require get_template_directory() . '/inc/emergency-banner-settings.php';
-
-/**
  * Create an array of active plugins.
  */
 

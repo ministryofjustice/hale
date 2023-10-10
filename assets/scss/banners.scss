@@ -1,0 +1,15 @@
+.govuk-notification-banner.hale-notification-banner{
+	&--black {
+		border-color: #000;
+		background-color: #000;
+	}
+
+	&__header {
+		position: relative;
+
+		&__close {
+			position: absolute;
+			right: 0;
+		}
+	}
+}
