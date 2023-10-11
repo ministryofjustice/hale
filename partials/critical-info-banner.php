@@ -48,12 +48,12 @@ if ($banner) {
             aria-labelledby="govuk-notification-banner-title"
             data-module="govuk-notification-banner"
         >
-            <div class="govuk-notification-banner__header" id="critical-info-banner-title">
+            <div class="govuk-notification-banner__header hale-notification-banner__header" id="critical-info-banner-title">
                 <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
                     Important
                 </h2>
             </div>
-            <div class="govuk-notification-banner__content">
+            <div class="govuk-notification-banner__content hale-notification-banner__content">
                 <p class="govuk-notification-banner__heading">
                     <?php echo $critical_info_headline; ?>
                 </p>

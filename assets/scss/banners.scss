@@ -3,13 +3,29 @@
 		border-color: #000;
 		background-color: #000;
 	}
-
+}
+.hale-notification-banner {
 	&__header {
 		position: relative;
+	}
+	&__close {
+		position: absolute;
+		right: 0;
+		top: 3px;
+		padding: 0 3px;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1;
 
-		&__close {
-			position: absolute;
-			right: 0;
+		&:link,
+		&:visited,
+		&:link:hover,
+		&:visited:hover {
+			&:not(:focus) {
+				color: white;
+				text-decoration: none;
+
+			}
 		}
 	}
 }
