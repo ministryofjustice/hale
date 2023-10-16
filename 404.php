@@ -23,7 +23,7 @@ get_header();
         alternatively <a class="govuk-link" href="<?php echo esc_attr( get_home_url() ); ?>">return to the home page</a>.
       </p>
       <?php
-        get_search_form();
+        if (get_theme_mod( 'show_search', 'yes' ) === "yes") get_search_form();
       ?>
       <div class="govuk-clearfix"></div>
     </section>
