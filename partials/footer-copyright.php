@@ -29,11 +29,7 @@ $copyright_additional_text = get_theme_mod('copyright_additional_text', '');
         </div>
     <?php } ?>
     <?php
-        if (get_locale() == 'cy') {
-            echo esc_html__('&copy; Hawlfraint', 'hale');
-        } else {
-            echo esc_html__('&copy; Copyright', 'hale');
-        }
+        echo esc_html__('&copy; Copyright', 'hale');
     ?>,
     <?php
     if ('' !== $organisation_name) {

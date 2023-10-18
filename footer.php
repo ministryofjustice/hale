@@ -65,11 +65,7 @@ flush();
             style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/govuk-crest-2x.png);"
           >
           <?php
-              if (get_locale() == 'cy') {
-                  echo esc_html__('&copy; Hawlfraint y Goron', 'hale');
-              } else {
-                  echo esc_html__('&copy; Crown copyright', 'hale');
-              }
+              echo esc_html__('&copy; Crown copyright', 'hale');
           ?>
           </a>
         </div>
