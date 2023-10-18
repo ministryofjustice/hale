@@ -10,6 +10,8 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.4\n"
 "Language: cy_GB\n"
 "Project-Id-Version: WordPress - 6.2.x - Development\n"
+"Last-Translator: Malcolm\n"
+"Language-Team: Malcolm\n"
 
 #. translators: Use this to specify the proper Google Font name and variants to
 #. load that is supported by your language. Do not translate. Set to 'off' to
@@ -19948,3 +19950,15 @@ msgstr "DCIV Heb ganfod y dudalen"
 #: hale/404.php
 msgid "If you typed the web address, check it is correct."
 msgstr "Gwnewch yn siŵr eich bod wedi rhoi’r cyfeiriad gwe cywir."
+
+#: hale/footer.php
+msgid "&copy; Crown copyright"
+msgstr "&copy; Hawlfraint y Goron"
+
+#: hale/partials/footer-copyright.php
+msgid "&copy; Copyright"
+msgstr "&copy; Hawlfraint"
+
+#: hale/partials/footer-licence.php
+msgid "All content is available under the <a class=\"govuk-footer__link\" href=\"%s\" rel=\"license\">Open Government Licence v3.0</a>, except where otherwise stated"
+msgstr "Mae’r holl gynnwys ar gael o dan <a class=\"govuk-footer__link\" href=\"%s\" rel=\"license\">Drwydded Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol"

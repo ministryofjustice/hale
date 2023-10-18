@@ -8,7 +8,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "translate": "msgfmt languages/cy.po -o languages/cy.mo",
+    "translate": "msgfmt -c languages/cy.po -o languages/cy.mo",
     "build": "cross-env NODE_ENV=development webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "cross-env NODE_ENV=production webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
