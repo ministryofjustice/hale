@@ -125,23 +125,25 @@ If you are writing in a different language (e.g. English in the Welsh translatio
 
 ## One to many translations
 
-**At time of writing, we don't have any 1:∞ translations, so this has not been developed**
+**At time of writing, we don't have any 1:∞ translations, so this has not been developed much**
 
 Occasionally, a single English word required a number of Welsh translations.  This is the case with the word "Yes".  
 
-There are four translations for "yes".
+There are many (at least four) translations for "yes".
 
-- Ie
+- Iawn
 - Ydy
 - Oes
 - Ydw
 
-The word "ie" is the default word for Yes, and this is handled in the usual way:
+The word "iawn" is the default word for Yes, and this is handled in the usual way:
 
     msgid "Yes"
-    msgstr "Ie"
+    msgstr "Iawn"
 
-For all the others, we have to mark it as being used in a certain situation.  We do this with a `msgctxt` tag.
+This translation already exists in the WordPress translation file that we've copied.
+
+For all the others, we have to mark it as being used in a certain context.  We do this with a `msgctxt` tag.
 
     msgctxt "There is/are"
     msgid "Yes"
@@ -155,9 +157,9 @@ For example:
   echo _x( 'Yes', 'There is/are', 'hale' );
 ```
 
-The `esc_html_x()` function can be used to escape HTML.
+The `esc_html_x()` function can be used to escape HTML if needed.
 
-The following variations of yes/no are not an exhaustive list.
+The following variations of yes/no are not an exhaustive list, but these ones already exist in the translations file (we stole them from CLA Public - a fully translated MoJ service).
 
 | English     | Specific Context  | Welsh       |
 | ----------- | ----------------- | ----------- |
@@ -172,7 +174,9 @@ The following variations of yes/no are not an exhaustive list.
 
 ## Edge cases (method of last resort)
 
-Some translations are not suited to this approach.  For these edge cases.  We can check the Welsh language cookie and manually change what is displayed.
+If for whatever reason, we cannot use this approach, we can still hard-code translations using the page locale.
+
+For example:
 
 ```
     <?php if (get_locale() == 'cy') { ?>
