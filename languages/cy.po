@@ -14096,7 +14096,7 @@ msgstr "Creu rhestr chwarae newydd"
 #: wp-includes/js/dist/edit-site.js:5671 wp-includes/js/dist/edit-site.js:13789
 #: wp-admin/includes/ms.php:49 wp-admin/theme-install.php:61
 msgid "Back"
-msgstr "Nôl"
+msgstr "Yn ôl"
 
 #: wp-includes/media-template.php:1484
 msgid "There are no associated subtitles."
@@ -19942,6 +19942,34 @@ msgstr "Allwedd Gweithredu:"
 #: wp-activate.php:130
 msgid "Activation Key Required"
 msgstr "Mae Angen Allwedd Gweithredu"
+
+
+#: copied from CLA_Public yes/no list
+msgctxt "There is/are"
+msgid "Yes"
+msgstr "Oes"
+
+msgctxt "There is/are not"
+msgid "No"
+msgstr "Nac oes"
+
+msgctxt "I am"
+msgid "Yes"
+msgstr "Ydw"
+
+msgctxt "I’m not"
+msgid "No"
+msgstr "Nac ydw"
+
+msgctxt "It is"
+msgid "Yes"
+msgstr "Ydy"
+
+msgctxt "It isn’t"
+msgid "No"
+msgstr "Nac ydy"
+
+#:Below here are examples added for specific use in Hale
 
 #: hale/inc/breadcrumbs.php
 msgid "404 Not Found"

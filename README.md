@@ -1,5 +1,7 @@
 # Hale
 
+Hale is the WordPress Theme based on Gutenberg and designed to run on [Hale Platform](https://github.com/ministryofjustice/hale-platform).  
+
 ## Translation files
 
 There are certain websites on Hale which need Welsh support.  Whilst the content might be written separately, there are a few hard-coded elements which need translating.  
@@ -144,4 +146,41 @@ For all the others, we have to mark it as being used in a certain situation.  We
     msgctxt "There is/are"
     msgid "Yes"
     msgstr "Oes"
+
+These are then called in a different way, by using the context function.
+
+For example:
+
+```
+  echo _x( 'Yes', 'There is/are', 'hale' );
+```
+
+The `esc_html_x()` function can be used to escape HTML.
+
+The following variations of yes/no are not an exhaustive list.
+
+| English     | Specific Context  | Welsh       |
+| ----------- | ----------------- | ----------- |
+| Yes         |                   | Iawn        |
+| Yes         | I am              | Ydw         |
+| Yes         | There is/are      | Oes         |
+| Yes         | It is             | Ydy         |
+| No          |                   | Na          |
+| No          | I’m not           | Nac ydw     |
+| No          | There is/are not  | Nac oes     |
+| No          | It isn’t          | Nac ydy     |
+
+## Edge cases (method of last resort)
+
+Some translations are not suited to this approach.  For these edge cases.  We can check the Welsh language cookie and manually change what is displayed.
+
+```
+    <?php if (get_locale() == 'cy') { ?>
+        Gwall:
+    <?php } else { ?>
+        Error:
+   <?php } ?>
+```
+
+If you use this approach, always check for Welsh, and if that returns false, assume the language is English.
 
