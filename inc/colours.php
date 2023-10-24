@@ -185,6 +185,12 @@
 			['cookie-toggle-bg',$green,'Cookie toggle background','',''],
 			['cookie-toggle-focus-bg',$buttonHoverGreen,'Cookie toggle focus background','',''],
 			['cookie-toggle-text',$white,'Cookie toggle text','',''],
+
+			//Generic colours - for WP6.2+ colour palette
+			['generic-palette-1',$buttonHoverGrey,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
+			['generic-palette-2',$currentPageBlue,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
+			['generic-palette-3',$red,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
+			['generic-palette-4',$green,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
 		);
 
 		return $colour_array;
