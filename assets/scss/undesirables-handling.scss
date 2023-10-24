@@ -1,0 +1,10 @@
+/**
+ * This file was added to hide the undesirable 1×1px image that is added
+ * by Facebook marketing cookies.  
+ *
+ * It can be used to handle other undesirable stuff that might turn up.  
+**/
+
+body>img {
+	display: none;
+}

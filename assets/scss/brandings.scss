@@ -681,6 +681,7 @@ html.hale-colours-variable {
 		border-top-width: 4px;
 		border-top-color: var(--footer-border);
 		background: var(--footer-background);
+		box-shadow: 0 20px 0 0 var(--footer-background);
 
 		a:not([class]),
 		a[class=""],
