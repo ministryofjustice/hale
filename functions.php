@@ -23,7 +23,7 @@ require get_template_directory() . '/inc/sanitization-callbacks.php';
  */
 function hale_setup()
 {
-    load_theme_textdomain('hale');
+    load_theme_textdomain('hale',get_template_directory() . '/languages');
     // Add default posts and comments RSS feed links to head.
     add_theme_support('automatic-feed-links');
 
