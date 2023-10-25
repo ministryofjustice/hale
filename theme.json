@@ -17,9 +17,19 @@
             "color": "#0B0C0C"
           },
           {
+            "name": "Dark grey",
+            "slug": "dark-grey",
+            "color": "#505A5F"
+          },
+          {
             "name": "Mid grey",
             "slug": "mid-grey",
             "color": "#B1B4B6"
+          },
+          {
+            "name": "Lighter grey",
+            "slug": "lightish-grey",
+            "color": "#DBDAD9"
           },
           {
             "name": "Light grey",

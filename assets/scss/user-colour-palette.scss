@@ -6,7 +6,7 @@
 // Solves the issue of WordPress not knowing whether our custom colours are dark or light
 // This colours the tick in a way which should always have some contrast against the background
 // But there are always problem colours
-// Only acts on custom colours)
+// Only acts on custom colours
 @mixin brand-palette-colour($index) {
 	button[aria-label="Color: Branded colour #{$index}"]+svg>path {
 		color: var(--generic-palette-#{$index});

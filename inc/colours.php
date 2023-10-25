@@ -187,10 +187,10 @@
 			['cookie-toggle-text',$white,'Cookie toggle text','',''],
 
 			//Generic colours - for WP6.2+ colour palette
-			['generic-palette-1',$buttonHoverGrey,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
-			['generic-palette-2',$currentPageBlue,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
-			['generic-palette-3',$red,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
-			['generic-palette-4',$green,'Colour for editor palette','Choose 4 colours, mix some light (background) and dark (text) ones',''],
+			['generic-palette-1',$yellow,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-2',$currentPageBlue,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-3',$red,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-4',$green,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
 		);
 
 		return $colour_array;
