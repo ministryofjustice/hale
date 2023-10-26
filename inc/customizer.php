@@ -1001,6 +1001,271 @@ function hale_add_blocks_settings( $wp_customize )
                 ),
             )
         );
-
     }
+
+    /*
+        * ------------------------------------------------------------
+        * SECTION: Banners (mourning and critical info banner)
+        * ------------------------------------------------------------
+        */
+    $wp_customize->add_section(
+        'section_banners',
+        array(
+            'title'       => esc_html__( 'Banners', 'hale' ),
+            'description' => esc_attr__( 'Deals with site-wide banners', 'hale' ),
+            'priority'    => 290,
+        )
+    );
+    $wp_customize->add_setting(
+        'critical_info',
+        array(
+            'default'           => 'no',
+            'sanitize_callback' => 'hale_sanitize_select',
+        )
+    );
+
+    $wp_customize->add_control(
+        'critical_info',
+        array(
+            'label'       => esc_html__( 'Show critical information banner', 'hale' ),
+            'description' => esc_html__( 'Adds a critical information banner to every page on a site - designed only for important information which website users should not miss.', 'hale' ),
+            'section'     => 'section_banners',
+            'type'        => 'radio',
+            'choices'     => array(
+                'yes' => esc_html__( 'Yes', 'hale' ),
+                'no'  => esc_html__( 'No', 'hale' ),
+            ),
+        )
+    );
+
+    // Critical information banner
+
+    $wp_customize->add_setting(
+        'critical_info_headline',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'critical_info_headline',
+        array(
+            'label'           => esc_html__( 'Headline', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'text',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'critical_info' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    $wp_customize->add_setting(
+        'critical_info_subtext',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'critical_info_subtext',
+        array(
+            'label'           => esc_html__( 'Subtext', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'text',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'critical_info' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    $wp_customize->add_setting(
+        'critical_info_link',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'critical_info_link',
+        array(
+            'label'           => esc_html__( 'Link to more information', 'hale' ),
+            'description'     => esc_html__( 'Enter a URL, it needn&rsquo;t be on this site', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'url',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'critical_info' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    $wp_customize->add_setting(
+        'critical_info_expiry_date',
+        array(
+            'default' => date("Y-m-d"),
+            'sanitize_callback' => 'hale_sanitize_date',
+        )
+    );
+
+    $wp_customize->add_control(
+        'critical_info_expiry_date',
+        array(
+            'label'           => esc_html__( 'Expiry', 'hale' ),
+            'description'     => esc_html__( 'The banner will automatically disappear after this date', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'date',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'critical_info' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    // Mourning banner
+
+    $wp_customize->add_setting(
+        'mourning',
+        array(
+            'default'           => 'no',
+            'sanitize_callback' => 'hale_sanitize_select',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mourning',
+        array(
+            'label'       => esc_html__( 'Show memoriam banner', 'hale' ),
+            'description' => esc_html__( 'Adds a banner in memoriam of someone', 'hale' ),
+            'section'     => 'section_banners',
+            'type'        => 'radio',
+            'choices'     => array(
+                'yes' => esc_html__( 'Yes', 'hale' ),
+                'no'  => esc_html__( 'No', 'hale' ),
+            ),
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mourning_name',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mourning_name',
+        array(
+            'label'           => esc_html__( 'Name', 'hale' ),
+            'description'     => esc_html__( 'For example, King James VI', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'text',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'mourning' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mourning_subtitle',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mourning_subtitle',
+        array(
+            'label'           => esc_html__( 'Subtitle', 'hale' ),
+            'description'     => esc_html__( 'For example, First King of all Great Britain', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'text',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'mourning' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mourning_link',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mourning_link',
+        array(
+            'label'           => esc_html__( 'Link to more information', 'hale' ),
+            'description'     => esc_html__( 'Enter a URL, it needn&rsquo;t be on this site', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'url',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'mourning' )->value() === 'yes' )
+                );
+            },
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mourning_dob',
+        array(
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mourning_dob',
+        array(
+            'label'           => esc_html__( 'Birth date or year', 'hale' ),
+            'description'     => esc_html__( 'For example, 19 June 1566', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'text',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'mourning' )->value() === 'yes' )
+                );
+            },
+            'input_attrs' => array(
+                'maxlength' => 25
+            ),
+        )
+    );
+
+    $wp_customize->add_setting(
+        'mourning_date',
+        array(
+            'default' => date("j F Y"),
+            'sanitize_callback' => 'hale_sanitize_nohtml',
+        )
+    );
+
+    $wp_customize->add_control(
+        'mourning_date',
+        array(
+            'label'           => esc_html__( 'Death date or year', 'hale' ),
+            'description'     => esc_html__( 'For example, 27 March 1625', 'hale' ),
+            'section'         => 'section_banners',
+            'type'            => 'text',
+            'active_callback' => function () use ( $wp_customize ) {
+                return (
+                    ( $wp_customize->get_setting( 'mourning' )->value() === 'yes' )
+                );
+            },
+            'input_attrs' => array(
+                'maxlength' => 25
+            )
+        )
+    );
+
 }

@@ -50,9 +50,7 @@ wp_body_open();
 <?php do_action( 'hale_after_body' ); ?>
 <a class="govuk-skip-link" data-module="govuk-skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'hale' ); ?></a>
 <?php
-include "inc/emergency-banner.php";
-?>
-<?php
+get_template_part( 'partials/mourning-banner' ); // former emergency banner
 
 $header_search = get_theme_mod( 'show_search', 'yes' );
 $show_header_menu = get_theme_mod('show_header_menu', 'yes');
@@ -115,6 +113,9 @@ $extra_styles = $page_colour ? 'page-style--' . $page_colour : '';
 ?>
 
 <div id="content" class="govuk-width-container">
+	<?php
+	get_template_part( 'partials/critical-info-banner' );
+	?>
 	<main class="govuk-main-wrapper <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
 		<div id="contentinner" class="govuk-grid-row">
 		<?php
