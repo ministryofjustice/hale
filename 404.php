@@ -13,20 +13,12 @@ get_header();
     <section class="hale-error-404">
       <h1 class="govuk-heading-l">
       <?php
-        if (get_locale() == 'cy') {
-          echo esc_html__("Tudalen heb ei chanfod","hale");
-        } else {
-          echo esc_html__("Page not found","hale");
-        }
+        esc_html_e("Page not found","hale");
       ?>
       </h1>
       <p class="govuk-body">
         <?php
-          if (get_locale() == 'cy') {
-            echo esc_html__("Gwnewch yn siŵr eich bod wedi rhoi'r cyfeiriad gwe cywir.","hale");
-          } else {
-            echo esc_html__("If you typed the web address, check it is correct.","hale");
-          }
+          echo esc_html__("If you typed the web address, check it is correct.","hale");
         ?>
       </p>
       <p class="govuk-body">
