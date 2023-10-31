@@ -11,7 +11,7 @@
 	button[aria-label="Color: Branded colour #{$index}"]+svg>path {
 		color: var(--generic-palette-#{$index});
 		fill: currentColor;
-  		filter: invert(1) hue-rotate(230deg) contrast(200%) brightness(150%);
+		filter: invert(1) hue-rotate(230deg) contrast(200%) brightness(150%);
 	}
 }
 
@@ -19,3 +19,13 @@
 @include brand-palette-colour($index: 2);
 @include brand-palette-colour($index: 3);
 @include brand-palette-colour($index: 4);
+
+// This block of text unsets the text colour which is set in moj-blocks-general.scss
+// where the other GDS styling is brought in.
+.govuk-main-wrapper .has-text-color {
+	p:not([class]), p[class=""],
+	ul:not([class]), ul[class=""],
+	ol:not([class]), ol[class=""] {
+	  color: unset;
+	}
+}
