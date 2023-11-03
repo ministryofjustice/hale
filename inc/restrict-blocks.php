@@ -18,6 +18,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'core/table',
 
             // Media blocks
+            'core/cover',
             'core/file',
             'core/image',
             'core/video',
