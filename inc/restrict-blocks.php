@@ -8,26 +8,36 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
     if($restrict_blocks || $restrict_blocks == "yes") { //old way to be deleted once new settings saved
 
-        $allowed_blocks = array(
-            'core/image',
-            'core/paragraph',
+            // Text blocks
+            'core/code',
+            'core/footnotes',
             'core/heading',
             'core/list',
             'core/list-item',
-            'core/code',
+            'core/paragraph',
+            'core/table',
+
+            // Media blocks
             'core/file',
+            'core/image',
             'core/video',
+
+            // Design blocks
+            'core/buttons',
+            'core/button',
             'core/columns',
             'core/group',
             'core/spacer',
+
+            // Widgets
             'core/legacy-widget',
             'core/social-links',
             'core/social-link',
+
+            // Embeds
             'core/embed',
-            'core/button',
-            'core/buttons',
-            'core/table',
-            'core/footnotes',
+
+            // MoJ blocks
             'mojblocks/accordion',
             'mojblocks/accordion-section',
             'mojblocks/banner',
@@ -37,10 +47,9 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/highlights-list',
             'mojblocks/intro',
             'mojblocks/quote',
-            'mojblocks/separator',
             'mojblocks/reveal',
+            'mojblocks/separator',
             'mojblocks/staggered-box'
-        );
 
         //Check if news post type is deactivated
         $cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
