@@ -7,7 +7,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
     $restrict_blocks = get_theme_mod('restrict_blocks', 1);
 
     if($restrict_blocks || $restrict_blocks == "yes") { //old way to be deleted once new settings saved
-
+        $allowed_blocks = array(
             // Text blocks
             'core/code',
             'core/footnotes',
@@ -51,6 +51,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/reveal',
             'mojblocks/separator',
             'mojblocks/staggered-box'
+        );
 
         //Check if news post type is deactivated
         $cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
