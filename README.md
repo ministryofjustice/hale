@@ -4,7 +4,7 @@ Hale is the WordPress Theme based on Gutenberg and designed to run on [Hale Plat
 
 ## Translation files
 
-There are certain websites on Hale which need Welsh support.  Whilst the content might be written separately, there are a few hard-coded elements which need translating.  
+There are certain websites on Hale which need Welsh support.  Whilst the content might be written separately, there are a few hard-coded elements which need translating..  
 
 The translation files are:
 
