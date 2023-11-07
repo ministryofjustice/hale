@@ -37,8 +37,7 @@ For example:
     msgid "Back"
     msgstr "Yn ôl"
 
-The English (msgid) also acts as a primary key - it is identical with the english that is on the site.
-The Welsh (msgstr) is returned when the language of the site is set to Welsh in General Settings. 
+The English (msgid) also acts as a primary key - it is identical with the english that is on the site. The Welsh (msgstr) is returned when the language of the site is set to Welsh in General Settings. 
 
 <img width="698" alt="image" src="https://github.com/ministryofjustice/wp-hale/assets/32877315/0fdd4392-ea8a-4f3f-839e-df9eddfc1057">
 
