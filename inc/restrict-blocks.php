@@ -6,7 +6,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
     $restrict_blocks = get_theme_mod('restrict_blocks', 1);
 
-    if($restrict_blocks || $restrict_blocks == "yes") { //old way to be deleted once new settings saved
+    if($restrict_blocks || $restrict_blocks == "yes") {
         $allowed_blocks = array(
             // Text blocks
             'core/code',
