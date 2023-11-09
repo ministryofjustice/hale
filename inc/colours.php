@@ -192,10 +192,10 @@
 			['cookie-toggle-text',$white,'Cookie toggle text','',''],
 
 			//Generic colours - for WP6.2+ colour palette
-			['generic-palette-1',$lightPink,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-2',$red,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-3',$orange,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-4',$green,'Colour for editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-1',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-2',$red,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
 		);
 
 		return $colour_array;
