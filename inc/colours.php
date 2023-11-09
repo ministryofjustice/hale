@@ -5,12 +5,17 @@
 		$white = '#FFF';
 		$black = '#0B0C0C';
 		$yellow = '#FD0';
+		$orange = '#F47738';
 		$red = '#D4351C';
 		$darkRed = '#942514';
 		$blue = '#1D70B8';
+		$lightBlue = '#5694CA';
 		$darkBlue = '#003078';
 		$purple = '#4C2C92';
+		$brightPurple = '#912B88';
+		$lightPink = '#F499BE';
 		$green = '#00703C';
+		$lightGreen = '#85994b';
 		$buttonHoverGreen = '#005A30';
 		$buttonHoverGrey = '#DBDAD9';
 		$lightGrey = '#F3F2F1';
@@ -185,6 +190,12 @@
 			['cookie-toggle-bg',$green,'Cookie toggle background','',''],
 			['cookie-toggle-focus-bg',$buttonHoverGreen,'Cookie toggle focus background','',''],
 			['cookie-toggle-text',$white,'Cookie toggle text','',''],
+
+			//Generic colours - for WP6.2+ colour palette
+			['generic-palette-1',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-2',$red,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
 		);
 
 		return $colour_array;

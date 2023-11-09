@@ -1,0 +1,31 @@
+/***
+* This file deals with the user-enabled
+* colour picker found in WordPress 6.2+
+*/
+
+// Solves the issue of WordPress not knowing whether our custom colours are dark or light
+// This colours the tick in a way which should always have some contrast against the background
+// But there are always problem colours
+// Only acts on custom colours
+@mixin brand-palette-colour($index) {
+	button[aria-label="Color: Branded colour #{$index}"]+svg>path {
+		color: var(--generic-palette-#{$index});
+		fill: currentColor;
+		filter: invert(1) hue-rotate(230deg) contrast(200%) brightness(150%);
+	}
+}
+
+@include brand-palette-colour($index: 1);
+@include brand-palette-colour($index: 2);
+@include brand-palette-colour($index: 3);
+@include brand-palette-colour($index: 4);
+
+// This block of text unsets the text colour which is set in moj-blocks-general.scss
+// where the other GDS styling is brought in.
+.govuk-main-wrapper .has-text-color {
+	p:not([class]), p[class=""],
+	ul:not([class]), ul[class=""],
+	ol:not([class]), ol[class=""] {
+	  color: unset;
+	}
+}

@@ -5,10 +5,63 @@
         "custom": false,
         "customDuotone": false,
         "customGradient": false,
+        "defaultGradients": false,
+        "defaultPalette": false,
         "duotone": [],
         "gradients": [],
         "link": false,
-        "palette": []
+        "palette": [
+          {
+            "name": "Black",
+            "slug": "black",
+            "color": "#0B0C0C"
+          },
+          {
+            "name": "Dark grey",
+            "slug": "dark-grey",
+            "color": "#505A5F"
+          },
+          {
+            "name": "Mid grey",
+            "slug": "mid-grey",
+            "color": "#B1B4B6"
+          },
+          {
+            "name": "Lighter grey",
+            "slug": "lightish-grey",
+            "color": "#DBDAD9"
+          },
+          {
+            "name": "Light grey",
+            "slug": "light-grey",
+            "color": "#F3F2F1"
+          },
+          {
+            "name": "White",
+            "slug": "white",
+            "color": "#FFFFFF"
+          },
+          {
+            "name": "Branded colour 1",
+            "slug": "generic-palette-1",
+            "color": "var(--generic-palette-1)"
+          },
+          {
+            "name": "Branded colour 2",
+            "slug": "generic-palette-2",
+            "color": "var(--generic-palette-2)"
+          },
+          {
+            "name": "Branded colour 3",
+            "slug": "generic-palette-3",
+            "color": "var(--generic-palette-3)"
+          },
+          {
+            "name": "Branded colour 4",
+            "slug": "generic-palette-4",
+            "color": "var(--generic-palette-4)"
+          }
+        ]
       },
       "typography": {
         "textTransform": false
