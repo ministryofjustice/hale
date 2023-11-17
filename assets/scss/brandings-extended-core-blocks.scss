@@ -1,12 +1,12 @@
 html.hale-colours-variable {
 	//Group Block
-	.wp-block-group{
+	.wp-block-group:not(.has-background) {
 		&.is-style-bleeding-background,
 		&.is-style-text-aligned,
 		&.is-style-faded-bleed {
 			background-color: var(--extended-block-group-bg);
 			&:before {
-				background: var(--extended-block-group-bg);
+				background-color: var(--extended-block-group-bg);
 			}
 		}
 	}
