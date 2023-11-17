@@ -124,7 +124,7 @@
 			['job-item-border',$midGrey,'Job listing separating line','Should ideally match pagination separating line',''],
 
 			//extended core blocks
-			['extended-block-group-bg',$white,'Group block default background','',''],
+			['extended-block-group-bg',$white,'Group block default background','Non-default style only',''],
 
 			//mojblocks - these are usually things not found in GOV.UK sites
 			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],
