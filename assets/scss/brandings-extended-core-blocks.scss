@@ -6,7 +6,7 @@ html.hale-colours-variable {
 		&.is-style-faded-bleed {
 			background-color: var(--extended-block-group-bg);
 			&:before {
-				background-color: var(--extended-block-group-bg);
+				background-color: inherit;
 			}
 		}
 	}
