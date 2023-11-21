@@ -487,7 +487,7 @@ function hale_customize_register( $wp_customize ) {
 					'label' => esc_html__($colour_desig, 'hale'),
 					'description' => esc_html__($colour_hint, 'hale'),
 					'section' => 'colors',
-					'type' => 'text',
+					'type' => $colour_options == "text" ? 'text' : 'color',
 					'active_callback' => $show_colours,
 				)
 			);
