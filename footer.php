@@ -28,13 +28,13 @@ flush();
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-        <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
+        <div id="hale-footer-widgets" class="hale-footer__widgets">
         <?php dynamic_sidebar( 'footer-area-one' ); ?>
         </div>
     </div>
 
     <div class="govuk-grid-column-one-half">
-        <div id="hale-footer-widgets" class="hale-footer__widgets" role="complementary">
+        <div id="hale-footer-widgets" class="hale-footer__widgets">
         <?php dynamic_sidebar( 'footer-area-two' ); ?>
         </div>
     </div>
