@@ -16,7 +16,12 @@
 		$style_class = "hale-colours-variable";
 	}
 
-	if (!isset($opens_in_a_new_tab)) $opens_in_a_new_tab = "(opens in a new tab)";
+	$opens_in_a_new_tab = trim(get_theme_mod("link_new_tab_text"));
+	if (!isset($opens_in_a_new_tab) || $opens_in_a_new_tab == "") {
+		$opens_in_a_new_tab = "";
+	} else {
+		$opens_in_a_new_tab = " ($opens_in_a_new_tab)";
+	}
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="hale-page <?php printf($style_class); ?>">
