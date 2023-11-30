@@ -275,7 +275,7 @@ while (have_posts()) :
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full govuk-!-padding-left-3">
-                <?php echo "<p class='govuk-body-l'>$job_count_text</p>"; ?>
+                <?php echo "<p class='govuk-body-l' aria-live='polite'>$job_count_text</p>"; ?>
             </div>
             <div class="govuk-grid-column-one-third">
                 <div class="job-listing-filter-section">
