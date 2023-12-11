@@ -230,7 +230,7 @@
 
 		if (!file_exists($CSSpath)) {
 			// This section creates the upload path in situations where it doesn't exist
-			if (!mkdir($CSSpath,0777,true)) {
+			if (!mkdir($CSSpath,0755,true)) {
 				// If the make directory fails, we trigger a PHP Warning
 				trigger_error("Failed to create directory $CSSpath.",E_USER_WARNING);
 			} else {
