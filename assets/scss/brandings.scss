@@ -295,10 +295,16 @@
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
-						> a:focus-within > .hale-header__dropdown-arrow:focus {
-								color: var(--header-link-hover-focus);
-								border-bottom: 4px solid var(--header-link-hover-focus);
-								background-color: var(--header-link-focus-highlight);
+						.hale-header__dropdown-arrow{
+							color: var(--header-link);
+							border:none;
+							background-color: var(--header-bg);
+
+							&:focus {
+									color: var(--header-link-hover-focus);
+									border-bottom: 4px solid var(--header-link-hover-focus);
+									background-color: var(--header-link-focus-highlight);
+							}
 						}
 
 						> a:after,
