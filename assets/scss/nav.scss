@@ -68,22 +68,29 @@
             right: -60px;
             top: 0;
             width: 60px;
-            height: 37px;
-            //height: calc(100% + 0px);
-            border: 0;
+            //height: 37px;
+            height: calc(100% + 5px);
+            border-width: 0;
             border-bottom-width: 1px;
             border-bottom-style: solid;
             z-index: 20;
             background-color: transparent;
             cursor: pointer;
-            @include govuk-media-query($from: tablet) {
-              height: 41px;
-            }
             @include govuk-media-query($from: desktop) {
               display:none;
             }
 
+            &:hover {
+              border-bottom-width: 4px;
+              border-bottom-style: solid;
+              height: calc(100% + 4px);
+              outline: none;
+            }
+
             &:focus {
+              border-bottom-width: 4px;
+              border-bottom-style: solid;
+              height: calc(100% + 4px);
               outline: none;
             }
 
