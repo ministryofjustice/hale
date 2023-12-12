@@ -154,7 +154,7 @@ jQuery( document ).ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
 	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
-		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Display submenu</span></button>"
+		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
 	);
 
 	//Keyboard functionailty (requires mouse functionality)
