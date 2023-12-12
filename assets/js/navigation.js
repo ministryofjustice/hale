@@ -198,8 +198,8 @@ jQuery( document ).ready(function( $ ) {
 		} else {
 			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
 			menuItem.addClass("sub-menu-open");
-			let numberOfMenuItems = menuItem.find(".sub-menu > li").length + 1; // gets the number of menu options including the main link
-			$(this).height("calc("+numberOfMenuItems+" * (100% + 5px) )");
+			let subMenuItemsHeight = menuItem.find(".sub-menu").height();
+			$(this).height("calc(100% + 5px + "+subMenuItemsHeight+"px)");
 			$(this).attr("aria-expanded","true");
 		}
 	}).keydown(function(e){

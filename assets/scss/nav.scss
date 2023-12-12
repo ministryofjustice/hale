@@ -170,7 +170,8 @@
           > a:link,
           > a:visited,
           > a:link:visited {
-            > .hale-header__dropdown-arrow {
+            > .hale-header__dropdown-arrow:not(:focus):not(:hover) {
+              // this removes the grey line from the bottom option, in line with the rest of the menu
               border-bottom-width: 0px;
             }
           }
