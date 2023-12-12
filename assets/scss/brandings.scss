@@ -295,10 +295,19 @@
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
-						> a:focus-within > span.hale-header__dropdown-arrow:focus {
-								color: var(--header-link-hover-focus);
-								border-bottom: 4px solid var(--header-link-hover-focus);
-								background-color: var(--header-link-focus-highlight);
+						.hale-header__dropdown-arrow{
+							color: var(--header-link);
+							background-color: var(--header-bg);
+
+							&:hover {
+									color: var(--header-link-hover);
+									border-bottom-color: var(--header-link-hover);
+							}
+							&:focus {
+									color: var(--header-link-hover-focus);
+									border-bottom-color: var(--header-link-hover-focus);
+									background-color: var(--header-link-focus-highlight);
+							}
 						}
 
 						> a:after,

@@ -154,7 +154,7 @@ jQuery( document ).ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
 	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
-		"<span tabindex='0' class='hale-header__dropdown-arrow'></span>"
+		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
 	);
 
 	//Keyboard functionailty (requires mouse functionality)
@@ -163,19 +163,20 @@ jQuery( document ).ready(function( $ ) {
 		let openCloseControl = $(this).find(".hale-header__dropdown-arrow");
 
 		if (openCloseControl.is(":visible")) {
-			if (e.keyCode == "32") {
+			if (e.keyCode == "32") { // space
 				e.preventDefault();
 				openCloseControl.click();
 			}
-			if (e.keyCode == "40") {
+			if (e.keyCode == "13") { // return
+				openCloseControl.click();
+			}
+			if (e.keyCode == "40") { // down arrow
 				if (!$(this).parent().hasClass('sub-menu-open')) {
-					e.preventDefault();
 					openCloseControl.click();
 				}
 			}
-			if (e.keyCode == "38") {
+			if (e.keyCode == "38") { // up arrow
 				if ($(this).parent().hasClass('sub-menu-open')) {
-					e.preventDefault();
 					openCloseControl.click();
 				}
 			}
@@ -193,11 +194,13 @@ jQuery( document ).ready(function( $ ) {
 
 		if (menuItem.hasClass('sub-menu-open')) {
 			menuItem.removeClass("sub-menu-open");
+			$(this).attr("aria-expanded","false");
 		} else {
 			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
 			menuItem.addClass("sub-menu-open");
-			let numberOfMenuItems = menuItem.find(".sub-menu > li").length + 1; // gets the number of menu options including the main link
-			$(this).height("calc("+numberOfMenuItems+" * (100% + 5px) )");
+			let subMenuItemsHeight = menuItem.find(".sub-menu").height();
+			$(this).height("calc(100% + 5px + "+subMenuItemsHeight+"px)");
+			$(this).attr("aria-expanded","true");
 		}
 	}).keydown(function(e){
 		if (e.keyCode == "13") $(this).click();

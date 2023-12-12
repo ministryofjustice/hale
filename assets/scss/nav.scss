@@ -62,6 +62,54 @@
             margin-right: 0;
             border-right: none;
           }
+          .hale-header__dropdown-arrow {
+            display: inline-block;
+            position: absolute;
+            right: -60px;
+            top: 0;
+            width: 60px;
+            //height: 37px;
+            height: calc(100% + 5px);
+            border-width: 0;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            z-index: 20;
+            background-color: transparent;
+            cursor: pointer;
+            @include govuk-media-query($from: desktop) {
+              display:none;
+            }
+
+            &:hover {
+              border-bottom-width: 4px;
+              border-bottom-style: solid;
+              height: calc(100% + 4px);
+              outline: none;
+            }
+
+            &:focus {
+              border-bottom-width: 4px;
+              border-bottom-style: solid;
+              height: calc(100% + 4px);
+              outline: none;
+            }
+
+            &:after {
+              border-color: currentcolor;
+              border-style: solid;
+              border-width: 0 3px 3px 0;
+              content: "";
+              display: block;
+              float: left;
+              margin: 3px 10px 0 5px;
+              padding: 3px;
+              position: absolute;
+              right: 15px;
+              top: 10px;
+              transform: rotate(45deg);
+              -webkit-transform: rotate(45deg);
+            }
+          }
 
           > a,
           > a:link,
@@ -97,45 +145,6 @@
                 right: 7px;
               }
             }
-
-            > span.hale-header__dropdown-arrow {
-              border-bottom-width: 1px;
-              border-bottom-style: solid;
-              position: absolute;
-              z-index: 20;
-              top: 0;
-              right: -60px;
-              width: 60px;
-              height: 37px;
-              background-color: transparent;
-              cursor: pointer;
-              @include govuk-media-query($from: tablet) {
-                height: 41px;
-              }
-              @include govuk-media-query($from: desktop) {
-                display:none;
-              }
-            }
-
-            &:focus-within > span.hale-header__dropdown-arrow:focus {
-              outline: none;
-
-              &:after {
-                border-color: currentcolor;
-                border-style: solid;
-                border-width: 0 3px 3px 0;
-                content: "";
-                display: block;
-                float: left;
-                margin: 3px 10px 0 5px;
-                padding: 3px;
-                position: absolute;
-                right: 15px;
-                top: 10px;
-                transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-              }
-            }
           }
           @include govuk-media-query($from: desktop) {
             &:hover,
@@ -148,7 +157,7 @@
 
           &.sub-menu-open {
             > a:after,
-            > a:focus-within > span.hale-header__dropdown-arrow:focus:after {
+            .hale-header__dropdown-arrow:after {
                 transform: rotate(-135deg);
                 -webkit-transform: rotate(-135deg);
                 margin: 6px 10px 0 5px;
@@ -161,7 +170,8 @@
           > a:link,
           > a:visited,
           > a:link:visited {
-            > span.hale-header__dropdown-arrow {
+            > .hale-header__dropdown-arrow:not(:focus):not(:hover) {
+              // this removes the grey line from the bottom option, in line with the rest of the menu
               border-bottom-width: 0px;
             }
           }
