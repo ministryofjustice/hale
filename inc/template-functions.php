@@ -240,3 +240,26 @@ function hale_clean_bad_content( $b_print = false ) {
 		echo $hale_post_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
+
+function hook_css() {
+	$opens_in_a_new_tab = trim(get_theme_mod("link_new_tab_text"));
+	if (!isset($opens_in_a_new_tab) || $opens_in_a_new_tab == "") {
+		$opens_in_a_new_tab = "";
+	} else {
+		$opens_in_a_new_tab = " ($opens_in_a_new_tab)";
+	}
+    ?>
+	<style>
+		.edit-post-visual-editor a[target=_blank]:after,
+		.hale-page a[target=_blank]:after {
+			content: "<?php echo $opens_in_a_new_tab; ?>";
+		}
+
+		.edit-post-visual-editor a[target=_blank]:after {
+			opacity: 0.7;
+		}
+	</style>
+    <?php
+}
+add_action('wp_head', 'hook_css');
+add_action('admin_head', 'hook_css');

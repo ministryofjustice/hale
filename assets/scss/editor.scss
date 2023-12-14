@@ -36,11 +36,4 @@
 			border-bottom-style: none;
 		}
 	}
-
-	// Link suffixes
-	a[target=_blank]:after {
-		content:" (new tab link)";
-		opacity: 0.6;
-	}
-
 }
