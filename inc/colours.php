@@ -226,8 +226,19 @@
 		// This does not protect against new colours being added to the SASS and not added to colours.php.
 		// This is for non-IE only as this particular bug doesn't occur in IE.
 
-		$CSSfileURL = wp_get_upload_dir()["basedir"]."/custom-colours.css"; //non-IE CSS file (variable values)
-		$ColourFileURL = get_template_directory()."/inc/colours.php"; //colours CSS file
+		$CSSpath = wp_get_upload_dir()["basedir"];
+
+		if (!file_exists($CSSpath)) {
+			// This section creates the upload path in situations where it doesn't exist
+			if (!mkdir($CSSpath,0755,true)) {
+				// If the make directory fails, we trigger a PHP Warning
+				trigger_error("Failed to create directory $CSSpath.",E_USER_WARNING);
+			} else {
+				trigger_error("Directory $CSSpath was missing, but was successfully created.",E_USER_NOTICE);
+			}
+		}
+		$CSSfileURL = $CSSpath."/custom-colours.css"; //non-IE CSS file (variable values)
+		$ColourFileURL = get_template_directory()."/inc/colours.php";
 
 		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {
 			//The colours CSS for this site is older than the last colours build - doesn't necessarily mean that the CSS is incomplete
@@ -243,12 +254,15 @@
 				}
 			}
 			if ($missing_colours != "") {
-				$css_file = fopen($CSSfileURL, "a");
-				//append the new CSS to the end of the file
-				fwrite($css_file, ":root {\n");
-				fwrite($css_file, $missing_colours);
-				fwrite($css_file, "}");
-				fclose($css_file);
+				if (file_exists($CSSpath)) {
+					$css_file = fopen($CSSfileURL, "a");
+					// We only do this step if the directory is either found or created
+					// Append the new CSS to the end of the file
+					fwrite($css_file, ":root {\n");
+					fwrite($css_file, $missing_colours);
+					fwrite($css_file, "}");
+					fclose($css_file);
+				}
 			} else {
 				//if there are no missing colours, nothing needs to be done.
 				//but we still touch the file so the surrounding if statement is not triggered and we don't have to do the get_file_contents each time
