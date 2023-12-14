@@ -209,7 +209,7 @@ function hale_customize_register( $wp_customize ) {
         )
     );
 
-  /*
+	/*
 	 * Crown Copyright
 	 */
 	$wp_customize->add_setting(
@@ -494,6 +494,45 @@ function hale_customize_register( $wp_customize ) {
 		}
 
 	}
+
+	/*
+	 * ------------------------------------------------------------
+	 * SECTION: Links
+	 * ------------------------------------------------------------
+	 */
+	$wp_customize->add_section(
+		'section_links',
+		array(
+			'title'       => esc_html__( 'Links', 'hale' ),
+			'description' => esc_attr__( 'Customise your site\'s link options', 'hale' ),
+			'priority'    => 30,
+		)
+	);
+
+	/*
+	 * Display Featured image on post / page?
+	 */
+	$wp_customize->add_setting(
+		'link_new_tab_text',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'hale_sanitize_nohtml',
+		)
+	);
+
+	$wp_customize->add_control(
+		'link_new_tab_text',
+		array(
+			'label'       => esc_html__( 'Link suffix', 'hale' ),
+			'description' => esc_html__( 'What text should be added to the link if it opens in a new tab', 'hale' ),
+			'section'     => 'section_links',
+			'priority'    => '100',
+			'type'        => 'text',
+		)
+	);
+
+
+
 	/*
 	 * ------------------------------------------------------------
 	 * SECTION: Layout
