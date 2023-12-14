@@ -57,6 +57,7 @@
           margin-right: 60px;
           border-right-style: solid;
           border-right-width: 1px;
+          position: relative;
 
           @include govuk-media-query($from: desktop) {
             margin-right: 0;
@@ -65,11 +66,10 @@
           .hale-header__dropdown-arrow {
             display: inline-block;
             position: absolute;
-            right: -60px;
+            right: -61px;
             top: 0;
             width: 60px;
-            //height: 37px;
-            height: calc(100% + 5px);
+            height: calc(100% + 1px);
             border-width: 0;
             border-bottom-width: 1px;
             border-bottom-style: solid;
@@ -80,17 +80,11 @@
               display:none;
             }
 
-            &:hover {
-              border-bottom-width: 4px;
-              border-bottom-style: solid;
-              height: calc(100% + 4px);
-              outline: none;
-            }
-
+            &:hover,
             &:focus {
               border-bottom-width: 4px;
               border-bottom-style: solid;
-              height: calc(100% + 4px);
+              height: 100%;
               outline: none;
             }
 
@@ -165,16 +159,9 @@
           }
         }
 
-        &.menu-item-has-children:last-child {
-          > a,
-          > a:link,
-          > a:visited,
-          > a:link:visited {
-            > .hale-header__dropdown-arrow:not(:focus):not(:hover) {
-              // this removes the grey line from the bottom option, in line with the rest of the menu
-              border-bottom-width: 0px;
-            }
-          }
+        &.menu-item-has-children:last-child .hale-header__dropdown-arrow:not(:focus):not(:hover) {
+          // this removes the grey line from the bottom option, in line with the rest of the menu
+          border-bottom-width: 0px;
         }
 
         //Sub Menu - Mobile Open Styles

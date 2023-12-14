@@ -153,14 +153,14 @@ function guideNavClick(id) {
 jQuery( document ).ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
-	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
+	$( "#menu-menu-top-menu li.menu-item-has-children" ).append(
 		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
 	);
 
 	//Keyboard functionailty (requires mouse functionality)
-	$("#menu-menu-top-menu li.menu-item-has-children > a").keydown(function(e){
+	$(".hale-header__dropdown-arrow").keydown(function(e){
 
-		let openCloseControl = $(this).find(".hale-header__dropdown-arrow");
+		let openCloseControl = $(this);
 
 		if (openCloseControl.is(":visible")) {
 			if (e.keyCode == "32") { // space
@@ -184,11 +184,11 @@ jQuery( document ).ready(function( $ ) {
 	});
 
 	//Mouse functionality
-	$( "#menu-menu-top-menu li.menu-item-has-children > a > .hale-header__dropdown-arrow" ).click(function( event ) {
+	$( ".hale-header__dropdown-arrow" ).click(function( event ) {
 
 		event.preventDefault();
 
-		let menuItem = $(this).parent().parent();
+		let menuItem = $(this).parent();
 
 		$(".hale-header__dropdown-arrow").css("height","");
 
@@ -198,8 +198,6 @@ jQuery( document ).ready(function( $ ) {
 		} else {
 			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
 			menuItem.addClass("sub-menu-open");
-			let subMenuItemsHeight = menuItem.find(".sub-menu").height();
-			$(this).height("calc(100% + 5px + "+subMenuItemsHeight+"px)");
 			$(this).attr("aria-expanded","true");
 		}
 	}).keydown(function(e){
