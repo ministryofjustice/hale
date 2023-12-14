@@ -150,12 +150,11 @@ function guideNavClick(id) {
 	}
 }
 
-jQuery( document ).ready(function( $ ) {
+jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
-
-	$( "#menu-menu-top-menu li.menu-item-has-children" ).append(
+	$(
 		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
-	);
+	).insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
 
 	//Keyboard functionailty (requires mouse functionality)
 	$(".hale-header__dropdown-arrow").keydown(function(e){

@@ -282,8 +282,8 @@
 
 						&:focus:not(:hover) {
 							color: var(--header-link-focus);
-							background-color: var(--header-link-focus-highlight);
 							border-bottom-color: var(--header-link-focus-underline);
+							background-color: var(--header-link-focus-highlight);
 
 							@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 						}
@@ -303,14 +303,19 @@
 							color: var(--header-link);
 							background-color: var(--header-bg);
 
-							&:hover {
-									color: var(--header-link-hover);
-									border-bottom-color: var(--header-link-hover);
+							&:hover:focus {
+								color: var(--header-link-hover-focus);
+								border-bottom-color: var(--header-link-focus-underline);
+								background-color: var(--header-link-focus-highlight);
 							}
-							&:focus {
-									color: var(--header-link-hover-focus);
-									border-bottom-color: var(--header-link-hover-focus);
-									background-color: var(--header-link-focus-highlight);
+							&:focus:not(:hover) {
+								color: var(--header-link-focus);
+								border-bottom-color: var(--header-link-focus-underline);
+								background-color: var(--header-link-focus-highlight);
+							}
+							&:hover {
+								color: var(--header-link-hover);
+								border-bottom-color: var(--header-link-hover-border);
 							}
 						}
 
