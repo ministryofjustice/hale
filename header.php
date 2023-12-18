@@ -31,10 +31,7 @@
 	?>
 </head>
 <body <?php body_class(""); ?>>
-<script>
-	// add in js-enabled by JavaScript - no JS, JS not enabled
-	document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-</script>
+<script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 <?php
 if ( ! function_exists( 'wp_body_open' ) ) {
 	/**
