@@ -561,7 +561,8 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
 
 function add_module_tag( $tag, $handle, $src ) {
-    if ( 'govuk-frontend' === $handle ) {
+    $modules = ["govuk-frontend"];
+    if ( in_array($handle, $modules) ) {
         $tag = str_replace( 'src=', 'type="module" src=', $tag );
     }
     return $tag;
