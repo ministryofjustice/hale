@@ -10,8 +10,8 @@
 get_header();
 
 //Get Search text Value
-
 $doc_search_text = '';
+$search_text_HTML = '';
 
 if (get_query_var('doc_search')) {
 
