@@ -15,6 +15,20 @@
 require get_template_directory() . '/inc/sanitization-callbacks.php';
 
 
+
+// function my_plugin_register_my_patterns() {
+//     register_block_pattern(
+//         'hale/my-awesome-pattern',
+//         array(
+//             'title'       => __( 'Two buttons', 'my-plugin' ),
+//             'description' => _x( 'Two horizontal buttons, the left button is filled in, and the right button is outlined.', 'Block pattern description', 'my-plugin' ),
+//             'content'     => "<!-- wp:buttons {\"align\":\"center\"} -->\n<div class=\"wp-block-buttons aligncenter\"><!-- wp:button {\"backgroundColor\":\"very-dark-gray\",\"borderRadius\":0} -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link has-background has-very-dark-gray-background-color no-border-radius\">" . esc_html__( 'Button One', 'my-plugin' ) . "</a></div>\n<!-- /wp:button -->\n\n<!-- wp:button {\"textColor\":\"very-dark-gray\",\"borderRadius\":0,\"className\":\"is-style-outline\"} -->\n<div class=\"wp-block-button is-style-outline\"><a class=\"wp-block-button__link has-text-color has-very-dark-gray-color no-border-radius\">" . esc_html__( 'Button Two', 'my-plugin' ) . "</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->",
+//         )
+//     );
+// }
+
+// add_action( 'init', 'my_plugin_register_my_patterns' );
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  * Note that this function is hooked into the after_setup_theme hook, which
@@ -159,6 +173,13 @@ function hale_setup()
 
     remove_theme_support('custom-header');
     remove_theme_support('custom-background');
+
+    /*
+     * Remove core block patterns. Only custom patterns we add to /patterns
+     * will be displayed in the full site editor.
+     */
+    remove_theme_support('core-block-patterns');
+
 }
 
 add_action('after_setup_theme', 'hale_setup');
