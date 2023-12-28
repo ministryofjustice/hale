@@ -155,6 +155,9 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	$(
 		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
 	).insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
+	$(
+		"<button class='hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
+	).insertBefore("#menu-menu-top-menu li.menu-item-has-children > a");
 
 	//Keyboard functionailty (requires mouse functionality)
 	$(".hale-header__dropdown-arrow").keydown(function(e){
@@ -193,11 +196,11 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 
 		if (menuItem.hasClass('sub-menu-open')) {
 			menuItem.removeClass("sub-menu-open");
-			$(this).attr("aria-expanded","false");
+			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","false");
 		} else {
 			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
 			menuItem.addClass("sub-menu-open");
-			$(this).attr("aria-expanded","true");
+			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","true");
 		}
 	}).keydown(function(e){
 		if (e.keyCode == "13") $(this).click();

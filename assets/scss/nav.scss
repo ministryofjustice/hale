@@ -76,6 +76,10 @@
             z-index: 20;
             background-color: transparent;
             cursor: pointer;
+
+            &--desktop {
+              display:none;
+            }
             @include govuk-media-query($from: desktop) {
               display:none;
             }
@@ -152,9 +156,48 @@
           &.sub-menu-open {
             > a:after,
             .hale-header__dropdown-arrow:after {
-                transform: rotate(-135deg);
-                -webkit-transform: rotate(-135deg);
-                margin: 6px 10px 0 5px;
+              transform: rotate(-135deg);
+              -webkit-transform: rotate(-135deg);
+              margin: 6px 10px 0 5px;
+            }
+            @include govuk-media-query($from: desktop) {
+              .hale-header__dropdown-arrow--desktop {
+                right: -5px;
+                width: 20px;
+                padding: 0;
+                height: 40px;
+                clip: unset;
+
+                &:after {
+                  content: "×";
+                  transform: initial;
+                  font-weight: 700;
+                  right: -10px;
+                  top: -3px;
+                  border:none;
+                  transform: none;
+                  font-size: 24px;
+                }
+              }
+            }
+          }
+          @include govuk-media-query($from: desktop) {
+            .hale-header__dropdown-arrow--desktop {
+
+              display: block;
+              position: absolute;
+              width: 0px;
+              right: 0px;
+              height: 0px;
+              clip: rect(0,0,0,0);
+
+              &:focus {
+                ~ .sub-menu {
+                  outline-style: solid;
+                  outline-width: 4px;
+                  display:block;
+                }
+              }
             }
           }
         }

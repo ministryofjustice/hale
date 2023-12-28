@@ -299,9 +299,17 @@
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
-						.hale-header__dropdown-arrow{
+						.hale-header__dropdown-arrow {
 							color: var(--header-link);
 							background-color: var(--header-bg);
+
+							&--desktop {
+								color: var(--header-submenu-link);
+								background-color: var(--header-submenu-bg);
+								&:hover {
+									background-color: var(--header-link-focus-highlight);
+								}
+							}
 
 							&:hover:focus {
 								color: var(--header-link-hover-focus);
@@ -397,6 +405,7 @@
 				}
 
 				.sub-menu {
+					outline-color: var(--header-link-focus-underline);
 					box-shadow: 0px -1px 0px 0px var(--header-submenu-top-border);
 
 					@include govuk-media-query($from: desktop) {
