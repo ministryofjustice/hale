@@ -2,7 +2,7 @@
 @import 'user-colour-palette';
 
 //mixins
-@mixin hale-heading-link-underline-restrictor($colour, $width: 1024px) {
+@mixin hale-heading-link-underline-restrictor($colour, $width: desktop) {
 	@include govuk-media-query($from: $width) {
 		position:relative;
 

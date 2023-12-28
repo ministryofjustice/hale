@@ -14,6 +14,12 @@
   &__navigation {
     margin-bottom: 0;
 
+    @include govuk-media-query($from: desktop) {
+      /* Moves text in line with other page elements */
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
     &-list {
       max-width: 100%;
       li {
@@ -38,10 +44,6 @@
           @include govuk-media-query($from: desktop) {
             min-height: 40px;
             height: auto;
-          }
-          @include govuk-media-query($from: desktop, $until: 1023px) { //"desktop" is 769px (GDS v4.2)
-            padding-left: 0;
-            padding-right: 0;
           }
           &:before {
             display:block;
@@ -116,9 +118,6 @@
             position: relative;
 
             @include govuk-media-query($from: desktop) {
-              padding-right: 19px;
-            }
-            @include govuk-media-query($from: 1024px) {
               padding-right: 34px;
             }
 
@@ -137,9 +136,6 @@
               top: 10px;
               right: -45px;
               @include govuk-media-query($from: desktop) {
-                right: -8px;
-              }
-              @include govuk-media-query($from: 1024px) {
                 right: 7px;
               }
             }
