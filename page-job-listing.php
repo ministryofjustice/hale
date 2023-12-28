@@ -11,6 +11,7 @@ get_header();
 
 //Get Search Filter Values
 $search_text = '';
+$search_text_HTML = '';
 $page_size = 50;
 $selected_job_role_id = 0;
 $selected_job_region_id = 0;
@@ -101,19 +102,19 @@ $dropdown_html_region = wp_dropdown_categories(
     )
 );
 
-if ($selected_job_max_salary_id != "0" && $selected_job_max_salary_id < $selected_job_min_salary_id ) {
+if ($selected_job_max_salary_id != "0" && $selected_job_max_salary_id < $selected_job_min_salary_id) {
     $salaryError = true;
     $salaryErrorClass = "govuk-select--error";
     $salaryErrorMin = "Minimum salary cannot be higher than maximum salary.";
     $salaryErrorMax = "Maximum salary cannot be lower than minimum salary.";
 }
 
-$dropdown_html_min_salary = salaryFilter($selected_job_min_salary_id,'min_salary','job-filter-min-salary',$salaryErrorClass,'No minimum');
-$dropdown_html_max_salary = salaryFilter($selected_job_max_salary_id,'max_salary','job-filter-max-salary',$salaryErrorClass,'No maximum');
+$dropdown_html_min_salary = salaryFilter($selected_job_min_salary_id, 'min_salary', 'job-filter-min-salary', $salaryErrorClass, 'No minimum');
+$dropdown_html_max_salary = salaryFilter($selected_job_max_salary_id, 'max_salary', 'job-filter-max-salary', $salaryErrorClass, 'No maximum');
 
 while (have_posts()) :
     the_post();
-?>
+    ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
         <?php if ($salaryError) { ?>
@@ -125,10 +126,10 @@ while (have_posts()) :
                     <div class="govuk-error-summary__body">
                         <ul class="govuk-list govuk-error-summary__list">
                             <li>
-                                <a href="#job-filter-min-salary"><?php _e($salaryErrorMin,"hale"); ?></a>
+                                <a href="#job-filter-min-salary"><?php _e($salaryErrorMin, "hale"); ?></a>
                             </li>
                             <li>
-                                <a href="#job-filter-max-salary"><?php _e($salaryErrorMax,"hale"); ?></a>
+                                <a href="#job-filter-max-salary"><?php _e($salaryErrorMax, "hale"); ?></a>
                             </li>
                         </ul>
                     </div>
@@ -146,7 +147,6 @@ while (have_posts()) :
         $tax_qry_ary = [];
         //Rôle type filter
         if ($selected_job_role_id != 0) {
-
             $tax_qry_ary[] = array(
                 'taxonomy' => 'role_type',
                 'field' => 'term_id',
@@ -156,7 +156,6 @@ while (have_posts()) :
 
         //Job Region Filter
         if ($selected_job_region_id != 0) {
-
             $tax_qry_ary[] = array(
                 'relation' => 'OR',
                 array(
@@ -229,7 +228,7 @@ while (have_posts()) :
             );
         }
         //if there is more than one meta query 'AND' them
-        if(count($meta_query) > 1) {
+        if (count($meta_query) > 1) {
             $meta_query['relation'] = 'AND';
         }
 
@@ -261,7 +260,7 @@ while (have_posts()) :
         $current_page_number = (get_query_var('paged')) ? get_query_var('paged') : 1;
         $total_job_count = $job_query->found_posts;
         $page_job_count_lower = ($current_page_number) * $count_per_page - $count_per_page + 1;
-        $page_job_count_upper = min(($current_page_number) * $count_per_page,$total_job_count);
+        $page_job_count_upper = min(($current_page_number) * $count_per_page, $total_job_count);
         if ($total_job_count === 0) {
             $job_count_text = "No jobs found";
         } elseif ($total_job_count == 1) {
@@ -296,76 +295,80 @@ while (have_posts()) :
                                 placeholder="" aria-describedby="search-field-hint">
                             </div>
                                 <?php
-                                    if (!empty($dropdown_html_role)) {
-                                ?>
+                                if (!empty($dropdown_html_role)) {
+                                    ?>
 
                                     <div class="govuk-form-group govuk-!-margin-bottom-4">
                                         <label class="govuk-label" for="job-filter-role">
-                                            <?php _e('Role', 'hale'); ?>
+                                        <?php _e('Role', 'hale'); ?>
                                         </label>
-                                        <?php echo $dropdown_html_role; ?>
+                                    <?php echo $dropdown_html_role; ?>
                                     </div>
 
-                                <?php
-                                    }
+                                    <?php
+                                }
                                 ?>
                                 <?php
-                                    if (!empty($dropdown_html_region)) {
-                                ?>
+                                if (!empty($dropdown_html_region)) {
+                                    ?>
 
                                     <div class="govuk-form-group govuk-!-margin-bottom-4">
                                         <label class="govuk-label" for="job-filter-region">
-                                            <?php _e('Region', 'hale'); ?>
+                                        <?php _e('Region', 'hale'); ?>
                                         </label>
-                                        <?php echo $dropdown_html_region; ?>
+                                    <?php echo $dropdown_html_region; ?>
                                     </div>
 
-                                <?php
-                                    }
+                                    <?php
+                                }
                                 ?>
                                 <?php
-                                    if (!empty($dropdown_html_min_salary)) {
-                                ?>
+                                if (!empty($dropdown_html_min_salary)) {
+                                    ?>
 
-                                    <div class="govuk-form-group govuk-!-margin-bottom-4 <?php if ($salaryError) echo 'govuk-form-group--error';?>">
+                                    <div class="govuk-form-group govuk-!-margin-bottom-4 <?php if ($salaryError) {
+                                        echo 'govuk-form-group--error';
+                                                                                         }?>">
                                         <label class="govuk-label" for="job-filter-min-salary">
-                                            <?php _e('Minimum salary', 'hale'); ?>
+                                        <?php _e('Minimum salary', 'hale'); ?>
                                         </label>
-                                        <?php if ($salaryError) {?>
+                                    <?php if ($salaryError) {?>
                                         <p id="job-filter-min-salary-error" class="govuk-error-message">
                                             <span class="govuk-visually-hidden">
                                                 <?php _e('Error:', 'hale'); ?>
                                             </span>
-                                            <?php _e($salaryErrorMin,"hale"); ?>
+                                            <?php _e($salaryErrorMin, "hale"); ?>
                                         </p>
-                                        <?php } ?>
-                                        <?php echo $dropdown_html_min_salary; ?>
+                                    <?php } ?>
+                                    <?php echo $dropdown_html_min_salary; ?>
                                     </div>
 
-                                <?php
-                                    }
+                                    <?php
+                                }
                                 ?>
                                 <?php
-                                    if (!empty($dropdown_html_max_salary)) {
-                                ?>
+                                if (!empty($dropdown_html_max_salary)) {
+                                    ?>
 
-                                    <div class="govuk-form-group <?php if ($salaryError) echo 'govuk-form-group--error';?>">
+                                    <div class="govuk-form-group <?php if ($salaryError) {
+                                        echo 'govuk-form-group--error';
+                                                                 }?>">
                                         <label class="govuk-label" for="job-filter-max-salary">
-                                            <?php _e('Maximum salary', 'hale'); ?>
+                                        <?php _e('Maximum salary', 'hale'); ?>
                                         </label>
-                                        <?php if ($salaryError) {?>
+                                    <?php if ($salaryError) {?>
                                         <p id="job-filter-max-salary-error" class="govuk-error-message">
                                             <span class="govuk-visually-hidden">
                                                 <?php _e('Error:', 'hale'); ?>
                                             </span>
-                                            <?php _e($salaryErrorMax,"hale"); ?>
+                                            <?php _e($salaryErrorMax, "hale"); ?>
                                         </p>
-                                        <?php } ?>
-                                        <?php echo $dropdown_html_max_salary; ?>
+                                    <?php } ?>
+                                    <?php echo $dropdown_html_max_salary; ?>
                                     </div>
 
-                                <?php
-                                    }
+                                    <?php
+                                }
                                 ?>
                             <input class="govuk-button" type="submit" name="type" value="<?php _e('Update results', 'hale'); ?>"/>
                             <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
@@ -381,19 +384,19 @@ while (have_posts()) :
 
             <?php
 
-                if ($job_query->have_posts() && !$salaryError) {
-                    ?>
+            if ($job_query->have_posts() && !$salaryError) {
+                ?>
                     <div class="job-list">
-                        <?php
-                        while ($job_query->have_posts()) {
-                            $job_query->the_post();
-                            get_template_part('template-parts/content', 'job-list-item');
-                        } ?>
+                    <?php
+                    while ($job_query->have_posts()) {
+                        $job_query->the_post();
+                        get_template_part('template-parts/content', 'job-list-item');
+                    } ?>
                     </div>
                     <?php
                     hale_archive_pagination('archive', $job_query);
-                } elseif ($search_text == "" && $selected_job_role_id + $selected_job_region_id + $selected_job_min_salary_id + $selected_job_max_salary_id == 0) {
-                    // No filters and no jobs found ?>
+            } elseif ($search_text == "" && $selected_job_role_id + $selected_job_region_id + $selected_job_min_salary_id + $selected_job_max_salary_id == 0) {
+                // No filters and no jobs found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
                         <?php _e('No jobs found', 'hale'); ?>
                     </h2>
@@ -401,8 +404,8 @@ while (have_posts()) :
                         <?php _e('There are currently no jobs to display, try again later.', 'hale'); ?>
                     </p>
                     <?php
-                } elseif ($salaryError) {
-                    // Salary error ?>
+            } elseif ($salaryError) {
+                // Salary error ?>
                     <h2 class="job-list-item--title govuk-heading-l">
                         <?php _e('Your search matched no current vacancies', 'hale'); ?>
                     </h2>
@@ -410,19 +413,19 @@ while (have_posts()) :
                         <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
                     </p>
                     <?php
-                } elseif ($search_text != "") {
-                    // Search term entered but no results found ?>
+            } elseif ($search_text != "") {
+                // Search term entered but no results found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
                         <?php
-                        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no current vacancies', 'hale' ), $search_text_HTML);
+                        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no current vacancies', 'hale'), $search_text_HTML);
                         ?>
                     </h2>
                     <p class="govuk-body">
                         <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
                     </p>
                     <?php
-                } else {
-                    // No search term, but some filters applied but no jobs found ?>
+            } else {
+                // No search term, but some filters applied but no jobs found ?>
                     <h2 class="job-list-item--title govuk-heading-l">
                         <?php _e('Your search matched no current vacancies', 'hale'); ?>
                     </h2>
@@ -430,17 +433,14 @@ while (have_posts()) :
                         <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
                     </p>
                     <?php
-                }
+            }
                 wp_reset_postdata();
-                ?>
+            ?>
             </div>
         </div>
     </div><!-- #primary -->
 
-<?php
+    <?php
 endwhile;
 
 get_footer();
-
-
-
