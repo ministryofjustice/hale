@@ -1,5 +1,7 @@
 <?php
 
+
+
 // Register Decision Post Type
 function register_decision_post_type() {
 
@@ -52,7 +54,6 @@ function register_decision_post_type() {
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'page',
-        'taxonomies'          => false,
         'rewrite'             => array(
             'slug'       => 'decision',
             'with_front' => false
@@ -65,57 +66,14 @@ function register_decision_post_type() {
 add_action( 'init', 'register_decision_post_type', 0 );
 
 
-// Register Custom Taxonomies
-function custom_taxonomy() {
-    // Custom Category (hierarchical)
-    $labels = array(
-        'name' => _x('Decision Categories', 'taxonomy general name'),
-        'singular_name' => _x('Decision Category', 'taxonomy singular name'),
-        'search_items' => __('Search Decision Categories'),
-        'all_items' => __('All Decision Categories'),
-        'parent_item' => __('Parent Decision Category'),
-        'parent_item_colon' => __('Parent Decision Category:'),
-        'edit_item' => __('Edit Decision Category'),
-        'update_item' => __('Update Decision Category'),
-        'add_new_item' => __('Add New Decision Category'),
-        'new_item_name' => __('New Decision Category Name'),
-        'menu_name' => __('Decision Categories'),
-    );
-
-    $args = array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array('slug' => 'decision-category'),
-    );
-
-    register_taxonomy('decision_category', array('decision'), $args);
-
-    // Custom Tag (non-hierarchical)
-    $labels = array(
-        'name' => _x('Decision Tags', 'taxonomy general name'),
-        'singular_name' => _x('Decision Tag', 'taxonomy singular name'),
-        'search_items' => __('Search Decision Tags'),
-        'all_items' => __('All Decision Tags'),
-        'edit_item' => __('Edit Decision Tag'),
-        'update_item' => __('Update Decision Tag'),
-        'add_new_item' => __('Add New Decision Tag'),
-        'new_item_name' => __('New Decision Tag Name'),
-        'menu_name' => __('Decision Tags'),
-    );
-
-    $args = array(
-        'hierarchical' => false,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array('slug' => 'decision-tag'),
-    );
-
-    register_taxonomy('decision_tag', array('decision'), $args);
+function hale_decision_add_query_vars_filter($vars)
+{
+    $vars[] = "decision_search";
+    $vars[] = "decision_referral_type";
+    $vars[] = "decision_offence";
+    $vars[] = "decision_process";
+    return $vars;
 }
 
-add_action('init', 'custom_taxonomy');
+add_filter('query_vars', 'hale_decision_add_query_vars_filter');
+

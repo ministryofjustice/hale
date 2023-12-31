@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Hale theme functions and definitions
  *
@@ -473,8 +472,10 @@ $cpt_decision_activated = get_theme_mod('cpt_decision_activated', 0);
 
 if ($cpt_decision_activated) {
     require get_template_directory() . '/inc/custom-post-types/cpt-decision.php';
+    require get_template_directory() . '/inc/taxonomies/tax-decision-referral-type.php';
+    require get_template_directory() . '/inc/taxonomies/tax-decision-offence.php';
+    require get_template_directory() . '/inc/taxonomies/tax-decision-process.php';
 }
-
 
 
 /**
