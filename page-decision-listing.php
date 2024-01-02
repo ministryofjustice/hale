@@ -312,7 +312,7 @@ while (have_posts()) :
                     </div>
                     <?php
                     hale_archive_pagination('archive', $decision_query);
-                } elseif (!empty($doc_search_text)) { ?>
+                } elseif (!empty($decision_search_text)) { ?>
                     <h2 class="govuk-heading-l">
                         <?php
                         echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no decisions', 'hale' ), $search_text_HTML);

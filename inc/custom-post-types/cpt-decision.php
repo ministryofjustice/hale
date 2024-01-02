@@ -1,7 +1,5 @@
 <?php
 
-
-
 // Register Decision Post Type
 function register_decision_post_type() {
 

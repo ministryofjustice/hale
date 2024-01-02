@@ -1076,33 +1076,5 @@ function hale_add_blocks_settings( $wp_customize )
 				),
 			)
 		);
-
-		$wp_customize->add_setting(
-            'tax_decision_offence_activated',
-            array(
-                'default' => 0,
-            )
-        );
-
-        $wp_customize->add_control(
-            'tax_decision_offence_activated',
-            array(
-                'label' => esc_html__('Decision Offence Taxonomy', 'hale'),
-                'section' => 'decision_cpt_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-                'active_callback' => function () use ($wp_customize) {
-                    return (
-                    ($wp_customize->get_setting('cpt_decision_activated')->value() == true)
-                    );
-                },
-            )
-        );
-
-
     }
 }
