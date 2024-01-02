@@ -13,9 +13,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_658ea49388010",
+                        "field": "field_659174495fd52",
                         "operator": "!=",
-                        "value": "1"
+                        "value": "decision_referral_type"
                     }
                 ]
             ],
@@ -41,9 +41,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_658ea49387f73",
+                        "field": "field_659174495fd52",
                         "operator": "!=",
-                        "value": "1"
+                        "value": "decision_offence"
                     }
                 ]
             ],
@@ -69,9 +69,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_658ea49387f73",
+                        "field": "field_659174495fd52",
                         "operator": "!=",
-                        "value": "1"
+                        "value": "decision_process"
                     }
                 ]
             ],
@@ -135,123 +135,6 @@
             "append": ""
         },
         {
-            "key": "field_658ea493880ea",
-            "label": "Show Decision Summaries",
-            "name": "show_decision_summaries",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_658ea49388188",
-            "label": "Restrict Decision by Offence",
-            "name": "restrict_documents_by_decision_offence",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_658ea49388139",
-                        "operator": "==",
-                        "value": "no"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "document_type",
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "id",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "bidirectional": 0,
-            "multiple": 0,
-            "bidirectional_target": []
-        },
-        {
-            "key": "field_658ea493881d8",
-            "label": "Restrict Documents by Category",
-            "name": "restrict_documents_by_document_category",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_658ea49388139",
-                        "operator": "==",
-                        "value": "document_category"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "document_category",
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "id",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "multiple": 0,
-            "bidirectional_target": []
-        },
-        {
-            "key": "field_658ea49388225",
-            "label": "Restrict Documents by Location",
-            "name": "restrict_documents_by_document_location",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_658ea49388139",
-                        "operator": "==",
-                        "value": "document_location"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "document_location",
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "id",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "multiple": 0,
-            "bidirectional_target": []
-        },
-        {
             "key": "field_659174495fd52",
             "label": "Restrict Decisions",
             "name": "restrict_decisions",
@@ -278,6 +161,81 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_6593fad2ceec8",
+            "label": "Restrict Decisions by Referral Type",
+            "name": "restrict_decisions_by_decision_referral_type",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "decision_referral_type",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_6593fad5ceec9",
+            "label": "Restrict Decisions by Offence",
+            "name": "restrict_decisions_by_decision_offence",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "decision_offence",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_6593fad8ceeca",
+            "label": "Restrict Decisions by Process",
+            "name": "restrict_decisions_by_decision_process",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "decision_process",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -298,5 +256,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1704032696
+    "modified": 1704198058
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single Decision Archive
+ * The template for displaying all single decisions
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -16,15 +16,11 @@ get_header();
 
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<div class="single">
-
 			<?php
 			while ( have_posts() ) :
 				the_post();
-
-                echo 'hello';
-                
+				get_template_part( 'template-parts/content', get_post_type() );
 				hale_get_prev_next();
-
 			endwhile; // End of the loop.
 			?>
 
