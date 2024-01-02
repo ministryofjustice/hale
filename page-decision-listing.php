@@ -57,7 +57,7 @@ if (get_query_var('decision_process')) {
 while (have_posts()) :
     the_post();
 
-    // Check if documents are restricted
+    // Check if decisions are restricted
     $restrict_decisions = get_post_meta(get_the_ID(), 'restrict_decisions', true);
 
     ?>
@@ -73,13 +73,13 @@ while (have_posts()) :
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
-                <div class="document-listing-search-section">
-                    <div class="document-listing-search-form">
+                <div class="decision-listing-search-section">
+                    <div class="decision-listing-search-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
-                            <label for="doc-search-field" class="govuk-visually-hidden">
+                            <label for="decision-search-field" class="govuk-visually-hidden">
                                 <?php _e('Search', 'hale'); ?>
                             </label>
-                            <input class="govuk-input" id="doc-search-field" name="decision_search"
+                            <input class="govuk-input" id="decision-search-field" name="decision_search"
                                 value="<?php echo $search_text_HTML; ?>" type="search"
                                 placeholder="<?php _e('Search', 'hale'); ?>">
 
@@ -115,7 +115,7 @@ while (have_posts()) :
                                 $dropdown_html = wp_dropdown_categories(
                                     array(
                                         'name' => 'decision_referral_type',
-                                        'id' => 'document-search-filter-type',
+                                        'id' => 'decision-search-filter-type',
                                         'class' => 'govuk-select',
                                         'taxonomy' => 'decision_referral_type',
                                         'show_option_all' => 'Select option',
@@ -127,7 +127,7 @@ while (have_posts()) :
                                 );
 
                                 if (!empty($dropdown_html)) { ?>
-                                    <label class="govuk-label" for="document-search-filter-type">
+                                    <label class="govuk-label" for="decision-search-filter-type">
                                         <?php _e('Referral Type', 'hale'); ?>
                                     </label>
                                     <?php echo $dropdown_html; ?>
@@ -140,7 +140,7 @@ while (have_posts()) :
                                 $dropdown_html = wp_dropdown_categories(
                                     array(
                                         'name' => 'decision_offence',
-                                        'id' => 'document-search-filter-category',
+                                        'id' => 'decision-search-filter-category',
                                         'class' => 'govuk-select',
                                         'taxonomy' => 'decision_offence',
                                         'show_option_all' => 'Select option',
@@ -152,7 +152,7 @@ while (have_posts()) :
                                 );
 
                                 if (!empty($dropdown_html)) { ?>
-                                    <label class="govuk-label" for="document-search-filter-category">
+                                    <label class="govuk-label" for="decision-search-filter-category">
                                         <?php _e('Offence', 'hale'); ?>
                                     </label>
                                     <?php echo $dropdown_html; ?>
@@ -165,7 +165,7 @@ while (have_posts()) :
                                 $dropdown_html = wp_dropdown_categories(
                                     array(
                                         'name' => 'decision_process',
-                                        'id' => 'document-search-filter-location',
+                                        'id' => 'decision-search-filter-location',
                                         'class' => 'govuk-select',
                                         'taxonomy' => 'decision_process',
                                         'show_option_all' => 'Select option',
@@ -177,7 +177,7 @@ while (have_posts()) :
                                 );
 
                                 if (!empty($dropdown_html)) { ?>
-                                    <label class="govuk-label" for="document-search-filter-location">
+                                    <label class="govuk-label" for="decision-search-filter-location">
                                         <?php _e('Process', 'hale'); ?>
                                     </label>
                                     <?php echo $dropdown_html; ?>
@@ -200,7 +200,7 @@ while (have_posts()) :
                 $restrict_by_type = get_post_meta(get_the_ID(), 'restrict_by_type', true);
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-                $doc_args = array(
+                $decision_args = array(
                     'post_type' => 'decision',
                     'posts_per_page' => 10,
                     'relevanssi' => true,
@@ -211,14 +211,14 @@ while (have_posts()) :
                 $decisions_per_page = get_post_meta(get_the_ID(), 'decisions_per_page', true);
 
                 if (!empty($decisions_per_page)) {
-                    $doc_args['posts_per_page'] = $decisions_per_page;
+                    $decision_args['posts_per_page'] = $decisions_per_page;
                 } else {
-                    $doc_args['posts_per_page'] = 10;
+                    $decision_args['posts_per_page'] = 10;
                 }
 
                 // Search by text
                 if (!empty($decision_search_text)) {
-                    $doc_args['s'] = $decision_search_text;
+                    $decision_args['s'] = $decision_search_text;
                     // Meta fields (such as summary) are searched using relevanssi
                 } else {
                     // Decisions are sorted be relevance if text search is used.
@@ -226,11 +226,11 @@ while (have_posts()) :
                     $decision_listing_sort = get_post_meta(get_the_ID(), 'decision_listing_default_sort', true);
 
                     if ($decision_listing_sort == 'title') {
-                        $doc_args['orderby'] = 'title';
-                        $doc_args['order'] = 'ASC';
+                        $decision_args['orderby'] = 'title';
+                        $decision_args['order'] = 'ASC';
                     } else {
-                        $doc_args['orderby'] = 'post_date';
-                        $doc_args['order'] = 'DESC';
+                        $decision_args['orderby'] = 'post_date';
+                        $decision_args['order'] = 'DESC';
                     }
                 }
 
@@ -253,7 +253,7 @@ while (have_posts()) :
                     }
                 }
 
-                // Document Type Filter
+                // decision Type Filter
                 if ($restrict_decisions != "decision_referral_type") {
                     if (!empty($selected_decision_referral_type_id)) {
                         $tax_qry_ary[] = array(
@@ -264,7 +264,7 @@ while (have_posts()) :
                     }
                 }
 
-                // Document Category Filter
+                // decision Category Filter
                 if ($restrict_decisions != "decision_offence") {
                     if (!empty($selected_decision_offence_id)) {
                         $tax_qry_ary[] = array(
@@ -275,7 +275,7 @@ while (have_posts()) :
                     }
                 }
 
-                // Document Location Filter
+                // decision Location Filter
                 if ($restrict_decisions != "decision_process") {
                     if (!empty($selected_decision_process_id)) {
                         $tax_qry_ary[] = array(
@@ -287,10 +287,10 @@ while (have_posts()) :
                 }
 
                 if (!empty($tax_qry_ary)) {
-                    $doc_args['tax_query'] = $tax_qry_ary;
+                    $decision_args['tax_query'] = $tax_qry_ary;
                 }
 
-                $decision_query = new WP_Query($doc_args);
+                $decision_query = new WP_Query($decision_args);
                 $decision_referral_type_filter_activated = get_post_meta(get_the_ID(), 'decision_referral_type_filter_activated', true);
 
                 if ($decision_query->have_posts()) {
@@ -300,10 +300,10 @@ while (have_posts()) :
                         $doc_count_text = '1 decision';
                     }
                     ?>
-                    <div class="document-count">
+                    <div class="decision-count">
                         <?php echo $doc_count_text; ?>
                     </div>
-                    <div class="document-list">
+                    <div class="decision-list">
                         <?php
                         while ($decision_query->have_posts()) {
                             $decision_query->the_post();
@@ -324,7 +324,7 @@ while (have_posts()) :
                     <?php
                 } else { ?>
                     <h2 class="job-list-item--title govuk-heading-l">
-                        <?php _e('Your search matched no documents', 'hale'); ?>
+                        <?php _e('Your search matched no decisions', 'hale'); ?>
                     </h2>
                     <p class="govuk-body">
                         <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
