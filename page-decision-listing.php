@@ -12,6 +12,7 @@ get_header();
 // Get Search text Value
 $decision_search_text = '';
 $search_text_HTML = '';
+$show_decision_summaries = '';
 
 if (get_query_var('decision_search')) {
     $decision_search_text = sanitize_text_field(get_query_var('decision_search'));
