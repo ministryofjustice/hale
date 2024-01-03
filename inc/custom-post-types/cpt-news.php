@@ -37,7 +37,7 @@ function hale_register_news_post_type()
         'description' => __('Contains details of News stories', 'hale'),
         'labels' => $labels,
         'supports' => array('title', 'editor', 'thumbnail'),
-        'taxonomies' => array('title', 'editor'),
+        'taxonomies' => array('category', 'post_tag'),
         'hierarchical' => false,
         'public' => true,
         'show_ui' => true,
@@ -60,7 +60,6 @@ function hale_register_news_post_type()
 
 
     register_post_type('news', $args);
-
 }
 
 add_action('init', 'hale_register_news_post_type', 0);
@@ -69,7 +68,6 @@ function hale_news_archive_query($query)
 {
 
     if ($query->is_main_query() && !is_admin()) {
-
         if (is_post_type_archive('news')) {
             if (array_key_exists('subtopic', $query->query) && is_numeric($query->query['subtopic'])) {
                 unset($query->query['cat']);
