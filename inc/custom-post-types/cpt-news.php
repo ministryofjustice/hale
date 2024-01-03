@@ -37,7 +37,7 @@ function hale_register_news_post_type()
         'description' => __('Contains details of News stories', 'hale'),
         'labels' => $labels,
         'supports' => array('title', 'editor', 'thumbnail'),
-        'taxonomies' => array('title', 'editor', 'thumbnail'),
+        'taxonomies' => array('title', 'editor'),
         'hierarchical' => false,
         'public' => true,
         'show_ui' => true,
