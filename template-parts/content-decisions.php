@@ -1,0 +1,14 @@
+<?php
+/**
+ * Template part for displaying decisions list item
+ */
+?>
+
+<div class="decision-list-item">
+    <h2 class="decision-list-item-title hale-heading-s"><a
+            href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
+    <div class="decision-published-date">
+        Published: <?php hale_posted_on(); ?>
+    </div>
+    <div class="decision-excerpt"></div>
+</div>

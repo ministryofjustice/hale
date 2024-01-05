@@ -1,11 +1,11 @@
 {
-    "key": "group_634fab68ec137",
-    "title": "Document Listing Settings",
+    "key": "group_658ea49386349",
+    "title": "Decision Listing Settings",
     "fields": [
         {
-            "key": "field_634fab6947da1",
-            "label": "Document Type Filter",
-            "name": "document_type_filter_activated",
+            "key": "field_658ea49387f73",
+            "label": "Decision Referral Type Filter",
+            "name": "decision_referral_type_filter_activated",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -13,9 +13,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6364f33626199",
+                        "field": "field_659174495fd52",
                         "operator": "!=",
-                        "value": "document_type"
+                        "value": "decision_referral_type"
                     }
                 ]
             ],
@@ -24,16 +24,16 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Please note this filter will not display if there are no document types assigned or when a document listing page is restricted by type",
+            "message": "Please note this filter will not display if there are no decision referral types assigned or when a decision listing page is restricted by type",
             "default_value": 0,
             "ui_on_text": "On",
             "ui_off_text": "Off",
             "ui": 1
         },
         {
-            "key": "field_634facd5bfbcd",
-            "label": "Document Category Filter",
-            "name": "document_category_filter_activated",
+            "key": "field_658ea49388010",
+            "label": "Decision Offence Filter",
+            "name": "decision_offence_filter_activated",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -41,9 +41,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6364f33626199",
+                        "field": "field_659174495fd52",
                         "operator": "!=",
-                        "value": "document_category"
+                        "value": "decision_offence"
                     }
                 ]
             ],
@@ -52,16 +52,16 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Please note this filter will not display if there are no document categories assigned or when a document listing page is restricted by category",
+            "message": "Please note this filter will not display if there are no decisions assigned",
             "default_value": 0,
             "ui_on_text": "On",
             "ui_off_text": "Off",
             "ui": 1
         },
         {
-            "key": "field_634facd4bfbcc",
-            "label": "Document Location Filter",
-            "name": "document_location_filter_activated",
+            "key": "field_658ed91efdb68",
+            "label": "Decision Process Filter",
+            "name": "decision_process_filter_activated",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -69,9 +69,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6364f33626199",
+                        "field": "field_659174495fd52",
                         "operator": "!=",
-                        "value": "document_location"
+                        "value": "decision_process"
                     }
                 ]
             ],
@@ -80,16 +80,16 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Please note this filter will not display if there are no document locations assigned or when a document listing page is restricted by location",
+            "message": "Please note this filter will not display if there are no decisions assigned or when a decision listing page is restricted by location",
             "default_value": 0,
             "ui_on_text": "On",
             "ui_off_text": "Off",
             "ui": 1
         },
         {
-            "key": "field_636291f4f998f",
-            "label": "Document Default Sort",
-            "name": "document_listing_default_sort",
+            "key": "field_658ea4938805a",
+            "label": "Decision Default Sort",
+            "name": "decision_listing_default_sort",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -101,7 +101,7 @@
                 "id": ""
             },
             "choices": {
-                "post_date": "Published Date (Newest to Oldest)",
+                "post_date": "Decision Date (Newest to Oldest)",
                 "title": "Title (Alphabetical)"
             },
             "default_value": "post_date",
@@ -113,9 +113,9 @@
             "placeholder": ""
         },
         {
-            "key": "field_6363876c0f74e",
-            "label": "Documents per Page",
-            "name": "documents_per_page",
+            "key": "field_658ea493880a2",
+            "label": "Decisions per Page",
+            "name": "decisions_per_page",
             "aria-label": "",
             "type": "number",
             "instructions": "",
@@ -135,29 +135,9 @@
             "append": ""
         },
         {
-            "key": "field_6363879c0f74f",
-            "label": "Show Document Summaries",
-            "name": "show_document_summaries",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_6364f33626199",
-            "label": "Restrict Documents",
-            "name": "restrict_documents",
+            "key": "field_659174495fd52",
+            "label": "Restrict Decisions",
+            "name": "restrict_decisions",
             "aria-label": "",
             "type": "select",
             "instructions": "Please note this will also remove the related filter",
@@ -170,9 +150,9 @@
             },
             "choices": {
                 "no": "No Restrictions",
-                "document_type": "Document Type",
-                "document_category": "Document Category",
-                "document_location": "Document Location"
+                "decision_referral_type": "decision_referral_type",
+                "decision_offence": "Decision offence",
+                "decision_process": "Decision process"
             },
             "default_value": false,
             "return_format": "value",
@@ -183,98 +163,77 @@
             "placeholder": ""
         },
         {
-            "key": "field_6362a4d8b76ff",
-            "label": "Restrict Documents by Type",
-            "name": "restrict_documents_by_document_type",
+            "key": "field_6593fad2ceec8",
+            "label": "Restrict Decisions by Referral Type",
+            "name": "restrict_decisions_by_decision_referral_type",
             "aria-label": "",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6364f33626199",
-                        "operator": "==",
-                        "value": "document_type"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "document_type",
+            "taxonomy": "decision_referral_type",
             "add_term": 0,
             "save_terms": 0,
             "load_terms": 0,
             "return_format": "id",
             "field_type": "multi_select",
             "allow_null": 0,
+            "bidirectional": 0,
             "multiple": 0,
             "bidirectional_target": []
         },
         {
-            "key": "field_6364f30526198",
-            "label": "Restrict Documents by Category",
-            "name": "restrict_documents_by_document_category",
+            "key": "field_6593fad5ceec9",
+            "label": "Restrict Decisions by Offence",
+            "name": "restrict_decisions_by_decision_offence",
             "aria-label": "",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6364f33626199",
-                        "operator": "==",
-                        "value": "document_category"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "document_category",
+            "taxonomy": "decision_offence",
             "add_term": 0,
             "save_terms": 0,
             "load_terms": 0,
             "return_format": "id",
             "field_type": "multi_select",
             "allow_null": 0,
+            "bidirectional": 0,
             "multiple": 0,
             "bidirectional_target": []
         },
         {
-            "key": "field_6364f4022619a",
-            "label": "Restrict Documents by Location",
-            "name": "restrict_documents_by_document_location",
+            "key": "field_6593fad8ceeca",
+            "label": "Restrict Decisions by Process",
+            "name": "restrict_decisions_by_decision_process",
             "aria-label": "",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6364f33626199",
-                        "operator": "==",
-                        "value": "document_location"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "document_location",
+            "taxonomy": "decision_process",
             "add_term": 0,
             "save_terms": 0,
             "load_terms": 0,
             "return_format": "id",
             "field_type": "multi_select",
             "allow_null": 0,
+            "bidirectional": 0,
             "multiple": 0,
             "bidirectional_target": []
         }
@@ -284,18 +243,18 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-document-listing.php"
+                "value": "page-decision-listing.php"
             }
         ]
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1704197184
+    "modified": 1704198058
 }
