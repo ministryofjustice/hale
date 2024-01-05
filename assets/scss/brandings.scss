@@ -549,8 +549,11 @@
 										&:visited,
 										&:link:visited {
 											&:not(:focus) {
-												@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
+												background-color: var(--header-submenu-bg);
+												color: var(--header-submenu-link);
 												border-bottom-color: var(--header-submenu-bg);
+
+												@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
 											}
 										}
 									}
