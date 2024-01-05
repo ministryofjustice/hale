@@ -156,7 +156,7 @@ function navBarOptimization() {
 	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
 	const navMaxWidth = headerNav.getBoundingClientRect()["width"] - 90; //90px to allow space for the More button
 	let allMenuItemsWidth = 0;
-	
+
 	if (window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display == "none") {
 		// the menu button is hidden = not mobile view
 		if (document.getElementById("more-link") != null) document.getElementById("more-link").remove();
@@ -175,7 +175,7 @@ function navBarOptimization() {
 				break; // Loop continues below
 			}
 		}
-		
+
 		const moreContainer = headerNav.querySelector("#more-link");
 		const moreButton = moreContainer.querySelector("button");
 		const moreLinks = moreContainer.querySelector(".menu-item--more__content");
@@ -186,20 +186,16 @@ function navBarOptimization() {
 				// continued from above
 				let clonedNode = nav[i].cloneNode(true);
 				moreLinks.appendChild(clonedNode);
-			//	clonedNode.querySelector("sub-menu").classList.replace("sub-menu","menu-item__sub-menu");
 			}
-			
+
 			if (moreLinks.innerHTML.indexOf("current-menu-item") > 0) {
-				console.log("Index: ");
-				console.log(moreLinks.innerHTML.indexOf("current-menu-item"));
+				// If the more links contains "current-menu-item" - style it to be an ancestor
 				moreButton.classList.add("menu-item__more--contains-current");
 			}
-			
+
 			// Add click functionality to the more button
 			moreButton.addEventListener("click", (event) => {
-				console.log("Clicked");
 				let parent = moreButton.parentElement;
-				console.log(parent);
 
 				if (parent.classList.contains('menu-item--more--open')) {
 					parent.classList.remove("menu-item--more--open");
@@ -217,38 +213,11 @@ function navBarOptimization() {
 				}
 			});
 		}
-
-	}
-	/*
-
-	***	Method 1 - adjusting the widths to deal with wrapped menu items
-
-	if(nav[0].getBoundingClientRect()["height"] > 50 && window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display == "none") {
-		// The text in the menu has wrapped, so we perform a little jiggery-pokery with the widths
-
-		// Convert to array and sort (so longest option is first to be broken)
-		var navArray = Array.prototype.slice.call(nav, 0);
-		navArray.sort(function(b, a){return a.innerText.length - b.innerText.length});
-
-		for (i=0;i<navArray.length;i++) {
-			if(navArray[i].innerText.split(" ").length == 1) navArray.splice(i, 1);
-		}
-		for (i=0;i<navArray.length;i++) {
-			console.log(navArray[i].innerText);
-		}
-		for (i=0;i<navArray.length;i++) {
-			navArray[i].style.width = null;
-			let textWidth = Math.ceil(navArray[i].querySelector("span").getBoundingClientRect()["width"]);
-			let itemLeftPadding = window.getComputedStyle(navArray[i]).getPropertyValue('padding-left');
-			let itemRightPadding = window.getComputedStyle(navArray[i]).getPropertyValue('padding-right');
-			navArray[i].style.width = "calc(" + itemLeftPadding + " + " + itemRightPadding + " + " + textWidth + "px)";
-		}
 	} else {
-		for (i=0;i<nav.length;i++) {
-			nav[i].style.width = null;
-		}
+		// If the width is less than desktop, we make sure we remove the more link should it have been created
+		// This might happen with a mobile device being rotated
+		if (document.getElementById("more-link") != null) document.getElementById("more-link").remove();
 	}
-	*/
 }
 
 jQuery("#menu-menu-top-menu").ready(function( $ ) {
