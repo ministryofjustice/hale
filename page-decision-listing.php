@@ -296,13 +296,13 @@ while (have_posts()) :
 
                 if ($decision_query->have_posts()) {
                     if ($decision_query->found_posts > 1) {
-                        $doc_count_text = $decision_query->found_posts . ' decisions';
+                        $decision_count_text = $decision_query->found_posts . __(' decisions', 'hale');
                     } elseif ($decision_query->found_posts == 1) {
-                        $doc_count_text = '1 decision';
+                        $decision_count_text = '1' . __(' decision', 'hale');
                     }
                     ?>
                     <div class="decision-count">
-                        <?php echo $doc_count_text; ?>
+                        <?php echo $decision_count_text; ?>
                     </div>
                     <div class="decision-list">
                         <?php
