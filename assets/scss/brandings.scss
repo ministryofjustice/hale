@@ -21,22 +21,6 @@
 	All brandings
 **********************/
 
-//space out menu for all brandings
-.js-enabled .govuk-header,
-.govuk-header {
-	@include govuk-media-query($from: desktop) {
-		padding-bottom: 0;
-
-		.govuk-header__navigation-list {
-			display: flex;
-			justify-content: space-between;
-
-			li {
-				padding:0;
-			}
-		}
-	}
-}
 //remove gap at top of page
 .govuk-main-wrapper {
 	padding-top:0;
@@ -208,8 +192,7 @@
 
 		.govuk-header__content {
 
-			.govuk-header__menu-button,
-			.menu-item__more {
+			.govuk-header__menu-button {
 
 				color: var(--header-link);
 
@@ -254,7 +237,7 @@
 
 							&:not(:hover) {
 								@include govuk-media-query($from: desktop) {
-									border-bottom-color: var(--header-link-current-border) ! important;
+									border-bottom-color: var(--header-link-current-border);
 									@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
 								}
 							}
@@ -482,9 +465,11 @@
 				.menu-item--more {
 					.menu-item__more {
 						background-color: var(--header-bg);
+						border-bottom-color: var(--header-bg);
 
 						&--contains-current {
 							background-color: var(--header-link-ancestor-bg);
+							border-bottom-color: var(--header-link-ancestor-bg);
 							color: var(--header-link-ancestor);
 
 							&:hover {
@@ -559,16 +544,22 @@
 									}
 								}
 							}
-							&.current-menu-item a:not(:focus) {
-								&:link,
-								&:visited,
-								&:link:visited {
-									&:not(:focus) {
-										&:not(hover) {
-											border-bottom-color: var(--header-link-current-border);
-										}
-										&:hover {
-											border-bottom-color: var(--header-link-current-hover-border);
+							&.current-menu-item {
+								a:not(:focus) {
+									&:link,
+									&:visited,
+									&:link:visited {
+										&:not(:focus) {
+											color: var(--header-link-current);
+											background-color: var(--header-link-current-bg);
+											@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
+
+											&:not(:hover) {
+												border-bottom-color: var(--header-link-current-border);
+											}
+											&:hover {
+												border-bottom-color: var(--header-link-current-hover-border);
+											}
 										}
 									}
 								}
