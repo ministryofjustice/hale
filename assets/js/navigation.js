@@ -176,9 +176,11 @@ function navBarOptimization() {
 			}
 		}
 
-		const moreContainer = headerNav.querySelector("#more-link");
-		const moreButton = moreContainer.querySelector("button");
-		const moreLinks = moreContainer.querySelector(".menu-item--more__content");
+		var moreContainer = headerNav.querySelector("#more-link");
+		if (moreContainer) {
+			var moreButton = moreContainer.querySelector("button");
+			var moreLinks = moreContainer.querySelector(".menu-item--more__content");
+		}
 		if (moreButton) {
 			
 			// Move all overflow elements inside the more button
