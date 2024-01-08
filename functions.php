@@ -560,14 +560,14 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 
 add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
 
-function add_module_tag( $tag, $handle, $src ) {
+function hale_add_module_tag( $tag, $handle, $src ) {
     $modules = ["govuk-frontend"];
     if ( in_array($handle, $modules) ) {
         $tag = str_replace( 'src=', 'type="module" src=', $tag );
     }
     return $tag;
 }
-add_filter( 'script_loader_tag', 'add_module_tag', 10, 3 );
+add_filter( 'script_loader_tag', 'hale_add_module_tag', 10, 3 );
 
 // Remove Yoast `SEO Manager` role
 if ( get_role('wpseo_manager') ) {
