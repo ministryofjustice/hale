@@ -156,7 +156,8 @@ function navBarOptimization() {
 	const moreTextWidth = moreText.length;
 	const headerNav = document.getElementById("menu-menu-top-menu");
 	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
-	const navMaxWidth = headerNav.getBoundingClientRect()["width"] - (moreTextWidth*16 + 25);
+	const navMaxWidth = headerNav.getBoundingClientRect()["width"];
+	const navMaxWidthWithMore = navMaxWidth - (moreTextWidth * 16 + 25);
 	// about 90px to allow space for the More button
 	// Assume 1 letter ≈ 1em = 16px, so 4 letters ≈ 4em = 64px, add 25 to give 89px for "More"
 	// For welsh "Mwy", 3em = 48px, add 25px gives 73px.
@@ -169,7 +170,10 @@ function navBarOptimization() {
 		for (i=0;i<nav.length;i++) {
 			let thisMenuItemWidth = nav[i].getBoundingClientRect()["width"];
 			allMenuItemsWidth += thisMenuItemWidth;
-			if (allMenuItemsWidth > navMaxWidth) {
+			if (
+				allMenuItemsWidth > navMaxWidth ||
+				( allMenuItemsWidth > navMaxWidthWithMore && i < nav.length - 1)
+			) {
 				let moreLink = document.createElement("li");
 				moreLink.innerHTML = '<button>'+ moreText +'</button><ul class="menu-item--more__content"></ul>';
 				moreLink.setAttribute("id","more-link");
