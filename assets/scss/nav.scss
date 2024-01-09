@@ -195,7 +195,7 @@
             left:0;
             top:0;
           }
-          span:not(.sub-menu span) {
+          span:not(.sub-menu span):not(.menu-item--more span) {
             text-wrap: nowrap;
           }
         }
