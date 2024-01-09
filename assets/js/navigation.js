@@ -153,9 +153,14 @@ function guideNavClick(id) {
 function navBarOptimization() {
 
 	const moreText = document.getElementById("header-navigation").getAttribute("data-more-text");
+	const moreTextWidth = moreText.length;
 	const headerNav = document.getElementById("menu-menu-top-menu");
 	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
-	const navMaxWidth = headerNav.getBoundingClientRect()["width"] - 90; //90px to allow space for the More button
+	const navMaxWidth = headerNav.getBoundingClientRect()["width"] - (moreTextWidth*16 + 25);
+	// about 90px to allow space for the More button
+	// Assume 1 letter ≈ 1em = 16px, so 4 letters ≈ 4em = 64px, add 25 to give 89px for "More"
+	// For welsh "Mwy", 3em = 48px, add 25px gives 73px.
+
 	let allMenuItemsWidth = 0;
 
 	if (window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display == "none") {
