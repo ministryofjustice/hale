@@ -195,7 +195,7 @@
             left:0;
             top:0;
           }
-          span {
+          span:not(.sub-menu span) {
             text-wrap: nowrap;
           }
         }
@@ -389,6 +389,8 @@
             //options are constricted by the end of the menu, this allows a little extra space to avoid in-word wrapping if the secondary menu has words longer than the primary menu (last) option which reveals it
             margin-right: -40px;
             //40px allows for the 30px gap between menu and screen edge and the 15px padding, 5px is left to separate text from screen edge
+            width: max-content;
+            max-width: 150%;
 
             li {
               border-top:0;
