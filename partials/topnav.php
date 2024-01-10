@@ -37,7 +37,7 @@ if ($show_header_menu == 'yes') {
         'item_spacing' => 'preserve',
     );
     ?>
-    <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation">
+    <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" data-more-text="<?php _e("More","hale"); ?>">
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu" hidden>Menu</button>
         <?php
         wp_nav_menu($topmenu_args);

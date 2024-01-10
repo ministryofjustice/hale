@@ -152,6 +152,7 @@ function guideNavClick(id) {
 
 function navBarOptimization() {
 
+	const moreText = document.getElementById("header-navigation").getAttribute("data-more-text");
 	const headerNav = document.getElementById("menu-menu-top-menu");
 	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
 	const navMaxWidth = headerNav.getBoundingClientRect()["width"] - 90; //90px to allow space for the More button
@@ -165,7 +166,7 @@ function navBarOptimization() {
 			allMenuItemsWidth += thisMenuItemWidth;
 			if (allMenuItemsWidth > navMaxWidth) {
 				let moreLink = document.createElement("li");
-				moreLink.innerHTML = '<button>More</button><ul class="menu-item--more__content"></ul>';
+				moreLink.innerHTML = '<button>'+ moreText +'</button><ul class="menu-item--more__content"></ul>';
 				moreLink.setAttribute("id","more-link");
 				moreLink.classList.add("menu-item");
 				moreLink.classList.add("menu-item--more");

@@ -19990,3 +19990,7 @@ msgstr "&copy; Hawlfraint"
 #: hale/partials/footer-licence.php
 msgid "All content is available under the <a class=\"govuk-footer__link\" href=\"%s\" rel=\"license\">Open Government Licence v3.0</a>, except where otherwise stated"
 msgstr "Mae’r holl gynnwys ar gael o dan <a class=\"govuk-footer__link\" href=\"%s\" rel=\"license\">Drwydded Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol"
+
+#: hale/partials/topnav.php
+msgid "More"
+msgstr "Mwy"
