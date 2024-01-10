@@ -232,6 +232,14 @@ function navBarOptimization() {
 	}
 }
 
+document.addEventListener('click', function(e) {
+	// Function to close the More menu if user clicks outside of it.
+	let target = e.target;
+	if (target.closest(".menu-item--more--open") == null && document.querySelector(".menu-item--more--open") != null) {
+		document.querySelector(".menu-item__more").click();
+	}
+}, false);
+
 jQuery("#menu-menu-top-menu").ready(function( $ ) {
 	navBarOptimization();
 	$(window).resize(function() {
