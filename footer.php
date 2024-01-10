@@ -76,8 +76,10 @@ flush();
   </div>
 </footer>
 <?php wp_footer(); ?>
-  <script>
-    window.GOVUKFrontend.initAll()
-  </script>
+<script type="module">
+  import { initAll } from '<?php echo get_stylesheet_directory_uri() ?>/dist/js/govuk-frontend.js'
+
+  initAll()
+</script>
 </body>
 </html>

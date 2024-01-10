@@ -252,7 +252,7 @@ function hale_scripts() {
     }
 
     // JS
-    wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "4.2.0", true);
+    wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "5.0.0", true);
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
@@ -560,6 +560,14 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 
 add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
 
+function hale_add_module_tag( $tag, $handle, $src ) {
+    $modules = ["govuk-frontend"];
+    if ( in_array($handle, $modules) ) {
+        $tag = str_replace( 'src=', 'type="module" src=', $tag );
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'hale_add_module_tag', 10, 3 );
 
 // Remove Yoast `SEO Manager` role
 if ( get_role('wpseo_manager') ) {
