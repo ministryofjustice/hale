@@ -153,6 +153,7 @@ function guideNavClick(id) {
 function navBarOptimization() {
 
 	const moreText = document.getElementById("header-navigation").getAttribute("data-more-text");
+	if (moreText == "None") return;
 	const moreTextWidth = moreText.length;
 	const headerNav = document.getElementById("menu-menu-top-menu");
 	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");

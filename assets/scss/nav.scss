@@ -195,7 +195,10 @@
             left:0;
             top:0;
           }
-          span:not(.sub-menu span):not(.menu-item--more span) {
+          &:not([data-more-text=None]){
+            text-align: center;
+          }
+          span:not(.sub-menu span):not(.menu-item--more span):not(.menu-item--more span):not([data-more-text=None] span) {
             text-wrap: nowrap;
           }
         }

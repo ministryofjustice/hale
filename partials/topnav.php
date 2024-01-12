@@ -15,6 +15,13 @@
 
 $show_header_menu = get_theme_mod('show_header_menu', 'yes');
 if ($show_header_menu == 'yes') {
+    $show_more_button = get_theme_mod('show_header_menu_more_button', 'yes');
+    if ($show_more_button == 'yes') {
+        $more_text = __("More","hale");
+    } else {
+        $more_text = "None";
+    }
+
     $menu_locations = get_nav_menu_locations(); // Get our nav locations (set in our theme, usually functions.php).
 
     $topmenu_args = array(
@@ -37,7 +44,7 @@ if ($show_header_menu == 'yes') {
         'item_spacing' => 'preserve',
     );
     ?>
-    <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" data-more-text="<?php _e("More","hale"); ?>">
+    <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" data-more-text="<?php echo $more_text ?>">
         <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu" hidden>Menu</button>
         <?php
         wp_nav_menu($topmenu_args);

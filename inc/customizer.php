@@ -39,10 +39,10 @@ function hale_customize_register( $wp_customize ) {
 	}
 
 	/*
-	 * ------------------------------------------------------------
-	 * SECTION: Header
-	 * ------------------------------------------------------------
-	 */
+	* ------------------------------------------------------------
+	* SECTION: Header
+	* ------------------------------------------------------------
+	*/
 	$wp_customize->add_section(
 		'section_header',
 		array(
@@ -53,10 +53,10 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	/*
-	 * -----------------------------------------------------------
-	 * SHOW / HIDE Search
-	 * -----------------------------------------------------------
-	 */
+	* -----------------------------------------------------------
+	* SHOW / HIDE Search
+	* -----------------------------------------------------------
+	*/
 	$wp_customize->add_setting(
 		'show_search',
 		array(
@@ -78,140 +78,171 @@ function hale_customize_register( $wp_customize ) {
 		)
 	);
 
-    /*
-   * -----------------------------------------------------------
-   * SHOW / HIDE Main Menu
-   * -----------------------------------------------------------
-   */
-    $wp_customize->add_setting(
-        'show_header_menu',
-        array(
-            'default'           => 'yes',
-            'sanitize_callback' => 'hale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'show_header_menu',
-        array(
-            'label'       => esc_html__( 'Show Menu?', 'hale' ),
-            'description' => esc_html__( 'Would you like to show the main menu in the header?', 'hale' ),
-            'section'     => 'section_header',
-            'type'        => 'radio',
-            'choices'     => array(
-                'yes' => esc_html__( 'Yes', 'hale' ),
-                'no'  => esc_html__( 'No', 'hale' ),
-            ),
-        )
-    );
-
-    /*
-     * -----------------------------------------------------------
-     * SHOW / HIDE Breadcrumb
-     * -----------------------------------------------------------
-     */
-    $wp_customize->add_setting(
-        'show_breadcrumb',
-        array(
-            'default'           => 'yes',
-            'sanitize_callback' => 'hale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'show_breadcrumb',
-        array(
-            'label'       => esc_html__( 'Show Breadcrumb?', 'hale' ),
-            'description' => esc_html__( 'Would you like to show the breadcrumb section on the site?', 'hale' ),
-            'section'     => 'section_header',
-            'type'        => 'radio',
-            'choices'     => array(
-                'yes' => esc_html__( 'Yes', 'hale' ),
-                'no'  => esc_html__( 'No', 'hale' ),
-            ),
-        )
-    );
-
-    /*
-        Show/Hide Site Name or Logo
-    */
-    $wp_customize->add_setting(
-        'logo_configuration',
-        array(
-            'default'           => 'both',
-            'sanitize_callback' => 'hale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'logo_configuration',
-        array(
-            'label'       => esc_html__( 'Show Logo and Site Name?', 'hale' ),
-            'description' => esc_html__( 'Would you like to show a logo and/or the site name in the header?', 'hale' ),
-            'section'     => 'title_tagline',
-            'type'        => 'radio',
-            'choices'     => array(
-                'both' => esc_html__( 'Logo and site name', 'hale' ),
-                'logo' => esc_html__( 'Logo only', 'hale' ),
-                'name' => esc_html__( 'Site name only', 'hale' ),
-                'no'  => esc_html__( 'Neither', 'hale' ),
-            ),
-        )
-    );
-
-    /*
-    * Logo/Sitename Has Link?
-    */
-    $wp_customize->add_setting(
-        'logo_has_link',
-        array(
-            'default'           => 'yes',
-            'sanitize_callback' => 'hale_sanitize_select',
-        )
-    );
-    $wp_customize->add_control(
-        'logo_has_link',
-        array(
-            'label'       => esc_html__( 'Logo/Site Name Link?', 'hale' ),
-            'description' => esc_html__( 'Would you like the site name and/or logo to be a link? You can set a custom link or the default link is to the homepage.', 'hale' ),
-            'section'     => 'title_tagline',
-            'type'        => 'radio',
-            'active_callback' => function () use ( $wp_customize ) {
-                return 'no' !== $wp_customize->get_setting( 'logo_configuration' )->value();
-            },
-            'choices'     => array(
-                'yes' => esc_html__( 'Yes', 'hale' ),
-                'no'  => esc_html__( 'No', 'hale' ),
-            ),
-        )
-    );
-
-    /*
-     * Logo/Site name custom link
-     */
-    $wp_customize->add_setting(
-        'logo_custom_link',
-        array(
-            'sanitize_callback' => 'hale_sanitize_nohtml',
-        )
-    );
-
-    $wp_customize->add_control(
-        'logo_custom_link',
-        array(
-            'label'           => esc_html__( 'Logo/Site Name custom link', 'hale' ),
-            'description' => esc_html__( 'Link defaults to homepage if it is not set', 'hale' ),
-            'section'         => 'title_tagline',
-            'type'            => 'text',
-            'active_callback' => function () use ( $wp_customize ) {
-                return (
-                    ( $wp_customize->get_setting('logo_has_link')->value() === 'yes' ) &&
-                    ( $wp_customize->get_setting('logo_configuration')->value() !== 'no' )
-                );
-            },
-        )
-    );
+	/*
+	* -----------------------------------------------------------
+	* SHOW / HIDE Main Menu
+	* -----------------------------------------------------------
+	*/
+	$wp_customize->add_setting(
+		'show_header_menu',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'show_header_menu',
+		array(
+			'label'       => esc_html__( 'Show Menu?', 'hale' ),
+			'description' => esc_html__( 'Would you like to show the main menu in the header?', 'hale' ),
+			'section'     => 'section_header',
+			'type'        => 'radio',
+			'choices'     => array(
+				'yes' => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
 
 	/*
-	 * Crown Copyright
-	 */
+	* -----------------------------------------------------------
+	* Activate Main Menu More Button
+	* -----------------------------------------------------------
+	*/
+	$wp_customize->add_setting(
+		'show_header_menu_more_button',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'show_header_menu_more_button',
+		array(
+			'label'       => esc_html__( 'Overflow menu hidden in "More" button', 'hale' ),
+			'description' => esc_html__( 'Do you want items which do not fit in the main menu to be accessed via a More button?', 'hale' ),
+			'section'     => 'section_header',
+			'type'        => 'radio',
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					( $wp_customize->get_setting('show_header_menu')->value() === 'yes' )
+				);
+			},
+			'choices'     => array(
+				'yes' => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
+
+	/*
+	* -----------------------------------------------------------
+	* SHOW / HIDE Breadcrumb
+	* -----------------------------------------------------------
+	*/
+	$wp_customize->add_setting(
+		'show_breadcrumb',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'show_breadcrumb',
+		array(
+			'label'       => esc_html__( 'Show Breadcrumb?', 'hale' ),
+			'description' => esc_html__( 'Would you like to show the breadcrumb section on the site?', 'hale' ),
+			'section'     => 'section_header',
+			'type'        => 'radio',
+			'choices'     => array(
+				'yes' => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
+
+	/*
+		Show/Hide Site Name or Logo
+	*/
+	$wp_customize->add_setting(
+		'logo_configuration',
+		array(
+			'default'           => 'both',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'logo_configuration',
+		array(
+			'label'       => esc_html__( 'Show Logo and Site Name?', 'hale' ),
+			'description' => esc_html__( 'Would you like to show a logo and/or the site name in the header?', 'hale' ),
+			'section'     => 'title_tagline',
+			'type'        => 'radio',
+			'choices'     => array(
+				'both' => esc_html__( 'Logo and site name', 'hale' ),
+				'logo' => esc_html__( 'Logo only', 'hale' ),
+				'name' => esc_html__( 'Site name only', 'hale' ),
+				'no'  => esc_html__( 'Neither', 'hale' ),
+			),
+		)
+	);
+
+	/*
+	* Logo/Sitename Has Link?
+	*/
+	$wp_customize->add_setting(
+		'logo_has_link',
+		array(
+			'default'           => 'yes',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'logo_has_link',
+		array(
+			'label'       => esc_html__( 'Logo/Site Name Link?', 'hale' ),
+			'description' => esc_html__( 'Would you like the site name and/or logo to be a link? You can set a custom link or the default link is to the homepage.', 'hale' ),
+			'section'     => 'title_tagline',
+			'type'        => 'radio',
+			'active_callback' => function () use ( $wp_customize ) {
+				return 'no' !== $wp_customize->get_setting( 'logo_configuration' )->value();
+			},
+			'choices'     => array(
+				'yes' => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
+
+	/*
+	* Logo/Site name custom link
+	*/
+	$wp_customize->add_setting(
+		'logo_custom_link',
+		array(
+			'sanitize_callback' => 'hale_sanitize_nohtml',
+		)
+	);
+
+	$wp_customize->add_control(
+		'logo_custom_link',
+		array(
+			'label'           => esc_html__( 'Logo/Site Name custom link', 'hale' ),
+			'description' => esc_html__( 'Link defaults to homepage if it is not set', 'hale' ),
+			'section'         => 'title_tagline',
+			'type'            => 'text',
+			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					( $wp_customize->get_setting('logo_has_link')->value() === 'yes' ) &&
+					( $wp_customize->get_setting('logo_configuration')->value() !== 'no' )
+				);
+			},
+		)
+	);
+
+	/*
+	* Crown Copyright
+	*/
 	$wp_customize->add_setting(
 		'crown_copyright',
 		array(
@@ -221,22 +252,22 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-      'crown_copyright',
-      array(
-          'label'       => esc_html__( 'Copyright', 'hale' ),
-          'description' => esc_html__( 'Is the content Crown Copyright', 'hale' ),
-          'section'     => 'title_tagline',
-          'type'        => 'radio',
-          'choices'     => array(
-              'yes'   => esc_html__( 'Yes', 'hale' ),
-              'no' => esc_html__( 'No', 'hale' ),
-          ),
-      )
-  );
+	'crown_copyright',
+	array(
+		'label'       => esc_html__( 'Copyright', 'hale' ),
+		'description' => esc_html__( 'Is the content Crown Copyright', 'hale' ),
+		'section'     => 'title_tagline',
+		'type'        => 'radio',
+		'choices'     => array(
+			'yes'   => esc_html__( 'Yes', 'hale' ),
+			'no' => esc_html__( 'No', 'hale' ),
+		),
+	)
+);
 
 	/*
-	 * Show Organisation Name? (if not Crown Copyright and no text in logo)
-	 */
+	* Show Organisation Name? (if not Crown Copyright and no text in logo)
+	*/
 	$wp_customize->add_setting(
 		'org_name_checkbox',
 		array(
@@ -349,10 +380,10 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	/*
-	 * -----------------------------------------------------------
-	 * Theme colour chooser
-	 * -----------------------------------------------------------
-	 */
+	* -----------------------------------------------------------
+	* Theme colour chooser
+	* -----------------------------------------------------------
+	*/
 	if( current_user_can('administrator') ) {
 		$wp_customize->add_setting(
 			'gds_style_tickbox',
@@ -496,10 +527,10 @@ function hale_customize_register( $wp_customize ) {
 	}
 
 	/*
-	 * ------------------------------------------------------------
-	 * SECTION: Links
-	 * ------------------------------------------------------------
-	 */
+	* ------------------------------------------------------------
+	* SECTION: Links
+	* ------------------------------------------------------------
+	*/
 	$wp_customize->add_section(
 		'section_links',
 		array(
@@ -510,8 +541,8 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	/*
-	 * Display Featured image on post / page?
-	 */
+	* Display Featured image on post / page?
+	*/
 	$wp_customize->add_setting(
 		'link_new_tab_text',
 		array(
@@ -534,10 +565,10 @@ function hale_customize_register( $wp_customize ) {
 
 
 	/*
-	 * ------------------------------------------------------------
-	 * SECTION: Layout
-	 * ------------------------------------------------------------
-	 */
+	* ------------------------------------------------------------
+	* SECTION: Layout
+	* ------------------------------------------------------------
+	*/
 	$wp_customize->add_section(
 		'section_layout',
 		array(
@@ -548,8 +579,8 @@ function hale_customize_register( $wp_customize ) {
 	);
 
 	/*
-	 * Display Featured image on post / page?
-	 */
+	* Display Featured image on post / page?
+	*/
 	$wp_customize->add_setting(
 		'featured_img_display',
 		array(
@@ -738,7 +769,7 @@ function hale_add_blog_settings( $wp_customize ) {
 		)
 	);
 
-    $wp_customize->remove_control( 'custom_css' );
+	$wp_customize->remove_control( 'custom_css' );
 }
 
 add_action( 'customize_register', 'hale_add_blog_settings' );
@@ -791,47 +822,47 @@ add_action( 'customize_register', 'hale_add_typography_settings' );
 
 function hale_add_typography_settings( $wp_customize )
 {
-    $wp_customize->add_section(
-        'typography_panel',
-        array(
-            'title' => esc_html__('Typography', 'hale'),
-            'description' => esc_html__('Typography settings', 'hale'),
-            'capability' => 'edit_theme_options',
-            'theme-supports' => '',
-            'priority' => '151',
-        )
-    );
+	$wp_customize->add_section(
+		'typography_panel',
+		array(
+			'title' => esc_html__('Typography', 'hale'),
+			'description' => esc_html__('Typography settings', 'hale'),
+			'capability' => 'edit_theme_options',
+			'theme-supports' => '',
+			'priority' => '151',
+		)
+	);
 
 
-    $wp_customize->add_setting(
-    // $id
-        'primary_font',
-        // $args
-        array(
-            'default'           => 'true',
-            'type'              => 'theme_mod',
-            'capability'        => 'edit_theme_options',
-            'sanitize_callback' => 'hale_sanitize_select',
-        )
-    );
+	$wp_customize->add_setting(
+	// $id
+		'primary_font',
+		// $args
+		array(
+			'default'           => 'true',
+			'type'              => 'theme_mod',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
 
 
-    $wp_customize->add_control(
-    // $id
-        'primary_font',
-        // $args
-        array(
-            'settings'    => 'primary_font',
-            'section'     => 'typography_panel',
-            'type'        => 'select',
-            'label'       => esc_html__( 'Primary Font', 'hale' ),
-            'description' => esc_html__( 'Main font used on headings and text', 'hale' ),
-            'choices'     => array(
-                'frutiger'  => esc_html__( 'Frutiger', 'hale' ),
-                'pt-sans' => esc_html__( 'PT Sans', 'hale' ),
-            ),
-        )
-    );
+	$wp_customize->add_control(
+	// $id
+		'primary_font',
+		// $args
+		array(
+			'settings'    => 'primary_font',
+			'section'     => 'typography_panel',
+			'type'        => 'select',
+			'label'       => esc_html__( 'Primary Font', 'hale' ),
+			'description' => esc_html__( 'Main font used on headings and text', 'hale' ),
+			'choices'     => array(
+				'frutiger'  => esc_html__( 'Frutiger', 'hale' ),
+				'pt-sans' => esc_html__( 'PT Sans', 'hale' ),
+			),
+		)
+	);
 
 
 }
@@ -842,204 +873,204 @@ add_action( 'customize_register', 'hale_add_blocks_settings' );
 function hale_add_blocks_settings( $wp_customize )
 {
 
-    if( current_user_can('administrator') ) {
+	if( current_user_can('administrator') ) {
 
-        $wp_customize->add_panel(
-            'blocks_panel',
-            array(
-                'title' => esc_html__('CPTs and Blocks', 'hale'),
-                'description' => esc_html__('CPTs and Blocks settings', 'hale'),
-                'capability' => 'edit_theme_options',
-                'theme-supports' => '',
-                'priority' => '151',
-            )
-        );
+		$wp_customize->add_panel(
+			'blocks_panel',
+			array(
+				'title' => esc_html__('CPTs and Blocks', 'hale'),
+				'description' => esc_html__('CPTs and Blocks settings', 'hale'),
+				'capability' => 'edit_theme_options',
+				'theme-supports' => '',
+				'priority' => '151',
+			)
+		);
 
-        /* Blocks Settings */
+		/* Blocks Settings */
 
-        $wp_customize->add_section(
-            'blocks_settings',
-            array(
-                'title' => esc_html__('Blocks', 'hale'),
-                'description' => esc_html__('Blocks settings', 'hale'),
-                'capability' => 'edit_theme_options',
-                'theme-supports' => '',
-                'priority' => '160',
-                'panel' => 'blocks_panel'
-            )
-        );
+		$wp_customize->add_section(
+			'blocks_settings',
+			array(
+				'title' => esc_html__('Blocks', 'hale'),
+				'description' => esc_html__('Blocks settings', 'hale'),
+				'capability' => 'edit_theme_options',
+				'theme-supports' => '',
+				'priority' => '160',
+				'panel' => 'blocks_panel'
+			)
+		);
 
-        /*
-        *  Restrict Blocks Settings
-        */
-        $wp_customize->add_setting(
-            'restrict_blocks',
-            array(
-                'default' => 1,
-            )
-        );
+		/*
+		*  Restrict Blocks Settings
+		*/
+		$wp_customize->add_setting(
+			'restrict_blocks',
+			array(
+				'default' => 1,
+			)
+		);
 
-       $wp_customize->add_control(
-            'restrict_blocks',
-            array(
-                'label' => esc_html__('Restrict Blocks', 'hale'),
-                'description' => esc_html__('Hides some core Wordpress blocks that are not currently compatible with Hale theme', 'hale'),
-                'section' => 'blocks_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-            )
-        );
+	$wp_customize->add_control(
+			'restrict_blocks',
+			array(
+				'label' => esc_html__('Restrict Blocks', 'hale'),
+				'description' => esc_html__('Hides some core Wordpress blocks that are not currently compatible with Hale theme', 'hale'),
+				'section' => 'blocks_settings',
+				'priority' => '100',
+				'type' => 'radio',
+				'choices' => array(
+					1 => esc_html__('On', 'hale'),
+					0 => esc_html__('Off', 'hale'),
+				),
+			)
+		);
 
-        /* Documents CPT Settings */
+		/* Documents CPT Settings */
 
-        $wp_customize->add_section(
-            'documents_cpt_settings',
-            array(
-                'title' => esc_html__('Documents', 'hale'),
-                'description' => esc_html__('Document CPT settings', 'hale'),
-                'capability' => 'edit_theme_options',
-                'theme-supports' => '',
-                'priority' => '160',
-                'panel' => 'blocks_panel'
-            )
-        );
+		$wp_customize->add_section(
+			'documents_cpt_settings',
+			array(
+				'title' => esc_html__('Documents', 'hale'),
+				'description' => esc_html__('Document CPT settings', 'hale'),
+				'capability' => 'edit_theme_options',
+				'theme-supports' => '',
+				'priority' => '160',
+				'panel' => 'blocks_panel'
+			)
+		);
 
-        $wp_customize->add_setting(
-            'cpt_documents_activated',
-            array(
-                'default' => 0,
-            )
-        );
+		$wp_customize->add_setting(
+			'cpt_documents_activated',
+			array(
+				'default' => 0,
+			)
+		);
 
-        $wp_customize->add_control(
-            'cpt_documents_activated',
-            array(
-                'label' => esc_html__('Documents', 'hale'),
-                'section' => 'documents_cpt_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-            )
-        );
+		$wp_customize->add_control(
+			'cpt_documents_activated',
+			array(
+				'label' => esc_html__('Documents', 'hale'),
+				'section' => 'documents_cpt_settings',
+				'priority' => '100',
+				'type' => 'radio',
+				'choices' => array(
+					1 => esc_html__('On', 'hale'),
+					0 => esc_html__('Off', 'hale'),
+				),
+			)
+		);
 
-        $wp_customize->add_setting(
-            'tax_document_category_activated',
-            array(
-                'default' => 0,
-            )
-        );
+		$wp_customize->add_setting(
+			'tax_document_category_activated',
+			array(
+				'default' => 0,
+			)
+		);
 
-        $wp_customize->add_control(
-            'tax_document_category_activated',
-            array(
-                'label' => esc_html__('Document Category Taxonomy', 'hale'),
-                'section' => 'documents_cpt_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-                'active_callback' => function () use ($wp_customize) {
-                    return (
-                    ($wp_customize->get_setting('cpt_documents_activated')->value() == true)
-                    );
-                },
-            )
-        );
+		$wp_customize->add_control(
+			'tax_document_category_activated',
+			array(
+				'label' => esc_html__('Document Category Taxonomy', 'hale'),
+				'section' => 'documents_cpt_settings',
+				'priority' => '100',
+				'type' => 'radio',
+				'choices' => array(
+					1 => esc_html__('On', 'hale'),
+					0 => esc_html__('Off', 'hale'),
+				),
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('cpt_documents_activated')->value() == true)
+					);
+				},
+			)
+		);
 
-        $wp_customize->add_setting(
-            'tax_document_type_activated',
-            array(
-                'default' => 0,
-            )
-        );
+		$wp_customize->add_setting(
+			'tax_document_type_activated',
+			array(
+				'default' => 0,
+			)
+		);
 
-        $wp_customize->add_control(
-            'tax_document_type_activated',
-            array(
-                'label' => esc_html__('Document Type Taxonomy', 'hale'),
-                'section' => 'documents_cpt_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-                'active_callback' => function () use ($wp_customize) {
-                    return (
-                    ($wp_customize->get_setting('cpt_documents_activated')->value() == true)
-                    );
-                },
-            )
-        );
+		$wp_customize->add_control(
+			'tax_document_type_activated',
+			array(
+				'label' => esc_html__('Document Type Taxonomy', 'hale'),
+				'section' => 'documents_cpt_settings',
+				'priority' => '100',
+				'type' => 'radio',
+				'choices' => array(
+					1 => esc_html__('On', 'hale'),
+					0 => esc_html__('Off', 'hale'),
+				),
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('cpt_documents_activated')->value() == true)
+					);
+				},
+			)
+		);
 
-        $wp_customize->add_setting(
-            'tax_document_location_activated',
-            array(
-                'default' => 0,
-            )
-        );
+		$wp_customize->add_setting(
+			'tax_document_location_activated',
+			array(
+				'default' => 0,
+			)
+		);
 
-        $wp_customize->add_control(
-            'tax_document_location_activated',
-            array(
-                'label' => esc_html__('Document Location Taxonomy', 'hale'),
-                'section' => 'documents_cpt_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-                'active_callback' => function () use ($wp_customize) {
-                    return (
-                    ($wp_customize->get_setting('cpt_documents_activated')->value() == true)
-                    );
-                },
-            )
-        );
-        /* News CPT Settings */
+		$wp_customize->add_control(
+			'tax_document_location_activated',
+			array(
+				'label' => esc_html__('Document Location Taxonomy', 'hale'),
+				'section' => 'documents_cpt_settings',
+				'priority' => '100',
+				'type' => 'radio',
+				'choices' => array(
+					1 => esc_html__('On', 'hale'),
+					0 => esc_html__('Off', 'hale'),
+				),
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('cpt_documents_activated')->value() == true)
+					);
+				},
+			)
+		);
+		/* News CPT Settings */
 
-        $wp_customize->add_section(
-            'news_cpt_settings',
-            array(
-                'title' => esc_html__('News Stories', 'hale'),
-                'description' => esc_html__('News Stories CPT settings', 'hale'),
-                'capability' => 'edit_theme_options',
-                'theme-supports' => '',
-                'priority' => '160',
-                'panel' => 'blocks_panel'
-            )
-        );
+		$wp_customize->add_section(
+			'news_cpt_settings',
+			array(
+				'title' => esc_html__('News Stories', 'hale'),
+				'description' => esc_html__('News Stories CPT settings', 'hale'),
+				'capability' => 'edit_theme_options',
+				'theme-supports' => '',
+				'priority' => '160',
+				'panel' => 'blocks_panel'
+			)
+		);
 
-        $wp_customize->add_setting(
-            'cpt_news_activated',
-            array(
-                'default' => 0,
-            )
-        );
+		$wp_customize->add_setting(
+			'cpt_news_activated',
+			array(
+				'default' => 0,
+			)
+		);
 
-        $wp_customize->add_control(
-            'cpt_news_activated',
-            array(
-                'label' => esc_html__('News Stories', 'hale'),
-                'section' => 'news_cpt_settings',
-                'priority' => '100',
-                'type' => 'radio',
-                'choices' => array(
-                    1 => esc_html__('On', 'hale'),
-                    0 => esc_html__('Off', 'hale'),
-                ),
-            )
-        );
+		$wp_customize->add_control(
+			'cpt_news_activated',
+			array(
+				'label' => esc_html__('News Stories', 'hale'),
+				'section' => 'news_cpt_settings',
+				'priority' => '100',
+				'type' => 'radio',
+				'choices' => array(
+					1 => esc_html__('On', 'hale'),
+					0 => esc_html__('Off', 'hale'),
+				),
+			)
+		);
 
 
 		/* Decision CPT Settings */
@@ -1076,5 +1107,5 @@ function hale_add_blocks_settings( $wp_customize )
 				),
 			)
 		);
-    }
+	}
 }
