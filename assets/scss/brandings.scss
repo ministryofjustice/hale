@@ -517,6 +517,10 @@
 						>li.menu-item {
 							border-bottom-color: var(--header-submenu-link);
 
+							> a:not(:focus) {
+								box-shadow: 0 13px 0 -12px var(--header-submenu-bg), 0 14px 0 -12px var(--header-submenu-link);
+							}
+
 							// we need to make the following declarations to override the existing very specific declarations above
 							&:not(.current-menu-ancestor):not(.current-menu-item), //normal parents not currently "current"
 							&.current-menu-item, //parents which are the current page

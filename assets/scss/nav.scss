@@ -105,7 +105,7 @@
               bottom: 0px;
               left:0;
               width: 100%;
-              height: 1px;
+              height: 3px;
               z-index: 3;
             }
 
@@ -117,7 +117,7 @@
               padding: 0.3rem 0;
               min-width: 200px;
               max-width: 200px;
-              border-bottom-width: 1px;
+              border-bottom-width: 3px;
               border-bottom-style: solid;
               margin-top:6px;
               
@@ -186,6 +186,10 @@
           @include govuk-media-query($from: desktop) {
             min-height: 40px;
             height: auto;
+
+            &:is([data-more-text=None] *){
+              text-align: center;
+            }
           }
           &:before {
             display:block;
@@ -194,9 +198,6 @@
             height:calc(100% + 4px);
             left:0;
             top:0;
-          }
-          &:not([data-more-text=None]){
-            text-align: center;
           }
           span:is(.js-enabled span):not(.sub-menu span):not(.menu-item--more span):not(.menu-item--more span):not([data-more-text=None] span) {
             text-wrap: nowrap;
@@ -369,6 +370,14 @@
           list-style: none;
           display: none;
           min-width: 100%;
+
+          &:not(.js-enabled .sub-menu) {
+            // ensure submenu visible when no JS
+            @include govuk-media-query($until: desktop) {
+              // display none if on deskop, even without JS
+              display: block;
+            }
+          }
 
           li {
             border-bottom: 0;
