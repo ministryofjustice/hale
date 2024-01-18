@@ -8,6 +8,13 @@ $govuk-font-family: 'PT Sans', sans-serif;
 //Overrides
 
 .hale-page {
+
+  .govuk-body,
+  .govuk-body-m {
+    line-height: 1.33; // Needed for PT Sans font (otherwise links might chop off bits when focussed)
+  }
+
+
   body {
     //the full width cover images go slightly off the pagem this is the easiest fix.
     overflow-x: hidden;
