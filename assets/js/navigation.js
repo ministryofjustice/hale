@@ -156,7 +156,9 @@ function navBarOptimization() {
 	if (moreText == "None") return;
 	const moreTextWidth = moreText.length;
 	const headerNav = document.getElementById("menu-menu-top-menu");
+	if (!headerNav) return;
 	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
+	if (!nav || nav.length === 0) return;
 	const navMaxWidth = headerNav.getBoundingClientRect()["width"];
 	const navMaxWidthWithMore = navMaxWidth - (moreTextWidth * 16 + 25);
 	// about 90px to allow space for the More button
