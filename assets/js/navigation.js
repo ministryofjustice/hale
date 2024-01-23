@@ -167,23 +167,31 @@ function navBarOptimization() {
 
 	let allMenuItemsWidth = 0;
 
-	if (window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display == "none") {
+	const isMoreButtonDisabled = window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display === "none";
+
+	if (isMoreButtonDisabled) {
 		// the menu button is hidden = not mobile view
-		if (document.getElementById("more-link") != null) document.getElementById("more-link").remove();
-		for (i=0;i<nav.length;i++) {
-			let thisMenuItemWidth = nav[i].getBoundingClientRect()["width"];
+
+		const existingMoreLink = document.getElementById("more-link");
+		if (existingMoreLink) existingMoreLink.remove();
+
+		for (var i = 0; i < nav.length; i++) {
+			const thisMenuItemWidth = nav[i].getBoundingClientRect().width;
 			allMenuItemsWidth += thisMenuItemWidth;
+
 			if (
 				allMenuItemsWidth > navMaxWidth ||
 				( allMenuItemsWidth > navMaxWidthWithMore && i < nav.length - 1)
 			) {
-				let moreLink = document.createElement("li");
+				const moreLink = document.createElement("li");
 				moreLink.innerHTML = '<button>'+ moreText +'</button><ul class="menu-item--more__content"></ul>';
 				moreLink.setAttribute("id","more-link");
-				moreLink.classList.add("menu-item");
-				moreLink.classList.add("menu-item--more");
-				moreLink.querySelector("button").classList.add("menu-item__more");
-				moreLink.querySelector("button").setAttribute("aria-expanded","false");
+				moreLink.classList.add("menu-item", "menu-item--more");
+
+				const moreButton = moreLink.querySelector("button");
+				moreButton.classList.add("menu-item__more");
+				moreButton.setAttribute("aria-expanded","false");
+
 				headerNav.insertBefore(moreLink,nav[i]);
 				break; // Loop continues below
 			}
@@ -197,7 +205,7 @@ function navBarOptimization() {
 		if (moreButton) {
 			
 			// Move all overflow elements inside the more button
-			for (;i<nav.length;i++) {
+			for (/* i value from above */;i<nav.length;i++) {
 				// continued from above
 				let clonedNode = nav[i].cloneNode(true);
 				moreLinks.appendChild(clonedNode);
