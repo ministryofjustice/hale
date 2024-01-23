@@ -260,12 +260,12 @@ jQuery("#menu-menu-top-menu").ready(function( $ ) {
 
 jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
-	$(
-		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
-	).insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
-	$(
-		"<button class='hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
-	).insertBefore("#menu-menu-top-menu li.menu-item-has-children > a");
+
+	const $mobileSubMenuButton = $('<button class="hale-header__dropdown-arrow" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
+	const $desktopSubMenuButton = $('<button class="hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
+
+	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
+	$desktopSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > a");
 
 	//Keyboard functionailty (requires mouse functionality)
 	$(".hale-header__dropdown-arrow").keydown(function(e){
