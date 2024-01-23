@@ -135,7 +135,7 @@
  * Function to make a megamenu with clickable titles that expand blocks underneath. Its pretty awesome.
  * @param id - the name of the div to display on clicking the link.
  */
-function guideNavClick(id) {
+function guideNavClick(id, event) {
 	var others, i;
 	others = document.getElementsByClassName( "guides-nav__contents" );
 	event.preventDefault();
