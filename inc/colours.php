@@ -77,13 +77,13 @@
 			['header-submenu-bg',$black,'Secondary navigation background','Desktop only, header colour extends on mobile view',''],
 			['header-submenu-top-border',"transparent",'Secondary navigation dividing line','Leave blank for no line',''],
 			['header-submenu-link-mobile',$white,'Secondary navigation link text (mobile)','',''],
-			['header-submenu-link-mobile-current',$currentPageBlue,'Secondary navigation link text, current page (mobile)','',''],
+			['header-submenu-link-mobile-current',$currentPageBlue,'Secondary navigation link, current page text (mobile)','',''],
 			['header-submenu-link',$white,'Secondary navigation link text (desktop)','',''],
 			['header-submenu-link-hover',$white,'Secondary navigation link text on hover (desktop)','',''],
-			['header-submenu-link-current',$currentPageBlue,'Secondary navigation link text, current page','',''],
-			['header-submenu-link-current-bg',$black,'Secondary navigation link text, current page background','',''],
-			['header-submenu-link-current-border',$black,'Secondary navigation link text, current page underline','',''],
-			['header-submenu-link-current-hover-border',$currentPageBlue,'Secondary navigation link text, current page underline on hover','',''],
+			['header-submenu-link-current',$currentPageBlue,'Secondary navigation link, current page text','',''],
+			['header-submenu-link-current-bg',$black,'Secondary navigation link, current page background','',''],
+			['header-submenu-link-current-border',$black,'Secondary navigation link, current page underline','',''],
+			['header-submenu-link-current-hover-border',$currentPageBlue,'Secondary navigation link, current page underline on hover','',''],
 
 			//page
 			['title-shading',$white,'Page title background','',''],
