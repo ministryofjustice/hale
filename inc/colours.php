@@ -116,7 +116,7 @@
 			['mojblocks-accordion-section-title',$black,'Accordion section titles','',''],
 			['mojblocks-accordion-section-shew',$blue,'Accordion show/hide','',''],
 			['mojblocks-accordion-section-title-hover',$black,'Accordion section titles on hover','',''],
-			['mojblocks-accordion-section-shew-hover',$black,'Accordion show/hode on hover','',''],
+			['mojblocks-accordion-section-shew-hover',$black,'Accordion show/hide on hover','',''],
 			['mojblocks-accordion-section-item-hover-bg',$lightGrey,'Accordion section background on hover','',''],
 			['mojblocks-accordion-section-title-focus',$black,'Accordion section titles when focused','',''],
 			['mojblocks-accordion-section-shew-focus',$black,'Accordion show/hide when focused','',''],
