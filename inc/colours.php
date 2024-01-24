@@ -110,7 +110,6 @@
 			['button-focus',$yellow,'Button background when focused','',''],
 			['button-focus-text',$black,'Button text when focused','',''],
 			['button-focus-outline',$yellow,'Button outline when focused (including search button)','This is thicker than any set button border',''],
-			['button-active',$buttonHoverGreen,'Button background when active','',''],
 
 			//accordion - MoJ Blocks
 			['mojblocks-accordion-section-title',$black,'Accordion section titles','',''],
