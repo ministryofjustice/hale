@@ -133,7 +133,7 @@
 
 /**
  * navBarOptimization
- * Creates the more button and puts any overflow items into it.  
+ * Creates the more button and puts any overflow items into it.
  * Called (below) when page loads and when page is resized (including when mobile rotated)
  */
 
