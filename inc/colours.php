@@ -84,6 +84,7 @@
 			['header-submenu-link-current-bg',$black,'Secondary navigation link, current page background','',''],
 			['header-submenu-link-current-border',$black,'Secondary navigation link, current page underline','',''],
 			['header-submenu-link-current-hover-border',$currentPageBlue,'Secondary navigation link, current page underline on hover','',''],
+			['header-submenu-lock-focus',$yellow,'Border for the submenu when the keyboard focusses on the lock button','Desktop only, keyboard tabbing only',''],
 
 			//page
 			['title-shading',$white,'Page title background','',''],
