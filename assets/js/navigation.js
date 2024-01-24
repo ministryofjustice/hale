@@ -131,6 +131,12 @@
 
 } )();
 
+/**
+ * navBarOptimization
+ * Creates the more button and puts any overflow items into it.  
+ * Called (below) when page loads and when page is resized (including when mobile rotated)
+ */
+
 function navBarOptimization() {
 
 	const moreText = document.getElementById("header-navigation").getAttribute("data-more-text");
