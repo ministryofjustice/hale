@@ -2,9 +2,9 @@
 
 	function hale_get_colours() {
 		//defaults - GDS colours
-		$white = '#FFF';
+		$white = '#FFFFFF';
 		$black = '#0B0C0C';
-		$yellow = '#FD0';
+		$yellow = '#FFDD00';
 		$orange = '#F47738';
 		$red = '#D4351C';
 		$darkRed = '#942514';
