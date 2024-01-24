@@ -131,25 +131,6 @@
 
 } )();
 
-/**
- * Function to make a megamenu with clickable titles that expand blocks underneath. Its pretty awesome.
- * @param id - the name of the div to display on clicking the link.
- */
-function guideNavClick(id, event) {
-	var others, i;
-	others = document.getElementsByClassName( "guides-nav__contents" );
-	event.preventDefault();
-	for (i = 0; i < others.length; i++) {
-		others[i].style.display = "none";
-	}
-	var currentState = document.getElementById(id).style.display;
-	if ( currentState == "block" ) {
-		document.getElementById(id).style.display = "none";
-	} else {
-		document.getElementById(id).style.display = "block";
-	}
-}
-
 function navBarOptimization() {
 
 	const moreText = document.getElementById("header-navigation").getAttribute("data-more-text");
