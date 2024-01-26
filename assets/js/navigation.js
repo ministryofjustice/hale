@@ -150,6 +150,111 @@ function guideNavClick(id) {
 	}
 }
 
+function navBarOptimization() {
+
+	const headerNav = document.getElementById("menu-menu-top-menu");
+	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
+	const navMaxWidth = headerNav.getBoundingClientRect()["width"] - 90; //90px to allow space for the More button
+	let allMenuItemsWidth = 0;
+	
+	if (window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display == "none") {
+		// the menu button is hidden = not mobile view
+		if (document.getElementById("more-link") != null) document.getElementById("more-link").remove();
+		for (i=0;i<nav.length;i++) {
+			let thisMenuItemWidth = nav[i].getBoundingClientRect()["width"];
+			allMenuItemsWidth += thisMenuItemWidth;
+			if (allMenuItemsWidth > navMaxWidth) {
+				let moreLink = document.createElement("li");
+				moreLink.innerHTML = '<button>More</button><ul class="menu-item--more__content"></ul>';
+				moreLink.setAttribute("id","more-link");
+				moreLink.classList.add("menu-item");
+				moreLink.classList.add("menu-item--more");
+				moreLink.querySelector("button").classList.add("menu-item__more");
+				moreLink.querySelector("button").setAttribute("aria-expanded","false");
+				headerNav.insertBefore(moreLink,nav[i]);
+				break; // Loop continues below
+			}
+		}
+		
+		const moreContainer = headerNav.querySelector("#more-link");
+		const moreButton = moreContainer.querySelector("button");
+		const moreLinks = moreContainer.querySelector(".menu-item--more__content");
+		if (moreButton) {
+			
+			// Move all overflow elements inside the more button
+			for (;i<nav.length;i++) {
+				// continued from above
+				let clonedNode = nav[i].cloneNode(true);
+				moreLinks.appendChild(clonedNode);
+			//	clonedNode.querySelector("sub-menu").classList.replace("sub-menu","menu-item__sub-menu");
+			}
+			
+			
+			// Add click functionality to the more button
+			moreButton.addEventListener("click", (event) => {
+				console.log("Clicked");
+				let parent = moreButton.parentElement;
+				console.log(parent);
+
+				if (parent.classList.contains('menu-item--more--open')) {
+					parent.classList.remove("menu-item--more--open");
+					moreButton.setAttribute("aria-expanded","false");
+				} else {
+					// We close all open menus and remove the aria-expanded true value
+					headerNav.querySelectorAll("#menu-menu-top-menu li.sub-menu-open").forEach(element => {
+						element.classList.remove("sub-menu-open");
+						element.querySelectorAll("button").forEach(e => {
+							e.setAttribute("aria-expanded","false");
+						});
+					});
+					parent.classList.add("menu-item--more--open");
+					moreButton.setAttribute("aria-expanded","true");
+				}
+			});
+		} else {
+			console.log("xxx");
+		}
+
+	}
+	/*
+
+	***	Method 1 - adjusting the widths to deal with wrapped menu items
+
+	if(nav[0].getBoundingClientRect()["height"] > 50 && window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display == "none") {
+		// The text in the menu has wrapped, so we perform a little jiggery-pokery with the widths
+
+		// Convert to array and sort (so longest option is first to be broken)
+		var navArray = Array.prototype.slice.call(nav, 0);
+		navArray.sort(function(b, a){return a.innerText.length - b.innerText.length});
+
+		for (i=0;i<navArray.length;i++) {
+			if(navArray[i].innerText.split(" ").length == 1) navArray.splice(i, 1);
+		}
+		for (i=0;i<navArray.length;i++) {
+			console.log(navArray[i].innerText);
+		}
+		for (i=0;i<navArray.length;i++) {
+			navArray[i].style.width = null;
+			let textWidth = Math.ceil(navArray[i].querySelector("span").getBoundingClientRect()["width"]);
+			let itemLeftPadding = window.getComputedStyle(navArray[i]).getPropertyValue('padding-left');
+			let itemRightPadding = window.getComputedStyle(navArray[i]).getPropertyValue('padding-right');
+			navArray[i].style.width = "calc(" + itemLeftPadding + " + " + itemRightPadding + " + " + textWidth + "px)";
+		}
+	} else {
+		for (i=0;i<nav.length;i++) {
+			nav[i].style.width = null;
+		}
+	}
+	*/
+}
+
+jQuery("#menu-menu-top-menu").ready(function( $ ) {
+	navBarOptimization();
+	$(window).resize(function() {
+		navBarOptimization();
+	});
+});
+
 jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 	$(

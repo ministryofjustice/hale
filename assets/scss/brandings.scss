@@ -5,7 +5,7 @@
 @mixin hale-heading-link-underline-restrictor($colour, $width: desktop) {
 	@include govuk-media-query($from: $width) {
 		position:relative;
-
+		
 		&:before {
 			content:"";
 			border-right:15px solid var($colour);
@@ -208,7 +208,8 @@
 
 		.govuk-header__content {
 
-			.govuk-header__menu-button {
+			.govuk-header__menu-button,
+			.menu-item__more {
 
 				color: var(--header-link);
 
@@ -269,7 +270,8 @@
 					> a,
 					> a:visited,
 					> a:link,
-					> a:link:visited {
+					> a:link:visited,
+					.menu-item__more {
 						color: var(--header-link);
 
 						&:hover:focus {
@@ -470,6 +472,107 @@
 										border-bottom-color: var(--header-submenu-link-current-hover-border);
 
 										@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg, $width: desktop);
+									}
+								}
+							}
+						}
+					}
+				}
+				.menu-item--more {
+					.menu-item__more {
+						background-color: var(--header-bg);
+					}
+	
+					&__content {
+						background-color: var(--header-more-bg);
+						color: var(--header-more);
+
+						&:after {
+							background-color: var(--header-more-bg);
+						}
+	
+						.sub-menu{
+							background-color: inherit;
+							color: inherit;
+
+							li a {
+								&:link,
+								&:visited,
+								&:link:visited {
+									&:hover {
+										@include hale-heading-link-underline-restrictor($colour: --header-more-bg);
+										
+										&:focus {
+											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+										}
+									}
+								}
+							}
+						}
+						li {
+							border-bottom-color: var(--header-more);
+
+							>a,
+							>a:hover {
+								border-bottom-color: var(--header-more);
+
+								@include hale-heading-link-underline-restrictor($colour: --header-more-bg);
+								
+								&:focus {
+									box-shadow: 0 4px 0 0 var(--header-link-focus);
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+								}
+							}
+						}
+						>li.menu-item-has-children{
+							&:not(.current-menu-ancestor):not(.current-menu-item):hover {
+								a {
+									&:link,
+									&:visited,
+									&:link:visited {
+										&:not(:focus) {
+											background-color: inherit;
+											color: inherit;
+										}
+									}
+
+									@include hale-heading-link-underline-restrictor($colour: --header-more-bg);
+								}
+							}
+							&.current-menu-item,
+							.current-menu-item {
+								> a {
+									&:link,
+									&:visited,
+									&:link:visited {
+										&:not(:focus) {
+											background-color: var(--header-more-current-bg);
+											border-bottom-color: var(--header-more-current-bg);;
+											color: var(--header-more-current);
+										}
+										&:hover {
+											color: var(--header-more-current);
+										}
+
+										@include hale-heading-link-underline-restrictor($colour: --header-more-current-bg);
+									}
+								}
+							}
+							&.current-menu-ancestor {
+								> a {
+									&:link,
+									&:visited,
+									&:link:visited {
+										&:not(:focus) {
+											background-color: var(--header-more-ancestor-bg);
+											border-bottom-color: var(--header-more-ancestor-bg);;
+											color: var(--header-more-ancestor);
+
+											&:not(:hover),
+											&:hover {
+												@include hale-heading-link-underline-restrictor($colour: --header-more-ancestor-bg);
+											}
+										}
 									}
 								}
 							}
