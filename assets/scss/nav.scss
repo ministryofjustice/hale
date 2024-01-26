@@ -80,11 +80,6 @@
               .menu-item--more__content {
                 display: none;
             }
-            &:hover {
-              .menu-item--more__content {
-                display: flex;
-              }
-            }
             &--open {
               .menu-item__more:after {
                 transform: rotate(-135deg);
@@ -97,7 +92,7 @@
           }
           .menu-item--more__content {
             position: absolute;
-            right: 0;
+            right: -15px;
             max-width: 630px;
             z-index: 1;
             padding: 0 15px 0;

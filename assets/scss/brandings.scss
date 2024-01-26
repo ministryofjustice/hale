@@ -291,8 +291,8 @@
 							&--desktop {
 								color: var(--header-submenu-link);
 								background-color: var(--header-submenu-bg);
-								&:hover {
-									background-color: var(--header-link-focus-highlight);
+								&:focus ~ .sub-menu{
+									outline-color: var(--header-submenu-lock-focus);
 								}
 							}
 
