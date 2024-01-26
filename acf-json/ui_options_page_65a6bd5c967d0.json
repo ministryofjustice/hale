@@ -1,0 +1,22 @@
+{
+    "key": "ui_options_page_65a6bd5c967d0",
+    "title": "CPTs & Tax",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "CPTs & Tax",
+    "menu_slug": "cpts",
+    "parent_slug": "none",
+    "advanced_configuration": 0,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": 0,
+    "description": "",
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1705441296
+}
