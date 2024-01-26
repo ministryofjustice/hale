@@ -103,6 +103,8 @@
 			['link-focus',$black,'Link when focused','',''],
 			['link-focus-shadow',$black,'Link underline when focused','',''],
 			['link-focus-background',$yellow,'Link background when focused','',''],
+			['dark-link',$white,'Link colour, dark background','',''],
+			['dark-link-hover',$white,'Link on hover, dark background','',''],
 
 			//buttons
 			['button',$green,'Button background','',''],

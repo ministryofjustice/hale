@@ -51,7 +51,8 @@
 		p,
 		p:not([class]),
 		p[class=""],
-		li {
+		li,
+		label {
 			color:var(--text);
 		}
 		h1, h2, h3, h4, h5, h6 {
@@ -477,6 +478,10 @@
 			}
 		}
 	}
+	.news-story-count,
+	.news-story-published-date {
+		color: var(--text);
+	}
 	.news-story-category-link {
 		color: var(--tag-text);
 		background: var(--tag-bg);
@@ -510,31 +515,46 @@
 			}
 		}
 	}
-	.govuk-main-wrapper .govuk-link:link,
-	.govuk-main-wrapper a:link:not([class]),
-	.govuk-main-wrapper a[class="customize-unpreviewable"]:link, // for wordpress customizer
-	.gem-c-pagination__link:link {
-		color: var(--link);
+	.govuk-main-wrapper {
+		.govuk-link:link,
+		a:link:not([class]),
+		a[class="customize-unpreviewable"]:link, // for wordpress customizer
+		.gem-c-pagination__link:link {
+			color: var(--link);
 
-		&:hover:not(:focus) {
-			color: var(--link-hover);
+			&:hover:not(:focus) {
+				color: var(--link-hover);
+			}
+			&:focus {
+				color: var(--link-focus);
+			}
 		}
-		&:focus {
-			color: var(--link-focus);
+
+		.govuk-link:visited,
+		a:visited:not([class]),
+		.gem-c-pagination__link:visited {
+			color: var(--link-visited);
+
+			&:hover:not(:focus) {
+				color: var(--link-hover);
+			}
+			&:focus {
+				color: var(--link-focus);
+			}
 		}
-	}
+		.dark-background > {
+			.govuk-link:link,
+			a:link:not([class]),
+			a[class="customize-unpreviewable"]:link, // for wordpress customizer
+			.gem-c-pagination__link:link {
+				&:not(:focus){
+					color: var(--dark-link);
 
-	.govuk-main-wrapper .govuk-link:visited,
-	.govuk-main-wrapper a:visited:not([class]),
-	.gem-c-pagination__link:visited {
-
-		color: var(--link-visited);
-
-		&:hover:not(:focus) {
-			color: var(--link-hover);
-		}
-		&:focus {
-			color: var(--link-focus);
+					&:hover {
+						color: var(--dark-link-hover);
+					}
+				}
+			}
 		}
 	}
 }
@@ -645,6 +665,7 @@ html.hale-colours-variable {
 
 	}
 	.govuk-breadcrumbs__list-item {
+		color: var(--text);
 		max-width: 500px;
 		white-space: nowrap;
 		text-overflow: ellipsis;
