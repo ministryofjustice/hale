@@ -36,6 +36,10 @@
 			We can use this to add more options if needed
 		*/
 		$colour_array = array(
+			//main text
+			['text',$black,'Normal text','',''],
+			['heading-text',$black,'Heading level text','',''],
+
 			//header
 			['header-bg',$black,'Header background','',''],
 			['header-divider-line',$headerMenuLineGrey,'Header divider line','',''],
