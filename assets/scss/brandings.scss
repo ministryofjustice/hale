@@ -47,6 +47,18 @@
 * These styles are applied to all sites
 */
 * {
+	.govuk-main-wrapper {
+		p,
+		p:not([class]),
+		p[class=""],
+		li {
+			color:var(--text);
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color:var(--heading-text);
+		}
+	}
+
 	//style WP button block as GDS button
 	.wp-block-button__link:not(.govuk-button) {
 		@extend .govuk-button;
