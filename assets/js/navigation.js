@@ -189,6 +189,11 @@ function navBarOptimization() {
 			//	clonedNode.querySelector("sub-menu").classList.replace("sub-menu","menu-item__sub-menu");
 			}
 			
+			if (moreLinks.innerHTML.indexOf("current-menu-item") > 0) {
+				console.log("Index: ");
+				console.log(moreLinks.innerHTML.indexOf("current-menu-item"));
+				moreButton.classList.add("menu-item__more--contains-current");
+			}
 			
 			// Add click functionality to the more button
 			moreButton.addEventListener("click", (event) => {
@@ -211,8 +216,6 @@ function navBarOptimization() {
 					moreButton.setAttribute("aria-expanded","true");
 				}
 			});
-		} else {
-			console.log("xxx");
 		}
 
 	}

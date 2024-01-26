@@ -235,7 +235,7 @@
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
 
-				> .current-menu-item {
+				.current-menu-item {
 					> a,
 					> a:visited,
 					> a:link,
@@ -478,29 +478,49 @@
 						}
 					}
 				}
+				
 				.menu-item--more {
 					.menu-item__more {
 						background-color: var(--header-bg);
+
+						&--contains-current {
+							background-color: var(--header-link-ancestor-bg);
+							color: var(--header-link-ancestor);
+
+							&:hover {
+								color: var(--header-link-ancestor);
+								border-bottom-color:var(--header-link-ancestor-hover-border);
+
+								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+								&:focus {
+									border-bottom-color: currentColor;
+
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+								}
+							}
+
+							&:not(:hover) {
+								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+							}
+						}
 					}
 	
 					&__content {
-						background-color: var(--header-more-bg);
-						color: var(--header-more);
+						background-color: var(--header-submenu-bg);
+						color: var(--header-submenu-link);
 
 						&:after {
-							background-color: var(--header-more-bg);
+							background-color: var(--header-submenu-bg);
 						}
 	
-						.sub-menu{
-							background-color: inherit;
-							color: inherit;
-
+						.sub-menu {
 							li a {
 								&:link,
 								&:visited,
 								&:link:visited {
-									&:hover {
-										@include hale-heading-link-underline-restrictor($colour: --header-more-bg);
+									&:hover,
+									&:not(:hover) {
+										@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
 										
 										&:focus {
 											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
@@ -509,69 +529,43 @@
 								}
 							}
 						}
-						li {
-							border-bottom-color: var(--header-more);
+						>li.menu-item {
+							border-bottom-color: var(--header-submenu-link);
 
-							>a,
-							>a:hover {
-								border-bottom-color: var(--header-more);
+							// we need to make the following declarations to override the existing very specific declarations above
+							&:not(.current-menu-ancestor):not(.current-menu-item), //normal parents not currently "current"
+							&.current-menu-item, //parents which are the current page
+							.current-menu-item, //children which are the current page
+							&.current-menu-ancestor //parents of children which are the current page
+							{
+								//these styles are no longer dependent on hover status - but we need to declare both to override the above
+								&:hover,
+								&:not(:hover) {
 
-								@include hale-heading-link-underline-restrictor($colour: --header-more-bg);
-								
-								&:focus {
-									box-shadow: 0 4px 0 0 var(--header-link-focus);
-									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
-								}
-							}
-						}
-						>li.menu-item-has-children{
-							&:not(.current-menu-ancestor):not(.current-menu-item):hover {
-								a {
-									&:link,
-									&:visited,
-									&:link:visited {
-										&:not(:focus) {
-											background-color: inherit;
-											color: inherit;
+									background-color: var(--header-submenu-bg);
+
+									a {
+										&:link,
+										&:visited,
+										&:link:visited {
+											&:not(:focus) {
+												@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
+												border-bottom-color: var(--header-submenu-bg);
+											}
 										}
 									}
-
-									@include hale-heading-link-underline-restrictor($colour: --header-more-bg);
 								}
 							}
-							&.current-menu-item,
-							.current-menu-item {
-								> a {
-									&:link,
-									&:visited,
-									&:link:visited {
-										&:not(:focus) {
-											background-color: var(--header-more-current-bg);
-											border-bottom-color: var(--header-more-current-bg);;
-											color: var(--header-more-current);
+							&.current-menu-item a:not(:focus) {
+								&:link,
+								&:visited,
+								&:link:visited {
+									&:not(:focus) {
+										&:not(hover) {
+											border-bottom-color: var(--header-link-current-border);
 										}
 										&:hover {
-											color: var(--header-more-current);
-										}
-
-										@include hale-heading-link-underline-restrictor($colour: --header-more-current-bg);
-									}
-								}
-							}
-							&.current-menu-ancestor {
-								> a {
-									&:link,
-									&:visited,
-									&:link:visited {
-										&:not(:focus) {
-											background-color: var(--header-more-ancestor-bg);
-											border-bottom-color: var(--header-more-ancestor-bg);;
-											color: var(--header-more-ancestor);
-
-											&:not(:hover),
-											&:hover {
-												@include hale-heading-link-underline-restrictor($colour: --header-more-ancestor-bg);
-											}
+											border-bottom-color: var(--header-link-current-hover-border);
 										}
 									}
 								}
