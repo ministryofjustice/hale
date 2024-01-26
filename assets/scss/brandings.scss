@@ -542,7 +542,10 @@
 				color: var(--link-focus);
 			}
 		}
-		.dark-background > {
+		.has-black-background-color,
+		.has-dark-grey-background-color,
+		// As we have different colour options for each site the class "dark-background" is added by JavaScript
+		.dark-background {
 			.govuk-link:link,
 			a:link:not([class]),
 			a[class="customize-unpreviewable"]:link, // for wordpress customizer
