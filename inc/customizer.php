@@ -382,8 +382,8 @@ function hale_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			'colour_bar',
 			array(
-				'label' => esc_html__('Header bar colour', 'hale'),
-				'description' => esc_html__('Beneath the black header is a colour bar which can be a departmental or brand colour (#FFF for none)', 'hale'),
+				'label' => esc_html__('Header bar', 'hale'),
+				'description' => esc_html__('Beneath the black header is a bar that can be a brand colour (#FFFFFF for none)', 'hale'),
 				'section' => 'colors',
 				'type' => 'color',
 				'active_callback' => function () use ($wp_customize) {

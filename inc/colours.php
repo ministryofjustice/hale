@@ -2,9 +2,9 @@
 
 	function hale_get_colours() {
 		//defaults - GDS colours
-		$white = '#FFF';
+		$white = '#FFFFFF';
 		$black = '#0B0C0C';
-		$yellow = '#FD0';
+		$yellow = '#FFDD00';
 		$orange = '#F47738';
 		$red = '#D4351C';
 		$darkRed = '#942514';
@@ -38,167 +38,176 @@
 		$colour_array = array(
 			//header
 			['header-bg',$black,'Header background','',''],
-			['header-link',$white,'Header link','',''],
-			['header-link-hover',$white,'Header link hover','Only links without children',''],
-			['header-link-hover-border',$white,'Header link hover underline','Only links without children',''],
-			['header-link-hover-focus',$black,'Header link hover when focussed (mouse click)','',''],
-			['header-link-current',$currentPageBlue,'Header current page','Text if without children',''],
-			['header-link-current-bg',$black,'Header current page background','Background if without children',''],
-			['header-link-current-border',$black,'Header current page underline','Underline if without children',''],
-			['header-link-current-hover-border',$currentPageBlue,'Header current page hover underline','Hover underline if without children',''],
-			['header-link-focus',$black,'Header link focus','',''],
-			['header-link-focus-highlight',$yellow,'Header link focus highlight','',''],
-			['header-link-focus-underline',$black,'Header link focus underline','',''],
-			['header-link-with-children-hover',$white,'Header link with children hover text','',''],
-			['header-link-with-children-hover-bg',$black,'Header link with children hover background','',''],
-			['header-link-with-children-hover-border',"currentColor",'Header link with children hover underline','Leave blank to match text colour',''],
-			['header-link-ancestor',$currentPageBlue,'Ancestor link','Including current page if it has children',''],
-			['header-link-ancestor-bg',$black,'Ancestor background','',''],
-			['header-link-ancestor-hover-border',$currentPageBlue,'Ancestor hover underline','',''],
-			['header-divider-line',$headerMenuLineGrey,'Menu divider lines','',''],
-			['header-submenu-bg',$black,'Submenu background','Desktop only, narrow displays extend the main colour',''],
-			['header-submenu-top-border',"transparent",'Submenu dividing line','Leave blank for no line',''],
-			['header-submenu-link-mobile',$white,'Submenu link (mobile)','',''],
-			['header-submenu-link-mobile-current',$currentPageBlue,'Submenu link (mobile) current page','',''],
-			['header-submenu-link',$white,'Submenu link (desktop)','',''],
-			['header-submenu-link-hover',$white,'Submenu link (desktop) hover','',''],
-			['header-submenu-link-current',$currentPageBlue,'Submenu current page','',''],
-			['header-submenu-link-current-bg',$black,'Submenu current page background','',''],
-			['header-submenu-link-current-border',$black,'Submenu current page underline','',''],
-			['header-submenu-link-current-hover-border',$currentPageBlue,'Submenu current page hover underline','',''],
+			['header-divider-line',$headerMenuLineGrey,'Header divider line','',''],
+
+			//search
 			['header-search-input-bg',$white,'Search box background','',''],
 			['header-search-input-border',$white,'Search box border','',''],
-			['header-search-input-focus-bg',$white,'Search box focus background','',''],
-			['header-search-input-focus-border',$yellow,'Search box focus border','',''],
-			['header-search-input-active-bg',$white,'Search box active background','',''],
-			['header-search-input-active-border',$yellow,'Search box active border','',''],
+			['header-search-input-focus-bg',$white,'Search box background when focused','',''],
+			['header-search-input-focus-border',$yellow,'Search box border when focused','',''],
+			['header-search-input-active-bg',$white,'Search box background when active','',''],
+			['header-search-input-active-border',$yellow,'Search box border when active','',''],
 			['header-search-btn-bg',$lightGrey,'Search button background','',''],
 			['header-search-btn-icon',$black,'Search button icon','',''],
-			['header-search-btn-hover-bg',$buttonHoverGrey,'Search button hover background','',''],
-			['header-search-btn-hover-icon',$black,'Search button hover icon','',''],
-			['header-search-btn-focus-bg',$yellow,'Search button focus background','',''],
-			['header-search-btn-focus-icon',$black,'Search button focus icon','',''],
+			['header-search-btn-hover-bg',$buttonHoverGrey,'Search button background on hover','',''],
+			['header-search-btn-hover-icon',$black,'Search button icon on hover','',''],
+			['header-search-btn-focus-bg',$yellow,'Search button background when focused','',''],
+			['header-search-btn-focus-icon',$black,'Search button icon when focused','',''],
 
-			//Misc
-			['title-shading',$white,'Title shading','',''],
-			['cat-nav-arrows',$black,'Category navigation arrows','',''],
-			['pagination-border',$midGrey,'Pagination separating line','',''],
-			['error',$red,'Error colour','',''],
-			['error-link-hover',$darkRed,'Error link hover','',''],
+			//main site menu navigation
+			['header-link',$white,'Main navigation link text','',''],
+			['header-link-hover',$white,'Main navigation link text on hover','When there is no secondary navigation',''],
+			['header-link-hover-border',$white,'Main navigation link underline on hover','When there is no secondary navigation',''],
+			['header-link-hover-focus',$black,'Main navigation link text when focused, or on mouse click','',''],
+			['header-link-current',$currentPageBlue,'Main navigation link, current page text','When there is no secondary navigation',''],
+			['header-link-current-bg',$black,'Main navigation link, current page background','When there is no secondary navigation',''],
+			['header-link-current-border',$black,'Main navigation link, current page underline','When there is no secondary navigation',''],
+			['header-link-current-hover-border',$currentPageBlue,'Main navigation link, current page underline on hover','When there is no secondary navigation',''],
+			['header-link-focus',$black,'Main navigation link text when focused','',''],
+			['header-link-focus-highlight',$yellow,'Main navigation link background when focused','',''],
+			['header-link-focus-underline',$black,'Main navigation link underline when focused','',''],
+			['header-link-with-children-hover',$white,'Main navigation link text on hover','When there is secondary navigation',''],
+			['header-link-with-children-hover-bg',$black,'Main navigation link background on hover','When there is secondary navigation',''],
+			['header-link-with-children-hover-border',"currentColor",'Main navigation link text on hover','When there is secondary navigation',''],
+			['header-link-ancestor',$currentPageBlue,'Main navigation link text when on secondary navigation page','Including current page when there is secondary navigation',''],
+			['header-link-ancestor-bg',$black,'Main navigation link background when on secondary navigation page','Including current page when there is secondary navigation',''],
+			['header-link-ancestor-hover-border',$currentPageBlue,'Main navigation link hover underline when on secondary navigation page','',''],
 
-			//footer
-			['footer-border',$midGrey,'Footer border','',''],
-			['footer-background',$lightGrey,'Footer background','',''],
-			['footer-link',$black,'Footer link','',''],
-			['footer-link-focus',$black,'Footer link focus','',''],
-			['footer-link-focus-shadow',$black,'Footer link focus underline','',''],
-			['footer-link-focus-background',$yellow,'Footer link focus background','',''],
+			//secondary navigation menu
+			['header-submenu-bg',$black,'Secondary navigation background','Desktop only, header colour extends on mobile view',''],
+			['header-submenu-top-border',"transparent",'Secondary navigation dividing line','Leave blank for no line',''],
+			['header-submenu-link-mobile',$white,'Secondary navigation link text (mobile)','',''],
+			['header-submenu-link-mobile-current',$currentPageBlue,'Secondary navigation link, current page text (mobile)','',''],
+			['header-submenu-link',$white,'Secondary navigation link text (desktop)','',''],
+			['header-submenu-link-hover',$white,'Secondary navigation link text on hover (desktop)','',''],
+			['header-submenu-link-current',$currentPageBlue,'Secondary navigation link, current page text','',''],
+			['header-submenu-link-current-bg',$black,'Secondary navigation link, current page background','',''],
+			['header-submenu-link-current-border',$black,'Secondary navigation link, current page underline','',''],
+			['header-submenu-link-current-hover-border',$currentPageBlue,'Secondary navigation link, current page underline on hover','',''],
+			['header-submenu-lock-focus',$yellow,'Border for the submenu when the keyboard focusses on the lock button','Desktop only, keyboard tabbing only',''],
 
-			//links
+			//page
+			['title-shading',$white,'Page title background','',''],
+			['mojblocks-hero-bg',$white,'Hero background','Will be obscured by the Hero image',''],
+			['cat-nav-arrows',$black,'Chapter headings navigation arrows','',''],
+			['pagination-border',$midGrey,'Line at bottom of listing page','When there are multiple pages',''],
+
+			//links on page
 			['link',$blue,'Link colour','',''],
 			['link-visited',$purple,'Link visited','',''],
-			['link-hover',$darkBlue,'Link hover','',''],
-			['link-focus',$black,'Link focus','',''],
-			['link-focus-shadow',$black,'Link focus underline','',''],
-			['link-focus-background',$yellow,'Link focus background','',''],
-
-			//inputs
-			['input-bg',$white,'Input background','',''],
-			['input-border',$black,'Input border','',''],
-			['input-focus',$yellow,'Input focus','',''],
+			['link-hover',$darkBlue,'Link on hover','',''],
+			['link-focus',$black,'Link when focused','',''],
+			['link-focus-shadow',$black,'Link underline when focused','',''],
+			['link-focus-background',$yellow,'Link background when focused','',''],
 
 			//buttons
-			['button',$green,'Button colour','',''],
+			['button',$green,'Button background','',''],
 			['button-text',$white,'Button text','',''],
 			['button-border',"none",'Button border','Enter a complete CSS value for border, e.g. "solid 2px #0b0c0c", "none"','text'], // not a colour
-			['button-hover',$buttonHoverGreen,'Button hover','',''],
-			['button-hover-text',$white,'Button hover text','',''],
-			['button-hover-border','transparent','Button hover border','Leave blank for none. Requires there to be a button border set',''],
-			['button-focus',$yellow,'Button focus','',''],
-			['button-focus-text',$black,'Button focus text','',''],
-			['button-focus-outline',$yellow,'Button focus outline','This will always be thicker than any set button border',''],
-			['button-active',$buttonHoverGreen,'Button active','',''],
+			['button-hover',$buttonHoverGreen,'Button background on hover','',''],
+			['button-hover-text',$white,'Button text on hover','',''],
+			['button-hover-border','transparent','Button border on hover','Leave blank for none. Requires there to be a button border set',''],
+			['button-focus',$yellow,'Button background when focused','',''],
+			['button-focus-text',$black,'Button text when focused','',''],
+			['button-focus-outline',$yellow,'Button outline when focused (including search button)','This is thicker than any set button border',''],
 
-			//Job listings
-			['job-item-bg',$white,'Job listing background','',''],
-			['job-item-border',$midGrey,'Job listing separating line','Should ideally match pagination separating line',''],
+			//accordion - MoJ Blocks
+			['mojblocks-accordion-section-title',$black,'Accordion section titles','',''],
+			['mojblocks-accordion-section-shew',$blue,'Accordion show/hide','',''],
+			['mojblocks-accordion-section-title-hover',$black,'Accordion section titles on hover','',''],
+			['mojblocks-accordion-section-shew-hover',$black,'Accordion show/hide on hover','',''],
+			['mojblocks-accordion-section-item-hover-bg',$lightGrey,'Accordion section background on hover','',''],
+			['mojblocks-accordion-section-title-focus',$black,'Accordion section titles when focused','',''],
+			['mojblocks-accordion-section-shew-focus',$black,'Accordion show/hide when focused','',''],
+			['mojblocks-accordion-section-title-focus-bg',$yellow,'Accordion section titles and show/hide background when focused','',''],
+			['mojblocks-accordion-section-title-focus-shadow',$black,'Accordion section titles and show/hide underline when focused','',''],
 
-			//extended core blocks
-			['extended-block-group-bg',$white,'Group block default background','Non-default style only',''],
-
-			//mojblocks - these are usually things not found in GOV.UK sites
-			['mojblocks-accordion-section-title',$black,'Accordion titles','',''],
-			['mojblocks-accordion-section-shew',$blue,'Accordion show links','',''],
-			['mojblocks-accordion-section-title-hover',$black,'Accordion titles hover','',''],
-			['mojblocks-accordion-section-shew-hover',$black,'Accordion show links hover','',''],
-			['mojblocks-accordion-section-item-hover-bg',$lightGrey,'Accordion item hover background','',''],
-			['mojblocks-accordion-section-title-focus',$black,'Accordion titles focus','',''],
-			['mojblocks-accordion-section-shew-focus',$black,'Accordion show links focus','',''],
-			['mojblocks-accordion-section-title-focus-bg',$yellow,'Accordion titles and links focus background','',''],
-			['mojblocks-accordion-section-title-focus-shadow',$black,'Accordion titles and links focus underline','',''],
-
-			['mojblocks-hero-bg',$white,'Hero background','This is usually obscured by the Hero image',''],
-
+			//call to action - MoJ Blocks
 			['mojblocks-cta-bg',$white,'Call to action background','',''],
 			['mojblocks-cta-title',$black,'Call to action title','',''],
 			['mojblocks-cta-text',$black,'Call to action text','',''],
-
+			
+			//card - mojblocks
 			['mojblocks-card-bg',$white,'Card background','',''],
 
+			//highlights list - MoJ Blocks
 			['mojblocks-highlights-list-bg',$white,'Highlights list background','',''],
 			['mojblocks-highlights-list-title',$black,'Highlights list title','',''],
 			['mojblocks-highlights-list-text',$black,'Highlights list text','',''],
-			['mojblocks-highlights-list-bar',$blue,'Little bar','','brand-colour'],
-
+			['mojblocks-highlights-list-bar',$blue,'Highlights list little bar','','brand-colour'],
+			
+			//staggered box - MoJ Blocks
 			['mojblocks-staggered-box-bg',$darkGrey,'Staggered box background','',''],
 			['mojblocks-staggered-box-title',$white,'Staggered box title','',''],
 			['mojblocks-staggered-box-text',$white,'Staggered box text','',''],
 			['mojblocks-staggered-box-btn-border',$lightGrey,'Staggered box button border','',''],
 			['mojblocks-staggered-box-btn-bg',"transparent",'Staggered box button background','Leave blank for transparent',''],
 			['mojblocks-staggered-box-btn-text',$white,'Staggered box button text','',''],
-			['mojblocks-staggered-box-btn-hover-border',$black,'Staggered box button hover border','',''],
-			['mojblocks-staggered-box-btn-hover-bg',$midGrey,'Staggered box button hover background','',''],
-			['mojblocks-staggered-box-btn-hover-text',$black,'Staggered box button hover text','',''],
-			['mojblocks-staggered-box-btn-focus-border',$black,'Staggered box button focus border','',''],
-			['mojblocks-staggered-box-btn-focus-bg',$yellow,'Staggered box button focus background','',''],
-			['mojblocks-staggered-box-btn-focus-text',$black,'Staggered box button focus text','',''],
-			['mojblocks-staggered-box-bar',$yellow,'Little bar','',''],
+			['mojblocks-staggered-box-btn-hover-border',$black,'Staggered box button border on hover','',''],
+			['mojblocks-staggered-box-btn-hover-bg',$midGrey,'Staggered box button background on hover','',''],
+			['mojblocks-staggered-box-btn-hover-text',$black,'Staggered box button text on hover','',''],
+			['mojblocks-staggered-box-btn-focus-border',$black,'Staggered box button border when focussed','',''],
+			['mojblocks-staggered-box-btn-focus-bg',$yellow,'Staggered box button background when focussed','',''],
+			['mojblocks-staggered-box-btn-focus-text',$black,'Staggered box button text when focussed','',''],
+			['mojblocks-staggered-box-bar',$yellow,'Staggered box little bar','',''],
+
+			//extended core blocks
+			['extended-block-group-bg',$white,'Group block background','When not using default style',''],
+
+			//block editor colour palette
+			['generic-palette-1',$blue,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-2',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+
+			//inputs
+			['input-bg',$white,'Input box background','',''],
+			['input-border',$black,'Input box border','',''],
+			['input-focus',$yellow,'Input box focus','',''],
+			['error',$red,'Error colour','',''],
+			['error-link-hover',$darkRed,'Error link on hover','',''],
+
+			//Job listings
+			['job-item-bg',$white,'Job listing background','',''],
+			['job-item-border',$midGrey,'Line between job listings','Should match line at end of listing page',''],
 
 			//Tags
 			['tag-bg',$lightGrey,'Tag background','',''],
 			['tag-text',$black,'Tag text','',''],
-			['tag-hover-bg',$midGrey,'Tag hover background','',''],
-			['tag-hover-text',$black,'Tag hover text','',''],
-			['tag-focus-bg',$yellow,'Tag focus background','',''],
-			['tag-focus-outline',$yellow,'Tag focus outline','',''],
-			['tag-focus-text',$black,'Tag focus text','',''],
+			['tag-hover-bg',$midGrey,'Tag background on hover','',''],
+			['tag-hover-text',$black,'Tag text on hover','',''],
+			['tag-focus-bg',$yellow,'Tag background when focused','',''],
+			['tag-focus-outline',$yellow,'Tag outline when focused','',''],
+			['tag-focus-text',$black,'Tag text when focused','',''],
+
+			//footer
+			['footer-border',$midGrey,'Footer border','',''],
+			['footer-background',$lightGrey,'Footer background','',''],
+			['footer-link',$black,'Footer link text','',''],
+			['footer-link-focus',$black,'Footer link text when focused','',''],
+			['footer-link-focus-shadow',$black,'Footer link underline when focused','',''],
+			['footer-link-focus-background',$yellow,'Footer link background when focused','',''],
 
 			//Cookie banner
 			['cookie-settings-bg',$darkGrey,'Cookie settings (triangle) background','',''],
 			['cookie-settings-text',$white,'Cookie settings (triangle) text','',''],
-			['cookie-settings-hover-bg',$black,'Cookie settings (triangle) hover background','',''],
-			['cookie-settings-hover-text',$white,'Cookie settings (triangle) hover text','',''],
-			['cookie-settings-focus-bg',$yellow,'Cookie settings (triangle) focus background','',''],
-			['cookie-settings-focus-text',$black,'Cookie settings (triangle) focus text','',''],
-			['cookie-settings-focus-outline','transparent','Cookie settings (triangle) focus outline, leave blank for none','',''],
+			['cookie-settings-hover-bg',$black,'Cookie settings (triangle) background on hover','',''],
+			['cookie-settings-hover-text',$white,'Cookie settings (triangle) text on hover','',''],
+			['cookie-settings-focus-bg',$yellow,'Cookie settings (triangle) background when focused','',''],
+			['cookie-settings-focus-text',$black,'Cookie settings (triangle) text when focused','',''],
+			['cookie-settings-focus-outline','transparent','Cookie settings (triangle) outline when focused','Leave blank for none',''],
 			['cookie-button-bg',$green,'Cookie banner button background','',''],
 			['cookie-button-text',$white,'Cookie banner button text','',''],
-			['cookie-button-hover-bg',$buttonHoverGreen,'Cookie banner button hover background','',''],
-			['cookie-button-hover-text',$white,'Cookie banner button hover text','',''],
-			['cookie-button-focus-bg',$yellow,'Cookie banner button focus background','',''],
-			['cookie-button-focus-border',$black,'Cookie banner button focus border','',''],
-			['cookie-button-focus-text',$black,'Cookie banner button focus text','',''],
+			['cookie-button-hover-bg',$buttonHoverGreen,'Cookie banner button background on hover','',''],
+			['cookie-button-hover-text',$white,'Cookie banner button text on hover','',''],
+			['cookie-button-focus-bg',$yellow,'Cookie banner button background when focused','',''],
+			['cookie-button-focus-border',$black,'Cookie banner button border when focused','',''],
+			['cookie-button-focus-text',$black,'Cookie banner button text when focused','',''],
 			['cookie-secondary-button-bg',$lightGrey,'Cookie banner secondary button background','',''],
 			['cookie-secondary-button-text',$black,'Cookie banner secondary button text','',''],
 			['cookie-toggle-bg',$green,'Cookie toggle background','',''],
-			['cookie-toggle-focus-bg',$buttonHoverGreen,'Cookie toggle focus background','',''],
+			['cookie-toggle-focus-bg',$buttonHoverGreen,'Cookie toggle background when focused','',''],
 			['cookie-toggle-text',$white,'Cookie toggle text','',''],
-
-			//Generic colours - for WP6.2+ colour palette
-			['generic-palette-1',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-2',$red,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
 		);
 
 		return $colour_array;
