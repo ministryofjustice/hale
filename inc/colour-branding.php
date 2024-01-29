@@ -45,52 +45,52 @@ function hale_generate_custom_colours() {
 		}
 
 		if ($jason) { // JSON file
-			$css = ":root {\n";
+			$css = ":root {";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$jason_colour = $jason[$colour_id];
-				$css .= "\t--$colour_id:$jason_colour;\n";
+				$css .= "--$colour_id:$jason_colour;";
 			}
-			$css .= "}\n";
+			$css .= "}";
 		} elseif ($custom_colours_set) { //custom scheme
-			$css = ":root {\n";
+			$css = ":root {";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$colour_default = hale_get_colour_default($colour_array[$i]);
 				$theme_mod = $colour_value[$i]["value"];
 				if (!empty($theme_mod) ) {
-					$css .= "\t--$colour_id:$theme_mod;\n";
+					$css .= "--$colour_id:$theme_mod;";
 				} else {
-					$css .= "\t--$colour_id:$colour_default;\n";
+					$css .= "--$colour_id:$colour_default;";
 				}
 			}
-			$css .= "}\n";
+			$css .= "}";
 		} else { //GDS Scheme
 			$colour_bar_colour = get_theme_mod('colour_bar','#1D70B8');
-			$css = ":root {\n";
+			$css = ":root {";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$colour_default = hale_get_colour_default($colour_array[$i]);
 				$colour_options = hale_get_colour_options($colour_array[$i]);
 				if ($colour_options == "brand-colour") $colour_default = $colour_bar_colour;
-				$css .= "\t--$colour_id:$colour_default;\n";
+				$css .= "--$colour_id:$colour_default;";
 			}
-			$css .= "}\n";
+			$css .= "}";
 			if (!empty($colour_bar_colour) && strcasecmp($colour_bar_colour, "#FFF") != 0 && strcasecmp($colour_bar_colour, "#FFFFFF") != 0) {
-				$colour_bar_style  = ".govuk-header__container {\n\t";
-				$colour_bar_style .= 	"border-bottom: 10px solid $colour_bar_colour!important;\n";
-				$colour_bar_style .= "}\n";
-				$colour_bar_style .= ".govuk-header {\n\t";
-				$colour_bar_style .= 	"border-bottom-width: unset!important;\n\t";
-				$colour_bar_style .= 	"margin-bottom: 7px;\n";
-				$colour_bar_style .= "}\n";
+				$colour_bar_style  = ".govuk-header__container {";
+				$colour_bar_style .= 	"border-bottom: 10px solid $colour_bar_colour!important;";
+				$colour_bar_style .= "}";
+				$colour_bar_style .= ".govuk-header {";
+				$colour_bar_style .= 	"border-bottom-width: unset!important;";
+				$colour_bar_style .= 	"margin-bottom: 7px;";
+				$colour_bar_style .= "}";
 				$css .= $colour_bar_style;
 			}
 		}
 		if (!$custom_colours_set || $logo_focus_invert) {
-			$logo_focus_invert_style  = ".govuk-header a:focus img {\n\t";
-			$logo_focus_invert_style .= 	"filter: invert(1) hue-rotate(180deg);\n";
-			$logo_focus_invert_style .= "}\n";
+			$logo_focus_invert_style  = ".govuk-header a:focus img {";
+			$logo_focus_invert_style .= 	"filter: invert(1) hue-rotate(180deg);";
+			$logo_focus_invert_style .= "}";
 			$css .= $logo_focus_invert_style;
 		}
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
