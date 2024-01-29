@@ -551,7 +551,8 @@
 		}
 
 		// As we have different colour options for each site, the class "hale-dark-background" is added by JavaScript after testing the custom background for darkness
-		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background isn't added after the custom dark background - might break down if more than 2 custom backgrounds appear within one-another.
+		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background added after the custom dark background doesn't have dark-background text
+		// might break down if more than 2 custom backgrounds appear within one-another.
 		.hale-dark-background {
 			.govuk-link:link,
 			.govuk-link:visited,
