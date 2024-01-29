@@ -53,10 +53,17 @@
 		p[class=""],
 		li,
 		label {
-			color:var(--text);
+			// We do not apply this style if there is a custom colour set
+			&:not(.has-text-color *):not(.has-text-color) {
+				color:var(--text);
+			}
 		}
+
 		h1, h2, h3, h4, h5, h6 {
-			color:var(--heading-text);
+			// We do not apply this style if there is a custom colour set
+			&:not(.has-text-color *):not(.has-text-color) {
+				color:var(--heading-text);
+			}
 		}
 	}
 
@@ -543,9 +550,9 @@
 			}
 		}
 
-		// As we have different colour options for each site, the class "dark-background" is added by JavaScript after testing the custom background for darkness
-		// &:not(.dark-background .light-background *) is added to ensure that a custom light background isn't added after the custom dark background - might break down if more than 2 custom backgrounds appear within one-another.
-		.dark-background {
+		// As we have different colour options for each site, the class "hale-dark-background" is added by JavaScript after testing the custom background for darkness
+		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background isn't added after the custom dark background - might break down if more than 2 custom backgrounds appear within one-another.
+		.hale-dark-background {
 			.govuk-link:link,
 			.govuk-link:visited,
 			a:link:not([class]),
@@ -553,7 +560,7 @@
 			a[class="customize-unpreviewable"], // for wordpress customizer
 			.gem-c-pagination__link:link,
 			.gem-c-pagination__link:visited{
-				&:not(.dark-background .light-background *):not(:focus) {
+				&:not(.hale-dark-background .hale-light-background *):not(:focus) {
 					color: var(--dark-link);
 
 					&:hover {
@@ -561,11 +568,11 @@
 					}
 				}
 			}
-			p:not(.dark-background .light-background *):not(.has-text-color *):not(.has-text-color) {
+			p:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
 				color: var(--dark-text);
 			}
 			h1, h2, h3, h4, h5, h6 {
-				&:not(.dark-background .light-background *):not(.has-text-color *):not(.has-text-color) {
+				&:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
 					color: var(--dark-heading-text);
 				}
 			}
