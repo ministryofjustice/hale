@@ -569,8 +569,12 @@
 					}
 				}
 			}
-			p:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
-				color: var(--dark-text);
+			p,
+			li,
+			label {
+				:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
+					color: var(--dark-text);
+				}
 			}
 			h1, h2, h3, h4, h5, h6 {
 				&:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
