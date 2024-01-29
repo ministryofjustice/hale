@@ -36,10 +36,6 @@
 			We can use this to add more options if needed
 		*/
 		$colour_array = array(
-			//main text
-			['text',$black,'Normal text','',''],
-			['heading-text',$black,'Heading level text','',''],
-
 			//header
 			['header-bg',$black,'Header background','',''],
 			['header-divider-line',$headerMenuLineGrey,'Header divider line','',''],
@@ -96,6 +92,12 @@
 			['cat-nav-arrows',$black,'Chapter headings navigation arrows','',''],
 			['pagination-border',$midGrey,'Line at bottom of listing page','When there are multiple pages',''],
 
+			//main text
+			['text',$black,'Normal text','',''],
+			['heading-text',$black,'Heading level text','',''],
+			['dark-text',$white,'Normal text on custom-set dark background','',''],
+			['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
+
 			//links on page
 			['link',$blue,'Link colour','',''],
 			['link-visited',$purple,'Link visited','',''],
@@ -103,8 +105,8 @@
 			['link-focus',$black,'Link when focused','',''],
 			['link-focus-shadow',$black,'Link underline when focused','',''],
 			['link-focus-background',$yellow,'Link background when focused','',''],
-			['dark-link',$white,'Link colour, dark background','',''],
-			['dark-link-hover',$white,'Link on hover, dark background','',''],
+			['dark-link',$white,'Link colour on custom-set dark background','',''],
+			['dark-link-hover',$white,'Link on hover on custom-set dark background','',''],
 
 			//buttons
 			['button',$green,'Button background','',''],

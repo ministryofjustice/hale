@@ -518,7 +518,7 @@
 	.govuk-main-wrapper {
 		.govuk-link:link,
 		a:link:not([class]),
-		a[class="customize-unpreviewable"]:link, // for wordpress customizer
+		a[class="customize-unpreviewable"], // for wordpress customizer
 		.gem-c-pagination__link:link {
 			color: var(--link);
 
@@ -543,22 +543,30 @@
 			}
 		}
 
-		// As we have different colour options for each site the class "dark-background" is added by JavaScript
+		// As we have different colour options for each site, the class "dark-background" is added by JavaScript after testing the custom background for darkness
+		// &:not(.dark-background .light-background *) is added to ensure that a custom light background isn't added after the custom dark background - might break down if more than 2 custom backgrounds appear within one-another.
 		.dark-background {
 			.govuk-link:link,
 			.govuk-link:visited,
 			a:link:not([class]),
 			a:visited:not([class]),
-			a[class="customize-unpreviewable"]:link, // for wordpress customizer
+			a[class="customize-unpreviewable"], // for wordpress customizer
 			.gem-c-pagination__link:link,
 			.gem-c-pagination__link:visited{
-				&:not(.dark-background .light-background *),
-				&:not(:focus) {
+				&:not(.dark-background .light-background *):not(:focus) {
 					color: var(--dark-link);
 
 					&:hover {
 						color: var(--dark-link-hover);
 					}
+				}
+			}
+			p:not(.dark-background .light-background *):not(.has-text-color *):not(.has-text-color) {
+				color: var(--dark-text);
+			}
+			h1, h2, h3, h4, h5, h6 {
+				&:not(.dark-background .light-background *):not(.has-text-color *):not(.has-text-color) {
+					color: var(--dark-heading-text);
 				}
 			}
 		}
