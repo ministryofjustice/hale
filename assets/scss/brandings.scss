@@ -14,6 +14,49 @@
 	}
 }
 
+@mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
+// @include hale-block-inside-block($colour, $hoverColour)
+	@if $hoverColour == "" { //not link
+		&:not(.#{$paletteColour} .has-background *):not(.has-text-color *):not(.has-text-color) {
+			color: $colour;
+		}
+	} @else {
+		&:not(.#{$paletteColour} .has-background *):not(:focus) {
+			color: $colour;
+
+			&:hover {
+				color: $colour;
+			}
+		}
+	}
+}
+
+
+
+		// As we have different colour options for each site, the class "hale-dark-background" is added by JavaScript after testing the custom background for darkness
+		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background added after the custom dark background doesn't have dark-background text
+		// might break down if more than 2 custom backgrounds appear within one-another.
+@mixin hale-custom-shading-text-colours($paletteColour) {
+	.#{$paletteColour} {
+		.govuk-link:link,
+		.govuk-link:visited,
+		a:link:not([class]),
+		a:visited:not([class]),
+		a[class="customize-unpreviewable"], // for wordpress customizer
+		.gem-c-pagination__link:link,
+		.gem-c-pagination__link:visited {
+			@include hale-block-inside-block($paletteColour,var(--dark-link), var(--dark-link-hover));
+		}
+		p,
+		li,
+		label {
+			@include hale-block-inside-block($paletteColour,var(--dark-text));
+		}
+		h1, h2, h3, h4, h5, h6 {
+			@include hale-block-inside-block($paletteColour,var(--dark-heading-text));
+		}
+	}
+}
 //branding colours and styles
 
 /**********************
@@ -549,39 +592,12 @@
 				color: var(--link-focus);
 			}
 		}
-
-		// As we have different colour options for each site, the class "hale-dark-background" is added by JavaScript after testing the custom background for darkness
-		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background added after the custom dark background doesn't have dark-background text
-		// might break down if more than 2 custom backgrounds appear within one-another.
-		.hale-dark-background {
-			.govuk-link:link,
-			.govuk-link:visited,
-			a:link:not([class]),
-			a:visited:not([class]),
-			a[class="customize-unpreviewable"], // for wordpress customizer
-			.gem-c-pagination__link:link,
-			.gem-c-pagination__link:visited{
-				&:not(.hale-dark-background .hale-light-background *):not(:focus) {
-					color: var(--dark-link);
-
-					&:hover {
-						color: var(--dark-link-hover);
-					}
-				}
-			}
-			p,
-			li,
-			label {
-				&:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
-					color: var(--dark-text);
-				}
-			}
-			h1, h2, h3, h4, h5, h6 {
-				&:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
-					color: var(--dark-heading-text);
-				}
-			}
-		}
+		@include hale-custom-shading-text-colours("has-generic-palette-1-background-color");
+		@include hale-custom-shading-text-colours("has-generic-palette-2-background-color");
+		@include hale-custom-shading-text-colours("has-generic-palette-3-background-color");
+		@include hale-custom-shading-text-colours("has-generic-palette-4-background-color");
+		@include hale-custom-shading-text-colours("has-black-background-color");
+		@include hale-custom-shading-text-colours("has-dark-grey-background-color");
 	}
 }
 

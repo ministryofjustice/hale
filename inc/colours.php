@@ -174,10 +174,10 @@
 			['extended-block-group-bg',$white,'Group block background','When not using default style',''],
 
 			//block editor colour palette
-			['generic-palette-1',$blue,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-2',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-1',$blue,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','custom colour'],
+			['generic-palette-2',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','custom colour'],
+			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','custom colour'],
+			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','custom colour'],
 
 			//inputs
 			['input-bg',$white,'Input box background','',''],
