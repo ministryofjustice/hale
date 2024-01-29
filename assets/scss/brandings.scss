@@ -572,7 +572,7 @@
 			p,
 			li,
 			label {
-				:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
+				&:not(.hale-dark-background .hale-light-background *):not(.has-text-color *):not(.has-text-color) {
 					color: var(--dark-text);
 				}
 			}
