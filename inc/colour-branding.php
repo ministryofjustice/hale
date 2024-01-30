@@ -111,7 +111,7 @@ function hale_generate_custom_colours() {
 				$background_css .= apply_background_styles($colour_id, $colour_to_use, $dark_background_css_file);
 			}
 		}
-		$css .= $background_css;
+		$css .= $background_css; // This is non-IE only, as custom background colours doesn't work on IE.
 
 		// As SVGs cannot use CSS variables, we read in the SVG CSS file to recreate the SVGs with their hard-coded colours
 		if ($svg_css_file_exists) {
@@ -149,7 +149,6 @@ function hale_generate_custom_colours() {
 			} else {
 				trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
 			}
-			$css .= $background_css; // this adds in the background CSS ready for making IE ready
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$colour_default = hale_get_colour_default($colour_array[$i]);
