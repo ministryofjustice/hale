@@ -132,7 +132,8 @@ function hale_generate_custom_colours() {
 		fwrite($css_file, $css);
 		fclose($css_file);
 
-		//IE compatible way
+		// IE compatible way
+		// Excluding SVGs as they will already by IE-okay
 		if ($ie) {
 			$level_count = substr_count($_SERVER['PHP_SELF'], '/');
 			$level = "/";
@@ -156,12 +157,8 @@ function hale_generate_custom_colours() {
 				$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
 				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
 			}
-			$css .= $svg_css; // this adds in the SVG code which is IE-ready from above
 			if (str_contains($css, "var(--")) {
 				trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
-			}
-			if (str_contains($css, "-svg")) {
-				trigger_error("!!!!! SVG variable replaced with non-SVG value!!!"); //Some SVG variables not replaced correctly
 			}
 			if (isset($colour_bar_style)) $css .= $colour_bar_style;
 		} else {
