@@ -8,6 +8,8 @@
  * IE doesn't support the filter attribute, so the logo focus filter is only appended to the non-IE CSS file
 **************/
 
+$ie = false; // Here we can set whether to support IE - the code is all within an if statement
+
 // JSON import code
 require get_template_directory() . '/inc/colour-branding-import.php';
 
@@ -19,6 +21,8 @@ function hale_generate_custom_colours() {
 	$main_css_file_exists = file_exists($main_css_file);
 	$dark_background_css_file = get_template_directory().'/dist/css/dark-background.min.css';
 	$dark_background_css_file_exists = file_exists($dark_background_css_file);
+	$svg_css_file = get_template_directory().'/dist/css/brandings-svg.min.css';
+	$svg_css_file_exists = file_exists($svg_css_file);
 	$colour_array = hale_get_colours();
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
@@ -95,6 +99,7 @@ function hale_generate_custom_colours() {
 			$logo_focus_invert_style .= "}";
 			$css .= $logo_focus_invert_style;
 		}
+
 		$background_css = "";
 		for($i=0;$i<count($colour_array);$i++) {
 			// Here we are checking for colours which are the "generic colours" which can be set as text or background for anything
@@ -107,47 +112,62 @@ function hale_generate_custom_colours() {
 			}
 		}
 		$css .= $background_css;
+
+		// As SVGs cannot use CSS variables, we read in the SVG CSS file to recreate the SVGs with their hard-coded colours
+		if ($svg_css_file_exists) {
+			$svg_css = file_get_contents($svg_css_file);
+			for($i=0;$i<count($colour_array);$i++) {
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_default = hale_get_colour_default($colour_array[$i]);
+				$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
+				$colour_to_use_SVG = str_replace('#',"%23",$colour_to_use); // We need to encode the colour's # as %23 for it to work
+				$svg_css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$svg_css);
+			}
+		} else {
+			trigger_error("!!!!! SVG CSS doesn't exist!!!");
+		}
+		$css .= $svg_css;
+
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
 		fwrite($css_file, $css);
 		fclose($css_file);
 
 		//IE compatible way
-		$level_count = substr_count($_SERVER['PHP_SELF'], '/');
-		$level = "/";
-		for($i = $level_count; $i--; $i<=0) {
-			$level .= "../";
-		}
-		
-		clearstatcache();
-		
-		//Copy the main CSS file so it can be changed into an IE-friendly file
-		if ($main_css_file_exists && $upload_file_path_exists) {
-			$css = file_get_contents($main_css_file);
+		if ($ie) {
+			$level_count = substr_count($_SERVER['PHP_SELF'], '/');
+			$level = "/";
+			for($i = $level_count; $i--; $i<=0) {
+				$level .= "../";
+			}
+
+			clearstatcache();
+
+			//Copy the main CSS file so it can be changed into an IE-friendly file
+			if ($main_css_file_exists && $upload_file_path_exists) {
+				$css = file_get_contents($main_css_file);
+			} else {
+				trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
+			}
+			$css .= $background_css; // this adds in the background CSS ready for making IE ready
+			for($i=0;$i<count($colour_array);$i++) {
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_default = hale_get_colour_default($colour_array[$i]);
+				$colour_options = hale_get_colour_options($colour_array[$i]);
+				$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
+				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
+			}
+			$css .= $svg_css; // this adds in the SVG code which is IE-ready from above
+			if (str_contains($css, "var(--")) {
+				trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
+			}
+			if (str_contains($css, "-svg")) {
+				trigger_error("!!!!! SVG variable replaced with non-SVG value!!!"); //Some SVG variables not replaced correctly
+			}
+			if (isset($colour_bar_style)) $css .= $colour_bar_style;
 		} else {
-			trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
+			$css = "";
 		}
-		$css .= $background_css;
-		for($i=0;$i<count($colour_array);$i++) {
-			$colour_id = hale_get_colour_id($colour_array[$i]);
-			$colour_default = hale_get_colour_default($colour_array[$i]);
-			$colour_options = hale_get_colour_options($colour_array[$i]);
-			$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
-
-			//first checks for any svg colours that need dealing with, these need the # replaced with %23
-			//(These are identified by the suffix -svg in the colour variable)
-			$colour_to_use_SVG = str_replace('#',"%23",$colour_to_use);
-			$css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$css);
-			$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
-		}
-		if (str_contains($css, "var(--")) {
-			trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
-		}
-		if (str_contains($css, "-svg")) {
-			trigger_error("!!!!! SVG variable replaced with non-SVG value!!!"); //Some SVG variables not replaced correctly
-		}
-
 		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w");
-		if (isset($colour_bar_style)) $css .= $colour_bar_style;
 		fwrite($css_file, $css);
 		fclose($css_file);
 	}
