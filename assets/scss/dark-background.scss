@@ -1,0 +1,57 @@
+/*******
+	This file creates the styles for the dark backgrounds which can be selected in the WordPress Palette.
+	There are 5 greyscale colours and 4 "generic" colours.
+	The generic colours vary from site to site.
+	They might be dark or they might not be, so we cannot know whether to apply the "dark-text" (etc) colours or not.
+	This file creates the CSS for a dark background, but it uses the class "has-replace_replace-background-color" (which isn't used).
+	We use this CSS in PHP (colour-branding.php) to apply the style should the colour chosen be calculated to be dark.
+	So whilst this CSS is not directly used by anything, it is copied by the PHP, amended and added where needed.
+*******/
+
+@mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
+	// @include hale-block-inside-block($colour, $hoverColour)
+	@if $hoverColour == "" { //not link
+		&:not(.#{$paletteColour} .has-background *):not(.has-text-color *):not(.has-text-color) {
+			color: $colour;
+		}
+	} @else {
+		&:not(.#{$paletteColour} .has-background *):not(:focus) {
+			color: $colour;
+
+			&:hover {
+				color: $colour;
+			}
+		}
+	}
+}
+
+
+
+		// As we have different colour options for each site, the class "hale-dark-background" is added by JavaScript after testing the custom background for darkness
+		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background added after the custom dark background doesn't have dark-background text
+		// might break down if more than 2 custom backgrounds appear within one-another.
+@mixin hale-custom-shading-text-colours($paletteColour) {
+	.#{$paletteColour} {
+		.govuk-link:link,
+		.govuk-link:visited,
+		a:link:not([class]),
+		a:visited:not([class]),
+		a[class="customize-unpreviewable"], // for wordpress customizer
+		.gem-c-pagination__link:link,
+		.gem-c-pagination__link:visited {
+			@include hale-block-inside-block($paletteColour,var(--dark-link), var(--dark-link-hover));
+		}
+		p,
+		li,
+		label {
+			@include hale-block-inside-block($paletteColour,var(--dark-text));
+		}
+		h1, h2, h3, h4, h5, h6 {
+			@include hale-block-inside-block($paletteColour,var(--dark-heading-text));
+		}
+	}
+}
+
+* {
+	@include hale-custom-shading-text-colours("has-replace_replace-background-color");
+}

@@ -14,8 +14,9 @@
 	}
 }
 
+// This Mixin adds the style which cancels out the text colour should a different block of a different colour be inside it.
+// However, it will break down if a different block of the same colour be insude it - in such cases, the text colour might need to be manually set.
 @mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
-// @include hale-block-inside-block($colour, $hoverColour)
 	@if $hoverColour == "" { //not link
 		&:not(.#{$paletteColour} .has-background *):not(.has-text-color *):not(.has-text-color) {
 			color: $colour;
@@ -31,11 +32,7 @@
 	}
 }
 
-
-
-		// As we have different colour options for each site, the class "hale-dark-background" is added by JavaScript after testing the custom background for darkness
-		// &:not(.hale-dark-background .hale-light-background *) is added to ensure that a custom light background added after the custom dark background doesn't have dark-background text
-		// might break down if more than 2 custom backgrounds appear within one-another.
+// Used for custom backgrounds - the two dark greyscale colours (black and dark grey)
 @mixin hale-custom-shading-text-colours($paletteColour) {
 	.#{$paletteColour} {
 		.govuk-link:link,
@@ -592,13 +589,10 @@
 				color: var(--link-focus);
 			}
 		}
-		@include hale-custom-shading-text-colours("has-generic-palette-1-background-color");
-		@include hale-custom-shading-text-colours("has-generic-palette-2-background-color");
-		@include hale-custom-shading-text-colours("has-generic-palette-3-background-color");
-		@include hale-custom-shading-text-colours("has-generic-palette-4-background-color");
-		@include hale-custom-shading-text-colours("has-black-background-color");
-		@include hale-custom-shading-text-colours("has-dark-grey-background-color");
 	}
+
+	@include hale-custom-shading-text-colours("has-black-background-color");
+	@include hale-custom-shading-text-colours("has-dark-grey-background-color");
 }
 
 /***
