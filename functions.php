@@ -218,7 +218,6 @@ function hale_action_customize_save_after( $array ) {
 
     clearstatcache();
     $upload_file_path = wp_get_upload_dir()["basedir"];
-    rename ($upload_file_path."/temp-colours-ie.css", $upload_file_path."/custom-colours-ie.css");
     rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
 };
 
@@ -234,10 +233,8 @@ function hale_scripts() {
     $t=time();
     if (is_customize_preview()) {
         $css_file_name = "/temp-colours.css?t=$t";
-        $css_file_name_IE = "/temp-colours-ie.css?t=$t";
     } else {
         $css_file_name = "/custom-colours.css?t=$t";
-        $css_file_name_IE = "/custom-colours-ie.css?t=$t";
     }
 
 
@@ -245,10 +242,8 @@ function hale_scripts() {
         //wp_get_upload_dir()["baseurl"] only returns http.
         $baseURL = str_replace('http://','https://',wp_get_upload_dir()["baseurl"]);
         if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
-        wp_enqueue_style('hale-custom-colours-ie', $baseURL . $css_file_name_IE);
     } else {
         if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
-        wp_enqueue_style('hale-custom-colours-ie', wp_get_upload_dir()["baseurl"] . $css_file_name_IE);
     }
 
     // JS

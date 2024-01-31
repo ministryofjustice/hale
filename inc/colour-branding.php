@@ -1,14 +1,9 @@
 <?php
 
 /************** 
- * This file creates two CSS files
- * One with the variables that are set in the Customiser, this also has the colour bar style and the invert logo focus style
- * One for IE which copies the entire main CSS file and replaces the variables with the colours
- * SVG support however means that the IE CSS file is needed by every browser at the moment - this might change in the future
- * IE doesn't support the filter attribute, so the logo focus filter is only appended to the non-IE CSS file
+ * This file creates a CSS file with the variables that are set in the Customizer
+ * This also has the colour bar style and the invert logo focus style
 **************/
-
-$ie = false; // Here we can set whether to support IE - the code is all within an if statement
 
 // JSON import code
 require get_template_directory() . '/inc/colour-branding-import.php';
@@ -111,7 +106,7 @@ function hale_generate_custom_colours() {
 				$background_css .= apply_background_styles($colour_id, $colour_to_use, $dark_background_css_file);
 			}
 		}
-		$css .= $background_css; // This is non-IE only, as custom background colours doesn't work on IE.
+		$css .= $background_css;
 
 		// As SVGs cannot use CSS variables, we read in the SVG CSS file to recreate the SVGs with their hard-coded colours
 		if ($svg_css_file_exists) {
@@ -129,41 +124,6 @@ function hale_generate_custom_colours() {
 		$css .= $svg_css;
 
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
-		fwrite($css_file, $css);
-		fclose($css_file);
-
-		// IE compatible way
-		// Excluding SVGs as they will already by IE-okay
-		if ($ie) {
-			$level_count = substr_count($_SERVER['PHP_SELF'], '/');
-			$level = "/";
-			for($i = $level_count; $i--; $i<=0) {
-				$level .= "../";
-			}
-
-			clearstatcache();
-
-			//Copy the main CSS file so it can be changed into an IE-friendly file
-			if ($main_css_file_exists && $upload_file_path_exists) {
-				$css = file_get_contents($main_css_file);
-			} else {
-				trigger_error("!!!!! Main CSS or Upload Path doesn't exist!!!");
-			}
-			for($i=0;$i<count($colour_array);$i++) {
-				$colour_id = hale_get_colour_id($colour_array[$i]);
-				$colour_default = hale_get_colour_default($colour_array[$i]);
-				$colour_options = hale_get_colour_options($colour_array[$i]);
-				$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
-				$css = str_replace("var(--$colour_id)",$colour_to_use,$css);
-			}
-			if (str_contains($css, "var(--")) {
-				trigger_error("!!!!! not all CSS variables replaced!!!"); //disconnect betwixt colours.php and css file
-			}
-			if (isset($colour_bar_style)) $css .= $colour_bar_style;
-		} else {
-			$css = "";
-		}
-		$css_file = fopen($upload_file_path."/temp-colours-ie.css", "w");
 		fwrite($css_file, $css);
 		fclose($css_file);
 	}

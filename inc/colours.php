@@ -253,7 +253,6 @@
 		// This function checks for any newly created colours that haven't been set in the customizer and applies the default.
 		// The amended CSS file will be overwritten when the colours are next amended.
 		// This does not protect against new colours being added to the SASS and not added to colours.php.
-		// This is for non-IE only as this particular bug doesn't occur in IE.
 
 		$CSSpath = wp_get_upload_dir()["basedir"];
 
@@ -266,7 +265,7 @@
 				trigger_error("Directory $CSSpath was missing, but was successfully created.",E_USER_NOTICE);
 			}
 		}
-		$CSSfileURL = $CSSpath."/custom-colours.css"; //non-IE CSS file (variable values)
+		$CSSfileURL = $CSSpath."/custom-colours.css";
 		$ColourFileURL = get_template_directory()."/inc/colours.php";
 
 		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {
