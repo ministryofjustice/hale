@@ -403,6 +403,16 @@ require get_template_directory() . '/inc/widgets/social-widget.php';
 require get_template_directory() . '/inc/emergency-banner-settings.php';
 
 /**
+ * Flexible Custom Post Types
+ */
+require get_template_directory() . '/inc/flexible-cpts.php';
+
+/**
+ * Flexible Taxonomies
+ */
+require get_template_directory() . '/inc/flexible-taxonomies.php';
+
+/**
  * Create an array of active plugins.
  */
 
