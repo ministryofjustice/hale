@@ -1,70 +1,72 @@
-.flexible-post-type-single {
-  .flexible-post-type-header {
+#primary { //Used as otherwise font styles using primarry override
+  .flexible-post-type-single {
+    .flexible-post-type-header {
 
-    .flexible-post-type-title {
-      margin-bottom: 25px;
-      font-weight: normal;
-    }
+      .flexible-post-type-title {
+        margin-bottom: 25px;
+        font-weight: normal;
+      }
 
-    .flexible-post-type-details {
-      @include govuk-font(19);
-      font-weight: bold;
+      .flexible-post-type-details {
+        @include govuk-font(19);
+        font-weight: bold;
 
-      .flexible-post-type-published-date {
-        margin-bottom: 1rem;
+        .flexible-post-type-published-date {
+          margin-bottom: 1rem;
+        }
+
       }
 
     }
 
-  }
+    .flexible-post-type-featured-image {
+      margin-top: 1.6rem;
+      margin-bottom: 2rem;
+    }
 
-  .flexible-post-type-featured-image {
-    margin-top: 1.6rem;
-    margin-bottom: 2rem;
-  }
-
-  .flexible-post-type-document-summary {
-    &__image {
-      width:198px;
-      padding-bottom:2px;
-  
-      a {
-        display:block;
-  
-        &:focus img {
-          outline: none;
+    .flexible-post-type-document-summary {
+      &__image {
+        width:198px;
+        padding-bottom:2px;
+    
+        a {
+          display:block;
+    
+          &:focus img {
+            outline: none;
+          }
+        }
+    
+        img {
+          max-width: 100%;
+          max-height: 264px;
+          outline: 1px solid $govuk-border-colour;
+          mix-blend-mode: multiply;
         }
       }
+      &__icon {
+        svg,img {
+          position:relative;
+          top:3px;
+          padding-right:0.5em;
+        }
+        svg {
+          height:1.2em;
+        }
+        img {
+          height:1em;
+          width: auto;
+        }
+      }
+      &__link {
+        margin-top: govuk-spacing(6);
+      }
   
-      img {
-        max-width: 100%;
-        max-height: 264px;
-        outline: 1px solid $govuk-border-colour;
-        mix-blend-mode: multiply;
+      .flexible-post-type-document-summary-text p {
+        font-weight: bold;
+        margin-bottom: 20px;
       }
     }
-    &__icon {
-      svg,img {
-        position:relative;
-        top:3px;
-        padding-right:0.5em;
-      }
-      svg {
-        height:1.2em;
-      }
-      img {
-        height:1em;
-        width: auto;
-      }
-    }
-    &__link {
-      margin-top: govuk-spacing(6);
-    }
-  
-    .flexible-post-type-document-summary-text p {
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-  }
 
+  }
 }

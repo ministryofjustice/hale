@@ -20,6 +20,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_65c0e89f33465",
+            "label": "CPT Object Types",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "Simple - content and summary\r\nNews Article -content, summary, feature image, show author, show summary\r\nDocument - content, summary, attached document",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_65a6ff7b2f77e",
             "label": "Post Types",
             "name": "custom_post_types",
@@ -177,7 +196,10 @@
                         "page_category": "Page Categories",
                         "decision_referral_type": "Referral Types",
                         "report_category": "Report Categories",
-                        "report_types": "Report Types"
+                        "report_type": "Report Types",
+                        "offence": "Offences",
+                        "cause": "Causes",
+                        "gender": "Genders"
                     },
                     "default_value": [],
                     "return_format": "value",
@@ -334,5 +356,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706785121
+    "modified": 1707141464
 }
