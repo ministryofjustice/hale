@@ -4,13 +4,13 @@
  */
 ?>
 
-<div class="news-story-list-item">
-    <h2 class="news-story-list-item-title hale-heading-s"><a
+<div class="list-item type-news">
+    <h2 class="list-item-title hale-heading-s"><a
             href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
-    <div class="news-story-published-date">
+    <div class="list-item-published-date">
         Published: <?php hale_posted_on(); ?>
     </div>
-    <div class="news-story-excerpt">
+    <div class="list-item-excerpt">
         <?php
         $news_story_summary = get_post_meta($post->ID, 'post_summary', true);
         if(!empty($news_story_summary)){

@@ -2,22 +2,19 @@
 /**
  * Template part for displaying fleixble cpt of type simple
  */
-
-$show_author = get_post_meta($post->ID, 'post_show_author', true);
-
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <header class="news-story-header">
+<article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single','type-simple')); ?>>
+    <header class="flexible-post-type-header">
         <?php
 
-        the_title('<h1 class="news-story-title govuk-heading-xl">', '</h1>');
+        the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>');
 
         ?>
     </header>
 
     <?php do_action('hale_before_single_content'); ?>
 
-    <div class="news-story-content">
+    <div class="flexible-post-type-content">
         <?php
         if (function_exists('hale_clean_bad_content')) {
             hale_clean_bad_content(true);
@@ -28,6 +25,6 @@ $show_author = get_post_meta($post->ID, 'post_show_author', true);
 
     <?php do_action('hale_after_single_content'); ?>
 
-    <footer class="news-story-footer">
+    <footer class="flexible-post-type-footer">
     </footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

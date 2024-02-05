@@ -55,28 +55,30 @@ if ($file && is_array($file)) {
 }
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-		the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
-	?>
-    <div class="document-details">
-        <div class="document-published-date">
-            Published: <?php hale_posted_on(); ?>
-        </div>
-    </div>
-	<div class="document-summary">
+<article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single','type-document')); ?>>
+	<header class="flexible-post-type-header">
+		<?php
+			the_title( '<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>' );
+		?>
+		<div class="flexible-post-type-details">
+			<div class="flexible-post-type-published-date">
+				Published: <?php hale_posted_on(); ?>
+			</div>
+		</div>
+	</header>
+	<div class="flexible-post-type-document-summary">
 		<?php if (!$icon_image) { ?>
-		<div class="document-summary__image">
+		<div class="flexible-post-type-document-summary__image">
 			<?php
 				echo "<a class='govuk-link' href='$link_uri'>$image</a>";
 			?>
 		</div>
 		<?php } ?>
-		<div class="document-summary__link">
+		<div class="flexible-post-type-document-summary__link">
 			<p class="govuk-body">
 			<?php
 				if ($icon_image) {
-					echo "<span class='document-summary__icon'>$image</span>";
+					echo "<span class='flexible-post-type-document-summary__icon'>$image</span>";
 				}
 				echo "<b>$link</b> ($metadata)";
 			?>
@@ -84,9 +86,9 @@ if ($file && is_array($file)) {
 		</div>
 
         <?php
-        $document_summary = get_post_meta($post->ID, 'document_summary', true);
+        $document_summary = get_post_meta($post->ID, 'post_summary', true);
         if(!empty($document_summary)){ ?>
-        <div class="document-summary-text">
+        <div class="flexible-post-type-document-summary-text">
             <?php echo wpautop($document_summary); ?>
         </div>
         <?php
@@ -96,7 +98,7 @@ if ($file && is_array($file)) {
 	
     <?php do_action( 'hale_before_single_content' ); ?>
 
-	<div class="document-content">
+	<div class="flexible-post-type-content">
 		<?php
 		if ( function_exists( 'hale_clean_bad_content' ) ) {
 			hale_clean_bad_content( true );
@@ -106,6 +108,6 @@ if ($file && is_array($file)) {
 	<div class="govuk-clearfix"></div>
 	<?php do_action( 'hale_after_single_content' ); ?>
 
-	<footer class="document-footer">
+	<footer class="flexible-post-type-footer">
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
