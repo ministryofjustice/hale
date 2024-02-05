@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Registers flexible taxonomies based on the settings in the CPT and Taxonomy options page.
+ */
 function hale_register_flexible_taxonomies()
 {
 
@@ -14,11 +18,21 @@ function hale_register_flexible_taxonomies()
 
 add_action('init', 'hale_register_flexible_taxonomies', 1);
 
+/**
+ * Registers a taxonomy based on the provided settings.
+ *
+ * @param array $tax Settings for the taxonomy
+ */
 function hale_register_taxonomy($tax){
 
     $taxonomy_name = $tax['taxonomy_name'];
     $taxonomy_name_plural = $tax['taxonomy_name_plural'];
     $taxonomy_key = $tax['taxonomy_key'];
+    $taxonomy_hierarchical = $tax['taxonomy_hierarchical'];
+
+    if(empty($taxonomy_name) || empty($taxonomy_name_plural) || empty($taxonomy_key)){
+        return;
+    }
 
     $labels = array(
         'name'                       => $taxonomy_name_plural,
@@ -44,7 +58,7 @@ function hale_register_taxonomy($tax){
     );
     $args = array(
         'labels'                     => $labels,
-        'hierarchical'               => true,
+        'hierarchical'               => $taxonomy_hierarchical,
         'public'                     => true,
         'show_ui'                    => true,
         'show_admin_column'          => true,
@@ -55,6 +69,27 @@ function hale_register_taxonomy($tax){
     register_taxonomy( $taxonomy_key, array(), $args );
 
 }
+
+/**
+ * Adds a custom query variables for flexible taxonomies.
+ *
+ * @param array $vars The existing query variables.
+ * @return array The modified query variables.
+ */
+function hale_flexible_taxonomies_add_query_vars_filter($vars)
+{
+    $custom_taxonomies = get_field( 'custom_taxonomies', 'options' );
+
+    if(!empty($custom_taxonomies) && is_array($custom_taxonomies)){
+        foreach($custom_taxonomies as $tax){       
+            $taxonomy_key = $tax['taxonomy_key'];
+            $vars[] = $taxonomy_key;
+        }
+    }
+    return $vars;
+}
+
+add_filter('query_vars', 'hale_flexible_taxonomies_add_query_vars_filter');
 
 
 

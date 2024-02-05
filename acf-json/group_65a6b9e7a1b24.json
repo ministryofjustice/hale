@@ -291,6 +291,27 @@
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_65a6f89090679"
+                },
+                {
+                    "key": "field_65bb76ce212f5",
+                    "label": "Hierarchical",
+                    "name": "taxonomy_hierarchical",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "parent_repeater": "field_65a6f89090679"
                 }
             ]
         }
@@ -313,5 +334,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706111007
+    "modified": 1706785121
 }

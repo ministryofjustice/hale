@@ -6,7 +6,7 @@
     "page_title": "CPTs & Tax",
     "menu_slug": "cpts",
     "parent_slug": "none",
-    "advanced_configuration": 0,
+    "advanced_configuration": 1,
     "icon_url": "",
     "menu_title": "",
     "position": "",
@@ -14,9 +14,9 @@
     "description": "",
     "update_button": "Update",
     "updated_message": "Options Updated",
-    "capability": "edit_posts",
+    "capability": "switch_themes",
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1705441296
+    "modified": 1707126290
 }
