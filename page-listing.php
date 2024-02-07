@@ -41,13 +41,13 @@ while (have_posts()) :
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
-                <div class="document-listing-search-section">
-                    <div class="document-listing-search-form">
+                <div class="listing-search-section">
+                    <div class="listing-search-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
-                            <label for="doc-search-field" class="govuk-visually-hidden">
+                            <label for="listing-search-field" class="govuk-visually-hidden">
                                 <?php _e('Search', 'hale'); ?>
                             </label>
-                            <input class="govuk-input" id="doc-search-field" name="listing_search"
+                            <input class="govuk-input" id="listing-search-field" name="listing_search"
                                    value="<?php echo $search_text_HTML; ?>" type="search"
                                    placeholder="<?php _e('Search', 'hale'); ?>">
 
@@ -55,8 +55,10 @@ while (have_posts()) :
 
                             $listing_filters = get_field('listing_filters');
 
-                            if(!empty($listing_filters) && is_array($listing_filters)) {
+                            if(!empty($listing_filters) && is_array($listing_filters)) { ?>
 
+                                    <p>Filters</p>
+                                    <?php
                                     foreach($listing_filters as $filter){
 
                                     $tax = get_taxonomy($filter);
@@ -224,7 +226,7 @@ while (have_posts()) :
                         $item_count_text = '1 ' . $post_type_obj->labels->singular_name;
                     }
                     ?>
-                    <div class="document-count">
+                    <div class="listing-item-count">
                         <?php echo $item_count_text; ?>
                     </div>
                     
@@ -249,7 +251,7 @@ while (have_posts()) :
                     </p>
                     <?php
                 } else { ?>
-                    <h2 class="job-list-item--title govuk-heading-l">
+                    <h2 class="govuk-heading-l">
                         <?php _e('Your search matched no ' . strtolower($post_type_obj->labels->name), 'hale'); ?>
                     </h2>
                     <p class="govuk-body">
