@@ -21,7 +21,7 @@
         },
         {
             "key": "field_65c0e89f33465",
-            "label": "CPT Object Types",
+            "label": "CPT Content templates",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -66,7 +66,7 @@
                     "name": "post_type_name",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "This will appear on the listing page to describe the type of content being displayed in the list e.g. Article, Document or summary.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -74,6 +74,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "relevanssi_exclude": 0,
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -87,7 +88,7 @@
                     "name": "post_type_name_plural",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "As above, but the plural of the name when there is more than one item to display in the list e.g. Articles, Documents or summaries.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -95,6 +96,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "relevanssi_exclude": 0,
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -108,7 +110,7 @@
                     "name": "post_type_key",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "The post type name in lower case. Can only use lowercase letters, numbers and underscores. It has a 20 character limit.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -116,8 +118,9 @@
                         "class": "",
                         "id": ""
                     },
+                    "relevanssi_exclude": 0,
                     "default_value": "",
-                    "maxlength": "",
+                    "maxlength": 20,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -125,11 +128,11 @@
                 },
                 {
                     "key": "field_65b12f7ab4cd7",
-                    "label": "Object Type",
+                    "label": "Content template",
                     "name": "post_type_object_type",
                     "aria-label": "",
                     "type": "select",
-                    "instructions": "",
+                    "instructions": "This allows you to select the template you want to apply to your custom post type, document, news or simple",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -137,6 +140,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "relevanssi_exclude": 0,
                     "choices": {
                         "simple": "Simple",
                         "news": "News Article",
@@ -356,5 +360,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1707141464
+    "modified": 1707317097
 }
