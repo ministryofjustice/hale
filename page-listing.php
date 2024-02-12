@@ -13,6 +13,7 @@ get_header();
 
 $listing_search_text = '';
 $listing_active_filters = [];
+$search_text_HTML = ''; 
 
 if (get_query_var('listing_search')) {
 
