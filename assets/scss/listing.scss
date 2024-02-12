@@ -1,0 +1,53 @@
+
+.page-template-page-listing {
+
+  #primary {  
+    .listing-search-section {
+
+      .listing-search-form {
+    
+        p {
+          font-weight: bold;
+          margin-top: 20px;
+        }
+    
+        .govuk-label {
+          margin-top: 10px;
+        }
+    
+        .govuk-select {
+          width: 100%;
+        }
+    
+        .govuk-button {
+          margin-top: 20px;
+        }
+      }
+    }
+    .listing-item-count {
+      border-top: 1px solid $govuk-border-colour;
+      padding-bottom: 16px;
+      padding-top: 10px;
+      text-align: right;
+      @include govuk-font(19);
+    }
+
+    .list-item {
+      border-bottom: 1px solid $govuk-border-colour;
+
+      .list-item-published-date {
+        @include govuk-font(19);
+        margin-bottom: 20px;
+        font-weight: bold;
+
+        .published-date {
+          font-weight: normal;
+        }
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
