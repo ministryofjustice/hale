@@ -583,6 +583,38 @@ html.hale-colours-variable {
 		}
 	}
 
+	.govuk-exit-this-page .govuk-button{
+		border:var(--quick-exit-button-border);
+		box-shadow: none;
+		color:var(--quick-exit-button-text);
+		background-color:var(--quick-exit-button);
+		&:hover {
+			background-color: var(--quick-exit-button-hover);
+			color: var(--quick-exit-button-hover-text);
+			box-shadow: none;
+			border-color: var(--quick-exit-button-hover-border);
+			svg {
+				fill: var(--quick-exit-button-hover-text);
+			}
+		}
+		&:focus {
+			background-color: var(--quick-exit-button-focus);
+			color: var(--quick-exit-button-focus-text);
+			border-color: var(--quick-exit-button-focus-outline);
+			box-shadow: 0 0 0 3px var(--quick-exit-button-focus-outline);
+		}
+		&:focus:not(:active):not(:hover) {
+			background-color: var(--quick-exit-button-focus);
+			color: var(--quick-exit-button-focus-text);
+			border-color: var(--quick-exit-button-focus-outline);
+			box-shadow: 0 0 0 3px var(--quick-exit-button-focus-outline);
+		}
+		svg {
+			fill: var(--quick-exit-button-text);
+		}
+
+	}
+
 	.govuk-select,
 	.govuk-input {
 		border: 2px solid var(--input-border);
