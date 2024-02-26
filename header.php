@@ -83,17 +83,6 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
     <?php
   }
 ?>
-  <?php
-  if ( 'yes' === $header_quick_exit) {
-    ?>
-	<div class="govuk-exit-this-page" data-module="govuk-exit-this-page">
-	<a href="https://www.bbc.co.uk/weather" role="button" draggable="false" class="govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button" data-module="govuk-button" rel="nofollow noreferrer">
-		<span class="govuk-visually-hidden"><?php esc_html_e( 'Emergency', 'hale' ); ?></span> <?php esc_html_e( 'Exit this page', 'hale' ); ?>
-	</a>
-	</div>
-    <?php
-  }
-?>
 	<?php
         if ( 'no' === $header_search ) {
           $headersearchextra = 'hale-header__menu--only';
@@ -133,6 +122,17 @@ $extra_styles = $page_colour ? 'page-style--' . $page_colour : '';
 
 <div id="content" class="govuk-width-container">
 	<main class="govuk-main-wrapper <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
+		<?php
+		if ( 'yes' === $header_quick_exit) {
+			?>
+			<div class="govuk-exit-this-page" data-module="govuk-exit-this-page">
+			<a href="https://www.bbc.co.uk/weather" role="button" draggable="false" class="govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button" data-module="govuk-button" rel="nofollow noreferrer">
+				<span class="govuk-visually-hidden"><?php esc_html_e( 'Emergency', 'hale' ); ?></span> <?php esc_html_e( 'Exit this page', 'hale' ); ?>
+			</a>
+			</div>
+			<?php
+		}
+		?>
 		<div id="contentinner" class="govuk-grid-row">
 		<?php
 		flush();

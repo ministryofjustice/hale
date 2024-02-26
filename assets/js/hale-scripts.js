@@ -36,6 +36,7 @@ jQuery( document ).ready(function( $ ) {
     }
   });*/
 
+  /*
   $(window).on('scroll resize', function() {
     var stickyDiv = $('.govuk-exit-this-page');
     var stickyButton = $('.govuk-exit-this-page a');
@@ -79,6 +80,6 @@ jQuery( document ).ready(function( $ ) {
         });
       }
     }
-  });
+  });*/
 
 });
