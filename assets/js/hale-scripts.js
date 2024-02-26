@@ -17,11 +17,14 @@ if( document.getElementById("search-show-hide") != null) {
 
 jQuery( document ).ready(function( $ ) {
 
+
+  /*
   function fleeFromPage(fleeMethod) {
     $("body").hide();
     window.open("http://bbc.co.uk/weather", "_newtab");
     window.location.replace("http://www.google.co.uk");   
   }
+
   $("a.govuk-exit-this-page__button").on("click", function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -30,18 +33,6 @@ jQuery( document ).ready(function( $ ) {
   $(document).keyup(function(e) {
     if (e.keyCode == 27) { // 27 = escape key
       fleeFromPage("escape key");
-    }
-  });
-
-  /*
-  window.addEventListener('scroll', function() {
-    var stickyDiv = document.getElementById('.govuk-exit-this-page');
-    var stickyDivRect = stickyDiv.getBoundingClientRect();
-  
-    if (window.scrollY >= stickyDivRect.top) {
-      stickyDiv.classList.add('sticky');
-    } else {
-      stickyDiv.classList.remove('sticky');
     }
   });*/
 
