@@ -17,36 +17,18 @@ if( document.getElementById("search-show-hide") != null) {
 
 jQuery( document ).ready(function( $ ) {
 
-
-  /*
-  function fleeFromPage(fleeMethod) {
-    $("body").hide();
-    window.open("http://bbc.co.uk/weather", "_newtab");
-    window.location.replace("http://www.google.co.uk");   
-  }
-
-  $("a.govuk-exit-this-page__button").on("click", function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    fleeFromPage("mouse click");
-  });
-  $(document).keyup(function(e) {
-    if (e.keyCode == 27) { // 27 = escape key
-      fleeFromPage("escape key");
-    }
-  });*/
-
+  //Keeps the Quick Exit Button at top of page once scrolled past the buttons original position in header
   $(window).on('scroll resize', function() {
     var stickyDiv = $('.govuk-exit-this-page');
     var stickyButton = $('.govuk-exit-this-page a');
 
     if (stickyDiv.length) {
 
+      //Keeps the surrounding Div the same width and height even when the button is fixed position. As this is used to work out the buttons left pos.
       var divMinHeight = stickyButton.outerHeight();
       var divMinWidth = stickyButton.outerWidth();
 
       if ($(".hale-header__mobile-controls--search").is(":visible")) {
-        //divMinHeight = 'initial';
         divMinWidth = 0
       }
 
@@ -73,6 +55,7 @@ jQuery( document ).ready(function( $ ) {
         });
       }
 
+      //If on mobile the sticky button should be full screen and to the left
       if ($(".hale-header__mobile-controls--search").is(":visible")) {
         $('.govuk-exit-this-page a').css({
           "left": 0
