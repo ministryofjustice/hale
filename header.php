@@ -89,6 +89,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 	<div class="govuk-exit-this-page" data-module="govuk-exit-this-page">
 	<a href="https://www.bbc.co.uk/weather" role="button" draggable="false" class="govuk-button govuk-button--warning govuk-exit-this-page__button govuk-js-exit-this-page-button" data-module="govuk-button" rel="nofollow noreferrer">
 		<span class="govuk-visually-hidden"><?php esc_html_e( 'Emergency', 'hale' ); ?></span> <?php esc_html_e( 'Exit this page', 'hale' ); ?>
+		<span class="govuk-visually-hidden"><?php esc_html_e( 'Or press shift key 3 times to exit this page', 'hale' ); ?></span>
 	</a>
 	</div>
     <?php
