@@ -17,7 +17,7 @@ $govuk-font-family: 'PT Sans', sans-serif;
 
   body {
     //the full width cover images go slightly off the pagem this is the easiest fix.
-    overflow-x: hidden;
+    overflow-x: visible;
   }
   .hale-search-header + div {
 		margin-top: 30px;
