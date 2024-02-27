@@ -513,7 +513,9 @@ function hale_customize_register( $wp_customize ) {
 					'label' => esc_html__($colour_desig, 'hale'),
 					'description' => esc_html__($colour_hint, 'hale'),
 					'section' => 'colors',
-					'type' => $colour_options == "text" ? 'text' : 'color',
+					// If colour picker needed change to below 
+					// 'type' => $colour_options == "text" ? 'text' : 'color',
+					'type' => 'text',
 					'active_callback' => $show_colours,
 				)
 			);
