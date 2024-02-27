@@ -87,7 +87,8 @@
 * These styles are applied to all sites
 */
 * {
-	main {
+	main,
+	.edit-post-visual-editor__content-area {
 		p,
 		p:not([class]),
 		p[class=""],

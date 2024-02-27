@@ -61,6 +61,7 @@
 	}
 }
 
-* main {
+* main,
+* .edit-post-visual-editor__content-area {
 	@include hale-custom-shading-text-colours("has-replace_replace-background-color");
 }
