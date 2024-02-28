@@ -112,10 +112,10 @@
 			['button-focus-outline',$yellow,'Button outline when focused (including search button)','This is thicker than any set button border',''],
 
 			//Quick Exit button
-			['quick-exit-button',$green,'Quick Exit Button background','',''],
+			['quick-exit-button',$red,'Quick Exit Button background','',''],
 			['quick-exit-button-text',$white,'Quick Exit Button text','',''],
 			['quick-exit-button-border',"none",'Quick Exit Button border','Enter a complete CSS value for border, e.g. "solid 2px #0b0c0c", "none"','text'], // not a colour
-			['quick-exit-button-hover',$buttonHoverGreen,'Quick Exit Button background on hover','',''],
+			['quick-exit-button-hover',$darkRed,'Quick Exit Button background on hover','',''],
 			['quick-exit-button-hover-text',$white,'Quick Exit Button text on hover','',''],
 			['quick-exit-button-hover-border','transparent','Quick Exit Button border on hover','Leave blank for none. Requires there to be a button border set',''],
 			['quick-exit-button-focus',$yellow,'Quick Exit Button background when focused','',''],
