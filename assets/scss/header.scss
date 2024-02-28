@@ -261,3 +261,15 @@ svg.hale-icon__search {
     min-height: 15px;
   }
 }
+
+body.admin-bar {
+
+  .govuk-exit-this-page.sticky {
+    .govuk-button {
+
+      @include govuk-media-query($from: desktop) {
+        top: 32px;
+      }
+    }
+  }
+}
