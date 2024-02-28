@@ -66,6 +66,21 @@ function hale_generate_custom_colours() {
 				}
 			}
 			$css .= "}";
+
+			// Text on a custom dark background
+			$background_css = "";
+			for($i=0;$i<count($colour_array);$i++) {
+				// Here we are checking for colours which are the "generic colours" which can be set as text or background for anything
+				// This is part of deciding whether to apply dark background styles to such blocks
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_options = hale_get_colour_options($colour_array[$i]);
+				$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
+				if ($dark_background_css_file_exists && $colour_options == "palette-colour") {
+					$background_css .= apply_background_styles($colour_id, $colour_to_use, $dark_background_css_file);
+				}
+			}
+			$css .= $background_css;
+
 		} else { //GDS Scheme
 			$colour_bar_colour = get_theme_mod('colour_bar','#1D70B8');
 			$css = ":root {";
@@ -92,6 +107,9 @@ function hale_generate_custom_colours() {
 				$colour_bar_style .= "}";
 				$css .= $colour_bar_style;
 			}
+			// Text on a custom dark background
+			$background_css = apply_GDS_background_styles($dark_background_css_file);
+			$css .= $background_css;
 		}
 		if (!$custom_colours_set || $logo_focus_invert) {
 			$logo_focus_invert_style  = ".govuk-header a:focus img {";
@@ -99,19 +117,6 @@ function hale_generate_custom_colours() {
 			$logo_focus_invert_style .= "}";
 			$css .= $logo_focus_invert_style;
 		}
-
-		$background_css = "";
-		for($i=0;$i<count($colour_array);$i++) {
-			// Here we are checking for colours which are the "generic colours" which can be set as text or background for anything
-			// This is part of deciding whether to apply dark background styles to such blocks
-			$colour_id = hale_get_colour_id($colour_array[$i]);
-			$colour_options = hale_get_colour_options($colour_array[$i]);
-			$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
-			if ($dark_background_css_file_exists && $colour_options == "palette-colour") {
-				$background_css .= apply_background_styles($colour_id, $colour_to_use, $dark_background_css_file);
-			}
-		}
-		$css .= $background_css;
 
 		// As SVGs cannot use CSS variables, we read in the SVG CSS file to recreate the SVGs with their hard-coded colours
 		if ($svg_css_file_exists) {
@@ -163,7 +168,28 @@ function get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_valu
 	return $colour_to_use;
 }
 
+function apply_GDS_background_styles($dark_background_css_file) {
+	// We know the preset backgrounds for GDS, so this is hard-coded
+
+	$complex_background_code = file_get_contents($dark_background_css_file);
+
+	$css = "";
+
+	// GDS backgrounds are:
+	//// Blue (#1d70b8)
+	$css .= str_replace("has-replace_replace-background-color","has-generic-palette-1-background-color",$complex_background_code);
+	//// Pink (#f499be)
+	//// Not needed - it is light enough
+	//// Orange (#f47738)
+	//// Not needed - it is light enough
+	//// Green (#00703c)
+	$css .= str_replace("has-replace_replace-background-color","has-generic-palette-4-background-color",$complex_background_code);
+
+	return $css;
+}
+
 function apply_background_styles($colour_id, $colour_to_use, $dark_background_css_file) {
+	// Only called for non-GDS sites
 	// Code from https://stackoverflow.com/questions/1331591/given-a-background-color-black-or-white-text
 
 	$complex_background_code = file_get_contents($dark_background_css_file);
