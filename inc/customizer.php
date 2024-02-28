@@ -130,6 +130,32 @@ function hale_customize_register( $wp_customize ) {
         )
     );
 
+	/*
+	 * -----------------------------------------------------------
+	 * SHOW / HIDE Quick Exit Button
+	 * -----------------------------------------------------------
+	 */
+	$wp_customize->add_setting(
+		'show_quick_exit',
+		array(
+			'default'           => 'no',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'show_quick_exit',
+		array(
+			'label'       => esc_html__( 'Show Quick Exit Button?', 'hale' ),
+			'description' => esc_html__( 'Would you like to have a quick exit button in the header?', 'hale' ),
+			'section'     => 'section_header',
+			'type'        => 'radio',
+			'choices'     => array(
+				'yes' => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
+
     /*
         Show/Hide Site Name or Logo
     */
