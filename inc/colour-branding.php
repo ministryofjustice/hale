@@ -86,6 +86,11 @@ function hale_generate_custom_colours() {
 				$colour_bar_style .= 	"margin-bottom: 7px;";
 				$colour_bar_style .= "}";
 				$css .= $colour_bar_style;
+			} else {
+				$colour_bar_style  = ".govuk-header__container {";
+				$colour_bar_style .= 	"border-bottom: none!important;";
+				$colour_bar_style .= "}";
+				$css .= $colour_bar_style;
 			}
 		}
 		if (!$custom_colours_set || $logo_focus_invert) {
