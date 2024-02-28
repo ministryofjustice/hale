@@ -146,7 +146,7 @@ function hale_customize_register( $wp_customize ) {
 		'show_quick_exit',
 		array(
 			'label'       => esc_html__( 'Show Quick Exit Button?', 'hale' ),
-			'description' => esc_html__( 'Would you like to quick exit button in the header?', 'hale' ),
+			'description' => esc_html__( 'Would you like to have a quick exit button in the header?', 'hale' ),
 			'section'     => 'section_header',
 			'type'        => 'radio',
 			'choices'     => array(
