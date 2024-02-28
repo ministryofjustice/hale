@@ -19993,7 +19993,7 @@ msgstr "Mae’r holl gynnwys ar gael o dan <a class=\"govuk-footer__link\" href=
 
 #: hale/header.php
 msgid "Exit this page"
-msgstr "Gadael y dudalen hon"
+msgstr "Gadael y dudalen"
 
 #: hale/header.php
 msgid "Emergency"
