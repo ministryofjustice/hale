@@ -19994,3 +19994,15 @@ msgstr "Mae’r holl gynnwys ar gael o dan <a class=\"govuk-footer__link\" href=
 #: hale/partials/topnav.php
 msgid "More"
 msgstr "Mwy"
+
+#: hale/header.php
+msgid "Exit this page"
+msgstr "Gadael y dudalen"
+
+#: hale/header.php
+msgid "Emergency"
+msgstr "Argyfwng"
+
+#: hale/header.php
+msgid "Or press shift key 3 times to exit this page"
+msgstr "Neu pwyswch y fysell shift 3 gwaith i adael y dudalen hon"

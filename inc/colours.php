@@ -111,6 +111,17 @@
 			['button-focus-text',$black,'Button text when focused','',''],
 			['button-focus-outline',$yellow,'Button outline when focused (including search button)','This is thicker than any set button border',''],
 
+			//Quick Exit button
+			['quick-exit-button',$red,'Quick Exit Button background','',''],
+			['quick-exit-button-text',$white,'Quick Exit Button text','',''],
+			['quick-exit-button-border',"none",'Quick Exit Button border','Enter a complete CSS value for border, e.g. "solid 2px #0b0c0c", "none"','text'], // not a colour
+			['quick-exit-button-hover',$darkRed,'Quick Exit Button background on hover','',''],
+			['quick-exit-button-hover-text',$white,'Quick Exit Button text on hover','',''],
+			['quick-exit-button-hover-border','transparent','Quick Exit Button border on hover','Leave blank for none. Requires there to be a button border set',''],
+			['quick-exit-button-focus',$yellow,'Quick Exit Button background when focused','',''],
+			['quick-exit-button-focus-text',$black,'Quick Exit Button text when focused','',''],
+			['quick-exit-button-focus-outline',$yellow,'Quick Exit Button outline when focused (including search button)','This is thicker than any set button border',''],
+
 			//accordion - MoJ Blocks
 			['mojblocks-accordion-section-title',$black,'Accordion section titles','',''],
 			['mojblocks-accordion-section-shew',$blue,'Accordion show/hide','',''],
