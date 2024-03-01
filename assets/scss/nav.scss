@@ -87,12 +87,11 @@
               }
             }
 
-            &--open,
-            &:focus-within,
-            &:hover {
-              .menu-item--more__content {
-                display: flex;
-              }
+            &--open .menu-item--more__content,
+            &:hover .menu-item--more__content,
+            .menu-item--more__content:focus,
+            .menu-item--more__content:focus-within {
+              display: flex;
             }
           }
           .menu-item--more__content {
