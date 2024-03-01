@@ -280,6 +280,18 @@
 							@include hale-heading-link-underline-restrictor($colour: --header-bg);
 						}
 					}
+					// outline for when more button is clicked
+					&.menu-item--more--open {
+						.menu-item__more:before {
+							content:"";
+							width:100%;
+							height:calc(100% + 3px);
+							position:absolute;
+							outline: 3px solid;
+							outline-offset: -3px;
+							z-index: 1;
+						}
+					}
 
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);

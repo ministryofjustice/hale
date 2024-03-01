@@ -85,6 +85,11 @@
                 transform: rotate(-135deg);
                 margin: 6px 10px 0 5px;
               }
+            }
+
+            &--open,
+            &:focus-within,
+            &:hover {
               .menu-item--more__content {
                 display: flex;
               }

@@ -238,6 +238,14 @@ document.addEventListener('click', function(e) {
 	}
 }, false);
 
+document.addEventListener('mouseover', function(e) {
+	// Function to close the More menu if user hovers over another menu item.
+	let target = e.target;
+	if (target.closest(".menu-item-has-children") != null && target.closest(".menu-item--more") == null && document.querySelector(".menu-item--more--open") != null) {
+		document.querySelector(".menu-item__more").click();
+	}
+}, false);
+
 jQuery("#menu-menu-top-menu").ready(function( $ ) {
 	navBarOptimization();
 	$(window).resize(function() {
