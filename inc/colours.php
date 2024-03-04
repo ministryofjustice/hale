@@ -37,6 +37,12 @@
 			We can use this to add more options if needed
 		*/
 		$colour_array = array(
+			//main text
+			['text',$black,'Normal text','',''],
+			['heading-text',$black,'Heading level text','',''],
+			['dark-text',$white,'Normal text on custom-set dark background','',''],
+			['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
+
 			//header
 			['header-bg',$black,'Header background','',''],
 			['header-divider-line',$headerMenuLineGrey,'Header divider line','',''],
@@ -92,12 +98,6 @@
 			['mojblocks-hero-bg',$white,'Hero background','Will be obscured by the Hero image',''],
 			['cat-nav-arrows',$black,'Chapter headings navigation arrows','',''],
 			['pagination-border',$midGrey,'Line at bottom of listing page','When there are multiple pages',''],
-
-			//main text
-			['text',$black,'Normal text','',''],
-			['heading-text',$black,'Heading level text','',''],
-			['dark-text',$white,'Normal text on custom-set dark background','',''],
-			['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
 
 			//links on page
 			['link',$blue,'Link colour','',''],
