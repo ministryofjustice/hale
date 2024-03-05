@@ -14,8 +14,11 @@
     $salaryLdn = empty($post -> job_salary_london) ? "" : $post -> job_salary_london;
     $contractArray = get_the_terms( get_the_ID(), 'contract_type' );
     $addressObjectArray = get_the_terms( get_the_ID(), 'job_address' );
+    if (!$addressObjectArray) $addressObjectArray = [];
     $cityObjectArray = get_the_terms( get_the_ID(), 'job_city' );
+    if (!$cityObjectArray) $cityObjectArray = [];
     $regionObjectArray = get_the_terms( get_the_ID(), 'job_region' );
+    if (!$regionObjectArray) $regionObjectArray = [];
 
     // Format date
     $now = date("Y-m-d",time());
@@ -74,25 +77,19 @@
     $cityArray = $regionArray = array();
     $showAddress = $showCity = true;
 
-    if ($addressObjectArray) {
-        foreach($addressObjectArray as $addressObject) {
-            $addressField.=sanitizeAddress($addressObject -> name);
-            $addressField.=" <br />";
-        }
+    foreach($addressObjectArray as $addressObject) {
+        $addressField.=sanitizeAddress($addressObject -> name);
+        $addressField.=" <br />";
     }
-    if ($cityObjectArray) {
-        foreach($cityObjectArray as $cityObject) {
-            $city=$cityObject -> name;
-            array_push($cityArray,$city);
-        }
+    foreach($cityObjectArray as $cityObject) {
+        $city=$cityObject -> name;
+        array_push($cityArray,$city);
     }
     $cityArray = array_unique($cityArray);
     $cityField=join(" <br />",$cityArray);
-    if ($regionObjectArray) {
-        foreach($regionObjectArray as $regionObject) {
-            $region=$regionObject -> name;
-            array_push($regionArray,$region);
-        }
+    foreach($regionObjectArray as $regionObject) {
+        $region=$regionObject -> name;
+        array_push($regionArray,$region);
     }
     $regionArray = array_unique($regionArray);
     $regionField=join(" <br />",$regionArray);
@@ -104,8 +101,11 @@
     } elseif (count($addressObjectArray) > 1) {
         // If there are many addresses, we only show cities
         $showAddress = false;
+    } else {
+        // No address to show
+        $showAddress = false;
     }
-    if (count($cityArray) > 4) {
+    if (count($cityArray) > 4 || strtoupper(trim($cityArray[0])) == "VARIOUS") {
         // We display up to this many cities before changing to "multiple locations"
         $cityField = "Multiple locations ";
     }
