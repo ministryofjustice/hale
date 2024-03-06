@@ -11,11 +11,11 @@
 @mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
 	// @include hale-block-inside-block($colour, $hoverColour)
 	@if $hoverColour == "" { //not link
-		&:not(.#{$paletteColour} .has-background *):not(.has-text-color *):not(.has-text-color) {
+		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(.has-text-color *):not(.has-text-color) {
 			color: $colour;
 		}
 	} @else {
-		&:not(.#{$paletteColour} .has-background *):not(:focus) {
+		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(:focus) {
 			color: $colour;
 
 			&:hover {

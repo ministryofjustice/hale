@@ -17,11 +17,11 @@
 // However, it will break down if a different block of the same colour be insude it - in such cases, the text colour might need to be manually set.
 @mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
 	@if $hoverColour == "" { //not link
-		&:not(.#{$paletteColour} .has-background *):not(.has-text-color *):not(.has-text-color) {
+		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(.has-text-color *):not(.has-text-color) {
 			color: $colour;
 		}
 	} @else {
-		&:not(.#{$paletteColour} .has-background *):not(:focus) {
+		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(:focus) {
 			color: $colour;
 
 			&:hover {
