@@ -43,12 +43,14 @@
 		.gem-c-pagination__link:visited {
 			@include hale-block-inside-block($paletteColour,var(--dark-link), var(--dark-link-hover));
 		}
+		&:is(p),
 		p,
 		li,
 		label {
 			@include hale-block-inside-block($paletteColour,var(--dark-text));
 		}
-		h1, h2, h3, h4, h5, h6 {
+		h1, h2, h3, h4, h5, h6,
+		&:is(h1, h2, h3, h4, h5, h6) {
 			@include hale-block-inside-block($paletteColour,var(--dark-heading-text));
 		}
 	}
