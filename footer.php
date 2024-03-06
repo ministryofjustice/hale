@@ -77,7 +77,7 @@ flush();
 </footer>
 <?php wp_footer(); ?>
 <script type="module">
-  import { initAll } from '<?php echo get_stylesheet_directory_uri() ?>/dist/js/govuk-frontend.js'
+  import { initAll } from '<?php echo hale_mix_asset('/js/govuk-frontend.js') . '&ver=5.0.0'; ?>'
 
   initAll()
 </script>
