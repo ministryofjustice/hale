@@ -329,10 +329,6 @@ require get_template_directory() . '/inc/job-prison-locations.php';
  */
 require get_template_directory() . '/inc/template-functions.php';
 /**
- * Add in a limitation to only NHS colour blocks.
- */
-require get_template_directory() . '/inc/custom-colours.php';
-/**
  * Add in custom Gutenberg modifications.
  */
 require get_template_directory() . '/inc/custom-gutenberg.php';
