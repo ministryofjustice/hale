@@ -1,13 +1,11 @@
-@import 'page-colours';
-
-//brandings for MOj Blocks
+//brandings for MoJ Blocks
 
 html.hale-colours-variable {
 	//Accordion block
 	.govuk-accordion,
 	.js-enabled .govuk-accordion {
 		h1, h2, h3, h4, h5, h6 {
-			color: unset;
+			color: var(--heading-text);
 		}
 
 		&__controls {
