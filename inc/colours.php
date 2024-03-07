@@ -33,9 +33,16 @@
 		4 = options
 			text = accepts non-colour values
 			brand-colour = uses the brand colour as the default in GDS mode
+			palette-colour = we perform brightness checks on this colour and bring in whole blocks of CSS as needed
 			We can use this to add more options if needed
 		*/
 		$colour_array = array(
+			//main text
+			['text',$black,'Normal text','',''],
+			['heading-text',$black,'Heading level text','',''],
+			['dark-text',$white,'Normal text on custom-set dark background','',''],
+			['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
+
 			//header
 			['header-bg',$black,'Header background','',''],
 			['header-divider-line',$headerMenuLineGrey,'Header divider line','',''],
@@ -99,6 +106,8 @@
 			['link-focus',$black,'Link when focused','',''],
 			['link-focus-shadow',$black,'Link underline when focused','',''],
 			['link-focus-background',$yellow,'Link background when focused','',''],
+			['dark-link',$white,'Link colour on custom-set dark background','',''],
+			['dark-link-hover',$white,'Link on hover on custom-set dark background','',''],
 
 			//buttons
 			['button',$green,'Button background','',''],
@@ -166,10 +175,10 @@
 			['extended-block-group-bg',$white,'Group block background','When not using default style',''],
 
 			//block editor colour palette
-			['generic-palette-1',$blue,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-2',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
-			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available',''],
+			['generic-palette-1',$blue,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','palette-colour'],
+			['generic-palette-2',$lightPink,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','palette-colour'],
+			['generic-palette-3',$orange,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','palette-colour'],
+			['generic-palette-4',$green,'Colour for block editor palette','Avoid greyscale colours as a selection of these are always available','palette-colour'],
 
 			//inputs
 			['input-bg',$white,'Input box background','',''],
@@ -244,7 +253,6 @@
 		// This function checks for any newly created colours that haven't been set in the customizer and applies the default.
 		// The amended CSS file will be overwritten when the colours are next amended.
 		// This does not protect against new colours being added to the SASS and not added to colours.php.
-		// This is for non-IE only as this particular bug doesn't occur in IE.
 
 		$CSSpath = wp_get_upload_dir()["basedir"];
 
@@ -257,7 +265,7 @@
 				trigger_error("Directory $CSSpath was missing, but was successfully created.",E_USER_NOTICE);
 			}
 		}
-		$CSSfileURL = $CSSpath."/custom-colours.css"; //non-IE CSS file (variable values)
+		$CSSfileURL = $CSSpath."/custom-colours.css";
 		$ColourFileURL = get_template_directory()."/inc/colours.php";
 
 		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {

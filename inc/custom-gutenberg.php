@@ -25,16 +25,13 @@ function hale_gutenberg_editor_styles() {
 
         $t = time();
         $css_file_name = "/custom-colours.css?t=$t";
-        $css_file_name_IE = "/custom-colours-ie.css?t=$t";
 
         if (is_ssl()) {
             //wp_get_upload_dir()["baseurl"] only returns http.
             $baseURL = str_replace('http://', 'https://', wp_get_upload_dir()["baseurl"]);
             if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
-            wp_enqueue_style('hale-custom-colours-ie', $baseURL . $css_file_name_IE);
         } else {
             if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
-            wp_enqueue_style('hale-custom-colours-ie', wp_get_upload_dir()["baseurl"] . $css_file_name_IE);
         }
     }
 }
