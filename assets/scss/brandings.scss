@@ -1,10 +1,10 @@
 @import 'user-colour-palette';
 
 //mixins
-@mixin hale-heading-link-underline-restrictor($colour, $width: 1024px) {
+@mixin hale-heading-link-underline-restrictor($colour, $width: desktop) {
 	@include govuk-media-query($from: $width) {
 		position:relative;
-
+		
 		&:before {
 			content:"";
 			border-right:15px solid var($colour);
@@ -62,22 +62,6 @@
 	All brandings
 **********************/
 
-//space out menu for all brandings
-.js-enabled .govuk-header,
-.govuk-header {
-	@include govuk-media-query($from: desktop) {
-		padding-bottom: 0;
-
-		.govuk-header__navigation-list {
-			display: flex;
-			justify-content: space-between;
-
-			li {
-				padding:0;
-			}
-		}
-	}
-}
 //remove gap at top of page
 .govuk-main-wrapper {
 	padding-top:0;
@@ -306,7 +290,7 @@
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
 
-				> .current-menu-item {
+				.current-menu-item {
 					> a,
 					> a:visited,
 					> a:link,
@@ -325,7 +309,7 @@
 
 							&:not(:hover) {
 								@include govuk-media-query($from: desktop) {
-									border-bottom-color: var(--header-link-current-border) ! important;
+									border-bottom-color: var(--header-link-current-border);
 									@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
 								}
 							}
@@ -341,7 +325,8 @@
 					> a,
 					> a:visited,
 					> a:link,
-					> a:link:visited {
+					> a:link:visited,
+					.menu-item__more {
 						color: var(--header-link);
 
 						&:hover:focus {
@@ -354,8 +339,8 @@
 
 						&:focus:not(:hover) {
 							color: var(--header-link-focus);
-							background-color: var(--header-link-focus-highlight);
 							border-bottom-color: var(--header-link-focus-underline);
+							background-color: var(--header-link-focus-highlight);
 
 							@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 						}
@@ -367,22 +352,47 @@
 							@include hale-heading-link-underline-restrictor($colour: --header-bg);
 						}
 					}
+					// outline for when more button is clicked
+					&.menu-item--more--open {
+						.menu-item__more:before {
+							content:"";
+							width:100%;
+							height:calc(100% + 3px);
+							position:absolute;
+							outline: 3px solid;
+							outline-offset: -3px;
+							z-index: 1;
+						}
+					}
 
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
-						.hale-header__dropdown-arrow{
+						.hale-header__dropdown-arrow {
 							color: var(--header-link);
 							background-color: var(--header-bg);
 
-							&:hover {
-									color: var(--header-link-hover);
-									border-bottom-color: var(--header-link-hover);
+							&--desktop {
+								color: var(--header-submenu-link);
+								background-color: var(--header-submenu-bg);
+								&:focus ~ .sub-menu{
+									outline-color: var(--header-submenu-lock-focus);
+								}
 							}
-							&:focus {
-									color: var(--header-link-hover-focus);
-									border-bottom-color: var(--header-link-hover-focus);
-									background-color: var(--header-link-focus-highlight);
+
+							&:hover:focus {
+								color: var(--header-link-hover-focus);
+								border-bottom-color: var(--header-link-focus-underline);
+								background-color: var(--header-link-focus-highlight);
+							}
+							&:focus:not(:hover) {
+								color: var(--header-link-focus);
+								border-bottom-color: var(--header-link-focus-underline);
+								background-color: var(--header-link-focus-highlight);
+							}
+							&:hover {
+								color: var(--header-link-hover);
+								border-bottom-color: var(--header-link-hover-border);
 							}
 						}
 
@@ -464,6 +474,7 @@
 				}
 
 				.sub-menu {
+					outline-color: var(--header-link-focus-underline);
 					box-shadow: 0px -1px 0px 0px var(--header-submenu-top-border);
 
 					@include govuk-media-query($from: desktop) {
@@ -528,6 +539,116 @@
 										border-bottom-color: var(--header-submenu-link-current-hover-border);
 
 										@include hale-heading-link-underline-restrictor($colour: --header-submenu-link-current-bg, $width: desktop);
+									}
+								}
+							}
+						}
+					}
+				}
+				
+				.menu-item--more {
+					.menu-item__more {
+						background-color: var(--header-bg);
+						border-bottom-color: var(--header-bg);
+
+						&--contains-current {
+							background-color: var(--header-link-ancestor-bg);
+							border-bottom-color: var(--header-link-ancestor-bg);
+							color: var(--header-link-ancestor);
+
+							&:hover {
+								color: var(--header-link-ancestor);
+								border-bottom-color:var(--header-link-ancestor-hover-border);
+
+								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+								&:focus {
+									border-bottom-color: currentColor;
+
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+								}
+							}
+
+							&:not(:hover) {
+								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+							}
+						}
+					}
+	
+					&__content {
+						background-color: var(--header-submenu-bg);
+						color: var(--header-submenu-link);
+
+						&:after {
+							background-color: var(--header-submenu-bg);
+						}
+	
+						.sub-menu {
+							li a {
+								&:link,
+								&:visited,
+								&:link:visited {
+									&:hover,
+									&:not(:hover) {
+										@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
+										
+										&:focus {
+											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+										}
+									}
+								}
+							}
+						}
+						>li.menu-item {
+							border-bottom-color: var(--header-submenu-link);
+
+							> a:not(:focus) {
+								box-shadow: 0 13px 0 -12px var(--header-submenu-bg), 0 14px 0 -12px var(--header-submenu-link);
+							}
+
+							// we need to make the following declarations to override the existing very specific declarations above
+							&:not(.current-menu-ancestor):not(.current-menu-item), //normal parents not currently "current"
+							&.current-menu-item, //parents which are the current page
+							.current-menu-item, //children which are the current page
+							&.current-menu-ancestor //parents of children which are the current page
+							{
+								//these styles are no longer dependent on hover status - but we need to declare both to override the above
+								&:hover,
+								&:not(:hover) {
+
+									background-color: var(--header-submenu-bg);
+
+									a {
+										&:link,
+										&:visited,
+										&:link:visited {
+											&:not(:focus) {
+												background-color: var(--header-submenu-bg);
+												color: var(--header-submenu-link);
+												border-bottom-color: var(--header-submenu-bg);
+
+												@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
+											}
+										}
+									}
+								}
+							}
+							&.current-menu-item {
+								a:not(:focus) {
+									&:link,
+									&:visited,
+									&:link:visited {
+										&:not(:focus) {
+											color: var(--header-link-current);
+											background-color: var(--header-link-current-bg);
+											@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
+
+											&:not(:hover) {
+												border-bottom-color: var(--header-link-current-border);
+											}
+											&:hover {
+												border-bottom-color: var(--header-link-current-hover-border);
+											}
+										}
 									}
 								}
 							}

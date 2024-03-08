@@ -132,35 +132,140 @@
 } )();
 
 /**
- * Function to make a megamenu with clickable titles that expand blocks underneath. Its pretty awesome.
- * @param id - the name of the div to display on clicking the link.
+ * navBarOptimization
+ * Creates the more button and puts any overflow items into it.
+ * Called (below) when page loads and when page is resized (including when mobile rotated)
  */
-function guideNavClick(id) {
-	var others, i;
-	others = document.getElementsByClassName( "guides-nav__contents" );
-	event.preventDefault();
-	for (i = 0; i < others.length; i++) {
-		others[i].style.display = "none";
-	}
-	var currentState = document.getElementById(id).style.display;
-	if ( currentState == "block" ) {
-		document.getElementById(id).style.display = "none";
+
+function navBarOptimization() {
+
+	const moreText = document.getElementById("header-navigation").getAttribute("data-more-text");
+	if (moreText == "None") return;
+	const moreTextWidth = moreText.length;
+	const headerNav = document.getElementById("menu-menu-top-menu");
+	if (!headerNav) return;
+	const nav = document.querySelectorAll("#menu-menu-top-menu>li.menu-item");
+	if (!nav || nav.length === 0) return;
+	const navMaxWidth = headerNav.getBoundingClientRect()["width"];
+	const navMaxWidthWithMore = navMaxWidth - (moreTextWidth * 16 + 25);
+	// about 90px to allow space for the More button
+	// Assume 1 letter ≈ 1em = 16px, so 4 letters ≈ 4em = 64px, add 25 to give 89px for "More"
+	// For welsh "Mwy", 3em = 48px, add 25px gives 73px.
+
+	let allMenuItemsWidth = 0;
+
+	const isMoreButtonDisabled = window.getComputedStyle(document.querySelector(".govuk-header__menu-button")).display === "none";
+
+	if (isMoreButtonDisabled) {
+		// the menu button is hidden = not mobile view
+
+		const existingMoreLink = document.getElementById("more-link");
+		if (existingMoreLink) existingMoreLink.remove();
+
+		for (var i = 0; i < nav.length; i++) {
+			const thisMenuItemWidth = nav[i].getBoundingClientRect().width;
+			allMenuItemsWidth += thisMenuItemWidth;
+
+			if (
+				allMenuItemsWidth > navMaxWidth ||
+				( allMenuItemsWidth > navMaxWidthWithMore && i < nav.length - 1)
+			) {
+				const moreLink = document.createElement("li");
+				moreLink.innerHTML = '<button>'+ moreText +'</button><ul class="menu-item--more__content"></ul>';
+				moreLink.setAttribute("id","more-link");
+				moreLink.classList.add("menu-item", "menu-item--more");
+
+				const moreButton = moreLink.querySelector("button");
+				moreButton.classList.add("menu-item__more");
+				moreButton.setAttribute("aria-expanded","false");
+
+				headerNav.insertBefore(moreLink,nav[i]);
+				break; // Loop continues below
+			}
+		}
+
+		var moreContainer = headerNav.querySelector("#more-link");
+		if (moreContainer) {
+			var moreButton = moreContainer.querySelector("button");
+			var moreLinks = moreContainer.querySelector(".menu-item--more__content");
+		}
+		if (moreButton) {
+			
+			// Move all overflow elements inside the more button
+			for (/* i value from above */;i<nav.length;i++) {
+				// continued from above
+				let clonedNode = nav[i].cloneNode(true);
+				moreLinks.appendChild(clonedNode);
+			}
+
+			if (moreLinks.innerHTML.indexOf("current-menu-item") > 0) {
+				// If the more links contains "current-menu-item" - style it to be an ancestor
+				moreButton.classList.add("menu-item__more--contains-current");
+			}
+
+			// Add click functionality to the more button
+			moreButton.addEventListener("click", (event) => {
+				let parent = moreButton.parentElement;
+
+				if (parent.classList.contains('menu-item--more--open')) {
+					parent.classList.remove("menu-item--more--open");
+					moreButton.setAttribute("aria-expanded","false");
+				} else {
+					// We close all open menus and remove the aria-expanded true value
+					headerNav.querySelectorAll("#menu-menu-top-menu li.sub-menu-open").forEach(element => {
+						element.classList.remove("sub-menu-open");
+						element.querySelectorAll("button").forEach(e => {
+							e.setAttribute("aria-expanded","false");
+						});
+					});
+					parent.classList.add("menu-item--more--open");
+					moreButton.setAttribute("aria-expanded","true");
+				}
+			});
+		}
 	} else {
-		document.getElementById(id).style.display = "block";
+		// If the width is less than desktop, we make sure we remove the more link should it have been created
+		// This might happen with a mobile device being rotated
+		if (document.getElementById("more-link") != null) document.getElementById("more-link").remove();
 	}
 }
 
-jQuery( document ).ready(function( $ ) {
+document.addEventListener('click', function(e) {
+	// Function to close the More menu if user clicks outside of it.
+	let target = e.target;
+	if (target.closest(".menu-item--more--open") == null && document.querySelector(".menu-item--more--open") != null) {
+		document.querySelector(".menu-item__more").click();
+	}
+}, false);
+
+document.addEventListener('mouseover', function(e) {
+	// Function to close the More menu if user hovers over another menu item.
+	let target = e.target;
+	if (target.closest(".menu-item-has-children") != null && target.closest(".menu-item--more") == null && document.querySelector(".menu-item--more--open") != null) {
+		document.querySelector(".menu-item__more").click();
+	}
+}, false);
+
+jQuery("#menu-menu-top-menu").ready(function( $ ) {
+	navBarOptimization();
+	$(window).resize(function() {
+		navBarOptimization();
+	});
+});
+
+jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(function( $ ) {
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
-	$( "#menu-menu-top-menu li.menu-item-has-children > a" ).append(
-		"<button class='hale-header__dropdown-arrow' aria-expanded='false'><span class='govuk-visually-hidden'>Show submenu</span></button>"
-	);
+	const $mobileSubMenuButton = $('<button class="hale-header__dropdown-arrow" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
+	const $desktopSubMenuButton = $('<button class="hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
+
+	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
+	$desktopSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > a");
 
 	//Keyboard functionailty (requires mouse functionality)
-	$("#menu-menu-top-menu li.menu-item-has-children > a").keydown(function(e){
+	$(".hale-header__dropdown-arrow").keydown(function(e){
 
-		let openCloseControl = $(this).find(".hale-header__dropdown-arrow");
+		let openCloseControl = $(this);
 
 		if (openCloseControl.is(":visible")) {
 			if (e.keyCode == "32") { // space
@@ -184,23 +289,21 @@ jQuery( document ).ready(function( $ ) {
 	});
 
 	//Mouse functionality
-	$( "#menu-menu-top-menu li.menu-item-has-children > a > .hale-header__dropdown-arrow" ).click(function( event ) {
+	$( ".hale-header__dropdown-arrow" ).click(function( event ) {
 
 		event.preventDefault();
 
-		let menuItem = $(this).parent().parent();
+		let menuItem = $(this).parent();
 
 		$(".hale-header__dropdown-arrow").css("height","");
 
 		if (menuItem.hasClass('sub-menu-open')) {
 			menuItem.removeClass("sub-menu-open");
-			$(this).attr("aria-expanded","false");
+			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","false");
 		} else {
 			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
 			menuItem.addClass("sub-menu-open");
-			let subMenuItemsHeight = menuItem.find(".sub-menu").height();
-			$(this).height("calc(100% + 5px + "+subMenuItemsHeight+"px)");
-			$(this).attr("aria-expanded","true");
+			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","true");
 		}
 	}).keydown(function(e){
 		if (e.keyCode == "13") $(this).click();
