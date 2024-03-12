@@ -122,6 +122,10 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 </div>
 </header>
 <?php
+
+include "inc/information-banner.php";
+
+
 get_template_part( 'partials/secondary-top-nav' );
 
 echo hale_breadcrumb(); 

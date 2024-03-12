@@ -31,3 +31,27 @@
     padding-bottom: 2rem;
   }
 }
+
+.info-banner {
+  display:none; // removed by JavaScript
+  background-color: #d5e8f3;
+  padding: 0.5rem 0;
+  margin-bottom: 0.3rem;
+  font-size: 1.25rem;
+
+  &__width-restriction {
+    max-width: $govuk-page-width;
+    margin:0 auto;
+  }
+
+  &__title,
+  &__summary {
+    font-size: 1.25rem;
+    padding-right: 1rem;
+    display: inline
+  }
+
+  &__close {
+    float:right;
+  }
+}
