@@ -32,7 +32,7 @@ if ( ! isset( $GLOBALS['hale_search_form_counter'] ) ) {
 }
 ?>
 <button id="search-show-hide" class="hale-header__mobile-controls hale-header__mobile-controls--search" aria-controls="search" aria-label="Open search" aria-expanded="false">
-  <svg class="hale-icon hale-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <svg class="hale-icon hale-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="-2 2 28 16" aria-hidden="true" focusable="false">
     <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
   </svg>
   <span><?php echo esc_html__( 'Search', 'hale' ); ?></span>

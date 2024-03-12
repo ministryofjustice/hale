@@ -207,6 +207,11 @@
 svg.hale-icon__search {
   display: none; //display in header only;
 }
+.hale-header--with-search {
+  svg.hale-icon__search {
+    display: block; //display in header only;
+  }
+}
 
 .govuk-header {
   &__logotype:not(.hale-header__logotype--custom) {
@@ -222,7 +227,6 @@ svg.hale-icon__search {
     background-position-x: center;
     background-position-y: 2px;
     background-repeat: no-repeat;
-    padding-top: 25px;
     cursor: pointer;
 
     &:after {
@@ -236,7 +240,16 @@ svg.hale-icon__search {
 
   .hale-header__mobile-controls--search {
     background-position-y: -4px;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='%23fff'/%3E%3C/svg%3E");
+    // background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='%23fff'/%3E%3C/svg%3E");
+
+    .hale-icon {
+      &__search {
+        z-index: 10;
+        position: relative;
+        overflow: visible;
+        fill: currentColor;
+      }
+    }
   }
 
   .hale-header__mobile-controls--search,
