@@ -252,6 +252,7 @@ function hale_scripts() {
     wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
     wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
     wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', null, true);
+    wp_enqueue_script('hale-close-button', hale_mix_asset('/js/banner-close-button.js'), '', null, true);
 
     if ( is_post_type_archive('news') ) {
         wp_register_script('news-archive', hale_mix_asset('/js/news-archive.js') );

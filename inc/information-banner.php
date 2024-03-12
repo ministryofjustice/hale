@@ -16,17 +16,19 @@ if( function_exists('get_field') ) {
         ?>
         <div class="info-banner" id="critical-info-banner">
             <div class="info-banner__width-restriction" >
-                <?php echo "
-                    <h2 class='info-banner__title'>
-                        $banner_title
-                    </h2>
-                    <span class='info-banner__summary'>
-                        $banner_summary
-                    </span>
-                    $banner_info_link
-                    <a id='critical-info-banner-close-button' class='govuk-link info-banner__link info-banner__close' href='#'>Hide banner</a>
-                    ";
-                ?>
+                <div class="info-banner__content" id="critical-info-banner-content">
+                    <?php echo "
+                        <h2 class='info-banner__title'>
+                            $banner_title
+                        </h2>
+                        <span class='info-banner__summary'>
+                            $banner_summary
+                        </span>
+                        $banner_info_link
+                        ";
+                    ?>
+                </div>
+                <a id='critical-info-banner-close-button' class='govuk-link info-banner__link info-banner__close' href='#'>Hide banner</a>
             </div>
         </div>
         <?php

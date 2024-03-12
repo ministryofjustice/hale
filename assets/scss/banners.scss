@@ -23,8 +23,9 @@
     margin:0 auto;
   }
   &__title {
+    @extend .govuk-\!-font-size-48;
+
     font-weight: bold;
-    font-size: 48px;
     padding-bottom: 2rem;
   }
   &__subtext {
@@ -32,16 +33,23 @@
   }
 }
 
-.info-banner {
+.js-enabled .info-banner {
   display:none; // removed by JavaScript
+}
+.info-banner {
   background-color: #d5e8f3;
-  padding: 0.5rem 0;
+  padding: 0.5rem 3rem;
   margin-bottom: 0.3rem;
   font-size: 1.25rem;
 
   &__width-restriction {
     max-width: $govuk-page-width;
     margin:0 auto;
+  }
+
+  &__content {
+    max-width: calc(100% - 105px);
+    display: inline-block;
   }
 
   &__title,
