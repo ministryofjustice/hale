@@ -4,7 +4,6 @@
  */
 
 $file = get_field('post_attached_file');
-$link = "";
 
 if ($file && is_array($file)) {
 	$link_uri = $file['url'];
