@@ -1,0 +1,33 @@
+.emergency-banner {
+  padding: 2rem 3rem 3rem;
+  border-bottom: 2px solid govuk-colour("light-grey");;
+
+  &-link {
+    @extend .govuk-header__link;
+    text-decoration: underline;
+  }
+  &--national-emergency {
+    background-color: govuk-colour("red");
+    color: govuk-colour("white");
+  }
+  &--local-emergency {
+    background-color: govuk-colour("turquoise");
+    color: govuk-colour("white");
+  }
+  &--mourning {
+    background-color: govuk-colour("black");
+    color: govuk-colour("white");
+  }
+  &__width-restriction {
+    max-width: $govuk-page-width;
+    margin:0 auto;
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 48px;
+    padding-bottom: 2rem;
+  }
+  &__subtext {
+    padding-bottom: 2rem;
+  }
+}

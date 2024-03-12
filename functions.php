@@ -389,9 +389,9 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/widgets/social-widget.php';
 
 /**
- * Emergency banner
+ * Emergency and ciritical info banners
  */
-require get_template_directory() . '/inc/emergency-banner-settings.php';
+require get_template_directory() . '/inc/banner-settings.php';
 
 /**
  * Flexible Custom Post Types
