@@ -69,25 +69,25 @@ if ($file && is_array($file)) {
 	</header>
 	<div class="flexible-post-type-document-summary">
 		
-		<?php if (!$icon_image) { ?>
-		<div class="flexible-post-type-document-summary__image">
-			<?php
-				echo "<a class='govuk-link' href='$link_uri'>$image</a>";
-			?>
-		</div>
-		<?php } ?>
-		<div class="flexible-post-type-document-summary__link">
-			<p class="govuk-body">
-			<?php
-				if ($icon_image) {
-					echo "<span class='flexible-post-type-document-summary__icon'>$image</span>";
-				}
-				if($link){
+		<?php if ($file && is_array($file)) { ?>
+			<?php if (!$icon_image) { ?>
+			<div class="flexible-post-type-document-summary__image">
+				<?php
+					echo "<a class='govuk-link' href='$link_uri'>$image</a>";
+				?>
+			</div>
+			<?php } ?>
+			<div class="flexible-post-type-document-summary__link">
+				<p class="govuk-body">
+				<?php
+					if ($icon_image) {
+						echo "<span class='flexible-post-type-document-summary__icon'>$image</span>";
+					}
 					echo "<b>$link</b> ($metadata)";
-				}
-			?>
-			</p>
-		</div>
+				?>
+				</p>
+			</div>
+		<?php } ?>
 
         <?php
         $document_summary = get_post_meta($post->ID, 'post_summary', true);
