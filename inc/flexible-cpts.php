@@ -343,15 +343,12 @@ function hale_populate_field_with_post_types( $field ) {
     // Reset choices
     $field['choices'] = array();
 
+    $cpts = get_field( 'custom_post_types', 'options' );
 
-    $args = array(
-        'public'   => true
-      ); 
-    
-    $post_types = get_post_types($args, 'objects');
-
-    foreach($post_types as $post_type) {
-        $field['choices'][$post_type->name] = $post_type->label;
+    if(!empty($cpts) && is_array($cpts)){
+        foreach($cpts as $cpt) {
+            $field['choices'][$cpt['post_type_key']] = $cpt['post_type_name_plural'];
+        }
     }
 
     return $field;
