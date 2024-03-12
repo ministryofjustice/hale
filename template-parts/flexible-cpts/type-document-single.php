@@ -4,6 +4,7 @@
  */
 
 $file = get_field('post_attached_file');
+$link = "";
 
 if ($file && is_array($file)) {
 	$link_uri = $file['url'];
@@ -67,6 +68,7 @@ if ($file && is_array($file)) {
 		</div>
 	</header>
 	<div class="flexible-post-type-document-summary">
+		
 		<?php if (!$icon_image) { ?>
 		<div class="flexible-post-type-document-summary__image">
 			<?php
@@ -80,7 +82,9 @@ if ($file && is_array($file)) {
 				if ($icon_image) {
 					echo "<span class='flexible-post-type-document-summary__icon'>$image</span>";
 				}
-				echo "<b>$link</b> ($metadata)";
+				if($link){
+					echo "<b>$link</b> ($metadata)";
+				}
 			?>
 			</p>
 		</div>
