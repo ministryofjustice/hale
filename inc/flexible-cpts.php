@@ -323,7 +323,7 @@ function hale_populate_field_with_taxonomies( $field ) {
     $taxonomies = get_taxonomies($args, 'objects');
 
     foreach($taxonomies as $tax) {
-        $field['choices'][$tax->name] = $tax->label;
+        $field['choices'][$tax->name] = $tax->label . ' ( ' . $tax->name . ' )';
     }
 
     return $field;
