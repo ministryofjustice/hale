@@ -5,22 +5,6 @@
 *******/
 
 * {
-	.govuk-header {
-		.hale-header__header-link--search {
-			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='" + var(--header-link-svg) + "'/%3E%3C/svg%3E");
-
-			&[aria-expanded=true] {
-				background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ var(--header-link-svg) + "'/%3E%3C/svg%3E");
-				&:not(:hover):focus {
-					background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='"+ var(--header-link-focus-svg) + "'/%3E%3C/svg%3E");
-				}
-			}
-			&:not(:hover):focus {
-				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='"+ var(--header-link-focus-svg) + "'/%3E%3C/svg%3E");
-			}
-		}
-	}
-
 	ul.hale-list--top {
 		li {
 			background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='" + var(--cat-nav-arrows-svg) + "'/%3E%3C/svg%3E");
