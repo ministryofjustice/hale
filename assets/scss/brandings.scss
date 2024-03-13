@@ -843,13 +843,15 @@ html.hale-colours-variable {
 		}
 	}
 
-	/* Category Navigation
-	Colour Options used: cat-nav-arrows - refer to the SVG brandings scss file
-	*/
+	/* Category Navigation */
 	ul.hale-list--top {
 		li {
-			// SVG declared as background image in brandings-svg--php-used.scss
-			// background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='" + var(--cat-nav-arrows-svg) + "'/%3E%3C/svg%3E");
+			&:after {
+				border-color:white; //Legacy from the SVG approach where this was not customizable.
+			}
+			&:before {
+				background:var(--cat-nav-arrows);
+			}
 		}
 	}
 	&.page-body-colour {
