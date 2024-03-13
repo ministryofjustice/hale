@@ -6,22 +6,6 @@
 
 * {
 	.govuk-header {
-		.govuk-header__menu-button {
-			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='"+ var(--header-link-svg) + "'/%3E%3C/svg%3E");
-
-			&[aria-expanded=true] {
-				background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='" + var(--header-link-svg) + "'/%3E%3C/svg%3E");
-
-				&:not(:hover):focus {
-					background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M13.41 12l5.3-5.29a1 1 0 10-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42z' fill='" + var(--header-link-focus-svg) + "'/%3E%3C/svg%3E");
-				}
-			}
-
-			&:not(:hover):focus {
-				background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.857 3.844h22.286A.856.856 0 0024 2.99V.854A.856.856 0 0023.143 0H.857A.856.856 0 000 .854V2.99c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V9.397a.856.856 0 00-.857-.854H.857A.856.856 0 000 9.397v2.136c0 .472.384.854.857.854zm0 8.543h22.286a.856.856 0 00.857-.854V17.94a.856.856 0 00-.857-.854H.857A.856.856 0 000 17.94v2.136c0 .472.384.854.857.854z' fill='"+ var(--header-link-focus-svg) + "'/%3E%3C/svg%3E");
-			}
-		}
-
 		.hale-header__header-link--search {
 			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 0 28 28' aria-hidden='true'%3E%3Cpath d='M19.71 18.29l-4.11-4.1a7 7 0 10-1.41 1.41l4.1 4.11a1 1 0 001.42 0 1 1 0 000-1.42zM5 10a5 5 0 115 5 5 5 0 01-5-5z' fill='" + var(--header-link-svg) + "'/%3E%3C/svg%3E");
 
