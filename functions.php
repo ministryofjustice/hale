@@ -404,6 +404,14 @@ require get_template_directory() . '/inc/flexible-cpts.php';
 require get_template_directory() . '/inc/flexible-taxonomies.php';
 
 /**
+ * Create a button and fields that allow you to run a search and replace via the 
+ * WP admin dashboard
+ * Located on /wp-admin/network/site-info.php
+ */
+require get_template_directory() . '/inc/search-replace-database-tool.php';
+
+
+/**
  * Create an array of active plugins.
  */
 
