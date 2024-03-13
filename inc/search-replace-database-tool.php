@@ -105,10 +105,10 @@ function hale_search_and_replace_database_tool() {
     $wp_cli_output = shell_exec($command);
 
     // Display WP-CLI command and its output
-    if ($search_for !== "" && $replace_with !== "" && $dry_run !== "") {
+    if ($search_for !== "" || $replace_with !== "" || $dry_run !== "") {
         echo "<pre>$command</pre>";
         echo "<pre>$wp_cli_output</pre>";
-    }
+    }    
 }
 
 // Hook into the network site info form
