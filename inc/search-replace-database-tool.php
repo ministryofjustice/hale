@@ -18,14 +18,8 @@ function hale_search_and_replace_database_tool() {
     echo "</form>";
 
     // Start our new form
-    $site_url = get_option('siteurl');
     $blogid = isset($_REQUEST['id']) ? (int)$_REQUEST['id'] : 0;
-
-    // Pre-populate field with current domain
-    $field_search_for = '';
-    if ($field_search_for == "") {
-        $field_search_for = $site_url;
-    }
+    $site_url = get_site_url($blogid);
     ?>
 
     <form method="post" action="site-info.php?action=run-search-and-replace&id=<?php echo $blogid; ?>">
@@ -42,7 +36,7 @@ function hale_search_and_replace_database_tool() {
                         <tr class="form-field">
                             <th scope="row"><label for="search_value"><?php _e('Search for'); ?></label></th>
                             <td><input name="search_value" type="text" id="search_value" style="width: 680px"
-                                       value="<?php echo esc_attr($field_search_for); ?>"></td>
+                                       value="<?php echo esc_attr($site_url); ?>"></td>
                         </tr>
                         <tr class="form-field">
                             <th scope="row"><label for="replace_with"><?php _e('Replace with'); ?></label></th>
@@ -108,7 +102,7 @@ function hale_search_and_replace_database_tool() {
     if ($search_for !== "" || $replace_with !== "" || $dry_run !== "") {
         echo "<pre>$command</pre>";
         echo "<pre>$wp_cli_output</pre>";
-    }    
+    }
 }
 
 // Hook into the network site info form
