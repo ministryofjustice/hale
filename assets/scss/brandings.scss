@@ -86,8 +86,8 @@
 		}
 
 		h1, h2, h3, h4, h5, h6 {
-			// We do not apply this style if there is a custom colour set
-			&:not(.has-text-color *):not(.has-text-color) {
+			// We do not apply this style if there is a custom colour set or for notification banner titles
+			&:not(.has-text-color *):not(.has-text-color):not(.govuk-notification-banner__title) {
 				color:var(--heading-text);
 			}
 		}
