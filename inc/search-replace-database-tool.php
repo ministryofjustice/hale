@@ -20,6 +20,10 @@ function hale_search_and_replace_database_tool() {
     // Start our new form
     $blogid = isset($_REQUEST['id']) ? (int)$_REQUEST['id'] : 0;
     $site_url = get_site_url($blogid);
+
+    // Get form input values
+    $search_for = isset($_POST['search_value']) ? $_POST['search_value'] : "$site_url";
+    $replace_with = isset($_POST['replace_value']) ? $_POST['replace_value'] : "";
     ?>
 
     <form method="post" action="site-info.php?action=run-search-and-replace&id=<?php echo $blogid; ?>">
@@ -36,12 +40,12 @@ function hale_search_and_replace_database_tool() {
                         <tr class="form-field">
                             <th scope="row"><label for="search_value"><?php _e('Search for'); ?></label></th>
                             <td><input name="search_value" type="text" id="search_value" style="width: 680px"
-                                       value="<?php echo esc_attr($site_url); ?>"></td>
+                                       value="<?php echo esc_attr($search_for); ?>"></td>
                         </tr>
                         <tr class="form-field">
                             <th scope="row"><label for="replace_with"><?php _e('Replace with'); ?></label></th>
                             <td><input name="replace_value" type="text" id="replace_value" style="width: 680px"
-                                       value="<?php echo esc_attr($replace_with_field); ?>"></td>
+                                       value="<?php echo esc_attr($replace_with); ?>"></td>
                         </tr>
                         <tr class="form-field">
                             <th scope="row"><label for="checkbox_field"><?php _e('Dry run'); ?></label></th>
@@ -77,7 +81,7 @@ function hale_search_and_replace_database_tool() {
     </style>
 
     <?php
-    // Get form input values
+    // Set form input values
     $search_for = isset($_POST['search_value']) ? $_POST['search_value'] : "";
     $replace_with = isset($_POST['replace_value']) ? $_POST['replace_value'] : "";
     $dry_run = isset($_POST['dryrun_value']) ? $_POST['dryrun_value'] : "";
