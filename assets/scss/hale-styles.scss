@@ -2,17 +2,6 @@
   color:$govuk-secondary-text-colour;
 }
 
-@include govuk-media-query($from: tablet) {
-  .hale-width_hide-narrow-40 {
-    display: none;
-  }
-}
-@include govuk-media-query($from: tablet) {
-  .hale-width_hide-narrow-40 {
-    display: none;
-  }
-}
-
 #content {
 	clear:both;
 }
@@ -36,20 +25,22 @@ ul.hale-list--top{
     margin: 0.5em 0;
     padding-left: 35px;
 
-    &:after {
+    &:after { // Arrow
       position:absolute;
-      left:0.25rem;
+      top:calc(0.45rem + 0.5px);
+      left:0.3rem;
       content: "";
       transform:rotate(45deg);
-      height:0.75rem;
-      width:0.75rem;
-      top:0.4rem;
-      border-width: 4px 4px 0 0;
+      height:0.7rem;
+      width:0.7rem;
+      border-width: 3px 3px 0 0;
       border-style: solid;
+      border-radius: 0 2px;
     }
-    &:before {
+    &:before { // Circle
       position:absolute;
-      left:0px;
+      top: 1px;
+      left: 0px;
       content: "";
       height:1.5rem;
       width:1.5rem;
