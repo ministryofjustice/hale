@@ -41,12 +41,12 @@ function hale_search_and_replace_database_tool() {
                     <table class="form-table" role="presentation">
                         <tr class="form-field">
                             <th scope="row"><label for="search_value"><?php _e('Search for'); ?></label></th>
-                            <td><input name="search_value" type="text" id="search_value"
+                            <td><input name="search_value" type="text" id="search_value" style="width: 680px"
                                        value="<?php echo esc_attr($field_search_for); ?>"></td>
                         </tr>
                         <tr class="form-field">
                             <th scope="row"><label for="replace_with"><?php _e('Replace with'); ?></label></th>
-                            <td><input name="replace_value" type="text" id="replace_value"
+                            <td><input name="replace_value" type="text" id="replace_value" style="width: 680px"
                                        value="<?php echo esc_attr($replace_with_field); ?>"></td>
                         </tr>
                         <tr class="form-field">
