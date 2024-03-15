@@ -39,7 +39,7 @@
 .info-banner {
   background-color: #d5e8f3; // Not in the GDS palette, but this is the government style from https://docs.publishing.service.gov.uk/manual/global-banner.html
   padding: 0.5rem 3rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 2rem;
   font-size: 1.25rem;
 
   &__width-restriction {
@@ -57,6 +57,10 @@
     font-size: 1.25rem;
     padding-right: 1rem;
     display: inline
+  }
+
+  &__summary {
+    display: inline-block;
   }
 
   &__close {

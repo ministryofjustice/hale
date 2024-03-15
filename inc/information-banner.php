@@ -21,9 +21,9 @@ if( function_exists('get_field') ) {
                         <h2 class='info-banner__title'>
                             $banner_title
                         </h2>
-                        <span class='info-banner__summary'>
+                        <div class='info-banner__summary'>
                             $banner_summary
-                        </span>
+                        </div>
                         $banner_info_link
                         ";
                     ?>
