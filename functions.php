@@ -390,7 +390,7 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/widgets/social-widget.php';
 
 /**
- * Emergency and ciritical info banners
+ * Emergency and critical info banners
  */
 require get_template_directory() . '/inc/banner-settings.php';
 

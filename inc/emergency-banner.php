@@ -17,17 +17,35 @@ if( function_exists('get_field') ) {
             $banner_type_class .= "--national-emergency";
             $banner_title = get_field('banner_national_emergency_title', 'option');
             $banner_subtext = get_field('banner_summary', 'option');
+            if (is_null($banner_title) || trim($banner_title) == "" ) {
+                if (is_null($banner_subtext) || trim($banner_subtext) == "" ) {
+                    $active = false;
+                    break;
+                }
+                $banner_title = __("National emergency");
+            }
             break;
         case "Local emergency":
             $active = true;
             $banner_type_class .= "--local-emergency";
             $banner_title = get_field('banner_local_emergency_title', 'option');
             $banner_subtext = get_field('banner_summary', 'option');
+            if (is_null($banner_title) || trim($banner_title) == "" ) {
+                if (is_null($banner_subtext) || trim($banner_subtext) == "" ) {
+                    $active = false;
+                    break;
+                }
+                $banner_title = __("Local emergency");
+            }
             break;
         case "National mourning":
             $active = true;
-            $banner_type_class .= "--mourning";
             $banner_title = get_field('banner_mourning_name', 'option');
+            if (is_null($banner_title) || trim($banner_title) == "" ) {
+                $active = false;
+                break;
+            };
+            $banner_type_class .= "--mourning";
             $year_birth = get_field('year_of_birth', 'option');
             $year_death = get_field('year_of_death', 'option');
             if (isset($year_birth) && trim($year_birth) != "") {
