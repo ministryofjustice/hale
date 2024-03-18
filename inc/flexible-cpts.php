@@ -47,6 +47,7 @@ function hale_register_post_type($cpt){
     $post_type_tax = $cpt['post_type_tax'];
     $post_type_menu_icon = $cpt['post_type_menu_icon'];
     $post_type_object_type = $cpt['post_type_object_type'];
+    $post_type_single_view = $cpt['post_type_single_view'];
     
 
     if(empty($post_type_name) || empty($post_type_name_plural) || empty($post_type_key) || !in_array($cpt['post_type_object_type'], $opject_types)){
@@ -57,8 +58,16 @@ function hale_register_post_type($cpt){
         $post_type_menu_icon = 'dashicons-admin-post';
     }
 
-    $post_type_supports = array('title', 'editor');
+    if(empty($post_type_single_view) && $post_type_single_view !== false){
+        $post_type_single_view = true;
+    }
 
+    $post_type_supports = array('title');
+
+    if($post_type_single_view){
+        $post_type_supports[] = 'editor';
+    }
+    
     if($post_type_object_type == 'news'){
         $post_type_supports[] = 'thumbnail';
     }
@@ -111,7 +120,7 @@ function hale_register_post_type($cpt){
         'can_export' => true,
         'has_archive' => true,
         'exclude_from_search' => false,
-        'publicly_queryable' => true,
+        'publicly_queryable' => $post_type_single_view,
         'capability_type' => 'page',
     );
 
