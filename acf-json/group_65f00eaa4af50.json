@@ -3,41 +3,6 @@
     "title": "Banners",
     "fields": [
         {
-            "key": "field_65f851e4a3c9d",
-            "label": "Cookie banner",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_65f851fc5582d",
-            "label": "Cookie banner settings",
-            "name": "",
-            "aria-label": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "The cookie banner is currently controlled elsewhere, but they will appear here in the future.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
-        {
             "key": "field_65f84e65e2b84",
             "label": "Critical information banner",
             "name": "",
@@ -421,5 +386,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1710772913
+    "modified": 1710774710
 }
