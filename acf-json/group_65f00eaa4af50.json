@@ -81,7 +81,7 @@
                 "id": ""
             },
             "default_value": "National emergency",
-            "maxlength": "",
+            "maxlength": 50,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -109,7 +109,7 @@
                 "id": ""
             },
             "default_value": "Local emergency",
-            "maxlength": "",
+            "maxlength": 50,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -142,7 +142,7 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
+            "maxlength": 255,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -251,5 +251,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1710509444
+    "modified": 1710760155
 }
