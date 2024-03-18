@@ -39,8 +39,12 @@
 .info-banner {
   background-color: #d5e8f3; // Not in the GDS palette, but this is the government style from https://docs.publishing.service.gov.uk/manual/global-banner.html
   padding: 0.5rem 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.3rem;
   font-size: 1.25rem;
+
+  &:is(.hale-landing-page .info-banner) {
+    margin-bottom: 2rem;
+  }
 
   &__width-restriction {
     max-width: $govuk-page-width;

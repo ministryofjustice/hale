@@ -15,6 +15,9 @@
 	} else {
 		$style_class = "hale-colours-variable";
 	}
+	if (is_front_page()) {
+		$style_class .= " hale-landing-page";
+	}
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="hale-page <?php printf($style_class); ?>">
