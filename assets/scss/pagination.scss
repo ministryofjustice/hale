@@ -211,8 +211,7 @@
 .gem-c-pagination__item {
 
   .gem-c-pagination__link{
-    background-repeat: no-repeat;
-    background-position-y: center;
+    background-image:none ! important; // This is to override the previous SVG background, which will disappear on colour refresh
 
     .gem-c-pagination__link-title {
       padding-left:30px;
