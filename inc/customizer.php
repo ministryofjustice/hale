@@ -411,6 +411,25 @@ function hale_customize_register( $wp_customize ) {
 	* -----------------------------------------------------------
 	*/
 	if( current_user_can('administrator') ) {
+
+		$wp_customize->add_panel(
+			"colour_section",
+			array(
+				'title' =>  __("Custom colours", 'hale'),
+				'description' => "",
+				'priority' => "52"
+			)
+		);
+
+		$wp_customize->add_section(
+			"main_colour_options",
+			array(
+				'title' =>  __("Main colour options", 'hale'),
+				'description' => __("Activate, import and export custom colour schemes","hale"),
+				'panel' => 'colour_section',
+			)
+		);
+
 		$wp_customize->add_setting(
 			'gds_style_tickbox',
 			array(
@@ -423,9 +442,33 @@ function hale_customize_register( $wp_customize ) {
 			'gds_style_tickbox',
 			array(
 				'label' => esc_html__('Use Government Colours', 'hale'),
-				'section' => 'colors',
+				'section' => 'main_colour_options',
 				'type' => 'checkbox',
 				'settings' => 'gds_style_tickbox',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'colour_picker_tickbox',
+			array(
+				'default' => '',
+				'sanitize_callback' => 'hale_sanitize_checkbox',
+			)
+		);
+
+		$wp_customize->add_control(
+			'colour_picker_tickbox',
+			array(
+				'label' => __('Pick custom colours with a colour picker', 'hale'),
+				'description' => __('Save and refresh this option to reload controls', 'hale'),
+				'section' => 'main_colour_options',
+				'type' => 'checkbox',
+				'settings' => 'colour_picker_tickbox',
+				'active_callback' => function () use ($wp_customize) {
+					return (
+					($wp_customize->get_setting('gds_style_tickbox')->value() == 0)
+					);
+				},
 			)
 		);
 
@@ -439,9 +482,9 @@ function hale_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			'colour_bar',
 			array(
-				'label' => esc_html__('Header bar', 'hale'),
+				'label' => esc_html__('Departmental or brand colour', 'hale'),
 				'description' => esc_html__('Beneath the black header is a bar that can be a brand colour (#FFFFFF for none)', 'hale'),
-				'section' => 'colors',
+				'section' => 'main_colour_options',
 				'type' => 'color',
 				'active_callback' => function () use ($wp_customize) {
 					return (
@@ -459,7 +502,7 @@ function hale_customize_register( $wp_customize ) {
 			'customizer_setting_json',
 			array(
 				'label' => __('Import JSON file', 'hale'),
-				'section' => 'colors',
+				'section' => 'main_colour_options',
 				'mime_type' => 'application/json',
 				'settings' => 'customizer_setting_json',
 				'active_callback' => function () use ($wp_customize) {
@@ -480,7 +523,7 @@ function hale_customize_register( $wp_customize ) {
 		$wp_customize->add_control(new Hale_Export_Color_Brand_Control($wp_customize,
 			'customizer_export_json',
 			array(
-				'section' => 'colors',
+				'section' => 'main_colour_options',
 				'settings' => 'customizer_export_json',
 				'active_callback' => function () use ($wp_customize) {
 					return (
@@ -503,7 +546,7 @@ function hale_customize_register( $wp_customize ) {
 			array(
 				'label' => esc_html__('Invert logo on focus', 'hale'),
 				'description' => esc_html__('This will depend on the focus colour. The logo might not contrast well with the focus colour so it might need to be inverted for correct colour contrast.', 'hale'),
-				'section' => 'colors',
+				'section' => 'main_colour_options',
 				'type' => 'checkbox',
 				'settings' => 'logo_focus_invert_tickbox',
 				'active_callback' => function () use ($wp_customize) {
@@ -523,33 +566,46 @@ function hale_customize_register( $wp_customize ) {
 				)
 			);
 		};
-		$colour_array = hale_get_colours();
-		for ($i = 0; $i < count($colour_array); $i++) {
-			$colour_id = hale_get_colour_id($colour_array[$i]);
-			$colour_default = hale_get_colour_default($colour_array[$i]);
-			$colour_desig = hale_get_colour_designation($colour_array[$i]);
-			$colour_hint = hale_get_colour_hint($colour_array[$i]);
-			$colour_options = hale_get_colour_options($colour_array[$i]);
 
-			$wp_customize->add_setting(
-				$colour_id,
+		$colour_sections_array = hale_get_colours($sections = true);
+
+		for ($s = 0; $s < count($colour_sections_array); $s++) {
+
+			$wp_customize->add_section(
+				"colour_section_".$colour_sections_array[$s]["id"],
 				array(
-					'default' => $colour_default,
-					'sanitize_callback' => $colour_options == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
+					'title' =>  __($colour_sections_array[$s]["section_name"], 'hale'),
+					'description' => __($colour_sections_array[$s]["description"], 'hale'),
+					'panel' => 'colour_section',
 				)
 			);
-			$wp_customize->add_control(
-				$colour_id,
-				array(
-					'label' => esc_html__($colour_desig, 'hale'),
-					'description' => esc_html__($colour_hint, 'hale'),
-					'section' => 'colors',
-					// If colour picker needed change to below 
-					// 'type' => $colour_options == "text" ? 'text' : 'color',
-					'type' => 'text',
-					'active_callback' => $show_colours,
-				)
-			);
+
+			$colour_array = $colour_sections_array[$s]["colours"];
+			for ($i = 0; $i < count($colour_array); $i++) {
+				$colour_id = hale_get_colour_id($colour_array[$i]);
+				$colour_default = hale_get_colour_default($colour_array[$i]);
+				$colour_desig = hale_get_colour_designation($colour_array[$i]);
+				$colour_hint = hale_get_colour_hint($colour_array[$i]);
+				$colour_options = hale_get_colour_options($colour_array[$i]);
+
+				$wp_customize->add_setting(
+					$colour_id,
+					array(
+						'default' => $colour_default,
+						'sanitize_callback' => $colour_options == "text" ? 'hale_sanitize_nohtml' : 'sanitize_hex_color',
+					)
+				);
+				$wp_customize->add_control(
+					$colour_id,
+					array(
+						'label' => esc_html__($colour_desig, 'hale'),
+						'description' => esc_html__($colour_hint, 'hale'),
+						'section' => "colour_section_".$colour_sections_array[$s]["id"],
+						'type' => $wp_customize->get_setting('colour_picker_tickbox')->value() == 0 ? 'text' : ($colour_options == "text" ? 'text' : 'color'),
+						'active_callback' => $show_colours,
+					)
+				);
+			}
 		}
 
 	}
