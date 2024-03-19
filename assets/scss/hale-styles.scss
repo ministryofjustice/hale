@@ -20,6 +20,7 @@ ul.hale-list--top{
   padding-bottom: 1em;
 
   li {
+    background-image: none ! important; // This is to override the previous SVG background, which will disappear on colour refresh
     position:relative;
     line-height:1.5;
     margin: 0.5em 0;
@@ -27,7 +28,7 @@ ul.hale-list--top{
 
     &:after { // Arrow
       position:absolute;
-      top:calc(0.45rem + 0.5px);
+      top:0.45rem;
       left:0.3rem;
       content: "";
       transform:rotate(45deg);

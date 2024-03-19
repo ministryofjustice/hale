@@ -218,6 +218,8 @@ svg.hale-icon__search:not(.hale-header--with-search *) {
   }
 
   .hale-header__mobile-controls {
+    background-image: none ! important; // This is to override the previous SVG background, which will disappear on colour refresh
+
     cursor: pointer;
     &:after {
       display:none; //removes little down arrow (GDS Design system)
