@@ -2,17 +2,6 @@
   color:$govuk-secondary-text-colour;
 }
 
-@include govuk-media-query($from: tablet) {
-  .hale-width_hide-narrow-40 {
-    display: none;
-  }
-}
-@include govuk-media-query($from: tablet) {
-  .hale-width_hide-narrow-40 {
-    display: none;
-  }
-}
-
 #content {
 	clear:both;
 }
@@ -31,11 +20,33 @@ ul.hale-list--top{
   padding-bottom: 1em;
 
   li {
+    background-image: none ! important; // This is to override the previous SVG background, which will disappear on colour refresh
+    position:relative;
     line-height:1.5;
     margin: 0.5em 0;
-    background-repeat: no-repeat;
-    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .375C18.422.375 23.625 5.578 23.625 12S18.422 23.625 12 23.625.375 18.422.375 12 5.578.375 12 .375zm5.34 10.828l-6.352-6.351a1.12 1.12 0 00-1.59 0l-.796.796a1.12 1.12 0 000 1.59L13.364 12l-4.762 4.762a1.12 1.12 0 000 1.59l.796.796a1.12 1.12 0 001.59 0l6.351-6.351c.44-.44.44-1.153 0-1.594z' fill='" + govuk-colour("black") + "'/%3E%3C/svg%3E");
     padding-left: 35px;
+
+    &:after { // Arrow
+      position:absolute;
+      top:0.45rem;
+      left:0.3rem;
+      content: "";
+      transform:rotate(45deg);
+      height:0.7rem;
+      width:0.7rem;
+      border-width: 3px 3px 0 0;
+      border-style: solid;
+      border-radius: 0 2px;
+    }
+    &:before { // Circle
+      position:absolute;
+      top: 1px;
+      left: 0px;
+      content: "";
+      height:1.5rem;
+      width:1.5rem;
+      border-radius:25px;
+    }
 
     @include govuk-media-query($from: tablet) {
       line-height:1.3;

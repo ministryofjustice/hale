@@ -1,4 +1,11 @@
 @charset "UTF-8";
+
+/**
+	This file is not brought into the site editor page,
+	if styles are needed in the site editor page, then
+	put them into the custom-branding.scss file
+**/
+
 @import 'default';
 @import 'gds-design-system-settings';
 @import 'hale-styles';

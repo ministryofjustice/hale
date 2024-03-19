@@ -14,8 +14,6 @@ function hale_generate_custom_colours() {
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$dark_background_css_file = get_template_directory().'/dist/css/dark-background.min.css';
 	$dark_background_css_file_exists = file_exists($dark_background_css_file);
-	$svg_css_file = get_template_directory().'/dist/css/brandings-svg.min.css';
-	$svg_css_file_exists = file_exists($svg_css_file);
 	$colour_array = hale_get_colours();
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	$logo_focus_invert = get_theme_mod("logo_focus_invert_tickbox");
@@ -115,21 +113,6 @@ function hale_generate_custom_colours() {
 			$logo_focus_invert_style .= "}";
 			$css .= $logo_focus_invert_style;
 		}
-
-		// As SVGs cannot use CSS variables, we read in the SVG CSS file to recreate the SVGs with their hard-coded colours
-		if ($svg_css_file_exists) {
-			$svg_css = file_get_contents($svg_css_file);
-			for($i=0;$i<count($colour_array);$i++) {
-				$colour_id = hale_get_colour_id($colour_array[$i]);
-				$colour_default = hale_get_colour_default($colour_array[$i]);
-				$colour_to_use = get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value[$i], $colour_default);
-				$colour_to_use_SVG = str_replace('#',"%23",$colour_to_use); // We need to encode the colour's # as %23 for it to work
-				$svg_css = str_replace("var(--$colour_id-svg)",$colour_to_use_SVG,$svg_css);
-			}
-		} else {
-			trigger_error("!!!!! SVG CSS doesn't exist!!!");
-		}
-		$css .= $svg_css;
 
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
 		fwrite($css_file, $css);

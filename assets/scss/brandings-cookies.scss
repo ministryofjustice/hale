@@ -3,7 +3,6 @@
 	#ccfw-page-banner {
 		.ccfw-banner__button:not(.ccfw-banner__button--close) {
 			background-color: var(--cookie-button-bg);
-			background-color: var(--cookie-button-bg);
 			color: var(--cookie-button-text);
 			-webkit-text-fill-color: var(--cookie-button-text);
 		}
@@ -13,7 +12,7 @@
 			border: solid 1px var(--cookie-secondary-button-text);
 
 			path {
-				fill: var(--cookie-secondary-button-text);
+				fill: currentColor;
 			}
 		}
 		.ccfw-banner__toggle-slider {

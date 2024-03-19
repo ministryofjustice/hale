@@ -211,8 +211,7 @@
 .gem-c-pagination__item {
 
   .gem-c-pagination__link{
-    background-repeat: no-repeat;
-    background-position-y: center;
+    background-image:none ! important; // This is to override the previous SVG background, which will disappear on colour refresh
 
     .gem-c-pagination__link-title {
       padding-left:30px;
@@ -229,11 +228,53 @@
     }
   }
 
-  &.gem-c-pagination__item--next .gem-c-pagination__link {
-    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 .438c7.492 0 13.563 6.07 13.563 13.562 0 7.492-6.07 13.563-13.563 13.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437zm6.229 12.632l-7.41-7.41a1.307 1.307 0 00-1.854 0l-.93.93a1.307 1.307 0 000 1.854L15.591 14l-5.556 5.556a1.307 1.307 0 000 1.854l.93.93a1.307 1.307 0 001.854 0l7.41-7.41a1.314 1.314 0 000-1.86z' fill='" + govuk-colour("black") + "'/%3E%3C/svg%3E")
+  &.gem-c-pagination__item--next {
+      position:relative;
+
+    &:after {
+      position:absolute;
+      left:0.4rem;
+      content: "";
+      transform:rotate(45deg);
+      height:0.75rem;
+      width:0.75rem;
+      top:calc(50% - 0.4rem);
+      border-width: 4px 4px 0 0;
+      border-style: solid;
+    }
+    &:before {
+      position:absolute;
+      left:0px;
+      top:calc(50% - 0.9rem);
+      content: "";
+      height:1.75rem;
+      width:1.75rem;
+      border-radius:25px;
+    }
   }
-  &.gem-c-pagination__item--previous .gem-c-pagination__link {
-    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 27.563C6.508 27.563.437 21.492.437 14 .438 6.508 6.508.437 14 .437c7.492 0 13.563 6.07 13.563 13.563 0 7.492-6.07 13.563-13.563 13.563zM7.771 14.93l7.41 7.41a1.307 1.307 0 001.854 0l.93-.93a1.307 1.307 0 000-1.854L12.409 14l5.556-5.556a1.307 1.307 0 000-1.854l-.93-.93a1.307 1.307 0 00-1.854 0l-7.41 7.41a1.314 1.314 0 000 1.86z' fill='" + govuk-colour("black") + "'/%3E%3C/svg%3E")
+  &.gem-c-pagination__item--previous {
+    position:relative;
+
+    &:after {
+      position:absolute;
+      left:0.6rem;
+      content: "";
+      transform:rotate(45deg);
+      height:0.75rem;
+      width:0.75rem;
+      top:calc(50% - 0.4rem);
+      border-width: 0 0 4px 4px;
+      border-style: solid;
+    }
+    &:before {
+      position:absolute;
+      left:0px;
+      top:calc(50% - 0.9rem);
+      content: "";
+      height:1.75rem;
+      width:1.75rem;
+      border-radius:25px;
+    }
   }
 
   .gem-c-pagination__link-icon {
