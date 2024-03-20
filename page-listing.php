@@ -132,135 +132,141 @@ while (have_posts()) :
 
                 <?php
 
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-                $listing_args = array(
-                    'post_type' => 'page',
-                    'posts_per_page' => 10,
-                    'relevanssi' => true,
-                    'paged' => $paged
-                );
+                $flex_cpt_settings = [];
 
                 // Set Post Type
                 $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
 
                 if(!empty($listing_post_type)){
-                    $listing_args['post_type'] = $listing_post_type;
+                    $flex_cpt_settings = hale_get_flexible_post_type_settings($listing_post_type);
                 }
 
-                // Set Items Per Page
-                $items_per_page = get_post_meta(get_the_ID(), 'items_per_page', true);
+                //if no settings found stop 
+                if(!empty($flex_cpt_settings)){
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-                if (!empty($items_per_page)) {
-                    $listing_args['posts_per_page'] = $items_per_page;
-                } 
+                    $listing_args = array(
+                        'post_type' => $listing_post_type,
+                        'posts_per_page' => 10,
+                        'relevanssi' => true,
+                        'paged' => $paged
+                    );
 
-                //Search by text
-                if (!empty($listing_search_text)) {
+                    // Set Items Per Page
+                    $items_per_page = get_post_meta(get_the_ID(), 'items_per_page', true);
 
-                    $listing_args['s'] = $listing_search_text;
-                    //Meta fields (such as summary) are searched using relevanssi
-                } else {
-                    //Items are sorted be relevance if text search is used. If not the default sort is used.
-                    $listing_sort = get_post_meta(get_the_ID(), 'listing_sort_order', true);
+                    if (!empty($items_per_page)) {
+                        $listing_args['posts_per_page'] = $items_per_page;
+                    } 
 
-                    if ($listing_sort == 'title') {
-                        $listing_args['orderby'] = 'title';
-                        $listing_args['order'] = 'ASC';
+                    //Search by text
+                    if (!empty($listing_search_text)) {
+
+                        $listing_args['s'] = $listing_search_text;
+                        //Meta fields (such as summary) are searched using relevanssi
                     } else {
-                        $listing_args['orderby'] = 'post_date';
-                        $listing_args['order'] = 'DESC';
+                        //Items are sorted be relevance if text search is used. If not the default sort is used.
+                        $listing_sort = get_post_meta(get_the_ID(), 'listing_sort_order', true);
+
+                        if ($listing_sort == 'title') {
+                            $listing_args['orderby'] = 'title';
+                            $listing_args['order'] = 'ASC';
+                        } else {
+                            $listing_args['orderby'] = 'post_date';
+                            $listing_args['order'] = 'DESC';
+                        }
                     }
-                }
 
-                $tax_qry_ary = [];
+                    $tax_qry_ary = [];
 
-                //Restrict
-                $restrict_taxonomies = get_field('listing_restrict');
+                    //Restrict
+                    $restrict_taxonomies = get_field('listing_restrict');
 
-                if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
+                    if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 
-                    foreach($restrict_taxonomies as $tax){
-                            $restrict_field = 'restrict_by_' . $tax;
+                        foreach($restrict_taxonomies as $tax){
+                                $restrict_field = 'restrict_by_' . $tax;
 
-                            $restict_terms = get_field($restrict_field);
+                                $restict_terms = get_field($restrict_field);
 
-                            if(!empty($restict_terms) && is_array($restict_terms)) {
-                                $tax_qry_ary[] = array(
-                                    'taxonomy' => $tax,
-                                    'field' => 'term_id',
-                                    'terms' => $restict_terms
-                                );
-                            }
+                                if(!empty($restict_terms) && is_array($restict_terms)) {
+                                    $tax_qry_ary[] = array(
+                                        'taxonomy' => $tax,
+                                        'field' => 'term_id',
+                                        'terms' => $restict_terms
+                                    );
+                                }
+                        }
                     }
-                }
 
 
-                //Filters
+                    //Filters
 
-                if(!empty($listing_active_filters)){
-                    foreach($listing_active_filters as $active_filter){
-                        $tax_qry_ary[] = array(
-                            'taxonomy' => $active_filter['taxonomy'],
-                            'field' => 'term_id',
-                            'terms' => $active_filter['value']
-                        );
+                    if(!empty($listing_active_filters)){
+                        foreach($listing_active_filters as $active_filter){
+                            $tax_qry_ary[] = array(
+                                'taxonomy' => $active_filter['taxonomy'],
+                                'field' => 'term_id',
+                                'terms' => $active_filter['value']
+                            );
+                        }
                     }
-                }
 
-                if (!empty($tax_qry_ary)) {
-                    $listing_args['tax_query'] = $tax_qry_ary;
+                    if (!empty($tax_qry_ary)) {
+                        $listing_args['tax_query'] = $tax_qry_ary;
 
-                }
-
-                $listing_query = new WP_Query($listing_args);
-    
-                $object_type = hale_get_flexible_post_type_object_type($listing_post_type);
-
-                $post_type_obj = get_post_type_object( $listing_post_type );
-
-                if ($listing_query->have_posts()) { 
-                    
-                    if ($listing_query->found_posts > 1) {
-                        $item_count_text = $listing_query->found_posts . ' ' . strtolower($post_type_obj->labels->name);
-                    } elseif ($listing_query->found_posts == 1) {
-                        $item_count_text = '1 ' . $post_type_obj->labels->singular_name;
                     }
-                    ?>
-                    <div class="listing-item-count">
-                        <?php echo $item_count_text; ?>
-                    </div>
-                    
-                    <div class="flexible-post-type-list">
-                        <?php
-                        while ($listing_query->have_posts()) {
-                            $listing_query->the_post();
-                            get_template_part('template-parts/flexible-cpts/type', $object_type  . '-list-item');
-                        } ?>
-                    </div>
 
-                <?php
-                    hale_archive_pagination('archive', $listing_query);
-                } elseif (!empty($listing_search_text)) { ?>
-                    <h2 class="govuk-heading-l">
-                        <?php
-                        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no ' . strtolower($post_type_obj->labels->name), 'hale' ), $search_text_HTML);
+                    $listing_query = new WP_Query($listing_args);
+
+                    $flex_cpt_name = $flex_cpt_settings['post_type_name'];
+                    $flex_cpt_name_plural = $flex_cpt_settings['post_type_name_plural'];
+        
+                    $object_type = hale_get_flexible_post_type_object_type($listing_post_type);
+
+                    if ($listing_query->have_posts()) { 
+                        
+                        if ($listing_query->found_posts > 1) {
+                            $item_count_text = $listing_query->found_posts . ' ' . strtolower($flex_cpt_name_plural);
+                        } elseif ($listing_query->found_posts == 1) {
+                            $item_count_text = '1 ' . $flex_cpt_name;
+                        }
                         ?>
-                    </h2>
-                    <p class="govuk-body">
-                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
-                    </p>
+                        <div class="listing-item-count">
+                            <?php echo $item_count_text; ?>
+                        </div>
+                        
+                        <div class="flexible-post-type-list">
+                            <?php
+                            while ($listing_query->have_posts()) {
+                                $listing_query->the_post();
+                                get_template_part('template-parts/flexible-cpts/list-item', false, array('cpt-settings' => $flex_cpt_settings));
+                            } ?>
+                        </div>
+
                     <?php
-                } else { ?>
-                    <h2 class="govuk-heading-l">
-                        <?php _e('Your search matched no ' . strtolower($post_type_obj->labels->name), 'hale'); ?>
-                    </h2>
-                    <p class="govuk-body">
-                        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
-                    </p>
-                    <?php
+                        hale_archive_pagination('archive', $listing_query);
+                    } elseif (!empty($listing_search_text)) { ?>
+                        <h2 class="govuk-heading-l">
+                            <?php
+                            echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no ' . strtolower($flex_cpt_name_plural), 'hale' ), $search_text_HTML);
+                            ?>
+                        </h2>
+                        <p class="govuk-body">
+                            <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+                        </p>
+                        <?php
+                    } else { ?>
+                        <h2 class="govuk-heading-l">
+                            <?php _e('Your search matched no ' . strtolower($flex_cpt_name_plural), 'hale'); ?>
+                        </h2>
+                        <p class="govuk-body">
+                            <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+                        </p>
+                        <?php
+                    }
+                    wp_reset_postdata();
                 }
-                wp_reset_postdata();
                 ?>
             </div>
         </div>
