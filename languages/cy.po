@@ -20006,3 +20006,15 @@ msgstr "Argyfwng"
 #: hale/header.php
 msgid "Or press shift key 3 times to exit this page"
 msgstr "Neu pwyswch y fysell shift 3 gwaith i adael y dudalen hon"
+
+# hale/inc/emergency-banner.php
+msgid "More information"
+msgstr "Mwy o wybodaeth"
+
+# hale/inc/information-banner.php
+msgid "Find out more"
+msgstr "Darganfod mwy"
+
+# hale/inc/information-banner.php
+msgid "Hide"
+msgstr "Cuddio"

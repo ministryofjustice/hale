@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_65f84e65e2b84",
-            "label": "Critical information banner",
+            "label": "Important information banner",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -25,7 +25,7 @@
             "name": "info_banner_display",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Use this sparingly and only for urgent site-wide notices.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -69,7 +69,7 @@
         },
         {
             "key": "field_65f03826231a9",
-            "label": "Summary",
+            "label": "Summary text",
             "name": "info_banner_summary",
             "aria-label": "",
             "type": "text",
@@ -101,7 +101,7 @@
             "name": "info_banner_more_info",
             "aria-label": "",
             "type": "url",
-            "instructions": "",
+            "instructions": "If a URL is entered, it will be linked to via a \"Find out more\" link at the bottom of the banner.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -138,12 +138,30 @@
             "endpoint": 0
         },
         {
+            "key": "field_65fac1cc6295a",
+            "label": "Usage note",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Only use an emergency banner for its intended purpose.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_65f00eaa0e0b8",
             "label": "Banner type",
             "name": "banner_type",
             "aria-label": "",
             "type": "select",
-            "instructions": "",
+            "instructions": "Select \"No banner\" to turn the banner off.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -251,7 +269,7 @@
         },
         {
             "key": "field_65f0101e0e0ba",
-            "label": "Banner summary",
+            "label": "Summary text",
             "name": "banner_summary",
             "aria-label": "",
             "type": "text",
@@ -344,11 +362,11 @@
         },
         {
             "key": "field_65f0113b0e0bf",
-            "label": "Banner link destination",
+            "label": "Link to more information",
             "name": "banner_link_destination",
             "aria-label": "",
             "type": "url",
-            "instructions": "If anything is entered, it will be linked to via a \"more information\" link at the bottom of the banner.",
+            "instructions": "If a URL is entered, it will be linked to via a \"More information\" link at the bottom of the banner.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -386,5 +404,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1710774710
+    "modified": 1710932815
 }
