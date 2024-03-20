@@ -5,14 +5,20 @@
 /*
 	Search button in header - show-hide the search field
 */
-if( document.getElementById("search-show-hide") != null) {
-  document.getElementById("search-show-hide").addEventListener('click',
+const searchShowHide = document.getElementById("search-show-hide");
+if( searchShowHide != null) {
+  searchShowHide.addEventListener('click',
     function () {
       var ariaExpandedStatus = this.getAttribute("aria-expanded");
       ariaExpandedStatus = ariaExpandedStatus == "true" ? "false" : "true";
       this.setAttribute("aria-expanded", ariaExpandedStatus);
     }
   );
+  // Hard coded styles are fine for English, this bit of code checks the width just in case translated is longer than English
+  let menuButton = document.getElementsByClassName("govuk-header__menu-button")[0];
+  let computedWidth = window.getComputedStyle(menuButton).getPropertyValue("width");
+  computedWidth = computedWidth.substring(0, computedWidth.length - 2);
+  if (computedWidth > 60) searchShowHide.style.right = (computedWidth * 1 + 5) + "px";
 }
 
 jQuery( document ).ready(function( $ ) {
