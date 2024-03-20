@@ -601,7 +601,7 @@ function hale_customize_register( $wp_customize ) {
 						'label' => esc_html__($colour_desig, 'hale'),
 						'description' => esc_html__($colour_hint, 'hale'),
 						'section' => "colour_section_".$colour_sections_array[$s]["id"],
-						'type' => $wp_customize->get_setting('colour_picker_tickbox')->value() == 0 ? 'text' : ($colour_options == "text" ? 'text' : 'color'),
+						'type' => $colour_options == "text" ? 'text' : ($wp_customize->get_setting('colour_picker_tickbox')->value() == 1 ? 'color' : 'text') ,
 						'active_callback' => $show_colours,
 					)
 				);
