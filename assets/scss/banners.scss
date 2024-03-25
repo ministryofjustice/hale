@@ -71,7 +71,9 @@
 
   &__link {
     display: inline-block;
-    margin-top: 0.83rem;
+    &:nth-child(3) {
+      margin-top: 0.83rem;
+    }
   }
 
   &__close {

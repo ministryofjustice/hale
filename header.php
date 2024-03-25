@@ -58,7 +58,7 @@ $header_quick_exit = get_theme_mod( 'show_quick_exit', 'no' );
   }
     ?>
 <?php
-include "inc/emergency-banner.php";
+include "partials/emergency-banner.php";
 ?>
 <?php
 
@@ -126,7 +126,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 </header>
 <?php
 
-include "inc/information-banner.php";
+include "partials/information-banner.php";
 
 
 get_template_part( 'partials/secondary-top-nav' );
