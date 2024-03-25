@@ -31,9 +31,9 @@ if( function_exists('get_field') ) {
                         ";
                     ?>
                 </div>
-                <a id='critical-info-banner-close-button' class='govuk-link info-banner__close' href='#'>
+                <button id='critical-info-banner-close-button' class='govuk-link info-banner__close'>
                     <?php _e("Hide","hale"); ?>
-                </a>
+                </button>
             </div>
         </div>
         <?php

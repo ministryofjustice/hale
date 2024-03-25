@@ -41,10 +41,16 @@
   color: govuk-colour("black");
   padding: 0.5rem 3rem;
   margin-bottom: 0.3rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  @include govuk-media-query($from: "tablet") {
+    font-size: 1.25rem;
+  }
 
-  a:not(:focus) {
-    color: govuk-colour("dark-blue");
+  &__link,
+  &__close {
+    &:not(:focus) {
+      color: govuk-colour("dark-blue");
+    }
   }
 
   &:is(.hale-landing-page .info-banner) {
@@ -57,13 +63,20 @@
   }
 
   &__content {
-    max-width: calc(100% - 150px);
+    max-width: calc(100% - 50px);
     display: inline-block;
+
+    @include govuk-media-query($from: "tablet") {
+      max-width: calc(100% - 150px);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
   }
 
   &__title,
   &__summary {
-    font-size: 1.25rem;
     padding-right: 1rem;
     display: block;
     margin-top: 0;
@@ -78,5 +91,9 @@
 
   &__close {
     float:right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }
 }
