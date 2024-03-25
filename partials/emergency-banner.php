@@ -17,7 +17,7 @@ if( function_exists('get_field') ) {
             $banner_type_class .= "--national-emergency";
             $banner_title = get_field('banner_national_emergency_title', 'option');
             $banner_subtext = get_field('banner_summary', 'option');
-            if (is_null($banner_title) || trim($banner_title) == "" ) {
+            if (is_null($banner_title) || trim($banner_title) == "" || strtoupper(trim($banner_title)) == strtoupper(__("National emergency")))  {
                 if (is_null($banner_subtext) || trim($banner_subtext) == "" ) {
                     $active = false;
                     break;
@@ -30,7 +30,7 @@ if( function_exists('get_field') ) {
             $banner_type_class .= "--local-emergency";
             $banner_title = get_field('banner_local_emergency_title', 'option');
             $banner_subtext = get_field('banner_summary', 'option');
-            if (is_null($banner_title) || trim($banner_title) == "" ) {
+            if (is_null($banner_title) || trim($banner_title) == "" || strtoupper(trim($banner_title)) == strtoupper(__("Local emergency"))) {
                 if (is_null($banner_subtext) || trim($banner_subtext) == "" ) {
                     $active = false;
                     break;
