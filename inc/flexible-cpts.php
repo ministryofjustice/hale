@@ -47,9 +47,19 @@ function hale_register_post_type($cpt){
     $post_type_tax = $cpt['post_type_tax'];
     $post_type_menu_icon = $cpt['post_type_menu_icon'];
     $post_type_object_type = $cpt['post_type_object_type'];
-    $post_type_single_view = $cpt['post_type_single_view'];
-    
 
+    if (array_key_exists('post_type_single_view', $cpt)) {
+        $post_type_single_view = $cpt['post_type_single_view'];
+
+        if($post_type_single_view !== false){
+            $post_type_single_view = true;
+        }
+
+    }
+    else {
+        $post_type_single_view = true;
+    }
+    
     if(empty($post_type_name) || empty($post_type_name_plural) || empty($post_type_key) || !in_array($cpt['post_type_object_type'], $opject_types)){
         return false;
     }
@@ -57,11 +67,7 @@ function hale_register_post_type($cpt){
     if(empty($post_type_menu_icon)){
         $post_type_menu_icon = 'dashicons-admin-post';
     }
-
-    if(empty($post_type_single_view) && $post_type_single_view !== false){
-        $post_type_single_view = true;
-    }
-
+    
     $post_type_supports = array('title');
 
     if($post_type_single_view){
@@ -571,6 +577,9 @@ function hale_get_flexible_post_type_settings($post_type){
 
     }
 
+    if (!array_key_exists('post_type_single_view', $cpt)) {
+        $flex_cpt['post_type_single_view'] = true;
+    }
     return $flex_cpt;
 
 }
