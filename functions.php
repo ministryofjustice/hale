@@ -249,9 +249,7 @@ function hale_scripts() {
     // JS
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "5.0.0", true);
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
-    wp_enqueue_script('hale-scripts', hale_mix_asset('/js/hale-scripts.js'), '', null, true);
-    wp_enqueue_script('hale-skip-link-focus-fix', hale_mix_asset('/js/skip-link-focus-fix.js'), '', null, true);
-    wp_enqueue_script('hale-navigation', hale_mix_asset('/js/navigation.js'), '', null, true);
+    wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
 
     if ( is_post_type_archive('news') ) {
         wp_register_script('news-archive', hale_mix_asset('/js/news-archive.js') );
@@ -389,9 +387,9 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/widgets/social-widget.php';
 
 /**
- * Emergency banner
+ * Emergency and critical info banners
  */
-require get_template_directory() . '/inc/emergency-banner-settings.php';
+require get_template_directory() . '/inc/banner-settings.php';
 
 /**
  * Flexible Custom Post Types

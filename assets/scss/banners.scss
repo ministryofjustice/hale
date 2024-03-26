@@ -1,0 +1,99 @@
+.emergency-banner {
+  padding: 2rem 3rem 3rem;
+  border-bottom: 2px solid govuk-colour("light-grey");;
+
+  &-link {
+    @extend .govuk-header__link;
+    text-decoration: underline;
+  }
+  &--national-emergency {
+    background-color: #b10e1e; // This is "old" GDS red - used by government publishing as per https://docs.publishing.service.gov.uk/manual/emergency-publishing.html#national-emergency-level-1-or-category-2 (using this as it is better contrast)
+    color: govuk-colour("white");
+  }
+  &--local-emergency {
+    background-color: govuk-colour("green"); // Green instead of turquiose for better contrast (GDS changed their panel from turquoise to green for this reason)
+    color: govuk-colour("white");
+  }
+  &--mourning {
+    background-color: govuk-colour("black");
+    color: govuk-colour("white");
+  }
+  &__width-restriction {
+    max-width: $govuk-page-width;
+    margin:0 auto;
+  }
+  &__title {
+    @extend .govuk-\!-font-size-48;
+
+    font-weight: bold;
+    padding-bottom: 2rem;
+  }
+  &__subtext {
+    padding-bottom: 2rem;
+  }
+}
+
+.js-enabled .info-banner {
+  display:none; // removed by JavaScript
+}
+.info-banner {
+  background-color: #d5e8f3; // Not in the GDS palette, but this is the government style from https://docs.publishing.service.gov.uk/manual/global-banner.html
+  color: govuk-colour("black");
+  padding: 0.5rem 3rem;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  @include govuk-media-query($from: "tablet") {
+    font-size: 1.25rem;
+  }
+
+  &__link,
+  &__close {
+    &:not(:focus) {
+      color: govuk-colour("dark-blue");
+    }
+  }
+
+  &:is(.hale-landing-page .info-banner) {
+    margin-bottom: 2rem;
+  }
+
+  &__width-restriction {
+    max-width: $govuk-page-width;
+    margin:0 auto;
+  }
+
+  &__content {
+    max-width: calc(100% - 50px);
+    display: inline-block;
+
+    @include govuk-media-query($from: "tablet") {
+      max-width: calc(100% - 150px);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+  }
+
+  &__title,
+  &__summary {
+    padding-right: 1rem;
+    display: block;
+    margin-top: 0;
+  }
+
+  &__link {
+    display: inline-block;
+    &:nth-child(3) {
+      margin-top: 0.83rem;
+    }
+  }
+
+  &__close {
+    float:right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+}

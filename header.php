@@ -15,6 +15,9 @@
 	} else {
 		$style_class = "hale-colours-variable";
 	}
+	if (is_front_page()) {
+		$style_class .= " hale-landing-page";
+	}
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="hale-page <?php printf($style_class); ?>">
@@ -55,7 +58,7 @@ $header_quick_exit = get_theme_mod( 'show_quick_exit', 'no' );
   }
     ?>
 <?php
-include "inc/emergency-banner.php";
+include "partials/emergency-banner.php";
 ?>
 <?php
 
@@ -122,6 +125,10 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
 </div>
 </header>
 <?php
+
+include "partials/information-banner.php";
+
+
 get_template_part( 'partials/secondary-top-nav' );
 
 echo hale_breadcrumb(); 

@@ -1,0 +1,408 @@
+{
+    "key": "group_65f00eaa4af50",
+    "title": "Banners",
+    "fields": [
+        {
+            "key": "field_65f84e65e2b84",
+            "label": "Important information banner",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_65f03b95a67df",
+            "label": "Display information banner",
+            "name": "info_banner_display",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Use this sparingly and only for urgent site-wide notices.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_65f03806231a8",
+            "label": "Title",
+            "name": "info_banner_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f03b95a67df",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 50,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f03826231a9",
+            "label": "Summary text",
+            "name": "info_banner_summary",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f03b95a67df",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 255,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f03831231aa",
+            "label": "Link to more information",
+            "name": "info_banner_more_info",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "If a URL is entered, it will be linked to via a \"Find out more\" link at the bottom of the banner.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f03b95a67df",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_65f84e08d8ce0",
+            "label": "Emergency banners",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_65fac1cc6295a",
+            "label": "Usage note",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Only use an emergency banner for its intended purpose.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_65f00eaa0e0b8",
+            "label": "Banner type",
+            "name": "banner_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select \"No banner\" to turn the banner off.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "No banner": "No banner",
+                "Local emergency": "Local emergency",
+                "National emergency": "National emergency",
+                "National mourning": "National mourning"
+            },
+            "default_value": "No banner",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_65f00edc0e0b9",
+            "label": "Name",
+            "name": "banner_mourning_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "==",
+                        "value": "National mourning"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f0128a0e0c0",
+            "label": "National emergency title",
+            "name": "banner_national_emergency_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "This can just read \"National emergency\", or you can write in a title, e.g. \"Storm Malcolm\"",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "==",
+                        "value": "National emergency"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "National emergency",
+            "maxlength": 50,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f013020e0c1",
+            "label": "Local emergency title",
+            "name": "banner_local_emergency_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "This can just read \"Local emergency\", or you can write in a title, e.g. \"Storm Malcolm\"; \"Cornwall and Devon Flooding\"",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "==",
+                        "value": "Local emergency"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Local emergency",
+            "maxlength": 50,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f0101e0e0ba",
+            "label": "Summary text",
+            "name": "banner_summary",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter some supplementary information, e.g. \"Severe weather warnings in effect throughout the United Kingdom.\"",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "!=",
+                        "value": "No banner"
+                    },
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "!=",
+                        "value": "National mourning"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 255,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f010690e0bd",
+            "label": "Year of birth",
+            "name": "year_of_birth",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "==",
+                        "value": "National mourning"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1907,
+            "max": 2199,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f010f80e0be",
+            "label": "Year of death",
+            "name": "year_of_death",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "==",
+                        "value": "National mourning"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 2022,
+            "max": 2199,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65f0113b0e0bf",
+            "label": "Link to more information",
+            "name": "banner_link_destination",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "If a URL is entered, it will be linked to via a \"More information\" link at the bottom of the banner.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65f00eaa0e0b8",
+                        "operator": "!=",
+                        "value": "No banner"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-site-wide-banner-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1710932815
+}
