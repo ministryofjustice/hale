@@ -58,7 +58,7 @@ function hale_register_post_type($cpt){
         $post_type_menu_icon = 'dashicons-admin-post';
     }
 
-    if(empty($post_type_single_view) || $post_type_single_view !== false){
+    if(empty($post_type_single_view) && $post_type_single_view !== false){
         $post_type_single_view = true;
     }
 
@@ -565,6 +565,7 @@ function hale_get_flexible_post_type_settings($post_type){
             $post_type_key = $cpt['post_type_key'];
             if($post_type_key == $post_type){
                 $flex_cpt = $cpt;
+                break;
             }
         }
 

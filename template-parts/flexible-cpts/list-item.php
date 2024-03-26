@@ -9,7 +9,7 @@
 
 <div class="list-item type-<?php echo  $flex_cpt_settings['post_type_object_type'] ?>">
     <h2 class="list-item-title hale-heading-s">
-        <?php if(empty($flex_cpt_settings['post_type_single_view']) || $flex_cpt_settings['post_type_single_view'] !== false){ ?>
+        <?php if(empty($flex_cpt_settings['post_type_single_view']) && $flex_cpt_settings['post_type_single_view'] !== false){ ?>
             <a href="<?php echo get_permalink(); ?>">
                 <?php echo get_the_title(); ?>
             </a>
