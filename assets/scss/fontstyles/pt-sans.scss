@@ -5,14 +5,8 @@
   -moz-osx-font-smoothing: antialiased;
   
   .hale-heading-xxl {
-    font-size: 68px;
-    font-size: 4.25rem;
-    line-height: 120%;
-
-    @include govuk-media-query($from: tablet) {
-      font-size: 76px;
-      font-size: 4.75rem;
-    }
+    // I don't think this is used, but included just in case
+    @include govuk-font-size($size: 80);
   }
 
   //Normally used for H1
