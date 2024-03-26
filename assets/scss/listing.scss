@@ -29,14 +29,14 @@
       padding-bottom: 16px;
       padding-top: 10px;
       text-align: right;
-      @include govuk-font(19);
+      @include govuk-font-size($size: 19);
     }
 
     .list-item {
       border-bottom: 1px solid $govuk-border-colour;
 
       .list-item-published-date {
-        @include govuk-font(19);
+        @include govuk-font-size($size: 19);
         margin-bottom: 20px;
         font-weight: bold;
 

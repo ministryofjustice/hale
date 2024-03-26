@@ -8,7 +8,7 @@
       }
 
       .flexible-post-type-details {
-        @include govuk-font(19);
+        @include govuk-font-size($size: 19);
         font-weight: bold;
 
         .flexible-post-type-published-date {
