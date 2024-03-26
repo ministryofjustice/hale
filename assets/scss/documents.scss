@@ -3,7 +3,7 @@
 }
 
 .document-details {
-  @include govuk-font(19);
+  @include govuk-font-size($size: 19);
   font-weight: bold;
 
   .document-published-date {
@@ -85,7 +85,7 @@
   padding-bottom: 16px;
   padding-top: 10px;
   text-align: right;
-  @include govuk-font(19);
+  @include govuk-font-size($size: 19);
 }
 
 .document-list {
@@ -93,7 +93,7 @@
     border-bottom: 1px solid $govuk-border-colour;
 
     .document-published-date {
-      @include govuk-font(19);
+      @include govuk-font-size($size: 19);
       margin-bottom: 20px;
       font-weight: bold;
 

@@ -42,7 +42,7 @@
 }
 
 .moj-pagination__results {
-  @include govuk-font(19);
+  @include govuk-font-size($size: 19);
   margin-top: 0;
   @include govuk-media-query($from: desktop) {
     display: inline-block;
@@ -52,7 +52,7 @@
 }
 
 .moj-pagination__item {
-  @include govuk-font(19);
+  @include govuk-font-size($size: 19);
   display: inline-block;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .gem-c-pagination__item {
-  @include govuk-font($size: 16, $line-height: (20 / 16));
+  @include govuk-font-size($size: 16, $line-height: (20 / 16));
   list-style: none;
 
   &:first-child {
@@ -182,12 +182,12 @@
 }
 
 .gem-c-pagination__link-text {
-  @include govuk-font(19, $weight: bold);
+  @include govuk-font($size: 19, $weight: bold);
   margin-left: govuk-spacing(2);
 }
 
 .gem-c-pagination__link-icon {
-  @include govuk-font($size: 24, $line-height: (33.75 / 27));
+  @include govuk-font-size($size: 24, $line-height: (33.75 / 27));
   display: inline-block;
   margin-bottom: 1px;
   height: .482em;
@@ -217,7 +217,7 @@
       padding-left:30px;
 
       .gem-c-pagination__link-text {
-        @include govuk-font(24);
+        @include govuk-font-size($size: 24);
       }
     }
     .gem-c-pagination__link-label {

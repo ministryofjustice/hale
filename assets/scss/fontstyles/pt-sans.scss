@@ -16,95 +16,61 @@
   }
 
   //Normally used for H1
+  h1:not([class]),
   .hale-heading-xl {
-    font-size: 50px;
-    font-size: 3.125rem;
-    line-height: 120%;
-
-    @include govuk-media-query($from: tablet) {
-      font-size: 56px;
-      font-size: 3.5rem;
-    }
+    @extend .govuk-heading-xl;
   }
 
   //Normally used for H2
+  h2:not([class]),
   .hale-heading-l {
-    font-size: 38px;
-    font-size: 2.375rem;
-    line-height: 120%;
-
-    @include govuk-media-query($from: tablet) {
-      font-size: 42px;
-      font-size: 2.625rem;
-    }
+    @extend .govuk-heading-l;
   }
 
   //Normally used for H3
+  h3:not([class]),
   .hale-heading-m {
-    font-size: 28px;
-    font-size: 1.75rem;
-    line-height: 130%;
-
-    @include govuk-media-query($from: tablet) {
-      font-size: 32px;
-      font-size: 2.0rem;
-    }
+    @extend .govuk-heading-m;
   }
 
   //Normally used for H4
+  h4:not([class]),
+  h5:not([class]),
+  h6:not([class]),
   .hale-heading-s {
-    @include govuk-font(24);
-    font-weight:700;
+    @extend .govuk-heading-s;
   }
 
-  // only classless
-  h1:not([class]) {
-    @extend .hale-heading-xl;
+  .has-huge-font-size {
+    @include govuk-font-size($size: 48);
   }
 
-  h2:not([class]) {
-    @extend .hale-heading-l;
+  .has-large-font-size {
+    @include govuk-font-size($size: 36);
   }
 
-  h3:not([class]) {
-    @extend .hale-heading-m;
+  .has-medium-font-size {
+    @include govuk-font-size($size: 24);
   }
 
-  h4:not([class]) {
-    @extend .hale-heading-s;
+  .has-small-font-size {
+    @include govuk-font-size($size: 19);
   }
 
-  h1,h2,h3,h4 {
-    &.has-huge-font-size {
-      @extend .hale-heading-xl;
-    }
-
-    &.has-large-font-size {
-      @extend .hale-heading-l;
-    }
-
-    &.has-medium-font-size {
-      @extend .hale-heading-m;
-    }
-
-    &.has-small-font-size {
-      @extend .hale-heading-s;
-    }
-  }
 
 
   p:not([class|="govuk"]) {
-    @include govuk-font(19);
+    @include govuk-font-size($size: 19);
   }
 
 
   .mojblocks-hero {
      h1 {
-       @extend .hale-heading-l;
+       @extend .govuk-heading-l;
      }
   }
 
   .intro, .intro p {
-    @include govuk-font(24);
+    @include govuk-font-size($size: 24);
   }
 }
