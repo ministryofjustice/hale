@@ -213,6 +213,27 @@
                     "ajax": 0,
                     "placeholder": "",
                     "parent_repeater": "field_65a6ff7b2f77e"
+                },
+                {
+                    "key": "field_65f2c480f4bfc",
+                    "label": "Single view",
+                    "name": "post_type_single_view",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "parent_repeater": "field_65a6ff7b2f77e"
                 }
             ]
         },
