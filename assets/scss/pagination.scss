@@ -182,7 +182,8 @@
 }
 
 .gem-c-pagination__link-text {
-  @include govuk-font($size: 19, $weight: bold);
+  @include govuk-font-size($size: 19);
+  font-weight: $govuk-font-weight-bold;
   margin-left: govuk-spacing(2);
 }
 

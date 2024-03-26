@@ -17,18 +17,21 @@
 
   //Normally used for H1
   h1:not([class]),
+  h1.wp-block-heading,
   .hale-heading-xl {
     @extend .govuk-heading-xl;
   }
 
   //Normally used for H2
   h2:not([class]),
+  h2.wp-block-heading,
   .hale-heading-l {
     @extend .govuk-heading-l;
   }
 
   //Normally used for H3
   h3:not([class]),
+  h3.wp-block-heading,
   .hale-heading-m {
     @extend .govuk-heading-m;
   }
@@ -37,32 +40,44 @@
   h4:not([class]),
   h5:not([class]),
   h6:not([class]),
+  h4.wp-block-heading,
+  h5.wp-block-heading,
+  h6.wp-block-heading,
   .hale-heading-s {
     @extend .govuk-heading-s;
   }
 
-  .has-huge-font-size {
-    @include govuk-font-size($size: 48);
+  h1,h2,h3,h4 {
+    &.has-huge-font-size {
+      @include govuk-font-size($size: 48);
+    }
+    &.has-large-font-size {
+      @include govuk-font-size($size: 36);
+    }
+    &.has-medium-font-size {
+      @include govuk-font-size($size: 24);
+    }
+    &.has-small-font-size {
+      @include govuk-font-size($size: 19);
+    }
   }
 
-  .has-large-font-size {
+  .has-huge-font-size {
     @include govuk-font-size($size: 36);
   }
-
-  .has-medium-font-size {
+  .has-large-font-size {
     @include govuk-font-size($size: 24);
   }
-
-  .has-small-font-size {
+  .has-medium-font-size {
     @include govuk-font-size($size: 19);
   }
-
-
+  .has-small-font-size {
+    @include govuk-font-size($size: 16);
+  }
 
   p:not([class|="govuk"]) {
     @include govuk-font-size($size: 19);
   }
-
 
   .mojblocks-hero {
      h1 {
