@@ -64,15 +64,81 @@
         ]
       },
       "typography": {
-        "textTransform": false
+        "textTransform": false,
+        "fontSizes": [
+          {
+            "slug": "small",
+            "size": "var(--gds-font-size-16)",
+            "name": "Small"
+          },
+          {
+            "slug": "medium",
+            "size": "var(--gds-font-size-19)",
+            "name": "Medium"
+          },
+          {
+            "slug": "large",
+            "size": "var(--gds-font-size-24)",
+            "name": "Large"
+          },
+          {
+            "slug": "huge",
+            "size": "var(--gds-font-size-36)",
+            "name": "Extra large"
+          }
+        ]
       },
       "blocks": {
+        "core/heading": {
+          "typography": {
+            "customFontSize": true,
+            "customLineHeight": false,
+            "fontSizes": [
+              {
+                "slug": "small",
+                "size": "var(--gds-font-size-19)",
+                "name": "Small"
+              },
+              {
+                "slug": "medium",
+                "size": "var(--gds-font-size-24)",
+                "name": "Medium"
+              },
+              {
+                "slug": "large",
+                "size": "var(--gds-font-size-36)",
+                "name": "Large"
+              },
+              {
+                "slug": "huge",
+                "size": "var(--gds-font-size-48)",
+                "name": "Extra large"
+              }
+            ]
+          }
+        },
         "core/paragraph": {
           "typography": {
             "customFontSize": true,
             "customLineHeight": false,
-            "dropCap": true,
-            "fontSizes": []
+            "dropCap": false,
+            "fontSizes": [
+              {
+                "slug": "small",
+                "size": "var(--gds-font-size-16)",
+                "name": "Small (default)"
+              },
+              {
+                "slug": "medium",
+                "size": "var(--gds-font-size-19)",
+                "name": "Medium"
+              },
+              {
+                "slug": "large",
+                "size": "var(--gds-font-size-24)",
+                "name": "Large"
+              }
+            ]
           }
         },
         "core/list": {
