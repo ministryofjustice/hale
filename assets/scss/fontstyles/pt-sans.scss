@@ -1,85 +1,121 @@
+/*
+  The following are copied from $_govuk-typography-scale-modern from the design system.
+  We use variables here as we need to set the WordPress variable to the size to prevent Gutenberg overriding it.
+  We have omitted the 14px size - depricated by GDS and we don't need it.
+*/
+
+:root {
+  --gds-font-size-80: 53px; //exceptional use only
+  --gds-font-size-48: 32px;
+  --gds-font-size-36: 27px;
+  --gds-font-size-27: 21px; //exceptional use only - might become depricated soon
+  --gds-font-size-24: 21px;
+  --gds-font-size-19: 19px;
+  --gds-font-size-16: 16px;
+  --gds-line-height-80: 55px; //exceptional use only
+  --gds-line-height-48: 35px;
+  --gds-line-height-36: 30px;
+  --gds-line-height-27: 25px; //exceptional use only - might become depricated soon
+  --gds-line-height-24: 25px;
+  --gds-line-height-19: 25px;
+  --gds-line-height-16: 20px;
+  @include govuk-media-query($from: tablet) {
+    --gds-font-size-80: 80px; //exceptional use only
+    --gds-font-size-48: 48px;
+    --gds-font-size-36: 36px;
+    --gds-font-size-27: 27px; //exceptional use only - might become depricated soon
+    --gds-font-size-24: 24px;
+    --gds-line-height-80: 80px; //exceptional use only
+    --gds-line-height-48: 50px;
+    --gds-line-height-36: 40px;
+    --gds-line-height-27: 30px; //exceptional use only - might become depricated soon
+    --gds-line-height-24: 30px;
+  }
+  @include govuk-media-query($media-type: print) {
+    --gds-font-size-80: 53pt; //exceptional use only
+    --gds-font-size-48: 32pt;
+    --gds-font-size-36: 24pt;
+    --gds-font-size-27: 18pt; //exceptional use only - might become depricated soon
+    --gds-font-size-24: 18pt;
+    --gds-font-size-19: 14pt;
+    --gds-font-size-16: 14pt;
+    --gds-line-height-80: 1.1; //exceptional use only
+    --gds-line-height-48: 1.15;
+    --gds-line-height-36: 1.05;
+    --gds-line-height-27: 1.15; //exceptional use only - might become depricated soon
+    --gds-line-height-24: 1.15;
+    --gds-line-height-19: 1.15;
+    --gds-line-height-16: 1.2;
+    }
+}
+
+
 //Normally used for display/hero
 #primary {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
-  
-  .hale-heading-xxl {
-    // I don't think this is used, but included just in case
-    @include govuk-font-size($size: 80);
-  }
+}
+.hale-heading-xxl {
+  // I don't think this is used, but included just in case
+  @include govuk-font-size($size: 80);
+}
 
-  //Normally used for H1
-  h1:not([class]),
-  h1.wp-block-heading,
-  .hale-heading-xl {
-    @extend .govuk-heading-xl;
-  }
+//Normally used for H1
+h1,
+.hale-heading-xl {
+  @extend .govuk-heading-xl;
+}
 
-  //Normally used for H2
-  h2:not([class]),
-  h2.wp-block-heading,
-  .hale-heading-l {
-    @extend .govuk-heading-l;
-  }
+//Normally used for H2
+h2,
+.hale-heading-l,
+.mojblocks-hero h1 {
+  @extend .govuk-heading-l;
+}
 
-  //Normally used for H3
-  h3:not([class]),
-  h3.wp-block-heading,
-  .hale-heading-m {
-    @extend .govuk-heading-m;
-  }
+//Normally used for H3
+h3,
+.hale-heading-m {
+  @extend .govuk-heading-m;
+}
 
-  //Normally used for H4
-  h4:not([class]),
-  h5:not([class]),
-  h6:not([class]),
-  h4.wp-block-heading,
-  h5.wp-block-heading,
-  h6.wp-block-heading,
-  .hale-heading-s {
-    @extend .govuk-heading-s;
-  }
+//Normally used for H4
+h4,
+h5,
+h6,
+.hale-heading-s {
+  @extend .govuk-heading-s;
+}
 
-  h1,h2,h3,h4 {
-    &.has-huge-font-size {
-      @include govuk-font-size($size: 48);
-    }
-    &.has-large-font-size {
-      @include govuk-font-size($size: 36);
-    }
-    &.has-medium-font-size {
-      @include govuk-font-size($size: 24);
-    }
-    &.has-small-font-size {
-      @include govuk-font-size($size: 19);
-    }
-  }
 
-  .has-huge-font-size {
+
+h1,h2,h3,h4 {
+  &.has-huge-font-size {
+    @include govuk-font-size($size: 48);
+  }
+  &.has-large-font-size {
     @include govuk-font-size($size: 36);
   }
-  .has-large-font-size {
+  &.has-medium-font-size {
     @include govuk-font-size($size: 24);
   }
-  .has-medium-font-size {
+  &.has-small-font-size {
     @include govuk-font-size($size: 19);
   }
-  .has-small-font-size {
-    @include govuk-font-size($size: 16);
-  }
+}
 
-  p:not([class|="govuk"]) {
-    @include govuk-font-size($size: 19);
-  }
-
-  .mojblocks-hero {
-     h1 {
-       @extend .govuk-heading-l;
-     }
-  }
-
-  .intro, .intro p {
-    @include govuk-font-size($size: 24);
-  }
+.has-huge-font-size {
+  @include govuk-font-size($size: 36);
+}
+.intro, .intro p,
+.has-large-font-size {
+  @include govuk-font-size($size: 24);
+}
+p,
+.has-medium-font-size {
+  @include govuk-font-size($size: 19);
+}
+.has-small-font-size {
+  @include govuk-font-size($size: 16);
 }
