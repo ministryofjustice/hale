@@ -1,7 +1,12 @@
 /*
   The following are copied from $_govuk-typography-scale-modern from the design system.
   We use variables here as we need to set the WordPress variable to the size to prevent Gutenberg overriding it.
-  We have omitted the 14px size - depricated by GDS and we don't need it.
+  We have omitted the 14px size - depricated by GDS and we don't need it, the GDS mixin will stop supporting this after v6.
+  We have kept the 27px size - probably will soon be depricated by GDS as the sizes on mobile and printing are the same.
+  We have kept the 80px size - but we probably don't need it.
+
+  Elsewhere, we use the GDS mixin.
+  Setting font-size:var(--gds-font-size-48) and line-height:var(--gds-line-height-48) is the same as @include govuk-font-size($size: 48);
 */
 
 :root {
@@ -46,19 +51,16 @@
     --gds-line-height-24: 1.15;
     --gds-line-height-19: 1.15;
     --gds-line-height-16: 1.2;
-    }
+  }
 }
-
 
 //Normally used for display/hero
 #primary {
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
 }
 
-h1,
-.mojblocks-hero h1 {
+h1 {
   @extend .govuk-heading-l;
 }
 
@@ -73,7 +75,11 @@ h6 {
   @extend .govuk-heading-s;
 }
 
-
+/*
+  The GDS mixin govuk-font-size brings in line-height and font-size
+  Note that headings are one size notch higher than everyone else!
+  Also note that these are set in themes.json as well ∵ inbuilt WP variable looks there
+*/
 
 h1,h2,h3,h4 {
   &.has-huge-font-size {
