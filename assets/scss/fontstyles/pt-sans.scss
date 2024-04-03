@@ -56,35 +56,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
 }
-.hale-heading-xxl {
-  // I don't think this is used, but included just in case
-  @include govuk-font-size($size: 80);
-}
 
-//Normally used for H1
 h1,
-.hale-heading-xl {
-  @extend .govuk-heading-xl;
-}
-
-//Normally used for H2
-h2,
-.hale-heading-l,
 .mojblocks-hero h1 {
   @extend .govuk-heading-l;
 }
 
-//Normally used for H3
-h3,
-.hale-heading-m {
+h2 {
   @extend .govuk-heading-m;
 }
 
-//Normally used for H4
+h3,
 h4,
 h5,
-h6,
-.hale-heading-s {
+h6 {
   @extend .govuk-heading-s;
 }
 
