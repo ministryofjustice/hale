@@ -45,7 +45,7 @@ while (have_posts()) :
 
          // Header loads if category not selected on page
                 if (empty($is_cat_page)) { ?>
-                 <h1 class="govuk-heading-xl"><?php the_title(); ?></h1>
+                 <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-6"><?php the_title(); ?></h1>
              <?php
                 }
 

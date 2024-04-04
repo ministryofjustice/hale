@@ -136,7 +136,7 @@ while (have_posts()) :
                 </div>
             </div>
         <?php } ?>
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-xl govuk-!-static-margin-0">
             <?php echo get_the_title(); ?>
         </h1>
 
