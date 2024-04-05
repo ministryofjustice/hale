@@ -162,37 +162,6 @@ function hale_setup()
 
 add_action('after_setup_theme', 'hale_setup');
 
-/* taken from https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#block-font-sizes */
-add_action('after_setup_theme', 'wpse_remove_custom_colors');
-function wpse_remove_custom_colors() {
-    // removes the text box where users can enter custom pixel sizes
-    add_theme_support('disable-custom-font-sizes');
-    // specifies the options (removed "normal")
-    add_theme_support('editor-font-sizes', array(
-        array(
-            'name' => 'Small',
-            'size' => '22',
-            'slug' => 'small'
-        ),
-        array(
-            'name' => 'Medium',
-            'size' => '28',
-            'slug' => 'medium'
-        ),
-        array(
-            'name' => 'Large',
-            'size' => '38',
-            'slug' => 'large'
-        ),
-        array(
-            'name' => 'Huge',
-            'size' => '50',
-            'slug' => 'huge'
-        )
-    ) );
-}
-
-
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  * Priority 0 to make it available to lower priority callbacks.

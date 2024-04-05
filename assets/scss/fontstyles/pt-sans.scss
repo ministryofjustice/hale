@@ -9,51 +9,34 @@
   Setting font-size:var(--gds-font-size-48) and line-height:var(--gds-line-height-48) is the same as @include govuk-font-size($size: 48);
 */
 
-:root {
-  // Mobile sizes
-  --gds-font-size-80: 53px; //exceptional use only
-  --gds-font-size-48: 32px;
-  --gds-font-size-36: 27px;
-  --gds-font-size-27: 21px; //exceptional use only - might become depricated soon
-  --gds-font-size-24: 21px;
-  --gds-font-size-19: 19px;
-  --gds-font-size-16: 16px;
-  --gds-line-height-80: 55px; //exceptional use only
-  --gds-line-height-48: 35px;
-  --gds-line-height-36: 30px;
-  --gds-line-height-27: 25px; //exceptional use only - might become depricated soon
-  --gds-line-height-24: 25px;
-  --gds-line-height-19: 25px;
-  --gds-line-height-16: 20px;
-  @include govuk-media-query($from: tablet) {
-    --gds-font-size-80: 80px; //exceptional use only
-    --gds-font-size-48: 48px;
-    --gds-font-size-36: 36px;
-    --gds-font-size-27: 27px; //exceptional use only - might become depricated soon
-    --gds-font-size-24: 24px;
-    --gds-line-height-80: 80px; //exceptional use only
-    --gds-line-height-48: 50px;
-    --gds-line-height-36: 40px;
-    --gds-line-height-27: 30px; //exceptional use only - might become depricated soon
-    --gds-line-height-24: 30px;
-  }
-  @include govuk-media-query($media-type: print) {
-    --gds-font-size-80: 53pt; //exceptional use only
-    --gds-font-size-48: 32pt;
-    --gds-font-size-36: 24pt;
-    --gds-font-size-27: 18pt; //exceptional use only - might become depricated soon
-    --gds-font-size-24: 18pt;
-    --gds-font-size-19: 14pt;
-    --gds-font-size-16: 14pt;
-    --gds-line-height-80: 1.1; //exceptional use only
-    --gds-line-height-48: 1.15;
-    --gds-line-height-36: 1.05;
-    --gds-line-height-27: 1.15; //exceptional use only - might become depricated soon
-    --gds-line-height-24: 1.15;
-    --gds-line-height-19: 1.15;
-    --gds-line-height-16: 1.2;
+@mixin hale-font-value() {
+  $sizes: 16, 19, 24, 36, 48; // These must be GDS sizes
+  :root {
+    @each $size in $sizes {
+      $font-map: map-get($_govuk-typography-scale-modern, $size);
+      @each $breakpoint, $breakpoint-map in $font-map {
+        $font-size: map-get($breakpoint-map, "font-size");
+        $line-height: map-get($breakpoint-map, "line-height");
+        @if not $breakpoint {
+          --gds-font-size-#{$size}: #{$font-size};
+          --gds-line-height-#{$size}: #{$line-height};
+        } @else if $breakpoint == "print" {
+          @include govuk-media-query($media-type: print) {
+            --gds-font-size-#{$size}: #{$font-size};
+            --gds-line-height-#{$size}: #{$line-height};
+          }
+        } @else {
+          @include govuk-media-query($from: tablet) {
+            --gds-font-size-#{$size}: #{$font-size};
+            --gds-line-height-#{$size}: #{$line-height};
+          }
+        }
+      }
+    }
   }
 }
+
+@include hale-font-value();
 
 //Normally used for display/hero
 #primary {
