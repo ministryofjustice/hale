@@ -64,6 +64,8 @@
         ]
       },
       "typography": {
+        "customFontSize": false,
+        "customLineHeight": false,
         "textTransform": false,
         "fontSizes": [
           {
@@ -80,19 +82,12 @@
             "slug": "large",
             "size": "var(--gds-font-size-24)",
             "name": "Large"
-          },
-          {
-            "slug": "huge",
-            "size": "var(--gds-font-size-36)",
-            "name": "Extra large"
           }
         ]
       },
       "blocks": {
         "core/heading": {
           "typography": {
-            "customFontSize": true,
-            "customLineHeight": false,
             "fontSizes": [
               {
                 "slug": "small",
@@ -119,72 +114,7 @@
         },
         "core/paragraph": {
           "typography": {
-            "customFontSize": false,
-            "customLineHeight": false,
-            "dropCap": false,
-            "fontSizes": [
-              {
-                "slug": "small",
-                "size": "var(--gds-font-size-16)",
-                "name": "Small"
-              },
-              {
-                "slug": "medium",
-                "size": "var(--gds-font-size-19)",
-                "name": "Medium (default)"
-              },
-              {
-                "slug": "large",
-                "size": "var(--gds-font-size-24)",
-                "name": "Large"
-              }
-            ]
-          }
-        },
-        "core/list": {
-          "typography": {
-            "customFontSize": false,
-            "customLineHeight": false,
-            "fontSizes": [
-              {
-                "slug": "small",
-                "size": "var(--gds-font-size-16)",
-                "name": "Small"
-              },
-              {
-                "slug": "medium",
-                "size": "var(--gds-font-size-19)",
-                "name": "Medium (default)"
-              },
-              {
-                "slug": "large",
-                "size": "var(--gds-font-size-24)",
-                "name": "Large"
-              }
-            ]
-          }
-        },
-        "core/list-item": {
-          "typography": {
-            "customFontSize": false,
-            "customLineHeight": false,
-            "fontSizes": [
-              {
-                "slug": "small",
-                "size": "var(--gds-font-size-16)",
-                "name": "Small"
-              },
-              {
-                "slug": "medium",
-                "size": "var(--gds-font-size-19)",
-                "name": "Medium (default)"
-              },
-              {
-                "slug": "large",
-                "size": "var(--gds-font-size-24)",
-                "name": "Large"
-              }
-            ]
+            "dropCap": false
           }
         }
       }
