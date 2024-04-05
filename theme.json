@@ -119,19 +119,19 @@
         },
         "core/paragraph": {
           "typography": {
-            "customFontSize": true,
+            "customFontSize": false,
             "customLineHeight": false,
             "dropCap": false,
             "fontSizes": [
               {
                 "slug": "small",
                 "size": "var(--gds-font-size-16)",
-                "name": "Small (default)"
+                "name": "Small"
               },
               {
                 "slug": "medium",
                 "size": "var(--gds-font-size-19)",
-                "name": "Medium"
+                "name": "Medium (default)"
               },
               {
                 "slug": "large",
@@ -143,18 +143,18 @@
         },
         "core/list": {
           "typography": {
-            "customFontSize": true,
+            "customFontSize": false,
             "customLineHeight": false,
             "fontSizes": [
               {
                 "slug": "small",
                 "size": "var(--gds-font-size-16)",
-                "name": "Small (default)"
+                "name": "Small"
               },
               {
                 "slug": "medium",
                 "size": "var(--gds-font-size-19)",
-                "name": "Medium"
+                "name": "Medium (default)"
               },
               {
                 "slug": "large",
@@ -166,18 +166,18 @@
         },
         "core/list-item": {
           "typography": {
-            "customFontSize": true,
+            "customFontSize": false,
             "customLineHeight": false,
             "fontSizes": [
               {
                 "slug": "small",
                 "size": "var(--gds-font-size-16)",
-                "name": "Small (default)"
+                "name": "Small"
               },
               {
                 "slug": "medium",
                 "size": "var(--gds-font-size-19)",
-                "name": "Medium"
+                "name": "Medium (default)"
               },
               {
                 "slug": "large",
