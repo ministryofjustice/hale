@@ -83,7 +83,7 @@ h1,h2,h3,h4 {
 .has-huge-font-size {
   @include govuk-font-size($size: 36);
 }
-.intro, .intro p,
+#primary .intro, #primary .intro p,
 .has-large-font-size {
   @include govuk-font-size($size: 24);
 }

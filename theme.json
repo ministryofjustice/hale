@@ -116,6 +116,11 @@
           "typography": {
             "dropCap": false
           }
+        },
+        "core/list-item": {
+          "typography": {
+            "fontSizes": []
+          }
         }
       }
     }
