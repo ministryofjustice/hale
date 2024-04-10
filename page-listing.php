@@ -31,7 +31,7 @@ while (have_posts()) :
     ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-6">
             <?php echo get_the_title(); ?>
         </h1>
 

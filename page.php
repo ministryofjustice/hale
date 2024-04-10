@@ -52,7 +52,7 @@ while (have_posts()) :
 
          // Header loads if category not selected on page
                 if (empty($is_cat_page)) { ?>
-                 <h1 class="govuk-heading-l hale-heading-xl"><?php the_title(); ?></h1>
+                 <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-6"><?php the_title(); ?></h1>
              <?php
                 }
 
@@ -70,7 +70,7 @@ while (have_posts()) :
             if (!empty($is_cat_page)) {
 
             // Add special heading CSS class depending on if category menu is activated
-            $hale_heading_class = $is_cat_page ? ' hale-heading-l' : null;
+            $hale_heading_class = $is_cat_page ? ' govuk-heading-l' : '';
 
                 echo '<h1 class="entry-title' . $hale_heading_class . '">' . get_the_title() . '</h1>';
             }

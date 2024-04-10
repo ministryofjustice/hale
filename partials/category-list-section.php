@@ -39,7 +39,7 @@ if (!empty($page_cats)) {
 
             $is_cat_page = true;
         ?>
-        <h2 class="govuk-heading-l hale-heading-xl hale-heading--top"><?php echo $page_cat->name; ?></h2>
+        <h2 class="govuk-heading-xl"><?php echo $page_cat->name; ?></h2>
         <ul class="govuk-list govuk-list--bullet hale-list--top">
             <?php
             foreach ($pages as $key => $post) : ?>

@@ -6,7 +6,7 @@
   }
 
   .news-story-details {
-    @include govuk-font(19);
+    @include govuk-font-size($size: 19);
     font-weight: bold;
   }
 
@@ -52,7 +52,7 @@
 .news-story-count {
   font-weight: bold;
   border-bottom: 1px solid $govuk-border-colour;
-  @include govuk-font(24);
+  @include govuk-font-size($size: 24);
   padding-bottom: 16px;
 }
 

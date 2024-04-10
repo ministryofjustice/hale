@@ -17,8 +17,8 @@ get_header();
 
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<header class="hale-search-header" style="">
-      <h1 class="govuk-heading-l hale-heading-xl" style="line-height:0;">
-        <span class="govuk-heading-l hale-heading-xl govuk-!-margin-bottom-0">
+      <h1 style="line-height:0;">
+        <span class="govuk-heading-xl govuk-!-margin-bottom-0">
           <?php _e("Search Results","hale");?>
         </span>
         <br />
