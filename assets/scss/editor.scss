@@ -5,9 +5,25 @@
 
 @import 'fontstyles/pt-sans';
 
+.hale-template {
+	&--page-full-width {
+		.editor-styles-wrapper {
+			@extend .govuk-grid-column-full-from-desktop;
+		}
+	}
+	&--default {
+		.editor-styles-wrapper {
+			@extend .govuk-grid-column-two-thirds;
+		}
+	}
+}
+
 .edit-post-visual-editor {
+	@extend .govuk-width-container;
+
 	.editor-styles-wrapper {
-		margin: 0 2rem;
+		margin: 0 minmax(2rem, auto);
+		z-index: 0;
 	}
 
 	/**

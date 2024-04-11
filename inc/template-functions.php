@@ -165,6 +165,23 @@ function hale_get_branding_class() {
 }
 
 /**
+ * Get the template which has been selected for the page
+ */
+function hale_get_template_class() {
+	$template = get_page_template_slug();
+	if ($template) {
+		$class = preg_replace('/\.php$/', "", $template);
+		$classes = " hale-template hale-template--" . sanitize_html_class($class);
+	} else {
+		// default template selected
+		$classes = " hale-template hale-template--default";
+	}
+	return $classes;
+}
+add_filter( 'admin_body_class', 'hale_get_template_class' );
+
+
+/**
  * Get the custom colour name to return into the body class if required
  *
  * @param array $classes the pre-existing classes for a WordPress page.
@@ -186,7 +203,7 @@ function hale_admin_custom_page_colour( $classes ) {
         return;
     }
 
-    $classes .= ' ' . hale_get_branding_class(); //none set = use Neptune
+    $classes .= ' ' . hale_get_branding_class();
 
     return $classes;
 
