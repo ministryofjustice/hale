@@ -45,12 +45,14 @@ while (have_posts()) :
                 <div class="listing-search-section">
                     <div class="listing-search-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
-                            <label for="listing-search-field" class="govuk-visually-hidden">
-                                <?php _e('Search', 'hale'); ?>
-                            </label>
-                            <input class="govuk-input" id="listing-search-field" name="listing_search"
-                                   value="<?php echo $search_text_HTML; ?>" type="search"
-                                   placeholder="<?php _e('Search', 'hale'); ?>">
+                            <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                <label for="listing-search-field" class="govuk-visually-hidden">
+                                    <?php _e('Search', 'hale'); ?>
+                                </label>
+                                <input class="govuk-input" id="listing-search-field" name="listing_search"
+                                    value="<?php echo $search_text_HTML; ?>" type="search"
+                                    placeholder="<?php _e('Search', 'hale'); ?>">
+                            </div>
 
                             <?php
 
@@ -105,12 +107,12 @@ while (have_posts()) :
                                         );
 
                                         if (!empty($dropdown_html)) { ?>
-
-                                            <label class="govuk-label" for="<?php echo $id; ?>">
-                                                <?php echo  $tax->labels->singular_name; ?>
-                                            </label>
-                                            <?php echo $dropdown_html; ?>
-
+                                            <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                                <label class="govuk-label" for="<?php echo $id; ?>">
+                                                    <?php echo  $tax->labels->singular_name; ?>
+                                                </label>
+                                                <?php echo $dropdown_html; ?>
+                                            </div>
                                             <?php
                                         }
                                     }
@@ -119,9 +121,16 @@ while (have_posts()) :
                             }
                             ?>
 
-                            <button class="govuk-button">
-                                <?php _e('Search', 'hale'); ?>
-                            </button>
+                            <div class="govuk-!-padding-top-2">
+                                <button class="govuk-button">
+                                    <?php _e('Search', 'hale'); ?>
+                                </button>
+                                <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
+                                    <a href="<?php echo get_permalink(); ?>" class="govuk-link">
+                                        <?php _e('Clear', 'hale'); ?>
+                                    </a>
+                                </div>
+                            </div>
                         </form>
 
                     </div>
