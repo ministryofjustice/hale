@@ -87,7 +87,7 @@ h1,h2,h3,h4 {
 .has-large-font-size {
   @include govuk-font-size($size: 24);
 }
-p,
+p, ol, ul,
 .has-medium-font-size {
   @include govuk-font-size($size: 19);
 }
