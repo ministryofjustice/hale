@@ -168,15 +168,20 @@ function hale_get_branding_class() {
  * Get the template which has been selected for the page
  */
 function hale_get_template_class() {
-	$template = get_page_template_slug();
-	if ($template) {
-		$class = preg_replace('/\.php$/', "", $template);
-		$classes = " hale-template hale-template--" . sanitize_html_class($class);
-	} else {
-		// default template selected
-		$classes = " hale-template hale-template--default";
+	$screen = get_current_screen();
+	//Checks if on page edit screen
+	if ($screen->base === "post" && $screen->post_type === "page") {
+		$template = get_page_template_slug();
+		if ($template) {
+			$class = preg_replace('/\.php$/', "", $template);
+			$classes = " hale-template hale-template--" . sanitize_html_class($class);
+		} else {
+			// default template selected
+			$classes = " hale-template hale-template--default";
+		}
+		return $classes;
 	}
-	return $classes;
+	return;
 }
 add_filter( 'admin_body_class', 'hale_get_template_class' );
 
