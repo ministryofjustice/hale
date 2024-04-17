@@ -1,5 +1,7 @@
 
-.page-template-page-listing {
+.page-template-page-listing,
+.page-template-page-listing-new
+ {
 
   #primary {  
     .listing-search-section {
@@ -31,6 +33,7 @@
 
     .list-item {
       border-bottom: 1px solid $govuk-border-colour;
+      margin-bottom: 20px;
 
       .list-item-published-date {
         @include govuk-font-size($size: 19);
@@ -39,6 +42,18 @@
 
         .published-date {
           font-weight: normal;
+        }
+        
+      }
+
+      .list-item-detail {
+        //@include govuk-font-size($size: 19);
+        margin-bottom: 20px;
+
+        .list-item-detail-label {
+          font-weight: bold;
+          display: inline-block;
+          width: 125px;;
         }
       }
 

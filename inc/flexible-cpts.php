@@ -1,5 +1,25 @@
 <?php
 
+add_filter( 'acf/field_group/additional_field_settings_tabs', function ( $tabs ) {
+    $tabs['my-settings'] = 'Frontend Display Settings';
+
+    return $tabs;
+} );
+
+add_action( 'acf/field_group/render_field_settings_tab/my-settings', function ( $field ) {
+    acf_render_field_setting(
+        $field,
+        array(
+            'label'        => 'Show in single view?',
+            'instructions' => '',
+            'name'         => 'single_view',
+            'type'         => 'true_false',
+            'ui'           => 1,
+            'default_value' => 1
+        ),
+        true
+    );
+} );
 /**
  * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
  */
@@ -369,8 +389,27 @@ function hale_populate_field_with_post_types( $field ) {
     return $field;
 }
 
+function hale_populate_field_with_post_types2( $field ) {
 
-add_filter('acf/load_field/name=listing_post_type', 'hale_populate_field_with_post_types', 99);
+    // Reset choices
+    $field['choices'] = array();
+
+    $args = array(
+        'public'   => true
+      ); 
+    
+    $post_types = get_post_types($args, 'objects');
+
+    if(!empty($post_types) && is_array($post_types)){
+        foreach($post_types as $post_type) {
+            $field['choices'][$post_type->name] = $post_type->label;
+        }
+    }
+
+    return $field;
+}
+
+add_filter('acf/load_field/name=listing_post_type', 'hale_populate_field_with_post_types2', 99);
 
 
 /**
@@ -406,8 +445,16 @@ function hale_add_listing_page_acf_fields() {
     $post_types = get_post_types($args, 'objects');
 
     foreach($post_types as $post_type) {
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1); 
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1); 
+        //hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        //hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_661f041a14050', 'group_661f041a10692'); 
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_661f041a14050', 'group_661f041a10692'); 
+
+        if($post_type->name == "fi-report"){
+            hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_661f041a14050', 'group_661f041a10692'); 
+        }
+        
     }
     
     $taxonomies = get_taxonomies(['public' => true], 'objects');
@@ -417,7 +464,7 @@ function hale_add_listing_page_acf_fields() {
     }
 }
 
-add_action( 'init', 'hale_add_listing_page_acf_fields' );
+add_action( 'admin_init', 'hale_add_listing_page_acf_fields' );
 
 /**
  * Adds an ACF taxonomy field for a specific taxonomy. This allows user to select terms. Currently only on listing page template.
@@ -469,7 +516,7 @@ function hale_add_taxonomy_acf_field($tax) {
             'multiple' => 0,
             'bidirectional_target' => array(
             ),
-            'parent' => 'group_65a71031ea4fb' //Listing Page Details key
+            'parent' => 'group_661f041a10692' //Listing Page Details key
         )
     );
 
@@ -484,7 +531,7 @@ function hale_add_taxonomy_acf_field($tax) {
  * @param string $field_name The ACF field name.
  * @param bool $allow_multiple Whether to allow multiple selections.
  */
-function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple) {
+function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key) {
 
     $choices = array();
     $taxonomies = get_object_taxonomies($post_type->name, 'objects');
@@ -505,7 +552,7 @@ function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $fi
         'conditional_logic' => array(
             array(
                 array(
-                    'field' => 'field_65a710325ad17', //Listing Post Type Field
+                    'field' => $post_type_field_key, //Listing Post Type Field
                     'operator' => '==',
                     'value' => $post_type->name,
                 ),
@@ -525,7 +572,56 @@ function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $fi
         'ui' => 1,
         'ajax' => 0,
         'placeholder' => '',
-        'parent' => 'group_65a71031ea4fb' //Listing Page Details key
+        'parent' => $field_group_key //Listing Page Details key
+    ));
+
+}
+
+function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key) {
+
+    $choices = array();
+
+    $groups = acf_get_field_groups(array('post_type' => 'fi-report')); 
+		
+	$fields = acf_get_fields($groups[0]['key']);
+
+    foreach($fields as $field) {
+        $choices[$field['key']] = $field['label'];
+    }
+
+
+    acf_add_local_field(array(
+        'key' => 'field_' . $field_key,
+        'label' =>  $field_label,
+        'name' => $field_name,
+        'aria-label' => '',
+        'type' => 'select',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => array(
+            array(
+                array(
+                    'field' => $post_type_field_key, //Listing Post Type Field
+                    'operator' => '==',
+                    'value' => $post_type->name,
+                ),
+            ),
+        ),
+        'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+        ),
+        'choices' => $choices,
+        'default_value' => array(
+        ),
+        'return_format' => 'value',
+        'multiple' => $allow_multiple,
+        'allow_null' => 0,
+        'ui' => 1,
+        'ajax' => 0,
+        'placeholder' => '',
+        'parent' => $field_group_key //Listing Page Details key
     ));
 
 }
