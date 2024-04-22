@@ -22,8 +22,10 @@
 
     &-list {
       max-width: 100%;
+
       @include govuk-media-query($from: desktop) {
         display: flex;
+        font-size: 1rem;
       }
 
       li {
@@ -204,7 +206,7 @@
             top:0;
           }
           span:is(.js-enabled span):not(.sub-menu span):not(.menu-item--more span):not(.menu-item--more span):not([data-more-text=None] span) {
-            text-wrap: nowrap;
+            white-space: nowrap;
           }
         }
 

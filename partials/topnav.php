@@ -45,7 +45,7 @@ if ($show_header_menu == 'yes') {
     );
     ?>
     <nav class="hale-header__topnav govuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" data-more-text="<?php echo $more_text ?>">
-        <button type="button" class="hale-header__mobile-controls govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu" hidden>
+        <button type="button" class="hale-header__mobile-controls hale-header__mobile-controls--menu govuk-header__menu-button govuk-js-header-toggle" aria-controls="menu-menu-top-menu" aria-label="Show or hide navigation menu" hidden>
             <svg class="hale-icon hale-icon--cross" xmlns="http://www.w3.org/2000/svg" viewBox="-2 2 29 20" aria-hidden="true" focusable="false">
                 <path d='m13.41 12 5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z'></path>
             </svg>
