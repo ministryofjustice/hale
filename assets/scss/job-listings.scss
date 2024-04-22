@@ -1,9 +1,7 @@
 .job-listing-filter-form {
 	.govuk-select {
 		width: 100%;
-		@include govuk-media-query(tablet, 730px) {
-			min-width: calc(100% + 25px);
-		}
+		min-width: 100%;
 	}
 }
 .job-list-item {
