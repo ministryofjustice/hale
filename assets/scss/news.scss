@@ -46,7 +46,6 @@
       margin-top: 20px;
     }
   }
-
 }
 
 .news-story-count {
@@ -58,6 +57,10 @@
 
 .news-story-list-item {
   border-bottom: 1px solid $govuk-border-colour;
+
+  &__title {
+    margin-top: 15px;
+  }
 
   &:last-child {
     border: none;

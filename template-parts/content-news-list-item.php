@@ -5,7 +5,7 @@
 ?>
 
 <div class="news-story-list-item">
-    <h2 class="news-story-list-item-title govuk-heading-m"><a
+    <h2 class="news-story-list-item__title"><a
             href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
     <div class="news-story-published-date">
         Published: <?php hale_posted_on(); ?>
