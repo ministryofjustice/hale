@@ -95,6 +95,10 @@
   .document-list-item {
     border-bottom: 1px solid $govuk-border-colour;
 
+    &__title {
+      margin-top: 15px;
+    }
+
     .document-published-date {
       @include govuk-font-size($size: 19);
       margin-bottom: 20px;
