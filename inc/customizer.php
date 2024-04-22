@@ -1192,4 +1192,43 @@ function hale_add_blocks_settings( $wp_customize )
 			)
 		);
 	}
+
+	/*
+	* ------------------------------------------------------------
+	* SECTION: Deprecated switches
+	* ------------------------------------------------------------
+	*/
+	$wp_customize->add_section(
+		'deprecated_controls',
+		array(
+			'title'       => esc_html__( 'Deprecated controls', 'hale' ),
+			'description' => esc_attr__( 'Turn on and off deprecated support - preferably off', 'hale' ),
+			'priority'    => 100,
+		)
+	);
+
+	/*
+	* -----------------------------------------------------------
+	* Paragraph Widths Support
+	* -----------------------------------------------------------
+	*/
+	$wp_customize->add_setting(
+		'deprecated_paragraph_widths',
+		array(
+			'default'           => 'no',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'deprecated_paragraph_widths',
+		array(
+			'label'       => esc_html__( 'Disable the new narrow paragraphs for this site', 'hale' ),
+			'section'     => 'deprecated_controls',
+			'type'        => 'radio',
+			'choices'     => array(
+				'yes' => esc_html__( 'Yes', 'hale' ),
+				'no'  => esc_html__( 'No', 'hale' ),
+			),
+		)
+	);
 }
