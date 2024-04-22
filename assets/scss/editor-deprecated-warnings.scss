@@ -11,7 +11,9 @@
 		content: "Warning: This site has deprecated features enabled.";
 		color:#b10e1e;
 		background-color: #f4cdc6;
-		padding: 3px;
 		font-family: $govuk-font-family;
+		padding: 3px 5px;
+		font-size: 24px;
+		font-weight: 700;
 	}
 }
