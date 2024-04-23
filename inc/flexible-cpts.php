@@ -1,12 +1,19 @@
 <?php
 
 add_filter( 'acf/field_group/additional_field_settings_tabs', function ( $tabs ) {
-    $tabs['my-settings'] = 'Frontend Display Settings';
+    $tabs['frontend-display-settings'] = 'Frontend Display Settings';
 
     return $tabs;
 } );
 
-add_action( 'acf/field_group/render_field_settings_tab/my-settings', function ( $field ) {
+add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=text', 'hale_field_frontend_display_settings');
+add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=date_picker', 'hale_field_frontend_display_settings');
+add_action( 'acf/field_group/render_field_settings_tabfrontend-display-settings/type=number', 'hale_field_frontend_display_settings');
+/**
+ * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
+ */
+function hale_field_frontend_display_settings($field)
+{
     acf_render_field_setting(
         $field,
         array(
@@ -19,7 +26,7 @@ add_action( 'acf/field_group/render_field_settings_tab/my-settings', function ( 
         ),
         true
     );
-} );
+}
 /**
  * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
  */
