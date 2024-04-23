@@ -71,6 +71,7 @@
 
     .govuk-select {
       width: 100%;
+      min-width: 100%;
     }
 
     .govuk-button {
@@ -91,6 +92,10 @@
 .document-list {
   .document-list-item {
     border-bottom: 1px solid $govuk-border-colour;
+
+    &__title {
+      margin-top: 15px;
+    }
 
     .document-published-date {
       @include govuk-font-size($size: 19);
