@@ -15,23 +15,35 @@
 
         ?>
     </header>
-    <div class="flexible-post-type-fields">
-		<?php $groups = acf_get_field_groups(array('post_type' => $post_type)); 
+    <div class="flexible-post-type-details">
+		<?php 
+        
+        $groups = acf_get_field_groups(array('post_type' => $post_type)); 
 		
-		$fields = acf_get_fields($groups[0]['key']);
+        if(is_array($groups) && count($groups) > 0){
 
-		foreach($fields as $field){
-			$field_value = get_field($field['name']);
+            foreach($groups as $group) {
 
-			if(!empty($field_value) && $field["single_view"]){
-				?>
-					<div>
-						<b><?php echo $field['label']; ?>: </b>
-						<?php echo $field_value; ?>
-					</div>
-				<?php
-			}
-		 }
+                $fields = acf_get_fields($group['key']);
+
+                if(is_array($fields) && count($fields) > 0){
+                    
+                    foreach($fields as $field){
+                        
+                        $field_value = get_field($field['name']);
+
+                        if(!empty($field_value) && $field["single_view"]){
+                            ?>
+                                <div class="flexible-post-type-detail">
+                                    <div class="flexible-post-type-detail-label"><?php echo $field['label']; ?>: </div>
+                                    <?php echo $field_value; ?>
+                                </div>
+                            <?php
+                        }
+                    }
+                }
+            }
+        }
 		?>
 
 

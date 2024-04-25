@@ -35,7 +35,7 @@
                 ?>
                     <div class="list-item-detail">
                         <div class="list-item-detail-label">
-                            <?php echo $field['label']; ?>
+                            <?php echo $field['label']; ?>:
                         </div>
                         <?php echo $field_value; ?>
                     </div>

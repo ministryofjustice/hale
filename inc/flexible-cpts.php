@@ -1,11 +1,21 @@
 <?php
 
+//Only allow acf fields of specified type - used to restrict listing display fields
+function hale_get_allowed_field_types(){
+    return [
+        'text',
+        'date_picker',
+        'number'
+    ];
+}
+//Adds frontend settings tab to custom field - only show if fields are added
 add_filter( 'acf/field_group/additional_field_settings_tabs', function ( $tabs ) {
     $tabs['frontend-display-settings'] = 'Frontend Display Settings';
 
     return $tabs;
 } );
 
+//Defines what acf field types have frontend display settings
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=text', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=date_picker', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tabfrontend-display-settings/type=number', 'hale_field_frontend_display_settings');
@@ -29,6 +39,7 @@ function hale_field_frontend_display_settings($field)
     );
 }
 
+/*** Prototype Code - adding setting to field group */
 
 add_filter( 'acf/field_group/additional_group_settings_tabs', function ( $tabs ) {
     $tabs['permissions'] = 'Permissions';
@@ -38,6 +49,7 @@ add_filter( 'acf/field_group/additional_group_settings_tabs', function ( $tabs )
 
 
 add_action( 'acf/field_group/render_group_settings_tab/permissions', 'hale_field_group_permissions_settings');
+
 /**
  * Adds permissons settings for acf field group
  */
@@ -57,6 +69,8 @@ function hale_field_group_permissions_settings($field_group)
     );
 
 }
+
+/*** END Prototype Code */
 
 /**
  * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
@@ -545,6 +559,8 @@ function hale_add_taxonomy_acf_field($tax) {
  * @param string $field_label The ACF field label.
  * @param string $field_name The ACF field name.
  * @param bool $allow_multiple Whether to allow multiple selections.
+ * @param string $post_type_field_key The ACF field key that sets the post type
+ * @param string $field_group_key The field group key to add the field
  */
 function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key) {
 
@@ -592,18 +608,42 @@ function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $fi
 
 }
 
+/**
+ * Adds an Dropdown (select) ACF Field for a specific post type. Which lists acf fields assigned to a post type. Currently only on listing page template.
+ *
+ * @param object $post_type The post type object.
+ * @param string $field_key The ACF field key.
+ * @param string $field_label The ACF field label.
+ * @param string $field_name The ACF field name.
+ * @param bool $allow_multiple Whether to allow multiple selections.
+ * @param string $post_type_field_key The ACF field key that sets the post type
+ * @param string $field_group_key The field group key to add the field
+ */
 function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key) {
 
     $choices = array('published-date' => 'Published Date');
 
     $groups = acf_get_field_groups(array('post_type' => 'fi-report')); 
-		
-	$fields = acf_get_fields($groups[0]['key']);
 
-    foreach($fields as $field) {
-        $choices[$field['key']] = $field['label'];
+    $allowed_field_types = hale_get_allowed_field_types();
+    if(is_array($groups) && count($groups) > 0){
+
+        foreach($groups as $group) {
+
+            $fields = acf_get_fields($group['key']);
+
+            if(is_array($fields) && count($fields) > 0){
+
+                foreach($fields as $field) {
+
+                    if(in_array($field['type'], $allowed_field_types)){
+                        $choices[$field['key']] = $field['label'];
+                    }
+                    
+                }
+            }
+        }
     }
-
 
     acf_add_local_field(array(
         'key' => 'field_' . $field_key,
@@ -616,7 +656,7 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
         'conditional_logic' => array(
             array(
                 array(
-                    'field' => $post_type_field_key, //Listing Post Type Field
+                    'field' => $post_type_field_key, 
                     'operator' => '==',
                     'value' => $post_type->name,
                 ),
@@ -636,7 +676,7 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
         'ui' => 1,
         'ajax' => 0,
         'placeholder' => '',
-        'parent' => $field_group_key //Listing Page Details key
+        'parent' => $field_group_key 
     ));
 
 }
