@@ -3,7 +3,7 @@
 	which need to change based on something in Hale.
 */
 
-.hale-template--default {
+.hale-editor--template-default {
 	.is-style-bleeding-background:before {
 		width: calc(100% + 3em);
 		left: -1.5em;
@@ -17,8 +17,8 @@
 		right: 0;
 		padding: 35px 15px 25px 15px;
 
-		&:is(.hale-template--default *):before {
-			/* This rule overrides an MoJ Blocks rule with specificity 0-4-0, so this needs the double mention of .hale-template--default */
+		&:is(.hale-editor--template-default *):before {
+			/* This rule overrides an MoJ Blocks rule with specificity 0-4-0, so this needs the double mention of .hale-editor--template-default */
 			content:none;
 		}
     }

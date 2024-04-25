@@ -174,10 +174,10 @@ function hale_get_template_class() {
 		$template = get_page_template_slug();
 		if ($template) {
 			$class = preg_replace('/\.php$/', "", $template);
-			$classes = " hale-template hale-template--" . sanitize_html_class($class);
+			$classes = " hale-editor hale-editor--template-" . sanitize_html_class($class);
 		} else {
 			// default template selected
-			$classes = " hale-template hale-template--default";
+			$classes = " hale-editor hale-editor--template-default";
 		}
 		return $classes;
 	}

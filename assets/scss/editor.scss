@@ -6,13 +6,13 @@
 @import 'fontstyles/pt-sans';
 @import 'moj-blocks-editor';
 
-.hale-template {
-	&--page-full-width {
+.hale-editor {
+	&--template-page-full-width {
 		.editor-styles-wrapper {
 			@extend .govuk-grid-column-full-from-desktop;
 		}
 	}
-	&--default {
+	&--template-default {
 		.editor-styles-wrapper {
 			@extend .govuk-grid-column-two-thirds;
 		}
