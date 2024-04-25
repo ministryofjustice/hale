@@ -1,0 +1,25 @@
+/*
+	This file contains editor-specific styles for MoJ Blocks
+	which need to change based on something in Hale.
+*/
+
+.hale-template--default {
+	.is-style-bleeding-background:before {
+		width: calc(100% + 3em);
+		left: -1.5em;
+	}
+
+	.mojblocks-highlights-list,
+	.wp-block-mojblocks-cta {
+		width: 100%;
+		position: initial;
+		left: 0;
+		right: 0;
+		padding: 35px 15px 25px 15px;
+
+		&:is(.hale-template--default *):before {
+			/* This rule overrides an MoJ Blocks rule with specificity 0-4-0, so this needs the double mention of .hale-template--default */
+			content:none;
+		}
+    }
+}
