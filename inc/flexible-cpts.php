@@ -594,7 +594,7 @@ function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $fi
 
 function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key) {
 
-    $choices = array();
+    $choices = array('published-date' => 'Published Date');
 
     $groups = acf_get_field_groups(array('post_type' => 'fi-report')); 
 		

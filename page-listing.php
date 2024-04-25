@@ -234,6 +234,12 @@ while (have_posts()) :
                     $display_fields = [];
 
                     foreach($selected_display_fields as $field){
+
+                        if($field == 'published-date'){
+                            $display_fields[] = ["name" => "published-date", "label" => "Published"];
+                            continue;
+                        }
+
                         $field_object = get_field_object($field);
 
                         if(!empty($field_object)){
@@ -258,7 +264,7 @@ while (have_posts()) :
                             <?php
                             while ($listing_query->have_posts()) {
                                 $listing_query->the_post();
-                                get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields ));
+                                get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'single_view' => $post_type_obj->publicly_queryable ));
                             } ?>
                         </div>
 

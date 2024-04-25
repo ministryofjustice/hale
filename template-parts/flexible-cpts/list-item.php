@@ -3,7 +3,7 @@
  * Template part for displaying list item for flexible CPT
  */
 
- $single_view = true;
+ $single_view = $args['single_view'];
 
  $display_fields = $args['display-fields'];
 ?>
@@ -20,14 +20,16 @@
         }
         ?>
     </h2>
-    <div class="list-item-detail">
-        <div class="list-item-detail-label">Published: </div>
-        <?php hale_posted_on(); ?>
-    </div>
     <?php if(!empty($display_fields)){
 
         foreach($display_fields as $field){
-            $field_value = get_field($field['name']);
+
+            if($field['name'] == 'published-date'){
+                $field_value =  '<time class="entry-date published-date" datetime="' . get_the_date( DATE_W3C ) . '">' . get_the_date() . '</time>';
+            }
+            else {
+                $field_value = get_field($field['name']);
+            }
 
             if(!empty($field_value)){
                 ?>

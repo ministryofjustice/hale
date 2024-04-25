@@ -34,7 +34,7 @@ get_header();
 
 				//if not in array post is a ACF generated CPT
 				if(!in_array($post_type, $core_cpts)){
-					get_template_part( 'template-parts/flexible-cpts/flex-cpt', 'single' );
+					get_template_part( 'template-parts/flexible-cpts/single');
 				}
 				else {
 					get_template_part( 'template-parts/content', $post_type );
