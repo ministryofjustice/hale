@@ -37,27 +37,6 @@
 			</div><!-- .article-meta -->
 		<?php endif; ?>
 	</header><!-- .article-header -->
-	<div>
-		<?php $groups = acf_get_field_groups(array('post_type' => 'fi-report')); 
-		
-		$fields = acf_get_fields($groups[0]['key']);
-
-		foreach($fields as $field){
-			$field_value = get_field($field['name']);
-
-			if(!empty($field_value) && $field["single_view"]){
-				?>
-					<div>
-						<b><?php echo $field['label']; ?>: </b>
-						<?php echo $field_value; ?>
-					</div>
-				<?php
-			}
-		 }
-		?>
-
-
-	</div>
 	<?php
 	if ( has_post_thumbnail() ) {
 		$featured_img_display = get_theme_mod( 'featured_img_display', 'true' );

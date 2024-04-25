@@ -9,8 +9,9 @@ add_filter( 'acf/field_group/additional_field_settings_tabs', function ( $tabs )
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=text', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=date_picker', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tabfrontend-display-settings/type=number', 'hale_field_frontend_display_settings');
+
 /**
- * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
+ * Adds front end display settings for acf field
  */
 function hale_field_frontend_display_settings($field)
 {
@@ -27,6 +28,36 @@ function hale_field_frontend_display_settings($field)
         true
     );
 }
+
+
+add_filter( 'acf/field_group/additional_group_settings_tabs', function ( $tabs ) {
+    $tabs['permissions'] = 'Permissions';
+
+    return $tabs;
+} );
+
+
+add_action( 'acf/field_group/render_group_settings_tab/permissions', 'hale_field_group_permissions_settings');
+/**
+ * Adds permissons settings for acf field group
+ */
+function hale_field_group_permissions_settings($field_group)
+{
+    acf_render_field_wrap(
+        array(
+            'label'        => __( 'Core group', 'acf' ),
+            'instructions' => '',
+            'type'         => 'true_false',
+            'name'         => 'core',
+            'prefix'       => 'acf_field_group',
+            'value'        => $field_group['core'],
+            'ui'           => 1,
+      
+        )
+    );
+
+}
+
 /**
  * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
  */
@@ -385,22 +416,6 @@ function hale_populate_field_with_post_types( $field ) {
     // Reset choices
     $field['choices'] = array();
 
-    $cpts = get_field( 'custom_post_types', 'options' );
-
-    if(!empty($cpts) && is_array($cpts)){
-        foreach($cpts as $cpt) {
-            $field['choices'][$cpt['post_type_key']] = $cpt['post_type_name_plural'];
-        }
-    }
-
-    return $field;
-}
-
-function hale_populate_field_with_post_types2( $field ) {
-
-    // Reset choices
-    $field['choices'] = array();
-
     $args = array(
         'public'   => true
       ); 
@@ -416,7 +431,7 @@ function hale_populate_field_with_post_types2( $field ) {
     return $field;
 }
 
-add_filter('acf/load_field/name=listing_post_type', 'hale_populate_field_with_post_types2', 99);
+add_filter('acf/load_field/name=listing_post_type', 'hale_populate_field_with_post_types', 99);
 
 
 /**
@@ -452,16 +467,9 @@ function hale_add_listing_page_acf_fields() {
     $post_types = get_post_types($args, 'objects');
 
     foreach($post_types as $post_type) {
-        //hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
-        //hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
-
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_661f041a14050', 'group_661f041a10692'); 
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_661f041a14050', 'group_661f041a10692'); 
-
-        if($post_type->name == "fi-report"){
-            hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_661f041a14050', 'group_661f041a10692'); 
-        }
-        
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
     }
     
     $taxonomies = get_taxonomies(['public' => true], 'objects');
@@ -523,7 +531,7 @@ function hale_add_taxonomy_acf_field($tax) {
             'multiple' => 0,
             'bidirectional_target' => array(
             ),
-            'parent' => 'group_661f041a10692' //Listing Page Details key
+            'parent' => 'group_65a71031ea4fb' //Listing Page Details key
         )
     );
 

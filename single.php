@@ -20,12 +20,21 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
+				$core_cpts = [
+					'post',
+					'page',
+					'attachment',
+					'job',
+					'news',
+					'document',
+					'decision'
+				];
+
 				$post_type = get_post_type();
 
-				$object_type = hale_get_flexible_post_type_object_type($post_type);
-
-				if(!empty($object_type)){
-					get_template_part('template-parts/flexible-cpts/type', $object_type  . '-single');
+				//if not in array post is a ACF generated CPT
+				if(!in_array($post_type, $core_cpts)){
+					get_template_part( 'template-parts/flexible-cpts/flex-cpt', 'single' );
 				}
 				else {
 					get_template_part( 'template-parts/content', $post_type );

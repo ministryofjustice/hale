@@ -146,12 +146,8 @@ while (have_posts()) :
                 // Set Post Type
                 $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
 
+                //if post type not found stop 
                 if(!empty($listing_post_type)){
-                    $flex_cpt_settings = hale_get_flexible_post_type_settings($listing_post_type);
-                }
-
-                //if no settings found stop 
-                if(!empty($flex_cpt_settings)){
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
                     $listing_args = array(
@@ -228,10 +224,23 @@ while (have_posts()) :
 
                     $listing_query = new WP_Query($listing_args);
 
-                    $flex_cpt_name = $flex_cpt_settings['post_type_name'];
-                    $flex_cpt_name_plural = $flex_cpt_settings['post_type_name_plural'];
-        
-                    $object_type = hale_get_flexible_post_type_object_type($listing_post_type);
+                    $post_type_obj = get_post_type_object( $listing_post_type );
+                    
+                    $flex_cpt_name = $post_type_obj->labels->singular_name;
+                    $flex_cpt_name_plural = $post_type_obj->labels->name;
+
+                    $selected_display_fields = get_field('list_item_fields');
+
+                    $display_fields = [];
+
+                    foreach($selected_display_fields as $field){
+                        $field_object = get_field_object($field);
+
+                        if(!empty($field_object)){
+                            $display_fields[] = $field_object;
+                        }
+                       
+                    }
 
                     if ($listing_query->have_posts()) { 
                         
@@ -249,7 +258,7 @@ while (have_posts()) :
                             <?php
                             while ($listing_query->have_posts()) {
                                 $listing_query->the_post();
-                                get_template_part('template-parts/flexible-cpts/list-item', false, array('cpt-settings' => $flex_cpt_settings));
+                                get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields ));
                             } ?>
                         </div>
 
