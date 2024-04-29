@@ -255,6 +255,34 @@ function hale_admin_custom_typography( $classes ) {
 add_filter( 'admin_body_class', 'hale_admin_custom_typography', 10, 1);
 
 /**
+ * Deprecation handling
+ */
+function hale_get_deprecation_class() {
+	$class = "";
+	$deprecated_paragraph_widths = get_theme_mod( 'deprecated_paragraph_widths', 'no' );
+	if ($deprecated_paragraph_widths == "yes") $class = "hale-deprecated-paragraph-widths";
+	return $class;
+}
+function hale_deprecation( $classes ) {
+	$classes[] .= hale_get_deprecation_class();
+	return $classes;
+}
+add_filter( 'body_class', 'hale_deprecation' );
+
+function hale_admin_deprecation( $classes ) {
+    global $pagenow;
+
+    if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow ) {
+        return;
+    }
+
+	$classes .= ' '.hale_get_deprecation_class();
+	return $classes;
+}
+add_filter( 'admin_body_class', 'hale_admin_deprecation', 10, 1);
+
+
+/**
  * Function to sanitise content and remove empty elements that cause a11y and w3c validation errors.
  *
  * @param bool $b_print Boolean argument specifying whether or not to print the function output.
