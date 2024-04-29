@@ -2,7 +2,7 @@
  * This is designed to only effect the backend editor.  
  * Therefore all styles should be a child of class .edit-post-layout
 */
-
+@import 'editor-backend-controls';
 @import 'fontstyles/pt-sans';
 
 .hale-template {
