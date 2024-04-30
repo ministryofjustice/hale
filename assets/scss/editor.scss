@@ -4,16 +4,35 @@
 */
 @import 'editor-backend-controls';
 @import 'fontstyles/pt-sans';
+@import 'moj-blocks-editor';
 
-.hale-template {
-	&--page-full-width {
+.template-mismatch:after {
+	content: "Page refresh needed to display changes";
+	display: block;
+	width: 100%;
+	font-size: 90%;
+	overflow: visible;
+	position: absolute;
+	right: 0;
+	color: #6b1c40;
+	background-color: #f9e1ec
+}
+
+.hale-editor {
+	&--template-page-full-width {
 		.editor-styles-wrapper {
 			@extend .govuk-grid-column-full-from-desktop;
 		}
+		.edit-post-post-template__dropdown [aria-label="Select template: Default template"] {
+			@extend .template-mismatch;
+		}
 	}
-	&--default {
+	&--template-default {
 		.editor-styles-wrapper {
 			@extend .govuk-grid-column-two-thirds;
+		}
+		.edit-post-post-template__dropdown [aria-label="Select template: Full-Width"] {
+			@extend .template-mismatch;
 		}
 	}
 }
