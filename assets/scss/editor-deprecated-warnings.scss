@@ -1,0 +1,17 @@
+/**
+  *
+  * This adds a deprecated features warning to the editor site.  
+  * It acts as a reminder for editors that depricated features are still here. 
+  * 
+  *
+  **/
+
+[class*=hale-deprecated-].wp-admin {
+	.editor-styles-wrapper:before {
+		content: "Warning: This site has deprecated features enabled.";
+		color:#b10e1e;
+		background-color: #f4cdc6;
+		padding: 3px;
+		font-family: $govuk-font-family;
+	}
+}
