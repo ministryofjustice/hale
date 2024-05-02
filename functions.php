@@ -371,6 +371,13 @@ require get_template_directory() . '/inc/flexible-cpts.php';
 require get_template_directory() . '/inc/flexible-taxonomies.php';
 
 /**
+ * ACF additions
+ */
+
+ // Add Post Type toggles in backend
+require get_template_directory() . '/inc/acf/admin/basic-settings.php';
+
+/**
  * Create an array of active plugins.
  */
 

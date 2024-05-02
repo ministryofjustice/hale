@@ -20,6 +20,7 @@ add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=date_picker', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tabfrontend-display-settings/type=number', 'hale_field_frontend_display_settings');
 
+
 /**
  * Adds front end display settings for acf field
  */
@@ -38,39 +39,6 @@ function hale_field_frontend_display_settings($field)
         true
     );
 }
-
-/*** Prototype Code - adding setting to field group */
-
-add_filter( 'acf/field_group/additional_group_settings_tabs', function ( $tabs ) {
-    $tabs['permissions'] = 'Permissions';
-
-    return $tabs;
-} );
-
-
-add_action( 'acf/field_group/render_group_settings_tab/permissions', 'hale_field_group_permissions_settings');
-
-/**
- * Adds permissons settings for acf field group
- */
-function hale_field_group_permissions_settings($field_group)
-{
-    acf_render_field_wrap(
-        array(
-            'label'        => __( 'Core group', 'acf' ),
-            'instructions' => '',
-            'type'         => 'true_false',
-            'name'         => 'core',
-            'prefix'       => 'acf_field_group',
-            'value'        => $field_group['core'],
-            'ui'           => 1,
-      
-        )
-    );
-
-}
-
-/*** END Prototype Code */
 
 /**
  * Registers flexible post types based on the settings in the CPT and Taxonomy options page.
