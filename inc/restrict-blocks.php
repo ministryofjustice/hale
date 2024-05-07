@@ -50,7 +50,8 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/quote',
             'mojblocks/reveal',
             'mojblocks/separator',
-            'mojblocks/staggered-box'
+            'mojblocks/staggered-box',
+            'mojblocks/laa-chat-box'
         );
 
         if (post_type_exists('news')) {
