@@ -375,7 +375,10 @@ require get_template_directory() . '/inc/flexible-taxonomies.php';
  */
 
  // Add Post Type toggles in backend
-require get_template_directory() . '/inc/acf/admin/basic-settings.php';
+require get_template_directory() . '/inc/acf/admin/settings.php';
+
+ // Add dynamic field group for documents
+ require get_template_directory() . '/inc/acf/post-type-fields/document-upload.php';
 
 /**
  * Create an array of active plugins.
