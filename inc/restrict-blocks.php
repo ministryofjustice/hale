@@ -51,7 +51,8 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/quote',
             'mojblocks/reveal',
             'mojblocks/separator',
-            'mojblocks/staggered-box'
+            'mojblocks/staggered-box',
+            'mojblocks/laa-chat-box'
         );
 
         //Check if news post type is deactivated
