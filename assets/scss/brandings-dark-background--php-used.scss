@@ -53,13 +53,15 @@
 	&:is(p),
 	p,
 	li,
-	label {
+	label,
+	.use-dark-background-text-colour {
 		&.#{$paletteColour}:not(.has-text-color) {
 			color: var(--dark-text);
 		}
 	}
 	h1, h2, h3, h4, h5, h6,
-	&:is(h1, h2, h3, h4, h5, h6) {
+	&:is(h1, h2, h3, h4, h5, h6),
+	.use-dark-background-heading-colour {
 		&.#{$paletteColour}:not(.has-text-color) {
 			color: var(--dark-heading-text);
 		}
