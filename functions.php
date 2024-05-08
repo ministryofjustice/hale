@@ -380,6 +380,9 @@ require get_template_directory() . '/inc/acf/admin/settings.php';
  // Add dynamic field group for documents
  require get_template_directory() . '/inc/acf/post-type-fields/document-upload.php';
 
+// Add dynamic field group for post summary
+require get_template_directory() . '/inc/acf/post-type-fields/summary.php';
+
 /**
  * Create an array of active plugins.
  */

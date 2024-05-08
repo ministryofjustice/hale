@@ -1,33 +1,23 @@
 <?php
-/**
- * Registers document upload fields for post types where document uploads are allowed.
- *
- * This function iterates over all registered post types and adds custom ACF fields.
- * 
- * The fields it adds are:
- * File upload
- * Summary
- * 
- * The condition met needs to be if the post type has 'allow_document_upload' enabled
- * on the settings page.
- */
-function hale_register_post_type_fields_document_upload()
+
+
+function hale_register_post_type_fields_summary()
 {
     $post_types = get_post_types([], 'objects');
 
     foreach ($post_types as $key => $post_type) {
-        if (isset($post_type->allow_document_upload) && $post_type->allow_document_upload == '1') {
+        if (isset($post_type->post_summary) && $post_type->post_summary == '1') {
 
             $post_type_name = $post_type->label;
             $post_type_key = $key;
 
             $post_type_fields = [
                 [
-                    'key' => $post_type_key . '_attached_file',
-                    'label' => $post_type_name . ' file',
-                    'name' => 'post_attached_file',
+                    'key' => $post_type_key . '_summary',
+                    'label' => $post_type_name . ' Summary',
+                    'name' => 'post_summary',
                     'aria-label' => '',
-                    'type' => 'file',
+                    'type' => 'textarea',
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
@@ -36,12 +26,12 @@ function hale_register_post_type_fields_document_upload()
                         'class' => '',
                         'id' => '',
                     ],
-                    'return_format' => 'array',
-                    'library' => 'all',
-                    'min_size' => '',
-                    'max_size' => '20',
-                    'mime_types' => 'pdf,doc,docx,rtf,odt,fodt,txt,xls,xlsx,ods,fods',
-                ]
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'maxlength' => '',
+                    'rows' => '',
+                    'new_lines' => '',
+                ],
             ];
 
             if (!empty($post_type_fields)) {
@@ -76,6 +66,6 @@ function hale_register_post_type_fields_document_upload()
     }
 }
 
-add_action('init', 'hale_register_post_type_fields_document_upload', 10);
+add_action('init', 'hale_register_post_type_fields_summary', 10);
 
 flush_rewrite_rules();
