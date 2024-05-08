@@ -383,6 +383,9 @@ require get_template_directory() . '/inc/acf/admin/settings.php';
 // Add dynamic field group for post summary
 require get_template_directory() . '/inc/acf/post-type-fields/summary.php';
 
+// Stop ACF from saving or loading JSON files
+require get_template_directory() . '/inc/acf/disable-json.php';
+
 /**
  * Create an array of active plugins.
  */
