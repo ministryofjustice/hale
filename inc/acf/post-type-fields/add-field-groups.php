@@ -24,7 +24,6 @@ function hale_add_field_groups()
         acf_add_local_field_group([
             'key' => $post_type_key . '_details',
             'title' => $post_type_name . ' additional settings',
-            'fields' => $post_type_fields,
             'location' => [
                 [
                     [
