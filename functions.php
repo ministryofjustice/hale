@@ -377,11 +377,14 @@ require get_template_directory() . '/inc/flexible-taxonomies.php';
  // Add Post Type toggles in backend
 require get_template_directory() . '/inc/acf/admin/settings.php';
 
+
+require get_template_directory() . '/inc/acf/post-type-fields/add-field-groups.php';
+
  // Add dynamic field group for documents
- require get_template_directory() . '/inc/acf/post-type-fields/document-upload.php';
+ require get_template_directory() . '/inc/acf/post-type-fields/field-document-upload.php';
 
 // Add dynamic field group for post summary
-require get_template_directory() . '/inc/acf/post-type-fields/summary.php';
+require get_template_directory() . '/inc/acf/post-type-fields/field-summary.php';
 
 // Stop ACF from saving or loading JSON files
 require get_template_directory() . '/inc/acf/disable-json.php';
