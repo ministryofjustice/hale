@@ -3,7 +3,14 @@
  * Template part for displaying documents
  */
 
+// Attempt to get the 'document_file' custom field value
 $file = get_field('document_file');
+
+// If 'document_file' is not available or returns false, try 'post_attached_file'
+if ($file === null) {
+    $file = get_field('post_attached_file');
+}
+
 if ($file) {
 	$link_uri = $file['url'];
 	$link = "<a class='govuk-link' href='$link_uri'>".$file['title']."</a>";
@@ -84,6 +91,12 @@ if ($file) {
 
         <?php
         $document_summary = get_post_meta($post->ID, 'document_summary', true);
+
+		// If document summary is empty then safe to use ACF doc summary
+		if (empty($document_summary)) {
+			$document_summary = get_field('post_summary');
+		}
+
         if(!empty($document_summary)){ ?>
         <div class="document-summary-text">
             <?php echo wpautop($document_summary); ?>

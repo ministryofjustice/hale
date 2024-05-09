@@ -20,27 +20,15 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				$core_cpts = [
-					'post',
-					'page',
-					'attachment',
-					'job',
-					'news',
-					'document',
-					'decision'
-				];
-
-				$post_type = get_post_type();
-
-				//if not in array post is a ACF generated CPT
-				if(!in_array($post_type, $core_cpts)){
-					get_template_part( 'template-parts/flexible-cpts/single');
-				}
-				else {
+				$allow_doc_upload_status = hale_get_acf_field_status('allow_document_upload');
+				
+				if ($allow_doc_upload_status === true) {
+					get_template_part( 'template-parts/content', 'documents' );
+				} else {
 					get_template_part( 'template-parts/content', $post_type );
 				}
 
-			endwhile; // End of the loop.
+			endwhile;
 			?>
 
 		</div>
