@@ -10,29 +10,43 @@
  * https://www.advancedcustomfields.com/resources/register-fields-via-php/
  * 
  */
-function hale_add_field_groups()
-{
+function hale_add_field_groups() {
+
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
     $post_types = get_post_types([], 'objects');
+    $applicable_post_types = [];
 
-    foreach ($post_types as $key => $post_type) {
-        $post_type_name = $post_type->label;
-        $post_type_key = $key;
+    // Only find the post types using our fields
+    foreach ($post_types as $slug => $post_type) {
 
-        if( function_exists('acf_add_local_field_group') ):
+        // Check if the custom field's toggle is turned on
+        $fields = ['allow_document_upload', 'post_summary'];
 
-        // Add details field group
+        foreach ($fields as $field) {
+            if (isset($post_type->$field) && $post_type->$field == '1') {
+                $applicable_post_types[$slug] = $post_type;
+                break; // Break as soon as any field meets the condition
+            }
+        }
+    }
+
+    // Loop through only the fields that have our custom toggles and apply 
+    // the ACF group fields to the post.
+    foreach ($applicable_post_types as $slug => $post_type) {
         acf_add_local_field_group([
-            'key' => $post_type_key . '_details',
-            'title' => $post_type_name . ' additional settings',
-            'location' => [
+            'key' => $slug . '_details',
+            'title' => $post_type->label . ' Additional Settings',
+            'fields' => [],
+            'location' => [[
                 [
-                    [
-                        'param' => 'post_type',
-                        'operator' => '==',
-                        'value' => $post_type_key,
-                    ],
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => $slug,
                 ],
-            ],
+            ]],
             'menu_order' => 0,
             'position' => 'acf_after_title',
             'style' => 'default',
@@ -43,11 +57,6 @@ function hale_add_field_groups()
             'description' => '',
             'show_in_rest' => 0
         ]);
-
-        endif;
-        
-        // Loop through all post types matching the condition
-        continue;
     }
 }
 
