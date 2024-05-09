@@ -377,6 +377,9 @@ require get_template_directory() . '/inc/flexible-taxonomies.php';
  // Admin changes
 require get_template_directory() . '/inc/acf/admin/settings.php';
 
+// General utilities
+require get_template_directory() . '/inc/acf/utilities.php';
+
 // Register fields
 require get_template_directory() . '/inc/acf/post-type-fields/add-field-groups.php';
 require get_template_directory() . '/inc/acf/post-type-fields/field-document-upload.php';
