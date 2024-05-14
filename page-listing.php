@@ -222,6 +222,8 @@ while (have_posts()) :
 
                     }
 
+    
+
                     $listing_query = new WP_Query($listing_args);
 
                     $post_type_obj = get_post_type_object( $listing_post_type );
@@ -230,6 +232,8 @@ while (have_posts()) :
                     $flex_cpt_name_plural = $post_type_obj->labels->name;
 
                     $selected_display_fields = get_field('list_item_fields');
+
+                   
 
                     $display_fields = [];
 

@@ -536,9 +536,11 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
 
     $choices = array('published-date' => 'Published Date');
 
-    $groups = acf_get_field_groups(array('post_type' => 'fi-report')); 
+    $groups = acf_get_field_groups(array('post_type' => $post_type->name)); 
 
     $allowed_field_types = hale_get_allowed_field_types();
+
+    
     if(is_array($groups) && count($groups) > 0){
 
         foreach($groups as $group) {
