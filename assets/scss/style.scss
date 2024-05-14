@@ -12,6 +12,9 @@
 
 $gutenberg-styles: false;
 
+//LHS nav
+@import 'side-nav';
+
 //high-level text sizing for blocks
 @import 'fontstyles/pt-sans';
 
