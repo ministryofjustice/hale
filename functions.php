@@ -385,6 +385,9 @@ require get_template_directory() . '/inc/acf/post-type-fields/add-field-groups.p
 require get_template_directory() . '/inc/acf/post-type-fields/field-document-upload.php';
 require get_template_directory() . '/inc/acf/post-type-fields/field-summary.php';
 
+// Register taxonomies
+require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';
+
 // Stop ACF from saving or loading JSON files
 require get_template_directory() . '/inc/acf/disable-json.php';
 
