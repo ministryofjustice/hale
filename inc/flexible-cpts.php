@@ -536,6 +536,10 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
 
     $choices = array('published-date' => 'Published Date');
 
+    if (isset($post_type->post_summary) && $post_type->post_summary == '1') {
+        $choices[$post_type->name . '_summary'] = "Summary";
+    }
+
     $groups = acf_get_field_groups(array('post_type' => $post_type->name)); 
 
     $allowed_field_types = hale_get_allowed_field_types();
@@ -560,6 +564,7 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
         }
     }
 
+    //var_dump($choices);
     acf_add_local_field(array(
         'key' => 'field_' . $field_key,
         'label' =>  $field_label,

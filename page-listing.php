@@ -247,6 +247,13 @@ while (have_posts()) :
                         $field_object = get_field_object($field);
 
                         if(!empty($field_object)){
+
+                            $field_object['wpautop'] = false;
+
+                            if($field_object['name'] == 'post_summary'){
+                                $field_object['label'] = '';
+                                $field_object['wpautop'] = true;
+                            }
                             $display_fields[] = $field_object;
                         }
                        

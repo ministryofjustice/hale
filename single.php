@@ -25,7 +25,7 @@ get_header();
 				if ($allow_doc_upload_status === true) {
 					get_template_part( 'template-parts/content', 'documents' );
 				} else {
-					get_template_part( 'template-parts/content', $post_type );
+					get_template_part( 'template-parts/flexible-cpts/single');
 				}
 
 			endwhile;

@@ -32,11 +32,17 @@
             }
 
             if(!empty($field_value)){
+
+                if($field['wpautop']) {
+                    $field_value = wpautop($field_value);
+                }
                 ?>
-                    <div class="list-item-detail">
-                        <div class="list-item-detail-label">
-                            <?php echo $field['label']; ?>:
-                        </div>
+                    <div class="list-item-detail detail-<?php echo $field['name']; ?>">
+                        <?php if(!empty($field['label'])){ ?>
+                            <div class="list-item-detail-label">
+                                <?php echo $field['label']; ?>:
+                            </div>
+                        <?php }?>
                         <?php echo $field_value; ?>
                     </div>
                 <?php
