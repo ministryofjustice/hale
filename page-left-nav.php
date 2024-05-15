@@ -21,7 +21,7 @@ while (have_posts()) :
 if(is_front_page() === false && $show_title_section == 'yes') { ?>
 
 <div class="govuk-grid-column-one-quarter-from-desktop hale-side-nav">
-    <button type="button" id="side-nav-button" class="hale-side-nav__expand-control" aria-expanded="false" aria-label="Open and close chapter navigation"></button>
+    <button type="button" id="side-nav-button" class="hale-side-nav__expand-control govuk-!-font-size-27" aria-expanded="false" aria-label="Open and close chapter navigation"><?php _e("Chapters","hale"); ?></button>
 
     <?php
 
