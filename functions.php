@@ -391,10 +391,6 @@ require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';
 // Stop ACF from saving or loading JSON files
 require get_template_directory() . '/inc/acf/disable-json.php';
 
-// Load taxonomy replacer tool
-require get_template_directory() . '/inc/admin/utilities.php';
-
-
 /**
  * Create an array of active plugins.
  */
