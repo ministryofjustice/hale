@@ -150,13 +150,42 @@ function hale_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'show_breadcrumb',
 		array(
-			'label'       => esc_html__( 'Show Breadcrumb?', 'hale' ),
-			'description' => esc_html__( 'Would you like to show the breadcrumb section on the site?', 'hale' ),
+			'label'       => esc_html__( 'Show Breadcrumbs or side navigation?', 'hale' ),
+			'description' => esc_html__( 'What combination of breadcrumbs/sidebar do you want', 'hale' ),
 			'section'     => 'section_header',
 			'type'        => 'radio',
 			'choices'     => array(
-				'yes' => esc_html__( 'Yes', 'hale' ),
-				'no'  => esc_html__( 'No', 'hale' ),
+				'yes' => esc_html__( 'Breadcrumbs', 'hale' ),
+				'side1' => esc_html__( 'Sidebar 1', 'hale' ),
+				'side2' => esc_html__( 'Sidebar 2', 'hale' ),
+				'side3' => esc_html__( 'Sidebar 3', 'hale' ),
+				'no'  => esc_html__( 'Nothing', 'hale' ),
+			),
+		)
+	);
+
+	/*
+	* -----------------------------------------------------------
+	* Chapter types
+	* -----------------------------------------------------------
+	*/
+	$wp_customize->add_setting(
+		'chapter_style',
+		array(
+			'default'           => 'top',
+			'sanitize_callback' => 'hale_sanitize_select',
+		)
+	);
+	$wp_customize->add_control(
+		'chapter_style',
+		array(
+			'label'       => esc_html__( 'Top or side chapter styles', 'hale' ),
+			'description' => esc_html__( 'Side chapter headings are hidden on mobile', 'hale' ),
+			'section'     => 'section_header',
+			'type'        => 'radio',
+			'choices'     => array(
+				'top' => esc_html__( 'Top', 'hale' ),
+				'side'  => esc_html__( 'Side', 'hale' ),
 			),
 		)
 	);

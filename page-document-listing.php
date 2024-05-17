@@ -67,13 +67,19 @@ if (get_query_var('doc_location')) {
 
 while (have_posts()) :
     the_post();
+    $sidebar = hale_hierarchy();
 
+    if ($sidebar) {
+        $primary_class = 'govuk-grid-column-three-quarters-from-desktop hale-content-with-side-nav';
+    } else {
+        $primary_class = 'govuk-grid-column-full-from-desktop';
+    }
     //Check if documents are restricted
     $restrict_documents = get_post_meta(get_the_ID(), 'restrict_documents', true);
 
     ?>
 
-    <div id="primary" class="govuk-grid-column-full-from-desktop">
+    <div id="primary" class="<?php echo $primary_class;?>">
         <h1 class="govuk-heading-xl">
             <?php echo get_the_title(); ?>
         </h1>

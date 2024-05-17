@@ -16,9 +16,25 @@ flush();
 
 while (have_posts()) :
     the_post();
+    $sidebar = hale_hierarchy();
+    $side_chapter_headings = false;
+    if (!$sidebar) {
+        /**
+         * Side menu section
+         * This loads the category list section if cat metabox is checked
+         * Will clash with other sidenav - so we revert to top nav if sidebar menu active
+         * */
+        include(locate_template('partials/side-nav-section.php', false, false));
+    }
+    if ($sidebar || $side_chapter_headings) {
+        $primary_class = 'govuk-grid-column-three-quarters-from-desktop hale-content-with-side-nav';
+    } else {
+        $primary_class = 'govuk-grid-column-full-from-desktop';
+
+    }
     ?>
 
-<div id="primary" class="govuk-grid-column-full-from-desktop">
+<div id="primary" class="<?php echo $primary_class;?>">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php

@@ -52,6 +52,7 @@
 	}
 
   //Full width block overrides
+  .hale-content-with-side-nav,
   .contentleft:not(.govuk-grid-column-full){
     .mojblocks-hero {
       width: 100%;
@@ -62,6 +63,12 @@
 
       @include govuk-media-query($until: desktop) {
         margin-top:10px;
+      }
+
+      &__overlay {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        width: calc(100% - 2rem);
       }
 
       .mojblocks-hero__image {
