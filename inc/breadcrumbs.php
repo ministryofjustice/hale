@@ -517,22 +517,24 @@ function hale_hierarchy_sidebar_3() {
 }
 
 function hale_hierarchy() {
-	$theme_show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
-	if ($theme_show_breadcrumb == "side1" || $theme_show_breadcrumb == "side2" || $theme_show_breadcrumb == "side3") {
-		echo '
-		<div class="govuk-grid-column-one-quarter-from-desktop hale-side-nav">
-		<button type="button" id="side-nav-button" class="hale-side-nav__expand-control govuk-!-font-size-27" aria-expanded="false" aria-label="Open and close hierarchy navigation">'
-		.__("Hierarchy","hale")
-		.'</button>';
-		if ($theme_show_breadcrumb == "side1") {
-			hale_hierarchy_sidebar_1();
-		} elseif ($theme_show_breadcrumb == "side2") {
-			hale_hierarchy_sidebar_2();
-		} elseif ($theme_show_breadcrumb == "side3") {
-			hale_hierarchy_sidebar_3();
+	if ( ! is_home() && ! is_front_page() ) {
+		$theme_show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
+		if ($theme_show_breadcrumb == "side1" || $theme_show_breadcrumb == "side2" || $theme_show_breadcrumb == "side3") {
+			echo '
+			<div class="govuk-grid-column-one-quarter-from-desktop hale-side-nav">
+			<button type="button" id="side-nav-button" class="hale-side-nav__expand-control govuk-!-font-size-27" aria-expanded="false" aria-label="Open and close hierarchy navigation">'
+			.__("Hierarchy","hale")
+			.'</button>';
+			if ($theme_show_breadcrumb == "side1") {
+				hale_hierarchy_sidebar_1();
+			} elseif ($theme_show_breadcrumb == "side2") {
+				hale_hierarchy_sidebar_2();
+			} elseif ($theme_show_breadcrumb == "side3") {
+				hale_hierarchy_sidebar_3();
+			}
+			echo'</div>';
+			return true;
 		}
-		echo'</div>';
-		return true;
 	}
 	return false;
 }

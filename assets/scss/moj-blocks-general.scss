@@ -53,7 +53,7 @@
 
   //Full width block overrides
   .hale-content-with-side-nav,
-  .contentleft:not(.govuk-grid-column-full){
+  .contentleft:not(.govuk-grid-column-full) {
     .mojblocks-hero {
       width: 100%;
       position: initial;
@@ -83,6 +83,18 @@
       left: 0;
       right: 0;
       padding: 35px 15px 25px 15px;
+
+      &:before {
+        content:unset;
+      }
+    }
+  }
+  .hale-content-with-side-nav {
+    .mojblocks-highlights-list,
+    .wp-block-mojblocks-cta {
+      &:before {
+        content:unset;
+      }
     }
   }
 }
