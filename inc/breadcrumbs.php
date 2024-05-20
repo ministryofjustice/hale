@@ -521,8 +521,9 @@ function hale_hierarchy() {
 	if ($theme_show_breadcrumb == "side1" || $theme_show_breadcrumb == "side2" || $theme_show_breadcrumb == "side3") {
 		echo '
 		<div class="govuk-grid-column-one-quarter-from-desktop hale-side-nav">
-		<button type="button" id="side-nav-button" class="hale-side-nav__expand-control govuk-!-font-size-27" aria-expanded="false" aria-label="Open and close hierarchy navigation"><?php _e("Hierarchy","hale"); ?></button>
-		';
+		<button type="button" id="side-nav-button" class="hale-side-nav__expand-control govuk-!-font-size-27" aria-expanded="false" aria-label="Open and close hierarchy navigation">'
+		.__("Hierarchy","hale")
+		.'</button>';
 		if ($theme_show_breadcrumb == "side1") {
 			hale_hierarchy_sidebar_1();
 		} elseif ($theme_show_breadcrumb == "side2") {
