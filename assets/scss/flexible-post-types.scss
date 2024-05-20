@@ -9,7 +9,7 @@
     }
     .flexible-post-type-details {
       .flexible-post-type-detail {
-        //@include govuk-font-size($size: 19);
+        @include govuk-font-size($size: 19);
         margin-bottom: 20px;
 
         .flexible-post-type-detail-label {
