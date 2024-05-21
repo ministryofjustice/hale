@@ -71,23 +71,25 @@ if ($file) {
         </div>
     </div>
 	<div class="document-summary">
-		<?php if (!$icon_image) { ?>
-		<div class="document-summary__image">
-			<?php
-				echo "<a class='govuk-link' href='$link_uri'>$image</a>";
-			?>
-		</div>
+		<?php if ($file) { ?>
+			<?php if (!$icon_image) { ?>
+			<div class="document-summary__image">
+				<?php
+					echo "<a class='govuk-link' href='$link_uri'>$image</a>";
+				?>
+			</div>
+			<?php } ?>
+			<div class="document-summary__link">
+				<p class="govuk-body">
+				<?php
+					if ($icon_image) {
+						echo "<span class='document-summary__icon'>$image</span>";
+					}
+					echo "<b>$link</b> ($metadata)";
+				?>
+				</p>
+			</div>
 		<?php } ?>
-		<div class="document-summary__link">
-			<p class="govuk-body">
-			<?php
-				if ($icon_image) {
-					echo "<span class='document-summary__icon'>$image</span>";
-				}
-				echo "<b>$link</b> ($metadata)";
-			?>
-			</p>
-		</div>
 
         <?php
         $document_summary = get_post_meta($post->ID, 'document_summary', true);
