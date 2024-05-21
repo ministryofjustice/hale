@@ -14,7 +14,9 @@
  */
 
 $show_header_menu = get_theme_mod('show_header_menu', 'yes');
-if ($show_header_menu == 'yes') {
+$has_sidebar_nav = (get_theme_mod('show_breadcrumb', 'yes') == "side4");
+$is_home_page = (get_option('page_on_front') == get_the_ID());
+if ($show_header_menu == 'yes' && (!$has_sidebar_nav || $is_home_page)) {
     $show_more_button = get_theme_mod('show_header_menu_more_button', 'yes');
     if ($show_more_button == 'yes') {
         $more_text = __("More","hale");

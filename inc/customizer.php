@@ -156,9 +156,10 @@ function hale_customize_register( $wp_customize ) {
 			'type'        => 'radio',
 			'choices'     => array(
 				'yes' => esc_html__( 'Breadcrumbs', 'hale' ),
-				'side1' => esc_html__( 'Sidebar 1', 'hale' ),
-				'side2' => esc_html__( 'Sidebar 2', 'hale' ),
-				'side3' => esc_html__( 'Sidebar 3', 'hale' ),
+				'side1' => esc_html__( 'Sidebar 1 (Breadcrumb code)', 'hale' ),
+				'side2' => esc_html__( 'Sidebar 2 (WP code)', 'hale' ),
+				'side3' => esc_html__( 'Sidebar 3 (More base-level code)', 'hale' ),
+				'side4' => esc_html__( 'Sidebar 4 (Navbar)', 'hale' ),
 				'no'  => esc_html__( 'Nothing', 'hale' ),
 			),
 		)

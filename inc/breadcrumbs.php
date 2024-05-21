@@ -516,10 +516,37 @@ function hale_hierarchy_sidebar_3() {
 	echo "</ol></nav>";
 }
 
+function hale_hierarchy_sidebar_4() {
+	$topmenu_args = array(
+        'menu' => 'side-menu',
+        'menu_class' => 'hale-side-hierarchy__list',
+        'menu_id' => 'side-menu-top-menu',
+        'container' => false,
+        'container_class' => '',
+        'container_id' => '',
+        'fallback_cb' => '',
+        'before' => '',
+        'after' => '',
+        'link_before' => '<span>',
+        'link_after' => '</span>',
+        'echo' => true,
+        'depth' => 2,
+        'walker' => '',
+        'theme_location' => 'main-menu',
+        'items_wrap' => '<ol id="%1$s" class="%2$s">%3$s</ol>',
+        'item_spacing' => 'preserve',
+    );
+    echo '
+    <nav class="hale-side-hierarchy" aria-label="Primary navigation">';
+
+    wp_nav_menu($topmenu_args);
+    echo '</nav>';
+}
+
 function hale_hierarchy() {
 	if ( ! is_home() && ! is_front_page() ) {
 		$theme_show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
-		if ($theme_show_breadcrumb == "side1" || $theme_show_breadcrumb == "side2" || $theme_show_breadcrumb == "side3") {
+		if ($theme_show_breadcrumb == "side1" || $theme_show_breadcrumb == "side2" || $theme_show_breadcrumb == "side3" || $theme_show_breadcrumb == "side4") {
 			echo '
 			<div class="govuk-grid-column-one-quarter-from-desktop hale-side-nav">
 			<button type="button" id="side-nav-button" class="hale-side-nav__expand-control govuk-!-font-size-27" aria-expanded="false" aria-label="Open and close hierarchy navigation">'
@@ -531,6 +558,8 @@ function hale_hierarchy() {
 				hale_hierarchy_sidebar_2();
 			} elseif ($theme_show_breadcrumb == "side3") {
 				hale_hierarchy_sidebar_3();
+			} elseif ($theme_show_breadcrumb == "side4") {
+				hale_hierarchy_sidebar_4();
 			}
 			echo'</div>';
 			return true;

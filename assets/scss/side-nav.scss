@@ -142,7 +142,8 @@
     }
   }
   
-  .hale-side-hierarchy__item {
+  .hale-side-hierarchy__item,
+  .hale-side-hierarchy__list li {
     display: block;
     margin: 5px;
     padding: 0 5px;
@@ -151,17 +152,21 @@
     &--nothing {
      // display: none;
     }
+    &.current-menu-ancestor,
     &--ancestor {
       border-left: 3px solid green;
     }
+    &.current-menu-item,
     &--current {
       font-weight: 700;
     }
+    &.current-menu-item,
     &--current,
     &--sibling {
       margin-left: 10px;
       border-left: 3px solid orange;
     }
+    &.current-menu-item li,
     &--descendant {
       margin-left: 20px;
       border-left: 3px solid red;
