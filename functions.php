@@ -371,6 +371,27 @@ require get_template_directory() . '/inc/flexible-cpts.php';
 require get_template_directory() . '/inc/flexible-taxonomies.php';
 
 /**
+ * ACF additions
+ */
+
+ // Admin changes
+require get_template_directory() . '/inc/acf/admin/settings.php';
+
+// General utilities
+require get_template_directory() . '/inc/acf/utilities.php';
+
+// Register fields
+require get_template_directory() . '/inc/acf/post-type-fields/add-field-groups.php';
+require get_template_directory() . '/inc/acf/post-type-fields/field-document-upload.php';
+require get_template_directory() . '/inc/acf/post-type-fields/field-summary.php';
+
+// Register taxonomies
+require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';
+
+// Stop ACF from saving or loading JSON files
+require get_template_directory() . '/inc/acf/disable-json.php';
+
+/**
  * Create an array of active plugins.
  */
 

@@ -2,14 +2,15 @@
 /**
  * Template part for displaying list item for flexible CPT
  */
- $flex_cpt_settings = $args['cpt-settings'];
 
- if(!empty($flex_cpt_settings)){ ?>
+ $single_view = $args['single_view'];
 
+ $display_fields = $args['display-fields'];
+?>
 
-<div class="list-item type-<?php echo  $flex_cpt_settings['post_type_object_type'] ?>">
+<div class="list-item">
     <h2 class="list-item-title govuk-heading-m">
-        <?php if($flex_cpt_settings['post_type_single_view'] !== false){ ?>
+        <?php if($single_view !== false){ ?>
             <a href="<?php echo get_permalink(); ?>">
                 <?php echo get_the_title(); ?>
             </a>
@@ -19,17 +20,35 @@
         }
         ?>
     </h2>
-    <div class="list-item-published-date">
-        Published: <?php hale_posted_on(); ?>
-    </div>
+    <?php if(!empty($display_fields)){
 
-    <div class="list-item-excerpt">
-        <?php
-        $post_summary = get_post_meta( get_the_ID(), 'post_summary', true);
-        if(!empty($post_summary)){
-            echo wpautop($post_summary);
+        foreach($display_fields as $field){
+
+            if($field['name'] == 'published-date'){
+                $field_value =  '<time class="entry-date published-date" datetime="' . get_the_date( DATE_W3C ) . '">' . get_the_date() . '</time>';
+            }
+            else {
+                $field_value = get_field($field['name']);
+            }
+
+            if(!empty($field_value)){
+
+                if($field['wpautop']) {
+                    $field_value = wpautop($field_value);
+                }
+                ?>
+                    <div class="list-item-detail detail-<?php echo $field['name']; ?>">
+                        <?php if(!empty($field['label'])){ ?>
+                            <div class="list-item-detail-label">
+                                <?php echo $field['label']; ?>:
+                            </div>
+                        <?php }?>
+                        <?php echo $field_value; ?>
+                    </div>
+                <?php
+            }
         }
-        ?>
-    </div>
+        }
+    ?>
 </div>
-<?php } 
+<?php 

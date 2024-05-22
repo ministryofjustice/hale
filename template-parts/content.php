@@ -37,7 +37,6 @@
 			</div><!-- .article-meta -->
 		<?php endif; ?>
 	</header><!-- .article-header -->
-
 	<?php
 	if ( has_post_thumbnail() ) {
 		$featured_img_display = get_theme_mod( 'featured_img_display', 'true' );

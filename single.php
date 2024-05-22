@@ -20,18 +20,15 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				$post_type = get_post_type();
-
-				$object_type = hale_get_flexible_post_type_object_type($post_type);
-
-				if(!empty($object_type)){
-					get_template_part('template-parts/flexible-cpts/type', $object_type  . '-single');
-				}
-				else {
-					get_template_part( 'template-parts/content', $post_type );
+				$allow_doc_upload_status = hale_get_acf_field_status('allow_document_upload');
+				
+				if ($allow_doc_upload_status === true) {
+					get_template_part( 'template-parts/content', 'documents' );
+				} else {
+					get_template_part( 'template-parts/flexible-cpts/single');
 				}
 
-			endwhile; // End of the loop.
+			endwhile;
 			?>
 
 		</div>
