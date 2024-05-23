@@ -264,15 +264,29 @@ add_action('wp_print_scripts', 'hale_dequeue_scripts', 100);
  */
 function hale_mix_asset($filename)
 {
+    $manifest_path = get_template_directory() . '/dist/mix-manifest.json';
+    
+    if (!file_exists($manifest_path)) {
+        error_log("Mix manifest file does not exist at path: $manifest_path");
+        return '';
+    }
 
-    $manifest = file_get_contents(get_template_directory() . '/dist/mix-manifest.json');
-    $manifest = json_decode($manifest, true);
+    $manifest_content = file_get_contents($manifest_path);
+    $manifest = json_decode($manifest_content, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        error_log("Error decoding JSON from mix manifest: " . json_last_error_msg());
+        return '';
+    }
 
     if (!isset($manifest[$filename])) {
         error_log("Mix asset '$filename' does not exist in manifest.");
+        return '';
     }
+
     return get_template_directory_uri() . '/dist' . $manifest[$filename];
 }
+
 
 /**
  * Custom template tags for this theme.
@@ -526,7 +540,7 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
         $screen = get_current_screen();
 
         //Checks if on page edit screen - means all templates show on acf settings
-        if ($screen->base == "post" && $screen->post_type ==  "page") {
+        if ($screen && $screen->base == "post" && $screen->post_type == "page") {
 
             //Checks if page templates are being requested
             if ($post_type == 'page') {
