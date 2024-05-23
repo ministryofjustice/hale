@@ -392,6 +392,11 @@ require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';
 require get_template_directory() . '/inc/acf/disable-json.php';
 
 /**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/dashboard-customisations.php';
+
+/**
  * Create an array of active plugins.
  */
 
