@@ -60,6 +60,14 @@
       right: 0;
       margin: 0;
 
+      @include govuk-media-query($from: 1020px) {
+        &__overlay {
+          margin-left: 1rem;
+          margin-right: 1rem;
+          width: calc(100% - 2rem);
+        }
+      }
+
       @include govuk-media-query($until: desktop) {
         margin-top:10px;
       }
