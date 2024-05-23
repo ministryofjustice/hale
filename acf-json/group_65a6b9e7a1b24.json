@@ -191,19 +191,21 @@
                         "id": ""
                     },
                     "choices": {
-                        "category": "Categories",
-                        "post_tag": "Tags",
-                        "post_format": "Formats",
-                        "document_category": "Document Categories",
-                        "document_type": "Document Types",
-                        "document_location": "Document Locations",
-                        "page_category": "Page Categories",
-                        "decision_referral_type": "Referral Types",
-                        "report_category": "Report Categories",
-                        "report_type": "Report Types",
-                        "offence": "Offences",
-                        "cause": "Causes",
-                        "gender": "Genders"
+                        "category": "Categories ( category )",
+                        "post_tag": "Tags ( post_tag )",
+                        "post_format": "Formats ( post_format )",
+                        "role_type": "Role Types ( role_type )",
+                        "contract_type": "Contract Types ( contract_type )",
+                        "organisation": "Organisations ( organisation )",
+                        "job_address": "Job Addresses ( job_address )",
+                        "job_city": "Job Cities ( job_city )",
+                        "job_region": "Job Regions ( job_region )",
+                        "document_category": "Document Categories ( document_category )",
+                        "document_type": "Document Types ( document_type )",
+                        "document_location": "Document Locations ( document_location )",
+                        "page_category": "Page Categories ( page_category )",
+                        "report-type2": "Report Types2 ( report-type2 )",
+                        "report_type": "Report Types ( report_type )"
                     },
                     "default_value": [],
                     "return_format": "value",
@@ -381,5 +383,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1707317097
+    "modified": 1713277238
 }
