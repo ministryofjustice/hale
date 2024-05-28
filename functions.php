@@ -472,21 +472,6 @@ if ($cpt_news_activated || $deactivate_news == "no") {
 }
 
 /**
- * Decision Custom Post Type
- */
-
-// Check if post type is deactived
-// All or nothing - turning cpt and tax on/off
-$cpt_decision_activated = get_theme_mod('cpt_decision_activated', 0);
-
-if ($cpt_decision_activated) {
-    require get_template_directory() . '/inc/custom-post-types/cpt-decision.php';
-    require get_template_directory() . '/inc/taxonomies/tax-decision-referral-type.php';
-    require get_template_directory() . '/inc/taxonomies/tax-decision-offence.php';
-    require get_template_directory() . '/inc/taxonomies/tax-decision-process.php';
-}
-
-/**
  * Document Custom Post Type
  */
 
