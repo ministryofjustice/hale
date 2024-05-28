@@ -152,18 +152,33 @@
 			.hale-search__input {
 				border: 1px solid var(--header-search-input-border);
 				background: var(--header-search-input-bg);
+				color: var(--header-search-input-text);
+
+				&::placeholder {
+					color: var(--header-search-input-placeholder);
+				}
 
 				&:focus {
 					border: none;
 					outline: 3px solid var(--header-search-input-focus-border);
 					background: var(--header-search-input-focus-bg);
+					color: var(--header-search-input-focus-text);
 					box-shadow: none;
+
+					&::placeholder {
+						color: var(--header-search-input-focus-placeholder);
+					}
 				}
 
 				&:active {
 					border: 1px solid var(--header-search-input-active-border);
 					outline: 2px solid var(--header-search-input-active-border);
 					background: var(--header-search-input-active-bg);
+					color: var(--header-search-input-active-text);
+
+					&::placeholder {
+						color: var(--header-search-input-active-placeholder);
+					}
 				}
 			}
 
@@ -702,6 +717,32 @@ body.hale-colours-variable {
 	}
 
 	//Cookie banner styling formerly here, but have been moved to new file - brandings-cookies.scss
+
+	//emergency banner colours not customizable
+
+	.info-banner {
+		background-color: var(--info-banner-bg);
+		color: var(--info-banner-text);
+
+		&__link,
+		&__close {
+			color: var(--info-banner-link);
+			&:link {
+				color: var(--info-banner-link);
+			}
+			&:visited {
+				color: var(--info-banner-link-visited);
+			}
+			&:hover:not(:focus) {
+				color: var(--info-banner-link-hover);
+			}
+			&:focus {
+				color: var(--info-banner-link-focus);
+				background-color: var(--info-banner-link-focus-background);
+				box-shadow: 0 -2px var(--info-banner-link-focus-background), 0 4px var(--info-banner-link-focus-underline);
+			}
+		}
+	}
 
 	//remove GDS brand colour bar
 	.govuk-header__container {

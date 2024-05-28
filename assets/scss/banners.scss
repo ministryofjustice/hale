@@ -37,20 +37,12 @@
   display:none; // removed by JavaScript
 }
 .info-banner {
-  background-color: #d5e8f3; // Not in the GDS palette, but this is the government style from https://docs.publishing.service.gov.uk/manual/global-banner.html
-  color: govuk-colour("black");
+  // colours set in branding by colour picker
   padding: 0.5rem 3rem;
   margin-bottom: 0.3rem;
   font-size: 1rem;
   @include govuk-media-query($from: "tablet") {
     font-size: 1.25rem;
-  }
-
-  &__link,
-  &__close {
-    &:not(:focus) {
-      color: govuk-colour("dark-blue");
-    }
   }
 
   &:is(.hale-landing-page .info-banner) {
