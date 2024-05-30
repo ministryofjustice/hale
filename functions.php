@@ -482,6 +482,8 @@ if ($cpt_documents_activated || $deactivate_doc == "no") {
 
     require get_template_directory() . '/inc/custom-post-types/cpt-documents.php';
 
+    require get_template_directory() . '/inc/acf/leg-doc-fields.php';
+
     $tax_document_category_activated = get_theme_mod('tax_document_category_activated', 0);
     if ($tax_document_category_activated) {
         require get_template_directory() . '/inc/taxonomies/tax-document-category.php';
