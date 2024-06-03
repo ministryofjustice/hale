@@ -472,35 +472,6 @@ if ($cpt_news_activated || $deactivate_news == "no") {
 }
 
 /**
- * Document Custom Post Type
- */
-
-//Check if post type is deactived
-$cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
-$deactivate_doc = get_theme_mod('deactivate_cpt_documents', "yes"); //old way to be deleted once new settings saved
-if ($cpt_documents_activated || $deactivate_doc == "no") {
-
-    require get_template_directory() . '/inc/custom-post-types/cpt-documents.php';
-
-    require get_template_directory() . '/inc/acf/leg-doc-fields.php';
-
-    $tax_document_category_activated = get_theme_mod('tax_document_category_activated', 0);
-    if ($tax_document_category_activated) {
-        require get_template_directory() . '/inc/taxonomies/tax-document-category.php';
-    }
-
-    $tax_document_type_activated = get_theme_mod('tax_document_type_activated', 0);
-    if ($tax_document_type_activated) {
-        require get_template_directory() . '/inc/taxonomies/tax-document-type.php';
-    }
-
-    $tax_document_location_activated = get_theme_mod('tax_document_location_activated', 0);
-    if ($tax_document_location_activated) {
-        require get_template_directory() . '/inc/taxonomies/tax-document-location.php';
-    }
-}
-
-/**
  * Taxonomies
  */
 require get_template_directory() . '/inc/taxonomies/tax-page-category.php';
@@ -536,12 +507,6 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 
             //Checks if page templates are being requested
             if ($post_type == 'page') {
-                //Check if document post type is deactivateded
-                $cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
-
-                if (!$cpt_documents_activated) {
-                    unset($post_templates['page-document-listing.php']);
-                }
 
                 if (!post_type_exists('job')) {
                     unset($post_templates['page-job-listing.php']);
