@@ -91,6 +91,31 @@ while (have_posts()) :
                                             }
                                         }
 
+                                        $dropdown_exclude = [];
+                                        $included_terms = [];
+
+                                        $restrict_field = 'restrict_by_' . $filter;
+
+                                        $restict_terms = get_field($restrict_field);
+
+                                        if(!empty($restict_terms) && is_array($restict_terms)) {
+                                            $included_terms = $restict_terms;
+
+                                            // bring back list of terms that are  not included
+                                            $exclude_terms = get_terms(
+                                                array(
+                                                    'taxonomy' => $filter,
+                                                    'exclude' => $included_terms
+                                                )
+                                            );
+
+                                            if(!empty($exclude_terms)) {
+                                                foreach($exclude_terms as $term){
+                                                    $dropdown_exclude[] = $term->term_id;
+                                                }
+                                            }
+                                        }
+
                                         $dropdown_html = wp_dropdown_categories(
                                             array(
                                                 'name' => $filter,
@@ -101,7 +126,8 @@ while (have_posts()) :
                                                 'orderby' => 'name',
                                                 'echo' => 0,
                                                 'hide_if_empty' => 1,
-                                                'selected' => $selected_term_id
+                                                'selected' => $selected_term_id,
+                                                'exclude' => $dropdown_exclude
 
                                             )
                                         );
