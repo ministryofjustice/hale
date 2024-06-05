@@ -149,13 +149,13 @@ function hale_get_branding_class() {
 		hale_generate_custom_colours();
 	}
 
-	$style_class = "hale-site-" . get_current_blog_id();
+	$style_class = "hale-page__body hale-page__body--" . get_current_blog_id();
 
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	if (!$custom_colours_set) {
-		$style_class = " hale-colours-gds-standard";
+		$style_class .= " hale-colours-gds-standard";
 	} else {
-		$style_class = " hale-colours-variable";
+		$style_class .= " hale-colours-variable";
 	}
 	if (is_front_page()) {
 		$style_class .= " hale-landing-page";
