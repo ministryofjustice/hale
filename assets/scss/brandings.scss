@@ -175,7 +175,11 @@
 
 			.hale-search__submit {
 				background: var(--header-search-btn-bg);
-				box-shadow: 0 1px 0 0 var(--header-search-btn-bg);
+				box-shadow: 0 0 0 1px var(--header-search-btn-border);
+
+				&:is(.hale-search__input:focus + .hale-search__submit) {
+					box-shadow: 0 0 0 1px var(--header-search-input-focus-btn-border);
+				}
 
 				svg {
 					fill: var(--header-search-btn-icon);
@@ -183,7 +187,7 @@
 
 				&:hover {
 					background: var(--header-search-btn-hover-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-hover-bg);
+					box-shadow: 0 0 0 1px var(--header-search-btn-hover-border);
 
 					svg {
 						fill: var(--header-search-btn-hover-icon);
@@ -192,7 +196,8 @@
 
 				&:focus, &:active {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
+					box-shadow: 0 0 0 1px var(--header-search-btn-focus-border);
+					outline: 3px solid var(--header-search-btn-focus-outline);
 
 					svg {
 						fill: var(--header-search-btn-focus-icon);
@@ -201,7 +206,8 @@
 
 				&:focus:not(:active):not(:hover) {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 0 0 3px var(--button-focus-outline);
+					box-shadow: 0 0 0 1px var(--header-search-btn-focus-border);
+					outline: 3px solid var(--header-search-btn-focus-outline);
 				}
 			}
 		}
