@@ -46,18 +46,18 @@
 
 .hale-page__body { // without this, classes can leak out into the backend editor
   h1 {
-    @extend .govuk-heading-l;
+    @include govuk-font-size($size: 36);
   }
 
   h2 {
-    @extend .govuk-heading-m;
+    @include govuk-font-size($size: 24);
   }
 
   h3,
   h4,
   h5,
   h6 {
-    @extend .govuk-heading-s;
+    @include govuk-font-size($size: 19);
   }
 
   /*
@@ -67,16 +67,21 @@
   */
 
   h1,h2,h3,h4 {
-    &.has-huge-font-size {
+    // we need to specify the govuk-heading classes here too, as we are more specific here than in the GDS stylesheet
+    &.has-huge-font-size,
+    &.govuk-heading-xl {
       @include govuk-font-size($size: 48);
     }
-    &.has-large-font-size {
+    &.has-large-font-size,
+    &.govuk-heading-l {
       @include govuk-font-size($size: 36);
     }
-    &.has-medium-font-size {
+    &.has-medium-font-size,
+    &.govuk-heading-m {
       @include govuk-font-size($size: 24);
     }
-    &.has-small-font-size {
+    &.has-small-font-size,
+    &.govuk-heading-s {
       @include govuk-font-size($size: 19);
     }
   }
