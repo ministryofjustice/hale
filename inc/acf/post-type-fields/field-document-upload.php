@@ -38,7 +38,7 @@ function hale_register_post_type_fields_document_upload()
                 'library' => 'all',
                 'min_size' => '',
                 'max_size' => '20',
-                'mime_types' => 'pdf,doc,docx,rtf,odt,fodt,txt,xls,xlsx,ods,fods',
+                'mime_types' => 'pdf,doc,docx,rtf,odt,fodt,txt,xls,xlsx,ods,fods,ppt,pptx',
             ]);
 
             // If a matching post type is found, the loop continues
