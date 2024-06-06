@@ -44,60 +44,58 @@
   -moz-osx-font-smoothing: antialiased;
 }
 
-.hale-page__body { // without this, classes can leak out into the backend editor
-  h1 {
+h1 {
+  @include govuk-font-size($size: 36);
+}
+
+h2 {
+  @include govuk-font-size($size: 24);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  @include govuk-font-size($size: 19);
+}
+
+/*
+  The GDS mixin govuk-font-size brings in line-height and font-size
+  Note that headings are one size notch higher than everyone else!
+  Also note that these are set in themes.json as well ∵ inbuilt WP variable looks there
+*/
+
+h1,h2,h3,h4 {
+  // we need to specify the govuk-heading classes here too, as we are more specific here than in the GDS stylesheet
+  &.has-huge-font-size,
+  &.govuk-heading-xl {
+    @include govuk-font-size($size: 48);
+  }
+  &.has-large-font-size,
+  &.govuk-heading-l {
     @include govuk-font-size($size: 36);
   }
-
-  h2 {
+  &.has-medium-font-size,
+  &.govuk-heading-m {
     @include govuk-font-size($size: 24);
   }
-
-  h3,
-  h4,
-  h5,
-  h6 {
+  &.has-small-font-size,
+  &.govuk-heading-s {
     @include govuk-font-size($size: 19);
   }
+}
 
-  /*
-    The GDS mixin govuk-font-size brings in line-height and font-size
-    Note that headings are one size notch higher than everyone else!
-    Also note that these are set in themes.json as well ∵ inbuilt WP variable looks there
-  */
-
-  h1,h2,h3,h4 {
-    // we need to specify the govuk-heading classes here too, as we are more specific here than in the GDS stylesheet
-    &.has-huge-font-size,
-    &.govuk-heading-xl {
-      @include govuk-font-size($size: 48);
-    }
-    &.has-large-font-size,
-    &.govuk-heading-l {
-      @include govuk-font-size($size: 36);
-    }
-    &.has-medium-font-size,
-    &.govuk-heading-m {
-      @include govuk-font-size($size: 24);
-    }
-    &.has-small-font-size,
-    &.govuk-heading-s {
-      @include govuk-font-size($size: 19);
-    }
-  }
-
-  .has-huge-font-size {
-    @include govuk-font-size($size: 36);
-  }
-  #primary .intro, #primary .intro p,
-  .has-large-font-size {
-    @include govuk-font-size($size: 24);
-  }
-  p, ol, ul,
-  .has-medium-font-size {
-    @include govuk-font-size($size: 19);
-  }
-  .has-small-font-size {
-    @include govuk-font-size($size: 16);
-  }
+.has-huge-font-size {
+  @include govuk-font-size($size: 36);
+}
+#primary .intro, #primary .intro p,
+.has-large-font-size {
+  @include govuk-font-size($size: 24);
+}
+p, ol, ul,
+.has-medium-font-size {
+  @include govuk-font-size($size: 19);
+}
+.has-small-font-size {
+  @include govuk-font-size($size: 16);
 }
