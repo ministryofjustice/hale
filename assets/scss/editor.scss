@@ -19,7 +19,7 @@
 
 .hale-editor {
 	&--template-page-full-width {
-		.editor-styles-wrapper {
+		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-full-from-desktop;
 		}
 		.edit-post-post-template__dropdown [aria-label="Select template: Default template"] {
@@ -27,7 +27,7 @@
 		}
 	}
 	&--template-default {
-		.editor-styles-wrapper {
+		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-two-thirds;
 		}
 		.edit-post-post-template__dropdown [aria-label="Select template: Full-Width"] {
@@ -37,6 +37,8 @@
 }
 
 .edit-post-visual-editor {
+	background-color: white; //overriding the default grey background from WP
+
 	@extend .govuk-width-container;
 
 	@include govuk-media-query($from: desktop) {
