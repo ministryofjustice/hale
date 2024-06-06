@@ -149,7 +149,7 @@ function hale_get_branding_class() {
 		hale_generate_custom_colours();
 	}
 
-	$style_class = "hale-page__body hale-page__body--" . get_current_blog_id();
+	$style_class = "hale-page__body hale-page__body--site-" . get_current_blog_id();
 
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	if (!$custom_colours_set) {
