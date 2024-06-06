@@ -5,33 +5,15 @@
 @import 'fontstyles/pt-sans';
 @import 'moj-blocks-editor';
 
-.template-mismatch:after {
-	content: "Page refresh needed to display changes";
-	display: block;
-	width: 100%;
-	font-size: 90%;
-	overflow: visible;
-	position: absolute;
-	right: 0;
-	color: #6b1c40;
-	background-color: #f9e1ec
-}
-
 .hale-editor {
 	&--template-page-full-width {
 		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-full-from-desktop;
 		}
-		.edit-post-post-template__dropdown [aria-label="Select template: Default template"] {
-			@extend .template-mismatch;
-		}
 	}
 	&--template-default {
 		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-two-thirds;
-		}
-		.edit-post-post-template__dropdown [aria-label="Select template: Full-Width"] {
-			@extend .template-mismatch;
 		}
 	}
 }
