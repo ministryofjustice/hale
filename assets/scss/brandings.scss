@@ -101,15 +101,6 @@
 		@extend .govuk-button;
 	}
 
-	//search page only style (affects search in header but not adversely so
-	.hale-search__input {
-		margin-bottom: 30px;
-
-		&:focus::placeholder {
-			color:currentColor; // ensuring sufficient contrast against the focus background
-		}
-	}
-
 	.govuk-header {
 
 		background: var(--header-bg);
