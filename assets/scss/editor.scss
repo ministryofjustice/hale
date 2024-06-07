@@ -1,12 +1,8 @@
 /**
- * This is designed to only effect the backend editor.  
- * Therefore all styles should be a child of a class which
- * is only used by the edit screen.
+ * This file is designed to only effect the backend editor.
 */
 //@import 'editor-backend-controls';
 @import 'moj-blocks-editor';
-
-
 
 .interface-interface-skeleton__content {
 	// class for the preview pane of the editor screen only
@@ -19,7 +15,6 @@
 }
 
 .hale-editor {
-	// class for edit screen - including the sidebar and all non-preview controls
 	&--template-page-full-width {
 		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-full-from-desktop;
