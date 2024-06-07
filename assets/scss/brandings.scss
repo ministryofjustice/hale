@@ -73,6 +73,11 @@
 /***
 * These styles are applied to all sites
 */
+
+html.hale-page {
+	background-color: var(--footer-background);
+}
+
 * {
 	main,
 	.edit-post-visual-editor__content-area {

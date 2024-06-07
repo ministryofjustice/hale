@@ -176,6 +176,7 @@ function apply_background_styles($colour_id, $colour_to_use, $dark_background_cs
 	$complex_background_code = file_get_contents($dark_background_css_file);
 
 	$dark = false; // Assume light
+	$colour_to_use = strtoupper($colour_to_use); // for regex check
 
 	// Convert 3 character codes to 6 character codes
 	if (preg_match('/^#?([A-F0-9]{3})$/', $colour_to_use)) {
