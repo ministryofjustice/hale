@@ -1,7 +1,12 @@
 @charset "UTF-8";
-@import 'default';
+
+/**
+  * This file is used by both frontend and backend editor pages
+  * Frontend is enqueued (unless IE is detected)
+  * Backend is included via editor-branding.scss
+**/
+
 @import 'gds-design-system-settings';
-@import 'hale-styles';
 
 // Theme colours
 @import 'brandings';
