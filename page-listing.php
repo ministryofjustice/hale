@@ -266,7 +266,15 @@ while (have_posts()) :
                     foreach($selected_display_fields as $field){
 
                         if($field == 'published-date'){
-                            $display_fields[] = ["name" => "published-date", "label" => "Published"];
+                            $display_fields[] = ["name" => "published-date", "label" => "Published", "type" => "published-date"];
+                            continue;
+                        }
+
+                        if(taxonomy_exists($field)){
+
+                            $tax = get_taxonomy($field);
+
+                            $display_fields[] = ["name" =>  $field, "label" =>  $tax->label, "type" => "taxonomy"];
                             continue;
                         }
 
@@ -280,7 +288,7 @@ while (have_posts()) :
                                 $field_object['label'] = '';
                                 $field_object['wpautop'] = true;
                             }
-                            $display_fields[] = $field_object;
+                            $display_fields[] = [ "name" => $field_object['name'], "label" => $field_object['label'], "type" => "post_meta"];
                         }
                        
                     }

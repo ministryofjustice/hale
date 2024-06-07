@@ -24,8 +24,25 @@
 
         foreach($display_fields as $field){
 
-            if($field['name'] == 'published-date'){
+            $field_value = "";
+
+            if($field['type'] == 'published-date'){
                 $field_value =  '<time class="entry-date published-date" datetime="' . get_the_date( DATE_W3C ) . '">' . get_the_date() . '</time>';
+            }
+            else if($field['type'] == 'taxonomy'){
+                $tax_terms = get_the_terms( get_the_ID(), $field['name'] );
+
+                if(!empty($tax_terms)){
+
+                    $term_names = [];
+                    foreach ($tax_terms as $term) {
+                        $term_names[] = $term->name;
+                    }
+
+                    if(!empty($term_names)){
+                        $field_value = implode("," , $term_names);
+                    }
+                }
             }
             else {
                 $field_value = get_field($field['name']);
