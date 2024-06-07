@@ -2,9 +2,13 @@
  * This is designed to only effect the backend editor.  
  * Therefore all styles should be a child of class .edit-post-layout
 */
-@import 'editor-backend-controls';
-@import 'fontstyles/pt-sans';
+//@import 'editor-backend-controls';
 @import 'moj-blocks-editor';
+
+.interface-interface-skeleton__content {
+	// class for the preview pane of the editor screen only
+	@import 'fontstyles/pt-sans';
+}
 
 .hale-editor {
 	&--template-page-full-width {
