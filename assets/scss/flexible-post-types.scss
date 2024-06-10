@@ -7,6 +7,17 @@
         font-weight: normal;
       }
     }
+
+    .flexible-post-type-published-date {
+      @include govuk-font-size($size: 19);
+      margin-bottom: 20px;
+
+      .flexible-post-type-published-date-label {
+        font-weight: bold;
+        display: inline-block;
+      }
+    }
+    
     .flexible-post-type-details {
       .flexible-post-type-detail {
         @include govuk-font-size($size: 19);
