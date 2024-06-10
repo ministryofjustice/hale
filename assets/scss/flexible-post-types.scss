@@ -19,5 +19,35 @@
       }
     }
 
+    .flexible-post-type-tags {
+    
+      .flexible-post-type-tags-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 0;
+    
+        .flexible-post-type-tags-list-item {
+          display: inline-block;
+          margin-top:0.4rem;
+          margin-bottom:0.4rem;
+    
+          .flexible-post-type-tags-link {
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 4px 8px;
+            text-decoration: none;
+            margin-right: 15px;
+            text-align: center;
+    
+            &:focus {
+              outline-style: solid;
+              outline-width: 2px;
+              outline-offset: 0;
+            }
+          }
+        }
+      }
+    }
+
   }
 }

@@ -390,6 +390,7 @@ require get_template_directory() . '/inc/flexible-taxonomies.php';
 
  // Admin changes
 require get_template_directory() . '/inc/acf/admin/settings.php';
+require get_template_directory() . '/inc/acf/admin/post-display-settings.php';
 
 // General utilities
 require get_template_directory() . '/inc/acf/utilities.php';
