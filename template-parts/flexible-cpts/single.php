@@ -3,8 +3,6 @@
  * Template part for displaying fleixble cpt of type simple
  */
 
- $post_type = get_post_type();
- 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
@@ -15,11 +13,16 @@
 
         ?>
     </header>
-    <div class="flexible-post-type-published-date">
-            <div class="flexible-post-type-published-date-label">Published: </div>
-            <?php hale_posted_on(); ?>
-    </div>
+    <?php
+     $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
 
+     if($show_published_date_on_single_view){
+     ?>
+        <div class="flexible-post-type-published-date">
+                <div class="flexible-post-type-published-date-label">Published: </div>
+                <?php hale_posted_on(); ?>
+        </div>
+    <?php } ?>
     <?php get_template_part( 'template-parts/flexible-cpts/details'); ?>
     
     <?php do_action('hale_before_single_content'); ?>

@@ -9,10 +9,22 @@ add_filter( 'acf/post_type/additional_settings_tabs', function ( $tabs ) {
 
 add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_post_type) {
     
-    
     acf_render_field_wrap(
         array(
-            'label' => 'Show taxonomies on single view',
+            'label' => 'Show Published Date',
+            'instructions' => 'Shows published date on the single view.',
+            'name'         => 'show_published_date_on_single_view',
+            'value'        => isset( $acf_post_type['show_published_date_on_single_view'] ) ? $acf_post_type['show_published_date_on_single_view'] : true,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'show_published_date_on_single_view',
+            'ui' => true,
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
+            'label' => 'Show Taxonomies',
             'instructions' => 'Shows taxonomy terms on the single view.',
             'name'         => 'show_tax_on_single_view',
             'value'        => isset( $acf_post_type['show_tax_on_single_view'] ) ? $acf_post_type['show_tax_on_single_view'] : false,
@@ -24,7 +36,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
     );
     acf_render_field_wrap(
         array(
-            'label' => 'Single view single taxonomy style',
+            'label' => 'Single view taxonomy style',
             'instructions' => '',
             'name'         => 'single_view_tax_style',
             'prefix'       => 'acf_post_type',
@@ -48,6 +60,9 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 });
 
 add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
+    if ( isset( $post_type['show_tax_on_single_view'] ) ) {
+        $args['show_published_date_on_single_view'] = (bool) $post_type['show_published_date_on_single_view'];
+    }
     if ( isset( $post_type['show_tax_on_single_view'] ) ) {
         $args['show_tax_on_single_view'] = (bool) $post_type['show_tax_on_single_view'];
     }
