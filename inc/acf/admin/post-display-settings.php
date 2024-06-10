@@ -13,7 +13,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
     acf_render_field_wrap(
         array(
             'label' => 'Show taxonomies on single view',
-            'instructions' => 'Shows taxonomy terms on the single post view.',
+            'instructions' => 'Shows taxonomy terms on the single view.',
             'name'         => 'show_tax_on_single_view',
             'value'        => isset( $acf_post_type['show_tax_on_single_view'] ) ? $acf_post_type['show_tax_on_single_view'] : false,
             'prefix'       => 'acf_post_type',
@@ -24,8 +24,8 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
     );
     acf_render_field_wrap(
         array(
-            'label' => 'Taxonomy single view style',
-            'instructions' => 'Which style taxonomy terms are shown on the single post view.',
+            'label' => 'Single view single taxonomy style',
+            'instructions' => '',
             'name'         => 'single_view_tax_style',
             'prefix'       => 'acf_post_type',
             'value'        => isset( $acf_post_type['single_view_tax_style'] ) ? $acf_post_type['single_view_tax_style'] : '',
