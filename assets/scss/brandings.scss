@@ -713,7 +713,11 @@ body.hale-colours-variable {
 
 	.info-banner {
 		background-color: var(--info-banner-bg);
-		color: var(--info-banner-text);
+
+		&__title,
+		&__summary {
+			color: var(--info-banner-text);
+		}
 
 		&__link,
 		&__close {
