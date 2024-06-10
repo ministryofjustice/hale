@@ -9,6 +9,7 @@
 		$red = '#D4351C';
 		$darkRed = '#942514';
 		$blue = '#1D70B8';
+		$fadedBlue = '#D5E8F3'; // Not in the GDS palette, but this is the government style from https://docs.publishing.service.gov.uk/manual/global-banner.html
 		$lightBlue = '#5694CA';
 		$darkBlue = '#003078';
 		$purple = '#4C2C92';
@@ -64,10 +65,16 @@
 				"description" => "",
 				"colours" => array(
 					['header-search-input-bg',$white,'Background','',''],
+					['header-search-input-text',$black,'Text','',''],
+					['header-search-input-placeholder',$darkGrey,'Placeholder text','',''],
 					['header-search-input-border',$white,'Border','',''],
 					['header-search-input-focus-bg',$white,'Background when focussed','',''],
+					['header-search-input-focus-text',$black,'Text when focussed','',''],
+					['header-search-input-focus-placeholder',$darkGrey,'Placeholder text when focussed','',''],
 					['header-search-input-focus-border',$yellow,'Border when focussed','',''],
 					['header-search-input-active-bg',$white,'Background when active','',''],
+					['header-search-input-active-text',$black,'Text when active','',''],
+					['header-search-input-active-placeholder',$darkGrey,'Placeholder text when active','',''],
 					['header-search-input-active-border',$yellow,'Border when active','',''],
 					['header-search-btn-bg',$lightGrey,'Button background','',''],
 					['header-search-btn-icon',$black,'Button icon','',''],
@@ -300,6 +307,21 @@
 					['footer-link-focus',$black,'Footer link text when focussed','',''],
 					['footer-link-focus-shadow',$black,'Footer link underline when focussed','',''],
 					['footer-link-focus-background',$yellow,'Footer link background when focussed','',''],
+				)
+			],
+			[
+				"section_name" => "Info banner",
+				"id" => "info_banner",
+				"description" => "",
+				"colours" => array(
+					['info-banner-bg',$fadedBlue,'Background','',''],
+					['info-banner-text',$black,'Text','',''],
+					['info-banner-link',$darkBlue,'Link text','',''],
+					['info-banner-link-visited',$purple,'Visited link text','',''],
+					['info-banner-link-hover',$darkBlue,'Link text on hover','',''],
+					['info-banner-link-focus',$black,'Link text when focussed','',''],
+					['info-banner-link-focus-background',$yellow,'Link background when focussed','',''],
+					['info-banner-link-focus-underline',$black,'Link underline when focussed','',''],
 				)
 			],
 			[
