@@ -522,7 +522,7 @@ function hale_add_taxonomy_acf_field($tax) {
 
 
 /**
- * Adds an Dropdown (select) ACF Field for a specific post type. Which lists acf fields assigned to a post type. Currently only on listing page template.
+ * Adds an Dropdown (select) ACF Field for a specific post type. Which lists acf fields and taxonomies assigned to a post type. Currently only on listing page template.
  *
  * @param object $post_type The post type object.
  * @param string $field_key The ACF field key.
@@ -538,6 +538,12 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
 
     if (isset($post_type->post_summary) && $post_type->post_summary == '1') {
         $choices[$post_type->name . '_summary'] = "Summary";
+    }
+
+    $taxonomies = get_object_taxonomies($post_type->name, 'objects');
+
+    foreach($taxonomies as $tax) {
+        $choices[$tax->name] = $tax->label;
     }
 
     $groups = acf_get_field_groups(array('post_type' => $post_type->name)); 

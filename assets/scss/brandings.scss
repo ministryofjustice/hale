@@ -631,7 +631,8 @@
 	.news-story-published-date {
 		color: var(--text);
 	}
-	.news-story-category-link {
+	.news-story-category-link,
+	.flexible-post-type-tags-link {
 		color: var(--tag-text);
 		background: var(--tag-bg);
 

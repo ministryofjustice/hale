@@ -3,8 +3,6 @@
  * Template part for displaying fleixble cpt of type simple
  */
 
- $post_type = get_post_type();
- 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
@@ -15,40 +13,18 @@
 
         ?>
     </header>
-    <div class="flexible-post-type-details">
-		<?php 
-        
-        $groups = acf_get_field_groups(array('post_type' => $post_type)); 
-		
-        if(is_array($groups) && count($groups) > 0){
+    <?php
+     $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
 
-            foreach($groups as $group) {
-
-                $fields = acf_get_fields($group['key']);
-
-                if(is_array($fields) && count($fields) > 0){
-                    
-                    foreach($fields as $field){
-                        
-                        $field_value = get_field($field['name']);
-
-                        if(!empty($field_value) && $field["single_view"]){
-                            ?>
-                                <div class="flexible-post-type-detail">
-                                    <div class="flexible-post-type-detail-label"><?php echo $field['label']; ?>: </div>
-                                    <?php echo $field_value; ?>
-                                </div>
-                            <?php
-                        }
-                    }
-                }
-            }
-        }
-		?>
-
-
-	</div>
-
+     if($show_published_date_on_single_view){
+     ?>
+        <div class="flexible-post-type-published-date">
+                <div class="flexible-post-type-published-date-label">Published: </div>
+                <?php hale_posted_on(); ?>
+        </div>
+    <?php } ?>
+    <?php get_template_part( 'template-parts/flexible-cpts/details'); ?>
+    
     <?php do_action('hale_before_single_content'); ?>
 
     <div class="flexible-post-type-content">
