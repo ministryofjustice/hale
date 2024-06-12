@@ -7,9 +7,23 @@
 }
 
 .govuk-main-wrapper {
+  p:not([class]), p[class=""] {
+    //deals with any paragraphs that aren't classed - makes them GDS paragraphs
+    @extend .govuk-body;
+  }
   a:not([class]), a[class=""] {
     //deals with any links that aren't classed - makes them GDS links
     @extend .govuk-link;
+  }
+  ul:not([class]), ul[class=""] {
+    //deals with any lists that aren't classed
+    @extend .govuk-list;
+    @extend .govuk-list--bullet;
+  }
+  ol:not([class]), ol[class=""] {
+    //deals with any numbered lists that aren't classed
+    @extend .govuk-list;
+    @extend .govuk-list--number;
   }
 
 	//override for the sovial media links (ootb wordpress)
