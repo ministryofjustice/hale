@@ -8,6 +8,9 @@ add_filter( 'acf/post_type/additional_settings_tabs', function ( $tabs ) {
 } );
 
 add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_post_type) {
+
+    echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Single view</label></div>';
+    echo '<div class="acf-field acf-field-seperator" data-type="seperator" style="margin-top: 15px;"></div>';
     
     acf_render_field_wrap(
         array(
