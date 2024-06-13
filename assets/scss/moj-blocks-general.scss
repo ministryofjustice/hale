@@ -20,7 +20,6 @@
     @extend .govuk-list;
     @extend .govuk-list--bullet;
   }
-
   ol:not([class]), ol[class=""] {
     //deals with any numbered lists that aren't classed
     @extend .govuk-list;
