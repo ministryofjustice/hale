@@ -26,7 +26,6 @@ add_action('acf/post_type/basic_settings', function ($acf_post_type) {
             'label'        => $data['label'],
             'instructions' => $data['instructions'],
             'name'         => $name,
-            'key'          => $name,
             'prefix'       => 'acf_post_type',
             'value'        => isset($acf_post_type[$name]) ? $acf_post_type[$name] : false,
             'type'         => 'true_false',
