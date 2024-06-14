@@ -380,11 +380,6 @@ require get_template_directory() . '/inc/banner-settings.php';
 require get_template_directory() . '/inc/flexible-cpts.php';
 
 /**
- * Flexible Taxonomies
- */
-require get_template_directory() . '/inc/flexible-taxonomies.php';
-
-/**
  * ACF additions
  */
 
