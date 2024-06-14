@@ -85,9 +85,14 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 });
 
 add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
+
     if ( isset( $post_type['show_published_date_on_single_view'] ) ) {
         $args['show_published_date_on_single_view'] = (bool) $post_type['show_published_date_on_single_view'];
     }
+    else {
+        $args['show_published_date_on_single_view'] = true;
+    }
+
     if ( isset( $post_type['show_tax_on_single_view'] ) ) {
         $args['show_tax_on_single_view'] = (bool) $post_type['show_tax_on_single_view'];
     }
