@@ -24,7 +24,24 @@
         </div>
     <?php } ?>
     <?php get_template_part( 'template-parts/flexible-cpts/details'); ?>
-    
+
+    <?php
+
+		$show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
+
+		if($show_summary_on_single_view){
+
+			$summary = get_field('post_summary');
+            
+			if(!empty($summary)){ ?>
+			<div class="intro">
+				<?php echo wpautop($summary); ?>
+			</div>
+			<?php
+			}
+		}
+    ?>
+
     <?php do_action('hale_before_single_content'); ?>
 
     <div class="flexible-post-type-content">

@@ -27,6 +27,28 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 
     acf_render_field_wrap(
         array(
+            'label' => 'Show Summary',
+            'instructions' => 'Shows summary on the single view.',
+            'name'         => 'show_summary_on_single_view',
+            'value'        => isset( $acf_post_type['show_summary_on_single_view'] ) ? $acf_post_type['show_summary_on_single_view'] : false,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'show_summary_on_single_view',
+            'ui' => true,
+            'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'post_summary',
+						'operator' => '==',
+						'value' => '1',
+					),
+				),
+			),
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
             'label' => 'Show Taxonomies',
             'instructions' => 'Shows taxonomy terms on the single view.',
             'name'         => 'show_tax_on_single_view',
@@ -63,7 +85,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 });
 
 add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
-    if ( isset( $post_type['show_tax_on_single_view'] ) ) {
+    if ( isset( $post_type['show_published_date_on_single_view'] ) ) {
         $args['show_published_date_on_single_view'] = (bool) $post_type['show_published_date_on_single_view'];
     }
     if ( isset( $post_type['show_tax_on_single_view'] ) ) {
@@ -71,6 +93,13 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
     }
     if ( isset( $post_type['single_view_tax_style'] ) ) {
         $args['single_view_tax_style'] = $post_type['single_view_tax_style'];
+    }
+
+    if ( isset( $post_type['show_summary_on_single_view'] ) ) {
+        $args['show_summary_on_single_view'] = $post_type['show_summary_on_single_view'];
+    }
+    else {
+        $args['show_summary_on_single_view'] = true;
     }
 
     return $args;
