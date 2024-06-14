@@ -93,9 +93,10 @@ if ($file) {
 
         <?php
 
+        $post_summary_active = hale_get_acf_field_status('post_summary');
 		$show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
 
-		if($show_summary_on_single_view){
+		if($post_summary_active  && $show_summary_on_single_view){
 			$document_summary = get_post_meta($post->ID, 'document_summary', true);
 
 			// If document summary is empty then safe to use ACF doc summary

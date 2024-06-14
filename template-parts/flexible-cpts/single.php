@@ -27,9 +27,10 @@
 
     <?php
 
-		$show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
+        $post_summary_active = hale_get_acf_field_status('post_summary');
+        $show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
 
-		if($show_summary_on_single_view){
+        if($post_summary_active  && $show_summary_on_single_view){
 
 			$summary = get_field('post_summary');
             
