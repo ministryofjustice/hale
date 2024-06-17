@@ -7,7 +7,9 @@
 }
 
 .govuk-main-wrapper {
-  p:not([class]), p[class=""] {
+  p:not([class]), p[class=""],
+  p.is-style-default,
+  p.is-style-wide {
     //deals with any paragraphs that aren't classed - makes them GDS paragraphs
     @extend .govuk-body;
   }
@@ -15,12 +17,16 @@
     //deals with any links that aren't classed - makes them GDS links
     @extend .govuk-link;
   }
-  ul:not([class]), ul[class=""] {
+  ul:not([class]), ul[class=""],
+  ul.is-style-default,
+  ul.is-style-wide {
     //deals with any lists that aren't classed
     @extend .govuk-list;
     @extend .govuk-list--bullet;
   }
-  ol:not([class]), ol[class=""] {
+  ol:not([class]), ol[class=""],
+  ol.is-style-default,
+  ol.is-style-wide {
     //deals with any numbered lists that aren't classed
     @extend .govuk-list;
     @extend .govuk-list--number;
