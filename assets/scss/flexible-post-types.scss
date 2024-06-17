@@ -10,10 +10,6 @@
       }
     }
 
-    .flexible-post-type-featured-image {
-      margin-bottom: 20px;
-    }
-
     .flexible-post-type-published-date {
       @include govuk-font-size($size: 19);
       margin-bottom: 20px;
@@ -22,6 +18,10 @@
         font-weight: bold;
         display: inline-block;
       }
+    }
+
+    .flexible-post-type-featured-image {
+      margin-bottom: 20px;
     }
 
     .flexible-post-type-details {
