@@ -9,21 +9,25 @@
     <header class="flexible-post-type-header">
         <?php
 
-        the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>');
-
-        ?>
+        the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>'); ?>
     </header>
     <?php
      $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
 
-     if($show_published_date_on_single_view){
+     if($show_published_date_on_single_view) {
      ?>
         <div class="flexible-post-type-published-date">
                 <div class="flexible-post-type-published-date-label">Published: </div>
                 <?php hale_posted_on(); ?>
         </div>
     <?php } ?>
-    <?php get_template_part( 'template-parts/flexible-cpts/details'); ?>
+    <?php 
+    
+    get_template_part( 'template-parts/flexible-cpts/details'); 
+    
+    // Load feature image section
+    get_template_part( 'template-parts/flexible-cpts/feature-image');
+    ?>
     
     <?php do_action('hale_before_single_content'); ?>
 
