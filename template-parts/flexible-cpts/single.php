@@ -9,11 +9,12 @@
     <header class="flexible-post-type-header">
         <?php
 
-        the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>');
-
-        ?>
+        the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>'); ?>
     </header>
     <?php
+    // Load feature image section
+    get_template_part( 'template-parts/flexible-cpts/feature-image');
+
      $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
 
      if($show_published_date_on_single_view){
