@@ -1,52 +1,46 @@
 /**
- * This is designed to only effect the backend editor.  
- * Therefore all styles should be a child of class .edit-post-layout
+ * This file is designed to only effect the backend editor.
 */
-@import 'editor-backend-controls';
-@import 'fontstyles/pt-sans';
+
 @import 'moj-blocks-editor';
 
-.template-mismatch:after {
-	content: "Page refresh needed to display changes";
-	display: block;
-	width: 100%;
-	font-size: 90%;
-	overflow: visible;
-	position: absolute;
-	right: 0;
-	color: #6b1c40;
-	background-color: #f9e1ec
+.interface-interface-skeleton__content {
+	// class for the preview pane of the editor screen only
+
+	padding: 0 2rem; // Ensures there is a gap betwixt content and screen side & scroll bar
+
+	@import 'default';
+	@import 'hale-styles';
 }
 
 .hale-editor {
 	&--template-page-full-width {
-		.editor-styles-wrapper {
+		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-full-from-desktop;
-		}
-		.edit-post-post-template__dropdown [aria-label="Select template: Default template"] {
-			@extend .template-mismatch;
 		}
 	}
 	&--template-default {
-		.editor-styles-wrapper {
+		.edit-post-visual-editor>div {
 			@extend .govuk-grid-column-two-thirds;
-		}
-		.edit-post-post-template__dropdown [aria-label="Select template: Full-Width"] {
-			@extend .template-mismatch;
 		}
 	}
 }
 
+.editor-styles-wrapper {
+	z-index: 0;
+
+	@import 'fontstyles/pt-sans';
+}
+
 .edit-post-visual-editor {
+	// class for div beneath interface-interface-skeleton__content class
+
+	background-color: white; //overriding the default grey background from WP
+
 	@extend .govuk-width-container;
 
 	@include govuk-media-query($from: desktop) {
 		width:100%;
-	}
-	
-	.editor-styles-wrapper {
-		margin: 0 minmax(2rem, auto);
-		z-index: 0;
 	}
 
 	/**

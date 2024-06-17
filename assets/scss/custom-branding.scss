@@ -1,21 +1,15 @@
 @charset "UTF-8";
-@import 'default';
-@import 'gds-design-system-settings';
-@import 'hale-styles';
 
-// theme colours
+/**
+  * This file is used by both frontend and backend editor pages
+  * Frontend is enqueued (unless IE is detected)
+  * Backend is included via editor-branding.scss
+**/
+
+@import 'gds-design-system-settings';
+
+// Theme colours
 @import 'brandings';
 @import 'brandings-extended-core-blocks';
 @import 'brandings-mojblocks';
 @import 'brandings-cookies';
-
-
-//Gutenberg Branding
-.edit-post-visual-editor,
-.block-editor-block-styles,
-.block-editor-inserter__menu-help-panel {
-  @import 'brandings-mojblocks';
-}
-
-//Editor styles
-@import 'editor';
