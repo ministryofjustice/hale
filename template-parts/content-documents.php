@@ -65,9 +65,7 @@ if ($file) {
 	
 	<?php
 	the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
-	
-	// Load feature image section
-	get_template_part( 'template-parts/flexible-cpts/feature-image'); ?>
+	?>
 
     <div class="flexible-post-type-published-date">
             <div class="flexible-post-type-published-date-label">Published: </div>
@@ -77,7 +75,10 @@ if ($file) {
 	<?php 
 	
 	// Load array of CPTs and taxonomies
-	get_template_part( 'template-parts/flexible-cpts/details'); ?>
+	get_template_part( 'template-parts/flexible-cpts/details'); 
+	
+	// Load feature image section
+	get_template_part( 'template-parts/flexible-cpts/feature-image'); ?>
 	
 	<div class="document-summary">
 		<?php if ($file) { ?>
