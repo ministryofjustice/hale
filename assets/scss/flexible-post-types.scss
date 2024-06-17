@@ -1,4 +1,6 @@
-#primary { //Used as otherwise font styles using primarry override
+#primary {
+
+  //Used as otherwise font styles using primarry override
   .flexible-post-type-single {
     .flexible-post-type-header {
 
@@ -6,6 +8,10 @@
         margin-bottom: 25px;
         font-weight: normal;
       }
+    }
+
+    .flexible-post-type-featured-image {
+      margin-bottom: 20px;
     }
 
     .flexible-post-type-published-date {
@@ -17,7 +23,7 @@
         display: inline-block;
       }
     }
-    
+
     .flexible-post-type-details {
       .flexible-post-type-detail {
         @include govuk-font-size($size: 19);
@@ -31,17 +37,17 @@
     }
 
     .flexible-post-type-tags {
-    
+
       .flexible-post-type-tags-list {
         list-style: none;
         padding: 0;
         margin-top: 0;
-    
+
         .flexible-post-type-tags-list-item {
           display: inline-block;
-          margin-top:0.4rem;
-          margin-bottom:0.4rem;
-    
+          margin-top: 0.4rem;
+          margin-bottom: 0.4rem;
+
           .flexible-post-type-tags-link {
             font-weight: bold;
             border-radius: 4px;
@@ -49,7 +55,7 @@
             text-decoration: none;
             margin-right: 15px;
             text-align: center;
-    
+
             &:focus {
               outline-style: solid;
               outline-width: 2px;

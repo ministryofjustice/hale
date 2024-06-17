@@ -62,14 +62,23 @@ if ($file) {
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
+	
 	<?php
-		the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
-	?>
+	the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
+	
+	// Load feature image section
+	get_template_part( 'template-parts/flexible-cpts/feature-image'); ?>
+
     <div class="flexible-post-type-published-date">
             <div class="flexible-post-type-published-date-label">Published: </div>
             <?php hale_posted_on(); ?>
     </div>
-	<?php get_template_part( 'template-parts/flexible-cpts/details'); ?>
+
+	<?php 
+	
+	// Load array of CPTs and taxonomies
+	get_template_part( 'template-parts/flexible-cpts/details'); ?>
+	
 	<div class="document-summary">
 		<?php if ($file) { ?>
 			<?php if (!$icon_image) { ?>

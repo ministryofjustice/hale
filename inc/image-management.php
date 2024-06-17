@@ -8,8 +8,7 @@
  * @version   1.0
  */
 
-// Add new image size to theme, 1366x683 pixels, aspect ratio 2:1, crop = true
-add_image_size( 'hero', 1366, 683, true );
+add_image_size( 'hero', 1366, 683, true ); // 1366x683 pixels, aspect ratio 2:1, crop = true
 
 add_filter( 'image_size_names_choose', 'hale_add_custom_image_size_name' );
 /**
@@ -23,7 +22,7 @@ function hale_add_custom_image_size_name( $size_names ) {
 
     // Add new image size name to array.
     $new_size_names = [
-        'hero' => esc_html__( 'Hero banner', 'hale' ),
+        'hero' => esc_html__( 'Hero banner', 'hale' )
     ];
 
     // Combine the two arrays.
