@@ -289,6 +289,11 @@ function hale_mix_asset($filename)
 
 
 /**
+ * Taxonomies functions
+ */
+require get_template_directory() . '/inc/taxonomies.php';
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -378,6 +383,11 @@ require get_template_directory() . '/inc/banner-settings.php';
  * Flexible Custom Post Types
  */
 require get_template_directory() . '/inc/flexible-cpts.php';
+
+/**
+ * Flexible Taxonomies
+ */
+require get_template_directory() . '/inc/flexible-taxonomies.php';
 
 /**
  * ACF additions

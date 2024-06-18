@@ -5,6 +5,8 @@
 
  $single_view = $args['single_view'];
 
+ $display_terms_taxonomies = $args['display-terms-taxonomies'];
+
  $display_fields = $args['display-fields'];
 ?>
 
@@ -20,6 +22,16 @@
         }
         ?>
     </h2>
+    <?php 
+    
+    $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
+
+    if(!empty($tax_details)){
+        get_template_part( 'template-parts/flexible-cpts/term-list', false, array('tax-details' => $tax_details)); 
+    }
+    
+    
+    ?>
     <?php if(!empty($display_fields)){
 
         foreach($display_fields as $field){
