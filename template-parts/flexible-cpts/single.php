@@ -28,7 +28,23 @@
     // Load feature image section
     get_template_part( 'template-parts/flexible-cpts/feature-image');
     ?>
-    
+    <?php
+
+    $post_summary_active = hale_get_acf_field_status('post_summary');
+    $show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
+
+    if($post_summary_active  && $show_summary_on_single_view){
+
+        $summary = get_field('post_summary');
+        
+        if(!empty($summary)){ ?>
+        <div class="intro">
+            <?php echo wpautop($summary); ?>
+        </div>
+        <?php
+        }
+    }
+    ?>
     <?php do_action('hale_before_single_content'); ?>
 
     <div class="flexible-post-type-content">
