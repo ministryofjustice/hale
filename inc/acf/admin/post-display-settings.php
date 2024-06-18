@@ -30,7 +30,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             'label' => 'Show Summary',
             'instructions' => 'Shows summary on the single view.',
             'name'         => 'show_summary_on_single_view',
-            'value'        => isset( $acf_post_type['show_summary_on_single_view'] ) ? $acf_post_type['show_summary_on_single_view'] : false,
+            'value'        => isset( $acf_post_type['show_summary_on_single_view'] ) ? $acf_post_type['show_summary_on_single_view'] : true,
             'prefix'       => 'acf_post_type',
             'type' => 'true_false',
             'key' => 'show_summary_on_single_view',
