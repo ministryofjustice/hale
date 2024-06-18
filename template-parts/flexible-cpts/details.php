@@ -63,7 +63,7 @@
 
                 $tax_details[] = [
                     'slug' => $tax,
-                    'label' => $tax_obj->label,
+                    'label' => $tax_obj->labels->singular_name,
                     'terms' => $tax_terms
                 ];
             }
