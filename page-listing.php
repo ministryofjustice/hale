@@ -274,7 +274,7 @@ while (have_posts()) :
 
                             $tax = get_taxonomy($field);
 
-                            $display_fields[] = ["name" =>  $field, "label" =>  $tax->label, "type" => "taxonomy"];
+                            $display_fields[] = ["name" =>  $field, "label" =>  $tax->labels->singular_name, "type" => "taxonomy"];
                             continue;
                         }
 
