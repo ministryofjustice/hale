@@ -46,47 +46,63 @@ get_header();
                             );
                             wp_dropdown_categories($dropdown_args);
 
-                            $disabled_subtopics = 'disabled="disabled"';
+                            $categories = get_terms( array(
+                                'taxonomy' => 'category'
+                            ) );
+                                
+                            
+                            $has_subtopics = false;
 
-                            $selected_topic = get_query_var('cat');
-                            $selected_sub_topic = get_query_var('subtopic');
-                            $sub_topics = [];
-
-
-                            if (is_numeric($selected_topic)) {
-
-                                $sub_topics = get_terms(array(
-                                    'taxonomy' => 'category',
-                                    'parent' => $selected_topic
-                                ));
-
-                                if (is_array($sub_topics) && !empty($sub_topics)) {
-                                    $disabled_subtopics = '';
+                            foreach($categories as $cat){
+                                if($cat->parent > 0){
+                                    $has_subtopics = true;
+                                    break; 
                                 }
-
                             }
 
+                            if($has_subtopics){
+                                $disabled_subtopics = 'disabled="disabled"';
 
-                            ?>
-                            <label class="govuk-label" for="news-archive-filter-subtopic">Sub-topic</label>
-                            <select name="subtopic" id="news-archive-filter-subtopic"
-                                    class="govuk-select" <?php echo $disabled_subtopics; ?>>
-                                <option
-                                    value="0" <?php if ($selected_sub_topic == 0) { ?> selected="selected" <?php } ?> >
-                                    All Sub-topics
-                                </option>
+                                $selected_topic = get_query_var('cat');
+                                $selected_sub_topic = get_query_var('subtopic');
+                                $sub_topics = [];
 
-                                <?php if (is_array($sub_topics) && !empty($sub_topics)) {
-                                    foreach ($sub_topics as $sub_topic) {
-                                        ?>
-                                        <option
-                                            value="<?php echo $sub_topic->term_id; ?>" <?php if ($selected_sub_topic == $sub_topic->term_id) { ?> selected="selected" <?php } ?> ><?php echo $sub_topic->name; ?></option>
-                                        <?php
 
+                                if (is_numeric($selected_topic)) {
+
+                                    $sub_topics = get_terms(array(
+                                        'taxonomy' => 'category',
+                                        'parent' => $selected_topic
+                                    ));
+
+                                    if (is_array($sub_topics) && !empty($sub_topics)) {
+                                        $disabled_subtopics = '';
                                     }
+
                                 }
+
+
                                 ?>
-                            </select>
+                                <label class="govuk-label" for="news-archive-filter-subtopic">Sub-topic</label>
+                                <select name="subtopic" id="news-archive-filter-subtopic"
+                                        class="govuk-select" <?php echo $disabled_subtopics; ?>>
+                                    <option
+                                        value="0" <?php if ($selected_sub_topic == 0) { ?> selected="selected" <?php } ?> >
+                                        All Sub-topics
+                                    </option>
+
+                                    <?php if (is_array($sub_topics) && !empty($sub_topics)) {
+                                        foreach ($sub_topics as $sub_topic) {
+                                            ?>
+                                            <option
+                                                value="<?php echo $sub_topic->term_id; ?>" <?php if ($selected_sub_topic == $sub_topic->term_id) { ?> selected="selected" <?php } ?> ><?php echo $sub_topic->name; ?></option>
+                                            <?php
+
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            <?php } ?>
                             <button class="govuk-button">Filter</button>
                         </form>
 
