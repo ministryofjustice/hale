@@ -40,8 +40,6 @@ function hale_field_frontend_display_settings($field)
     );
 }
 
-add_filter('acf/load_field/name=post_type_tax', 'hale_populate_field_with_taxonomies', 99);
-
 /**
  * Populates post types to an ACF field.
  *
@@ -70,7 +68,6 @@ function hale_populate_field_with_post_types( $field ) {
 
 add_filter('acf/load_field/name=listing_post_type', 'hale_populate_field_with_post_types', 99);
 
-
 /**
  * Creates Filter and Restrict ACF fields used on the listing page
  * A Dropdown (select) is created for each post type (listing assigned taxonomies) and only shown if the post type is selected
@@ -87,8 +84,9 @@ function hale_add_listing_page_acf_fields() {
 
     foreach($post_types as $post_type) {
         hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
         hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_display_terms_taxonomies', 'Display Terms', 'display_terms_taxonomies', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
     }
     
     $taxonomies = get_taxonomies(['public' => true], 'objects');

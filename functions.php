@@ -289,6 +289,11 @@ function hale_mix_asset($filename)
 
 
 /**
+ * Taxonomies functions
+ */
+require get_template_directory() . '/inc/taxonomies.php';
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';

@@ -293,6 +293,8 @@ while (have_posts()) :
                        
                     }
 
+                    $display_terms_taxonomies = get_field('display_terms_taxonomies');
+
                     if ($listing_query->have_posts()) { 
                         
                         if ($listing_query->found_posts > 1) {
@@ -309,7 +311,7 @@ while (have_posts()) :
                             <?php
                             while ($listing_query->have_posts()) {
                                 $listing_query->the_post();
-                                get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'single_view' => $post_type_obj->publicly_queryable ));
+                                get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable  ));
                             } ?>
                         </div>
 
