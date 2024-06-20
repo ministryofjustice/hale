@@ -24,10 +24,13 @@
     </h2>
     <?php 
     
-    $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
+    if(!empty($display_terms_taxonomies)){
 
-    if(!empty($tax_details)){
-        get_template_part( 'template-parts/flexible-cpts/term-list', false, array('tax-details' => $tax_details)); 
+        $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
+        
+        if(!empty($tax_details)){
+            get_template_part( 'template-parts/flexible-cpts/term-list', false, array('tax-details' => $tax_details)); 
+        }
     }
     
     
