@@ -1,40 +1,39 @@
 /*
-  The following are copied from $_govuk-typography-scale-modern from the design system.
-  We use variables here as we need to set the WordPress variable to the size to prevent Gutenberg overriding it.
-  We have omitted the 14px size - depricated by GDS and we don't need it, the GDS mixin will stop supporting this after v6.
-  We have kept the 27px size - probably will soon be depricated by GDS as the sizes on mobile and printing are the same.
-  We have kept the 80px size - but we probably don't need it.
+The following are copied from $_govuk-typography-scale-modern from the design system.
+We use variables here as we need to set the WordPress variable to the size to prevent Gutenberg overriding it.
+We have omitted the 14px size - depricated by GDS and we don't need it, the GDS mixin will stop supporting this after v6.
+We have kept the 27px size - probably will soon be depricated by GDS as the sizes on mobile and printing are the same.
+We have kept the 80px size - but we probably don't need it.
 
-  Elsewhere, we use the GDS mixin.
-  Setting font-size:var(--gds-font-size-48) and line-height:var(--gds-line-height-48) is the same as @include govuk-font-size($size: 48);
+Elsewhere, we use the GDS mixin.
+Setting font-size:var(--gds-font-size-48) and line-height:var(--gds-line-height-48) is the same as @include govuk-font-size($size: 48);
 */
 
 @mixin hale-font-value() {
 	$sizes: 16, 19, 24, 36, 48; // These must be GDS sizes
-	:root {
-	  @each $size in $sizes {
-		$font-map: map-get($_govuk-typography-scale-modern, $size);
-		@each $breakpoint, $breakpoint-map in $font-map {
-		  $font-size: map-get($breakpoint-map, "font-size");
-		  $line-height: map-get($breakpoint-map, "line-height");
-		  @if not $breakpoint {
-			--gds-font-size-#{$size}: #{$font-size};
-			--gds-line-height-#{$size}: #{$line-height};
-		  } @else if $breakpoint == "print" {
-			@include govuk-media-query($media-type: print) {
-			  --gds-font-size-#{$size}: #{$font-size};
-			  --gds-line-height-#{$size}: #{$line-height};
+		:root {
+			@each $size in $sizes {
+				$font-map: map-get($_govuk-typography-scale-modern, $size);
+				@each $breakpoint, $breakpoint-map in $font-map {
+					$font-size: map-get($breakpoint-map, "font-size");
+					$line-height: map-get($breakpoint-map, "line-height");
+					@if not $breakpoint {
+						--gds-font-size-#{$size}: #{$font-size};
+						--gds-line-height-#{$size}: #{$line-height};
+					} @else if $breakpoint == "print" {
+						@include govuk-media-query($media-type: print) {
+							--gds-font-size-#{$size}: #{$font-size};
+							--gds-line-height-#{$size}: #{$line-height};
+						}
+					} @else {
+						@include govuk-media-query($from: tablet) {
+							--gds-font-size-#{$size}: #{$font-size};
+							--gds-line-height-#{$size}: #{$line-height};
+						}
+					}
+				}
 			}
-		  } @else {
-			@include govuk-media-query($from: tablet) {
-			  --gds-font-size-#{$size}: #{$font-size};
-			  --gds-line-height-#{$size}: #{$line-height};
-			}
-		  }
 		}
-	  }
 	}
-  }
-  
-  @include hale-font-value();
-  
+
+	@include hale-font-value();
