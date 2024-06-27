@@ -13,6 +13,7 @@
 $gutenberg-styles: false;
 
 //high-level text sizing for blocks
+@import 'fontstyles/gds-font-sizes';
 @import 'fontstyles/pt-sans';
 
 // styles for all MoJ blocks (including overrides)
