@@ -28,7 +28,7 @@ function hale_get_post_tax_details($taxonomies = array()){
 
             $tax_details[] = [
                 'slug' => $tax,
-                'label' => $tax_obj->label,
+                'label' => $tax_obj->labels->singular_name,
                 'terms' => $tax_terms
             ];
         }
