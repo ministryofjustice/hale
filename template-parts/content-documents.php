@@ -107,18 +107,27 @@ if ($file) {
 		$show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
 
 		if($post_summary_active  && $show_summary_on_single_view){
-			$document_summary = get_post_meta($post->ID, 'document_summary', true);
 
-			// If document summary is empty then safe to use ACF doc summary
-			if (empty($document_summary)) {
-				$document_summary = get_field('post_summary');
+			$show_summary = get_field('show_post_summary');
+
+			if(is_null($show_summary)){
+				$show_summary = true;
 			}
 
-			if(!empty($document_summary)){ ?>
-			<div class="document-summary-text">
-				<?php echo wpautop($document_summary); ?>
-			</div>
-			<?php
+			if($show_summary){
+				$document_summary = get_post_meta($post->ID, 'document_summary', true);
+
+				// If document summary is empty then safe to use ACF doc summary
+				if (empty($document_summary)) {
+					$document_summary = get_field('post_summary');
+				}
+
+				if(!empty($document_summary)){ ?>
+				<div class="document-summary-text">
+					<?php echo wpautop($document_summary); ?>
+				</div>
+				<?php
+				}
 			}
 		}
         ?>

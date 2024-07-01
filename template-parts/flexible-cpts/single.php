@@ -35,13 +35,22 @@
 
     if($post_summary_active  && $show_summary_on_single_view){
 
-        $summary = get_field('post_summary');
-        
-        if(!empty($summary)){ ?>
-        <div class="intro">
-            <?php echo wpautop($summary); ?>
-        </div>
-        <?php
+        $show_summary = get_field('show_post_summary');
+
+        if(is_null($show_summary)){
+            $show_summary = true;
+        }
+
+        if($show_summary){
+
+            $summary = get_field('post_summary');
+            
+            if(!empty($summary)){ ?>
+            <div class="intro">
+                <?php echo wpautop($summary); ?>
+            </div>
+            <?php
+            }
         }
     }
     ?>
