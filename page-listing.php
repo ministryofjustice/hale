@@ -60,94 +60,99 @@ while (have_posts()) :
 
                             if(!empty($listing_filters) && is_array($listing_filters)) { ?>
 
-                                    <p>Filters</p>
+                                <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                        <h2 class="govuk-fieldset__heading">
+                                            <?php _e("Filters","hale"); ?>
+                                        </h2>
+                                    </legend>
                                     <?php
                                     foreach($listing_filters as $filter){
 
-                                    $tax = get_taxonomy($filter);
+                                        $tax = get_taxonomy($filter);
 
-                                    if(!empty($tax)){
+                                        if(!empty($tax)){
 
-                                        $selected_term_id = 0;
+                                            $selected_term_id = 0;
 
-                                        $id = 'listing-search-filter-' . $filter;
+                                            $id = 'listing-search-filter-' . $filter;
 
 
-                                        if (get_query_var($filter)) {
+                                            if (get_query_var($filter)) {
 
-                                            $filter_term_id = get_query_var($filter);
-                                            if (is_numeric($filter_term_id)) {
-                                        
-                                                $filter_term_id = intval($filter_term_id);
-                                        
-                                                if (term_exists($filter_term_id, $filter)) {
-                                                    $selected_term_id = $filter_term_id;
+                                                $filter_term_id = get_query_var($filter);
+                                                if (is_numeric($filter_term_id)) {
 
-                                                    $listing_active_filters[] = array (
-                                                        'taxonomy' => $filter,
-                                                        'value' =>  $filter_term_id
-                                                    );
+                                                    $filter_term_id = intval($filter_term_id);
+
+                                                    if (term_exists($filter_term_id, $filter)) {
+                                                        $selected_term_id = $filter_term_id;
+
+                                                        $listing_active_filters[] = array (
+                                                            'taxonomy' => $filter,
+                                                            'value' =>  $filter_term_id
+                                                        );
+                                                    }
                                                 }
                                             }
-                                        }
 
-                                        $dropdown_exclude = [];
-                                        $included_terms = [];
+                                            $dropdown_exclude = [];
+                                            $included_terms = [];
 
-                                        $restrict_field = 'restrict_by_' . $filter;
+                                            $restrict_field = 'restrict_by_' . $filter;
 
-                                        $restict_terms = get_field($restrict_field);
+                                            $restict_terms = get_field($restrict_field);
 
-                                        if(!empty($restict_terms) && is_array($restict_terms)) {
-                                            $included_terms = $restict_terms;
+                                            if(!empty($restict_terms) && is_array($restict_terms)) {
+                                                $included_terms = $restict_terms;
 
-                                            // bring back list of terms that are  not included
-                                            $exclude_terms = get_terms(
+                                                // bring back list of terms that are  not included
+                                                $exclude_terms = get_terms(
+                                                    array(
+                                                        'taxonomy' => $filter,
+                                                        'exclude' => $included_terms
+                                                    )
+                                                );
+
+                                                if(!empty($exclude_terms)) {
+                                                    foreach($exclude_terms as $term){
+                                                        $dropdown_exclude[] = $term->term_id;
+                                                    }
+                                                }
+                                            }
+
+                                            $dropdown_html = wp_dropdown_categories(
                                                 array(
+                                                    'name' => $filter,
+                                                    'id' => $id,
+                                                    'class' => 'govuk-select',
                                                     'taxonomy' => $filter,
-                                                    'exclude' => $included_terms
+                                                    'show_option_all' => 'Select option',
+                                                    'orderby' => 'name',
+                                                    'echo' => 0,
+                                                    'hide_if_empty' => 1,
+                                                    'selected' => $selected_term_id,
+                                                    'exclude' => $dropdown_exclude
+
                                                 )
                                             );
 
-                                            if(!empty($exclude_terms)) {
-                                                foreach($exclude_terms as $term){
-                                                    $dropdown_exclude[] = $term->term_id;
-                                                }
+                                            if (!empty($dropdown_html)) { ?>
+                                                <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                                    <label class="govuk-label" for="<?php echo $id; ?>">
+                                                        <?php echo  $tax->labels->singular_name; ?>
+                                                    </label>
+                                                    <?php echo $dropdown_html; ?>
+                                                </div>
+                                                <?php
                                             }
                                         }
-
-                                        $dropdown_html = wp_dropdown_categories(
-                                            array(
-                                                'name' => $filter,
-                                                'id' => $id,
-                                                'class' => 'govuk-select',
-                                                'taxonomy' => $filter,
-                                                'show_option_all' => 'Select option',
-                                                'orderby' => 'name',
-                                                'echo' => 0,
-                                                'hide_if_empty' => 1,
-                                                'selected' => $selected_term_id,
-                                                'exclude' => $dropdown_exclude
-
-                                            )
-                                        );
-
-                                        if (!empty($dropdown_html)) { ?>
-                                            <div class="govuk-form-group govuk-!-margin-bottom-4">
-                                                <label class="govuk-label" for="<?php echo $id; ?>">
-                                                    <?php echo  $tax->labels->singular_name; ?>
-                                                </label>
-                                                <?php echo $dropdown_html; ?>
-                                            </div>
-                                            <?php
-                                        }
                                     }
-                                }
-
+                                echo "</fieldset>";
                             }
                             ?>
 
-                            <div class="govuk-!-padding-top-2">
+                            <div>
                                 <button class="govuk-button">
                                     <?php _e('Search', 'hale'); ?>
                                 </button>
