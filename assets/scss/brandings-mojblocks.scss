@@ -123,11 +123,23 @@ body.hale-colours-gds-standard {
 		background-color: var(--mojblocks-card-bg);
 		color: var(--mojblocks-card-text);
 
-		a {
-			color: var(--mojblocks-card-link);
+		p:not(.has-text-color *) {
+			color: inherit;
+		}
 
-			&:hover {
-				color: var(--mojblocks-card-link-hover);
+		a,
+		a:not([class]) {
+			&:link {
+				color: var(--mojblocks-card-link);
+			}
+			&:visited {
+				color: var(--mojblocks-card-link-visited);
+			}
+			&:link,
+			&:visited {
+				&:hover {
+					color: var(--mojblocks-card-link-hover);
+				}
 			}
 		}
 	}
