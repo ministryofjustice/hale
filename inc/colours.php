@@ -219,7 +219,7 @@
 					['mojblocks-card-bg',$white,'Card background','',''],
 					['mojblocks-card-text',$black,'Card text','',''],
 					['mojblocks-card-link',$blue,'Card link','',''],
-					['mojblocks-card-link-hover',$black,'Card link on hover','',''],
+					['mojblocks-card-link-hover',$darkBlue,'Card link on hover','',''],
 				)
 			],
 			[
