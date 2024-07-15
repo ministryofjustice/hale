@@ -217,6 +217,10 @@
 				"description" => "",
 				"colours" => array(
 					['mojblocks-card-bg',$white,'Card background','',''],
+					['mojblocks-card-text',$black,'Card text','',''],
+					['mojblocks-card-link',$blue,'Card link','',''],
+					['mojblocks-card-link-visited',$purple,'Visited card link','',''],
+					['mojblocks-card-link-hover',$darkBlue,'Card link on hover','',''],
 				)
 			],
 			[

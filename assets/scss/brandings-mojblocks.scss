@@ -121,6 +121,26 @@ body.hale-colours-gds-standard {
 	//Card Block
 	.mojblocks-card {
 		background-color: var(--mojblocks-card-bg);
+
+		p:not(.has-text-color *) {
+			color: var(--mojblocks-card-text);
+		}
+
+		a,
+		a:not([class]) {
+			&:link {
+				color: var(--mojblocks-card-link);
+			}
+			&:visited {
+				color: var(--mojblocks-card-link-visited);
+			}
+			&:link,
+			&:visited {
+				&:hover {
+					color: var(--mojblocks-card-link-hover);
+				}
+			}
+		}
 	}
 
 	//Highlights List Block
