@@ -121,10 +121,9 @@ body.hale-colours-gds-standard {
 	//Card Block
 	.mojblocks-card {
 		background-color: var(--mojblocks-card-bg);
-		color: var(--mojblocks-card-text);
 
 		p:not(.has-text-color *) {
-			color: inherit;
+			color: var(--mojblocks-card-text);
 		}
 
 		a,
