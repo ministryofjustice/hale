@@ -26,7 +26,37 @@
 	}
 }
 
-
+@mixin hale-dark-background-button($paletteColour) {
+	.mojblocks-button,
+	a.mojblocks-button:link,
+	a.mojblocks-button:visited,
+	.wp-block-button__link,
+	.govuk-button {
+		&:not(.#{$paletteColour} .has-background *) {
+			border:var(--dark-button-border);
+			box-shadow: none;
+			color:var(--dark-button-text);
+			background-color:var(--dark-button);
+			&:hover {
+				background-color: var(--dark-button-hover);
+				color: var(--dark-button-hover-text);
+				box-shadow: none;
+				border-color: var(--dark-button-hover-border);
+				svg {
+					fill: var(--dark-button-hover-text);
+				}
+			}
+			&:focus,
+			&:focus:not(:active):not(:hover) {
+				border-color: var(--dark-button-focus-outline);
+				box-shadow: 0 0 0 3px var(--dark-button-focus-outline);
+			}
+			svg {
+				fill: var(--dark-button-text);
+			}
+		}
+	}
+}
 
 @mixin hale-custom-shading-text-colours($paletteColour) {
 	.#{$paletteColour} {
@@ -51,22 +81,7 @@
 		.use-dark-background-heading-colour {
 			@include hale-block-inside-block($paletteColour,var(--dark-heading-text));
 		}
-	}
-	&:is(p),
-	p,
-	li,
-	label,
-	.use-dark-background-text-colour {
-		&.#{$paletteColour}:not(.has-text-color) {
-			color: var(--dark-text);
-		}
-	}
-	h1, h2, h3, h4, h5, h6,
-	&:is(h1, h2, h3, h4, h5, h6),
-	.use-dark-background-heading-colour {
-		&.#{$paletteColour}:not(.has-text-color) {
-			color: var(--dark-heading-text);
-		}
+		@include hale-dark-background-button($paletteColour);
 	}
 }
 
