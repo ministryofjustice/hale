@@ -20,12 +20,44 @@
 		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(.has-text-color *):not(.has-text-color) {
 			color: $colour;
 		}
-	} @else {
+	} @else { //is link - no text colour check, focus colour doesn't change from normal because of the focus background.
 		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(:focus) {
 			color: $colour;
 
 			&:hover {
 				color: $colour;
+			}
+		}
+	}
+}
+// This does the same as above but for buttons
+@mixin hale-dark-background-button($paletteColour) {
+	.mojblocks-button,
+	a.mojblocks-button:link,
+	a.mojblocks-button:visited,
+	.wp-block-button__link,
+	.govuk-button {
+		&:not(.#{$paletteColour} .has-background *) {
+			border:var(--dark-button-border);
+			box-shadow: none;
+			color:var(--dark-button-text);
+			background-color:var(--dark-button);
+			&:hover {
+				background-color: var(--dark-button-hover);
+				color: var(--dark-button-hover-text);
+				box-shadow: none;
+				border-color: var(--dark-button-hover-border);
+				svg {
+					fill: var(--dark-button-hover-text);
+				}
+			}
+			&:focus,
+			&:focus:not(:active):not(:hover) {
+				border-color: var(--dark-button-focus-outline);
+				box-shadow: 0 0 0 3px var(--dark-button-focus-outline);
+			}
+			svg {
+				fill: var(--dark-button-text);
 			}
 		}
 	}
@@ -55,6 +87,7 @@
 		.use-dark-background-heading-colour {
 			@include hale-block-inside-block($paletteColour,var(--dark-heading-text));
 		}
+		@include hale-dark-background-button($paletteColour);
 	}
 }
 //branding colours and styles

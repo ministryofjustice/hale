@@ -19,6 +19,7 @@
 		$lightGreen = '#85994b';
 		$buttonHoverGreen = '#005A30';
 		$buttonHoverGrey = '#DBDAD9';
+		$buttonHoverWhite = '#E8F1F8';
 		$lightGrey = '#F3F2F1';
 		$midGrey = '#B1B4B6';
 		$darkGrey = '#505A5F';
@@ -167,6 +168,13 @@
 					['button-focus',$yellow,'Button background when focussed','',''],
 					['button-focus-text',$black,'Button text when focussed','',''],
 					['button-focus-outline',$yellow,'Button outline when focussed (including search button)','This is thicker than the button border',''],
+					['dark-button',$white,'Button background on custom-set dark background','',''],
+					['dark-button-text',$blue,'Button text on custom-set dark background','',''],
+					['dark-button-border',"none",'Button border on custom-set dark background','Enter a complete CSS value for border, e.g. "solid 2px #0b0c0c", "none"','text'], // not a colour
+					['dark-button-hover',$buttonHoverWhite,'Button background on hover on custom-set dark background','',''],
+					['dark-button-hover-text',$blue,'Button text on hover on custom-set dark background','',''],
+					['dark-button-hover-border','transparent','Button border on hover on custom-set dark background','Leave blank for none. Requires there to be a button border set',''],
+					['dark-button-focus-outline',$yellow,'Button outline when focussed on custom-set dark background','This is thicker than the button border',''],
 				)
 			],
 			[

@@ -225,6 +225,7 @@ body.hale-colours-gds-standard {
 
 	// all buttons in blocks
 	// .wp-block-button__link is used here to extend our colours to the core WP button block
+	// dark background versions of these styles are in brandings.scss and brandings-dark-background--php-used.scss
 	.mojblocks-button,
 	a.mojblocks-button:link,
 	a.mojblocks-button:visited,
@@ -243,12 +244,7 @@ body.hale-colours-gds-standard {
 				fill: var(--button-hover-text);
 			}
 		}
-		&:focus {
-			background-color: var(--button-focus);
-			color: var(--button-focus-text);
-			border-color: var(--button-focus-outline);
-			box-shadow: 0 0 0 3px var(--button-focus-outline);
-		}
+		&:focus,
 		&:focus:not(:active):not(:hover) {
 			background-color: var(--button-focus);
 			color: var(--button-focus-text);
