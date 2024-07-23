@@ -78,9 +78,9 @@ while (have_posts()) :
                                             $id = 'listing-search-filter-' . $filter;
 
 
-                                            if (get_query_var($filter)) {
+                                            if (get_query_var($tax->query_var)) {
 
-                                                $filter_term_id = get_query_var($filter);
+                                                $filter_term_id = get_query_var($tax->query_var);
                                                 if (is_numeric($filter_term_id)) {
 
                                                     $filter_term_id = intval($filter_term_id);
@@ -123,7 +123,7 @@ while (have_posts()) :
 
                                             $dropdown_html = wp_dropdown_categories(
                                                 array(
-                                                    'name' => $filter,
+                                                    'name' => $tax->query_var,
                                                     'id' => $id,
                                                     'class' => 'govuk-select',
                                                     'taxonomy' => $filter,
@@ -252,8 +252,6 @@ while (have_posts()) :
                         $listing_args['tax_query'] = $tax_qry_ary;
 
                     }
-
-    
 
                     $listing_query = new WP_Query($listing_args);
 
