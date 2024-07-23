@@ -864,14 +864,9 @@ body.hale-colours-variable {
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
 		@extend .govuk-link;
-
 	}
 	.govuk-breadcrumbs__list-item {
 		color: var(--text);
-		max-width: 500px;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		border-bottom: 3px solid transparent;
 	}
 
 	//link focus state (breadcrumbs)
