@@ -71,6 +71,8 @@ while (have_posts()) :
 
                                         $tax = get_taxonomy($filter);
 
+                              
+
                                         if(!empty($tax)){
 
                                             $selected_term_id = 0;
@@ -121,31 +123,139 @@ while (have_posts()) :
                                                 }
                                             }
 
+
+
+
+
+                                          
+
+                                            // Fetch all categories
+                                            $all_categories = get_categories(
+                                                array(
+                                                    'taxonomy' => $filter,
+                                                    'hide_empty' => false,
+                                                    'exclude' => $dropdown_exclude,
+                                                )
+                                            );
+
+                                            // Filter out parent categories and check for children
+                                            $parent_categories = [];
+                                            $categories_with_children = [];
+
+                                            foreach ($all_categories as $cat) {
+                                                if ($cat->parent == 0) {
+                                                    $parent_categories[] = $cat;
+                                                    // Check if the category has children
+                                                    $child_categories = get_term_children($cat->term_id, $filter);
+
+                                                    if (!empty($child_categories)) {
+                                                        $categories_with_children[$cat->term_id] = get_categories(array('include' => $child_categories, 'taxonomy' => $filter, 'hide_empty' => false));
+                                                    }
+                                                }
+                                            }
+
+                                            // Generate initial dropdown HTML for parent categories
+                                            $parent_category_ids = array_map(function($cat) {
+                                                return $cat->term_id;
+                                            }, $parent_categories);
+
                                             $dropdown_html = wp_dropdown_categories(
                                                 array(
                                                     'name' => $filter,
                                                     'id' => $id,
-                                                    'class' => 'govuk-select',
+                                                    'class' => 'govuk-select parent-category',
                                                     'taxonomy' => $filter,
                                                     'show_option_all' => 'Select option',
                                                     'orderby' => 'name',
                                                     'echo' => 0,
                                                     'hide_if_empty' => 1,
                                                     'selected' => $selected_term_id,
-                                                    'exclude' => $dropdown_exclude
-
+                                                    'include' => $parent_category_ids // Include only parent categories
                                                 )
                                             );
 
-                                            if (!empty($dropdown_html)) { ?>
-                                                <div class="govuk-form-group govuk-!-margin-bottom-4">
-                                                    <label class="govuk-label" for="<?php echo $id; ?>">
-                                                        <?php echo  $tax->labels->singular_name; ?>
-                                                    </label>
-                                                    <?php echo $dropdown_html; ?>
-                                                </div>
-                                                <?php
-                                            }
+                                            // Output the dropdown HTML
+                                            echo '<label for="' . $id . '">Select Parent Category</label>';
+                                            echo $dropdown_html;
+
+                                            // Output child category data as JSON for JavaScript to use
+                                            echo '<script>';
+                                            echo 'var categoriesWithChildren = ' . json_encode($categories_with_children) . ';';
+                                            echo '</script>';
+
+                                            ?>
+
+                                            <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var parentDropdown = document.querySelector('.parent-category');
+
+    // Load saved parent category selection if available
+    var savedParentCategoryId = localStorage.getItem('selectedParentCategory');
+    if (savedParentCategoryId) {
+        parentDropdown.value = savedParentCategoryId;
+    }
+
+    parentDropdown.addEventListener('change', function() {
+        var selectedCategoryId = this.value;
+
+        // Save the selected parent category in localStorage
+        localStorage.setItem('selectedParentCategory', selectedCategoryId);
+
+        // Remove any existing child dropdown
+        var existingChildDropdown = document.querySelector('.child-category');
+        if (existingChildDropdown) {
+            existingChildDropdown.remove();
+        }
+
+        // Check if the selected category has children
+        if (categoriesWithChildren[selectedCategoryId]) {
+            // Create a new dropdown for child categories
+            var childDropdown = document.createElement('select');
+            childDropdown.name = '<?php echo $filter; ?>_child';
+            childDropdown.id = '<?php echo $id; ?>_child';
+            childDropdown.className = 'govuk-select child-category';
+
+            // Add an option for selecting a child category
+            var defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Select option';
+            childDropdown.appendChild(defaultOption);
+
+            // Add child category options
+            categoriesWithChildren[selectedCategoryId].forEach(function(childCat) {
+                var option = document.createElement('option');
+                option.value = childCat.term_id;
+                option.text = childCat.name;
+                childDropdown.appendChild(option);
+            });
+
+            // Append the child dropdown to the form
+            parentDropdown.parentNode.appendChild(childDropdown);
+        }
+    });
+
+    // Trigger change event to load the child dropdown if parent selection was saved
+    if (savedParentCategoryId) {
+        var event = new Event('change');
+        parentDropdown.dispatchEvent(event);
+    }
+});
+
+                                            </script>
+
+
+
+
+<?php
+
+
+
+
+
+
+
+
+                                           
                                         }
                                     }
                                 echo "</fieldset>";
@@ -250,7 +360,6 @@ while (have_posts()) :
 
                     if (!empty($tax_qry_ary)) {
                         $listing_args['tax_query'] = $tax_qry_ary;
-
                     }
 
     
