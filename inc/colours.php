@@ -79,14 +79,14 @@
 					['header-search-input-active-placeholder',$darkGrey,'Placeholder text when active','',''],
 					['header-search-input-active-border',$yellow,'Border when active','',''],
 					['header-search-btn-bg',$lightGrey,'Button background','',''],
-					['header-search-btn-border','var(--header-search-btn-bg)','Button border','Blank will match background',''],
+					['header-search-btn-border','var(--header-search-btn-bg)','Button border','Blank will match background',''], // using a var to reduce impact on existing colour schemes
 					['header-search-btn-border-input-active',$yellow,'Button border when input is active','',''],
 					['header-search-btn-icon',$black,'Button icon','',''],
 					['header-search-btn-hover-bg',$buttonHoverGrey,'Background on hover','',''],
-					['header-search-btn-hover-border','var(--header-search-btn-hover-bg)','Button border on hover','Blank will match background',''],
+					['header-search-btn-hover-border','var(--header-search-btn-hover-bg)','Button border on hover','Blank will match background',''], // using a var to reduce impact on existing colour schemes
 					['header-search-btn-hover-icon',$black,'Button icon on hover','',''],
 					['header-search-btn-focus-bg',$yellow,'Button background when focussed','',''],
-					['header-search-btn-focus-border','var(--header-search-btn-focus-bg)','Button border on focus','Blank will match background',''],
+					['header-search-btn-focus-border','var(--header-search-btn-focus-bg)','Button border on focus','Blank will match background',''], // using a var to reduce impact on existing colour schemes
 					['header-search-btn-focus-icon',$black,'Button icon when focussed','',''],
 					['header-search-btn-divider',$white,'Divider between button and input field','',''],
 					['header-search-btn-divider-hover',$lightGrey,'Divider on hover','',''],
