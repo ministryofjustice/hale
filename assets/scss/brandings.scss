@@ -183,7 +183,7 @@
 				}
 
 				&:focus {
-					border: none;
+					border-color: var(--header-search-input-focus-border-trim); //this is the line between input background and focus border
 					outline: 3px solid var(--header-search-input-focus-border);
 					background: var(--header-search-input-focus-bg);
 					color: var(--header-search-input-focus-text);
@@ -208,15 +208,21 @@
 
 			.hale-search__submit {
 				background: var(--header-search-btn-bg);
-				box-shadow: 0 1px 0 0 var(--header-search-btn-bg);
+				border-color: var(--header-search-btn-border) var(--header-search-btn-border) var(--header-search-btn-border) var(--header-search-btn-divider);
 
+				&:is(.hale-search__input:focus:active+*) {
+					border-color: var(--header-search-btn-border-input-active) var(--header-search-btn-border-input-active) var(--header-search-btn-border-input-active) var(--header-search-btn-divider-input-active);
+				}
+				&:is(.hale-search__input:focus+*) {
+					border-left-color: var(--header-search-input-focus-border-trim);
+				}
 				svg {
 					fill: var(--header-search-btn-icon);
 				}
 
 				&:hover {
 					background: var(--header-search-btn-hover-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-hover-bg);
+					border-color: var(--header-search-btn-hover-border) var(--header-search-btn-hover-border) var(--header-search-btn-hover-border) var(--header-search-btn-divider-hover);
 
 					svg {
 						fill: var(--header-search-btn-hover-icon);
@@ -225,7 +231,7 @@
 
 				&:focus, &:active {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
+					border-color: var(--header-search-btn-focus-border) var(--header-search-btn-focus-border) var(--header-search-btn-focus-border) var(--header-search-btn-divider-focus);
 
 					svg {
 						fill: var(--header-search-btn-focus-icon);
@@ -234,7 +240,6 @@
 
 				&:focus:not(:active):not(:hover) {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 0 0 3px var(--button-focus-outline);
 				}
 			}
 		}

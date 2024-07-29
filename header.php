@@ -72,7 +72,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
   if ( 'yes' === $header_search && !is_search()) {
     ?>
     <div class="hale-header__search">
-      <?php get_search_form(); ?>
+      <?php get_search_form(array('header' => true)); ?>
     </div>
     <?php
   }
