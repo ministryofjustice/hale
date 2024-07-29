@@ -129,9 +129,9 @@
       padding-left: 9px;
       padding-top: 2px;
       width: 44px;
-      box-shadow: none;
       height: 40px;
-      border: 1px solid;
+      border-width: 1px 1px 1px 0;
+      border-style: solid;
 
       &:focus, &:active {
         box-shadow: none;

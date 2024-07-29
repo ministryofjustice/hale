@@ -208,10 +208,12 @@
 
 			.hale-search__submit {
 				background: var(--header-search-btn-bg);
-				border-color: var(--header-search-btn-border) var(--header-search-btn-border) var(--header-search-btn-border) var(--header-search-btn-divider);
+				border-color: var(--header-search-btn-border);
+				box-shadow: -2px 0 0 -1px var(--header-search-btn-divider);
 
 				&:is(.hale-search__input:focus:active+*) {
-					border-color: var(--header-search-btn-border-input-active) var(--header-search-btn-border-input-active) var(--header-search-btn-border-input-active) var(--header-search-btn-divider-input-active);
+					border-color: var(--header-search-btn-border-input-active);
+					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-input-active);
 				}
 				&:is(.hale-search__input:focus+*) {
 					border-left-color: var(--header-search-input-focus-border-trim);
@@ -222,7 +224,8 @@
 
 				&:hover {
 					background: var(--header-search-btn-hover-bg);
-					border-color: var(--header-search-btn-hover-border) var(--header-search-btn-hover-border) var(--header-search-btn-hover-border) var(--header-search-btn-divider-hover);
+					border-color: var(--header-search-btn-hover-border);
+					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-hover);
 
 					svg {
 						fill: var(--header-search-btn-hover-icon);
@@ -231,7 +234,8 @@
 
 				&:focus, &:active {
 					background: var(--header-search-btn-focus-bg);
-					border-color: var(--header-search-btn-focus-border) var(--header-search-btn-focus-border) var(--header-search-btn-focus-border) var(--header-search-btn-divider-focus);
+					border-color: var(--header-search-btn-focus-border);
+					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-focus);
 
 					svg {
 						fill: var(--header-search-btn-focus-icon);
