@@ -244,6 +244,7 @@
 
 				&:focus:not(:active):not(:hover) {
 					background: var(--header-search-btn-focus-bg);
+					border-color: var(--header-search-btn-focus-bg);
 				}
 			}
 		}
