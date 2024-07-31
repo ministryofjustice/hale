@@ -183,7 +183,7 @@
 				}
 
 				&:focus {
-					border-color: var(--header-search-input-focus-border-trim); //this is the line between input background and focus border
+					border-color: var(--header-search-input-focus-border-trim); //this is an inner border to increase contrast betwixt search box and the focus outline (next line)
 					outline: 3px solid var(--header-search-input-focus-border);
 					background: var(--header-search-input-focus-bg);
 					color: var(--header-search-input-focus-text);
@@ -245,6 +245,7 @@
 				&:focus:not(:active):not(:hover) {
 					background: var(--header-search-btn-focus-bg);
 					border-color: var(--header-search-btn-focus-bg);
+					// box-shadow for this state is "0 0 0 3px var(--button-focus-outline)" from general button styles
 				}
 			}
 		}

@@ -59,6 +59,10 @@
 
   .hale-header__search {
     padding-bottom: 0.5em;
+
+    &:first-child {
+      margin-top: 60px; //ensure enough space when there is no logo set
+    }
   }
 
   .govuk-header__content {
@@ -113,6 +117,7 @@
 
     .hale-search__input {
       padding-right: 46px;
+      padding-left: 9px;
       height: 40px;
 
       &:focus {
