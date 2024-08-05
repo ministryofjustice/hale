@@ -1,5 +1,9 @@
 .govuk-footer {
 
+  &:is(.ccfw-settings-button ~ *) {
+    padding-bottom: 129px; // Increased the bottom padding by 114px to allow cookie triangle space on narrow screens.
+  }
+
   a:not([class]), a[class=""] {
     //deals with any links that aren't classed - makes them GDS footer links
     @extend .govuk-footer__link;
