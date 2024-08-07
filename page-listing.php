@@ -9,8 +9,6 @@
 
 get_header();
 
-//Get Search text Value
-
 $listing_search_text = '';
 $listing_active_filters = [];
 $search_text_HTML = ''; 
@@ -48,6 +46,7 @@ while (have_posts()) :
             <div class="govuk-grid-column-one-third">
                 <div class="listing-search-section">
                     <div class="listing-search-form">
+                    <div class="news-archive-filter-form">
                         <form action="<?php echo get_permalink(); ?>" method="GET">
                             <div class="govuk-form-group govuk-!-margin-bottom-4">
                                 <label for="listing-search-field" class="govuk-visually-hidden">
@@ -60,7 +59,7 @@ while (have_posts()) :
 
                             <?php
 
-                            // Listing filters start
+                            // Listing filters, taxonomies we want to filter our post by
                             $listing_filters = get_field('listing_filters');
 
                             if(!empty($listing_filters) && is_array($listing_filters)) { ?>
@@ -71,7 +70,9 @@ while (have_posts()) :
                                             <?php _e("Filters","hale"); ?>
                                         </h2>
                                     </legend>
-                                    <?php include(locate_template('template-parts/flexible-cpts/listing-filters.php', false, false)); ?>
+                                    <?php hale_include_template_with_variables('template-parts/flexible-cpts/listing-filters.php', [
+                                            'listing_filters' => $listing_filters
+                                    ]); ?>
                                 </fieldset>
 
                             <?php } ?>
@@ -87,6 +88,7 @@ while (have_posts()) :
                                 </div>
                             </div>
                         </form>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -95,7 +97,7 @@ while (have_posts()) :
             // Righthand column with listing page results
             ?>
             <div class="govuk-grid-column-two-thirds">
-                <?php include(locate_template('template-parts/flexible-cpts/listing-results.php', false, false)); ?>
+                <?php load_template(locate_template('template-parts/flexible-cpts/listing-results.php'), true); ?>
             </div>
         </div>
     </div><!-- #primary -->

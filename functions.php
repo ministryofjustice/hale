@@ -547,3 +547,8 @@ remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
  * Add options for lang attribute for footer menu links
  */
 require get_template_directory() . '/inc/footer-language-attributes.php';
+
+/**
+ * Utility functions to help with various tasks
+ */
+require get_template_directory() . '/inc/helper-functions.php';
