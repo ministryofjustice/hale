@@ -39,12 +39,8 @@ function hale_archive_pagination($template = '', $custom_query = '')
                         echo "Page " . $current_page_number . " of " . $max_pages; ?>
 
                     </li>
-                    <li class="archive-pagination-prev-btn">
-                    <?php previous_posts_link('< Previous', $max_pages); ?>
-                    </li>
-                    <li class="archive-pagination-next-btn">
-                        <?php next_posts_link('Next >', $max_pages); ?>
-                </li>
+                    <li class="archive-pagination-prev-btn"><?php previous_posts_link('< Previous', $max_pages); ?></li>
+                    <li class="archive-pagination-next-btn"><?php next_posts_link('Next >', $max_pages); ?></li>
                 </ul>
             </nav>
             <?php
