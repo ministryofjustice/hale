@@ -46,7 +46,7 @@ if (empty($show_author)) {
                                         <?php _e("See items with the topic: "); ?>
                                     </span>
                                     <strong>
-                                        <?php echo $story_category->name; ?>
+                                        <?php echo esc_html($story_category->name); ?>
                                     </strong>
                                 </a>
                             </li>
@@ -65,7 +65,7 @@ if (empty($show_author)) {
                                         <?php _e("See items tagged: "); ?>
                                     </span>
                                     <strong>
-                                        #<?php echo $story_tag->name; ?>
+                                        #<?php echo esc_html($story_tag->name); ?>
                                     <strong>
                                 </a>
                             </li>
