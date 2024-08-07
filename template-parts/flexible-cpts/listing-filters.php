@@ -1,8 +1,6 @@
 <?php
 
 
-echo '<label class="govuk-label" for="news-archive-filter-topic">Topic</label>';
-
 
 // ACF flexible CPT taxonomies brought in to filter
 // This is a component from page-listing.php
@@ -10,7 +8,6 @@ echo '<label class="govuk-label" for="news-archive-filter-topic">Topic</label>';
 // For go through all the taxonomies
 foreach($listing_filters as $filter) {
 
- 
 
     $dropdown_args = array(
         "name" => $filter,
@@ -23,6 +20,8 @@ foreach($listing_filters as $filter) {
         'order'             => 'ASC',
         'hierarchical' => 1,
     );
+    
+    echo '<label class="govuk-label" for="news-archive-filter-topic">Topic</label>';
     
     wp_dropdown_categories($dropdown_args);
 
