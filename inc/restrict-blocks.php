@@ -53,10 +53,7 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/staggered-box'
         );
 
-        //Check if news post type is deactivated
-        $cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
-        $deactivate_news = get_theme_mod('deactivate_cpt_news', "yes"); //old way to be deleted once new settings saved
-        if ($cpt_news_activated || $deactivate_news == "no") {
+        if (post_type_exists('news')) {
             $allowed_blocks[] = 'mojblocks/latest-news';
             $allowed_blocks[] = 'mojblocks/featured-news';
         }
