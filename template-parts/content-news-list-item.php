@@ -25,7 +25,12 @@
                         <li class="news-story-categories-list-item">
                             <a href="<?php echo get_category_link($story_category->term_id); ?>"
                                class="news-story-category-link">
-                                <?php echo $story_category->name; ?>
+                                <span class="govuk-visually-hidden">
+                                    <?php _e("See items with the topic: "); ?>
+                                </span>
+                                <strong>
+                                    <?php echo $story_category->name; ?>
+                                </strong>
                             </a>
                         </li>
                         <?php
@@ -39,7 +44,12 @@
                         <li class="news-story-categories-list-item">
                             <a href="<?php echo get_tag_link($story_tag->term_id); ?>"
                                class="news-story-category-link">
-                                #<?php echo $story_tag->name; ?>
+                                <span class="govuk-visually-hidden">
+                                    <?php _e("See items tagged: "); ?>
+                                </span>
+                                <strong>
+                                    #<?php echo $story_tag->name; ?>
+                                <strong>
                             </a>
                         </li>
                         <?php
