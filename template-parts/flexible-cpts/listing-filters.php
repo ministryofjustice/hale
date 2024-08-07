@@ -9,8 +9,16 @@
 foreach($listing_filters as $filter) {
 
 
+    // Check taxonomies exist
+    $taxonomy = get_taxonomy($filter);
+
+    // Check if the taxonomy object is valid
+    if (!$taxonomy) {
+        return;
+    }
+
     $dropdown_args = array(
-        "name" => $filter,
+        "name" => $taxonomy->query_var,
         "id" => "news-archive-filter-topic",
         "class" => "govuk-select",
         'taxonomy' => $filter,
@@ -21,8 +29,8 @@ foreach($listing_filters as $filter) {
         'hierarchical' => 1,
     );
     
-    echo '<label class="govuk-label" for="news-archive-filter-topic">Topic</label>';
-    
+    echo '<label class="govuk-label" for="news-archive-filter-topic">'.$filter.'</label>';
+
     wp_dropdown_categories($dropdown_args);
 
     $all_terms = get_terms( array(
@@ -42,7 +50,8 @@ foreach($listing_filters as $filter) {
     if($has_subtopics){
         $disabled_subtopics = 'disabled="disabled"';
 
-        $selected_topic = get_query_var('cat');
+        // use query var
+        $selected_topic = get_query_var($taxonomy->query_var);
         $selected_sub_topic = get_query_var('subtopic');
         $sub_topics = [];
 
