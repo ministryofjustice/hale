@@ -44,7 +44,8 @@ function hale_archive_pagination($template = '', $custom_query = '')
                             echo "<li class='archive-pagination-prev-btn'>";
                             previous_posts_link('< Previous', $max_pages);
                             echo "</li>";
-                        } elseif ($current_page_number < $max_pages) {
+                        }
+                        if ($current_page_number < $max_pages) {
                             echo "<li class='archive-pagination-next-btn'>";
                             next_posts_link('Next >', $max_pages);
                             echo "</li>";
