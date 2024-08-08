@@ -66,7 +66,7 @@ if (empty($show_author)) {
                                     </span>
                                     <strong>
                                         #<?php echo esc_html($story_tag->name); ?>
-                                    <strong>
+                                    </strong>
                                 </a>
                             </li>
                             <?php
