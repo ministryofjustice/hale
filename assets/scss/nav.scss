@@ -78,10 +78,14 @@
                 transform: rotate(45deg);
               }
             }
-            ~ .menu-item,
-              .menu-item--more__content {
+            ~ .menu-item {
                 display: none;
             }
+            .menu-item--more__content {
+                display: flex;
+                visibility: hidden;
+                transition: visibility  0s 1ms;
+              }
             &--open {
               .menu-item__more:after {
                 transform: rotate(-135deg);
@@ -91,9 +95,10 @@
 
             &--open .menu-item--more__content,
             &:hover .menu-item--more__content,
+            .menu-item__more:focus ~ .menu-item--more__content,
             .menu-item--more__content:focus,
             .menu-item--more__content:focus-within {
-              display: flex;
+              visibility: visible;
             }
           }
           .menu-item--more__content {
