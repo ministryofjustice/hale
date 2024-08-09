@@ -14,9 +14,12 @@ foreach($listing_filters as $filter) {
         return;
     }
 
+    $parent_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-topic');
+    $child_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-subtopic');
+
     $dropdown_args = [
         "name" => $taxonomy->query_var,
-        "id" => "news-archive-filter-topic",
+        "id" => $parent_class_name,
         "class" => "govuk-select",
         'taxonomy' => $filter,
         'show_option_all' => "All topics",
@@ -26,7 +29,7 @@ foreach($listing_filters as $filter) {
         'hierarchical' => 1,
     ];
     
-    echo '<label class="govuk-label" for="news-archive-filter-topic">'. $taxonomy->label .'</label>';
+    echo '<label class="govuk-label" for="'. $parent_class_name .'">'. $taxonomy->label .'</label>';
 
     wp_dropdown_categories($dropdown_args);
 
@@ -60,14 +63,13 @@ foreach($listing_filters as $filter) {
             ));
 
             if (is_array($sub_topics) && !empty($sub_topics)) {
-                var_dump($selected_topic);
                 $disabled_subtopics = '';
             }
         }
 
         ?>
-        <label class="govuk-label" for="news-archive-filter-subtopic"><?php echo $taxonomy->label; ?> sub-topic</label>
-        <select name="subtopic" id="news-archive-filter-subtopic"
+        <label class="govuk-label" for="<?php echo $child_class_name; ?>"><?php echo $taxonomy->label; ?> sub-topic</label>
+        <select name="subtopic" id="<?php echo $child_class_name; ?>"
                 class="govuk-select" <?php echo $disabled_subtopics; ?>>
             <option
                 value="0" <?php if ($selected_sub_topic == 0) { ?> selected="selected" <?php } ?> >
@@ -78,6 +80,7 @@ foreach($listing_filters as $filter) {
                 foreach ($sub_topics as $sub_topic) {
                     ?>
                     <option
+                        id="<?php echo $sub_topic . '-class-value'; ?>"
                         value="<?php echo $sub_topic->term_id; ?>" 
                         <?php 
                             if ($selected_sub_topic == $sub_topic->term_id) { 
