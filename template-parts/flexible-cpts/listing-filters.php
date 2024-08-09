@@ -1,7 +1,4 @@
 <?php
-
-
-
 // ACF flexible CPT taxonomies brought in to filter
 // This is a component from page-listing.php
 
@@ -17,7 +14,7 @@ foreach($listing_filters as $filter) {
         return;
     }
 
-    $dropdown_args = array(
+    $dropdown_args = [
         "name" => $taxonomy->query_var,
         "id" => "news-archive-filter-topic",
         "class" => "govuk-select",
@@ -27,16 +24,15 @@ foreach($listing_filters as $filter) {
         'orderby'           => 'name',
         'order'             => 'ASC',
         'hierarchical' => 1,
-    );
+    ];
     
-    echo '<label class="govuk-label" for="news-archive-filter-topic">'.$filter.'</label>';
+    echo '<label class="govuk-label" for="news-archive-filter-topic">'. $taxonomy->label .'</label>';
 
     wp_dropdown_categories($dropdown_args);
 
     $all_terms = get_terms( array(
         'taxonomy' => $filter
     ));
-
     
     $has_subtopics = false;
 
@@ -52,24 +48,25 @@ foreach($listing_filters as $filter) {
 
         // use query var
         $selected_topic = get_query_var($taxonomy->query_var);
+
         $selected_sub_topic = get_query_var('subtopic');
         $sub_topics = [];
-
 
         if (is_numeric($selected_topic)) {
 
             $sub_topics = get_terms(array(
-                'taxonomy' => 'category',
+                'taxonomy' => $filter,
                 'parent' => $selected_topic
             ));
 
             if (is_array($sub_topics) && !empty($sub_topics)) {
+                var_dump($selected_topic);
                 $disabled_subtopics = '';
             }
         }
 
         ?>
-        <label class="govuk-label" for="news-archive-filter-subtopic">Sub-topic</label>
+        <label class="govuk-label" for="news-archive-filter-subtopic"><?php echo $taxonomy->label; ?> sub-topic</label>
         <select name="subtopic" id="news-archive-filter-subtopic"
                 class="govuk-select" <?php echo $disabled_subtopics; ?>>
             <option
@@ -81,7 +78,11 @@ foreach($listing_filters as $filter) {
                 foreach ($sub_topics as $sub_topic) {
                     ?>
                     <option
-                        value="<?php echo $sub_topic->term_id; ?>" <?php if ($selected_sub_topic == $sub_topic->term_id) { ?> selected="selected" <?php } ?> ><?php echo $sub_topic->name; ?></option>
+                        value="<?php echo $sub_topic->term_id; ?>" 
+                        <?php 
+                            if ($selected_sub_topic == $sub_topic->term_id) { 
+                                ?> selected="selected" <?php 
+                            } ?> ><?php echo $sub_topic->name; ?></option>
                     <?php
 
                 }
