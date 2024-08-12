@@ -1,37 +1,66 @@
 jQuery(document).ready(function ($) {
 
-  $('#news-archive-filter-topic').on('change', function () {
+  console.log('hello2');
 
-    resetSubTopics();
+  const taxonomies = listing_page_object.taxonomies;
 
-    var selected_topic = this.value;
+  // Function to handle changes in the parent topic dropdown
+  function handleTopicChange(parentClass, childClass, selected_topic) {
+    if (selected_topic > 0) {
+      const termsWithParents = getTermsWithMatchingParents(selected_topic);
 
-    if (this.value > 0) {
+      // Update based on whether any matching subtopics were found
+      if (termsWithParents.length > 0) {
+        populateSubTopics(childClass, termsWithParents);
+        $(childClass).prop('disabled', false);
+      } else {
+        resetSubTopics(childClass);
+      }
+    } else {
+      resetSubTopics(childClass);
+    }
 
-      var found_subtopics = 0;
+    // Function to find terms with parents matching the selected topic
+    function getTermsWithMatchingParents(selected_topic) {
+      const termsWithParents = [];
 
-      listing_page_object.taxonomies.genre.forEach(function (tax) {
-        if (tax.parent == selected_topic) {
-          $("#news-archive-filter-subtopic").append(new Option(tax.name, tax.term_id));
-          found_subtopics++;
-        }
+      // Loop through each taxonomy and its terms
+      Object.keys(taxonomies).forEach(taxonomy => {
+        taxonomies[taxonomy].forEach(termData => {
+          if (termData.parent && termData.parent == selected_topic) {
+            termsWithParents.push(termData);
+          }
+        });
+      });
 
-        if (found_subtopics > 0) {
-          $('#news-archive-filter-subtopic').prop('disabled', false);
-        }
-        else {
-          $('#news-archive-filter-subtopic').prop('disabled', 'disabled');
-        }
+      return termsWithParents;
+    }
+
+    // Populate subtopics dropdown with matching terms
+    function populateSubTopics(childClass, termsWithParents) {
+      resetSubTopics(childClass);
+
+      termsWithParents.forEach(term => {
+        $(childClass).append(new Option(term.name, term.term_id));
       });
     }
-    else {
-      $('#news-archive-filter-subtopic').prop('disabled', 'disabled');
+
+    // Reset the subtopics dropdown
+    function resetSubTopics(childClass) {
+      $(childClass).empty();
+      $(childClass).append(new Option("All subtopics", ""));
+      $(childClass).prop('disabled', 'disabled'); // Disable the dropdown by default
     }
 
-  });
+    // Attach change event listeners to each parent topic dropdown
+    Object.keys(taxonomies).forEach(taxonomy => {
+      const parentClass = `#${taxonomy}-filter-topic`;
+      const childClass = `#${taxonomy}-filter-subtopic`;
 
-  function resetSubTopics() {
-    $('#news-archive-filter-subtopic').empty();
-    $("#news-archive-filter-subtopic").append(new Option("All Sub-topics", "0"));
+      $(parentClass).on('change', function () {
+        const selected_topic = this.value;
+        handleTopicChange(parentClass, childClass, selected_topic);
+      });
+    });
   }
 });

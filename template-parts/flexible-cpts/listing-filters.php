@@ -2,7 +2,7 @@
 // ACF flexible CPT taxonomies brought in to filter
 // This is a component from page-listing.php
 
-$selected_sub_topic = get_query_var('genre_subtopic');
+
 
 foreach ($listing_filters as $filter) {
 
@@ -22,7 +22,7 @@ foreach ($listing_filters as $filter) {
     $subtopic_query_var = $taxonomy->query_var . '_subtopic';
     $selected_sub_topic = get_query_var('genre_subtopic');
 
-    var_dump($selected_sub_topic);
+
 
     // Parent dropdown
     $dropdown_args = [
