@@ -20,15 +20,10 @@ foreach ($listing_filters as $filter) {
 
     // Use a unique query var for each genre_subtopic
     $subtopic_query_var = $taxonomy->query_var . '_subtopic';
-
-  
-
     $selected_sub_topic = get_query_var($subtopic_query_var);
 
-    // var_dump($selected_sub_topic);
-
-// Restrictions on WP QUERY
-// Restrictions on filter
+    // Restrictions on WP QUERY
+    // Restrictions on filter
 
     // Parent dropdown
     $dropdown_args = [
@@ -87,7 +82,6 @@ foreach ($listing_filters as $filter) {
             echo esc_html($sub_topic->name);
             echo '</option>';
         }
-
         echo '</select>';
     }
 }
