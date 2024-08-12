@@ -53,7 +53,13 @@
     ?>
     <div class="news-story-excerpt">
         <?php
-        $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
+
+        $news_story_summary = get_field('post_summary');
+
+        if(empty($news_story_summary)){
+            $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
+        }
+
         if(!empty($news_story_summary)){
             echo wpautop($news_story_summary);
         }
