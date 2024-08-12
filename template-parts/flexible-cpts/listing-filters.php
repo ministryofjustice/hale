@@ -2,21 +2,29 @@
 // ACF flexible CPT taxonomies brought in to filter
 // This is a component from page-listing.php
 
-// For go through all the taxonomies
-foreach($listing_filters as $filter) {
+$selected_sub_topic = get_query_var('genre_subtopic');
 
+foreach ($listing_filters as $filter) {
 
-    // Check taxonomies exist
     $taxonomy = get_taxonomy($filter);
 
-    // Check if the taxonomy object is valid
     if (!$taxonomy) {
-        return;
+        continue;
     }
 
     $parent_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-topic');
     $child_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-subtopic');
 
+    // Get the selected parent topic
+    $selected_topic = get_query_var($taxonomy->query_var);
+
+    // Use a unique query var for each subtopic
+    $subtopic_query_var = $taxonomy->query_var . '_subtopic';
+    $selected_sub_topic = get_query_var('genre_subtopic');
+
+    var_dump($selected_sub_topic);
+
+    // Parent dropdown
     $dropdown_args = [
         "name" => $taxonomy->query_var,
         "id" => $parent_class_name,
@@ -24,82 +32,57 @@ foreach($listing_filters as $filter) {
         'taxonomy' => $filter,
         'show_option_all' => "All topics",
         'depth' => 1,
-        'orderby'           => 'name',
-        'order'             => 'ASC',
+        'orderby' => 'name',
+        'order' => 'ASC',
         'hierarchical' => 1,
+        'selected' => $selected_topic, // Persist selected value
     ];
-    
-    echo '<label class="govuk-label" for="'. $parent_class_name .'">'. $taxonomy->label .'</label>';
 
+    echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($taxonomy->label) . '</label>';
     wp_dropdown_categories($dropdown_args);
 
-    $all_terms = get_terms( array(
-        'taxonomy' => $filter
+    $all_terms = get_terms(array(
+        'taxonomy' => $filter,
+        'hide_empty' => false,
     ));
-    
+
     $has_subtopics = false;
 
-    foreach($all_terms as $term){
-        if($term->parent > 0){
+    foreach ($all_terms as $term) {
+        if ($term->parent > 0) {
             $has_subtopics = true;
-            break; 
+            break;
         }
     }
 
-    if($has_subtopics){
+    if ($has_subtopics) {
         $disabled_subtopics = 'disabled="disabled"';
 
-        // use query var
-        $selected_topic = get_query_var($taxonomy->query_var);
-
-        $selected_sub_topic = get_query_var('subtopic');
         $sub_topics = [];
 
-        if (is_numeric($selected_topic)) {
-
+        if (is_numeric($selected_topic) && $selected_topic > 0) {
             $sub_topics = get_terms(array(
                 'taxonomy' => $filter,
-                'parent' => $selected_topic
+                'parent' => $selected_topic,
+                'hide_empty' => false,
             ));
 
-            if (is_array($sub_topics) && !empty($sub_topics)) {
+            if (!empty($sub_topics)) {
                 $disabled_subtopics = '';
             }
         }
 
-        ?>
-        <label class="govuk-label" for="<?php echo $child_class_name; ?>"><?php echo $taxonomy->label; ?> sub-topic</label>
-        <select name="subtopic" id="<?php echo $child_class_name; ?>"
-                class="govuk-select" <?php echo $disabled_subtopics; ?>>
-            <option
-                value="0" <?php if ($selected_sub_topic == 0) { ?> selected="selected" <?php } ?> >
-                All Sub-topics
-            </option>
+        echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($taxonomy->label) . ' Sub-topic</label>';
+        echo '<select name="' . esc_attr($subtopic_query_var) . '" id="' . esc_attr($child_class_name) . '" class="govuk-select" ' . $disabled_subtopics . '>';
+        echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>All Sub-topics</option>';
 
-            <?php if (is_array($sub_topics) && !empty($sub_topics)) {
-                foreach ($sub_topics as $sub_topic) {
-                    ?>
-                    <option
-                        id="<?php echo $sub_topic . '-class-value'; ?>"
-                        value="<?php echo $sub_topic->term_id; ?>" 
-                        <?php 
-                            if ($selected_sub_topic == $sub_topic->term_id) { 
-                                ?> selected="selected" <?php 
-                            } ?> ><?php echo $sub_topic->name; ?></option>
-                    <?php
+        foreach ($sub_topics as $sub_topic) {
+            echo '<option value="' . esc_attr($sub_topic->term_id) . '"' . selected($selected_sub_topic, $sub_topic->term_id, false) . '>';
+            echo esc_html($sub_topic->name);
+            echo '</option>';
+        }
 
-                }
-            }
-            ?>
-        </select>
-
-    <?php }
-
+        echo '</select>';
+    }
 }
-
-
-
-
-
-
-
+?>
