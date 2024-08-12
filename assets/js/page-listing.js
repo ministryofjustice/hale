@@ -1,7 +1,5 @@
 jQuery(document).ready(function ($) {
 
-  console.log('hello2');
-
   const taxonomies = listing_page_object.taxonomies;
 
   // Function to handle changes in the parent topic dropdown
