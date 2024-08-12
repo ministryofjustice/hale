@@ -255,3 +255,36 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
 }
 
 add_filter('query_vars', 'hale_flexible_post_types_add_query_vars_filter');
+
+/**
+ * Registers custom query variables for all public taxonomies.
+ *
+ * This function adds custom query variables for each public taxonomy and its corresponding 
+ * subtopic to the list of recognized query variables. 
+ *
+ * @param array $vars The existing array of query variables.
+ * @return array Modified array of query variables with added custom taxonomy and subtopic query variables.
+ *
+ * @example
+ * // If you have a taxonomy called 'genre', this function will register:
+ * // - 'genre' as the main query variable for the taxonomy.
+ * // - 'genre_subtopic' as the query variable for subtopics within the 'genre' taxonomy.
+ *
+ * @hooked 'query_vars' - The WordPress filter that allows customization of query variables.
+ */
+function hale_add_custom_query_vars_filter($vars) {
+
+    $taxonomies = get_taxonomies(array('public' => true), 'objects');
+
+    foreach ($taxonomies as $taxonomy) {
+        // Register the main taxonomy query var
+        $vars[] = $taxonomy->query_var;
+
+        // Register the subtopic query var
+        $vars[] = $taxonomy->query_var . '_subtopic';
+    }
+
+    return $vars;
+}
+
+add_filter('query_vars', 'hale_add_custom_query_vars_filter');

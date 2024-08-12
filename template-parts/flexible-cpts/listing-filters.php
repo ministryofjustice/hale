@@ -18,11 +18,17 @@ foreach ($listing_filters as $filter) {
     // Get the selected parent topic
     $selected_topic = get_query_var($taxonomy->query_var);
 
-    // Use a unique query var for each subtopic
+    // Use a unique query var for each genre_subtopic
     $subtopic_query_var = $taxonomy->query_var . '_subtopic';
-    $selected_sub_topic = get_query_var('genre_subtopic');
 
+  
 
+    $selected_sub_topic = get_query_var($subtopic_query_var);
+
+    // var_dump($selected_sub_topic);
+
+// Restrictions on WP QUERY
+// Restrictions on filter
 
     // Parent dropdown
     $dropdown_args = [
