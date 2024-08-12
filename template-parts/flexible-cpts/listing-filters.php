@@ -2,8 +2,6 @@
 // ACF flexible CPT taxonomies brought in to filter
 // This is a component from page-listing.php
 
-
-
 foreach ($listing_filters as $filter) {
 
     $taxonomy = get_taxonomy($filter);
@@ -25,7 +23,6 @@ foreach ($listing_filters as $filter) {
     // Restrictions on WP QUERY
     // Restrictions on filter
 
-    // Parent dropdown
     $dropdown_args = [
         "name" => $taxonomy->query_var,
         "id" => $parent_class_name,
@@ -36,7 +33,7 @@ foreach ($listing_filters as $filter) {
         'orderby' => 'name',
         'order' => 'ASC',
         'hierarchical' => 1,
-        'selected' => $selected_topic, // Persist selected value
+        'selected' => $selected_topic
     ];
 
     echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($taxonomy->label) . '</label>';
@@ -85,4 +82,3 @@ foreach ($listing_filters as $filter) {
         echo '</select>';
     }
 }
-?>
