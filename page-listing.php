@@ -97,7 +97,11 @@ while (have_posts()) :
             // Righthand column with listing page results
             ?>
             <div class="govuk-grid-column-two-thirds">
-                <?php load_template(locate_template('template-parts/flexible-cpts/listing-results.php'), true); ?>
+                <?php hale_include_template_with_variables('template-parts/flexible-cpts/listing-results.php', [
+                    'listing_search_text' => $listing_search_text,
+                    'listing_filters' => $listing_filters,
+                    'listing_active_filters' => $listing_active_filters
+                ]); ?>
             </div>
         </div>
     </div><!-- #primary -->

@@ -23,6 +23,8 @@ $listing_args = [
 // Set Items Per Page
 $items_per_page = get_post_meta(get_the_ID(), 'items_per_page', true);
 
+
+
 if (!empty($items_per_page)) {
     $listing_args['posts_per_page'] = $items_per_page;
 } 
@@ -50,32 +52,44 @@ $tax_qry_ary = [];
 //Restrict
 $restrict_taxonomies = get_field('listing_restrict');
 
-if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 
-    foreach($restrict_taxonomies as $tax){
-            $restrict_field = 'restrict_by_' . $tax;
 
-            $restict_terms = get_field($restrict_field);
+// if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 
-            if(!empty($restict_terms) && is_array($restict_terms)) {
-                $tax_qry_ary[] = array(
-                    'taxonomy' => $tax,
-                    'field' => 'term_id',
-                    'terms' => $restict_terms
-                );
-            }
+//     foreach($restrict_taxonomies as $tax){
+//             $restrict_field = 'restrict_by_' . $tax;
+
+//             $restict_terms = get_field($restrict_field);
+
+//             if(!empty($restict_terms) && is_array($restict_terms)) {
+//                 $tax_qry_ary[] = array(
+//                     'taxonomy' => $tax,
+//                     'field' => 'term_id',
+//                     'terms' => $restict_terms
+//                 );
+//             }
+//     }
+// }
+
+foreach ($listing_filters as $filter) {
+
+    $id = 'listing-search-filter-' . $filter;
+
+    // Create an array of what taxonomies have been selected in dropdown
+    hale_add_filter_term_if_exists($filter, $listing_active_filters);
+
+    //Filters
+    if(!empty($listing_active_filters)){
+
+        foreach($listing_active_filters as $active_filter){
+            $tax_qry_ary[] = array(
+                'taxonomy' => $active_filter['taxonomy'],
+                'field' => 'term_id',
+                'terms' => $active_filter['value']
+            );
+        }
     }
-}
 
-//Filters
-if(!empty($listing_active_filters)){
-    foreach($listing_active_filters as $active_filter){
-        $tax_qry_ary[] = array(
-            'taxonomy' => $active_filter['taxonomy'],
-            'field' => 'term_id',
-            'terms' => $active_filter['value']
-        );
-    }
 }
 
 if (!empty($tax_qry_ary)) {
