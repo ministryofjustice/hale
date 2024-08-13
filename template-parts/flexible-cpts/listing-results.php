@@ -158,7 +158,7 @@ if ($listing_query->have_posts()) {
 } elseif (!empty($listing_search_text)) { ?>
     <h2 class="govuk-heading-l">
         <?php
-        echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no ' . strtolower($flex_cpt_name_plural), 'hale' ), $search_text_HTML);
+            echo sprintf(__('Your search for &ldquo;%s&rdquo; matched no ' . strtolower($flex_cpt_name_plural), 'hale' ), $listing_search_text);
         ?>
     </h2>
     <p class="govuk-body">

@@ -1,12 +1,10 @@
+.page-template-page-listing {
 
-.page-template-page-listing
- {
-
-  #primary {  
+  #primary {
     .listing-search-section {
 
       .listing-search-form {
-    
+
         p {
           font-weight: bold;
           margin-top: 20px;
@@ -20,8 +18,14 @@
           width: 100%;
           min-width: 100%;
         }
+
+        .filter-subtopic {
+          width: 100%;
+          min-width: 100%;
+        }
       }
     }
+
     .listing-item-count {
       border-top: 1px solid $govuk-border-colour;
       padding-bottom: 16px;
@@ -42,7 +46,7 @@
         .published-date {
           font-weight: normal;
         }
-        
+
       }
 
       .list-item-detail {
