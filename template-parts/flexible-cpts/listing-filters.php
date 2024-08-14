@@ -4,6 +4,8 @@
 
 foreach ($listing_filters as $filter) {
 
+    $listing_active_filters = [];
+
     $taxonomy = get_taxonomy($filter);
 
     if (!$taxonomy) {
@@ -20,8 +22,40 @@ foreach ($listing_filters as $filter) {
     $subtopic_query_var = $taxonomy->query_var . '_subtopic';
     $selected_sub_topic = get_query_var($subtopic_query_var);
 
-    // Restrictions on WP QUERY
-    // Restrictions on filter
+    // Create an array of what taxonomies have been selected in dropdown
+    hale_add_filter_term_if_exists($filter, $listing_active_filters);
+
+    // Construct the field name for the restriction based on the filter
+    $restrict_field = 'restrict_by_' . $filter;
+
+    // ACF 'restrict_by_*' custom field is generated via code
+    // https://github.com/ministryofjustice/hale/blob/6d5ca3c9c6ddbcf27b23857223a54bcdf5778def/inc/flexible-cpts.php
+    $restrict_terms = get_field($restrict_field);
+
+    var_dump($restrict_terms);
+
+    if (empty($restrict_terms)) {
+        $dropdown_exclude = "";
+    }
+
+    // If any restricted terms (child taxonomies) 
+    // generate $dropdown_exclude list of all the taxes to exclude
+    if (is_array($restrict_terms) && !empty($restrict_terms)) {
+        $included_terms = $restrict_terms;
+
+        // Retrieve terms that are not included
+        $exclude_terms = get_terms([
+            'taxonomy' => $filter,
+            'exclude' => $included_terms
+        ]);
+
+        if (!empty($exclude_terms)) {
+            // Collect term IDs to be excluded
+            $dropdown_exclude = array_map(function($term) {
+                return $term->term_id;
+            }, $exclude_terms);
+        }
+    }
 
     $dropdown_args = [
         "name" => $taxonomy->query_var,
@@ -33,7 +67,8 @@ foreach ($listing_filters as $filter) {
         'orderby' => 'name',
         'order' => 'ASC',
         'hierarchical' => 1,
-        'selected' => $selected_topic
+        'selected' => $selected_topic,
+        'exclude' => $dropdown_exclude
     ];
 
     echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($taxonomy->label) . '</label>';
