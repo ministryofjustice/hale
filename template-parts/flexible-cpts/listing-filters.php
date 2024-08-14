@@ -4,8 +4,6 @@
 
 foreach ($listing_filters as $filter) {
 
-    $listing_active_filters = [];
-
     $taxonomy = get_taxonomy($filter);
 
     if (!$taxonomy) {
@@ -21,9 +19,6 @@ foreach ($listing_filters as $filter) {
     // Use a unique query var for each genre_subtopic
     $subtopic_query_var = $taxonomy->query_var . '_subtopic';
     $selected_sub_topic = get_query_var($subtopic_query_var);
-
-    // Create an array of what taxonomies have been selected in dropdown
-    hale_add_filter_term_if_exists($filter, $listing_active_filters);
 
     // Construct the field name for the restriction based on the filter
     $restrict_field = 'restrict_by_' . $filter;

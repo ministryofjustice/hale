@@ -10,15 +10,12 @@
 get_header();
 
 $listing_search_text = '';
-$listing_active_filters = [];
 $search_text_HTML = ''; 
 
-if (get_query_var('listing_search')) {
-
-    $listing_search_text = sanitize_text_field(get_query_var('listing_search'));
-    $search_text_HTML = esc_html($listing_search_text);
-    $search_text_HTML = str_replace('\\', '', $search_text_HTML); // kill backslashes
+if ($listing_search_text = get_query_var('listing_search')) {
+    $listing_search_text = stripslashes(sanitize_text_field(esc_html($listing_search_text)));
 }
+
 
 while (have_posts()) :
     the_post();
@@ -99,8 +96,7 @@ while (have_posts()) :
             <div class="govuk-grid-column-two-thirds">
                 <?php hale_include_template_with_variables('template-parts/flexible-cpts/listing-results.php', [
                     'listing_search_text' => $listing_search_text,
-                    'listing_filters' => $listing_filters,
-                    'listing_active_filters' => $listing_active_filters
+                    'listing_filters' => $listing_filters
                 ]); ?>
             </div>
         </div>

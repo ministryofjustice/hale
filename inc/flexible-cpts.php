@@ -205,7 +205,6 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
         }
     }
 
-    //var_dump($choices);
     acf_add_local_field(array(
         'key' => 'field_' . $field_key,
         'label' =>  $field_label,

@@ -3,6 +3,9 @@
 // Listing template results section
 
 $flex_cpt_settings = [];
+$listing_active_filters = [];
+$tax_qry_ary = [];
+$display_fields = [];
 
 // Get post type and return if none found
 $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
@@ -22,8 +25,6 @@ $listing_args = [
 
 // Set Items Per Page
 $items_per_page = get_post_meta(get_the_ID(), 'items_per_page', true);
-
-
 
 if (!empty($items_per_page)) {
     $listing_args['posts_per_page'] = $items_per_page;
@@ -47,12 +48,8 @@ if (!empty($listing_search_text)) {
     }
 }
 
-$tax_qry_ary = [];
-
 //Restrict
 $restrict_taxonomies = get_field('listing_restrict');
-
-
 
 // if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 
@@ -101,7 +98,6 @@ $post_type_obj = get_post_type_object( $listing_post_type );
 $flex_cpt_name = $post_type_obj->labels->singular_name;
 $flex_cpt_name_plural = $post_type_obj->labels->name;
 $selected_display_fields = get_field('list_item_fields');
-$display_fields = [];
 
 foreach($selected_display_fields as $field){
 
