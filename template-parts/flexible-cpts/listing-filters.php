@@ -1,6 +1,9 @@
 <?php
 // ACF flexible CPT taxonomies brought in to filter
 // This is a component from page-listing.php
+$restrict_taxonomies_array = get_field('listing_restrict');
+
+
 
 foreach ($listing_filters as $filter) {
 
@@ -23,28 +26,44 @@ foreach ($listing_filters as $filter) {
     // Construct the field name for the restriction based on the filter
     $restrict_field = 'restrict_by_' . $filter;
 
+
+
+
     // ACF 'restrict_by_*' custom field is generated via code
     // https://github.com/ministryofjustice/hale/blob/6d5ca3c9c6ddbcf27b23857223a54bcdf5778def/inc/flexible-cpts.php
     $restrict_terms = get_field($restrict_field);
+    $taxonomy_term_ids = get_taxonomy_term_ids($restrict_taxonomies_array);
+
+
+    // logic
+    // if we find a match in each taxonomy include just that match
+    // if we find no match include every id in that taxonomy
+
+    echo '<pre>';
+    print_r($taxonomy_term_ids);
+    echo '</pre>';
+
+
+
 
     if (empty($restrict_terms)) {
         $dropdown_exclude = "";
     }
 
-    // If any restricted terms (child taxonomies) 
-    // generate $dropdown_exclude list of all the taxes to exclude
     if (is_array($restrict_terms) && !empty($restrict_terms)) {
-        $included_terms = $restrict_terms;
 
-        // Retrieve terms that are not included
+        // Get an array of terms excluding the restricted ones
         $exclude_terms = get_terms([
             'taxonomy' => $filter,
-            'exclude' => $included_terms
+            'exclude' => $restrict_terms
         ]);
 
         if (!empty($exclude_terms)) {
-            // Collect term IDs to be excluded
+            // For all the terms left after excluding the restricted ones
+            // get their ids into an array
             $dropdown_exclude = array_map(function($term) {
+
+
                 return $term->term_id;
             }, $exclude_terms);
         }

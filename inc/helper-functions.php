@@ -52,3 +52,33 @@ function hale_include_template_with_variables($template_path, $variables = array
         include($template);
     }
 }
+
+function get_taxonomy_term_ids($taxonomies) {
+    // Initialize the array to hold the term IDs for each taxonomy
+    $taxonomy_term_ids = [];
+
+    foreach ($taxonomies as $taxonomy) {
+        // Get terms associated with the current taxonomy
+        $terms = get_terms([
+            'taxonomy' => $taxonomy,
+            'hide_empty' => false, // Include terms that have no posts associated
+        ]);
+
+        // Initialize an array to hold term IDs for the current taxonomy
+        $term_ids = [];
+
+        // Check if terms were retrieved successfully
+        if (!empty($terms) && !is_wp_error($terms)) {
+            foreach ($terms as $term) {
+                // Add the term ID to the array
+                $term_ids[] = $term->term_id;
+            }
+        }
+
+        // Add the taxonomy's term IDs to the main array
+        $taxonomy_term_ids[$taxonomy] = $term_ids;
+    }
+
+    // Return the array containing term IDs for each taxonomy
+    return $taxonomy_term_ids;
+}
