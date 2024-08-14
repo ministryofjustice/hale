@@ -32,8 +32,6 @@ foreach ($listing_filters as $filter) {
     // https://github.com/ministryofjustice/hale/blob/6d5ca3c9c6ddbcf27b23857223a54bcdf5778def/inc/flexible-cpts.php
     $restrict_terms = get_field($restrict_field);
 
-    var_dump($restrict_terms);
-
     if (empty($restrict_terms)) {
         $dropdown_exclude = "";
     }
