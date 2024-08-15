@@ -68,25 +68,26 @@ $restrict_taxonomies = get_field('listing_restrict');
 //     }
 // }
 
-foreach ($listing_filters as $filter) {
+if (!empty($listing_filters) && is_array($listing_filters)) {
+    foreach ($listing_filters as $filter) {
 
-    $id = 'listing-search-filter-' . $filter;
+        $id = 'listing-search-filter-' . $filter;
 
-    // Create an array of what taxonomies have been selected in dropdown
-    hale_add_filter_term_if_exists($filter, $listing_active_filters);
+        // Create an array of what taxonomies have been selected in dropdown
+        hale_add_filter_term_if_exists($filter, $listing_active_filters);
 
-    //Filters
-    if(!empty($listing_active_filters)){
+        //Filters
+        if(!empty($listing_active_filters)){
 
-        foreach($listing_active_filters as $active_filter){
-            $tax_qry_ary[] = array(
-                'taxonomy' => $active_filter['taxonomy'],
-                'field' => 'term_id',
-                'terms' => $active_filter['value']
-            );
+            foreach($listing_active_filters as $active_filter){
+                $tax_qry_ary[] = array(
+                    'taxonomy' => $active_filter['taxonomy'],
+                    'field' => 'term_id',
+                    'terms' => $active_filter['value']
+                );
+            }
         }
     }
-
 }
 
 if (!empty($tax_qry_ary)) {
@@ -99,32 +100,33 @@ $flex_cpt_name = $post_type_obj->labels->singular_name;
 $flex_cpt_name_plural = $post_type_obj->labels->name;
 $selected_display_fields = get_field('list_item_fields');
 
-foreach($selected_display_fields as $field){
 
-    if($field == 'published-date'){
-        $display_fields[] = ["name" => "published-date", "label" => "Published", "type" => "published-date"];
-        continue;
-    }
-
-    if(taxonomy_exists($field)){
-        $tax = get_taxonomy($field);
-        $display_fields[] = ["name" =>  $field, "label" =>  $tax->labels->singular_name, "type" => "taxonomy"];
-        continue;
-    }
-
-    $field_object = get_field_object($field);
-
-    if(!empty($field_object)){
-        $field_object['wpautop'] = false;
-
-        if($field_object['name'] == 'post_summary'){
-            $field_object['label'] = '';
-            $field_object['wpautop'] = true;
+if (!empty($selected_display_fields) && is_array($selected_display_fields)) {
+    foreach($selected_display_fields as $field){
+        if($field == 'published-date'){
+            $display_fields[] = ["name" => "published-date", "label" => "Published", "type" => "published-date"];
+            continue;
         }
 
-        $display_fields[] = [ "name" => $field_object['name'], "label" => $field_object['label'], "type" => "post_meta"];
+        if(taxonomy_exists($field)){
+            $tax = get_taxonomy($field);
+            $display_fields[] = ["name" =>  $field, "label" =>  $tax->labels->singular_name, "type" => "taxonomy"];
+            continue;
+        }
+
+        $field_object = get_field_object($field);
+
+        if(!empty($field_object)){
+            $field_object['wpautop'] = false;
+
+            if($field_object['name'] == 'post_summary'){
+                $field_object['label'] = '';
+                $field_object['wpautop'] = true;
+            }
+
+            $display_fields[] = [ "name" => $field_object['name'], "label" => $field_object['label'], "type" => "post_meta"];
+        }
     }
-    
 }
 
 $display_terms_taxonomies = get_field('display_terms_taxonomies');
