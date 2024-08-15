@@ -100,9 +100,9 @@ foreach ($listing_filters as $filter) {
             }
         }
 
-        echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($taxonomy->label) . ' Sub-topic</label>';
+        echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($taxonomy->label) . ' Subtopic</label>';
         echo '<select name="' . esc_attr($subtopic_query_var) . '" id="' . esc_attr($child_class_name) . '" class="govuk-select filter-subtopic" ' . $disabled_subtopics . '>';
-        echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>All Sub-topics</option>';
+        echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>All Subtopics</option>';
 
         foreach ($sub_topics as $sub_topic) {
             echo '<option value="' . esc_attr($sub_topic->term_id) . '"' . selected($selected_sub_topic, $sub_topic->term_id, false) . '>';
