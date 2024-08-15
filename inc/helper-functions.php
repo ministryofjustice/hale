@@ -57,6 +57,10 @@ function get_taxonomy_term_ids($taxonomies) {
     // Initialize the array to hold the term IDs for each taxonomy
     $taxonomy_term_ids = [];
 
+    if (!is_array($taxonomies)) {
+        return;
+    }
+
     foreach ($taxonomies as $taxonomy) {
         // Get terms associated with the current taxonomy
         $terms = get_terms([

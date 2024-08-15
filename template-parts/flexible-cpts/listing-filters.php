@@ -3,8 +3,6 @@
 // This is a component from page-listing.php
 $restrict_taxonomies_array = get_field('listing_restrict');
 
-
-
 foreach ($listing_filters as $filter) {
 
     $taxonomy = get_taxonomy($filter);
@@ -26,25 +24,10 @@ foreach ($listing_filters as $filter) {
     // Construct the field name for the restriction based on the filter
     $restrict_field = 'restrict_by_' . $filter;
 
-
-
-
     // ACF 'restrict_by_*' custom field is generated via code
     // https://github.com/ministryofjustice/hale/blob/6d5ca3c9c6ddbcf27b23857223a54bcdf5778def/inc/flexible-cpts.php
     $restrict_terms = get_field($restrict_field);
     $taxonomy_term_ids = get_taxonomy_term_ids($restrict_taxonomies_array);
-
-
-    // logic
-    // if we find a match in each taxonomy include just that match
-    // if we find no match include every id in that taxonomy
-
-    echo '<pre>';
-    print_r($taxonomy_term_ids);
-    echo '</pre>';
-
-
-
 
     if (empty($restrict_terms)) {
         $dropdown_exclude = "";
