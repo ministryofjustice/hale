@@ -255,3 +255,28 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
 }
 
 add_filter('query_vars', 'hale_flexible_post_types_add_query_vars_filter');
+
+//Makes sure Flexible CPTS are on category and tag archive pages
+function hale_flexible_post_types_pre_get_posts($query) {
+
+    if ( ! is_admin() && $query->is_main_query() ) {
+        
+        $tax = '';
+
+        if(is_category()) {
+            $tax = get_taxonomy('category');
+        }
+
+        if(is_tag()) {
+            $tax = get_taxonomy('post_tag');
+        }
+
+        if(!empty($tax)){
+            $query->set( 'post_type', $tax->object_type );
+        }
+
+    }    
+
+    return $query;
+}
+add_filter('pre_get_posts', 'hale_flexible_post_types_pre_get_posts');
