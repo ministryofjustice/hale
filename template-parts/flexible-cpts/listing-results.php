@@ -73,10 +73,11 @@ $restrict_taxonomies = get_field('listing_restrict');
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
-        $id = 'listing-search-filter-' . $filter;
-
         // Create an array of what taxonomies have been selected in dropdown
         hale_add_filter_term_if_exists($filter, $listing_active_filters);
+
+
+        
 
         //Filters
         if(!empty($listing_active_filters)){
@@ -100,6 +101,7 @@ $listing_query = new WP_Query($listing_args);
 $post_type_obj = get_post_type_object( $listing_post_type );
 $flex_cpt_name = $post_type_obj->labels->singular_name;
 $flex_cpt_name_plural = $post_type_obj->labels->name;
+
 $selected_display_fields = get_field('list_item_fields');
 
 
