@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Adds a filter term and its subtopic to the active filters array if they exist.
  *
