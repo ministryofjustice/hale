@@ -4,6 +4,8 @@
  * Used by page-listing.php
  *
 */
+$listing_filters = $args['listing-filters'];
+
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
@@ -29,7 +31,9 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         // ACF 'restrict_by_*' custom field is generated via code
         // https://github.com/ministryofjustice/hale/blob/6d5ca3c9c6ddbcf27b23857223a54bcdf5778def/inc/flexible-cpts.php
         $restrict_terms = get_field($restrict_field);
-        $taxonomy_term_ids = get_taxonomy_term_ids($restrict_taxonomies_array);
+
+        // todo: check if tax slug is restricted
+        //$taxonomy_term_ids = get_taxonomy_term_ids($restrict_taxonomies_array);
 
         if (empty($restrict_terms)) {
             $dropdown_exclude = "";

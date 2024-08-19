@@ -1,6 +1,8 @@
 <?php
 
 // Listing template results section
+$listing_filters = $args['listing-filters'];
+$listing_search_text = $args['listing-search-text'];
 
 $flex_cpt_settings = [];
 $listing_active_filters = [];

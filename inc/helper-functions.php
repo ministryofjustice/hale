@@ -29,30 +29,6 @@ function hale_add_filter_term_if_exists($filter, &$listing_active_filters) {
     }
 }
 
-/**
- * Includes a template file and makes specified variables available within that template.
- *
- * This function locates a template file and includes it, passing along any variables 
- * provided in the `$variables` array so they are accessible within the included template.
- *
- * @param string $template_path Path to the template file relative to the theme directory.
- * @param array $variables (Optional) An associative array of variables to be extracted and made available in the included template. Default is an empty array.
- */
-function hale_include_template_with_variables($template_path, $variables = array()) {
-    // Extract the variables to make them available in the included template
-    if (!empty($variables) && is_array($variables)) {
-        extract($variables);
-    }
-
-    // Locate the template file
-    $template = locate_template($template_path, false, false);
-
-    // Include the template file if it exists
-    if ($template) {
-        include($template);
-    }
-}
-
 function get_taxonomy_term_ids($taxonomies) {
     // Initialize the array to hold the term IDs for each taxonomy
     $taxonomy_term_ids = [];

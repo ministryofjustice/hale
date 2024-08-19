@@ -60,16 +60,17 @@ while (have_posts()) :
                             $listing_filters = get_field('listing_filters');
 
                             if(!empty($listing_filters) && is_array($listing_filters)) { ?>
-
                                 <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
                                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                                         <h2 class="govuk-fieldset__heading">
                                             <?php _e("Filters","hale"); ?>
                                         </h2>
                                     </legend>
-                                    <?php hale_include_template_with_variables('template-parts/flexible-cpts/listing-filters.php', [
-                                            'listing_filters' => $listing_filters
-                                    ]); ?>
+                                    <?php 
+                                    get_template_part('template-parts/flexible-cpts/listing-filters', false, 
+                                        ['listing-filters' => $listing_filters]
+                                    );
+                                    ?>
                                 </fieldset>
 
                             <?php } ?>
@@ -94,10 +95,13 @@ while (have_posts()) :
             // Righthand column with listing page results
             ?>
             <div class="govuk-grid-column-two-thirds">
-                <?php hale_include_template_with_variables('template-parts/flexible-cpts/listing-results.php', [
-                    'listing_search_text' => $listing_search_text,
-                    'listing_filters' => $listing_filters
-                ]); ?>
+                <?php get_template_part('template-parts/flexible-cpts/listing-results', false, 
+                        [
+                            'listing-filters' => $listing_filters,
+                            'listing-search-text' => $listing_search_text,
+                        ]
+                    );
+                ?>
             </div>
         </div>
     </div><!-- #primary -->
@@ -106,6 +110,3 @@ while (have_posts()) :
 endwhile;
 
 get_footer();
-
-
-
