@@ -29,9 +29,23 @@ function hale_add_filter_term_if_exists($filter, &$listing_active_filters) {
     }
 }
 
+/**
+ * Retrieve term IDs for specified taxonomies.
+ *
+ * This function accepts an array of taxonomy names, retrieves all terms associated with each taxonomy,
+ * and returns an associative array where the keys are the taxonomy names and the values are arrays 
+ * of term IDs belonging to those taxonomies.
+ *
+ * @param array $taxonomies An array of taxonomy names. Each element should be a string representing a valid taxonomy.
+ *
+ * @return array|null An associative array where keys are taxonomy names and values are arrays of term IDs. 
+ *                    Returns null if the input is not an array.
+ *
+ */
 function get_taxonomy_term_ids($taxonomies) {
-    // Initialize the array to hold the term IDs for each taxonomy
+    // Initialize the arrays
     $taxonomy_term_ids = [];
+    $term_ids = [];
 
     if (!is_array($taxonomies)) {
         return;
@@ -41,21 +55,15 @@ function get_taxonomy_term_ids($taxonomies) {
         // Get terms associated with the current taxonomy
         $terms = get_terms([
             'taxonomy' => $taxonomy,
-            'hide_empty' => false, // Include terms that have no posts associated
+            'hide_empty' => false,
         ]);
 
-        // Initialize an array to hold term IDs for the current taxonomy
-        $term_ids = [];
-
-        // Check if terms were retrieved successfully
         if (!empty($terms) && !is_wp_error($terms)) {
             foreach ($terms as $term) {
                 // Add the term ID to the array
                 $term_ids[] = $term->term_id;
             }
         }
-
-        // Add the taxonomy's term IDs to the main array
         $taxonomy_term_ids[$taxonomy] = $term_ids;
     }
 
