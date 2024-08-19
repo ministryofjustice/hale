@@ -76,9 +76,6 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         // Create an array of what taxonomies have been selected in dropdown
         hale_add_filter_term_if_exists($filter, $listing_active_filters);
 
-
-        
-
         //Filters
         if(!empty($listing_active_filters)){
 
