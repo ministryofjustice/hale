@@ -152,9 +152,18 @@ function hale_add_taxonomy_acf_field($tax) {
         )
     );
 
+    //Hide sub terms
+    add_filter('acf/fields/taxonomy/query/name=restrict_by_' . $tax->name, 'restrict_taxonomy_terms_to_top', 10, 3);
+
 }
 
+function restrict_taxonomy_terms_to_top( $args, $field, $post_id ) {
 
+    // get only top level terms
+    $args['parent'] = 0;
+
+    return $args;
+}
 
 /**
  * Adds an Dropdown (select) ACF Field for a specific post type. Which lists acf fields and taxonomies assigned to a post type. Currently only on listing page template.
