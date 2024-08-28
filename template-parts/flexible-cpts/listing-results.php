@@ -53,22 +53,22 @@ if (!empty($listing_search_text)) {
 //Restrict
 $restrict_taxonomies = get_field('listing_restrict');
 
-// if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
+if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 
-//     foreach($restrict_taxonomies as $tax){
-//             $restrict_field = 'restrict_by_' . $tax;
+    foreach($restrict_taxonomies as $tax){
+        $restrict_field = 'restrict_by_' . $tax;
 
-//             $restict_terms = get_field($restrict_field);
+        $restict_terms = get_field($restrict_field);
 
-//             if(!empty($restict_terms) && is_array($restict_terms)) {
-//                 $tax_qry_ary[] = array(
-//                     'taxonomy' => $tax,
-//                     'field' => 'term_id',
-//                     'terms' => $restict_terms
-//                 );
-//             }
-//     }
-// }
+            if(!empty($restict_terms) && is_array($restict_terms)) {
+                $tax_qry_ary[] = array(
+                    'taxonomy' => $tax,
+                    'field' => 'term_id',
+                'terms' => $restict_terms
+                );
+            }
+    }
+}
 
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {

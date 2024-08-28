@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
   // Reset the subtopics dropdown
   function resetSubTopics(childClass) {
     $(childClass).empty();
-    $(childClass).append(new Option("All Subtopics", ""));
+    $(childClass).append(new Option("Select option", ""));
     $(childClass).prop('disabled', true); // Disable the dropdown by default
   }
 
