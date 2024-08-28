@@ -69,7 +69,13 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             'exclude' => $dropdown_exclude
         ];
 
-        echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($taxonomy->label) . '</label>';
+        $filter_label = $taxonomy->labels->singular_name;
+
+        if(isset($taxonomy->labels->listing_page_filter) && !empty($taxonomy->labels->listing_page_filter)){
+            $filter_label = $taxonomy->labels->listing_page_filter;
+        }
+
+        echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($filter_label) . '</label>';
         wp_dropdown_categories($dropdown_args);
 
         $all_terms = get_terms(array(
@@ -103,7 +109,13 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                 }
             }
 
-            echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($taxonomy->label) . ' Subtopic</label>';
+            $subfilter_label = 'Sub ' . $taxonomy->labels->singular_name;
+
+            if(isset($taxonomy->labels->listing_page_subfilter) && !empty($taxonomy->labels->listing_page_subfilter)){
+                $subfilter_label = $taxonomy->labels->listing_page_subfilter;
+            }
+
+            echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($subfilter_label) . '</label>';
             echo '<select name="' . esc_attr($subtopic_query_var) . '" id="' . esc_attr($child_class_name) . '" class="govuk-select filter-subtopic" ' . $disabled_subtopics . '>';
             echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>Select option</option>';
 
