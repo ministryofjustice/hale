@@ -13,6 +13,7 @@ function emailWarning($unset_colours,$custom_colours_found,$max,$location,) {
 		$env = getenv('WP_ENVIRONMENT_TYPE');
 		$customizer = is_customize_preview();
 		$site№ = get_current_blog_id();
+		$uri = $_SERVER['REQUEST_URI'];
 		$message = "";
 		if ($env == "prod" && !$custom_colours_found) {
 			// Send condition 1: Production site has utterly failed to retrieve any colours
@@ -47,6 +48,7 @@ function emailWarning($unset_colours,$custom_colours_found,$max,$location,) {
 			$message .= "\r\n"; // blank line needed after the list
 			$message .= "## Other info\r\n";
 			$message .= "This message was triggered from `$location`.\r\n";
+			$message .= "URI: `$uri`.\r\n";
 			wp_mail($email, $subject, $message);
 		}
 	}
