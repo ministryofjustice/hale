@@ -69,43 +69,11 @@ function hale_generate_custom_colours() {
 			}
 			$css .= "}";
 
-
 			/********
-			 * This next block emails warnings about unset colours
+			 * This next bit emails warnings about unset colours
 			 */
-			if (!empty($unset_colours)) {
-				$email = "wordpress@digital.justice.gov.uk";
-				$env = getenv('WP_ENVIRONMENT_TYPE');
-				$site№ = get_current_blog_id();
-				if ($env == "prod" && !$custom_colours_found) {
-					// Send condition 1: Production site has utterly failed to retrieve any colours
-					$subject = "Warning: Production site $site№ colours have failed";
-				} elseif ($env == "prod") {
-					// Send condition 2: A production site has some unset colours - but it isn't thought to be a major issue.
-					$subject = "Notice: Undeclared colours on production site";
-				} elseif (!$custom_colours_found) {
-					// Send condition 3: Any other site has utterly failed to retrieve any colours
-					$subject = "Notice: Site $site№ colours have failed ($env)";
-				}
-				// We only send the email if one of the above send conditions is met
-				if (isset($subject)) {
-					$message = "##Situation\r\n";
-					$message .= "Someone is using the customizer for site № $site№ on $env.  They may or may not be changing colours.\r\n";
-					$message .= "## Problem\r\n";
-					if ($custom_colours_found) {
-						$message .= "Site $site№ on $env is set to use custom colours.  A total of $custom_colours_found colours set out of a possible $i.\r\n"; //uses the $i from the above loop
-						$message .= "This is not necessarily a problem, but might indicate some unintended GDS colours appearing on the site\r\n";
-						$message .= "## Unset colours\r\n";
-						foreach($unset_colours as $unset_colour) {
-							$message .= "- $unset_colour\r\n";
-						}
-					} else {
-						$message .= "Site $site№ on $env is set to use custom colours but all have failed.\r\n";
-						$message .= "This might mean that the site has reverted to default colours.\r\n";
-					}
-					wp_mail($email, $subject, $message);
-				}
-			}
+			require_once get_template_directory() . '/inc/colour-email-warning.php';
+			emailWarning($unset_colours,$custom_colours_found,$i,"colour-branding.php");
 
 			// Text on a custom dark background
 			$background_css = "";
