@@ -9,6 +9,8 @@ function emailWarning($unset_colours,$custom_colours_found,$max,$location,) {
 	 */
 	if (!empty($unset_colours)) {
 		$email = "wordpress@digital.justice.gov.uk";
+		$email_admin = get_option('admin_email');
+		if ($email_admin) $email = $email_admin;
 		$env = getenv('WP_ENVIRONMENT_TYPE');
 		$customizer = is_customize_preview();
 		$site№ = get_current_blog_id();
