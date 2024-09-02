@@ -50,7 +50,7 @@ while (have_posts()) :
                                     <?php _e('Search', 'hale'); ?>
                                 </label>
                                 <input class="govuk-input" id="listing-search-field" name="listing_search"
-                                    value="<?php echo $search_text_HTML; ?>" type="search"
+                                    value="<?php echo $listing_search_text; ?>" type="search"
                                     placeholder="<?php _e('Search', 'hale'); ?>">
                             </div>
 

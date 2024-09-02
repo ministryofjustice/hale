@@ -75,6 +75,10 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             $filter_label = $taxonomy->labels->listing_page_filter;
         }
 
+        if($filter == "category"){
+            $filter_label = "Topic";
+        }
+
         echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($filter_label) . '</label>';
         wp_dropdown_categories($dropdown_args);
 
@@ -115,6 +119,11 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                 $subfilter_label = $taxonomy->labels->listing_page_subfilter;
             }
 
+            if($filter == "category"){
+                $subfilter_label = "Sub-topic";
+            }
+
+            
             echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($subfilter_label) . '</label>';
             echo '<select name="' . esc_attr($subtopic_query_var) . '" id="' . esc_attr($child_class_name) . '" class="govuk-select filter-subtopic" ' . $disabled_subtopics . '>';
             echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>Select option</option>';

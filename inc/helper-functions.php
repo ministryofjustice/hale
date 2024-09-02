@@ -20,11 +20,19 @@
  * // they will be added to $listing_active_filters.
  */
 function hale_add_filter_term_if_exists($filter, &$listing_active_filters) {
+
+
+    $taxonomy = get_taxonomy($filter);
+
+    if (!$taxonomy) {
+        return;
+    }
+
     // Generate the subtopic filter key
-    $filter_term_id_subtopic = $filter . '_subtopic';
+    $filter_term_id_subtopic = $taxonomy->query_var . '_subtopic';
 
     // Retrieve the value of the main filter and subtopic query variables
-    $filter_term_id = get_query_var($filter);
+    $filter_term_id = get_query_var($taxonomy->query_var);
     $filter_term_id_subtopic_value = get_query_var($filter_term_id_subtopic);
 
     // Combine them into an associative array
