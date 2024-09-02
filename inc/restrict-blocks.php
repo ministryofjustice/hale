@@ -45,13 +45,13 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/banner',
             'mojblocks/card',
             'mojblocks/cta',
+            'mojblocks/intro',
             'mojblocks/hero',
             'mojblocks/highlights-list',
             'mojblocks/quote',
             'mojblocks/reveal',
             'mojblocks/separator',
-            'mojblocks/staggered-box',
-            'mojblocks/laa-chat-box'
+            'mojblocks/staggered-box'
         );
 
         if (post_type_exists('news')) {
