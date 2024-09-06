@@ -39,7 +39,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
 <?php if ( $show_sitename === 'yes' || $show_sitelogo === 'yes' ) { ?>
 <div class="govuk-header__logo">
 <?php if ( $logo_has_link === 'yes' ) { ?>
-    <a class="govuk-header__link govuk-header__link--homepage" href="<?php echo esc_url_raw( $logo_link ); ?>" aria-label="<?php echo $logo_aria_label ?>">
+    <a class="govuk-header__link govuk-header__link--homepage" href="<?php echo esc_url_raw( $logo_link ); ?>" aria-label="<?php echo $logo_aria_label; ?>">
 <?php
     }
     if ( has_custom_logo() ) {

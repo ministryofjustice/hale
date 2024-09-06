@@ -270,7 +270,7 @@ function hale_customize_register( $wp_customize ) {
 		'logo_aria_label',
 		array(
 			'sanitize_callback' => 'hale_sanitize_nohtml',
-			'default' => get_bloginfo( 'name' ) . " homepage"
+			'default' => get_bloginfo( 'name' ) . " " . __("homepage","hale")
 		)
 	);
 
