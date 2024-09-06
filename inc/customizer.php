@@ -254,10 +254,34 @@ function hale_customize_register( $wp_customize ) {
 		'logo_custom_link',
 		array(
 			'label'           => esc_html__( 'Logo/Site Name custom link', 'hale' ),
-			'description' => esc_html__( 'Link defaults to homepage if it is not set', 'hale' ),
+			'description'     => esc_html__( 'Link defaults to homepage if it is not set', 'hale' ),
 			'section'         => 'title_tagline',
 			'type'            => 'text',
 			'active_callback' => function () use ( $wp_customize ) {
+				return (
+					( $wp_customize->get_setting('logo_has_link')->value() === 'yes' ) &&
+					( $wp_customize->get_setting('logo_configuration')->value() !== 'no' )
+				);
+			},
+		)
+	);
+
+	$wp_customize->add_setting(
+		'logo_aria_label',
+		array(
+			'sanitize_callback' => 'hale_sanitize_nohtml',
+			'default' => get_bloginfo( 'name' ) . " homepage"
+		)
+	);
+
+	$wp_customize->add_control(
+		'logo_aria_label',
+		array(
+			'label'            => esc_html__( 'Aria label for logo', 'hale' ),
+			'description'      => esc_html__( 'What assistive technology users hear when they inspect the logo', 'hale' ),
+			'section'          => 'title_tagline',
+			'type'             => 'text',
+			'active_callback'  => function () use ( $wp_customize ) {
 				return (
 					( $wp_customize->get_setting('logo_has_link')->value() === 'yes' ) &&
 					( $wp_customize->get_setting('logo_configuration')->value() !== 'no' )
