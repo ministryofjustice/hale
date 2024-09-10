@@ -200,6 +200,7 @@ function hale_scripts() {
     if (!$browser_is_IE) wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
     $t=time();
+
     if (is_customize_preview()) {
         $css_file_name = "/temp-colours.css?t=$t";
     } else {
@@ -220,28 +221,23 @@ function hale_scripts() {
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
 
-    if ( is_post_type_archive('news') ) {
-        wp_register_script('news-archive', hale_mix_asset('/js/news-archive.js') );
 
-        $categories = get_terms( array(
-            'taxonomy' => 'category'
-        ) );
-        wp_localize_script(
-            'news-archive',
-            'news_archive_object',
-            array(
-                'categories' => $categories
-            )
-        );
-
-        wp_enqueue_script('news-archive' );
-    }
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
+    // Load Listing template JS
+    if ( is_page_template('page-listing.php') ) {
+        $script_path = get_template_directory() . '/dist/js/page-listing.js';
+        $script_version = file_exists($script_path) ? filemtime($script_path) : false;
+        wp_register_script('page-listing', hale_mix_asset('/js/page-listing.js'), array(), $script_version, true);
+        wp_enqueue_script('page-listing');
     }
 }
 
 add_action('wp_enqueue_scripts', 'hale_scripts');
+
+/**
+ * Enqueue listing template JS and 
+ * localize the script with data
+ */
+require get_template_directory() . '/inc/listing-template/localize-script-data.php';
 
 /**
  * Dequeue nuisance plugins and their scripts.
@@ -381,6 +377,7 @@ require get_template_directory() . '/inc/flexible-cpts.php';
  // Admin changes
 require get_template_directory() . '/inc/acf/admin/settings.php';
 require get_template_directory() . '/inc/acf/admin/post-display-settings.php';
+require get_template_directory() . '/inc/acf/admin/taxonomy-settings.php';
 
 // General utilities
 require get_template_directory() . '/inc/acf/utilities.php';
@@ -547,3 +544,8 @@ remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
  * Add options for lang attribute for footer menu links
  */
 require get_template_directory() . '/inc/footer-language-attributes.php';
+
+/**
+ * Utility functions to help with various tasks
+ */
+require get_template_directory() . '/inc/helper-functions.php';

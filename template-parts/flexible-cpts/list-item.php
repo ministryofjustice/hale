@@ -64,8 +64,7 @@
             }
 
             if(!empty($field_value)){
-
-                if($field['wpautop']) {
+                if (isset($field['wpautop']) && $field['wpautop']) {
                     $field_value = wpautop($field_value);
                 }
                 ?>

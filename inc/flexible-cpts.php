@@ -152,9 +152,18 @@ function hale_add_taxonomy_acf_field($tax) {
         )
     );
 
+    //Hide sub terms
+    add_filter('acf/fields/taxonomy/query/name=restrict_by_' . $tax->name, 'restrict_taxonomy_terms_to_top', 10, 3);
+
 }
 
+function restrict_taxonomy_terms_to_top( $args, $field, $post_id ) {
 
+    // get only top level terms
+    $args['parent'] = 0;
+
+    return $args;
+}
 
 /**
  * Adds an Dropdown (select) ACF Field for a specific post type. Which lists acf fields and taxonomies assigned to a post type. Currently only on listing page template.
@@ -205,7 +214,6 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
         }
     }
 
-    //var_dump($choices);
     acf_add_local_field(array(
         'key' => 'field_' . $field_key,
         'label' =>  $field_label,
@@ -256,6 +264,39 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
 
 add_filter('query_vars', 'hale_flexible_post_types_add_query_vars_filter');
 
+/**
+ * Registers custom query variables for all public taxonomies.
+ *
+ * This function adds custom query variables for each public taxonomy and its corresponding 
+ * subtopic to the list of recognized query variables. 
+ *
+ * @param array $vars The existing array of query variables.
+ * @return array Modified array of query variables with added custom taxonomy and subtopic query variables.
+ *
+ * @example
+ * // If you have a taxonomy called 'genre', this function will register:
+ * // - 'genre' as the main query variable for the taxonomy.
+ * // - 'genre_subtopic' as the query variable for subtopics within the 'genre' taxonomy.
+ *
+ * @hooked 'query_vars' - The WordPress filter that allows customization of query variables.
+ */
+function hale_add_custom_query_vars_filter($vars) {
+
+    $taxonomies = get_taxonomies(array('public' => true), 'objects');
+
+    foreach ($taxonomies as $taxonomy) {
+        // Register the main taxonomy query var
+        $vars[] = $taxonomy->query_var;
+
+        // Register the subtopic query var
+        $vars[] = $taxonomy->query_var . '_subtopic';
+    }
+
+    return $vars;
+}
+
+add_filter('query_vars', 'hale_add_custom_query_vars_filter');
+
 //Makes sure Flexible CPTS are on category and tag archive pages
 function hale_flexible_post_types_pre_get_posts($query) {
 
@@ -280,3 +321,4 @@ function hale_flexible_post_types_pre_get_posts($query) {
     return $query;
 }
 add_filter('pre_get_posts', 'hale_flexible_post_types_pre_get_posts');
+
