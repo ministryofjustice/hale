@@ -351,16 +351,6 @@ require get_template_directory() . '/inc/metabox-page-breadcrumb.php';
 require get_template_directory() . '/inc/metabox-page-title-section.php';
 
 /**
- * Custom News Story Summary Metabox
- */
-require get_template_directory() . '/inc/metabox-news-story-summary.php';
-
-/**
- * Custom News Story Author Metabox
- */
-require get_template_directory() . '/inc/metabox-news-story-author.php';
-
-/**
  * Widget functions
  */
 require get_template_directory() . '/inc/widgets.php';
@@ -461,12 +451,22 @@ require get_template_directory() . '/inc/restrict-blocks.php';
  * News Custom Post Type
  */
 
-//Check if post type is deactived
+//Check if news is activated
 $cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
-$deactivate_news = get_theme_mod('deactivate_cpt_news', "yes"); //old way to be deleted once new settings saved
 
-if ($cpt_news_activated || $deactivate_news == "no") {
+if ($cpt_news_activated) {
     require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
+
+    /**
+     * Custom News Story Summary Metabox
+     */
+    require get_template_directory() . '/inc/metabox-news-story-summary.php';
+
+    /**
+     * Custom News Story Author Metabox
+     */
+    require get_template_directory() . '/inc/metabox-news-story-author.php';
+
 }
 
 /**

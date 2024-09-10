@@ -50,18 +50,30 @@ function hale_generate_custom_colours() {
 			}
 			$css .= "}";
 		} elseif ($custom_colours_set) { //custom scheme
+
+			$custom_colours_found = 0;
+			$unset_colours = [];
+
 			$css = ":root {";
 			for($i=0;$i<count($colour_array);$i++) {
 				$colour_id = hale_get_colour_id($colour_array[$i]);
 				$colour_default = hale_get_colour_default($colour_array[$i]);
 				$theme_mod = $colour_value[$i]["value"];
 				if (!empty($theme_mod) ) {
+					$custom_colours_found++;
 					$css .= "--$colour_id:$theme_mod;";
 				} else {
 					$css .= "--$colour_id:$colour_default;";
+					$unset_colours[] = $colour_id;
 				}
 			}
 			$css .= "}";
+
+			/********
+			 * This next bit emails warnings about unset colours
+			 */
+			require_once get_template_directory() . '/inc/colour-email-warning.php';
+			emailWarning($unset_colours,$custom_colours_found,$i,"colour-branding.php");
 
 			// Text on a custom dark background
 			$background_css = "";

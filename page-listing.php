@@ -73,8 +73,8 @@ while (have_posts()) :
                                     ?>
                                 </fieldset>
 
-                            <?php } ?>
 
+                            <?php } ?>
                             <div>
                                 <button class="govuk-button">
                                     <?php _e('Search', 'hale'); ?>

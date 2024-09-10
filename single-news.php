@@ -21,7 +21,14 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-                get_template_part( 'template-parts/content', 'news' );
+				$cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
+
+				if ($cpt_news_activated) {
+                	get_template_part( 'template-parts/content', 'news' );
+				}
+				else {
+					get_template_part( 'template-parts/flexible-cpts/single');
+				}
 
 			endwhile; // End of the loop.
 			?>

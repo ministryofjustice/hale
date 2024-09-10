@@ -13,6 +13,16 @@
 
 .govuk-breadcrumbs {
   padding: 0.7em 0;
+
+  &__list {
+    &-item {
+      max-width: 100%;
+      overflow-x: clip;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      border-bottom: 3px solid transparent;
+    }
+  }
 }
 
 ul.hale-list--top{

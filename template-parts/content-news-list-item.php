@@ -25,7 +25,12 @@
                         <li class="news-story-categories-list-item">
                             <a href="<?php echo get_category_link($story_category->term_id); ?>"
                                class="news-story-category-link">
-                                <?php echo $story_category->name; ?>
+                                <span class="govuk-visually-hidden">
+                                    <?php _e("See items with the topic: "); ?>
+                                </span>
+                                <strong>
+                                    <?php echo esc_html($story_category->name); ?>
+                                </strong>
                             </a>
                         </li>
                         <?php
@@ -39,7 +44,12 @@
                         <li class="news-story-categories-list-item">
                             <a href="<?php echo get_tag_link($story_tag->term_id); ?>"
                                class="news-story-category-link">
-                                #<?php echo $story_tag->name; ?>
+                                <span class="govuk-visually-hidden">
+                                    <?php _e("See items tagged: "); ?>
+                                </span>
+                                <strong>
+                                    #<?php echo esc_html($story_tag->name); ?>
+                                </strong>
                             </a>
                         </li>
                         <?php
@@ -53,7 +63,13 @@
     ?>
     <div class="news-story-excerpt">
         <?php
-        $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
+
+        $news_story_summary = get_field('post_summary');
+
+        if(empty($news_story_summary)){
+            $news_story_summary = get_post_meta($post->ID, 'news_story_summary', true);
+        }
+
         if(!empty($news_story_summary)){
             echo wpautop($news_story_summary);
         }

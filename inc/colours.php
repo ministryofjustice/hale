@@ -73,16 +73,25 @@
 					['header-search-input-focus-text',$black,'Text when focussed','',''],
 					['header-search-input-focus-placeholder',$darkGrey,'Placeholder text when focussed','',''],
 					['header-search-input-focus-border',$yellow,'Border when focussed','',''],
+					['header-search-input-focus-border-trim',$black,'Inner border when focussed','',''],
 					['header-search-input-active-bg',$white,'Background when active','',''],
 					['header-search-input-active-text',$black,'Text when active','',''],
 					['header-search-input-active-placeholder',$darkGrey,'Placeholder text when active','',''],
 					['header-search-input-active-border',$yellow,'Border when active','',''],
 					['header-search-btn-bg',$lightGrey,'Button background','',''],
+					['header-search-btn-border','var(--header-search-btn-bg)','Button border','Blank will match background',''], // using a var to reduce impact on existing colour schemes
+					['header-search-btn-border-input-active',$yellow,'Button border when input is active','',''],
 					['header-search-btn-icon',$black,'Button icon','',''],
 					['header-search-btn-hover-bg',$buttonHoverGrey,'Background on hover','',''],
+					['header-search-btn-hover-border','var(--header-search-btn-hover-bg)','Button border on hover','Blank will match background',''], // using a var to reduce impact on existing colour schemes
 					['header-search-btn-hover-icon',$black,'Button icon on hover','',''],
 					['header-search-btn-focus-bg',$yellow,'Button background when focussed','',''],
+					['header-search-btn-focus-border','var(--header-search-btn-focus-bg)','Button border on focus','Blank will match background',''], // using a var to reduce impact on existing colour schemes
 					['header-search-btn-focus-icon',$black,'Button icon when focussed','',''],
+					['header-search-btn-divider',$white,'Divider between button and input field','',''],
+					['header-search-btn-divider-hover',$lightGrey,'Divider on hover','',''],
+					['header-search-btn-divider-focus',$yellow,'Divider on focus','',''],
+					['header-search-btn-divider-input-active',$white,'Divider when input is active','',''],
 				)
 			],
 			[
@@ -392,6 +401,7 @@
 	}
 
 	function hale_new_colour_check() {
+
 		// This function checks for any newly created colours that haven't been set in the customizer and applies the default.
 		// The amended CSS file will be overwritten when the colours are next amended.
 		// This does not protect against new colours being added to the SASS and not added to colours.php.
@@ -414,6 +424,8 @@
 			//The colours CSS for this site is older than the last colours build - doesn't necessarily mean that the CSS is incomplete
 			//But if the colours CSS is newer, that means the colours have been set since the last update and the error cannot occur
 			$missing_colours = "";
+			$found_colour_count = 0;
+			$missing_colour_array = [];
 			$colour_array = hale_get_colours();
 			$CSS_string = file_get_contents($CSSfileURL);
 			for ($i=0;$i<count($colour_array);$i++) {
@@ -421,6 +433,11 @@
 					trigger_error("Colour not found: ".$colour_array[$i][0]." auto-creating colour, set to default (".$colour_array[$i][1].")");
 					//we add the missing colour variable with default value to missing colour string
 					$missing_colours .= "\t--".$colour_array[$i][0].": ".$colour_array[$i][1].";\n";
+
+					//add the missing colour to the array
+					$missing_colour_array[] = $colour_array[$i][0];
+				} else {
+					$found_colour_count++;
 				}
 			}
 			if ($missing_colours != "") {
@@ -433,6 +450,12 @@
 					fwrite($css_file, "}");
 					fclose($css_file);
 				}
+
+				/********
+				 * This next bit emails warnings about unset colours
+				 */
+				require_once get_template_directory() . '/inc/colour-email-warning.php';
+				emailWarning($missing_colour_array,$found_colour_count,$i,"colours.php");
 			} else {
 				//if there are no missing colours, nothing needs to be done.
 				//but we still touch the file so the surrounding if statement is not triggered and we don't have to do the get_file_contents each time

@@ -183,7 +183,7 @@
 				}
 
 				&:focus {
-					border: none;
+					border-color: var(--header-search-input-focus-border-trim); //this is an inner border to increase contrast betwixt search box and the focus outline (next line)
 					outline: 3px solid var(--header-search-input-focus-border);
 					background: var(--header-search-input-focus-bg);
 					color: var(--header-search-input-focus-text);
@@ -208,15 +208,24 @@
 
 			.hale-search__submit {
 				background: var(--header-search-btn-bg);
-				box-shadow: 0 1px 0 0 var(--header-search-btn-bg);
+				border-color: var(--header-search-btn-border);
+				box-shadow: -2px 0 0 -1px var(--header-search-btn-divider);
 
+				&:is(.hale-search__input:focus:active+*) {
+					border-color: var(--header-search-btn-border-input-active);
+					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-input-active);
+				}
+				&:is(.hale-search__input:focus+*) {
+					border-left-color: var(--header-search-input-focus-border-trim);
+				}
 				svg {
 					fill: var(--header-search-btn-icon);
 				}
 
 				&:hover {
 					background: var(--header-search-btn-hover-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-hover-bg);
+					border-color: var(--header-search-btn-hover-border);
+					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-hover);
 
 					svg {
 						fill: var(--header-search-btn-hover-icon);
@@ -225,7 +234,8 @@
 
 				&:focus, &:active {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 1px 0 0 var(--header-search-btn-focus-bg);
+					border-color: var(--header-search-btn-focus-border);
+					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-focus);
 
 					svg {
 						fill: var(--header-search-btn-focus-icon);
@@ -234,7 +244,8 @@
 
 				&:focus:not(:active):not(:hover) {
 					background: var(--header-search-btn-focus-bg);
-					box-shadow: 0 0 0 3px var(--button-focus-outline);
+					border-color: var(--header-search-btn-focus-bg);
+					// box-shadow for this state is "0 0 0 3px var(--button-focus-outline)" from general button styles
 				}
 			}
 		}
@@ -864,14 +875,9 @@ body.hale-colours-variable {
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
 		@extend .govuk-link;
-
 	}
 	.govuk-breadcrumbs__list-item {
 		color: var(--text);
-		max-width: 500px;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		border-bottom: 3px solid transparent;
 	}
 
 	//link focus state (breadcrumbs)
