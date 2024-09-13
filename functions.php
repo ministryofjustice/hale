@@ -221,23 +221,6 @@ function hale_scripts() {
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
 
-    if ( is_post_type_archive('news') ) {
-        wp_register_script('news-archive', hale_mix_asset('/js/news-archive.js') );
-
-        $categories = get_terms( array(
-            'taxonomy' => 'category'
-        ) );
-        wp_localize_script(
-            'news-archive',
-            'news_archive_object',
-            array(
-                'categories' => $categories
-            )
-        );
-
-        wp_enqueue_script('news-archive' );
-    }
-
     // Load Listing template JS
     if ( is_page_template('page-listing.php') ) {
         $script_path = get_template_directory() . '/dist/js/page-listing.js';
@@ -462,28 +445,6 @@ function hale_learndash_admin_fix()
  * Restrict Blocks
  */
 require get_template_directory() . '/inc/restrict-blocks.php';
-
-/**
- * News Custom Post Type
- */
-
-//Check if news is activated
-$cpt_news_activated = get_theme_mod('cpt_news_activated', 0);
-
-if ($cpt_news_activated) {
-    require get_template_directory() . '/inc/custom-post-types/cpt-news.php';
-
-    /**
-     * Custom News Story Summary Metabox
-     */
-    require get_template_directory() . '/inc/metabox-news-story-summary.php';
-
-    /**
-     * Custom News Story Author Metabox
-     */
-    require get_template_directory() . '/inc/metabox-news-story-author.php';
-
-}
 
 /**
  * Taxonomies

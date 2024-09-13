@@ -3,12 +3,12 @@
 //mixins
 @mixin hale-heading-link-underline-restrictor($colour, $width: desktop) {
 	@include govuk-media-query($from: $width) {
-		position:relative;
-		
+		position: relative;
+
 		&:before {
-			content:"";
-			border-right:15px solid var($colour);
-			border-left:15px solid var($colour);
+			content: "";
+			border-right: 15px solid var($colour);
+			border-left: 15px solid var($colour);
 		}
 	}
 }
@@ -16,11 +16,17 @@
 // This Mixin adds the style which cancels out the text colour should a different block of a different colour be inside it.
 // However, it will break down if a different block of the same colour be insude it - in such cases, the text colour might need to be manually set.
 @mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
-	@if $hoverColour == "" { //not link
+	@if $hoverColour =="" {
+
+		//not link
 		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(.has-text-color *):not(.has-text-color) {
 			color: $colour;
 		}
-	} @else { //is link - no text colour check, focus colour doesn't change from normal because of the focus background.
+	}
+
+	@else {
+
+		//is link - no text colour check, focus colour doesn't change from normal because of the focus background.
 		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(:focus) {
 			color: $colour;
 
@@ -30,32 +36,38 @@
 		}
 	}
 }
+
 // This does the same as above but for buttons
 @mixin hale-dark-background-button($paletteColour) {
+
 	.mojblocks-button,
 	a.mojblocks-button:link,
 	a.mojblocks-button:visited,
 	.wp-block-button__link,
 	.govuk-button {
 		&:not(.#{$paletteColour} .has-background *) {
-			border:var(--dark-button-border);
+			border: var(--dark-button-border);
 			box-shadow: none;
-			color:var(--dark-button-text);
-			background-color:var(--dark-button);
+			color: var(--dark-button-text);
+			background-color: var(--dark-button);
+
 			&:hover {
 				background-color: var(--dark-button-hover);
 				color: var(--dark-button-hover-text);
 				box-shadow: none;
 				border-color: var(--dark-button-hover-border);
+
 				svg {
 					fill: var(--dark-button-hover-text);
 				}
 			}
+
 			&:focus,
 			&:focus:not(:active):not(:hover) {
 				border-color: var(--dark-button-focus-outline);
 				box-shadow: 0 0 0 3px var(--dark-button-focus-outline);
 			}
+
 			svg {
 				fill: var(--dark-button-text);
 			}
@@ -66,30 +78,41 @@
 // Used for custom backgrounds - the two dark greyscale colours (black and dark grey)
 @mixin hale-custom-shading-text-colours($paletteColour) {
 	.#{$paletteColour} {
+
 		.govuk-link:link,
 		.govuk-link:visited,
 		a:link:not([class]),
 		a:visited:not([class]),
-		a[class="customize-unpreviewable"], // for wordpress customizer
+		a[class="customize-unpreviewable"],
+		// for wordpress customizer
 		.gem-c-pagination__link:link,
 		.gem-c-pagination__link:visited {
-			@include hale-block-inside-block($paletteColour,var(--dark-link), var(--dark-link-hover));
+			@include hale-block-inside-block($paletteColour, var(--dark-link), var(--dark-link-hover));
 		}
+
 		&:is(p),
 		p,
 		li,
 		label,
 		.use-dark-background-text-colour {
-			@include hale-block-inside-block($paletteColour,var(--dark-text));
+			@include hale-block-inside-block($paletteColour, var(--dark-text));
 		}
-		h1, h2, h3, h4, h5, h6,
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
 		&:is(h1, h2, h3, h4, h5, h6),
 		.use-dark-background-heading-colour {
-			@include hale-block-inside-block($paletteColour,var(--dark-heading-text));
+			@include hale-block-inside-block($paletteColour, var(--dark-heading-text));
 		}
+
 		@include hale-dark-background-button($paletteColour);
 	}
 }
+
 //branding colours and styles
 
 /**********************
@@ -99,7 +122,7 @@
 
 //remove gap at top of page
 .govuk-main-wrapper {
-	padding-top:0;
+	padding-top: 0;
 }
 
 
@@ -108,23 +131,32 @@
 */
 
 * {
+
 	main,
 	.edit-post-visual-editor__content-area {
+
 		p,
 		p:not([class]),
 		p[class=""],
 		li,
 		label {
+
 			// We do not apply this style if there is a custom colour set
 			&:not(.has-text-color *):not(.has-text-color) {
-				color:var(--text);
+				color: var(--text);
 			}
 		}
 
-		h1, h2, h3, h4, h5, h6 {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+
 			// We do not apply this style if there is a custom colour set or for notification banner titles
 			&:not(.has-text-color *):not(.has-text-color):not(.govuk-notification-banner__title) {
-				color:var(--heading-text);
+				color: var(--heading-text);
 			}
 		}
 	}
@@ -147,6 +179,7 @@
 		.govuk-header__logotype {
 			color: var(--header-link);
 		}
+
 		.govuk-header__link:focus .govuk-header__logotype {
 			color: var(--header-link-focus);
 		}
@@ -167,6 +200,7 @@
 					// header-link will contrast with the header background so should pass
 					color: var(--header-link);
 				}
+
 				.hale-search__button-text {
 					// header-search-btn-icon will contrast with the button background so should pass
 					color: var(--header-search-btn-icon);
@@ -215,9 +249,11 @@
 					border-color: var(--header-search-btn-border-input-active);
 					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-input-active);
 				}
+
 				&:is(.hale-search__input:focus+*) {
 					border-left-color: var(--header-search-input-focus-border-trim);
 				}
+
 				svg {
 					fill: var(--header-search-btn-icon);
 				}
@@ -232,7 +268,8 @@
 					}
 				}
 
-				&:focus, &:active {
+				&:focus,
+				&:active {
 					background: var(--header-search-btn-focus-bg);
 					border-color: var(--header-search-btn-focus-border);
 					box-shadow: -2px 0 0 -1px var(--header-search-btn-divider-focus);
@@ -255,7 +292,7 @@
 				color: var(--header-link-focus);
 				background-color: var(--header-link-focus-highlight);
 				border-bottom-color: var(--header-link-focus-underline);
-			    box-shadow: 0 -2px var(--header-link-focus-highlight), 0 4px var(--header-link-focus-underline);
+				box-shadow: 0 -2px var(--header-link-focus-highlight), 0 4px var(--header-link-focus-underline);
 			}
 		}
 
@@ -270,7 +307,7 @@
 
 		//remove MoJ logo text
 		.govuk-header__logotype-text:not(.hale-header__logotype-text--custom) {
-			display:none;
+			display: none;
 		}
 
 		.govuk-header__content {
@@ -298,14 +335,16 @@
 					content: none; // removes little arrow from dropdown menu - Hale uses an icon
 				}
 			}
+
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
 
 				.current-menu-item {
-					> a,
-					> a:visited,
-					> a:link,
-					> a:link:visited {
+
+					>a,
+					>a:visited,
+					>a:link,
+					>a:link:visited {
 
 						&:not(:focus) {
 							color: var(--header-link-current);
@@ -329,14 +368,16 @@
 				}
 
 				li {
-					&, .hale-header__dropdown-arrow {
+
+					&,
+					.hale-header__dropdown-arrow {
 						border-color: var(--header-divider-line);
 					}
 
-					> a,
-					> a:visited,
-					> a:link,
-					> a:link:visited,
+					>a,
+					>a:visited,
+					>a:link,
+					>a:link:visited,
 					.menu-item__more {
 						color: var(--header-link);
 
@@ -363,13 +404,14 @@
 							@include hale-heading-link-underline-restrictor($colour: --header-bg);
 						}
 					}
+
 					// outline for when more button is clicked
 					&.menu-item--more--open {
 						.menu-item__more:before {
-							content:"";
-							width:100%;
-							height:calc(100% + 3px);
-							position:absolute;
+							content: "";
+							width: 100%;
+							height: calc(100% + 3px);
+							position: absolute;
 							outline: 3px solid;
 							outline-offset: -3px;
 							z-index: 1;
@@ -386,7 +428,8 @@
 							&--desktop {
 								color: var(--header-submenu-link);
 								background-color: var(--header-submenu-bg);
-								&:focus ~ .sub-menu{
+
+								&:focus~.sub-menu {
 									outline-color: var(--header-submenu-lock-focus);
 								}
 							}
@@ -396,44 +439,52 @@
 								border-bottom-color: var(--header-link-focus-underline);
 								background-color: var(--header-link-focus-highlight);
 							}
+
 							&:focus:not(:hover) {
 								color: var(--header-link-focus);
 								border-bottom-color: var(--header-link-focus-underline);
 								background-color: var(--header-link-focus-highlight);
 							}
+
 							&:hover {
 								color: var(--header-link-hover);
 								border-bottom-color: var(--header-link-hover-border);
 							}
 						}
 
-						> a:after,
-						> a:link:after,
-						> a:visited:after,
-						> a:link:visited:after {
-							border-color: currentColor;;
+						>a:after,
+						>a:link:after,
+						>a:visited:after,
+						>a:link:visited:after {
+							border-color: currentColor;
+							;
 						}
+
 						@include govuk-media-query($until: desktop) {
+
 							&.current_page_item,
 							&.current_page_ancestor {
-								> a:after,
-								> a:link:after,
-								> a:visited:after,
-								> a:link:visited:after {
+
+								>a:after,
+								>a:link:after,
+								>a:visited:after,
+								>a:link:visited:after {
 									border-color: var(--header-link);
 								}
 							}
-							> a:focus:after {
+
+							>a:focus:after {
 								border-color: var(--header-link);
 							}
 						}
 
 						@include govuk-media-query($from: desktop) {
 							&:not(.current-menu-ancestor):not(.current-menu-item):hover {
-								> a:not(:focus),
-								> a:not(:focus):visited,
-								> a:not(:focus):link,
-								> a:not(:focus):link:visited {
+
+								>a:not(:focus),
+								>a:not(:focus):visited,
+								>a:not(:focus):link,
+								>a:not(:focus):link:visited {
 									background-color: var(--header-link-with-children-hover-bg);
 									color: var(--header-link-with-children-hover);
 									border-color: var(--header-link-with-children-hover-border);
@@ -441,13 +492,14 @@
 								}
 							}
 
-							> a:focus {
+							>a:focus {
 								color: var(--header-link-hover-focus);
 								background-color: var(--header-link-focus-highlight);
 
 								&:after {
 									border-color: currentColor;
 								}
+
 								@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 							}
 
@@ -455,18 +507,20 @@
 
 						&.current-menu-item,
 						&.current-menu-ancestor {
-							> a:not(:focus),
-							> a:not(:focus):visited,
-							> a:not(:focus):link,
-							> a:not(:focus):link:visited {
+
+							>a:not(:focus),
+							>a:not(:focus):visited,
+							>a:not(:focus):link,
+							>a:not(:focus):link:visited {
 								background-color: var(--header-link-ancestor-bg);
 								color: var(--header-link-ancestor);
 
 								&:hover {
 									color: var(--header-link-ancestor);
-									border-bottom-color:var(--header-link-ancestor-hover-border);
+									border-bottom-color: var(--header-link-ancestor-hover-border);
 
 									@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+
 									&:focus {
 										border-bottom-color: currentColor;
 
@@ -490,17 +544,19 @@
 
 					@include govuk-media-query($from: desktop) {
 						background-color: var(--header-submenu-bg);
+
 						&:before {
 							background-color: var(--header-submenu-bg);
 							box-shadow: 0 1px var(--header-divider-line);
 						}
 					}
 
-					> li {
-						> a,
-						> a:visited,
-						> a:link,
-						> a:link:visited {
+					>li {
+
+						>a,
+						>a:visited,
+						>a:link,
+						>a:link:visited {
 							color: var(--header-submenu-link-mobile);
 
 							@include govuk-media-query($from: desktop) {
@@ -511,6 +567,7 @@
 
 									@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg, $width: desktop);
 								}
+
 								&:focus:hover,
 								&:focus:not(:hover) {
 									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight, $width: desktop);
@@ -519,10 +576,11 @@
 						}
 
 						&.current-menu-item {
-							> a,
-							> a:visited,
-							> a:link,
-							> a:link:visited {
+
+							>a,
+							>a:visited,
+							>a:link,
+							>a:link:visited {
 								color: var(--header-submenu-link-mobile-current);
 
 								&:hover {
@@ -532,7 +590,7 @@
 								&:focus,
 								&:hover:focus {
 									color: var(--link-focus);
-									background-color:var(--link-focus-background);
+									background-color: var(--link-focus-background);
 									border-bottom-color: var(--link-focus);
 
 									@include hale-heading-link-underline-restrictor($colour: --link-focus-background, $width: desktop);
@@ -558,7 +616,7 @@
 						}
 					}
 				}
-				
+
 				.menu-item--more {
 					.menu-item__more {
 						background-color: var(--header-bg);
@@ -571,9 +629,10 @@
 
 							&:hover {
 								color: var(--header-link-ancestor);
-								border-bottom-color:var(--header-link-ancestor-hover-border);
+								border-bottom-color: var(--header-link-ancestor-hover-border);
 
 								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
+
 								&:focus {
 									border-bottom-color: currentColor;
 
@@ -586,7 +645,7 @@
 							}
 						}
 					}
-	
+
 					&__content {
 						background-color: var(--header-submenu-bg);
 						color: var(--header-submenu-link);
@@ -594,16 +653,18 @@
 						&:after {
 							background-color: var(--header-submenu-bg);
 						}
-	
+
 						.sub-menu {
 							li a {
+
 								&:link,
 								&:visited,
 								&:link:visited {
+
 									&:hover,
 									&:not(:hover) {
 										@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
-										
+
 										&:focus {
 											@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
 										}
@@ -611,19 +672,25 @@
 								}
 							}
 						}
+
 						>li.menu-item {
 							border-bottom-color: var(--header-submenu-link);
 
-							> a:not(:focus) {
+							>a:not(:focus) {
 								box-shadow: 0 13px 0 -12px var(--header-submenu-bg), 0 14px 0 -12px var(--header-submenu-link);
 							}
 
 							// we need to make the following declarations to override the existing very specific declarations above
-							&:not(.current-menu-ancestor):not(.current-menu-item), //normal parents not currently "current"
-							&.current-menu-item, //parents which are the current page
-							.current-menu-item, //children which are the current page
+							&:not(.current-menu-ancestor):not(.current-menu-item),
+							//normal parents not currently "current"
+							&.current-menu-item,
+							//parents which are the current page
+							.current-menu-item,
+							//children which are the current page
 							&.current-menu-ancestor //parents of children which are the current page
-							{
+
+								{
+
 								//these styles are no longer dependent on hover status - but we need to declare both to override the above
 								&:hover,
 								&:not(:hover) {
@@ -631,6 +698,7 @@
 									background-color: var(--header-submenu-bg);
 
 									a {
+
 										&:link,
 										&:visited,
 										&:link:visited {
@@ -645,8 +713,10 @@
 									}
 								}
 							}
+
 							&.current-menu-item {
 								a:not(:focus) {
+
 									&:link,
 									&:visited,
 									&:link:visited {
@@ -658,6 +728,7 @@
 											&:not(:hover) {
 												border-bottom-color: var(--header-link-current-border);
 											}
+
 											&:hover {
 												border-bottom-color: var(--header-link-current-hover-border);
 											}
@@ -669,25 +740,6 @@
 					}
 				}
 			}
-		}
-	}
-	.news-story-count,
-	.news-story-published-date {
-		color: var(--text);
-	}
-	.news-story-category-link,
-	.flexible-post-type-terms-link {
-		color: var(--tag-text);
-		background: var(--tag-bg);
-
-		&:focus {
-			color: var(--tag-focus-text);
-			background: var(--tag-focus-bg);
-			outline-color: var(--tag-focus-outline)
-		}
-		&:hover, &:active {
-			color: var(--tag-hover-text);
-			background: var(--tag-hover-bg);
 		}
 	}
 
@@ -709,16 +761,20 @@
 			}
 		}
 	}
+
 	.govuk-main-wrapper {
+
 		.govuk-link:link,
 		a:link:not([class]),
-		a[class="customize-unpreviewable"], // for wordpress customizer
+		a[class="customize-unpreviewable"],
+		// for wordpress customizer
 		.gem-c-pagination__link:link {
 			color: var(--link);
 
 			&:hover:not(:focus) {
 				color: var(--link-hover);
 			}
+
 			&:focus {
 				color: var(--link-focus);
 			}
@@ -732,6 +788,7 @@
 			&:hover:not(:focus) {
 				color: var(--link-hover);
 			}
+
 			&:focus {
 				color: var(--link-focus);
 			}
@@ -767,15 +824,19 @@ body.hale-colours-variable {
 		&__link,
 		&__close {
 			color: var(--info-banner-link);
+
 			&:link {
 				color: var(--info-banner-link);
 			}
+
 			&:visited {
 				color: var(--info-banner-link-visited);
 			}
+
 			&:hover:not(:focus) {
 				color: var(--info-banner-link-hover);
 			}
+
 			&:focus {
 				color: var(--info-banner-link-focus);
 				background-color: var(--info-banner-link-focus-background);
@@ -798,62 +859,72 @@ body.hale-colours-variable {
 	a.mojblocks-button,
 	.govuk-button:link,
 	.govuk-button {
-		border:var(--button-border);
+		border: var(--button-border);
 		box-shadow: none;
-		color:var(--button-text);
-		background-color:var(--button);
+		color: var(--button-text);
+		background-color: var(--button);
+
 		&:hover {
 			background-color: var(--button-hover);
 			color: var(--button-hover-text);
 			box-shadow: none;
 			border-color: var(--button-hover-border);
+
 			svg {
 				fill: var(--button-hover-text);
 			}
 		}
+
 		&:focus {
 			background-color: var(--button-focus);
 			color: var(--button-focus-text);
 			border-color: var(--button-focus-outline);
 			box-shadow: 0 0 0 3px var(--button-focus-outline);
 		}
+
 		&:focus:not(:active):not(:hover) {
 			background-color: var(--button-focus);
 			color: var(--button-focus-text);
 			border-color: var(--button-focus-outline);
 			box-shadow: 0 0 0 3px var(--button-focus-outline);
 		}
+
 		svg {
 			fill: var(--button-text);
 		}
 	}
 
-	.govuk-exit-this-page .govuk-button{
-		border:var(--quick-exit-button-border);
+	.govuk-exit-this-page .govuk-button {
+		border: var(--quick-exit-button-border);
 		box-shadow: none;
-		color:var(--quick-exit-button-text);
-		background-color:var(--quick-exit-button);
+		color: var(--quick-exit-button-text);
+		background-color: var(--quick-exit-button);
+
 		&:hover {
 			background-color: var(--quick-exit-button-hover);
 			color: var(--quick-exit-button-hover-text);
 			box-shadow: none;
 			border-color: var(--quick-exit-button-hover-border);
+
 			svg {
 				fill: var(--quick-exit-button-hover-text);
 			}
 		}
+
 		&:focus {
 			background-color: var(--quick-exit-button-focus);
 			color: var(--quick-exit-button-focus-text);
 			border-color: var(--quick-exit-button-focus-outline);
 			box-shadow: 0 0 0 3px var(--quick-exit-button-focus-outline);
 		}
+
 		&:focus:not(:active):not(:hover) {
 			background-color: var(--quick-exit-button-focus);
 			color: var(--quick-exit-button-focus-text);
 			border-color: var(--quick-exit-button-focus-outline);
 			box-shadow: 0 0 0 3px var(--quick-exit-button-focus-outline);
 		}
+
 		svg {
 			fill: var(--quick-exit-button-text);
 		}
@@ -876,6 +947,7 @@ body.hale-colours-variable {
 	.govuk-back-link {
 		@extend .govuk-link;
 	}
+
 	.govuk-breadcrumbs__list-item {
 		color: var(--text);
 	}
@@ -892,15 +964,15 @@ body.hale-colours-variable {
 
 	//shading colour - set here and use @extend to shade elements below
 	.hale-shaded {
-		background-color:var(--title-shading);
+		background-color: var(--title-shading);
 	}
 
 	.hale-search-header,
 	.page-header-section {
 
-		position:relative;
-		padding:0.2em 0;
-		margin-bottom:2rem;
+		position: relative;
+		padding: 0.2em 0;
+		margin-bottom: 2rem;
 
 		&:before {
 			@extend .hale-shaded; // gets the shading colour
@@ -915,12 +987,13 @@ body.hale-colours-variable {
 			transform: translate(-50%, -0.3em);
 
 			@media (hover: none) and (pointer: coarse) {
-			display: none;
+				display: none;
 			}
 		}
-		> * {
-			position:relative;
-			top:1rem;
+
+		>* {
+			position: relative;
+			top: 1rem;
 		}
 	}
 
@@ -928,33 +1001,36 @@ body.hale-colours-variable {
 	ul.hale-list--top {
 		li {
 			&:after {
-				border-color:white; //Legacy from the SVG approach where this was not customizable.
+				border-color: white; //Legacy from the SVG approach where this was not customizable.
 			}
+
 			&:before {
-				background:var(--cat-nav-arrows);
+				background: var(--cat-nav-arrows);
 			}
 		}
 	}
+
 	&.page-body-colour {
-		background-color:var(--title-shading);
+		background-color: var(--title-shading);
 
 		.hale-search-header,
 		.page-header-section {
-			&:before
-			{
+			&:before {
 				content: none;
 			}
 		}
 	}
 
 	.gem-c-pagination__item {
+
 		&.gem-c-pagination__item--next,
 		&.gem-c-pagination__item--previous {
-			&:after{
-				border-color:white; //Legacy from the SVG approach where this was not customizable.
+			&:after {
+				border-color: white; //Legacy from the SVG approach where this was not customizable.
 			}
-			&:before{
-				background:var(--cat-nav-arrows);
+
+			&:before {
+				background: var(--cat-nav-arrows);
 			}
 		}
 	}
@@ -981,8 +1057,9 @@ body.hale-colours-variable {
 			}
 
 			&:hover {
-				text-decoration:none;
+				text-decoration: none;
 			}
+
 			&:focus {
 				color: var(--footer-link-focus);
 				background-color: var(--footer-link-focus-background);
@@ -999,10 +1076,12 @@ body.hale-colours-variable {
 				4px 4px var(--footer-link-focus-shadow);
 		}
 	}
+
 	.job-list-item {
 		background-color: var(--job-item-bg);
 		border-color: var(--job-item-border);
 	}
+
 	.archive-pagination {
 		border-top-color: var(--pagination-border);
 	}
@@ -1012,19 +1091,22 @@ body.hale-colours-variable {
 
 		.govuk-select,
 		.govuk-input {
-			&--error{
+			&--error {
 				border-color: var(--error);
 			}
 		}
 	}
+
 	.govuk-error-message {
 		color: var(--error);
 	}
+
 	.govuk-error-summary {
 		border-color: var(--error);
 
-		&__list{
+		&__list {
 			a:not(:focus) {
+
 				&:link,
 				&:visited,
 				&:link:visited {
