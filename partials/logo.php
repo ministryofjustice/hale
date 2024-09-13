@@ -20,6 +20,7 @@ $show_sitelogo = get_theme_mod( 'logo_configuration' ) == 'logo' || get_theme_mo
 $show_sitename = get_theme_mod( 'logo_configuration' ) == 'name' || get_theme_mod( 'logo_configuration' ) == 'both' ? "yes" : "";
 $logo_has_link = get_theme_mod( 'logo_has_link', 'yes' );
 $logo_custom_link = get_theme_mod( 'logo_custom_link', '' );
+$logo_aria_label = get_theme_mod( 'logo_aria_label', get_bloginfo( 'name' ) . " " . __("homepage","hale") );
 
 if(!empty($logo_custom_link)){
     $logo_link = $logo_custom_link;
@@ -38,7 +39,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
 <?php if ( $show_sitename === 'yes' || $show_sitelogo === 'yes' ) { ?>
 <div class="govuk-header__logo">
 <?php if ( $logo_has_link === 'yes' ) { ?>
-    <a class="govuk-header__link govuk-header__link--homepage" href="<?php echo esc_url_raw( $logo_link ); ?>" aria-label="<?php bloginfo( 'name' ); ?> homepage">
+    <a class="govuk-header__link govuk-header__link--homepage" href="<?php echo esc_url_raw( $logo_link ); ?>" aria-label="<?php echo $logo_aria_label; ?>">
 <?php
     }
     if ( has_custom_logo() ) {
