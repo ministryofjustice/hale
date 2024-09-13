@@ -233,3 +233,29 @@ function hale_link_pages_args_prevnext_add($args)
 
     return $args;
 }
+
+//if listing page is url slug is same is post type slug it can cause a lisitng page pagination conflict
+// e.g. if lisitng page is on https://example.com/news and post type slug is news. https://example.com/news/page/2 breaks.
+    function hale_fix_listing_pagination($query_string)
+    { 
+    
+        //dont do anything if in admin or json request
+        if(is_admin() || wp_is_json_request()){
+            return $query_string;
+        }
+    
+        if ($query_string['name'] == 'page' && isset($query_string['page']) && isset($query_string['post_type']) ) {
+     
+            $post_type = $query_string['post_type'];
+            $paged = $query_string['page'];
+    
+            if(isset($query_string[$post_type]) && $query_string[$post_type] == 'page'){
+    
+                $query_string = ["page"  => "", "pagename" =>  $post_type, "paged" =>  $paged ];
+                
+            }
+        }  
+    
+        return $query_string;
+    }
+    add_filter('request', 'hale_fix_listing_pagination');
