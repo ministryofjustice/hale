@@ -238,6 +238,7 @@ function hale_link_pages_args_prevnext_add($args)
 // e.g. if lisitng page is on https://example.com/news and post type slug is news. https://example.com/news/page/2 breaks.
     function hale_fix_listing_pagination($query_string)
     { 
+
     
         //dont do anything if in admin or json request
         if(is_admin() || wp_is_json_request()){

@@ -565,3 +565,178 @@ require get_template_directory() . '/inc/footer-language-attributes.php';
  * Utility functions to help with various tasks
  */
 require get_template_directory() . '/inc/helper-functions.php';
+
+function wpdocs_register_block_patterns() {
+  
+  /*  register_block_pattern(
+        'wpdocs/my-example',
+        array(
+            'title'         => __( 'My First Block Pattern', 'textdomain' ),
+            'description'   => _x( 'This is my first block pattern', 'Block pattern description', 'textdomain' ),
+            'content'       => '<!-- wp:paragraph --><p>A single paragraph block style</p><!-- /wp:paragraph -->',
+            'categories'    => array( 'text' ),
+            'keywords'      => array( 'cta', 'demo', 'example' ),
+            'viewportWidth' => 800,
+        )
+    );*/
+
+    global $wpdb;
+
+    $patterns = $wpdb->get_results( "SELECT * FROM {$wpdb->base_prefix}patterns", OBJECT );
+
+    if(empty($patterns)){
+        return;
+    }
+
+    foreach($patterns as $pattern){
+
+       register_block_pattern(
+        'wpdocs/pattern-' . $pattern->ID,
+        array(
+            'title'         =>  $pattern->pattern_title,
+            'description'   =>  $pattern->pattern_description,
+            'content'       =>  $pattern->pattern_content,
+            'categories'    => array( 'text' ),
+            'keywords'      => array( 'cta', 'demo', 'example' ),
+            'viewportWidth' => 800,
+        )
+        );
+    }
+}
+
+add_action( 'init', 'wpdocs_register_block_patterns' );
+
+//add_action( 'save_post', 'save_platform_wide_pattern', 10,  2 );
+function save_platform_wide_pattern( $post_id, $post ) {
+ 
+    global $wpdb;
+
+    $platform_wide = get_post_meta($post_id, 'platform_wide_pattern', true);
+
+    if($platform_wide != 'yes'){
+        hale_delete_platform_wide_pattern($post_id);
+        return;
+    }
+
+    $check_exists = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->base_prefix}patterns WHERE pattern_post_id = {$post_id}" );
+
+    if($check_exists == 1){
+        $data = [
+            'pattern_title' => $post->post_title,
+            'pattern_description' => 'test',
+            'pattern_content' => $post->post_content,
+        ];
+        $updated = $wpdb->update($wpdb->base_prefix.'patterns',$data, [ 'pattern_post_id' => $post_id ] );
+    }
+    else {
+        $data = [
+            'pattern_post_id' => $post_id,
+            'pattern_title' => $post->post_title,
+            'pattern_description' => 'test',
+            'pattern_content' => $post->post_content,
+        ];
+        $wpdb->insert($wpdb->base_prefix.'patterns',$data);
+    }   
+   // $pattern_id = $wpdb->insert_id;
+}
+
+function hale_pattern_platform_settings_metabox() {
+    add_meta_box(
+        'pattern-platform-settings',       
+        'Platform Settings',                  
+        'hale_render_pattern_platform_settings_metabox',  
+        'wp_block',                
+        'side',                 
+        'high'                    
+    );
+ }
+ add_action('add_meta_boxes', 'hale_pattern_platform_settings_metabox');
+
+ /**
+ * Render the metabox and it's contents to the page.
+ */
+function hale_render_pattern_platform_settings_metabox($post)
+{
+    // generate a nonce field.
+    wp_nonce_field(basename(__FILE__), 'hale_pattern_platform_settings_nonce');
+
+    $platform_wide = get_post_meta($post->ID, 'platform_wide_pattern', true);
+
+    if (empty($platform_wide) || $platform_wide != 'yes') {
+        $platform_wide = 'no';
+    }
+    ?>
+
+    <p><?php esc_html_e('Platform wide pattern', 'hale'); ?></p>
+
+    <input type="radio" id="platform-wide-pattern-on" name="platform-wide-pattern" value="yes"
+        <?php
+        if ($platform_wide == 'yes') :
+            echo 'checked';
+        endif;
+        ?>
+    >
+    <label for="platform-wide-pattern-on"><?php esc_html_e('Yes', 'hale'); ?></label><br>
+    <input type="radio" id="platform-wide-pattern-off" name="platform-wide-pattern" value="no"
+        <?php
+        if ($platform_wide == 'no') :
+            echo 'checked';
+        endif;
+        ?>
+    >
+    <label for="platform-wide-pattern-off"><?php esc_html_e('No', 'hale'); ?></label><br>
+
+    <?php
+}
+
+add_action('save_post', 'hale_save_pattern_platform_settings', 2, 2);
+/**
+ * Sends any saved background settings to the DB when user saves post.
+ *
+ * @param int $post_id the unique post identifier.
+ */
+function hale_save_pattern_platform_settings($post_id, $post)
+{
+
+    global $pagenow;
+
+    if ('post.php' !== $pagenow && 'post-new.php' !== $pagenow) {
+        return;
+    }
+
+    $is_autosave = wp_is_post_autosave($post_id);
+    $is_revision = wp_is_post_revision($post_id);
+
+    $get_settings_nonce = isset($_POST['hale_pattern_platform_settings_nonce']) ? $_POST['hale_pattern_platform_settings_nonce'] : '';
+
+    $hale_pattern_platform_settings_nonce = isset($get_settings_nonce) ? sanitize_text_field(wp_unslash($get_settings_nonce)) : '';
+
+    $is_valid_nonce = ( isset($get_settings_nonce) && ( wp_verify_nonce($hale_pattern_platform_settings_nonce, basename(__FILE__)) ) ) ? true : false;
+
+    if ($is_autosave || $is_revision || ! $is_valid_nonce) {
+        return;
+    }
+
+    if (isset($_POST['platform-wide-pattern'])) {
+        $platform_wide_pattern = sanitize_text_field(wp_unslash($_POST['platform-wide-pattern']));
+        update_post_meta($post_id, 'platform_wide_pattern', esc_attr(wp_unslash($platform_wide_pattern)));
+    }
+
+    save_platform_wide_pattern($post_id, $post);
+    /*
+    $platform_wide = get_post_meta($post_id, 'platform_wide_pattern', true);
+
+    if($platform_wide != 'yes'){
+        update_post_meta($post_id, 'test', 'test');
+    }
+    else {
+        update_post_meta($post_id, 'test', 'test2');
+    }*/
+
+}
+
+function hale_delete_platform_wide_pattern($post_id){
+    global $wpdb;
+
+    $updated = $wpdb->delete($wpdb->base_prefix.'patterns', [ 'pattern_post_id' => $post_id ] );
+}
