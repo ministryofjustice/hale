@@ -6,9 +6,8 @@
  *
  * @package Hale
  * Theme Hale with GDS styles
- * ©Crown Copyright
- * Adapted from version from NHS Leadership Academy, Tony Blacker
- * @version 2.0 February 2021
+ * © Crown Copyright
+ * @version 4.12 Sept 2024
  */
 
 get_header();
@@ -16,46 +15,41 @@ get_header();
 $sidebar = hale_show_sidebar();
 
 ?>
-	<div id="primary" class="govuk-grid-column-two-thirds">
+<div id="primary" class="govuk-grid-column-two-thirds">
+
     <?php
+    // Display archive title and description
     the_archive_title( '<h1 class="govuk-heading-l">', '</h1>' );
     the_archive_description( '<div class="archive-description">', '</div>' );
     ?>
 
-		<div class="
-		<?php
-		if ( $sidebar ) :
-			echo hale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		endif;
-		?>
-		archive">
+    <div class="<?php if ( $sidebar ) : echo hale_sidebar_location( 'sidebar-2' ); endif; ?> archive">
 
-			<?php
+        <?php
+        // Loop through all archived posts
+        if ( have_posts() ) :
+            while ( have_posts() ) :
+                the_post();
 
-			// Loop through all the archived posts and display
-			if (have_posts()) {
-				while (have_posts()) {
-					the_post();
-					
-					// Single post part and components
-					get_template_part( 'template-parts/content', 'archive-part' );
-				}
-			} else { ?>
-				<p><?php _e('No articles found', 'hale'); ?></p>
-				<?php
-			}
+                // Load the template part for the archive post
+                get_template_part( 'template-parts/content', 'archive-part' );
 
-			?>
+            endwhile;
+        else : ?>
+            <p><?php _e( 'No articles found', 'hale' ); ?></p>
+        <?php endif; ?>
 
-		</div>
+    </div>
 
-		<?php
-		if ( $sidebar ) :
-			get_sidebar( 'blog' );
-		endif;
-		?>
-	</div><!-- #primary -->
+    <?php
+    // Display the sidebar if applicable
+    if ( $sidebar ) :
+        get_sidebar( 'blog' );
+    endif;
+    ?>
+
+</div><!-- #primary -->
 
 <?php
-
 get_footer();
+
