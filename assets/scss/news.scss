@@ -1,0 +1,112 @@
+.news-story-header {
+
+    .news-story-title {
+        margin-bottom: 25px;
+        font-weight: normal;
+    }
+
+    .news-story-details {
+        @include govuk-font-size($size: 19);
+        font-weight: bold;
+    }
+
+}
+
+.news-story-featured-image {
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.news-story-published-date {
+    margin-bottom: 1rem;
+}
+
+.news-archive-filter-section {
+
+    @include mq($from: desktop) {
+        margin-top: 65px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    .news-archive-filter-form {
+
+
+        #news-archive-filter-topic {
+            margin-bottom: 20px;
+        }
+
+        .govuk-select {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        .govuk-button {
+            margin-top: 20px;
+        }
+    }
+}
+
+.news-story-count {
+    font-weight: bold;
+    border-bottom: 1px solid $govuk-border-colour;
+    @include govuk-font-size($size: 24);
+    padding-bottom: 16px;
+}
+
+.news-story-list-item {
+    border-bottom: 1px solid $govuk-border-colour;
+
+    &__title {
+        margin-top: 15px;
+    }
+
+    &:last-child {
+        border: none;
+    }
+}
+
+
+.news-story-categories {
+
+    margin-bottom: 1rem;
+
+    .news-story-categories-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 0;
+
+        .news-story-categories-list-item {
+            display: inline-block;
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+
+            .news-story-category-link {
+                font-weight: bold;
+                border-radius: 4px;
+                padding: 4px 8px;
+                text-decoration: none;
+                margin-right: 15px;
+                text-align: center;
+
+                &:focus {
+                    outline-style: solid;
+                    outline-width: 2px;
+                    outline-offset: 0;
+                }
+            }
+        }
+    }
+}
+
+.hale-news_listing__widgets {
+
+    //only direct descendants so not to restrict text length if in columnn
+    >.widget_text {
+        @include mq($from: desktop) {
+            max-width: 66.6666%;
+        }
+    }
+}

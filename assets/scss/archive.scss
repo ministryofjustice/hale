@@ -1,0 +1,27 @@
+.archive-list-item {
+    border-bottom: 1px solid $govuk-border-colour;
+
+    &__title {
+        margin-top: 15px;
+    }
+
+    &:last-child {
+        border: none;
+    }
+}
+
+.archive-list-item {
+    border-bottom: 1px solid $govuk-border-colour;
+
+    &__title {
+        margin-top: 15px;
+    }
+
+    &:last-child {
+        border: none;
+    }
+
+    .archive-published-date {
+        margin-bottom: 1rem;
+    }
+}
