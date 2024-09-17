@@ -31,7 +31,7 @@ $sidebar = hale_show_sidebar();
             while ( have_posts() ) :
                 the_post();
 
-                // Load the template part for the archive post
+                // Load posts as individual list item
                 get_template_part( 'template-parts/content', 'archive-list-item' );
 
             endwhile;
