@@ -27,6 +27,7 @@ get_header();
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post();
+                        get_template_part( 'template-parts/content', 'news-list-item' );
                     }
                 } else { ?>
                     <p><?php _e('No articles found', 'hale'); ?></p>
