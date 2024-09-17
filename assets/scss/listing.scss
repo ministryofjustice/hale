@@ -26,6 +26,10 @@
       }
     }
 
+    .listing-filter-field-wrapper {
+      all: unset;
+    }
+
     .listing-item-count {
       border-top: 1px solid $govuk-border-colour;
       padding-bottom: 16px;
