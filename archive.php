@@ -32,7 +32,7 @@ $sidebar = hale_show_sidebar();
                 the_post();
 
                 // Load the template part for the archive post
-                get_template_part( 'template-parts/content', 'archive-part' );
+                get_template_part( 'template-parts/content', 'archive-list-item' );
 
             endwhile;
         else : ?>
