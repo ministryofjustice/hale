@@ -1033,42 +1033,6 @@ function hale_add_blocks_settings( $wp_customize )
 			)
 		);
 
-		/* News CPT Settings */
-
-		$wp_customize->add_section(
-			'news_cpt_settings',
-			array(
-				'title' => esc_html__('News Stories', 'hale'),
-				'description' => esc_html__('News Stories CPT settings', 'hale'),
-				'capability' => 'edit_theme_options',
-				'theme-supports' => '',
-				'priority' => '160',
-				'panel' => 'blocks_panel'
-			)
-		);
-
-		$wp_customize->add_setting(
-			'cpt_news_activated',
-			array(
-				'default' => 0,
-			)
-		);
-
-		$wp_customize->add_control(
-			'cpt_news_activated',
-			array(
-				'label' => esc_html__('News Stories', 'hale'),
-				'section' => 'news_cpt_settings',
-				'priority' => '100',
-				'type' => 'radio',
-				'choices' => array(
-					1 => esc_html__('On', 'hale'),
-					0 => esc_html__('Off', 'hale'),
-				),
-			)
-		);
-
-
 	}
 
 	/*
