@@ -58,6 +58,10 @@ function hale_allowed_block_types( $allowed_blocks ) {
             $allowed_blocks[] = 'mojblocks/featured-news';
         }
 
+        if( current_user_can('administrator') ) {
+            $allowed_blocks[] = 'mojblocks/laa-chatbot';
+        }
+
         $cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
 
         if($cpt_documents_activated) {
