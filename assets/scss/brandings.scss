@@ -743,6 +743,23 @@
 		}
 	}
 
+	.flexible-post-type-terms-link {
+		color: var(--tag-text);
+		background: var(--tag-bg);
+
+		&:focus {
+			color: var(--tag-focus-text);
+			background: var(--tag-focus-bg);
+			outline-color: var(--tag-focus-outline)
+		}
+
+		&:hover,
+		&:active {
+			color: var(--tag-hover-text);
+			background: var(--tag-hover-bg);
+		}
+	}
+
 	//link focus state
 	#primary a:not([class]),
 	#primary a[class="customize-unpreviewable"],
