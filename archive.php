@@ -6,9 +6,8 @@
  *
  * @package Hale
  * Theme Hale with GDS styles
- * ©Crown Copyright
- * Adapted from version from NHS Leadership Academy, Tony Blacker
- * @version 2.0 February 2021
+ * © Crown Copyright
+ * @version 4.12 Sept 2024
  */
 
 get_header();
@@ -16,64 +15,41 @@ get_header();
 $sidebar = hale_show_sidebar();
 
 ?>
-	<div id="primary" class="govuk-grid-column-two-thirds">
+<div id="primary" class="govuk-grid-column-two-thirds">
+
     <?php
+    // Display archive title and description
     the_archive_title( '<h1 class="govuk-heading-l">', '</h1>' );
     the_archive_description( '<div class="archive-description">', '</div>' );
     ?>
 
-		<div class="
-		<?php
-		if ( $sidebar ) :
-			echo hale_sidebar_location( 'sidebar-2' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		endif;
-		?>
-		archive">
+    <div class="<?php if ( $sidebar ) : echo hale_sidebar_location( 'sidebar-2' ); endif; ?> archive">
 
-			<?php
-			if ( have_posts() ) :
-				?>
+        <?php
+        // Loop through all archived posts
+        if ( have_posts() ) :
+            while ( have_posts() ) :
+                the_post();
 
-				<div class="govuk-grid-row">
+                // Load posts as individual list item
+                get_template_part( 'template-parts/content', 'archive-list-item' );
 
-					<?php
-					/* Start the Loop */
-					while ( have_posts() ) :
-						the_post();
+            endwhile;
+        else : ?>
+            <p><?php _e( 'No articles found', 'hale' ); ?></p>
+        <?php endif; ?>
 
-						/*
-						 * Include the Post-Type-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-						 */
-						get_template_part( 'template-parts/content', get_post_type() );
+    </div>
 
-					endwhile;
-					?>
+    <?php
+    // Display the sidebar if applicable
+    if ( $sidebar ) :
+        get_sidebar( 'blog' );
+    endif;
+    ?>
 
-				</div>
-
-				<?php
-
-				hale_archive_pagination();
-
-				else :
-
-					get_template_part( 'template-parts/content', 'none' );
-
-				endif;
-				?>
-
-
-		</div>
-
-		<?php
-		if ( $sidebar ) :
-			get_sidebar( 'blog' );
-		endif;
-		?>
-	</div><!-- #primary -->
+</div><!-- #primary -->
 
 <?php
-
 get_footer();
+

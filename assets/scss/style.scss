@@ -39,17 +39,17 @@ $gutenberg-styles: false;
 @import 'icons';
 @import 'banners';
 
-//Jobs
+// Jobs
 @import 'job-listings';
 
-//News
-@import 'news';
-
-//Documents
+// Documents
 @import 'documents';
 
-//Listing Page
+// Listing Page
 @import 'listing';
 
-//Flexible Post Types
+// Flexible Post Types
 @import 'flexible-post-types';
+
+// Archive
+@import 'archive';
