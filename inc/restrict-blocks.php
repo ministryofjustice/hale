@@ -51,7 +51,8 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/reveal',
             'mojblocks/separator',
             'mojblocks/staggered-box',
-            'mojblocks/featured-item'
+            'mojblocks/featured-item',
+            'mojblocks/auto-item-list'
         );
 
         if (post_type_exists('news')) {
