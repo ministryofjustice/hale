@@ -257,6 +257,7 @@ function hale_fix_listing_pagination($query_string)
             unset($query_string['page']);
             unset($query_string['post_type']);
             unset($query_string['name']);
+            unset($query_string[$post_type]);
 
             $query_string['pagename'] = $post_type;
             $query_string['paged'] = $paged;
