@@ -253,11 +253,15 @@ function hale_fix_listing_pagination($query_string)
     
         // If the post type matches 'page', update the query string
         if (!empty($query_string[$post_type]) && $query_string[$post_type] === 'page') {
-            $query_string = [
-                'page'     => '',
-                'pagename' => $post_type,
-                'paged'    => $paged
-            ];
+
+            unset($query_string['page']);
+            unset($query_string['post_type']);
+            unset($query_string['name']);
+            unset($query_string[$post_type]);
+
+            $query_string['pagename'] = $post_type;
+            $query_string['paged'] = $paged;
+
         }
     }
 
