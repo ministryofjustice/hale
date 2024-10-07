@@ -18,9 +18,6 @@ function hale_gutenberg_editor_styles() {
     //Only apply to edit backend pages
     if ($screen->base == "post") {
         wp_enqueue_style('hale-gutenburg-style', hale_mix_asset('/css/style-gutenburg.min.css'));
-
-        $browser_is_IE = (isset($_SERVER['HTTP_USER_AGENT']) && ((strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Trident/7.0; rv:11.0') !== false)));
-
         wp_enqueue_style('hale-editor-branding', hale_mix_asset('/css/editor-branding.min.css'));
 
         $t = time();
@@ -29,9 +26,9 @@ function hale_gutenberg_editor_styles() {
         if (is_ssl()) {
             //wp_get_upload_dir()["baseurl"] only returns http.
             $baseURL = str_replace('http://', 'https://', wp_get_upload_dir()["baseurl"]);
-            if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
+            wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
         } else {
-            if (!$browser_is_IE) wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
+            wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
         }
     }
 }
