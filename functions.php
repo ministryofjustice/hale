@@ -523,3 +523,8 @@ require get_template_directory() . '/inc/footer-language-attributes.php';
  * Utility functions to help with various tasks
  */
 require get_template_directory() . '/inc/helper-functions.php';
+
+/**
+ * Extend API with custom post type info
+ */
+require get_template_directory() . '/inc/api-extensions.php';
