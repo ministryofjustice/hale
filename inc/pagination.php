@@ -36,7 +36,8 @@ function hale_archive_pagination($template = '', $custom_query = '')
                 <ul class="archive-pagination">
                     <li class="archive-pagination-current-page">
                         <?php
-                        echo "Page " . $current_page_number . " of " . $max_pages; ?>
+                        printf(__('Page %s of %s','hale'),$current_page_number,$max_pages);
+                        ?>
 
                     </li>
                     <?php
