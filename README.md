@@ -44,6 +44,26 @@ The Welsh (msgstr) is returned when the language of the site is set to Welsh in 
 
 Often, there will be a line commented out above each translation, detailing which file the English can be found in.  
 
+## Variables in translation
+
+Variables can be added by using `%s` (for strings).  
+
+For example:
+
+```
+<?php
+    printf(__('Page %s of %s','hale'),$current_page_number,$max_pages);
+?>
+```
+
+The translation is simply thus:
+```
+msgid "Page %s of %s"
+msgstr "Tudalen %s o %s"
+```
+
+The order of the variables obviously has to be the same.  
+
 ## Markup in translation
 
 If a full sentence is wrapped in an HTML tag, this should be without the trans tags.  
@@ -92,7 +112,7 @@ But if the website in question has a Welsh version, we should link to the Welsh 
 
 **You should check all URLs at point of translation to see if there is a Welsh version of the website you're linking to.**
 
-If there is no Welsh version to link to, then you should consider using a variable which is easier to maintain should the URL change. This is done by a variable `%s`.
+If there is no Welsh version to link to, then you should consider using a variable which is easier to maintain should the URL change. This is done by a variable `%s`, as above.
 
     printf(
         __(
