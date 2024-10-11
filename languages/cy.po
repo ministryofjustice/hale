@@ -20018,3 +20018,18 @@ msgstr "Darganfod mwy"
 # hale/partials/information-banner.php
 msgid "Hide"
 msgstr "Cuddio"
+
+# hale/inc/pagination.php
+# Translations copied from Welsh Gov (https://www.llyw.cymru/topic/43/latest?page=1)
+msgid "Next<span class=\"govuk-visually-hidden\"> page</span>"
+msgstr "Nesaf<span class=\"govuk-visually-hidden\"> tudalen</span>"
+
+# hale/inc/pagination.php
+# Translations copied from Welsh Gov (https://www.llyw.cymru/topic/43/latest?page=1)
+msgid "Previous<span class=\"govuk-visually-hidden\"> page</span>"
+msgstr "Blaenorol<span class=\"govuk-visually-hidden\"> tudalen</span>"
+
+# hale/inc/pagination.php
+# Translation copied from Welsh Gov (https://hwb.gov.wales/playlists/view/57976d4f-7a52-4733-9bf6-c316120ea30e/cy/12)
+msgid "Page %s of %s"
+msgstr "Tudalen %s o %s"

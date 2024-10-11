@@ -36,18 +36,28 @@ function hale_archive_pagination($template = '', $custom_query = '')
                 <ul class="archive-pagination">
                     <li class="archive-pagination-current-page">
                         <?php
-                        echo "Page " . $current_page_number . " of " . $max_pages; ?>
+                        printf(__('Page %s of %s','hale'),$current_page_number,$max_pages);
+                        ?>
 
                     </li>
                     <?php
                         if ($current_page_number > "1") {
                             echo "<li class='archive-pagination-prev-btn'>";
-                            previous_posts_link('< Previous', $max_pages);
+                            previous_posts_link('
+                            <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                            </svg><span class="govuk-pagination__link-title">'.__('Previous<span class="govuk-visually-hidden"> page</span>',"hale").'
+                            </span>
+                            ', $max_pages);
                             echo "</li>";
                         }
                         if ($current_page_number < $max_pages) {
                             echo "<li class='archive-pagination-next-btn'>";
-                            next_posts_link('Next >', $max_pages);
+                            next_posts_link('
+                            <span class="govuk-pagination__link-title">'.__('Next<span class="govuk-visually-hidden"> page</span>',"hale").'</span><svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                            </svg>
+                            ', $max_pages);
                             echo "</li>";
                         }
                     ?>
@@ -116,13 +126,15 @@ function hale_archive_pagination($template = '', $custom_query = '')
     }
 }
 
-add_filter('next_posts_link_attributes', 'hale_posts_link_attributes');
-add_filter('previous_posts_link_attributes', 'hale_posts_link_attributes');
-
-function hale_posts_link_attributes() {
-    return 'class="govuk-button"';
+add_filter('previous_posts_link_attributes', 'hale_posts_previous_link_attributes');
+function hale_posts_previous_link_attributes() {
+    return 'class="govuk-link govuk-pagination__link" rel="prev"';
 }
 
+add_filter('next_posts_link_attributes', 'hale_posts_next_link_attributes');
+function hale_posts_next_link_attributes() {
+    return 'class="govuk-link govuk-pagination__link" rel="next"';
+}
 /**
  * Add in a previous and next functionality
  */
