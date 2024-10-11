@@ -56,7 +56,6 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
         if (post_type_exists('news')) {
             $allowed_blocks[] = 'mojblocks/latest-news';
-            $allowed_blocks[] = 'mojblocks/featured-news';
         }
 
         if( current_user_can('administrator') ) {
