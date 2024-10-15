@@ -324,4 +324,9 @@
     }
 
   }
+  
+  //Fix as this was causing an link overlay at top of page
+  .govuk-pagination__link:after {
+    display: none;
+  }
 }
