@@ -1,5 +1,12 @@
 .govuk-footer {
 
+  &__gov-crest {
+    display: block;
+    margin: 0 auto;
+    width: 115px;
+    fill: #6b7275;
+  }
+
   a:not([class]), a[class=""] {
     //deals with any links that aren't classed - makes them GDS footer links
     @extend .govuk-footer__link;
