@@ -1065,6 +1065,13 @@ body.hale-colours-variable {
 		background: var(--footer-background);
 		box-shadow: 0 20px 0 0 var(--footer-background);
 
+		&__gov-crest {
+		fill: var(--footer-crest);
+			&:is(:focus *) {
+				fill: var(--footer-crest-focus);
+			}
+		}
+
 		a:not([class]),
 		a[class=""],
 		.govuk-footer__link {
