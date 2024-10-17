@@ -68,9 +68,9 @@ flush();
           >
           <svg xmlns="http://www.w3.org/2000/svg" class="govuk-footer__gov-crest" id="footer-crest" viewBox="0 0 702.47 624.08">
             <?php
-              include 'inc/govuk-crest-svg-content.php';
+              include 'partials/govuk-crest-svg-content.php';
             ?>
-            <image src="<?php echo get_template_directory_uri(); ?>/assets/images/govuk-crest-2x.webp" xlink:href="" class="govuk-footer__crest-fallback-image" width="115" height="94"></image>
+            <image src="<?php echo get_template_directory_uri(); ?>/assets/images/govuk-crest-2x.webp" xlink:href="" class="govuk-footer__crest-fallback-image" width="702.47" height="624.08"></image>
           </svg>
           <?php
             echo esc_html__('&copy; Crown copyright', 'hale');
