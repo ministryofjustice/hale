@@ -23,6 +23,7 @@
 		$lightGrey = '#F3F2F1';
 		$midGrey = '#B1B4B6';
 		$darkGrey = '#505A5F';
+		$royalCrestGrey = '#6B7275';
 		$currentPageBlue = '#1D8FEB'; //this has to be okay contrast against black, so is separated out from other blues
 		$headerMenuLineGrey = '#2E3133';
 
@@ -328,6 +329,8 @@
 					['footer-link-focus',$black,'Footer link text when focussed','',''],
 					['footer-link-focus-shadow',$black,'Footer link underline when focussed','',''],
 					['footer-link-focus-background',$yellow,'Footer link background when focussed','',''],
+					['footer-crest',$royalCrestGrey,'Colour of the Royal Crest','Only change if there are contrast issues',''],
+					['footer-crest-focus',$royalCrestGrey,'Colour of the Royal Crest when focussed','Only change if there are contrast issues when focussed',''],
 				)
 			],
 			[
