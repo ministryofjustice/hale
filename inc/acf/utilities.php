@@ -16,17 +16,18 @@
  *              the field does not exist, or there is no current post type determined.
  *
  */
-function hale_get_acf_field_status($field) {
-    $current_post_type = get_post_type();
+function hale_get_acf_field_status($field, $post_type = "") {
 
-    if (!$current_post_type) {
+    if ($post_type == "") $post_type = get_post_type();
+
+    if (!$post_type) {
         return false;
     }
 
     $post_types = get_post_types([], 'objects');
 
     // Check if document uploads are allowed for this post type
-    if (isset($post_types[$current_post_type]->$field) && $post_types[$current_post_type]->$field == '1') {
+    if (isset($post_types[$post_type]->$field) && $post_types[$post_type]->$field == '1') {
         return true;
     }
 
