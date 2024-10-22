@@ -381,7 +381,9 @@
           list-style: none;
           display: none;
           min-width: 100%;
-          background-color: govuk-colour("black"); // fallback, should be overwritten by custom colour
+          @include govuk-media-query($from: desktop) {
+            background-color: govuk-colour("black"); // fallback, should be overwritten by custom colour
+          }
 
           &:not(.js-enabled .sub-menu) {
             // ensure submenu visible when no JS
