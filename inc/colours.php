@@ -253,6 +253,14 @@
 				)
 			],
 			[
+				"section_name" => "MoJ block - Featured item",
+				"id" => "moj_block_featured_item",
+				"description" => "",
+				"colours" => array(
+					['mojblocks-featured_item-little-bar',$blue,'Featured item little bar','','brand-colour'],
+				)
+			],
+			[
 				"section_name" => "MoJ block - Staggered box",
 				"id" => "moj_block_staggered_box",
 				"description" => "",

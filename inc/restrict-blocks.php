@@ -50,12 +50,12 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/quote',
             'mojblocks/reveal',
             'mojblocks/separator',
-            'mojblocks/staggered-box'
+            'mojblocks/staggered-box',
+            'mojblocks/featured-item'
         );
 
         if (post_type_exists('news')) {
             $allowed_blocks[] = 'mojblocks/latest-news';
-            $allowed_blocks[] = 'mojblocks/featured-news';
         }
 
         if( current_user_can('administrator') ) {

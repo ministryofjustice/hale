@@ -84,7 +84,7 @@
             .menu-item--more__content {
                 display: flex;
                 visibility: hidden;
-                transition: visibility  0s 1ms;
+                transition: visibility  0s 1ms; // This transition is needed to ensure the menu is visible to receive the focus when tab is pressed
               }
             &--open {
               .menu-item__more:after {
