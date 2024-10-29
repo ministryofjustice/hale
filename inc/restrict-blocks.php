@@ -1,6 +1,7 @@
 <?php
 /**
  *  Restricts core Gutenberg Block in editor
+ *  https://developer.wordpress.org/block-editor/reference-guides/core-blocks/
  */
 function hale_allowed_block_types( $allowed_blocks ) {
 
@@ -38,6 +39,13 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
             // Embeds
             'core/embed',
+            
+            //Custom HTML
+            'core/html',
+
+            // Pattern blocks
+            'core/block',
+            'core/pattern',
 
             // MoJ blocks
             'mojblocks/accordion',
@@ -60,12 +68,6 @@ function hale_allowed_block_types( $allowed_blocks ) {
 
         if( current_user_can('administrator') ) {
             $allowed_blocks[] = 'mojblocks/laa-chatbot';
-        }
-
-        $cpt_documents_activated = get_theme_mod('cpt_documents_activated', 0);
-
-        if($cpt_documents_activated) {
-            $allowed_blocks[] = 'mojblocks/featured-document';
         }
 
         return  $allowed_blocks;
