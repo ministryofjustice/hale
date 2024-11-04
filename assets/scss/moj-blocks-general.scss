@@ -23,6 +23,10 @@
     //deals with any lists that aren't classed
     @extend .govuk-list;
     @extend .govuk-list--bullet;
+
+    &.has-background {
+      padding-left: 2.375em; //matches wordpress style for coloured background list
+    }
   }
   ol:not([class]), ol[class=""],
   ol.is-style-default,
@@ -30,6 +34,10 @@
     //deals with any numbered lists that aren't classed
     @extend .govuk-list;
     @extend .govuk-list--number;
+
+    &.has-background {
+      padding-left: 2.375em; //matches wordpress style for coloured background list
+    }
   }
 
 	//override for the sovial media links (ootb wordpress)
