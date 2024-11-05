@@ -52,7 +52,7 @@ while (have_posts()) :
         ?>
         </div>
     <?php
-    } elseif (is_front_page() !== false) {
+    } elseif (is_front_page()) {
         // If we are on a landing page, we need to check that an H1 is present.
         // If one is not present, we need to add in a hidden one.
         if (strpos(get_the_content(),"<h1") === false) {
