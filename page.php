@@ -59,6 +59,13 @@ while (have_posts()) :
         ?>
         </div>
     <?php
+    } elseif (is_front_page()) {
+        // If we are on a landing page, we need to check that an H1 is present.
+        // If one is not present, we need to add in a hidden one.
+        if (strpos(get_the_content(),"<h1") === false) {
+            $hidden_title = get_bloginfo("name")." &ndash; ".__("Homepage","hale");
+            echo "<h1 class='govuk-visually-hidden'>$hidden_title</h1>";
+        }
     }
     ?>
       <div class=" <?php echo hale_sidebar_location('sidebar-1'); ?>">
