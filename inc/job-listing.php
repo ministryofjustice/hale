@@ -161,3 +161,14 @@
 		$list = array_unique($list);
 		if (count($list) > 0) return $dataname.'="'.implode("; ",$list).'"';
 	}
+
+	//Override item lsit block link
+	function feedimporter_item_list_link( $link, $post_id ) {
+    
+		if(get_post_type($post_id) == 'job') {
+			$link = get_post_meta($post_id, 'job_url', true);
+		}
+
+		return $link;
+	}
+	add_filter( 'mojblocks_item_list_link', 'feedimporter_item_list_link', 10, 2); 
