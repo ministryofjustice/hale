@@ -83,7 +83,7 @@ function hale_add_listing_page_acf_fields() {
     $post_types = get_post_types($args, 'objects');
 
     foreach($post_types as $post_type) {
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb', ['published-date' => 'Published Date']); 
         hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
         hale_add_tax_select_acf_field($post_type, $post_type->name . '_display_terms_taxonomies', 'Display Terms', 'display_terms_taxonomies', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
         hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
@@ -259,6 +259,8 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
 function hale_flexible_post_types_add_query_vars_filter($vars)
 {
     $vars[] = "listing_search";
+    $vars[] = "from_date";
+    $vars[] = "to_date";
     return $vars;
 }
 

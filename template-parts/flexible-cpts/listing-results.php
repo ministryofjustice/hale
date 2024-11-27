@@ -70,6 +70,35 @@ if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
     }
 }
 
+if(in_array('published-date', $listing_filters)){ 
+
+   // $start_date = '2024-10-01';
+   // $end_date = '2024-10-31';
+
+   /* $from_date = get_query_var('from_date');
+    $to_date = get_query_var('to_date');
+
+  
+    $from_date = DateTime::createFromFormat('d/m/Y', $from_date);
+    $to_date = DateTime::createFromFormat('d/m/Y', $to_date);
+    
+    var_dump($from_date->getTimestamp());
+    if (!empty($from_date) && !empty($to_date)) {
+        $start_date = date('Y-m-d', strtotime($from_date->getTimestamp()));
+        $end_date = date('Y-m-d', strtotime($to_date->getTimestamp()));
+    }
+
+    $listing_args['date_query'] =  array(
+        array(
+            'after'     => $start_date,
+            'before'    => $end_date,
+            'inclusive' => true, // Include the boundaries
+        ),
+    );*/
+
+   // var_dump($listing_args);
+}
+
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 

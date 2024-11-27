@@ -53,3 +53,15 @@ $gutenberg-styles: false;
 
 // Archive
 @import 'archive';
+
+@import "node_modules/@ministryofjustice/frontend/moj/components/date-picker/date-picker";
+
+.moj-datepicker {
+	input {
+		max-width: 100%;
+	}
+
+	.moj-datepicker__toggle{
+		box-sizing: border-box;
+	}
+}

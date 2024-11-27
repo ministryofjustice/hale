@@ -12,6 +12,8 @@ get_header();
 // Initialize variables
 $listing_search_text = '';
 $search_text_HTML = '';
+$from_date = get_query_var('from_date');
+$to_date = get_query_var('to_date');
 
 // Get the search query variable and sanitize it
 if ($listing_search_text = get_query_var('listing_search')) {
@@ -64,6 +66,35 @@ while (have_posts()) :
                                                 <?php _e('Filters', 'hale'); ?>
                                             </h2>
                                         </legend>
+                                        <div class="moj-datepicker" data-module="moj-date-picker">
+
+                                       <?php  if(in_array('published-date', $listing_filters)){ ?>
+                                        <div class="govuk-form-group">
+                                            <label class="govuk-label" for="date">
+                                            From Date
+                                            </label>
+
+                                            <input class="govuk-input moj-js-datepicker-input " id="from-date" name="from_date" type="text" aria-describedby="date-hint" autocomplete="off" value="<?php echo $from_date; ?>">
+
+                                        </div>
+                                        
+
+                                        </div>
+                                        <div class="moj-datepicker" data-module="moj-date-picker">
+
+                                        <div class="govuk-form-group">
+                                        <label class="govuk-label" for="date">
+                                            To Date
+                                        </label>
+
+                                        <input class="govuk-input moj-js-datepicker-input " id="to-date" name="to_date" type="text" aria-describedby="date-hint" autocomplete="off" value="<?php echo $to_date; ?>">
+
+                                        </div>
+
+
+                                        </div>
+                                        <?php } ?>
+
                                         <?php 
                                         get_template_part('template-parts/flexible-cpts/listing-filters', false, [
                                             'listing-filters' => $listing_filters

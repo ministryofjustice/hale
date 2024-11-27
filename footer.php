@@ -89,5 +89,14 @@ flush();
 
   initAll()
 </script>
+<script>
+    window.MOJFrontend.initAll()
+  /* var datePicker = window.MOJFrontend.DatePicker
+var $datePicker = document.querySelector('[data-module="moj-date-picker"]')
+if ($datePicker) {
+  console.log($datePicker);
+  MOJFrontend.DatePicker($datePicker, {});
+}*/
+  </script>
 </body>
 </html>

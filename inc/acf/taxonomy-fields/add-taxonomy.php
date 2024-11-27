@@ -11,9 +11,8 @@
  * @param string $post_type_field_key The ACF field key that sets the post type
  * @param string $field_group_key The field group key to add the field
  */
-function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key) {
+function hale_add_tax_select_acf_field($post_type, $field_key, $field_label, $field_name, $allow_multiple, $post_type_field_key, $field_group_key, $choices = []) {
 
-    $choices = [];
     $taxonomies = get_object_taxonomies($post_type->name, 'objects');
 
     foreach($taxonomies as $tax) {
