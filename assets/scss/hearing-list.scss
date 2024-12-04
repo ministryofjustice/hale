@@ -1,0 +1,140 @@
+.page-template-page-hearing-list {
+
+  .hearing-list-shaded-section {
+    background: #E7F2F9;
+    margin-bottom: 30px;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      height: calc(100% + 5px);
+      left: 50%;
+      overflow: visible;
+      position: absolute;
+      transform: translate(-50%,-0.3em);
+      width: 200vw;
+      z-index: -1;
+      background: inherit;
+    }
+
+    .hearing-list-shaded-section-content {
+      padding: 20px 0;
+    }
+  
+  }
+
+  #primary {
+    .listing-search-section {
+
+      .listing-search-form {
+
+        font-size: 19px;
+
+        h2{
+          font-weight: normal;
+        }
+
+        .listing-selected-filters{
+          margin: 20px 0;
+          padding: 20px 0;
+          border-top: 1px solid $govuk-border-colour;
+          border-bottom: 1px solid $govuk-border-colour;
+        }
+
+        p {
+          font-weight: bold;
+          margin-top: 20px;
+        }
+
+        .govuk-label {
+          margin-top: 10px;
+          font-weight: bold;
+        }
+
+        .govuk-select {
+          width: 100%;
+          min-width: 100%;
+        }
+
+        .filter-subtopic {
+          width: 100%;
+          min-width: 100%;
+        }
+      }
+    }
+
+    .moj-datepicker {
+      input {
+        max-width: 100%;
+      }
+      .moj-datepicker__toggle{
+        box-sizing: border-box;
+        //background: #505471;
+
+      }
+
+    }
+
+    .moj-datepicker__calendar {
+      // tbody:focus-within{outline:2px solid #004bd6}
+
+       .moj-datepicker__button:hover {
+        // background: #E7F2F9;
+       }
+    }
+
+    .listing-filter-field-wrapper {
+      all: unset;
+    }
+
+    .listing-item-count {
+      border-top: 1px solid $govuk-border-colour;
+      padding-bottom: 16px;
+      padding-top: 10px;
+      text-align: right;
+      @include govuk-font-size($size: 19);
+    }
+
+    .list-item {
+      background: #E7F2F9;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius:10px;
+
+      .list-item-published-date {
+        @include govuk-font-size($size: 19);
+        margin-bottom: 20px;
+        font-weight: bold;
+
+        .published-date {
+          font-weight: normal;
+        }
+
+      }
+
+      .flexible-post-type-terms-list-wrapper{
+        .flexible-post-type-terms-list-item  {
+          border: 1px solid #747577; //check color
+          border-radius: 5px;
+          padding: 5px;
+          margin-right: 5px;
+        }
+      }
+
+      .list-item-detail {
+        @include govuk-font-size($size: 19);
+        margin-bottom: 20px;
+
+        .list-item-detail-label {
+          font-weight: bold;
+          display: inline-block;
+        }
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
