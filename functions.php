@@ -483,6 +483,10 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
                 if (!post_type_exists('job')) {
                     unset($post_templates['page-job-listing.php']);
                 }
+                
+                if (!post_type_exists('hearing')) {
+                    unset($post_templates['page-hearing-list.php']);
+                }
 
             }
         }
