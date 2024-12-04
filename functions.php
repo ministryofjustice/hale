@@ -217,6 +217,7 @@ function hale_scripts() {
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "5.0.0", true);
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
+    wp_enqueue_script('accessible-autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', null, true);
 
     // Load Listing template JS
     if ( is_page_template('page-listing.php') ) {
