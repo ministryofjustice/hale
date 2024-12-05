@@ -37,12 +37,10 @@ while (have_posts()) :
                     <div class="listing-search-form">
                         <form action="<?= esc_url(get_permalink()); ?>" method="GET">
                             <h2 class="govuk-fieldset__heading">Search and filter</h2>
-                            <div class="listing-selected-filters">
-                                <b>Selected filters (0)</b>
-                            </div>
                             <div class="listing-filter-field-wrapper">
 
                                     <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
+                                        
                                         <?php 
                                         get_template_part('template-parts/flexible-cpts/hearing-list-filters');
                                         ?>

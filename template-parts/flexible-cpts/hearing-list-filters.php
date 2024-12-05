@@ -14,6 +14,11 @@ $listing_filters = array(
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
+        if($filter == "hearing-witness"){ 
+
+            get_template_part('template-parts/flexible-cpts/hearing-list-autocomplete');
+            continue;
+        }
         if($filter == "published-date"){ ?>
 
                 <div class="moj-datepicker" data-module="moj-date-picker" data-max-date="03/12/2024">
@@ -43,6 +48,9 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         <?php
             continue;
         }
+
+
+
         $taxonomy = get_taxonomy($filter);
 
         if (!$taxonomy) {

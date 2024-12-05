@@ -196,6 +196,8 @@ function hale_scripts() {
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
+    wp_enqueue_style('hale-autocomplete', hale_mix_asset('/css/accessible-autocomplete.min.css'));
+    
     $t=time();
 
     if (is_customize_preview()) {
@@ -217,6 +219,8 @@ function hale_scripts() {
     wp_enqueue_script('govuk-frontend', hale_mix_asset('/js/govuk-frontend.js'), '', "5.0.0", true);
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
+
+    wp_enqueue_script('autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', "5.0.0", true);
 
     // Load Listing template JS
     if ( is_page_template('page-listing.php') ) {
