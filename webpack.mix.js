@@ -10,7 +10,6 @@ mix_.setPublicPath('./dist')
   .sass('./assets/scss/editor-branding.scss', 'css/editor-branding.min.css')
   .sass('./assets/scss/brandings-dark-background--php-used.scss', 'css/dark-background.min.css')
   .copy('./assets/js/*', 'dist/js/')
-  //.copy('./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js', 'dist/js/govuk-frontend.js')
   .scripts(['./assets/js/hale-scripts.js', './assets/js/skip-link-focus-fix.js', './assets/js/navigation.js', './assets/js/banner-close-button.js', './node_modules/@ministryofjustice/frontend/moj/all.js'], 'dist/js/hale-combined-scripts.js')
   .scripts(['./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js', './assets/js/gov-overrides.js'], 'dist/js/govuk-frontend.js')
   .options({
