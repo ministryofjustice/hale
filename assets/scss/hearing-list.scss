@@ -64,6 +64,20 @@
       }
     }
 
+    .multiselect-selected-options {
+      .multiselect-selected-option {
+        padding: 10px;
+        background: #E7F2F9;
+        margin-bottom: 2px;
+        font-size: 16px;
+
+        .multiselect-selected-remove {
+          float: right;
+          cursor: pointer;
+        }
+      }
+    }
+
     .moj-datepicker {
       input {
         max-width: 100%;
