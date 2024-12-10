@@ -33,6 +33,9 @@
 
         h2{
           font-weight: normal;
+          padding-bottom: 20px;
+          border-bottom: 1px solid $govuk-border-colour;
+          margin-bottom: 10px;
         }
 
         .listing-selected-filters{
@@ -43,8 +46,8 @@
         }
 
         p {
-          font-weight: bold;
-          margin-top: 20px;
+          
+          margin-top: 10px;
         }
 
         .govuk-label {
@@ -64,12 +67,56 @@
       }
     }
 
+    .multiselect-wrapper {
+      border: 1px solid #0B0C0C;
+
+      input {
+        border: none;
+      }
+
+
+      .autocomplete__menu {
+        width: 100%;
+        max-width: 100%;
+        border: none;
+      }
+    }
     .multiselect-selected-options {
+
+
+      &.options-style-2 {
+        display: flex;
+        .multiselect-selected-option{
+          float: left;
+          margin: 5px;
+          padding: 5px 5px 5px 10px;
+          border-radius: 5px;
+
+          .multiselect-selected-remove2{
+            width: 20px;
+            /* height: 25px; */
+            float: right;
+            padding-top: 1px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: block;
+          }
+
+          .multiselect-selected-remove {
+            display: none;
+          }
+        }
+      }
+
       .multiselect-selected-option {
         padding: 10px;
         background: #E7F2F9;
         margin-bottom: 2px;
         font-size: 16px;
+
+        .multiselect-selected-remove2{
+          display: none;
+        }
 
         .multiselect-selected-remove {
           float: right;

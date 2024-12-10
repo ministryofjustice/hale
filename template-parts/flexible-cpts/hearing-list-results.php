@@ -25,7 +25,7 @@ $listing_args['orderby'] = 'post_date';
 $listing_args['order'] = 'DESC';
 
 // Set Items Per Page
-$items_per_page = 2;
+$items_per_page = 3;
 
 if (!empty($items_per_page)) {
     $listing_args['posts_per_page'] = $items_per_page;
@@ -44,6 +44,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         // Create an array of what taxonomies have been selected in dropdown
         hale_add_filter_term_if_exists($filter, $listing_active_filters);
 
+        //var_dump($listing_active_filters);
         //Filters
         if(!empty($listing_active_filters)){
 
