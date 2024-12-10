@@ -53,6 +53,13 @@ function hale_add_filter_term_if_exists($filter, &$listing_active_filters) {
         }
     }
 
+    if($filter == 'hearing-witness'){
+        $listing_active_filters[] = array(
+            'taxonomy' => $filter,
+            'value' => explode(",",$filter_terms['term_id'])
+        );
+    }
+
     // Check if the subtopic term ID is numeric and exists in the main taxonomy
     if (is_numeric($filter_terms['subtopic_term_id'])) {
         $filter_terms['subtopic_term_id'] = intval($filter_terms['subtopic_term_id']);

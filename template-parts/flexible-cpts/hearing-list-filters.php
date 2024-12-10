@@ -21,7 +21,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         }
         if($filter == "published-date"){ ?>
 
-                <div class="moj-datepicker" data-module="moj-date-picker" data-max-date="03/12/2024">
+                <div class="moj-datepicker" data-module="moj-date-picker">
 
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="date">
@@ -34,7 +34,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                 
 
                 </div>
-                <div class="moj-datepicker" data-module="moj-date-picker" data-max-date="03/12/2024" >
+                <div class="moj-datepicker" data-module="moj-date-picker" >
 
                 <div class="govuk-form-group">
                 <label class="govuk-label" for="date">
