@@ -33,7 +33,11 @@ get_header();
 				
 				if ($allow_doc_upload_status === true) {
 					get_template_part( 'template-parts/content', 'documents' );
-				} else {
+				} 
+				elseif ( is_singular('hearing') ) {
+					get_template_part( 'template-parts/hearing-list/hearing-single');
+				}
+				else {
 					get_template_part( 'template-parts/flexible-cpts/single');
 				}
 

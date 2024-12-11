@@ -174,15 +174,6 @@
 
       }
 
-      .flexible-post-type-terms-list-wrapper{
-        .flexible-post-type-terms-list-item  {
-          border: 1px solid #747577; //check color
-          border-radius: 5px;
-          padding: 5px;
-          margin-right: 5px;
-        }
-      }
-
       .list-item-detail {
         @include govuk-font-size($size: 19);
         margin-bottom: 20px;
@@ -197,5 +188,14 @@
         border: none;
       }
     }
+  }
+}
+
+.flexible-post-type-terms-list-wrapper{
+  .flexible-post-type-terms-list-item  {
+    border: 1px solid #747577; //check color
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 5px;
   }
 }
