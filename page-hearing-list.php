@@ -9,26 +9,6 @@
 
 get_header();
 
-$listing_filters = array(
-    'hearing-witness',
-    'published-date',
-    'hearing-type',
-    'witness-category'
-);
-
-/*
-$listing_filters = array(
-    array(
-        'taxonomy_name' => 'hearing-witness',
-        'type' => 'multi-select',
-    ),
-    array(
-        'taxonomy_name' => 'hearing-type',
-        'type' => 'select',
-    ),
- 
-);*/
-
 // Start the post loop
 while (have_posts()) :
     the_post();

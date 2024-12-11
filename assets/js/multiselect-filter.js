@@ -96,7 +96,7 @@ function updateMultiSelectOptions() {
 
  //Removes option from selected options
  function removeMultiSelectOption(value) {
-	selected_term_ids = selected_term_ids.filter(num => num !== value);
+	selected_term_ids = selected_term_ids.filter(term_id => term_id !== value);
 	document.getElementById('hearing-witness-multiselect-hidden-input').value = selected_term_ids.toString();
 	document.getElementById('selected-option-'+value).remove();
 	updateMultiSelectOptions();

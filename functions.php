@@ -314,6 +314,12 @@ require get_template_directory() . '/inc/colours.php';
  * Functions which enable address sanitization and job listing stuff.
  */
 require get_template_directory() . '/inc/job-listing.php';
+
+/**
+ * Functions for hearing list template
+ */
+require get_template_directory() . '/inc/hearing-list.php';
+
 /**
  * Functions which holds the prison location data.
  */
