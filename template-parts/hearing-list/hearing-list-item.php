@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying list item for flexible CPT
+ * Template part for displaying list item for hearing list items
  */
 
  $single_view = $args['single_view'];
@@ -29,7 +29,7 @@
         $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
         
         if(!empty($tax_details)){
-            get_template_part( 'template-parts/flexible-cpts/hearing-term-list', false, array('tax-details' => $tax_details)); 
+            get_template_part( 'template-parts/hearing-list/hearing-term-list', false, array('tax-details' => $tax_details)); 
         }
     }
     

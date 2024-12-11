@@ -16,7 +16,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
 
         if($filter == "hearing-witness"){ 
 
-            get_template_part('template-parts/flexible-cpts/hearing-list-autocomplete');
+            get_template_part('template-parts/hearing-list/hearing-list-multiselect');
             continue;
         }
         if($filter == "published-date"){ ?>
