@@ -4,22 +4,22 @@
  * Used by page-listing.php
  *
 */
-$listing_filters = array(
-    'hearing-witness',
-    'published-date',
-    'hearing-type',
-    'witness-category'
-);
+$listing_filters = hale_get_hearing_list_filters();
 
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
-        if($filter == "hearing-witness"){ 
+        if($filter['filter_type'] == "multiselect-taxonomy"){ 
 
             get_template_part('template-parts/hearing-list/hearing-list-multiselect');
             continue;
         }
-        if($filter == "published-date"){ ?>
+        if($filter['filter_type'] == "date-range"){ 
+            
+            $from_date = get_query_var('from_date');
+            $to_date = get_query_var('to_date');
+            
+            ?>
 
                 <div class="moj-datepicker" data-module="moj-date-picker">
 
@@ -49,9 +49,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             continue;
         }
 
-
-
-        $taxonomy = get_taxonomy($filter);
+        $taxonomy = get_taxonomy($filter['taxonomy_key']);
 
         if (!$taxonomy) {
             continue;
@@ -67,14 +65,11 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         $subtopic_query_var = $taxonomy->query_var . '_subtopic';
         $selected_sub_topic = get_query_var($subtopic_query_var);
 
-        // Construct the field name for the restriction based on the filter
-        $restrict_field = 'restrict_by_' . $filter;
-
         $dropdown_args = [
             "name" => $taxonomy->query_var,
             "id" => $parent_class_name,
             "class" => "govuk-select",
-            'taxonomy' => $filter,
+            'taxonomy' => $filter['taxonomy_key'],
             'show_option_all' => "Select option",
             'depth' => 1,
             'orderby' => 'name',

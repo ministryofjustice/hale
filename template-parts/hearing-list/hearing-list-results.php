@@ -24,19 +24,24 @@ $listing_args = [
 $listing_args['orderby'] = 'post_date';
 $listing_args['order'] = 'DESC';
 
-$listing_filters = array(
-    'hearing-witness',
-    'hearing-type',
-    'witness-category'
-);
+$listing_filters = hale_get_hearing_list_filters();
 
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
-        // Create an array of what taxonomies have been selected in dropdown
-        hale_add_filter_term_if_exists($filter, $listing_active_filters);
+        if($filter['filter_type'] == "multiselect-taxonomy"){ 
+             // Create an array of what taxonomies have been selected in dropdown
+             hale_add_filter_term_if_exists($filter['taxonomy_key'], $listing_active_filters, true);
+        }
+        else if ($filter['filter_type'] == "select-taxonomy") {
 
-        //var_dump($listing_active_filters);
+            // Create an array of what taxonomies have been selected in dropdown
+            hale_add_filter_term_if_exists($filter['taxonomy_key'], $listing_active_filters);
+        }
+        else {
+            continue;
+        }
+
         //Filters
         if(!empty($listing_active_filters)){
 
