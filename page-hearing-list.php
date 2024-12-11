@@ -51,6 +51,12 @@ while (have_posts()) :
                                     <button class="govuk-button">
                                         <?php _e('Apply filters', 'hale'); ?>
                                     </button>
+                                    <div class="govuk-body govuk-!-margin-left-3 govuk-!-padding-top-1" style="display:inline-block">
+                                        <a href="<?= esc_url(get_permalink()); ?>" class="govuk-link">
+                                            <?php _e('Clear', 'hale'); ?>
+                                        </a>
+                                    </div>
+                                    
                                     
                                 </div>
                             </div>
