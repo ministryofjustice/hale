@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying term list. 
+ * Template part for displaying hearing list multiselect
  */
 
 

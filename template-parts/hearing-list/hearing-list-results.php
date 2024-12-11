@@ -24,14 +24,6 @@ $listing_args = [
 $listing_args['orderby'] = 'post_date';
 $listing_args['order'] = 'DESC';
 
-// Set Items Per Page
-$items_per_page = 3;
-
-if (!empty($items_per_page)) {
-    $listing_args['posts_per_page'] = $items_per_page;
-} 
-
-
 $listing_filters = array(
     'hearing-witness',
     'hearing-type',
@@ -153,7 +145,7 @@ if ($listing_query->have_posts()) {
         <?php
         while ($listing_query->have_posts()) {
             $listing_query->the_post();
-            get_template_part('template-parts/flexible-cpts/hearing-list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable  ));
+            get_template_part('template-parts/hearing-list/hearing-list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable  ));
         } ?>
     </div>
 

@@ -9,6 +9,26 @@
 
 get_header();
 
+$listing_filters = array(
+    'hearing-witness',
+    'published-date',
+    'hearing-type',
+    'witness-category'
+);
+
+/*
+$listing_filters = array(
+    array(
+        'taxonomy_name' => 'hearing-witness',
+        'type' => 'multi-select',
+    ),
+    array(
+        'taxonomy_name' => 'hearing-type',
+        'type' => 'select',
+    ),
+ 
+);*/
+
 // Start the post loop
 while (have_posts()) :
     the_post();
@@ -40,9 +60,9 @@ while (have_posts()) :
                             <div class="listing-filter-field-wrapper">
 
                                     <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
-                                        
+
                                         <?php 
-                                        get_template_part('template-parts/flexible-cpts/hearing-list-filters');
+                                        get_template_part('template-parts/hearing-list/hearing-list-filters');
                                         ?>
                                     </fieldset>
                 
@@ -62,7 +82,7 @@ while (have_posts()) :
             <!-- Righthand column with listing page results -->
             <div class="govuk-grid-column-two-thirds">
                 <?php
-                get_template_part('template-parts/flexible-cpts/hearing-list-results');
+                get_template_part('template-parts/hearing-list/hearing-list-results');
                 ?>
             </div>
         </div>
