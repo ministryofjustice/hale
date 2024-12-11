@@ -195,8 +195,6 @@ add_action( 'customize_save_after', 'hale_action_customize_save_after', 10, 1 );
 function hale_scripts() {
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
-
-    wp_enqueue_style('hale-autocomplete', hale_mix_asset('/css/accessible-autocomplete.min.css'));
     
     $t=time();
 
@@ -220,8 +218,6 @@ function hale_scripts() {
     wp_enqueue_script('hale-accordion-auto-expand', hale_mix_asset('/js/accordion-auto-expand.js'), '', null, true);
     wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
 
-    wp_enqueue_script('autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', "5.0.0", true);
-
     // Load Listing template JS
     if ( is_page_template('page-listing.php') ) {
         $script_path = get_template_directory() . '/dist/js/page-listing.js';
@@ -229,6 +225,24 @@ function hale_scripts() {
         wp_register_script('page-listing', hale_mix_asset('/js/page-listing.js'), array(), $script_version, true);
         wp_enqueue_script('page-listing');
     }
+
+    if ( is_page_template('page-hearing-list.php') ) {
+
+        //autocomplete styles and js
+        wp_enqueue_style('hale-autocomplete', hale_mix_asset('/css/accessible-autocomplete.min.css'));
+        wp_enqueue_script('autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', "3.0.1", true);
+
+        $script_path = get_template_directory() . '/dist/js/multiselect-filter.js';
+        $script_version = file_exists($script_path) ? filemtime($script_path) : false;
+        wp_register_script('multiselect-filter', hale_mix_asset('/js/multiselect-filter.js'), array(), $script_version, true);
+        wp_enqueue_script('multiselect-filter');
+
+       // $script_path = get_template_directory() . '/dist/js/page-hearing-list.js';
+       // $script_version = file_exists($script_path) ? filemtime($script_path) : false;
+       // wp_register_script('page-hearing-list', hale_mix_asset('/js/page-hearing-list.js'), array(), $script_version, true);
+       // wp_enqueue_script('page-hearing-list');
+    }
+
 }
 
 add_action('wp_enqueue_scripts', 'hale_scripts');
