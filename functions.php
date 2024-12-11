@@ -232,15 +232,13 @@ function hale_scripts() {
         wp_enqueue_style('hale-autocomplete', hale_mix_asset('/css/accessible-autocomplete.min.css'));
         wp_enqueue_script('autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', "3.0.1", true);
 
+        //used for date picker
+        wp_enqueue_script('moj-frontend', hale_mix_asset('/js/moj-frontend.js'), '', "3.2.0", true);
+
         $script_path = get_template_directory() . '/dist/js/multiselect-filter.js';
         $script_version = file_exists($script_path) ? filemtime($script_path) : false;
         wp_register_script('multiselect-filter', hale_mix_asset('/js/multiselect-filter.js'), array(), $script_version, true);
         wp_enqueue_script('multiselect-filter');
-
-       // $script_path = get_template_directory() . '/dist/js/page-hearing-list.js';
-       // $script_version = file_exists($script_path) ? filemtime($script_path) : false;
-       // wp_register_script('page-hearing-list', hale_mix_asset('/js/page-hearing-list.js'), array(), $script_version, true);
-       // wp_enqueue_script('page-hearing-list');
     }
 
 }
@@ -343,6 +341,11 @@ require get_template_directory() . '/inc/pagination.php';
  * Breadcrumb element.
  */
 require get_template_directory() . '/inc/breadcrumbs.php';
+
+/**
+ * Footer scripts element.
+ */
+require get_template_directory() . '/inc/footer-scripts.php';
 
 /**
  * Last reviewed.
