@@ -75,7 +75,7 @@ function updateMultiSelectOptions() {
 
 		const removeDiv = document.createElement('div');
 
-		removeDiv.textContent = 'remove';
+		removeDiv.textContent = 'Remove';
 		removeDiv.className = 'multiselect-selected-remove';
 		removeDiv.setAttribute('data-termid', foundTerm.term_id);
 
