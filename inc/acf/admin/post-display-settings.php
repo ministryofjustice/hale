@@ -49,6 +49,50 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 
     acf_render_field_wrap(
         array(
+            'label' => 'Show Table of Contents',
+            'instructions' => 'Shows table of contents at the side.',
+            'name'         => 'show_toc_on_single_view',
+            'value'        => isset( $acf_post_type['show_toc_on_single_view'] ) ? $acf_post_type['show_toc_on_single_view'] : false,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'show_toc_on_single_view',
+            'ui' => true,
+            'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'post_toc',
+						'operator' => '==',
+						'value' => '1',
+					),
+				),
+			),
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
+            'label' => 'Number headings',
+            'instructions' => 'Add numbers to the H2 headings.',
+            'name'         => 'number_headings',
+            'value'        => isset( $acf_post_type['number_headings'] ) ? $acf_post_type['number_headings'] : false,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'number_headings',
+            'ui' => true,
+            'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'post_number_headings',
+						'operator' => '==',
+						'value' => '1',
+					),
+				),
+			),
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
             'label' => 'Show Taxonomies',
             'instructions' => 'Shows taxonomy terms on the single view.',
             'name'         => 'show_tax_on_single_view',
@@ -105,6 +149,14 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
     }
     else {
         $args['show_summary_on_single_view'] = true;
+    }
+
+    if ( isset( $post_type['show_toc_on_single_view'] ) ) {
+        $args['show_toc_on_single_view'] = $post_type['show_toc_on_single_view'];
+    }
+
+    if ( isset( $post_type['number_headings'] ) ) {
+        $args['number_headings'] = $post_type['number_headings'];
     }
 
     return $args;

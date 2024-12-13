@@ -301,6 +301,67 @@ function hale_clean_bad_content( $b_print = false ) {
 	}
 }
 
+/**
+ * This function does these things:
+ * - Creates table of contents from the heading level H2s added to the content and add IDs to
+ *   the headings so they can be linked to.
+ * - Adds a prefix number to the headings in the main content.
+ *
+ * It takes two arguments:
+ * - $index_or_content - whether the content with IDs (and numbers) is to be
+ *                       returned (=="content") or the table of contents which
+ *                       links to these headings (=="index")
+ * - $ordered - whether the headings have a preceding number or not, if true, one
+ *              will be added to the headings
+ *
+ * Both are configurable independently via the ACF controls (options added to post-display-settings.php)
+ *
+ * Returned content uses above function (hale_clean_bad_content())
+ *
+ */
+function hale_index( $index_or_content, $ordered = true) {
+	if ($index_or_content != "content" && $index_or_content != "index"){
+		trigger_error("hale_index() was called with neither content nor index specified", E_USER_WARNING);
+		return;
+	}
+
+	$ul = "ul";
+	$list_class = "";
+	// if it is ordered, the index uses an ordered list and the number is displayed
+	if ($ordered) {
+		$ul = "ol";
+		$list_class = "govuk-list--number";
+	}
+
+	$index = [];
+	$count = 0; //index number
+	$content = hale_clean_bad_content(false);
+	$dom = new DomDocument();
+	$dom->loadHtml('<?xml encoding="UTF-8">'.$content);
+	$tags = $dom->getElementsByTagName("h2");
+	foreach($tags as $tag) {
+		$title = $tag->nodeValue;
+		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
+		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
+		$index[] = [$title,$id];
+		if ($ordered) $tag->prepend($count.". "); //adds the index number before the title if $ordered set
+		$tag->setAttribute('id', $id);
+	}
+
+	// This is the content with IDs for all h2 elements (or whatever was in $tag)
+	$changed_content = trim($dom->saveHtml());
+
+	// Create the table of contents
+	$list_of_headings = "";
+	foreach ($index as $content_item) {
+		$list_of_headings .= '<li><a id="anchor-for-'.$content_item[1].'" class="govuk-link" href="#'.$content_item[1].'">'.$content_item[0].'</a></li>';
+	}
+	$toc = "<div id='table-of-contents'><$ul class='govuk-list $list_class'>$list_of_headings</$ul></div>";
+
+	if ($index_or_content == "content") echo $changed_content;
+	if ($index_or_content == "index") echo $toc;
+}
+
 function hook_css() {
 	$opens_in_a_new_tab = trim(get_theme_mod("link_new_tab_text"));
 	if (!isset($opens_in_a_new_tab) || $opens_in_a_new_tab == "") {

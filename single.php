@@ -13,7 +13,17 @@
 
 get_header();
 ?>
+	<div id="toc" class="govuk-grid-column-one-third">
+	<?php
+	    $show_toc_on_single_view = hale_get_acf_field_status('show_toc_on_single_view');
+	    $number_headings = hale_get_acf_field_status('number_headings');
 
+		// Gets the Table of Contents for the page
+		if (function_exists('hale_index') && $show_toc_on_single_view) {
+			hale_index("index", $number_headings);
+		}
+		?>
+	</div>
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<div class="single">
 			<?php
