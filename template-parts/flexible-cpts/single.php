@@ -44,7 +44,7 @@
         if($show_summary){
 
             $summary = get_field('post_summary');
-            
+
             if(!empty($summary)){ ?>
             <div class="intro">
                 <?php echo wpautop($summary); ?>
@@ -58,8 +58,9 @@
 
     <div class="flexible-post-type-content">
         <?php
-        if (function_exists('hale_clean_bad_content')) {
-            hale_clean_bad_content(true);
+        $number_headings = hale_get_acf_field_status('number_headings');
+        if (function_exists('hale_index')) {
+            hale_index("content", $number_headings);
         }
         ?>
     </div><!-- .article-content -->
