@@ -19,7 +19,7 @@ if(!empty($all_terms)){
 
 ?>
 <label for="hearing-witness-autocomplete" class="govuk-label">Name</label>
-<p>Search for multiple names or companies. X selections max</p>
+<p>Search for multiple names or companies. 5 selections max</p>
 <input type="hidden" id="hearing-witness-multiselect-hidden-input" name="hearing-witness" value="<?php echo $selected_terms_qry; ?>" />
    
 <div class="multiselect-wrapper">
@@ -29,7 +29,9 @@ if(!empty($all_terms)){
                     ?>
             
                 <div id="selected-option-<?php echo $term_id; ?>" class="multiselect-selected-option">
-                    <?php echo get_term($term_id)->name; ?> 
+                    <div class="multiselect-selected-option-name">
+                        <?php echo get_term($term_id)->name; ?> 
+                    </div>
                     <div data-termid="<?php echo $term_id; ?>" class="multiselect-selected-remove">
                         Remove
                     </div>
