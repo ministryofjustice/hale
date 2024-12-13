@@ -72,14 +72,16 @@ function hale_localize_hearing_list_scripts() {
         if(!empty($selected_terms_qry)){
             $selected_terms_ary = explode(",", $selected_terms_qry);
 
+        
+
             if(!empty($selected_terms_ary)){
                 foreach($selected_terms_ary as $term_id){
-                    if(is_numeric($term_id) && term_exists($term_id, 'hearing-witness')){
+
+                    if(is_numeric($term_id) && term_exists((int) $term_id, 'hearing-witness')){
                         $selected_terms[] = (int) $term_id;
                     }
                 }
             }
-
         }
 
         if(!empty($tax_terms)){
