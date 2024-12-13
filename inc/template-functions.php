@@ -325,11 +325,9 @@ function hale_index( $index_or_content, $ordered = true) {
 		return;
 	}
 
-	$ul = "ul";
 	$list_class = "";
 	// if it is ordered, the index uses an ordered list and the number is displayed
 	if ($ordered) {
-		$ul = "ol";
 		$list_class = "govuk-list--number";
 	}
 
@@ -356,7 +354,7 @@ function hale_index( $index_or_content, $ordered = true) {
 	foreach ($index as $content_item) {
 		$list_of_headings .= '<li><a id="anchor-for-'.$content_item[1].'" class="govuk-link" href="#'.$content_item[1].'">'.$content_item[0].'</a></li>';
 	}
-	$toc = "<div id='table-of-contents'><$ul class='govuk-list $list_class'>$list_of_headings</$ul></div>";
+	$toc = "<div id='table-of-contents' class='hale-table-of-contents'><ol class='govuk-list $list_class'>$list_of_headings</ol></div>";
 
 	if ($index_or_content == "content") echo $changed_content;
 	if ($index_or_content == "index") echo $toc;
