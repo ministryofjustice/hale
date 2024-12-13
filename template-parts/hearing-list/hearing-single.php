@@ -39,8 +39,6 @@
         }
     }
     
-    // Load feature image section
-    get_template_part( 'template-parts/flexible-cpts/feature-image');
     ?>
     <?php
 
@@ -60,8 +58,10 @@
             $summary = get_field('post_summary');
             
             if(!empty($summary)){ ?>
-            <div class="intro">
-                <?php echo wpautop($summary); ?>
+            <div class="hearing-summary">
+                <div class="intro">
+                    <?php echo wpautop($summary); ?>
+                </div>
             </div>
             <?php
             }
