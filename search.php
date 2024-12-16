@@ -77,13 +77,7 @@ get_header();
               <?php do_action( 'hale_before_archive_content' ); ?>
               <p class="govuk-body">
                 <?php
-                $excerpt = get_the_excerpt();
-                $excerpt_no_tags = strip_tags($excerpt);
-                if(!empty($s)) {
-                    $keys = explode(' ', $s);
-                    $excerpt_no_tags = preg_replace('/(' . implode('|', $keys) . ')/iu', '<span class="search-terms"><strong>\0</strong></span>', $excerpt_no_tags);
-                }
-                echo "<span class='excerpt_part'>$excerpt_no_tags</span>"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                  the_excerpt();
                 ?>
               </p>
               <?php do_action( 'hale_after_archive_content' ); ?>
