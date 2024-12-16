@@ -44,7 +44,7 @@
         if($show_summary){
 
             $summary = get_field('post_summary');
-            
+
             if(!empty($summary)){ ?>
             <div class="intro">
                 <?php echo wpautop($summary); ?>
