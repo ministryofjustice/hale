@@ -19,8 +19,8 @@ get_header();
 	    $number_headings = hale_get_acf_field_status('number_headings');
 
 		// Gets the Table of Contents for the page
-		if (function_exists('hale_index') && $show_toc_on_single_view) {
-			hale_index("index", $number_headings);
+		if (function_exists('hale_table_of_contents') && $show_toc_on_single_view) {
+			echo hale_table_of_contents($number_headings);
 		}
 		?>
 	</div>

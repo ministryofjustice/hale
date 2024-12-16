@@ -58,9 +58,8 @@
 
     <div class="flexible-post-type-content">
         <?php
-        $number_headings = hale_get_acf_field_status('number_headings');
-        if (function_exists('hale_index')) {
-            hale_index("content", $number_headings);
+        if (function_exists('hale_clean_bad_content')) {
+            hale_clean_bad_content(true);
         }
         ?>
     </div><!-- .article-content -->
