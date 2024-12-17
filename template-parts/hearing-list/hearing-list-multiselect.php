@@ -48,6 +48,6 @@ if(!empty($all_terms)){
         </div>
 </div>
 <div id="hearing-witness-multiselect-warning" class="multiselect-warning">
-    <p>You have reached the maximum amount of names that can be applied. Remove and then re-add if you need a different name.</p>
+    <p>You have reached the maximum number of names that can be applied. Remove and then re-add if you need a different name.</p>
  </div>   
 <?php } ?>

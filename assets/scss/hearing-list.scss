@@ -152,10 +152,16 @@
 
       }
 
+      .moj-js-datepicker-cancel {
+        background: none;
+        text-decoration: underline;
+        border: none;
+      }
+
     }
 
     .moj-datepicker__calendar {
-      // tbody:focus-within{outline:2px solid #004bd6}
+        tbody:focus-within{ outline: none }
 
        .moj-datepicker__button:hover {
         // background: #E7F2F9;
