@@ -19,7 +19,7 @@ if(!empty($all_terms)){
 
 ?>
 <label for="hearing-witness-autocomplete" class="govuk-label">Name</label>
-<p>Search for multiple names or companies. 5 selections max</p>
+<p>Search for multiple names or companies. 6 selections max</p>
 <input type="hidden" id="hearing-witness-multiselect-hidden-input" name="hearing-witness" value="<?php echo $selected_terms_qry; ?>" />
    
 <div class="multiselect-wrapper">
@@ -33,7 +33,9 @@ if(!empty($all_terms)){
                         <?php echo get_term($term_id)->name; ?> 
                     </div>
                     <div data-termid="<?php echo $term_id; ?>" class="multiselect-selected-remove">
-                        Remove
+                        <button class="multiselect-selected-remove-button" type="button" aria-label="Remove selected option">
+                            Remove
+                        </button>
                     </div>
                 </div>
 
@@ -45,4 +47,7 @@ if(!empty($all_terms)){
                 
         </div>
 </div>
+<div id="hearing-witness-multiselect-warning" class="multiselect-warning">
+    <p>You have reached the maximum amount of names that can be applied. Remove and then re-add if you need a different name.</p>
+ </div>   
 <?php } ?>

@@ -8,6 +8,12 @@ setInterval(() => {
 	if($confirmed){
 		document.getElementById('hearing-witness-autocomplete').value = '';
 		$confirmed = false;
+		checkMaxSelectedOptions();
+	}
+	if(document.getElementById('hearing-witness-autocomplete').disabled == true){
+		document.getElementById('hearing-witness-autocomplete').value = '';
+		document.getElementById('hearing-witness-autocomplete__listbox').classList.remove('autocomplete__menu--visible');
+		document.getElementById('hearing-witness-autocomplete__listbox').classList.add('autocomplete__menu--hidden');
 	}
 }, 100); 
 
@@ -23,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		element: document.querySelector('#hearing-witness-autocomplete-container'),
 		id: 'hearing-witness-autocomplete', // Matches the hidden input
 		name: 'hearing-witness-autocomplete', // Matches the hidden input
+		displayMenu: 'overlay',
 		placeholder: 'Search for a name',
 		source: function (query, populateResults) {
 			const results = term_names.filter(term => term.toLowerCase().includes(query.toLowerCase()));
@@ -34,10 +41,14 @@ document.addEventListener("DOMContentLoaded", function() {
 		},
 		onConfirm: (value) => {
 
-		   confirmMultiSelectOption(value);
-		   updateMultiSelectOptions();
+			if (selected_term_ids.length < 6) {
+		   		confirmMultiSelectOption(value);
+		   		updateMultiSelectOptions();
+			}
 		}
 	});
+
+	checkMaxSelectedOptions();
 
 });
 
@@ -81,7 +92,7 @@ function updateMultiSelectOptions() {
 
 		const removeDiv = document.createElement('div');
 
-		removeDiv.textContent = 'Remove';
+		removeDiv.innerHTML = '<button class="multiselect-selected-remove-button" type="button" aria-label="Remove selected option">Remove</button>';
 		removeDiv.className = 'multiselect-selected-remove';
 		removeDiv.setAttribute('data-termid', foundTerm.term_id);
 
@@ -96,6 +107,7 @@ function updateMultiSelectOptions() {
 
 		});
 
+
 	}
 	
  }
@@ -106,6 +118,7 @@ function updateMultiSelectOptions() {
 	document.getElementById('hearing-witness-multiselect-hidden-input').value = selected_term_ids.toString();
 	document.getElementById('selected-option-'+value).remove();
 	updateMultiSelectOptions();
+	checkMaxSelectedOptions();
  }
 
  //Adds event listener to remove option - first option
@@ -119,3 +132,14 @@ function updateMultiSelectOptions() {
 
 	});
 });
+
+function checkMaxSelectedOptions() {
+	if (selected_term_ids.length == 6) {
+		document.getElementById('hearing-witness-autocomplete').disabled = true;
+		document.getElementById('hearing-witness-multiselect-warning').classList.add('show-warning');
+	}
+	else{
+		document.getElementById('hearing-witness-autocomplete').disabled = false;
+		document.getElementById('hearing-witness-multiselect-warning').classList.remove('show-warning');
+	}
+}
