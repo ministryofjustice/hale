@@ -109,8 +109,8 @@ if ($selected_job_max_salary_id != "0" && $selected_job_max_salary_id < $selecte
     $salaryErrorMax = "Maximum salary cannot be lower than minimum salary.";
 }
 
-$dropdown_html_min_salary = salaryFilter($selected_job_min_salary_id, 'min_salary', 'job-filter-min-salary', $salaryErrorClass, 'No minimum');
-$dropdown_html_max_salary = salaryFilter($selected_job_max_salary_id, 'max_salary', 'job-filter-max-salary', $salaryErrorClass, 'No maximum');
+$dropdown_html_min_salary = salaryFilter($selected_job_min_salary_id, 'min_salary', 'job-filter-min-salary', $salaryErrorClass, 'No minimum', $salaryError ? "job-filter-min-salary-error" : "");
+$dropdown_html_max_salary = salaryFilter($selected_job_max_salary_id, 'max_salary', 'job-filter-max-salary', $salaryErrorClass, 'No maximum', $salaryError ? "job-filter-max-salary-error" : "");
 
 while (have_posts()) :
     the_post();

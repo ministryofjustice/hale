@@ -1121,7 +1121,8 @@ body.hale-colours-variable {
 		}
 	}
 
-	.govuk-error-message {
+	.govuk-error-message,
+	p.govuk-error-message {
 		color: var(--error);
 	}
 

@@ -116,13 +116,15 @@
 	}
 	add_filter('query_vars', 'hale_job_listings_add_query_vars_filter');
 
-	function salaryFilter($salary,$name,$id,$salaryErrorClass="",$zeroOption="£0") {
+	function salaryFilter($salary,$name,$id,$salaryErrorClass="",$zeroOption="£0",$salaryErrorId="") {
 		$selected0 = $selected20000 = $selected30000 = $selected40000 = $selected50000 = $selected60000 = $selected70000 = $selected80000 = $selected90000 = $selected100000 = "";
 		$salarySelected = "selected$salary";
 		$$salarySelected = "selected";
+		$salaryErrorAriaDescribedBy = "";
+		if ($salaryErrorId!="") $salaryErrorAriaDescribedBy = "aria-describedby='$salaryErrorId'";
 		$output =
 		"
-		<select class='govuk-select $salaryErrorClass' name='$name' id='$id'>
+		<select class='govuk-select $salaryErrorClass' name='$name' id='$id' $salaryErrorAriaDescribedBy>
 			<option value='0' $selected0>$zeroOption</option>
 			<option value='20000' $selected20000>£20,000</option>
 			<option value='30000' $selected30000>£30,000</option>
