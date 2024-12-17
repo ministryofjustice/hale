@@ -8,13 +8,14 @@ setInterval(() => {
 	if($confirmed){
 		document.getElementById('hearing-witness-autocomplete').value = '';
 		$confirmed = false;
-		checkMaxSelectedOptions();
+		//checkMaxSelectedOptions();
 	}
+	/*
 	if(document.getElementById('hearing-witness-autocomplete').disabled == true){
 		document.getElementById('hearing-witness-autocomplete').value = '';
 		document.getElementById('hearing-witness-autocomplete__listbox').classList.remove('autocomplete__menu--visible');
 		document.getElementById('hearing-witness-autocomplete__listbox').classList.add('autocomplete__menu--hidden');
-	}
+	}*/
 }, 100); 
 
 var terms = multiselect_object.all_terms;
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 
-	checkMaxSelectedOptions();
+	//checkMaxSelectedOptions();
 
 });
 
