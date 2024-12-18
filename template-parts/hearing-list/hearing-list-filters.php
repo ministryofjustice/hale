@@ -28,7 +28,11 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                     Date from
                     </label>
 
-                    <input class="govuk-input moj-js-datepicker-input " id="from-date" name="from_date" type="text" aria-describedby="date-hint" autocomplete="off" value="<?php echo $from_date; ?>">
+                    <div id="from-date-hint" class="govuk-hint">
+                        For example, 13/2/2024.
+                    </div>
+
+                    <input class="govuk-input moj-js-datepicker-input " id="from-date" name="from_date" type="text" aria-describedby="from-date-hint" autocomplete="off" value="<?php echo $from_date; ?>">
 
                 </div>
                 
@@ -41,7 +45,11 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                     Date to
                 </label>
 
-                <input class="govuk-input moj-js-datepicker-input " id="to-date" name="to_date" type="text" aria-describedby="date-hint" autocomplete="true" value="<?php echo $to_date; ?>">
+                <div id="to-date-hint" class="govuk-hint">
+                        For example, 13/2/2024.
+                </div>
+
+                <input class="govuk-input moj-js-datepicker-input " id="to-date" name="to_date" type="text" aria-describedby="to-date-hint to-date-error" autocomplete="true" value="<?php echo $to_date; ?>">
 
                 </div>
 
