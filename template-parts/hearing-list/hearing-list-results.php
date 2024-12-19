@@ -73,7 +73,7 @@ if(!empty($to_date)){
     $end_date = $dateObject->format('Y-m-d');
 }
 
-if(!empty($start_date) && !empty($end_date)){
+if(!empty($start_date) || !empty($end_date)){
     
     $date_query = array(
         'inclusive' => true, // Include the boundaries
