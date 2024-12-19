@@ -121,6 +121,7 @@
           }
 
           &:focus {
+            color: var(--link-focus);
             text-decoration: none;
             background-color: var(--link-focus-background);
             box-shadow: 0 -2px var(--link-focus-background), 0 3px var(--link-focus-shadow);
