@@ -9,6 +9,37 @@
 
 get_header();
 
+$filters = [
+    [
+        'filter_name' => 'hearing-witness',
+        'filter_type' => 'multiselect-taxonomy',
+        'taxonomy_key' => 'hearing-witness',
+        'value' => []
+    ],
+    [
+        'filter_name' => 'published-date',
+        'filter_type' => 'date-range',
+        'value' => ['from_date' => '', 'to_date' => '']
+    ],
+    [
+        'filter_name' => 'hearing-type',
+        'filter_type' => 'select-taxonomy',
+        'taxonomy_key' => 'hearing-type',
+        'value' => []
+    ],
+    [
+        'filter_name' => 'witness-category',
+        'filter_type' => 'select-taxonomy',
+        'taxonomy_key' => 'witness-category',
+        'value' => []
+    ]
+];
+
+$validated_filters = hale_validate_hearing_filters($filters);
+
+var_dump($validated_filters);
+
+//$validated_filters
 // Start the post loop
 while (have_posts()) :
     the_post();
@@ -16,6 +47,9 @@ while (have_posts()) :
     ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
+        
+        <?php get_template_part('template-parts/hearing-list/hearing-list-error-banner', false, array('validated_filters' => $validated_filters)); ?>
+        
         <div class="hearing-list-shaded-section">
             <div class="hearing-list-shaded-section-content">
                 <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-6">
