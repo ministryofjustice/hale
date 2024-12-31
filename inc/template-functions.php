@@ -375,6 +375,9 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	foreach ($index as $content_item) {
 		$list_of_headings .= '<li><a id="anchor-for-'.$content_item[1].'" class="govuk-link" href="#'.$content_item[1].'">'.$content_item[0].'</a></li>';
 	}
+
+	if ($list_of_headings == "") return ""; // If there are no matched headings, then there is no table of contents to shew
+
 	$toc = "<div id='table-of-contents' class='hale-table-of-contents'>
 			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-toc-heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
 			<ol class='govuk-list $list_class'>$list_of_headings</ol>
