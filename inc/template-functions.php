@@ -320,7 +320,7 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
 
 		if (!$table_of_contents && !$numbered_headings) return $content;
 
-		return hale_get_ordered_content($content, $numbered_headings)[1];
+		return hale_get_ordered_content($content, $numbered_headings)["content"];
 	}
 
 	return $content;
@@ -338,13 +338,15 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	$index = [];
 	$count = 0; //index number
 	$dom = new DomDocument();
-	$dom->loadHtml('<?xml encoding="UTF-8">'.$content);
+	if (!$dom->loadHtml('<?xml encoding="UTF-8">'.$content)) {
+		return array("index"=>$index,"content"=>$content);
+	}
 	$tags = $dom->getElementsByTagName("h2");
 	foreach($tags as $tag) {
 		$title = $tag->nodeValue;
 		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
 		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
-		$index[] = [$title,$id];
+		$index[] = ["title"=>$title,"id"=>$id];
 		if ($numbered_headings) $tag->prepend($count.". "); //adds the index number before the title if $ordered set
 		$tag->setAttribute('id', $id);
 	}
@@ -352,7 +354,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	// This is the content with IDs for all h2 elements (or whatever was set in $tags)
 	$changed_content = trim($dom->saveHtml());
 
-	return array($index,$changed_content);
+	return array("index"=>$index,"content"=>$changed_content);
 }
 
 /**
@@ -368,12 +370,12 @@ function hale_get_ordered_content($content, $numbered_headings) {
 		$list_class = "govuk-list--number";
 	}
 
-	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)[0];
+	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)["index"];
 
 	// Create the table of contents
 	$list_of_headings = "";
 	foreach ($index as $content_item) {
-		$list_of_headings .= '<li><a id="anchor-for-'.$content_item[1].'" class="govuk-link" href="#'.$content_item[1].'">'.$content_item[0].'</a></li>';
+		$list_of_headings .= '<li><a id="anchor-for-'.$content_item["id"].'" class="govuk-link" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
 	}
 
 	if ($list_of_headings == "") return ""; // If there are no matched headings, then there is no table of contents to shew
