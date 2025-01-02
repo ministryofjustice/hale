@@ -88,6 +88,12 @@ if (!empty($tax_qry_ary)) {
     $listing_args['tax_query'] = $tax_qry_ary;
 }
 
+//Search by text
+$listing_search_text = stripslashes(sanitize_text_field(esc_html(get_query_var('listing_search'))));
+if (!empty($listing_search_text)) {
+    $listing_args['s'] = $listing_search_text;
+}
+
 $listing_query = new WP_Query($listing_args);
 $post_type_obj = get_post_type_object( $listing_post_type );
 $flex_cpt_name = $post_type_obj->labels->singular_name;

@@ -36,6 +36,7 @@ $filters = [
 //Currently 'published-date' is the only filter validated - option to add others in future
 $filters = hale_validate_hearing_filters($filters);
 
+$listing_search_text = stripslashes(sanitize_text_field(esc_html(get_query_var('listing_search'))));
 
 // Start the post loop
 while (have_posts()) :
@@ -72,6 +73,15 @@ while (have_posts()) :
 
                                     <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
 
+
+                                        <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                            <label class="govuk-label" for="listing-search-field">
+                                                <?php _e('Search', 'hale'); ?>
+                                            </label>
+                                            <input class="govuk-input" id="listing-search-field" name="listing_search"
+                                                value="<?= esc_attr($listing_search_text); ?>" type="search"
+                                                placeholder="<?php _e('Search', 'hale'); ?>">
+                                        </div>
                                         <?php 
                                         get_template_part('template-parts/hearing-list/hearing-list-filters', false, array('filters' => $filters));
                                         ?>
