@@ -10,12 +10,6 @@ setInterval(() => {
 		$confirmed = false;
 		//checkMaxSelectedOptions();
 	}
-	/*
-	if(document.getElementById('hearing-witness-autocomplete').disabled == true){
-		document.getElementById('hearing-witness-autocomplete').value = '';
-		document.getElementById('hearing-witness-autocomplete__listbox').classList.remove('autocomplete__menu--visible');
-		document.getElementById('hearing-witness-autocomplete__listbox').classList.add('autocomplete__menu--hidden');
-	}*/
 }, 100); 
 
 var terms = multiselect_object.all_terms;
@@ -119,7 +113,7 @@ function updateMultiSelectOptions() {
 	document.getElementById('hearing-witness-multiselect-hidden-input').value = selected_term_ids.toString();
 	document.getElementById('selected-option-'+value).remove();
 	updateMultiSelectOptions();
-	checkMaxSelectedOptions();
+	//checkMaxSelectedOptions();
  }
 
  //Adds event listener to remove option - first option
@@ -138,9 +132,12 @@ function checkMaxSelectedOptions() {
 	if (selected_term_ids.length == 6) {
 		document.getElementById('hearing-witness-autocomplete').disabled = true;
 		document.getElementById('hearing-witness-multiselect-warning').classList.add('show-warning');
+		document.getElementById('hearing-witness-multiselect-warning').textContent = "You have reached the maximum number of names that can be applied. Remove and then re-add if you need a different name."
+
 	}
 	else{
 		document.getElementById('hearing-witness-autocomplete').disabled = false;
 		document.getElementById('hearing-witness-multiselect-warning').classList.remove('show-warning');
+		document.getElementById('hearing-witness-multiselect-warning').textContent = "";
 	}
 }

@@ -149,9 +149,9 @@
 
     .multiselect-warning {
       display: none;
-      p {
-        color: #D4351C;
-      }
+      color: #D4351C;
+      margin-top: 10px;
+
       &.show-warning {
         display: block;
       }

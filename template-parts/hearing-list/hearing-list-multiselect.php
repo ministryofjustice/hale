@@ -19,10 +19,10 @@ if(!empty($all_terms)){
 
 ?>
 <div class="govuk-form-group">
-<label for="hearing-witness-autocomplete" class="govuk-label">Name</label>
+<label for="hearing-witness-autocomplete" class="govuk-label">Witness name/company</label>
 
 <div id="hearing-witness-hint" class="govuk-hint">
-    Search for a name or company. Select up to 6 options. 
+    Search for a name or company.
 </div>
 
 <input type="hidden" id="hearing-witness-multiselect-hidden-input" name="hearing-witness" value="<?php echo $selected_terms_qry; ?>" />
@@ -52,8 +52,6 @@ if(!empty($all_terms)){
                 
         </div>
 </div>
-<div id="hearing-witness-multiselect-warning" class="multiselect-warning">
-    <p>You have reached the maximum number of names that can be applied. Remove and then re-add if you need a different name.</p>
- </div>   
+<div id="hearing-witness-multiselect-warning" class="multiselect-warning" role="alert"></div>   
 <?php } ?>
 </div>

@@ -96,6 +96,7 @@ $flex_cpt_name_plural = $post_type_obj->labels->name;
 
 $selected_display_fields = array (
     'published-date',
+    'hearing-witness',
     'hearing_summary',
 );
 
