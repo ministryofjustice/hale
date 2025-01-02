@@ -29,7 +29,7 @@ function hale_get_hearing_list_filters() {
 function hale_validate_hearing_filters($filters) {
 
     $validated_filters = [];
-    $validated_filters['errors'] = [];
+    $validated_filters['error_count'] = 0;
 
     foreach ($filters as $filter) {
         if ($filter['filter_type'] == 'multiselect-taxonomy') {
@@ -52,29 +52,32 @@ function hale_validate_hearing_filters($filters) {
             $end_date = null;
 
             if(!empty($from_date)){
+
+                $filter['value']['from_date'] = $from_date;
+
                 $start_date = hale_validate_date($from_date);
 
                 if(!$start_date){
-                    $validated_filters['errors'][] = ['message' => 'Date from must be a valid date', 'link' => '#from-date'];
+                    $validated_filters['error_count']++;
+                    $filter['errors'][] = ['message' => 'The Date from field must be a valid date', 'link' => '#from-date'];
                 }
                 else {
-                    $filter['value']['from_date'] = $start_date;
+                    $filter['validated_value']['from_date'] = $start_date;
                 }
             }
 
             if(!empty($to_date)){
+
+              $filter['value']['to_date'] = $to_date;
                $end_date = hale_validate_date($to_date);
 
                 if(!$end_date){
-                    $validated_filters['errors'][] = ['message' => 'Date to must be a valid date', 'link' => '#to-date'];
+                    $validated_filters['error_count']++;
+                    $filter['errors'][] = ['message' => 'The Date to field must be a valid date', 'link' => '#to-date'];
                 }
                 else {
 
-                    $filter['value']['to_date'] = $end_date;
-
-                    if($start_date && $end_date < $start_date){
-                        $validated_filters['errors'][] = ['message' => 'Date to must be greater than date from', 'link' => '#to-date'];
-                    }
+                    $filter['validated_value']['to_date'] = $end_date;
                    
                 }
             }

@@ -24,7 +24,7 @@ $listing_args = [
 $listing_args['orderby'] = 'post_date';
 $listing_args['order'] = 'DESC';
 
-$listing_filters = hale_get_hearing_list_filters();
+$listing_filters = $args['filters'];
 
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
@@ -38,55 +38,54 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             // Create an array of what taxonomies have been selected in dropdown
             hale_add_filter_term_if_exists($filter['taxonomy_key'], $listing_active_filters);
         }
+        else if ($filter['filter_type'] == "date-range") {
+
+            $start_date = $filter['validated_value']['from_date'];
+            $end_date = $filter['validated_value']['to_date'];
+
+            if(!empty($start_date) || !empty($end_date)){
+
+                if($start_date && $end_date < $start_date){
+                    $temp_date = $start_date;
+                    $start_date = $end_date;
+                    $end_date = $temp_date;
+                }
+                
+                $date_query = array(
+                    'inclusive' => true, // Include the boundaries
+                );
+                if(!empty($start_date)){
+                    $date_query['after'] = date('Y-m-d', $start_date);
+                }
+
+                if(!empty($end_date)){
+                    $date_query['before'] = date('Y-m-d', $end_date);
+                }
+                
+                $listing_args['date_query'] = $date_query;
+            }
+        }
         else {
             continue;
         }
 
-        //Filters
-        if(!empty($listing_active_filters)){
+    }
 
-            foreach($listing_active_filters as $active_filter){
-                $tax_qry_ary[] = array(
-                    'taxonomy' => $active_filter['taxonomy'],
-                    'field' => 'term_id',
-                    'terms' => $active_filter['value']
-                );
-            }
+    //Filters
+    if(!empty($listing_active_filters)){
+
+        foreach($listing_active_filters as $active_filter){
+            $tax_qry_ary[] = array(
+                'taxonomy' => $active_filter['taxonomy'],
+                'field' => 'term_id',
+                'terms' => $active_filter['value']
+            );
         }
     }
 }
 
 if (!empty($tax_qry_ary)) {
     $listing_args['tax_query'] = $tax_qry_ary;
-}
-
-$from_date = get_query_var('from_date');
-$to_date = get_query_var('to_date');
-
-if(!empty($from_date)){
-    $dateObject = DateTime::createFromFormat('d/m/Y', $from_date);
-    $start_date = $dateObject->format('Y-m-d');
-}
-
-if(!empty($to_date)){
-    $dateObject = DateTime::createFromFormat('d/m/Y', $to_date);
-    $end_date = $dateObject->format('Y-m-d');
-}
-
-if(!empty($start_date) || !empty($end_date)){
-    
-    $date_query = array(
-        'inclusive' => true, // Include the boundaries
-    );
-    if(!empty($start_date)){
-        $date_query['after'] = $start_date;
-    }
-
-    if(!empty($end_date)){
-        $date_query['before'] = $end_date;
-    }
-    
-    $listing_args['date_query'] = $date_query;
 }
 
 $listing_query = new WP_Query($listing_args);

@@ -1,8 +1,8 @@
 <?php
 
-$validated_filters = $args['validated_filters'];
+$validated_filters = $args['filters'];
 
-if(count($validated_filters['errors']) > 0  ){
+if($validated_filters['error_count'] > 0  ){
 ?>
 
     <div class="govuk-error-summary" data-module="govuk-error-summary">
@@ -12,11 +12,17 @@ if(count($validated_filters['errors']) > 0  ){
             </h2>
             <div class="govuk-error-summary__body">
                 <ul class="govuk-list govuk-error-summary__list">
-                    <?php foreach($validated_filters['errors'] as $error){ ?>
-                        <li>
-                            <a href="<?php echo $error['link']; ?>"><?php echo $error['message']; ?></a>
-                        </li>   
-                    <?php } ?>
+                    <?php foreach($validated_filters as $filter){ 
+                        if(!empty($filter['errors'])){ 
+                            
+                            foreach($filter['errors'] as $error){ ?>
+                                <li>
+                                    <a href="<?php echo $error['link']; ?>"><?php echo $error['message']; ?></a>
+                                </li>
+                        <?php
+                            } 
+                        } 
+                    } ?>
                 </ul>
             </div>
         </div>

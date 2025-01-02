@@ -14,32 +14,29 @@ $filters = [
         'filter_name' => 'hearing-witness',
         'filter_type' => 'multiselect-taxonomy',
         'taxonomy_key' => 'hearing-witness',
-        'value' => []
+        'value' => [],
+        'validated_value' => []
     ],
     [
         'filter_name' => 'published-date',
         'filter_type' => 'date-range',
-        'value' => ['from_date' => '', 'to_date' => '']
+        'value' => ['from_date' => '', 'to_date' => ''],
+        'validated_value' => ['from_date' => '', 'to_date' => '']
+
     ],
     [
         'filter_name' => 'hearing-type',
         'filter_type' => 'select-taxonomy',
         'taxonomy_key' => 'hearing-type',
-        'value' => []
-    ],
-    [
-        'filter_name' => 'witness-category',
-        'filter_type' => 'select-taxonomy',
-        'taxonomy_key' => 'witness-category',
-        'value' => []
+        'value' => [],
+        'validated_value' => []
     ]
 ];
 
-$validated_filters = hale_validate_hearing_filters($filters);
+//Currently 'published-date' is the only filter validated - option to add others in future
+$filters = hale_validate_hearing_filters($filters);
 
-var_dump($validated_filters);
 
-//$validated_filters
 // Start the post loop
 while (have_posts()) :
     the_post();
@@ -48,7 +45,7 @@ while (have_posts()) :
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
         
-        <?php get_template_part('template-parts/hearing-list/hearing-list-error-banner', false, array('validated_filters' => $validated_filters)); ?>
+        <?php get_template_part('template-parts/hearing-list/hearing-list-error-banner', false, array('filters' => $filters)); ?>
         
         <div class="hearing-list-shaded-section">
             <div class="hearing-list-shaded-section-content">
@@ -76,7 +73,7 @@ while (have_posts()) :
                                     <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
 
                                         <?php 
-                                        get_template_part('template-parts/hearing-list/hearing-list-filters');
+                                        get_template_part('template-parts/hearing-list/hearing-list-filters', false, array('filters' => $filters));
                                         ?>
                                     </fieldset>
                 
@@ -102,7 +99,7 @@ while (have_posts()) :
             <!-- Righthand column with listing page results -->
             <div class="govuk-grid-column-two-thirds">
                 <?php
-                get_template_part('template-parts/hearing-list/hearing-list-results');
+                get_template_part('template-parts/hearing-list/hearing-list-results', false, array('filters' => $filters));
                 ?>
             </div>
         </div>
