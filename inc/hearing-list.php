@@ -32,19 +32,7 @@ function hale_validate_hearing_filters($filters) {
     $validated_filters['error_count'] = 0;
 
     foreach ($filters as $filter) {
-        if ($filter['filter_type'] == 'multiselect-taxonomy') {
-            //$selected_terms = get_query_var($filter['filter_name']);
-            //$selected_terms = explode(',', $selected_terms);
-
-            /*$validated_terms = [];
-            foreach ($selected_terms as $term_id) {
-                if (is_numeric($term_id) && term_exists((int) $term_id, $filter['taxonomy_key'])) {
-                    $validated_terms[] = (int) $term_id;
-                }
-            }
-
-            $validated_filters[$filter['filter_name']] = $validated_terms;*/
-        } else if ($filter['filter_type'] == 'date-range') {
+        if ($filter['filter_type'] == 'date-range') {
             $from_date = get_query_var('from_date');
             $to_date = get_query_var('to_date');
 
@@ -81,19 +69,7 @@ function hale_validate_hearing_filters($filters) {
                    
                 }
             }
-        } else if ($filter['filter_type'] == 'select-taxonomy') {
-          /*  $selected_terms = get_query_var($filter['filter_name']);
-            $selected_terms = explode(',', $selected_terms);
-
-            $validated_terms = [];
-            foreach ($selected_terms as $term_id) {
-                if (is_numeric($term_id) && term_exists((int) $term_id, $filter['taxonomy_key'])) {
-                    $validated_terms[] = (int) $term_id;
-                }
-            }
-
-            $validated_filters[$filter['filter_name']] = $validated_terms;*/
-        }
+        } 
 
         $validated_filters[] = $filter;
     }
