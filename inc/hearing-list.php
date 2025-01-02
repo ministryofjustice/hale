@@ -20,11 +20,6 @@ function hale_get_hearing_list_filters() {
             'filter_name' => 'hearing-type',
             'filter_type' => 'select-taxonomy',
             'taxonomy_key' => 'hearing-type',
-        ],
-        [
-            'filter_name' => 'witness-category',
-            'filter_type' => 'select-taxonomy',
-            'taxonomy_key' => 'witness-category',
         ]
     ];
 
