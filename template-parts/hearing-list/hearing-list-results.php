@@ -45,7 +45,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
 
             if(!empty($start_date) || !empty($end_date)){
 
-                if($start_date && $end_date < $start_date){
+                if($start_date && $end_date && $end_date < $start_date){
                     $temp_date = $start_date;
                     $start_date = $end_date;
                     $end_date = $temp_date;
