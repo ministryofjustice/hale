@@ -301,6 +301,94 @@ function hale_clean_bad_content( $b_print = false ) {
 	}
 }
 
+/**
+ * This filter changes the content to include the IDs and the ordering number
+ *
+ * Only called if H2 numbering is enabled or the table of contents is called
+ *
+ * Uses the function found beneath it
+ */
+
+add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
+
+	function hale_filter_add_index_for_h2_elements( $content ) {
+
+	// Check if we're inside the main loop in a single Post.
+	if ( is_singular() && in_the_loop() && is_main_query()) {
+		$numbered_headings = hale_get_acf_field_status('number_headings');
+		$table_of_contents = hale_get_acf_field_status('show_toc_on_single_view');
+
+		if (!$table_of_contents && !$numbered_headings) return $content;
+
+		return hale_get_ordered_content($content, $numbered_headings)["content"];
+	}
+
+	return $content;
+}
+
+/**
+ * This funciton used in the above filter, and in the function beneath it
+ *
+ * It does 2 things:
+ * - returns an array of items for the table of contents (array pos [0] - used in hale_table_of_contents)
+ * - amends the $content to include IDs and (if needed) adds numbers to H2s (array pos [1] - used in above filter)
+ */
+
+function hale_get_ordered_content($content, $numbered_headings) {
+	$index = [];
+	$count = 0; //index number
+	$dom = new DomDocument();
+	if (!$dom->loadHtml('<?xml encoding="UTF-8">'.$content)) {
+		return array("index"=>$index,"content"=>$content);
+	}
+	$tags = $dom->getElementsByTagName("h2");
+	foreach($tags as $tag) {
+		$title = $tag->nodeValue;
+		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
+		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
+		$index[] = ["title"=>$title,"id"=>$id];
+		if ($numbered_headings) $tag->prepend($count.". "); //adds the index number before the title if $ordered set
+		$tag->setAttribute('id', $id);
+	}
+
+	// This is the content with IDs for all h2 elements (or whatever was set in $tags)
+	$changed_content = trim($dom->saveHtml());
+
+	return array("index"=>$index,"content"=>$changed_content);
+}
+
+/**
+ * This funciton constructs a table of contents
+ * from the number of H2s on the page, which it
+ * gets from the above funciton
+ */
+
+ function hale_table_of_contents( $ordered = false) {
+	$list_class = "";
+	// if it is ordered, the index uses an ordered list and the number is displayed
+	if ($ordered) {
+		$list_class = "govuk-list--number";
+	}
+
+	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)["index"];
+
+	// Create the table of contents
+	$list_of_headings = "";
+	foreach ($index as $content_item) {
+		$list_of_headings .= '<li><a id="anchor-for-'.$content_item["id"].'" class="govuk-link" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
+	}
+
+	if ($list_of_headings == "") return ""; // If there are no matched headings, then there is no table of contents to shew
+
+	$toc = "<div id='table-of-contents' class='hale-table-of-contents'>
+			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-toc-heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
+			<ol class='govuk-list $list_class'>$list_of_headings</ol>
+		</div>";
+
+	return $toc;
+}
+
+
 function hook_css() {
 	$opens_in_a_new_tab = trim(get_theme_mod("link_new_tab_text"));
 	if (!isset($opens_in_a_new_tab) || $opens_in_a_new_tab == "") {
@@ -308,7 +396,7 @@ function hook_css() {
 	} else {
 		$opens_in_a_new_tab = " ($opens_in_a_new_tab)";
 	}
-    ?>
+?>
 	<style>
 		.edit-post-visual-editor a[target=_blank]:after,
 		.hale-page a[target=_blank]:after {
