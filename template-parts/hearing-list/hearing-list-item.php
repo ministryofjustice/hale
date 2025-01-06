@@ -22,18 +22,6 @@
         }
         ?>
     </h2>
-    <?php 
-    
-    if(!empty($display_terms_taxonomies)){
-
-        $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
-        
-        if(!empty($tax_details)){
-            get_template_part( 'template-parts/hearing-list/hearing-term-list', false, array('tax-details' => $tax_details)); 
-        }
-    }
-    
-    ?>
     <?php if(!empty($display_fields)){
 
         foreach($display_fields as $field){

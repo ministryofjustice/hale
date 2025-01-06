@@ -78,9 +78,13 @@ while (have_posts()) :
                                             <label class="govuk-label" for="listing-search-field">
                                                 <?php _e('Search', 'hale'); ?>
                                             </label>
+                                            <div id="listing-search-field-hint" class="govuk-hint">
+                                                <?php _e('For example, a person who died or hearing day', 'hale'); ?>
+                                            </div>
                                             <input class="govuk-input" id="listing-search-field" name="listing_search"
                                                 value="<?= esc_attr($listing_search_text); ?>" type="search"
-                                                placeholder="<?php _e('Search', 'hale'); ?>">
+                                                aria-describedby="listing-search-field-hint"
+                                            />
                                         </div>
                                         <?php 
                                         get_template_part('template-parts/hearing-list/hearing-list-filters', false, array('filters' => $filters));

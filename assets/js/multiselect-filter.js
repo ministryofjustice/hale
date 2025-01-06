@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		id: 'hearing-witness-autocomplete', // Matches the hidden input
 		name: 'hearing-witness-autocomplete', // Matches the hidden input
 		displayMenu: 'overlay',
-		placeholder: 'Search for a name',
+		placeholder: '', // Not recommended to be anything other than '' (autocomplete readme)
 		source: function (query, populateResults) {
 			const results = term_names.filter(term => term.toLowerCase().includes(query.toLowerCase()));
 			populateResults(results);

@@ -19,13 +19,16 @@ if(!empty($all_terms)){
 
 ?>
 <div class="govuk-form-group">
-<label for="hearing-witness-autocomplete" class="govuk-label">Witness name/company</label>
+<label for="hearing-witness-autocomplete" class="govuk-label">Witness name</label>
 
 <div id="hearing-witness-hint" class="govuk-hint">
-    Search for a name or company.
+    Search for a name or company
 </div>
 
-<input type="hidden" id="hearing-witness-multiselect-hidden-input" name="hearing-witness" value="<?php echo $selected_terms_qry; ?>" />
+<input
+    type="hidden" id="hearing-witness-multiselect-hidden-input" name="hearing-witness"
+    value="<?php echo $selected_terms_qry; ?>" aria-describedby="hearing-witness-hint"
+/>
    
 <div class="multiselect-wrapper">
         <div id="hearing-witness-selected-options" class="multiselect-selected-options options-style-1">
