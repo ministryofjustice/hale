@@ -170,7 +170,7 @@ if ($listing_query->have_posts()) {
         ?>
     </h2>
     <p class="govuk-body">
-        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+        <?php _e('Try searching again with different options.', 'hale'); ?>
     </p>
     <?php
 } else { ?>
@@ -178,7 +178,7 @@ if ($listing_query->have_posts()) {
         <?php _e('Your search matched no ' . strtolower($flex_cpt_name_plural), 'hale'); ?>
     </h2>
     <p class="govuk-body">
-        <?php _e('Try searching again with expanded criteria.', 'hale'); ?>
+        <?php _e('Try searching again with different options.', 'hale'); ?>
     </p>
     <?php
 }
