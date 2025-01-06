@@ -29,6 +29,8 @@ $listing_filters = $args['filters'];
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
+        if (!is_array($filter)) continue;
+
         if($filter['filter_type'] == "multiselect-taxonomy"){ 
              // Create an array of what taxonomies have been selected in dropdown
              hale_add_filter_term_if_exists($filter['taxonomy_key'], $listing_active_filters, true);
@@ -136,8 +138,7 @@ if (!empty($selected_display_fields) && is_array($selected_display_fields)) {
 }
 
 $display_terms_taxonomies = array(
-    'hearing-type',
-    'witness-category'
+    'hearing-type'
 );
 
 if ($listing_query->have_posts()) { 

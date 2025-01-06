@@ -47,26 +47,22 @@ function hale_validate_hearing_filters($filters) {
 
                 if(!$start_date){
                     $validated_filters['error_count']++;
-                    $filter['errors'][] = ['message' => 'The Date from field must be a valid date', 'link' => '#from-date'];
-                }
-                else {
+                    $filter['errors'][] = ['message' => 'Date from must be a real date including a day, month and year', 'link' => '#from-date'];
+                } else {
                     $filter['validated_value']['from_date'] = $start_date;
                 }
             }
 
             if(!empty($to_date)){
 
-              $filter['value']['to_date'] = $to_date;
-               $end_date = hale_validate_date($to_date);
+                $filter['value']['to_date'] = $to_date;
+                $end_date = hale_validate_date($to_date);
 
                 if(!$end_date){
                     $validated_filters['error_count']++;
-                    $filter['errors'][] = ['message' => 'The Date to field must be a valid date', 'link' => '#to-date'];
-                }
-                else {
-
+                    $filter['errors'][] = ['message' => 'Date to must be a real date including a day, month and year', 'link' => '#to-date'];
+                } else {
                     $filter['validated_value']['to_date'] = $end_date;
-                   
                 }
             }
         } 

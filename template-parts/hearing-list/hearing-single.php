@@ -26,8 +26,7 @@
     <?php 
     
     $display_terms_taxonomies = array(
-        'hearing-type',
-        'witness-category'
+        'hearing-type'
     );
     
     if(!empty($display_terms_taxonomies)){

@@ -10,6 +10,8 @@ $listing_filters = $args['filters'];
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
+        if (!is_array($filter)) continue;
+
         if($filter['filter_type'] == "multiselect-taxonomy"){ 
 
             get_template_part('template-parts/hearing-list/hearing-list-multiselect');
@@ -52,7 +54,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                             <span class="govuk-visually-hidden">
                                 <?php _e('Error:', 'hale'); ?>
                             </span>
-                            <?php _e('The Date from field must be a valid date', "hale"); ?>
+                            <?php _e('Date from must be a real date including a day, month and year', "hale"); ?>
                         </p>
                      <?php } ?>
 
@@ -76,7 +78,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                             <span class="govuk-visually-hidden">
                                 <?php _e('Error:', 'hale'); ?>
                             </span>
-                            <?php _e('The Date to field must be a valid date', "hale"); ?>
+                            <?php _e('Date to must be a real date including a day, month and year', "hale"); ?>
                         </p>
                  <?php } ?>
 
@@ -136,14 +138,13 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
         ));
 
         $has_subtopics = false;
-
+/*
         foreach ($all_terms as $term) {
             if ($term->parent > 0) {
                 $has_subtopics = true;
                 break;
             }
         }
-
         if ($has_subtopics) {
             $disabled_subtopics = 'disabled="disabled"';
 
@@ -183,5 +184,6 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             }
             echo '</select>';
         }
+/**/
     }
 }
