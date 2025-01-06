@@ -962,6 +962,14 @@ body.hale-colours-variable {
 		}
 	}
 
+	.multiselect-wrapper {
+		box-shadow: 0px 0px 0 1px var(--input-border);
+
+		input.autocomplete__input--focused {
+			outline-color: var(--input-focus);
+		}
+	}
+
 	.govuk-breadcrumbs__link,
 	.govuk-back-link {
 		@extend .govuk-link;
