@@ -19,10 +19,10 @@ if(!empty($all_terms)){
 
 ?>
 <div class="govuk-form-group">
-<label for="hearing-witness-autocomplete" class="govuk-label">Witness name</label>
+<label for="hearing-witness-autocomplete" class="govuk-label">Witness</label>
 
 <div id="hearing-witness-hint" class="govuk-hint">
-    Search for a name or company
+    Select a name
 </div>
 
 <input
