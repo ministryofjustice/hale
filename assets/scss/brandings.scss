@@ -962,11 +962,19 @@ body.hale-colours-variable {
 		}
 	}
 
+	// The multiselect uses type-ahead control which comes with its own colours (GDS colours)
+	// This section overrides them with the brand colours
 	.multiselect-wrapper {
 		box-shadow: 0px 0px 0 1px var(--input-border);
 
 		input.autocomplete__input--focused {
 			outline-color: var(--input-focus);
+		}
+
+		li.autocomplete__option--focused {
+			background-color: var(--link-focus-background);
+			border-color: var(--link-focus-background);
+			color: var(--link-focus);
 		}
 	}
 
