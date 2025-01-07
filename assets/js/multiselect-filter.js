@@ -3,12 +3,13 @@
 //used to check if user has selected an option then to clear on interval
 var $confirmed = false;
 
+const max_allowable_options = 6;
+
 //Clears the autocomplete field after a user has selected an option
 setInterval(() => {
 	if($confirmed){
-		document.getElementById('hearing-witness-autocomplete').value = '';
 		$confirmed = false;
-		//checkMaxSelectedOptions();
+		checkMaxSelectedOptions();
 	}
 }, 100); 
 
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		},
 		onConfirm: (value) => {
 
-			if (selected_term_ids.length < 6) {
+			if (max_allowable_options == 0 || selected_term_ids.length < max_allowable_options) {
 		   		confirmMultiSelectOption(value);
 		   		updateMultiSelectOptions();
 			}
@@ -56,7 +57,7 @@ function updateMultiSelectOptions() {
 	});
 }
 //Confirms selected option
- function confirmMultiSelectOption(value) {
+function confirmMultiSelectOption(value) {
 
 
 	const foundTerm = terms.find(item => item.name === value);
@@ -96,30 +97,25 @@ function updateMultiSelectOptions() {
 		document.getElementById('hearing-witness-selected-options').appendChild(newDiv);
 
 		removeDiv.addEventListener('click', () => {
-
 			var termId = Number(removeDiv.getAttribute('data-termid'));
 			removeMultiSelectOption(termId);
-
 		});
+	}	
+}
 
-
-	}
-	
- }
-
- //Removes option from selected options
- function removeMultiSelectOption(value) {
+//Removes option from selected options
+function removeMultiSelectOption(value) {
 	selected_term_ids = selected_term_ids.filter(term_id => term_id !== value);
 	document.getElementById('hearing-witness-multiselect-hidden-input').value = selected_term_ids.toString();
 	document.getElementById('selected-option-'+value).remove();
 	updateMultiSelectOptions();
-	//checkMaxSelectedOptions();
- }
+	checkMaxSelectedOptions();
+}
 
- //Adds event listener to remove option - first option
- const removeOptions = document.querySelectorAll('div.multiselect-selected-remove');
+//Adds event listener to remove option - first option
+const removeOptions = document.querySelectorAll('div.multiselect-selected-remove');
 
- removeOptions.forEach(option => {
+removeOptions.forEach(option => {
 	option.addEventListener('click', () => {
 
 		var termId = Number(option.getAttribute('data-termid'));
@@ -129,14 +125,11 @@ function updateMultiSelectOptions() {
 });
 
 function checkMaxSelectedOptions() {
-	if (selected_term_ids.length == 6) {
-		document.getElementById('hearing-witness-autocomplete').disabled = true;
+	document.getElementById('hearing-witness-autocomplete').value = '';
+	if (max_allowable_options > 0 && selected_term_ids.length >= max_allowable_options) {
 		document.getElementById('hearing-witness-multiselect-warning').classList.add('show-warning');
-		document.getElementById('hearing-witness-multiselect-warning').textContent = "You have reached the maximum number of names that can be applied. Remove and then re-add if you need a different name."
-
-	}
-	else{
-		document.getElementById('hearing-witness-autocomplete').disabled = false;
+		document.getElementById('hearing-witness-multiselect-warning').textContent = "You have reached the maximum number of names ("+max_allowable_options+") that can be applied. Remove and then re-add if you need a different name."
+	} else {
 		document.getElementById('hearing-witness-multiselect-warning').classList.remove('show-warning');
 		document.getElementById('hearing-witness-multiselect-warning').textContent = "";
 	}
