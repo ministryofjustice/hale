@@ -3,13 +3,11 @@
 //used to check if user has selected an option then to clear on interval
 var $confirmed = false;
 
-const max_allowable_options = 6;
-
 //Clears the autocomplete field after a user has selected an option
 setInterval(() => {
 	if($confirmed){
 		$confirmed = false;
-		checkMaxSelectedOptions();
+		document.getElementById('hearing-witness-autocomplete').value = '';
 	}
 }, 100); 
 
@@ -36,16 +34,10 @@ document.addEventListener("DOMContentLoaded", function() {
 			return '<svg class="' + config.className + '" style="top: 12px;" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
 		},
 		onConfirm: (value) => {
-
-			if (max_allowable_options == 0 || selected_term_ids.length < max_allowable_options) {
-		   		confirmMultiSelectOption(value);
-		   		updateMultiSelectOptions();
-			}
+			confirmMultiSelectOption(value);
+			updateMultiSelectOptions();
 		}
 	});
-
-	//checkMaxSelectedOptions();
-
 });
 
 function updateMultiSelectOptions() {
@@ -58,8 +50,6 @@ function updateMultiSelectOptions() {
 }
 //Confirms selected option
 function confirmMultiSelectOption(value) {
-
-
 	const foundTerm = terms.find(item => item.name === value);
 
 	if (foundTerm) {
@@ -109,7 +99,6 @@ function removeMultiSelectOption(value) {
 	document.getElementById('hearing-witness-multiselect-hidden-input').value = selected_term_ids.toString();
 	document.getElementById('selected-option-'+value).remove();
 	updateMultiSelectOptions();
-	checkMaxSelectedOptions();
 }
 
 //Adds event listener to remove option - first option
@@ -123,14 +112,3 @@ removeOptions.forEach(option => {
 
 	});
 });
-
-function checkMaxSelectedOptions() {
-	document.getElementById('hearing-witness-autocomplete').value = '';
-	if (max_allowable_options > 0 && selected_term_ids.length >= max_allowable_options) {
-		document.getElementById('hearing-witness-multiselect-warning').classList.add('show-warning');
-		document.getElementById('hearing-witness-multiselect-warning').textContent = "You have reached the maximum number of names ("+max_allowable_options+") that can be applied. Remove and then re-add if you need a different name."
-	} else {
-		document.getElementById('hearing-witness-multiselect-warning').classList.remove('show-warning');
-		document.getElementById('hearing-witness-multiselect-warning').textContent = "";
-	}
-}
