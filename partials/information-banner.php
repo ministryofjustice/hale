@@ -39,3 +39,38 @@ if( function_exists('get_field') ) {
         <?php
     }
 }
+
+// Page-specific banner
+$enable_banner_on_single_view = hale_get_acf_field_status('enable_banner_on_single_view');
+$show_banner = get_field('show_post_banner');
+
+if ($enable_banner_on_single_view && $show_banner) {
+    $banner_content = "";
+    // Main text
+    $banner_text = get_field('post_banner_text');
+    if ($banner_text && $banner_text != "") {
+        $banner_content .= "<p class='govuk-body page-banner__text'>$banner_text</p>";
+    }
+
+    // Get max number of links
+    if (isset($post_type->single_view_banner_max_links)) {
+        $number_of_banner_links = $post_type->single_view_banner_max_links;
+    } else {
+        $number_of_banner_links = 4;
+    }
+
+    // Create links
+    for ($i=1; $i<=$number_of_banner_links; $i++) {
+        $link_text = "banner_link_txt_$i";
+        $link_url = "banner_link_url_$i";
+        $$link_text = get_field("post_banner_link_txt_$i");
+        $$link_url = get_field("post_banner_link_url_$i");
+
+        if ($$link_text && $$link_url && $$link_text != "" && $$link_url != "") {
+            //Only create a link if both text and url are not missing
+            $banner_content .= '<a class="page-banner__link govuk-link" href="'.$$link_url.'">'.$$link_text.'</a> ';
+        }
+    }
+
+    if ($banner_content != "") echo "<div class='page-banner'><div class='page-banner__wrapper'>$banner_content</div></div>";
+}

@@ -18,7 +18,7 @@ function hale_register_post_type_fields_summary()
         if (isset($post_type->post_summary) && $post_type->post_summary == '1') {
             $post_type_name = $post_type->label;
             $post_type_key = $key;
-            
+
             //Only show field if sitewide show summary setting is on and has single view
             if (isset($post_type->publicly_queryable) && $post_type->publicly_queryable == true && isset($post_type->show_summary_on_single_view) && $post_type->show_summary_on_single_view == '1') {
                 // Add the ACF field for the show summary

@@ -862,6 +862,36 @@ body.hale-colours-variable {
 		}
 	}
 
+	.page-banner {
+		background-color: var(--page-banner-bg);
+
+		&__text.govuk-body {
+			color: var(--page-banner-text);
+		}
+
+		&__link.govuk-link {
+			color: var(--page-banner-link);
+
+			&:link {
+				color: var(--page-banner-link);
+			}
+
+			&:visited {
+				color: var(--page-banner-link-visited);
+			}
+
+			&:hover:not(:focus) {
+				color: var(--page-banner-link-hover);
+			}
+
+			&:focus {
+				color: var(--page-banner-link-focus);
+				background-color: var(--page-banner-link-focus-background);
+				box-shadow: 0 -2px var(--page-banner-link-focus-background), 0 4px var(--page-banner-link-focus-underline);
+			}
+		}
+	}
+
 	//remove GDS brand colour bar
 	.govuk-header__container {
 		border-bottom: none;

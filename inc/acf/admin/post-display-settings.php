@@ -47,6 +47,38 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
         )
     );
 
+     acf_render_field_wrap(
+        array(
+            'label' => 'Enable Page Banner',
+            'instructions' => 'Allows a page-specific banner to be added to each page.',
+            'name'         => 'enable_banner_on_single_view',
+            'value'        => isset( $acf_post_type['enable_banner_on_single_view'] ) ? $acf_post_type['enable_banner_on_single_view'] : false,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'enable_banner_on_single_view',
+            'ui' => true,
+
+        )
+    );
+    acf_render_field_wrap(
+        array(
+            'label' => 'Maximum number of links',
+            'instructions' => '',
+            'name'         => 'single_view_banner_max_links',
+            'prefix'       => 'acf_post_type',
+            'value'        => isset( $acf_post_type['single_view_banner_max_links'] ) ? $acf_post_type['single_view_banner_max_links'] : '4',
+            'type'         => 'number',
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'enable_banner_on_single_view',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            )
+        )
+    );
     acf_render_field_wrap(
         array(
             'label' => 'Show Table of Contents',
@@ -112,18 +144,18 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             'value'        => isset( $acf_post_type['single_view_tax_style'] ) ? $acf_post_type['single_view_tax_style'] : '',
             'type'         => 'select',
             'choices' => array(
-				'list' => 'List',
-				'tags' => 'Tags',
-			),
+                'list' => 'List',
+                'tags' => 'Tags',
+            ),
             'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'show_tax_on_single_view',
-						'operator' => '==',
-						'value' => '1',
-					),
-				),
-			),
+                array(
+                    array(
+                        'field' => 'show_tax_on_single_view',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         )
     );
 });
@@ -149,6 +181,16 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
     }
     else {
         $args['show_summary_on_single_view'] = true;
+    }
+
+    if ( isset( $post_type['enable_banner_on_single_view'] ) ) {
+        $args['enable_banner_on_single_view'] = $post_type['enable_banner_on_single_view'];
+    }
+    else {
+        $args['enable_banner_on_single_view'] = true;
+    }
+    if ( isset( $post_type['single_view_banner_max_links'] ) ) {
+        $args['single_view_banner_max_links'] = $post_type['single_view_banner_max_links'];
     }
 
     if ( isset( $post_type['show_toc_on_single_view'] ) ) {

@@ -357,6 +357,21 @@
 				)
 			],
 			[
+				"section_name" => "Page-specific banner",
+				"id" => "page_banner",
+				"description" => "",
+				"colours" => array(
+					['page-banner-bg',$fadedBlue,'Background','',''],
+					['page-banner-text',$black,'Text','',''],
+					['page-banner-link',$darkBlue,'Link text','',''],
+					['page-banner-link-visited',$purple,'Visited link text','',''],
+					['page-banner-link-hover',$darkBlue,'Link text on hover','',''],
+					['page-banner-link-focus',$black,'Link text when focussed','',''],
+					['page-banner-link-focus-background',$yellow,'Link background when focussed','',''],
+					['page-banner-link-focus-underline',$black,'Link underline when focussed','',''],
+				)
+			],
+			[
 				"section_name" => "Cookie banner",
 				"id" => "cookie-banner",
 				"description" => "",
