@@ -46,7 +46,15 @@ function hale_register_post_type_fields_banner()
                 'parent' => $post_type_key . '_details',
                 'instructions' => 'The banner will appear at the top of the page',
                 'required' => 0,
-                'conditional_logic' => '0',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => $post_type_key . '_show_banner',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
                 'wrapper' => [
                     'width' => '',
                     'class' => '',
@@ -74,7 +82,15 @@ function hale_register_post_type_fields_banner()
                     'parent' => $post_type_key . '_details',
                     'instructions' => '',
                     'required' => 0,
-                    'conditional_logic' => '0',
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => $post_type_key . '_show_banner',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
                     'wrapper' => [
                         'width' => '40%',
                         'class' => '',
@@ -92,7 +108,15 @@ function hale_register_post_type_fields_banner()
                     'parent' => $post_type_key . '_details',
                     'instructions' => '',
                     'required' => 0,
-                    'conditional_logic' => '0',
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => $post_type_key . '_show_banner',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
                     'wrapper' => [
                         'width' => '60%',
                         'class' => '',

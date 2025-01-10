@@ -36,14 +36,14 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             'key' => 'show_summary_on_single_view',
             'ui' => true,
             'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'post_summary',
-						'operator' => '==',
-						'value' => '1',
-					),
-				),
-			),
+                array(
+                    array(
+                        'field' => 'post_summary',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         )
     );
 
