@@ -70,5 +70,5 @@ if ($enable_banner_on_single_view && $show_banner) {
         }
     }
 
-    if ($banner_content != "") echo "<div class='page-banner'><div class='page-banner__wrapper'>$banner_content</div></div>";
+    if ($banner_content != "") echo "<div class='page-banner'><div class='page-banner__wrapper govuk-width-container'>$banner_content</div></div>";
 }
