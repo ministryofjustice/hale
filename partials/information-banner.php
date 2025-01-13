@@ -64,10 +64,11 @@ if ($enable_banner_on_single_view && $show_banner) {
 
         $link_text = $link["title"];
         $link_url = $link["url"];
+        $link["target"] ? $link_target = "target='_blank'" : $link_target = '';
 
         if ($link_text && $link_url && $link_text != "" && $link_url != "") {
             //Only create a link if both text and url are not missing
-            $banner_content .= '<a class="page-banner__link govuk-link" href="'.$link_url.'">'.$link_text.'</a> ';
+            $banner_content .= "<a class='page-banner__link govuk-link' href='$link_url' $link_target>".$link_text."</a> ";
         }
     }
 

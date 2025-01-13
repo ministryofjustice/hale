@@ -78,7 +78,7 @@ function hale_register_post_type_fields_banner()
             for ($i=1; $i<=$number_of_banner_links; $i++) {
                 acf_add_local_field([
                     'key' => $post_type_key . '_banner_link_' . $i,
-                    'label' => 'Link',
+                    'label' => 'Link ' . $i,
                     'name' => 'post_banner_link_'.$i,
                     'type' => 'link',
                     'parent' => $post_type_key . '_details',
@@ -94,7 +94,7 @@ function hale_register_post_type_fields_banner()
                         ),
                     ),
                     'wrapper' => [
-                        'width' => 100/$number_of_banner_links . "%",
+                        'width' => $number_of_banner_links <= 6 ? 100/$number_of_banner_links . "%" : "55%", //up to 6 choices, we lay them out side-by-side
                         'class' => '',
                         'id' => '',
                     ],
