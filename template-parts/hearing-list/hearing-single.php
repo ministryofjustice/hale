@@ -15,49 +15,60 @@
     $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
     $show_tax_on_single_view = hale_get_acf_field_status('show_tax_on_single_view');
 
-    if($show_published_date_on_single_view) {
-    ?>
+    if ($show_published_date_on_single_view) {
+        ?>
         <div class="flexible-post-type-published-date-wrapper">
             <div class="flexible-post-type-published-date">
                     <div class="flexible-post-type-published-date-label">Hearing date: </div>
                     <?php hale_posted_on(); ?>
             </div>
         </div>
-    <?php } ?>
-    <?php 
-    
-    $display_terms_taxonomies = array(
-        'hearing-type'
-    );
-    
-    if($show_tax_on_single_view && !empty($display_terms_taxonomies)){
+    <?php
+    } ?>
+    <?php
 
+    $display_terms_taxonomies = array(
+    'hearing-witness'
+    );
+
+
+    if ($show_tax_on_single_view && !empty($display_terms_taxonomies)) {
         $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
-        
-        if(!empty($tax_details)){
-            get_template_part( 'template-parts/hearing-list/hearing-term-list', false, array('tax-details' => $tax_details)); 
+
+        $single_view_tax_style = hale_get_post_type_setting('single_view_tax_style'); 
+
+        if (!empty($tax_details) && trim($single_view_tax_style) == 'tags') {
+            get_template_part(
+                'template-parts/hearing-list/hearing-term-tag',
+                false,
+                array('tax-details' => $tax_details)
+            );
+        } else {
+            get_template_part(
+                'template-parts/hearing-list/hearing-term-list',
+                false,
+                array('tax-details' => $tax_details)
+            );
         }
     }
-    
+
     ?>
     <?php
 
     $post_summary_active = hale_get_acf_field_status('post_summary');
     $show_summary_on_single_view = hale_get_acf_field_status('show_summary_on_single_view');
 
-    if($post_summary_active  && $show_summary_on_single_view){
-
+    if ($post_summary_active  && $show_summary_on_single_view) {
         $show_summary = get_field('show_post_summary');
 
-        if(is_null($show_summary)){
+        if (is_null($show_summary)) {
             $show_summary = true;
         }
 
-        if($show_summary){
-
+        if ($show_summary) {
             $summary = get_field('post_summary');
-            
-            if(!empty($summary)){ ?>
+
+            if (!empty($summary)) { ?>
             <div class="hearing-summary">
                 <div class="intro">
                     <?php echo wpautop($summary); ?>
