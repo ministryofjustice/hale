@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Registers a summary field for specific post types in the WordPress admin using ACF.
+ * Registers a banner field for specific post types in the WordPress admin using ACF.
  *
  * This function iterates through all registered post types and adds a custom ACF textarea field
- * for entering a summary if the post type has an enabled summary feature flagged by 'post_summary' property.
- * 
- * https://www.advancedcustomfields.com/resources/register-fields-via-php/
- * 
+ * for entering banner text if the post type has an enabled banner feature flagged by 'enable_banner_on_single_view' property.
+ *
+ * It also adds link fields for as many links as are enabed (0-12) as determined by the 'single_view_banner_max_links' property.
+ *
+ * [Adapted from the summary field code which does a similar thing]
+ *
  */
 function hale_register_post_type_fields_banner()
 {
@@ -126,7 +128,6 @@ function hale_register_post_type_fields_banner()
                     'placeholder' => '',
                     'maxlength' => '',
                 ]);
-                    
             }
 
             // Continue to the next post type
