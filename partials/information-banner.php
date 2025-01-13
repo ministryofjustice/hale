@@ -59,16 +59,17 @@ if ($enable_banner_on_single_view && $show_banner) {
 
     // Create links
     for ($i=1; $i<=$number_of_banner_links; $i++) {
-        $link_text = "banner_link_txt_$i";
-        $link_url = "banner_link_url_$i";
-        $$link_text = get_field("post_banner_link_txt_$i");
-        $$link_url = get_field("post_banner_link_url_$i");
+        $link = get_field("post_banner_link_$i");
+        if (!is_array($link)) continue;
 
-        if ($$link_text && $$link_url && $$link_text != "" && $$link_url != "") {
+        $link_text = $link["title"];
+        $link_url = $link["url"];
+
+        if ($link_text && $link_url && $link_text != "" && $link_url != "") {
             //Only create a link if both text and url are not missing
-            $banner_content .= '<a class="page-banner__link govuk-link" href="'.$$link_url.'">'.$$link_text.'</a> ';
+            $banner_content .= '<a class="page-banner__link govuk-link" href="'.$link_url.'">'.$link_text.'</a> ';
         }
     }
 
-    if ($banner_content != "") echo "<div class='page-banner'><div class='page-banner__wrapper govuk-width-container'>$banner_content</div></div>";
+    if ($banner_content != "") echo "<div class='page-banner'><div class='page-banner__wrapper'>$banner_content</div></div>";
 }
