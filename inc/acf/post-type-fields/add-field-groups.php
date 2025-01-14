@@ -23,7 +23,7 @@ function hale_add_field_groups() {
     foreach ($post_types as $slug => $post_type) {
 
         // Check if the custom field's toggle is turned on
-        $fields = ['allow_document_upload', 'post_summary'];
+        $fields = ['allow_document_upload', 'post_summary', 'enable_banner_on_single_view'];
 
         foreach ($fields as $field) {
             if (isset($post_type->$field) && $post_type->$field == '1') {
