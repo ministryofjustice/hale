@@ -73,7 +73,8 @@ if ($enable_banner_on_single_view && $show_banner) {
             // if direct file links are enabled, we add a suffix to show the type of file and the size
             $suffix = "";
             $suffix_array = [];
-            $suffix_array[] = strtoupper(end(explode(".",$link_url)));
+            $link_array = explode(".",$link_url);
+            $suffix_array[] = strtoupper(end($link_array));
             if (array_key_exists("filesize",$link)) $suffix_array[] = file_size_format($link["filesize"]);
             if (!empty($suffix_array)) {
                 $suffix = " (".implode(", ",$suffix_array).")";
