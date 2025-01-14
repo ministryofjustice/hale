@@ -19,7 +19,7 @@
  * // If 'genre' and 'genre_subtopic' query variables exist and correspond to valid terms,
  * // they will be added to $listing_active_filters.
  */
-function hale_add_filter_term_if_exists($filter, &$listing_active_filters) {
+function hale_add_filter_term_if_exists($filter, &$listing_active_filters, $is_multiselect = false) {
 
 
     $taxonomy = get_taxonomy($filter);
@@ -41,16 +41,45 @@ function hale_add_filter_term_if_exists($filter, &$listing_active_filters) {
         'subtopic_term_id' => $filter_term_id_subtopic_value
     ];
 
-    // Check if the main filter term ID is numeric and exists
-    if (is_numeric($filter_terms['term_id'])) {
-        $filter_terms['term_id'] = intval($filter_terms['term_id']);
+    if($is_multiselect){
+        $filter_term_ids = explode(",", $filter_term_id);
 
-        if (term_exists($filter_terms['term_id'], $filter)) {
+        $validated_term_ids = [];
+        if(!empty($filter_term_ids)){
+            foreach($filter_term_ids as $term_id){
+                if(is_numeric($term_id) && term_exists($term_id, $filter)){
+                    $validated_term_ids[] = $term_id;
+                }
+            }
+        }
+
+        if(!empty($validated_term_ids)){
             $listing_active_filters[] = array(
                 'taxonomy' => $filter,
-                'value' => $filter_terms['term_id']
+                'value' => $validated_term_ids
             );
         }
+       
+    }
+    else  {
+        // Check if the main filter term ID is numeric and exists
+        if (is_numeric($filter_terms['term_id'])) {
+            $filter_terms['term_id'] = intval($filter_terms['term_id']);
+
+            if (term_exists($filter_terms['term_id'], $filter)) {
+                $listing_active_filters[] = array(
+                    'taxonomy' => $filter,
+                    'value' => $filter_terms['term_id']
+                );
+            }
+        }
+    }
+
+    if($filter == 'hearing-witness'){
+        $listing_active_filters[] = array(
+            'taxonomy' => $filter,
+            'value' => explode(",",$filter_terms['term_id'])
+        );
     }
 
     // Check if the subtopic term ID is numeric and exists in the main taxonomy

@@ -1,0 +1,161 @@
+#primary .flexible-post-type-single.hearing {
+  .flexible-post-type-header {
+    background: #E7F2F9;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      height: calc(100% + 5px);
+      left: 50%;
+      overflow: visible;
+      position: absolute;
+      transform: translate(-50%, -0.3em);
+      width: 200vw;
+      z-index: -1;
+      background: inherit;
+    }
+
+    .flexible-post-type-title {
+      padding: 30px 0 20px 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .flexible-post-type-published-date-wrapper {
+    background: #E7F2F9;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      height: calc(100% + 5px);
+      left: 50%;
+      overflow: visible;
+      position: absolute;
+      transform: translate(-50%, -0.3em);
+      width: 200vw;
+      z-index: -1;
+      background: inherit;
+    }
+
+    .flexible-post-type-published-date {
+      padding: 10px 0;
+      margin: 0;
+    }
+  }
+
+  .flexible-post-type-terms-tag-wrapper {
+    background: #E7F2F9;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      height: calc(100% + 5px);
+      left: 50%;
+      overflow: visible;
+      position: absolute;
+      transform: translate(-50%, -0.3em);
+      width: 200vw;
+      z-index: -1;
+      background: inherit;
+    }
+
+    .flexible-post-type-terms-tag {
+      padding: 10px 0 20px 0;
+      margin: 0;
+    }
+
+    .flexible-post-type-terms-tag-item {
+      border: 1px solid #747577;
+      border-radius: 5px;
+      margin-right: 5px;
+      padding: 5px;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+      margin-top: 0.4rem;
+    }
+  }
+
+  .flexible-post-type-terms-list-wrapper {
+    background: #E7F2F9;
+    position: relative;
+    display: inline-flex;
+    @include govuk-font-size($size: 19);
+
+
+    &:before {
+      content: "";
+      display: block;
+      height: calc(100% + 5px);
+      left: 50%;
+      overflow: visible;
+      position: absolute;
+      transform: translate(-50%, -0.3em);
+      width: 200vw;
+      z-index: -1;
+      background: inherit;
+    }
+
+    .flexible-post-type-terms-list-title {
+      font-weight: 700;
+      display: inline-block;
+      margin-right: 5px;
+      white-space: nowrap;
+    }
+
+    .flexible-post-type-terms-list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .flexible-post-type-terms-list-term {
+      margin-right: 5px;
+      white-space: normal;
+    }
+  }
+
+  // Media query for smaller screens
+  @media (max-width: 600px) {
+    .flexible-post-type-terms-list-wrapper {
+      display: block;
+      width: 100%;
+    }
+
+    .flexible-post-type-terms-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flexible-post-type-terms-list-term {
+      margin-right: 0;
+      margin-bottom: 5px;
+      white-space: normal;
+    }
+  }
+
+  .hearing-summary {
+    background: #E7F2F9;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      height: calc(100% + 5px);
+      left: 50%;
+      overflow: visible;
+      position: absolute;
+      transform: translate(-50%, -0.3em);
+      width: 200vw;
+      z-index: -1;
+      background: inherit;
+    }
+
+    .intro {
+      padding: 10px 0 20px 0;
+      margin-bottom: 20px;
+    }
+  }
+}

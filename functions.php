@@ -195,7 +195,7 @@ add_action( 'customize_save_after', 'hale_action_customize_save_after', 10, 1 );
 function hale_scripts() {
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
-
+    
     $t=time();
 
     if (is_customize_preview()) {
@@ -225,6 +225,22 @@ function hale_scripts() {
         wp_register_script('page-listing', hale_mix_asset('/js/page-listing.js'), array(), $script_version, true);
         wp_enqueue_script('page-listing');
     }
+
+    if ( is_page_template('page-hearing-list.php') ) {
+
+        //autocomplete styles and js
+        wp_enqueue_style('hale-autocomplete', hale_mix_asset('/css/accessible-autocomplete.min.css'));
+        wp_enqueue_script('autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', "3.0.1", true);
+
+        //used for date picker
+        wp_enqueue_script('moj-frontend', hale_mix_asset('/js/moj-frontend.js'), '', "3.2.0", true);
+
+        $script_path = get_template_directory() . '/dist/js/multiselect-filter.js';
+        $script_version = file_exists($script_path) ? filemtime($script_path) : false;
+        wp_register_script('multiselect-filter', hale_mix_asset('/js/multiselect-filter.js'), array(), $script_version, true);
+        wp_enqueue_script('multiselect-filter');
+    }
+
 }
 
 add_action('wp_enqueue_scripts', 'hale_scripts');
@@ -298,6 +314,12 @@ require get_template_directory() . '/inc/colours.php';
  * Functions which enable address sanitization and job listing stuff.
  */
 require get_template_directory() . '/inc/job-listing.php';
+
+/**
+ * Functions for hearing list template
+ */
+require get_template_directory() . '/inc/hearing-list.php';
+
 /**
  * Functions which holds the prison location data.
  */
@@ -325,6 +347,11 @@ require get_template_directory() . '/inc/pagination.php';
  * Breadcrumb element.
  */
 require get_template_directory() . '/inc/breadcrumbs.php';
+
+/**
+ * Footer scripts element.
+ */
+require get_template_directory() . '/inc/footer-scripts.php';
 
 /**
  * Last reviewed.
@@ -482,6 +509,10 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 
                 if (!post_type_exists('job')) {
                     unset($post_templates['page-job-listing.php']);
+                }
+                
+                if (!post_type_exists('hearing')) {
+                    unset($post_templates['page-hearing-list.php']);
                 }
 
             }

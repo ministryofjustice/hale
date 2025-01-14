@@ -259,6 +259,8 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
 function hale_flexible_post_types_add_query_vars_filter($vars)
 {
     $vars[] = "listing_search";
+    $vars[] = "from_date";
+    $vars[] = "to_date";
     return $vars;
 }
 
