@@ -26,6 +26,11 @@ function hale_register_post_type_fields_banner()
             } else {
                 $number_of_banner_links = 4; //4 seems as good a default as any
             }
+            if (isset($post_type->allow_file_download_links)) {
+                $allow_file = $post_type->allow_file_download_links;
+            } else {
+                $allow_file = false;
+            }
 
             acf_add_local_field([
                 'key' => $post_type_key . '_show_banner',
@@ -76,32 +81,132 @@ function hale_register_post_type_fields_banner()
             ]);
 
             for ($i=1; $i<=$number_of_banner_links; $i++) {
-                acf_add_local_field([
-                    'key' => $post_type_key . '_banner_link_' . $i,
-                    'label' => 'Link ' . $i,
-                    'name' => 'post_banner_link_'.$i,
-                    'type' => 'link',
-                    'parent' => $post_type_key . '_details',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => array(
-                        array(
+
+                if ($allow_file) {
+                    acf_add_local_field([
+                        'key' => $post_type_key . '_banner_link_type_' . $i,
+                        'label' => 'Type of link',
+                        'name' => 'post_banner_link_type_'.$i,
+                        'type' => 'select',
+                        'parent' => $post_type_key . '_details',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => array(
                             array(
-                                'field' => $post_type_key . '_show_banner',
-                                'operator' => '==',
-                                'value' => '1',
+                                array(
+                                    'field' => $post_type_key . '_show_banner',
+                                    'operator' => '==',
+                                    'value' => '1',
+                                ),
                             ),
                         ),
-                    ),
-                    'wrapper' => [
-                        'width' => $number_of_banner_links <= 6 ? 100/$number_of_banner_links . "%" : "55%", //up to 6 choices, we lay them out side-by-side
-                        'class' => '',
-                        'id' => '',
-                    ],
-                    'default_value' => '',
-                    'placeholder' => '',
-                    'maxlength' => '',
-                ]);
+                        'toggle'            => false,
+                        'choices'           => array(
+                            'link'  =>__('Page', 'hale'),
+                            'file'    =>__('Document', 'hale'),
+                        ),
+                        'wrapper' => [
+                            'width' => "20%",
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                        'allow_null'        => false,
+                    ]);
+
+                    acf_add_local_field([
+                        'key' => $post_type_key . '_banner_link_' . $i,
+                        'label' => 'Link ' . $i,
+                        'name' => 'post_banner_link_'.$i,
+                        'type' => 'link',
+                        'parent' => $post_type_key . '_details',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => $post_type_key . '_show_banner',
+                                    'operator' => '==',
+                                    'value' => '1',
+                                ),
+                                array(
+                                    'field' => $post_type_key . '_banner_link_type_' . $i,
+                                    'operator' => '==',
+                                    'value' => 'link',
+                                ),
+                            ),
+                        ),
+                        'wrapper' => [
+                            'width' => "80%",
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                    ]);
+
+                    acf_add_local_field([
+                        'key' => $post_type_key . '_banner_file_' . $i,
+                        'label' => 'File ' . $i,
+                        'name' => 'post_banner_file_'.$i,
+                        'type' => 'file',
+                        'parent' => $post_type_key . '_details',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => $post_type_key . '_show_banner',
+                                    'operator' => '==',
+                                    'value' => '1',
+                                ),
+                                array(
+                                    'field' => $post_type_key . '_banner_link_type_' . $i,
+                                    'operator' => '==',
+                                    'value' => 'file',
+                                ),
+                            ),
+                        ),
+                        'wrapper' => [
+                            'width' => "80%",
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                    ]);
+                } else {
+                    acf_add_local_field([
+                        'key' => $post_type_key . '_banner_link_' . $i,
+                        'label' => 'Link ' . $i,
+                        'name' => 'post_banner_link_'.$i,
+                        'type' => 'link',
+                        'parent' => $post_type_key . '_details',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => array(
+                            array(
+                                array(
+                                    'field' => $post_type_key . '_show_banner',
+                                    'operator' => '==',
+                                    'value' => '1',
+                                ),
+                            ),
+                        ),
+                        'wrapper' => [
+                            'width' => $number_of_banner_links <= 6 ? 100/$number_of_banner_links . "%" : "55%", //up to 6 choices, we lay them out side-by-side,
+                            'class' => '',
+                            'id' => '',
+                        ],
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                    ]);
+                }
             }
 
             // Continue to the next post type

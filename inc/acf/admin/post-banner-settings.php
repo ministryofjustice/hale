@@ -49,6 +49,19 @@ add_action('acf/post_type/render_settings_tab/banner-settings', function ($acf_p
             )
         )
     );
+    acf_render_field_wrap(
+        array(
+            'label'        => 'Allow File Download Links',
+            'instructions' => "If enabled, this will allow files to be directly linked from the page banner (not recommended)",
+            'name'         => 'allow_file_download_links',
+            'value'        => isset( $acf_post_type['allow_file_download_links'] ) ? $acf_post_type['allow_file_download_links'] : false,
+            'prefix'       => 'acf_post_type',
+            'type'         => 'true_false',
+            'key'          => 'allow_file_download_links',
+            'ui'           => true,
+
+        )
+    );
 });
 
 add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
@@ -56,10 +69,16 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
         $args['enable_banner_on_single_view'] = $post_type['enable_banner_on_single_view'];
     }
     else {
-        $args['enable_banner_on_single_view'] = true;
+        $args['enable_banner_on_single_view'] = false;
     }
     if ( isset( $post_type['single_view_banner_max_links'] ) ) {
         $args['single_view_banner_max_links'] = $post_type['single_view_banner_max_links'];
+    }
+    if ( isset( $post_type['allow_file_download_links'] ) ) {
+        $args['allow_file_download_links'] = $post_type['allow_file_download_links'];
+    }
+    else {
+        $args['allow_file_download_links'] = false;
     }
     return $args;
 }, 10, 2 );
