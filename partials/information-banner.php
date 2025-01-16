@@ -42,7 +42,6 @@ if( function_exists('get_field') ) {
 
 // Page-specific banner
 $enable_banner_on_single_view = hale_get_acf_field_status('enable_banner_on_single_view');
-$allow_file_links = hale_get_acf_field_status('allow_file_download_links');
 $show_banner = get_field('show_post_banner');
 
 if ($enable_banner_on_single_view && $show_banner) {
@@ -60,27 +59,12 @@ if ($enable_banner_on_single_view && $show_banner) {
 
     // Create links
     for ($i=1; $i<=$number_of_banner_links; $i++) {
-        $link_type = "link";
-        if ($allow_file_links) $link_type = get_field("post_banner_link_type_$i");
-        $link = get_field("post_banner_".$link_type."_$i");
+        $link = get_field("post_banner_link_$i");
         if (!is_array($link)) continue;
 
         $link_text = $link["title"];
         $link_url = $link["url"];
         array_key_exists("target",$link) && $link["target"] ? $link_target = "target='_blank'" : $link_target = '';
-
-        if ($allow_file_links && $link_type == "file") {
-            // if direct file links are enabled, we add a suffix to show the type of file and the size
-            $suffix = "";
-            $suffix_array = [];
-            $link_array = explode(".",$link_url);
-            $suffix_array[] = strtoupper(end($link_array));
-            if (array_key_exists("filesize",$link)) $suffix_array[] = file_size_format($link["filesize"]);
-            if (!empty($suffix_array)) {
-                $suffix = " (".implode(", ",$suffix_array).")";
-                $link_text .= $suffix;
-            }
-        }
 
         if ($link_text && $link_url && $link_text != "" && $link_url != "") {
             //Only create a link if both text and url are not missing
@@ -89,11 +73,4 @@ if ($enable_banner_on_single_view && $show_banner) {
     }
 
     if ($banner_content != "") echo "<div class='page-banner'><div class='page-banner__wrapper'>$banner_content</div></div>";
-}
-
-function file_size_format($bytes) {
-    if ($bytes < 512) return round($bytes,1)." bytes";
-    if ($bytes < 524288) return round($bytes/1024,1)."KB";
-    if ($bytes < 536870912) return round($bytes/1024/1024,1)."MB";
-    return round($bytes/1024/1024/1024,1)."GB";
 }
