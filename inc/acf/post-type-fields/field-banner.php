@@ -24,7 +24,7 @@ function hale_register_post_type_fields_banner()
             if (isset($post_type->single_view_banner_max_links)) {
                 $number_of_banner_links = $post_type->single_view_banner_max_links;
             } else {
-                $number_of_banner_links = 4; //4 seems as good a default as any
+                $number_of_banner_links = 2; //2 seems as good a default as any
             }
 
             $input_width = 100/$number_of_banner_links . "%"; //up to 6 choices, we lay them out side-by-side,
