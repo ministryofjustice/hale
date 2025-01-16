@@ -99,6 +99,10 @@
     padding: 1rem 0 1.25rem;
   }
 
+  &__text.govuk-body:last-child {
+    margin-bottom: 0;
+  }
+
   &__link {
     margin-right: 1em;
   }

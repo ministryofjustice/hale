@@ -55,7 +55,7 @@ if ($enable_banner_on_single_view && $show_banner) {
     // Get max number of links
     $number_of_banner_links = hale_get_post_type_setting('single_view_banner_max_links');
 
-    if (!$number_of_banner_links) $number_of_banner_links = 4;
+    if (!$number_of_banner_links) $number_of_banner_links = 0;
 
     // Create links
     for ($i=1; $i<=$number_of_banner_links; $i++) {
