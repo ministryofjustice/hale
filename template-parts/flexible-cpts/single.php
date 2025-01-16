@@ -6,16 +6,16 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
-    <header class="flexible-post-type-header">
+    <div class="flexible-post-type-header">
         <?php
 
         the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>'); ?>
-    </header>
+    </div>
     <?php
-     $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
+    $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
 
-     if($show_published_date_on_single_view) {
-     ?>
+    if($show_published_date_on_single_view) {
+    ?>
         <div class="flexible-post-type-published-date">
                 <div class="flexible-post-type-published-date-label">Published: </div>
                 <?php hale_posted_on(); ?>

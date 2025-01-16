@@ -12,9 +12,9 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="entry-header">
+	<div class="entry-header">
 		<h2 class="govuk-heading-l"><?php esc_html_e( 'Nothing Found', 'hale' ); ?></h2>
-	</header><!-- .page-header -->
+	</div><!-- .page-header -->
 
 	<div class="page-content">
 		<?php
