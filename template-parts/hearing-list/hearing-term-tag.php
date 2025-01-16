@@ -15,7 +15,7 @@ if (!empty($tax_details)) {
                 foreach ($tax['terms'] as $term) {
                     ?>
                     <li class="flexible-post-type-terms-tag-item">
-                        <?php echo esc_html($term->name); ?></li>
+                       <?php echo esc_html($term->name); ?></li>
                     <?php
                 }
             }
