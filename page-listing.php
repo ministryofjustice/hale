@@ -12,11 +12,22 @@ get_header();
 // Initialize variables
 $listing_search_text = '';
 $search_text_HTML = '';
+$selectedASC = $selectedDESC = $listing_sort_by = '';
 
 // Get the search query variable and sanitize it
 if ($listing_search_text = get_query_var('listing_search')) {
     $listing_search_text = stripslashes(sanitize_text_field(esc_html($listing_search_text)));
 }
+
+if ($listing_order_direction = get_query_var('order')) {
+    if ($listing_order_direction == "DESC") $selectedDESC = 'checked';
+    if ($listing_order_direction == "ASC") $selectedASC = 'checked';
+}
+
+$listing_sort_by = "";
+if (isset($_GET) && isset($_GET['sort'])) $listing_sort_by = $_GET['sort'];
+
+$selected_display_fields = get_field('list_item_fields');
 
 // Start the post loop
 while (have_posts()) :
@@ -56,9 +67,10 @@ while (have_posts()) :
                                 <?php
                                 // Listing filters, taxonomies we want to filter our post by
                                 $listing_filters = get_field('listing_filters');
+                                $listing_filters = get_field('listing_filters');
 
                                 if (!empty($listing_filters) && is_array($listing_filters)) : ?>
-                                    <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
+                                    <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
                                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                                             <h2 class="govuk-fieldset__heading">
                                                 <?php _e('Filters', 'hale'); ?>
@@ -71,7 +83,72 @@ while (have_posts()) :
                                         ?>
                                     </fieldset>
                                 <?php endif; ?>
-                                
+
+                                <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                        <h2 class="govuk-fieldset__heading">
+                                            <?php _e('Sort results by', 'hale'); ?>
+                                        </h2>
+                                    </legend>
+                                    <select class="govuk-select" id="sort" name="sort">
+                                        <option value=""></option>
+                                        <option
+                                            value="title"
+                                            <?php if ($listing_sort_by =="title") echo "selected";?>
+                                        >
+                                            <?php _e('Title', 'hale'); ?>
+                                        </option>
+                                        <option
+                                            value="publish-date"
+                                            <?php if ($listing_sort_by =="publish-date") echo "selected";?>
+                                        >
+                                            <?php _e('Publish date', 'hale'); ?>
+                                        </option>
+                                        <option
+                                            value="updated-date"
+                                            <?php if ($listing_sort_by =="updated-date") echo "selected";?>
+                                        >
+                                            <?php _e('Updated date', 'hale'); ?>
+                                        </option>
+                                        <?php
+                                        foreach($selected_display_fields as $field) {
+                                            if(taxonomy_exists($field)) {
+                                                $tax = get_taxonomy($field);
+                                                $label = $tax->labels->singular_name;
+                                            } else {
+                                                $field_object = get_field_object($field);
+                                                $field = $field_object["name"];
+                                                $label = $field_object["label"];
+                                            }
+                                            $listing_sort_by == $field ? $selected = "selected" : $selected = "";
+                                            echo "<option value='$field' $selected>$label</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </fieldset>
+
+                                <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                        <h2 class="govuk-fieldset__heading">
+                                            <?php _e('Sort direction', 'hale'); ?>
+                                        </h2>
+                                    </legend>
+                                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="order-by-asc" name="order" type="radio" value="ASC" <?php echo $selectedASC; ?>>
+                                            <label class="govuk-label govuk-radios__label govuk-!-margin-top-0" for="order-by-asc">
+                                                <?php _e('Ascending', 'hale'); ?>
+                                            </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="order-by-desc" name="order" type="radio" value="DESC" <?php echo $selectedDESC; ?>>
+                                            <label class="govuk-label govuk-radios__label govuk-!-margin-top-0" for="order-by-desc">
+                                                <?php _e('Descending', 'hale'); ?>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
                                 <div>
                                     <button class="govuk-button">
                                         <?php _e('Search', 'hale'); ?>
@@ -94,6 +171,8 @@ while (have_posts()) :
                 get_template_part('template-parts/flexible-cpts/listing-results', false, [
                     'listing-filters'      => $listing_filters,
                     'listing-search-text'  => $listing_search_text,
+                    'listing-order-dir'    => $listing_order_direction,
+                    'listing-sort-by'      => $listing_sort_by,
                 ]);
                 ?>
             </div>

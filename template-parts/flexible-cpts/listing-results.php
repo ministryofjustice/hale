@@ -3,6 +3,8 @@
 // Listing template results section
 $listing_filters = $args['listing-filters'];
 $listing_search_text = $args['listing-search-text'];
+$listing_order_direction = $args['listing-order-dir'];
+$listing_sort_by = $args['listing-sort-by'];
 
 $flex_cpt_settings = [];
 $listing_active_filters = [];
@@ -64,7 +66,7 @@ if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
                 $tax_qry_ary[] = array(
                     'taxonomy' => $tax,
                     'field' => 'term_id',
-                'terms' => $restict_terms
+                    'terms' => $restict_terms
                 );
             }
     }
@@ -133,7 +135,6 @@ if (!empty($selected_display_fields) && is_array($selected_display_fields)) {
 $display_terms_taxonomies = get_field('display_terms_taxonomies');
 
 if ($listing_query->have_posts()) { 
-    
     if ($listing_query->found_posts > 1) {
         $item_count_text = $listing_query->found_posts . ' ' . strtolower($flex_cpt_name_plural);
     } elseif ($listing_query->found_posts == 1) {
@@ -146,10 +147,65 @@ if ($listing_query->have_posts()) {
     
     <div class="flexible-post-type-list">
         <?php
-        while ($listing_query->have_posts()) {
-            $listing_query->the_post();
-            get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable  ));
-        } ?>
+        $output_array = [];
+        $i = 0;
+        if ($listing_sort_by == "") {
+            while ($listing_query->have_posts()) {
+                $listing_query->the_post();
+                get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable  ));
+            }
+        } else {
+            while ($listing_query->have_posts()) {
+                $listing_query->the_post();
+                if ($listing_sort_by == "publish-date") {
+                    $output_array[$i]["order_val"] = get_the_date( DATE_W3C );
+                } elseif ($listing_sort_by == "updated-date") {
+                    $output_array[$i]["order_val"] = get_the_modified_date( DATE_W3C );
+                } else {
+                    foreach ($display_fields as $field) {
+                        if ($field["name"] == $listing_sort_by) {
+                            if($field['type'] == 'taxonomy') {
+                                $tax_terms = get_the_terms( get_the_ID(), $field['name'] );
+                                if(!empty($tax_terms)){
+                                    $term_names = [];
+                                    foreach ($tax_terms as $term) {
+                                        $term_names[] = $term->name;
+                                    }
+                                    if ($listing_order_direction == "ASC") sort($term_names);
+                                    if ($listing_order_direction == "DESC") rsort($term_names);
+                                    if(!empty($term_names)){
+                                        $field_value = implode("," , $term_names);
+                                    }
+                                } else {
+                                    // Ensure empties are at the end of the sort all the time
+                                    $listing_order_direction == "ASC" ? $field_value = "ZZZ: empty" : $field_value = "AAA: empty";
+                                }
+                            } elseif ($field['type'] == "post_meta") {
+                                $field_value = get_post_meta(get_the_ID())[$field['name']][0];
+                            } else {
+                                $field_value = get_field($field['name']);
+                            }
+                            //This is the first element of the array - so is the one that will be used for sorting
+                            $output_array[$i]["order_val"] = $field_value;
+                            break;
+                        }
+                    }
+                }
+                // Load template part into variable and increment $i
+                $output_array[$i++]["content"] = hale_load_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable ));
+            }
+        }
+
+        if ($listing_order_direction == "ASC") {
+            array_multisort($output_array, SORT_ASC);
+        } else {
+            array_multisort($output_array, SORT_DESC);
+        }
+        foreach($output_array as $output) {
+            // Output sorted content
+            if (array_key_exists("content",$output)) echo $output["content"];
+        }
+        ?>
     </div>
 
 <?php
@@ -174,3 +230,11 @@ if ($listing_query->have_posts()) {
     <?php
 }
 wp_reset_postdata();
+
+function hale_load_template_part($template_name, $part_name=null, $args = array()) {
+    ob_start();
+    get_template_part($template_name, $part_name, $args);
+    $var = ob_get_contents();
+    ob_end_clean();
+    return $var;
+}
