@@ -23,7 +23,7 @@
         ?>
     </h2>
     <?php 
-    
+
     if(!empty($display_terms_taxonomies)){
 
         $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
@@ -62,11 +62,10 @@
                     }
 
                     if(!empty($term_names)){
-                        $field_value = implode("," , $term_names);
+                        $field_value = implode(", " , $term_names);
                     }
                 }
-            }
-            else {
+            } else {
                 $field_value = get_field($field['name']);
             }
 
