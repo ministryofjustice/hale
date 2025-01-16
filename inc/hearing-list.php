@@ -87,3 +87,4 @@ function hale_validate_date($date) {
 
     return false; // Invalid date
 }
+

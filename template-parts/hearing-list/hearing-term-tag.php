@@ -24,3 +24,4 @@ if (!empty($tax_details)) {
     </div>
     <?php
 }
+
