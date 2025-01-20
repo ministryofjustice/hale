@@ -137,7 +137,7 @@ if ($listing_query->have_posts()) {
     if ($listing_query->found_posts > 1) {
         $item_count_text = $listing_query->found_posts . ' ' . strtolower($flex_cpt_name_plural);
     } elseif ($listing_query->found_posts == 1) {
-        $item_count_text = '1 ' . $flex_cpt_name;
+        $item_count_text = '1 ' . strtolower($flex_cpt_name);
     }
     ?>
     <div class="listing-item-count">
