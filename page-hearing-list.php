@@ -70,28 +70,23 @@ while (have_posts()) :
                         <form action="<?= esc_url(get_permalink()); ?>" method="GET">
                             <h2 class="govuk-fieldset__heading">Search and filter</h2>
                             <div class="listing-filter-field-wrapper">
-
-                                    <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
-
-
-                                        <div class="govuk-form-group govuk-!-margin-bottom-4">
-                                            <label class="govuk-label" for="listing-search-field">
-                                                <?php _e('Search', 'hale'); ?>
-                                            </label>
-                                            <div id="listing-search-field-hint" class="govuk-hint">
-                                                <?php _e('For example, witness name or hearing day', 'hale'); ?>
-                                            </div>
-                                            <input class="govuk-input" id="listing-search-field" name="listing_search"
-                                                value="<?= esc_attr($listing_search_text); ?>" type="search"
-                                                aria-describedby="listing-search-field-hint"
-                                            />
+                                <fieldset class="govuk-fieldset govuk-!-margin-bottom-2">
+                                    <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                        <label class="govuk-label" for="listing-search-field">
+                                            <?php _e('Search', 'hale'); ?>
+                                        </label>
+                                        <div id="listing-search-field-hint" class="govuk-hint">
+                                            <?php _e('For example, witness name or hearing day', 'hale'); ?>
                                         </div>
-                                        <?php 
-                                        get_template_part('template-parts/hearing-list/hearing-list-filters', false, array('filters' => $filters));
-                                        ?>
-                                    </fieldset>
-                
-                                
+                                        <input class="govuk-input" id="listing-search-field" name="listing_search"
+                                            value="<?= esc_attr($listing_search_text); ?>" type="search"
+                                            aria-describedby="listing-search-field-hint"
+                                        />
+                                    </div>
+                                    <?php
+                                    get_template_part('template-parts/hearing-list/hearing-list-filters', false, array('filters' => $filters));
+                                    ?>
+                                </fieldset>
                                 <div>
                                     <button class="govuk-button">
                                         <?php _e('Apply filters', 'hale'); ?>
@@ -101,15 +96,12 @@ while (have_posts()) :
                                             <?php _e('Clear', 'hale'); ?>
                                         </a>
                                     </div>
-                                    
-                                    
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
             <!-- Righthand column with listing page results -->
             <div class="govuk-grid-column-two-thirds">
                 <?php
