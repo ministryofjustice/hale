@@ -75,7 +75,10 @@ function hale_register_post_type_fields_banner()
                 'new_lines' => '',
             ]);
 
-            if ($number_of_banner_links) $input_width = 100/$number_of_banner_links . "%"; //up to 6 choices, we lay them out side-by-side,
+            $input_width = '100%';
+            if ($number_of_banner_links) {
+                $input_width = 100 / $number_of_banner_links . "%";
+            }
 
             for ($i=1; $i<=$number_of_banner_links; $i++) {
                 acf_add_local_field([
