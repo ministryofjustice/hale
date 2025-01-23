@@ -400,7 +400,6 @@ require get_template_directory() . '/inc/flexible-cpts.php';
  // Admin changes
 require get_template_directory() . '/inc/acf/admin/settings.php';
 require get_template_directory() . '/inc/acf/admin/post-display-settings.php';
-require get_template_directory() . '/inc/acf/admin/post-banner-settings.php';
 require get_template_directory() . '/inc/acf/admin/taxonomy-settings.php';
 
 // General utilities
