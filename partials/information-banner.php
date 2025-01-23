@@ -49,13 +49,13 @@ if ($enable_banner_on_single_view && $show_banner) {
     // Main text
     $banner_text = get_field('post_banner_text');
     if ($banner_text && $banner_text != "") {
+        $banner_text = esc_html($banner_text);
         $banner_content .= "<p class='govuk-body page-banner__text'>$banner_text</p>";
     }
 
     // Get max number of links
     $number_of_banner_links = hale_get_post_type_setting('single_view_banner_max_links');
-
-    if (!$number_of_banner_links) $number_of_banner_links = 0;
+    $number_of_banner_links = (isset($number_of_banner_links) && $number_of_banner_links) ? $number_of_banner_links : 0;
 
     // Create links
     for ($i=1; $i<=$number_of_banner_links; $i++) {
@@ -63,7 +63,11 @@ if ($enable_banner_on_single_view && $show_banner) {
         if (!is_array($link)) continue;
 
         $link_text = $link["title"];
+        $link_text = esc_html($link_text);
+
         $link_url = $link["url"];
+        $link_url = esc_url($link_url);
+
         array_key_exists("target",$link) && $link["target"] ? $link_target = "target='_blank'" : $link_target = '';
 
         if ($link_text && $link_url && $link_text != "" && $link_url != "") {
