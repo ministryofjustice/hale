@@ -9,7 +9,7 @@ add_filter( 'acf/post_type/additional_settings_tabs', function ( $tabs ) {
 
 add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_post_type) {
 
-    $post_label = $acf_post_type['labels']['singular_name'];
+    $post_label = $acf_post_type['labels']['singular_name'] ?? "page of this type"; //used in hint text on line 138
 
     echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Single view</label></div>';
     echo '<div class="acf-field acf-field-seperator" data-type="seperator" style="margin-top: 15px;"></div>';
