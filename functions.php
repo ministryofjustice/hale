@@ -409,6 +409,7 @@ require get_template_directory() . '/inc/acf/utilities.php';
 require get_template_directory() . '/inc/acf/post-type-fields/add-field-groups.php';
 require get_template_directory() . '/inc/acf/post-type-fields/field-document-upload.php';
 require get_template_directory() . '/inc/acf/post-type-fields/field-summary.php';
+require get_template_directory() . '/inc/acf/post-type-fields/field-banner.php';
 
 // Register taxonomies
 require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';
