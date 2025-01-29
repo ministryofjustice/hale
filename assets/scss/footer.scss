@@ -4,7 +4,6 @@
     display: block;
     margin: 0 auto;
     width: 115px;
-    fill: #6b7275;
   }
 
   a:not([class]), a[class=""] {
@@ -27,8 +26,8 @@
     padding: 20px 0 6px;
     margin-bottom: 15px;
     line-height: 2;
-    border-top: 1px solid #535A5E;
-    border-bottom: 1px solid #535A5E;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
 
     ul {
       column-count: 2;

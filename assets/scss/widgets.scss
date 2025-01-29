@@ -6,6 +6,7 @@
 
   .widgettitle {
     @extend .govuk-heading-s;
+    color: unset;
   }
 }
 
@@ -38,6 +39,7 @@
 
     .widgettitle {
       @extend .govuk-heading-s;
+      color: unset;
     }
   }
 }

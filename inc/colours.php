@@ -333,12 +333,14 @@
 				"colours" => array(
 					['footer-border',$midGrey,'Footer border','',''],
 					['footer-background',$lightGrey,'Footer background','',''],
+					['footer-text',$black,'Footer text','',''],
 					['footer-link',$black,'Footer link text','',''],
 					['footer-link-focus',$black,'Footer link text when focussed','',''],
 					['footer-link-focus-shadow',$black,'Footer link underline when focussed','',''],
 					['footer-link-focus-background',$yellow,'Footer link background when focussed','',''],
 					['footer-crest',$royalCrestGrey,'Colour of the Royal Crest','Only change if there are contrast issues',''],
 					['footer-crest-focus',$royalCrestGrey,'Colour of the Royal Crest when focussed','Only change if there are contrast issues when focussed',''],
+					['footer-secondary-menu-border',$darkGrey,'Footer secondary menu border','Not in all footers, only used in secondary menu areas',''],
 				)
 			],
 			[
