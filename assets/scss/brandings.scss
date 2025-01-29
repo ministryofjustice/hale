@@ -1112,6 +1112,12 @@ body.hale-colours-variable {
 		border-top-color: var(--footer-border);
 		background: var(--footer-background);
 		box-shadow: 0 20px 0 0 var(--footer-background);
+		color: var(--footer-text);
+
+		.hale-secondary-footer-menu {
+			border-top-color: var(--footer-secondary-menu-border);
+			border-bottom-color: var(--footer-secondary-menu-border);
+		}
 
 		&__gov-crest {
 		fill: var(--footer-crest);
