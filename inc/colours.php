@@ -340,7 +340,7 @@
 					['footer-link-focus-background',$yellow,'Footer link background when focussed','',''],
 					['footer-crest',$royalCrestGrey,'Colour of the Royal Crest','Only change if there are contrast issues',''],
 					['footer-crest-focus',$royalCrestGrey,'Colour of the Royal Crest when focussed','Only change if there are contrast issues when focussed',''],
-					['footer-secondary-menu-border',$darkGrey,'Footer secondary menu border','Not in all footers, only used in secondary menu areas',''],
+					['footer-secondary-menu-border',$darkGrey,'Footer secondary menu divider lines','Not in all footers, only used in secondary menu areas',''],
 				)
 			],
 			[
