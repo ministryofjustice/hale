@@ -19,7 +19,7 @@ get_header();
 		<header class="hale-search-header" style="">
       <h1 style="line-height:0;">
         <span class="govuk-heading-xl govuk-!-margin-bottom-0">
-          <?php _e("Search Results","hale");?>
+          <?php _e("Search results","hale");?>
         </span>
         <br />
         <span class="govuk-body-l">
@@ -87,7 +87,7 @@ get_header();
                 $u_time = get_the_time('U');
                 $u_modified_time = get_the_modified_time('U');
                 echo "<p class='govuk-body hale-search-results__last-updated-date'>";
-                echo sprintf(__('Updated on %s', 'hale' ), get_the_modified_time('j<\s\up>S</\s\up> F Y'));
+                echo sprintf(__('Updated: %s', 'hale' ), get_the_modified_time('j F Y'));
                 echo "</p> ";
               ?>
 						</div>
