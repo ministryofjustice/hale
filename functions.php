@@ -560,3 +560,19 @@ require get_template_directory() . '/inc/helper-functions.php';
  * Extend API with custom post type info
  */
 require get_template_directory() . '/inc/api-extensions.php';
+
+/**
+ * Removes the DISALLOW_UNFILTERED_HTML from all users with edit access
+ */
+add_filter( 
+	'map_meta_cap', 
+	function ( $caps, $cap, $user_id ) {
+		if ( 'unfiltered_html' === $cap && user_can( $user_id, 'editor' ) ) {
+			return [ 'unfiltered_html' ];
+		}
+
+		return $caps;
+	}, 
+	10, 
+	3 
+);
