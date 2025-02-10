@@ -20045,9 +20045,10 @@ msgid "%s results"
 msgstr "%s canlyniadau"
 
 # hale/search.php
-# Translation adapted from existing translation here
-msgid "Updated: %s"
-msgstr "Diweddarwyd: %s"
+# Translation adapted from existing translation here & from GOV UK document at
+# https://www.gov.uk/government/publications/stubbing-out-the-problem-a-new-strategy-to-tackle-illicit-tobacco/b1254291-3ea7-4a5d-a37f-24418728638a
+msgid "Updated on %s"
+msgstr "Diweddarwyd %s"
 
 
 # hale/template-parts/content-none.php
