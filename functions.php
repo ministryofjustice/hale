@@ -310,20 +310,12 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enable custom colours for sites.
  */
 require get_template_directory() . '/inc/colours.php';
-/**
- * Functions which enable address sanitization and job listing stuff.
- */
-require get_template_directory() . '/inc/job-listing.php';
 
 /**
  * Functions for hearing list template
  */
 require get_template_directory() . '/inc/hearing-list.php';
 
-/**
- * Functions which holds the prison location data.
- */
-require get_template_directory() . '/inc/job-prison-locations.php';
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
@@ -507,10 +499,6 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 
             //Checks if page templates are being requested
             if ($post_type == 'page') {
-
-                if (!post_type_exists('job')) {
-                    unset($post_templates['page-job-listing.php']);
-                }
                 
                 if (!post_type_exists('hearing')) {
                     unset($post_templates['page-hearing-list.php']);

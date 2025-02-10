@@ -304,15 +304,6 @@
 				)
 			],
 			[
-				"section_name" => "Job listings",
-				"id" => "job_listings",
-				"description" => "",
-				"colours" => array(
-					['job-item-bg',$white,'Job listing background','',''],
-					['job-item-border',$midGrey,'Line between job listings','Should match line at end of listing page',''],
-				)
-			],
-			[
 				"section_name" => "Tags",
 				"id" => "tags",
 				"description" => "",
