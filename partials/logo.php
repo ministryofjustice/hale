@@ -16,6 +16,7 @@
 $org_name_checkbox = get_theme_mod( 'org_name_checkbox', 'no' );
 $org_name_field    = get_theme_mod( 'org_name_field' );
 
+$print_logo = get_theme_mod( 'print_logo', '' );
 $show_sitelogo = get_theme_mod( 'logo_configuration' ) == 'logo' || get_theme_mod( 'logo_configuration' ) == 'both' ? "yes" : "";
 $show_sitename = get_theme_mod( 'logo_configuration' ) == 'name' || get_theme_mod( 'logo_configuration' ) == 'both' ? "yes" : "";
 $logo_has_link = get_theme_mod( 'logo_has_link', 'yes' );
@@ -36,6 +37,11 @@ $logo_line_1 = 'no' === $org_name_checkbox ? get_bloginfo( 'name' ) : get_theme_
 $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get_bloginfo( 'name' );
 
 ?>
+<?php if ($print_logo != "") { ?>
+<div class="govuk-header__logo hale-print-only hale-print-logo">
+    <img src="<?php echo $print_logo; ?>" alt="<?php $logo_aria_label; ?>" />
+</div>
+<?php } ?>
 <?php if ( $show_sitename === 'yes' || $show_sitelogo === 'yes' ) { ?>
 <div class="govuk-header__logo">
 <?php if ( $logo_has_link === 'yes' ) { ?>
