@@ -27,5 +27,16 @@ if ('yes' == $include_licence) { //check to see whether the licence has been tur
     ?>.
   </span>
 
+  <p class="govuk-footer__licence-description hale-print-only">
+    To view this licence, visit <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://nationalarchives.gov.uk/doc/open-government-licence/version/3</a> or write to the Information Policy Team, The National Archives, Kew, London TW9 4DU, or email: <a href="mailto:psi@nationalarchives.gov.uk">psi@nationalarchives.gov.uk</a>.
+  </p>
+
+  <p class="govuk-footer__licence-description hale-print-only govuk-!-margin-bottom-0">
+    <?php
+      $home_URL = esc_attr( get_home_url() );
+      echo "This publication is available at <a href='$home_URL'>$home_URL</a>.";
+    ?>
+  </p>
+
 <?php
 } // end check to see if licence has been switched off
