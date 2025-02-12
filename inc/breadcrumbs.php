@@ -183,7 +183,7 @@ function hale_breadcrumb() {
 								?>
 								<li class="govuk-breadcrumbs__list-item">
 									<?php
-									esc_html_e( 'Search Results', 'hale' );
+									esc_html_e( 'Search results', 'hale' );
 									?>
 								</li>
 								<?php

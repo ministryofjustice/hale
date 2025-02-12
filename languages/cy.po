@@ -20033,3 +20033,30 @@ msgstr "Blaenorol<span class=\"govuk-visually-hidden\"> tudalen</span>"
 # Translation copied from Welsh Gov (https://hwb.gov.wales/playlists/view/57976d4f-7a52-4733-9bf6-c316120ea30e/cy/12)
 msgid "Page %s of %s"
 msgstr "Tudalen %s o %s"
+
+# hale/inc/pagination.php
+# Translation copied from Welsh Gov (https://hwb.gov.wales/playlists/view/57976d4f-7a52-4733-9bf6-c316120ea30e/cy/12)
+msgid "Showing page %s of %s"
+msgstr "Tudalen %s o %s"
+
+# hale/search.php
+# Translation copied from Welsh Gov (https://www.llyw.cymru/chwilio?globalkeywords=yw)
+msgid "%s results"
+msgstr "%s canlyniadau"
+
+# hale/search.php
+# Translation adapted from existing translation here & from GOV UK document at
+# https://www.gov.uk/government/publications/stubbing-out-the-problem-a-new-strategy-to-tackle-illicit-tobacco/b1254291-3ea7-4a5d-a37f-24418728638a
+msgid "Updated on %s"
+msgstr "Diweddarwyd %s"
+
+
+# hale/template-parts/content-none.php
+# Translation adapted from existing translation here
+msgid "Nothing found"
+msgstr "Dim canlyniadau"
+
+# hale/template-parts/content-none.php
+# Translation from Welsh Gov (https://www.llyw.cymru/chwilio?globalkeywords=ywasdaS)
+msgid "Please try again with some different keywords."
+msgstr "Chwilio eto gan ddefnyddio geiriau gwahanol."

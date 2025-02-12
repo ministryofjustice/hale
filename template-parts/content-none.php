@@ -13,7 +13,7 @@
 
 <section class="no-results not-found">
 	<div class="entry-header">
-		<h2 class="govuk-heading-l"><?php esc_html_e( 'Nothing Found', 'hale' ); ?></h2>
+		<h2 class="govuk-heading-l"><?php esc_html_e( 'Nothing found', 'hale' ); ?></h2>
 	</div><!-- .page-header -->
 
 	<div class="page-content">
@@ -36,7 +36,10 @@
 		elseif ( is_search() ) :
 			?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'hale' ); ?></p>
+			<p>
+				<?php esc_html_e( 'Sorry, but nothing matched your search terms.', 'hale' ); ?>
+				<?php esc_html_e( 'Please try again with some different keywords.', 'hale' ); ?>
+			</p>
 			<?php
 		else :
 			?>

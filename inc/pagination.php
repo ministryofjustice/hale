@@ -114,12 +114,14 @@ function hale_archive_pagination($template = '', $custom_query = '')
 
             $pagination .= ' <p class="moj-pagination__results">';
 
-            $pagination .= "Showing page <b>";
-            $pagination .= (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $pagination .= "</b> of <b>";
-            $pagination .= $max_pages;
+            $current_page = (get_query_var('paged')) ? get_query_var('paged') : "1";
 
-            $pagination .= '</b></p></nav>';
+            $pagination .= sprintf(
+                __('Showing page %s of %s','hale'),
+                "<b>$current_page</b>",
+                "<b>$max_pages</b>"
+            );
+            $pagination .= '</p></nav>';
 
             echo $pagination; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
