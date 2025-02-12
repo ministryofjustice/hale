@@ -24,30 +24,34 @@ flush();
   <div class="govuk-width-container">
 
 
-  <?php if ( is_active_sidebar( 'footer-area-one' ) || is_active_sidebar( 'footer-area-two' ) ) : ?>
+    <?php if ( is_active_sidebar( 'footer-area-one' ) || is_active_sidebar( 'footer-area-two' ) ) : ?>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
-        <div id="hale-footer-area-1" class="hale-footer__widgets">
-        <?php dynamic_sidebar( 'footer-area-one' ); ?>
-        </div>
-    </div>
+    <div class="govuk-grid-row hale-screen-only">
+      <div class="govuk-grid-column-one-half">
+          <div id="hale-footer-area-1" class="hale-footer__widgets">
+          <?php dynamic_sidebar( 'footer-area-one' ); ?>
+          </div>
+      </div>
 
-    <div class="govuk-grid-column-one-half">
-        <div id="hale-footer-area-2" class="hale-footer__widgets">
-        <?php dynamic_sidebar( 'footer-area-two' ); ?>
-        </div>
+      <div class="govuk-grid-column-one-half">
+          <div id="hale-footer-area-2" class="hale-footer__widgets">
+          <?php dynamic_sidebar( 'footer-area-two' ); ?>
+          </div>
+      </div>
     </div>
-  </div>
 
     <?php endif; ?>
 
 
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <div class="hale-screen-only">
+          <?php
+            get_template_part( 'partials/footernav-secondary' );
+            get_template_part( 'partials/footernav' );
+          ?>
+        </div>
         <?php
-          get_template_part( 'partials/footernav-secondary' );
-          get_template_part( 'partials/footernav' );
           get_template_part( 'partials/footer-licence' );
 
           if ('yes' != $crown_copyright) {
@@ -57,27 +61,7 @@ flush();
       </div>
       <?php
         if ('yes' == $crown_copyright) {
-
-          $copyright_style = "padding-top:0; background-image:none;";
-      ?>
-        <div class="govuk-footer__meta-item">
-          <a
-            class="govuk-footer__link govuk-footer__copyright-logo"
-            href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-            style="<?php echo $copyright_style; ?>"
-          >
-          <svg xmlns="http://www.w3.org/2000/svg" class="govuk-footer__gov-crest" id="footer-crest" viewBox="0 0 702.47 624.08">
-            <?php
-              include 'partials/govuk-crest-svg-content.php';
-            ?>
-            <image src="<?php echo get_template_directory_uri(); ?>/assets/images/govuk-crest-2x.webp" xlink:href="" class="govuk-footer__crest-fallback-image" width="702.47" height="624.08"></image>
-          </svg>
-          <?php
-            echo esc_html__('&copy; Crown copyright', 'hale');
-          ?>
-          </a>
-        </div>
-      <?php
+          get_template_part( 'partials/footer-crown-copyright' );
         }
       ?>
     </div>
