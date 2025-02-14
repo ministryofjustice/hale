@@ -1,24 +1,53 @@
 /**
  * This file is for printing styles only, it removes elements which aren't
- * meant to be printed and will change colours so ink isn't wasted.  
+ * meant to be printed and will change colours so ink isn't wasted.
  *
  * Note that some of these things are dealt with by GDS styles.
  */
 
+.hale-print-only {
+	display: none;
+}
+
 @include govuk-media-query($media-type: print) {
+	.hale-print-only {
+		display: block;
+	}
+
 	.hale-header__search,
-	.hale-header__topnav {
+	.hale-header__topnav,
+	.govuk-breadcrumbs {
 		display: none;
 	}
-	* .govuk-header.hale-header {
-		background-color:#FFF;
+	* {
+		color: #000;
 
-		.hale-header__logo--custom {
-			
-			background-color: red;
-			box-shadow: 0px 0px 4px 8px var(--header-bg);
-			print-color-adjust: exact !important;
-			-webkit-print-color-adjust: exact !important
+		.govuk-header.hale-header {
+			background-color:#FFF;
+
+			.hale-header__logo--custom {
+				background-color: var(--header-bg);
+				box-shadow: 0px 0px 4px 8px var(--header-bg);
+				-webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+				print-color-adjust: exact !important;
+			}
+		}
+
+		footer.govuk-footer {
+			.govuk-footer__meta-item--grow {
+				flex-basis: 100px;
+			}
+			a {
+				text-decoration: none;
+				color: #000;
+				&:not(.hale-footer__copyright):not(.govuk-footer__copyright-logo):not(.govuk-footer__licence-description>a) {
+					// Hide all links which aren't copyright or licence info
+					display: none;
+				}
+			}
+			svg.govuk-footer__gov-crest {
+				fill: #0008;
+			}
 		}
 	}
 }
