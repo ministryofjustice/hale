@@ -24,21 +24,21 @@ flush();
   <div class="govuk-width-container">
 
 
-  <?php if ( is_active_sidebar( 'footer-area-one' ) || is_active_sidebar( 'footer-area-two' ) ) : ?>
+    <?php if ( is_active_sidebar( 'footer-area-one' ) || is_active_sidebar( 'footer-area-two' ) ) : ?>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
-        <div id="hale-footer-area-1" class="hale-footer__widgets">
-        <?php dynamic_sidebar( 'footer-area-one' ); ?>
-        </div>
-    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+          <div id="hale-footer-area-1" class="hale-footer__widgets">
+          <?php dynamic_sidebar( 'footer-area-one' ); ?>
+          </div>
+      </div>
 
-    <div class="govuk-grid-column-one-half">
-        <div id="hale-footer-area-2" class="hale-footer__widgets">
-        <?php dynamic_sidebar( 'footer-area-two' ); ?>
-        </div>
+      <div class="govuk-grid-column-one-half">
+          <div id="hale-footer-area-2" class="hale-footer__widgets">
+          <?php dynamic_sidebar( 'footer-area-two' ); ?>
+          </div>
+      </div>
     </div>
-  </div>
 
     <?php endif; ?>
 
