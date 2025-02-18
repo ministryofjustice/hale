@@ -28,6 +28,7 @@
 
 	.hale-header__search,
 	.hale-header__topnav,
+	.secondary-top-nav,
 	.govuk-header__content,
 	.govuk-breadcrumbs {
 		display: none;
@@ -60,7 +61,7 @@
 				text-decoration: none;
 				color: #000;
 				&:not(.hale-footer__copyright):not(.govuk-footer__copyright-logo):not(.govuk-footer__licence-description>a):not([href^="mailto:"]):not([href^="tel:"]) {
-					// Hide all links which aren't copyright or licence info
+					// Hide all links which aren't copyright or licence info, and not emails or telephone numbers
 					display: none;
 				}
 			}
