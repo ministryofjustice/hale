@@ -14,8 +14,21 @@
 		display: block;
 	}
 
+	.hale-print-logo {
+		width: 100%;
+
+		img {
+			width: 50%;
+		}
+
+		+ .govuk-header__logo {
+			display: none;
+		}
+	}
+
 	.hale-header__search,
 	.hale-header__topnav,
+	.govuk-header__content,
 	.govuk-breadcrumbs {
 		display: none;
 	}
@@ -24,6 +37,12 @@
 
 		.govuk-header.hale-header {
 			background-color:#FFF;
+			border-bottom: 1px solid #000;
+
+			.govuk-header__container {
+				margin-left: 0;
+				border-bottom: none;
+			}
 
 			.hale-header__logo--custom {
 				background-color: var(--header-bg);
