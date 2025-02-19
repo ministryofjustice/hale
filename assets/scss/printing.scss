@@ -4,14 +4,19 @@
  *
  * Note that some of these things are dealt with by GDS styles.
  */
-
-.hale-print-only {
-	display: none;
+@include govuk-media-query($media-type: screen) {
+	.hale-print-only {
+		display: none!important;
+	}
 }
 
 @include govuk-media-query($media-type: print) {
 	.hale-print-only {
 		display: block;
+
+		&--inline {
+			display: inline;
+		}
 	}
 
 	.hale-print-logo {
@@ -41,7 +46,7 @@
 			border-bottom: 1px solid #000;
 
 			.govuk-header__container {
-				margin-left: 0;
+				margin-left: 9px;
 				border-bottom: none;
 			}
 
@@ -54,15 +59,18 @@
 		}
 
 		footer.govuk-footer {
-			.govuk-footer__meta-item--grow {
-				flex-basis: 100px;
+			padding-top: 0.5rem;
+
+			&:not(.hale-print-footer) {
+				display: none;
 			}
-			a {
-				text-decoration: none;
-				color: #000;
-				&:not(.hale-footer__copyright):not(.govuk-footer__copyright-logo):not(.govuk-footer__licence-description>a):not([href^="mailto:"]):not([href^="tel:"]) {
-					// Hide all links which aren't copyright or licence info, and not emails or telephone numbers
-					display: none;
+
+			.govuk-footer__meta-item {
+				* {
+					color: #000A;
+				}
+				&--grow {
+					flex-basis: 100px;
 				}
 			}
 			svg.govuk-footer__gov-crest {
