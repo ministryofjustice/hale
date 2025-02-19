@@ -16,8 +16,13 @@ $govuk-font-family: 'PT Sans', sans-serif;
 
 
   body {
-    //the full width cover images go slightly off the pagem this is the easiest fix.
-    overflow-x: hidden;
+    // The full width cover images go slightly off the page, this is the easiest fix.
+    // Also deals with the highlight/shaded blocks (e.g. CTA, highlighted list)
+    // The shading for these have (need) widths of over 100vw which leads to undesirable horizontal scrolling
+    // No content is outside of the page area, just highlighting.
+    // This prevents this from being an issue by preventing horizontal scroll
+    // Overflow hidden breaks position sticky so we use clip
+    overflow-x: clip;
   }
   .hale-search-header + div {
 		margin-top: 30px;
