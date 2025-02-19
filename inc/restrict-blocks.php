@@ -63,10 +63,6 @@ function hale_allowed_block_types( $allowed_blocks ) {
             'mojblocks/auto-item-list'
         );
 
-        if (post_type_exists('news')) {
-            $allowed_blocks[] = 'mojblocks/latest-news';
-        }
-
         if( current_user_can('administrator') ) {
             $allowed_blocks[] = 'mojblocks/laa-chatbot';
         }
