@@ -23,7 +23,8 @@
 		width: 100%;
 
 		img {
-			width: 50%;
+			max-width: 50%;
+			max-height: 100px;
 		}
 
 		+ .govuk-header__logo {
