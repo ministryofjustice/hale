@@ -1124,7 +1124,7 @@ body.hale-colours-variable {
 
 		@include govuk-media-query($media-type: print) {
 			background: #fff;
-			color: #000;
+			color: #000A;
 		}
 
 		.hale-secondary-footer-menu {
@@ -1147,7 +1147,7 @@ body.hale-colours-variable {
 				color: var(--footer-link);
 
 				@include govuk-media-query($media-type: print) {
-					color: #000;
+					color: #000A;
 				}
 			}
 
