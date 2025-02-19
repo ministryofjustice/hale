@@ -827,6 +827,10 @@
 		.gem-c-pagination__link:visited {
 			color: var(--link-visited);
 
+			&.govuk-link--no-visited-state {
+				color: var(--link);
+			}
+
 			&:hover:not(:focus) {
 				color: var(--link-hover);
 			}
@@ -924,6 +928,11 @@ body.hale-colours-variable {
 		&:after {
 			height: 10px;
 		}
+	}
+
+	.hale-table-of-contents--current {
+		background-color: var(--current-item-shading);
+		border-left-color: var(--current-item-border);
 	}
 
 	// some button styles are in brandings-mojblocks.scss
