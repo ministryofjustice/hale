@@ -61,6 +61,7 @@
 
 		footer.govuk-footer {
 			padding-top: 0.5rem;
+			font-size: 12px;
 
 			&:not(.hale-print-footer) {
 				display: none;
@@ -68,7 +69,8 @@
 
 			.govuk-footer__meta-item {
 				* {
-					color: #000A;
+					color: #000;
+					font-size: 12px;
 				}
 				&--grow {
 					flex-basis: 100px;
@@ -76,6 +78,7 @@
 			}
 			svg.govuk-footer__gov-crest {
 				fill: #0008;
+				width: 80px;
 			}
 		}
 	}
