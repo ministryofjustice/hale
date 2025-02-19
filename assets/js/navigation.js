@@ -309,3 +309,22 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 		if (e.keyCode == "13") $(this).click();
 	});
 });
+
+document.addEventListener('scroll', function() {
+	if (!document.querySelector("#toc")) return;
+
+	let toc = document.querySelector("#table-of-contents");
+	let sectionHeadings = document.querySelectorAll(".hale-toc-item");
+	let contents = toc.querySelectorAll("li");
+	// let currentPosition = window.scrollY;
+	for (i=0; i<=sectionHeadings.length; i++) { // <= because if we are last, we don't need to test
+		let position = sectionHeadings[i].getBoundingClientRect().top; // TEST THIS!!!
+		if (position > 0) break; //we stop counting when one is above zero as that is in the future.
+	}
+	contents.forEach(item => {
+		item.classList.remove("hale-current-item");
+	});
+	contents[i].classList.add("hale-current-item");
+
+
+}, false);

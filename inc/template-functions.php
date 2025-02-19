@@ -343,6 +343,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	}
 	$tags = $dom->getElementsByTagName("h2");
 	foreach($tags as $tag) {
+		$tag->setAttribute('class', "hale-toc-item");
 		$title = $tag->nodeValue;
 		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
 		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
