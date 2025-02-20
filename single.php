@@ -16,11 +16,15 @@ get_header();
 	<?php
 	    $show_toc_on_single_view = hale_get_acf_field_status('show_toc_on_single_view');
 	    $number_headings = hale_get_acf_field_status('number_headings');
+		$print_control = hale_get_acf_field_status('print_button');
 
 		// Gets the Table of Contents for the page
 		if (function_exists('hale_table_of_contents') && $show_toc_on_single_view) {
-			$toc = hale_table_of_contents($number_headings);
+			$toc = hale_table_of_contents($number_headings, $print_control);
 			echo "<div id='toc' class='govuk-grid-column-one-third'>$toc</div>";
+		} elseif (function_exists('hale_print_page_button') && $print_control) {
+			$print_button = hale_print_page_button($print_control);
+			echo "<div id='solo-print' class='govuk-grid-column-one-third'>$print_button</div>";
 		}
 		?>
 	<div id="primary" class="govuk-grid-column-two-thirds">
