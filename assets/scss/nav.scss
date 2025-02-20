@@ -483,6 +483,8 @@
     &__current-item {
       a {
         text-decoration: none;
+        pointer-events: none;
+        cursor: default;
       }
     }
   }
