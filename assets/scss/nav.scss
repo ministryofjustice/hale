@@ -469,20 +469,21 @@
 
 .hale-table-of-contents {
   @include govuk-media-query($from: tablet) {
-    max-height: 100vh;
-    overflow-y: scroll;
+    max-height: 97vh;
+    overflow-y: auto;
   }
   @include govuk-media-query($from: desktop) {
-    margin-left: -10px;
-    padding: 0.5rem 0.5rem 1.1rem 10px;
+    padding: 0.5rem 0.5rem 1.1rem 0;
+
     ol {
       margin-bottom: 0;
       padding-left: 0;
       list-style-position: inside;
     }
     &__current-item {
-      background-color: #f3f2f1;
-      box-shadow: -6px 0 0 0 #f3f2f1, -10px 0 0 0 #005ea5;
+      a {
+        text-decoration: none;
+      }
     }
   }
   li {

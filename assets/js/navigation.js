@@ -311,9 +311,9 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 });
 
 /**
- * 
+ *
  * Table of contents "scrollspy", highlight current scroll location
- * 
+ *
  */
 
 ( function() {
@@ -329,9 +329,9 @@ function indicateCurrentLocation(){
 	let toc = document.querySelector("#table-of-contents");
 	let sectionHeadings = document.querySelectorAll(".hale-toc-item");
 	let contents = toc.querySelectorAll("li");
-	for (i=0; i<=sectionHeadings.length; i++) {
-		let position = sectionHeadings[i+1].getBoundingClientRect().top;
-		if (position > 150) break; //we stop counting when the next one is above 150 as that is now the current item
+	for (i=0; i+1<sectionHeadings.length; i++) {
+		let nextPosition = sectionHeadings[i+1].getBoundingClientRect().top;
+		if (nextPosition > 150) break; //we stop counting when the next one is above 150 as we are on the current item
 	}
 
 	// A small bit of code to ensure the last item is always "current" when at the very bottom of the page.

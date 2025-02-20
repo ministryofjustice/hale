@@ -387,7 +387,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	// Create the table of contents
 	$list_of_headings = "";
 	foreach ($index as $content_item) {
-		$list_of_headings .= '<li><a id="anchor-for-'.$content_item["id"].'" class="govuk-link" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
+		$list_of_headings .= '<li><a id="anchor-for-'.$content_item["id"].'" class="govuk-link govuk-link--no-visited-state" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
 	}
 
 	if ($list_of_headings == "") return ""; // If there are no matched headings, then there is no table of contents to shew

@@ -802,12 +802,23 @@
 		.gem-c-pagination__link:visited {
 			color: var(--link-visited);
 
+			&.govuk-link--no-visited-state {
+				color: var(--link);
+			}
+
 			&:hover:not(:focus) {
 				color: var(--link-hover);
 			}
 
 			&:focus {
 				color: var(--link-focus);
+			}
+		}
+
+		.hale-table-of-contents__current-item {
+			.govuk-link,
+			.govuk-link:visited {
+				color: var(--text);
 			}
 		}
 	}
