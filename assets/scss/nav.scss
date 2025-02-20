@@ -454,9 +454,10 @@
   }
 }
 
-// Table of contents styling
+// Table of contents styling (including print this page button)
 
 @include govuk-media-query($from: tablet) {
+  #solo-print,
   #toc {
     position: sticky;
     top: 2rem;
@@ -474,7 +475,7 @@
     padding: 0.5rem 0.5rem 1.1rem 0;
 
     ol {
-      margin-bottom: 0;
+      margin-bottom: 2rem;
       padding-left: 0;
       list-style-position: inside;
     }
@@ -488,5 +489,20 @@
   }
   li {
     padding: 0.2rem 0;
+  }
+}
+.hale-print-button {
+  display: none;
+
+  &:is(.js-enabled *) {
+    @include govuk-media-query($media-type: screen) {
+      display: block;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .hale-print-page {
+      margin-left:3px;
+    }
   }
 }

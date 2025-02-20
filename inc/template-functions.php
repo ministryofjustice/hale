@@ -370,17 +370,32 @@ function hale_get_ordered_content($content, $numbered_headings) {
 }
 
 /**
+ * This creates the print this page button
+ */
+
+	function hale_print_page_button($print = false) {
+		$print_button = "";
+		if ($print) {
+			$print_button_text = __("Print this page");
+			$print_button = "<div class='hale-print-button'><button class='govuk-button hale-print-page' onClick='window.print()'>$print_button_text</button></div>";
+		}
+		return $print_button;
+	}
+
+/**
  * This funciton constructs a table of contents
  * from the number of H2s on the page, which it
  * gets from the above funciton
  */
 
- function hale_table_of_contents( $ordered = false) {
+ function hale_table_of_contents( $ordered = false, $print = false) {
 	$list_class = "";
 	// if it is ordered, the index uses an ordered list and the number is displayed
 	if ($ordered) {
 		$list_class = "govuk-list--number";
 	}
+
+	$print_button = hale_print_page_button($print);
 
 	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)["index"];
 
@@ -395,6 +410,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	$toc = "<div id='table-of-contents' class='hale-table-of-contents'>
 			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-toc-heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
 			<ol class='govuk-list $list_class'>$list_of_headings</ol>
+			$print_button
 		</div>";
 
 	return $toc;
