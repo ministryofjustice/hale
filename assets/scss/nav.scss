@@ -456,7 +456,22 @@
 
 // Table of contents styling
 
+@include govuk-media-query($from: tablet) {
+  #toc {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .hale-jump-link {
+    display: none;
+  }
+}
+
 .hale-table-of-contents {
+  @include govuk-media-query($from: tablet) {
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
   @include govuk-media-query($from: desktop) {
     padding: 0.5rem 0.5rem 1.1rem 0rem;
     ol {

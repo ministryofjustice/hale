@@ -348,6 +348,17 @@ function hale_get_ordered_content($content, $numbered_headings) {
 		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
 		$index[] = ["title"=>$title,"id"=>$id];
 		if ($numbered_headings) $tag->prepend($count.". "); //adds the index number before the title if $ordered set
+
+		//Jump to top link
+		$jump_link = $dom->createElement("a",__("Back to top","hale"));
+		$jump_link->setAttribute('class', 'govuk-link');
+		$jump_link->setAttribute('href', '#table-of-contents-heading'); //link to the table of contents title
+		$tag_suffix = $dom->createElement("span"," (");
+		$tag_suffix->setAttribute('class', 'hale-jump-link govuk-!-font-size-19');
+		$tag_suffix->appendChild($jump_link);
+		$tag_suffix->append(")");
+
+		$tag->appendChild($tag_suffix);
 		$tag->setAttribute('id', $id);
 	}
 
