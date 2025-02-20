@@ -473,7 +473,8 @@
     overflow-y: scroll;
   }
   @include govuk-media-query($from: desktop) {
-    padding: 0.5rem 0.5rem 1.1rem 0rem;
+    margin-left: -10px;
+    padding: 0.5rem 0.5rem 1.1rem 10px;
     ol {
       margin-bottom: 0;
       padding-left: 0;

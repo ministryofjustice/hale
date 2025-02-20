@@ -323,10 +323,25 @@ function indicateCurrentLocation(){
 	let toc = document.querySelector("#table-of-contents");
 	let sectionHeadings = document.querySelectorAll(".hale-toc-item");
 	let contents = toc.querySelectorAll("li");
-	for (i=0; i<=sectionHeadings.length; i++) { // <= because if we are last, we don't need to test
-		let position = sectionHeadings[i].getBoundingClientRect().top; // TEST THIS!!!
-		if (position > 0) break; //we stop counting when one is above zero as that is in the future.
+	for (i=0; i<=sectionHeadings.length; i++) {
+		let position = sectionHeadings[i+1].getBoundingClientRect().top;
+		if (position > 150) break; //we stop counting when the next one is above 150 as that is now the current item
 	}
+
+	// A small bit of code to ensure the last item is always "current" when at the very bottom of the page.
+	const documentHeight = Math.max(
+		document.body.scrollHeight,
+		document.body.offsetHeight,
+		document.documentElement.clientHeight,
+		document.documentElement.scrollHeight,
+		document.documentElement.offsetHeight
+	);
+	const windowHeight = window.innerHeight;
+	const maxScroll = documentHeight - windowHeight;
+
+	if (window.scrollY >= maxScroll) i = sectionHeadings.length - 1;
+
+	// We set the "current" class as per the current location
 	contents.forEach(item => {
 		item.classList.remove("hale-table-of-contents__current-item");
 	});
