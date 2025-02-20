@@ -5,33 +5,11 @@
  */
 function hale_allowed_block_types( $allowed_blocks ) {
 
-    $cpt_restrict_blocks = hale_get_acf_field_status('restrict_blocks');
-
+    $cpt_restrict_blocks = hale_get_post_type_setting('restrict_blocks_multi');
+    
     if($cpt_restrict_blocks) {
 
-        return array (
-
-                // Text blocks
-                'core/footnotes',
-                'core/heading',
-                'core/list',
-                'core/list-item',
-                'core/paragraph',
-                'core/table',
-
-                // Media blocks
-                'core/file',
-                'core/image',
-
-                // Design blocks
-                'core/group',
-                'core/spacer',
-
-                // MoJ blocks
-                'mojblocks/quote',
-                'mojblocks/separator',
-
-        );
+        return $cpt_restrict_blocks;
 
     }
 
