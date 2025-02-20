@@ -476,13 +476,16 @@
     padding: 0.5rem 0.5rem 1.1rem 0rem;
     ol {
       margin-bottom: 0;
+      padding-left: 0;
+      list-style-position: inside;
+    }
+    &__current-item {
+      background-color: #f3f2f1;
+      box-shadow: -6px 0 0 0 #f3f2f1, -10px 0 0 0 #005ea5;
     }
   }
   li {
     padding: 0.2rem 0;
 
-    &.hale-current-item {
-      background-color: red;
-    }
   }
 }
