@@ -815,10 +815,12 @@
 			}
 		}
 
-		.hale-table-of-contents__current-item {
-			.govuk-link,
-			.govuk-link:visited {
-				color: var(--text);
+		@include govuk-media-query($from: tablet) {
+			.hale-table-of-contents__current-item {
+				.govuk-link,
+				.govuk-link:visited {
+					color: var(--text);
+				}
 			}
 		}
 	}

@@ -471,8 +471,6 @@
   @include govuk-media-query($from: tablet) {
     max-height: 97vh;
     overflow-y: auto;
-  }
-  @include govuk-media-query($from: desktop) {
     padding: 0.5rem 0.5rem 1.1rem 0;
 
     ol {
