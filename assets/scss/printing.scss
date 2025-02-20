@@ -11,6 +11,10 @@
 }
 
 @include govuk-media-query($media-type: print) {
+	.hale-screen-only {
+		display: none;
+	}
+
 	.hale-print-only {
 		display: block;
 
@@ -63,10 +67,6 @@
 			padding-top: 0.5rem;
 			font-size: 12px;
 			border-top-width: 2px;
-
-			&:not(.hale-print-footer) {
-				display: none;
-			}
 
 			.govuk-footer__licence-description .govuk-footer__link,
 			.govuk-footer__copyright-logo {
