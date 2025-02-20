@@ -310,6 +310,12 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	});
 });
 
+/**
+ * 
+ * Table of contents "scrollspy", highlight current scroll location
+ * 
+ */
+
 ( function() {
 	indicateCurrentLocation();
 })();
