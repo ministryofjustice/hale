@@ -465,15 +465,20 @@
   .hale-jump-link {
     display: none;
   }
+
+  ol {
+    list-style-position: inside;
+  }
 }
 
 .hale-table-of-contents {
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: tablet, $media-type: screen) {
     max-height: 100vh;
     overflow-y: scroll;
   }
   @include govuk-media-query($from: desktop) {
     padding: 0.5rem 0.5rem 1.1rem 0rem;
+    //top padding to bring in line with large H1
     ol {
       @include govuk-font-size($size: 16);
       margin-bottom: 0;
@@ -482,4 +487,9 @@
   li {
     padding: 0.2rem 0;
   }
+}
+
+.hale-shaded-heading + #toc .hale-table-of-contents {
+  //full width heading is used, so top padding not needed
+  padding-top:0;
 }
