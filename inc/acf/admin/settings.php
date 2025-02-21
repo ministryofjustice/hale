@@ -18,6 +18,10 @@ add_action('acf/post_type/basic_settings', function ($acf_post_type) {
         'post_summary' => [
             'label' => 'Summary box',
             'instructions' => 'Add a summary section to the post.',
+        ],
+        'revision_date' => [
+            'label' => 'Revision Date',
+            'instructions' => 'Adds a revision date that can be used instead of the updated date',
         ]
     ];
 
@@ -40,7 +44,7 @@ add_action('acf/post_type/basic_settings', function ($acf_post_type) {
  */
 add_filter('acf/post_type/registration_args', function ($args, $post_type) {
     // Define which properties to check within registration args
-    $properties = ['allow_document_upload', 'post_summary'];
+    $properties = ['allow_document_upload', 'post_summary', 'revision_date'];
 
     foreach ($properties as $property) {
         if (isset($post_type[$property])) {
