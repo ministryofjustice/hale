@@ -44,7 +44,7 @@
 	.info-banner,
 	.page-banner,
 	.emergency-banner {
-		display: none;
+		display: none ! important; // some have a display attribute in their style which needs to be overwritten
 	}
 	* {
 		color: #000;
