@@ -1119,13 +1119,6 @@ body.hale-colours-variable {
 			border-bottom-color: var(--footer-secondary-menu-border);
 		}
 
-		&__gov-crest {
-		fill: var(--footer-crest);
-			&:is(:focus *) {
-				fill: var(--footer-crest-focus);
-			}
-		}
-
 		a:not([class]),
 		a[class=""],
 		.govuk-footer__link {
@@ -1193,5 +1186,13 @@ body.hale-colours-variable {
 			}
 		}
 	}
+}
 
+.govuk-footer {
+	&__gov-crest {
+		fill: var(--footer-crest);
+		&:is(:focus *) {
+			fill: var(--footer-crest-focus);
+		}
+	}
 }
