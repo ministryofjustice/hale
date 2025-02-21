@@ -22,6 +22,7 @@ get_header();
 			$toc = hale_table_of_contents($number_headings);
 			echo "<div id='toc' class='govuk-grid-column-one-third'>$toc</div>";
 		}
+		get_template_part('partials/print-copyright-page');
 		?>
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<div class="single">
