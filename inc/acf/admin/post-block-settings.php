@@ -25,7 +25,7 @@ add_action('acf/post_type/render_settings_tab/block-settings', function ($acf_po
 
 add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
 
-    if ( isset( $post_type['show_tax_on_single_view'] ) ) {
+    if ( isset( $post_type['restrict_blocks'] ) ) {
         $args['restrict_blocks'] = (bool) $post_type['restrict_blocks'];
     }
 
