@@ -758,6 +758,16 @@
 		}
 	}
 
+	//Shaded headings (full-width headings)
+	.hale-shaded-heading {
+		background-color: var(--shaded-heading-bg);
+
+		h1,
+		span {
+			color: var(--shaded-heading-text);
+		}
+	}
+
 	.flexible-post-type-terms-link {
 		color: var(--tag-text);
 		background: var(--tag-bg);
