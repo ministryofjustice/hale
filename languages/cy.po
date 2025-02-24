@@ -20050,6 +20050,10 @@ msgstr "%s canlyniadau"
 msgid "Updated on %s"
 msgstr "Diweddarwyd %s"
 
+# hale/single.php
+# Translation adapted from existing translation above
+msgid "Updated:"
+msgstr "Diweddarwyd:"
 
 # hale/template-parts/content-none.php
 # Translation adapted from existing translation here
