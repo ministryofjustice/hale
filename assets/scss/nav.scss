@@ -468,7 +468,7 @@
 }
 
 .hale-table-of-contents {
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: tablet, $media-type: screen) {
     max-height: 100vh;
     overflow-y: scroll;
   }
