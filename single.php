@@ -14,8 +14,13 @@
 get_header();
 ?>
 	<?php
-	    $show_toc_on_single_view = hale_get_acf_field_status('show_toc_on_single_view');
-	    $number_headings = hale_get_acf_field_status('number_headings');
+		$full_width_heading = hale_get_acf_field_status('full_width_heading');
+		$show_toc_on_single_view = hale_get_acf_field_status('show_toc_on_single_view');
+		$number_headings = hale_get_acf_field_status('number_headings');
+
+		if ($full_width_heading) {
+			get_template_part( 'template-parts/flexible-cpts/full-width-heading' );
+		}
 
 		// Gets the Table of Contents for the page
 		if (function_exists('hale_table_of_contents') && $show_toc_on_single_view) {
