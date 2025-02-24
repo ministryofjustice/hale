@@ -44,6 +44,13 @@
             if($field['type'] == 'published-date'){
                 $field_value =  '<time class="entry-date published-date" datetime="' . get_the_date( DATE_W3C ) . '">' . get_the_date() . '</time>';
             }
+            else if($field['name'] == 'post_revision_date'){
+               $revision_date = get_field('post_revision_date');
+
+               if(!empty($revision_date)){
+                    $field_value =  '<time class="entry-date release-date" datetime="' . get_the_date( DATE_W3C ) . '">' . date('j F Y', $revision_date) . '</time>';
+                }
+            }
             else if($field['type'] == 'taxonomy'){
                 $tax_terms = get_the_terms( get_the_ID(), $field['name'] );
 
