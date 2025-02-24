@@ -48,7 +48,7 @@
                $revision_date = get_field('post_revision_date');
 
                if(!empty($revision_date)){
-                    $field_value =  '<time class="entry-date release-date" datetime="' . get_the_date( DATE_W3C ) . '">' . date('j F Y', $revision_date) . '</time>';
+                    $field_value =  '<time class="entry-date release-date" datetime="' . date('c', $revision_date) . '">' . date('j F Y', $revision_date) . '</time>';
                 }
             }
             else if($field['type'] == 'taxonomy'){
