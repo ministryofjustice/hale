@@ -8,16 +8,26 @@
 	So whilst this CSS is not directly used by anything, it is copied by the PHP, amended and added where needed.
 
 	Note that any changes to this file might need a colour refresh as this creates the CSS via PHP.
+
+	Printing colour is always black
 *******/
 
 @mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
 	@if $hoverColour == "" { //not link
 		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(.has-text-color *):not(.has-text-color) {
 			color: $colour;
+
+			@include govuk-media-query($media-type: print) {
+				color: #000;
+			}
 		}
 	} @else {
 		&:not(.#{$paletteColour} .has-background *):not(.#{$paletteColour} .has-background):not(:focus) {
 			color: $colour;
+
+			@include govuk-media-query($media-type: print) {
+				color: #000;
+			}
 
 			&:hover {
 				color: $hoverColour;
