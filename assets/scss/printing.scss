@@ -11,6 +11,16 @@
 }
 
 @include govuk-media-query($media-type: print) {
+	.hale-page {
+		.govuk-grid-column-two-thirds,
+		.govuk-grid-column-one-third,
+		.govuk-grid-column-one-quarter,
+		.govuk-grid-column-three-quarters,
+		.govuk-grid-column-one-half {
+			width: 100%;
+		}
+	}
+
 	.hale-screen-only {
 		display: none;
 	}
@@ -101,6 +111,11 @@
 
 	div#toc {
 		width: 100%;
+		margin: 0;
+
+		.hale-table-of-contents {
+				overflow: auto;
+		}
 
 		ol {
 			height: 150mm;
@@ -111,7 +126,6 @@
 
 			&.hale-print-col {
 				column-rule: #000 solid 1px;
-				column-fill: auto;
 
 				&--2 {
 					column-count: 2;
