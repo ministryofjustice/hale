@@ -489,12 +489,15 @@
     }
 
     &__list {
-      @include govuk-font-size($size: 16);
       margin-bottom: 2rem;
 
-      &.govuk-list--number {
-        list-style-position: inside;
-        padding-left: 0;
+      &.govuk-list {
+        @include govuk-font-size($size: 16);
+
+        &--number {
+          list-style-position: inside;
+          padding-left: 0;
+        }
       }
     }
     &__item {
