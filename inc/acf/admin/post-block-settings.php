@@ -9,7 +9,6 @@ add_filter( 'acf/post_type/additional_settings_tabs', function ( $tabs ) {
 
 add_action('acf/post_type/render_settings_tab/block-settings', function ($acf_post_type) {
     
-    //Currently restricted to main allowed blocks - do we want this to be all?
     $allowed_blocks = hale_get_allowed_blocks();
 
     //sets keys to the same as value e.g. core/paragraph => core/paragraph

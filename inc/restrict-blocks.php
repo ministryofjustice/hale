@@ -8,21 +8,18 @@ function hale_allowed_block_types( $allowed_blocks ) {
     $cpt_restrict_blocks = hale_get_post_type_setting('restrict_blocks_multi');
 
     $cpt_restrict_blocks_mode = hale_get_post_type_setting('restrict_blocks_mode');
+
+    //global restrict blocks
+    $restrict_blocks = get_theme_mod('restrict_blocks', 1);
     
     if($cpt_restrict_blocks_mode == 'include' && $cpt_restrict_blocks) {
 
         return $cpt_restrict_blocks;
 
     }
-
-    $restrict_blocks = get_theme_mod('restrict_blocks', 1);
-
-    if($restrict_blocks || $restrict_blocks == "yes") {
-        $allowed_blocks = hale_get_allowed_blocks();
-    }
-
-    if($cpt_restrict_blocks_mode == 'exclude' && $cpt_restrict_blocks) {
+    else if($cpt_restrict_blocks_mode == 'exclude' && $cpt_restrict_blocks) {
           
+        //Currently restricted to main allowed blocks
         $main_block_list = hale_get_allowed_blocks();
         $new_block_list = array();
 
@@ -32,10 +29,13 @@ function hale_allowed_block_types( $allowed_blocks ) {
             }
         }
 
-        $allowed_blocks = $new_block_list;
+        return $new_block_list;
 
     }
-
+    else if($restrict_blocks || $restrict_blocks == "yes") {
+        return hale_get_allowed_blocks();
+    }
+    
     return $allowed_blocks;
 
 }
