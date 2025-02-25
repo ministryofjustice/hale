@@ -184,6 +184,13 @@
 			min-height: 49px;
 		}
 
+		.hale-header__logo--custom {
+			@include govuk-media-query($media-type: print) {
+				background-color: var(--header-bg);
+				box-shadow: 0px 0px 4px 8px var(--header-bg);
+			}
+		}
+
 		.govuk-header__logotype {
 			color: var(--header-link);
 		}
