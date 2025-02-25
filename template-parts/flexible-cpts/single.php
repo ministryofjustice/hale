@@ -8,8 +8,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
     <div class="flexible-post-type-header">
         <?php
-
-        the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>'); ?>
+            $full_width_heading = hale_get_acf_field_status('full_width_heading');
+            if (!$full_width_heading) {
+                the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>');
+            }
+        ?>
     </div>
     <?php
     $show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
