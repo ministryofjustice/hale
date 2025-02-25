@@ -465,6 +465,10 @@
   .hale-jump-link {
     display: none;
   }
+
+  ol {
+    list-style-position: inside;
+  }
 }
 
 .hale-table-of-contents {
