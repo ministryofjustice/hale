@@ -385,15 +385,23 @@ function hale_get_ordered_content($content, $numbered_headings) {
 
 	// Create the table of contents
 	$list_of_headings = "";
+	$count_headings = 0;
 	foreach ($index as $content_item) {
 		$list_of_headings .= '<li><a id="anchor-for-'.$content_item["id"].'" class="govuk-link" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
+		$count_headings++;
 	}
 
 	if ($list_of_headings == "") return ""; // If there are no matched headings, then there is no table of contents to shew
 
+	$print_columns = "";
+	// If there are more than 15 headings, put it in columns to make better use of the page
+	// Increase to 3 columns after 25 (less space might make more wrap)
+	if ($count_headings > 15) $print_columns = "hale-print-col hale-print-col--2";
+	if ($count_headings > 25) $print_columns = "hale-print-col hale-print-col--3";
+
 	$toc = "<div id='table-of-contents' class='hale-table-of-contents'>
 			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-toc-heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
-			<ol class='govuk-list $list_class'>$list_of_headings</ol>
+			<ol class='govuk-list $list_class $print_columns'>$list_of_headings</ol>
 		</div>";
 
 	return $toc;

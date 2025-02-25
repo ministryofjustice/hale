@@ -1,0 +1,210 @@
+/**
+ * This file is for printing styles only, it removes elements which aren't
+ * meant to be printed and will change colours so ink isn't wasted.
+ *
+ * Note that some of these things are dealt with by GDS styles.
+ */
+@include govuk-media-query($media-type: screen) {
+	.hale-print-only {
+		display: none!important;
+	}
+}
+
+@include govuk-media-query($media-type: print) {
+	.hale-page {
+		.govuk-grid-column-two-thirds,
+		.govuk-grid-column-one-third,
+		.govuk-grid-column-one-quarter,
+		.govuk-grid-column-three-quarters,
+		.govuk-grid-column-one-half {
+			width: 100%;
+		}
+	}
+
+	.hale-screen-only {
+		display: none;
+	}
+
+	.hale-print-only {
+		display: block;
+
+		&--inline {
+			display: inline;
+		}
+	}
+
+	.hale-print-logo {
+		width: 100%;
+
+		img {
+			max-width: 50%;
+			max-height: 100px;
+		}
+
+		+ .govuk-header__logo {
+			display: none;
+		}
+	}
+
+	.hale-header__search,
+	.hale-header__topnav,
+	.secondary-top-nav,
+	.govuk-header__content,
+	.govuk-breadcrumbs,
+	.info-banner,
+	.page-banner,
+	.emergency-banner {
+		display: none ! important; // some have a display attribute in their style which needs to be overwritten
+	}
+	* {
+		color: #000;
+
+		.govuk-header.hale-header {
+			background-color:#FFF;
+			border-bottom: 1px solid #000;
+
+			.govuk-header__container {
+				border-bottom-width: 0;
+				margin-bottom: 15px;
+				margin-left: 9px;
+			}
+
+			.hale-header__logo--custom {
+				background-color: var(--header-bg);
+				box-shadow: 0px 0px 4px 8px var(--header-bg);
+				-webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+				print-color-adjust: exact !important;
+			}
+		}
+
+		footer.govuk-footer {
+			padding-top: 0.5rem;
+			border-top-width: 2px;
+
+			.govuk-footer__licence-description .govuk-footer__link,
+			.govuk-footer__copyright-logo {
+				text-decoration: none;
+			}
+
+			.govuk-footer__meta{
+				align-items: flex-start;
+				&-item {
+					* {
+						color: #000;
+						font-size: 11px;
+					}
+					&--grow {
+						flex-basis: 100px;
+					}
+				}
+			}
+			svg.govuk-footer__gov-crest {
+				fill: #0008;
+				height: 51px;
+			}
+			svg.govuk-footer__licence-logo {
+				height: 21px;
+				margin-top: 7px;
+			}
+		}
+	}
+
+	div#toc {
+		position: static;
+		width: 100%;
+		margin: 0;
+
+		.hale-table-of-contents {
+			overflow: auto;
+		}
+
+		ol {
+			.govuk-link {
+				color:#000;
+				text-decoration: none;
+			}
+
+			&.hale-print-col {
+				column-rule: #000 solid 1px;
+
+				&--2 {
+					column-count: 2;
+					-webkit-column-count: 2;
+					-moz-column-count: 2;
+				}
+				&--3 {
+					column-count: 3;
+					-webkit-column-count: 3;
+					-moz-column-count: 3;
+				}
+			}
+		}
+	}
+	.page-break {
+		break-after: page;
+		page-break-after: always;
+	}
+	.hale-print-arms {
+		margin: 10rem auto;
+
+		&__crest {
+			display: block;
+			margin: auto;
+			width: 30%;
+			fill: #0008;
+		}
+
+		&__copyright {
+			margin: auto;
+		}
+	}
+
+	/**
+	* Deal with custom colours set by Wordpress custom colour sfeatures
+	*/
+	.has-text-color {
+		color: #000 !important; //overriding other importants and inline styles
+	}
+	.has-background {
+		background-color: #FFF !important;
+	}
+	.has-generic-palette-1-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-1);
+	}
+	.has-generic-palette-2-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-2);
+	}
+	.has-generic-palette-3-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-3);
+	}
+	.has-generic-palette-4-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-4);
+	}
+	.has-black-background-color {
+		border: 5px solid #000;
+	}
+	.has-dark-grey-background-color {
+		border: 5px solid #000A;
+	}
+	.has-mid-grey-background-color {
+		border: 5px solid #0004;
+	}
+	.has-lightish-grey-background-color {
+		border: 5px solid #0002;
+	}
+	.has-light-grey-background-color {
+		border: 5px solid #0001;
+	}
+
+	/**
+	* Override custom colours to be printer friendly
+	*/
+	:root {
+		--text: #000!important;
+		--link-visited: var(--link)!important;
+		--dark-heading: #000!important;
+		--dark-text: #000!important;
+		--dark-link: var(--link)!important;
+		--dark-heading-text: #000!important;
+	}
+}
