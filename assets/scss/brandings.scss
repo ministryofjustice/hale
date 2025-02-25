@@ -184,6 +184,13 @@
 			min-height: 49px;
 		}
 
+		.hale-header__logo--custom {
+			@include govuk-media-query($media-type: print) {
+				background-color: var(--header-bg);
+				box-shadow: 0px 0px 4px 8px var(--header-bg);
+			}
+		}
+
 		.govuk-header__logotype {
 			color: var(--header-link);
 		}
@@ -1151,13 +1158,6 @@ body.hale-colours-variable {
 			border-bottom-color: var(--footer-secondary-menu-border);
 		}
 
-		&__gov-crest {
-		fill: var(--footer-crest);
-			&:is(:focus *) {
-				fill: var(--footer-crest-focus);
-			}
-		}
-
 		a:not([class]),
 		a[class=""],
 		.govuk-footer__link {
@@ -1229,5 +1229,13 @@ body.hale-colours-variable {
 			}
 		}
 	}
+}
 
+.govuk-footer {
+	&__gov-crest {
+		fill: var(--footer-crest);
+		&:is(:focus *) {
+			fill: var(--footer-crest-focus);
+		}
+	}
 }
