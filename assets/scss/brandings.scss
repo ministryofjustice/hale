@@ -144,6 +144,10 @@
 			// We do not apply this style if there is a custom colour set
 			&:not(.has-text-color *):not(.has-text-color) {
 				color: var(--text);
+
+				@include govuk-media-query($media-type: print) {
+					color: #000;
+				}
 			}
 		}
 
@@ -157,6 +161,10 @@
 			// We do not apply this style if there is a custom colour set or for notification banner titles
 			&:not(.has-text-color *):not(.has-text-color):not(.govuk-notification-banner__title) {
 				color: var(--heading-text);
+
+				@include govuk-media-query($media-type: print) {
+					color: #000;
+				}
 			}
 		}
 	}
@@ -174,6 +182,13 @@
 
 		&__logo {
 			min-height: 49px;
+		}
+
+		.hale-header__logo--custom {
+			@include govuk-media-query($media-type: print) {
+				background-color: var(--header-bg);
+				box-shadow: 0px 0px 4px 8px var(--header-bg);
+			}
 		}
 
 		.govuk-header__logotype {
@@ -1114,6 +1129,11 @@ body.hale-colours-variable {
 		box-shadow: 0 20px 0 0 var(--footer-background);
 		color: var(--footer-text);
 
+		@include govuk-media-query($media-type: print) {
+			background: #fff;
+			color: #000;
+		}
+
 		.hale-secondary-footer-menu {
 			border-top-color: var(--footer-secondary-menu-border);
 			border-bottom-color: var(--footer-secondary-menu-border);
@@ -1125,6 +1145,10 @@ body.hale-colours-variable {
 
 			&:not(:focus) {
 				color: var(--footer-link);
+
+				@include govuk-media-query($media-type: print) {
+					color: #000;
+				}
 			}
 
 			&:hover {
