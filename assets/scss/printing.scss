@@ -51,8 +51,9 @@
 			border-bottom: 1px solid #000;
 
 			.govuk-header__container {
+				border-bottom-width: 0;
+				margin-bottom: 15px;
 				margin-left: 9px;
-				border-bottom: none;
 			}
 
 			.hale-header__logo--custom {
