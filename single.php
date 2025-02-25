@@ -26,6 +26,7 @@ get_header();
 			$print_button = hale_print_page_button($print_control);
 			echo "<div id='solo-print' class='govuk-grid-column-one-third'>$print_button</div>";
 		}
+		get_template_part('partials/print-copyright-page');
 		?>
 	<div id="primary" class="govuk-grid-column-two-thirds">
 		<div class="single">

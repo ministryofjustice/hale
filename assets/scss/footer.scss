@@ -44,6 +44,12 @@
   }
 }
 
-.hale-footer__copyright {
-  margin-top: 1rem;
+.hale-footer {
+  &__copyright {
+    margin-top: 1rem;
+  }
+  &__copyright_img img,
+  &__copyright_img {
+    max-height: 125px;
+  }
 }
