@@ -9,6 +9,12 @@ add_filter( 'acf/post_type/additional_settings_tabs', function ( $tabs ) {
 
 add_action('acf/post_type/render_settings_tab/block-settings', function ($acf_post_type) {
     
+    //Currently restricted to main allowed blocks - do we want this to be all?
+    $allowed_blocks = hale_get_allowed_blocks();
+
+    //sets keys to the same as value e.g. core/paragraph => core/paragraph
+    $allowed_blocks = array_combine($allowed_blocks, $allowed_blocks);
+
     acf_render_field_wrap(
         array(
             'label' => 'Restrict blocks',
@@ -20,61 +26,22 @@ add_action('acf/post_type/render_settings_tab/block-settings', function ($acf_po
             'key' => 'restrict_blocks_multi',
             'ui' => true,
             'multiple' => 1,
+            'choices' => $allowed_blocks,
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
+            'label' => 'Restrict mode',
+            'instructions' => '',
+            'name'         => 'restrict_blocks_mode',
+            'prefix'       => 'acf_post_type',
+            'value'        => isset( $acf_post_type['restrict_blocks_mode'] ) ? $acf_post_type['restrict_blocks_mode'] : '',
+            'type'         => 'select',
             'choices' => array(
-                
-                // Text blocks
-                'core/code' => 'core/code',
-                'core/footnotes' => 'core/footnotes',
-                'core/heading' => 'core/heading',
-                'core/list' => 'core/list',
-                'core/list-item' => 'core/list-item',
-                'core/paragraph' => 'core/paragraph',
-                'core/table' => 'core/table',
-                /*
-                // Media blocks
-                'core/cover',
-                'core/file',
-                'core/image',
-                'core/media-text',
-                'core/video',
-    
-                // Design blocks
-                'core/buttons',
-                'core/button',
-                'core/columns',
-                'core/group',
-                'core/spacer',
-    
-                // Widgets
-                'core/legacy-widget',
-                'core/social-links',
-                'core/social-link',
-    
-                // Embeds
-                'core/embed',
-                
-                //Custom HTML
-                'core/html',
-    
-                // Pattern blocks
-                'core/block',
-                'core/pattern',
-    
-                // MoJ blocks
-                'mojblocks/accordion',
-                'mojblocks/accordion-section',
-                'mojblocks/banner',
-                'mojblocks/card',
-                'mojblocks/cta',
-                'mojblocks/hero',
-                'mojblocks/highlights-list',
-                'mojblocks/quote',
-                'mojblocks/reveal',
-                'mojblocks/separator',
-                'mojblocks/staggered-box',
-                'mojblocks/featured-item',
-                'mojblocks/auto-item-list'*/
-            )
+                'include' => 'Include',
+                'exclude' => 'Exclude',
+            ),
         )
     );
 });
@@ -83,6 +50,13 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
 
     if ( isset( $post_type['restrict_blocks_multi'] ) ) {
         $args['restrict_blocks_multi'] = $post_type['restrict_blocks_multi'];
+    }
+
+    if ( isset( $post_type['restrict_blocks_mode'] ) ) {
+        $args['restrict_blocks_mode'] = $post_type['restrict_blocks_mode'];
+    }
+    else {
+        $args['restrict_blocks_mode'] = 'include';
     }
 
     return $args;
