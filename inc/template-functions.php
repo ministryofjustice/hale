@@ -336,6 +336,9 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
 
 function hale_get_ordered_content($content, $numbered_headings) {
 	$index = [];
+	if (empty($content)) {
+        return ["index" => $index, "content" => $content];
+    }
 	$count = 0; //index number
 	$dom = new DOMDocument();
 	libxml_use_internal_errors(true);
