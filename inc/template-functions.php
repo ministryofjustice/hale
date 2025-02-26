@@ -346,7 +346,8 @@ function hale_get_ordered_content($content, $numbered_headings) {
 		return array("index"=>$index,"content"=>$content);
 	}
 	libxml_clear_errors();
-	$tags = $dom->getElementsByTagName("h2");
+	$xpath = new DOMXPath($dom);
+	$tags = $xpath->query('//h2');
 	foreach($tags as $tag) {
 		$title = $tag->nodeValue;
 		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
