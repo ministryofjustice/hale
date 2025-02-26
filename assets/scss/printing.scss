@@ -77,6 +77,7 @@
 
 		footer.govuk-footer {
 			padding-top: 0.5rem;
+			padding-bottom: 0;
 			border-top-width: 2px;
 
 			.govuk-footer__licence-description .govuk-footer__link,
@@ -155,5 +156,55 @@
 		&__copyright {
 			margin: auto;
 		}
+	}
+
+	/**
+	* Deal with custom colours set by Wordpress custom colour sfeatures
+	*/
+	.has-text-color {
+		color: #000 !important; //overriding other importants and inline styles
+	}
+	.has-background {
+		background-color: #FFF !important;
+	}
+	.has-generic-palette-1-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-1);
+	}
+	.has-generic-palette-2-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-2);
+	}
+	.has-generic-palette-3-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-3);
+	}
+	.has-generic-palette-4-background-color {
+		border: 5px solid var(--wp--preset--color--generic-palette-4);
+	}
+	.has-black-background-color {
+		border: 5px solid #000;
+	}
+	.has-dark-grey-background-color {
+		border: 5px solid #000A;
+	}
+	.has-mid-grey-background-color {
+		border: 5px solid #0004;
+	}
+	.has-lightish-grey-background-color {
+		border: 5px solid #0002;
+	}
+	.has-light-grey-background-color {
+		border: 5px solid #0001;
+	}
+
+	/**
+	* Override custom colours to be printer friendly
+	*/
+	:root {
+		--text: #000!important;
+		--link-visited: var(--link)!important;
+		--dark-heading: #000!important;
+		--dark-text: #000!important;
+		--dark-link: var(--link)!important;
+		--dark-heading-text: #000!important;
+		--footer-background: #fff!important;
 	}
 }
