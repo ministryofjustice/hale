@@ -184,6 +184,11 @@ function hale_add_custom_fields_select_acf_field($post_type, $field_key, $field_
         $choices[$post_type->name . '_summary'] = "Summary";
     }
 
+    if (isset($post_type->revision_date) && $post_type->revision_date == '1') {
+        $choices[$post_type->name . '_revision_date'] = "Revision Date";
+    }
+
+
     $taxonomies = get_object_taxonomies($post_type->name, 'objects');
 
     foreach($taxonomies as $tax) {
