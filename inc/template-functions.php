@@ -383,7 +383,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 		$print_button = "";
 		if ($print) {
 			$print_button_text = __("Print this page");
-			$print_button = "<div class='hale-print-button'><button class='govuk-button hale-print-page' onClick='window.print()'>$print_button_text</button></div>";
+			$print_button = "<div class='hale-print-button'><button class='govuk-button govuk-button--secondary hale-print-page' onClick='window.print()'>$print_button_text</button></div>";
 		}
 		return $print_button;
 	}
