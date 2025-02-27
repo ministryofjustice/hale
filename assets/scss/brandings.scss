@@ -930,9 +930,9 @@ body.hale-colours-variable {
 		}
 	}
 
-	.hale-table-of-contents--current {
-		background-color: var(--current-item-shading);
-		border-left-color: var(--current-item-border);
+	.hale-table-of-contents__item--current {
+		background-color: var(--toc-current-item-shading);
+		border-left-color: var(--toc-current-item-border);
 	}
 
 	// some button styles are in brandings-mojblocks.scss

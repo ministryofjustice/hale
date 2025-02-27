@@ -144,8 +144,8 @@
 				"id" => "toc",
 				"description" => "",
 				"colours" => array(
-					['current-item-shading',$lightGrey,'Current item shading','',''],
-					['current-item-border',$blue,'Current item marker','The little line that appears next to the current item',''],
+					['toc-current-item-shading',$lightGrey,'Current item shading','',''],
+					['toc-current-item-border',$blue,'Current item marker','The little line that appears next to the current item',''],
 				)
 			],
 			[
