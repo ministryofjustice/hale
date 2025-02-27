@@ -221,6 +221,8 @@ function hale_customize_register( $wp_customize ) {
 	 * -----------------------------------------------------------
 	*/
 
+	
+
 	$wp_customize->add_setting('print_logo');
 	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'print_logo', array(
 		'label' => 'Logo when printing',
@@ -234,15 +236,7 @@ function hale_customize_register( $wp_customize ) {
 			'placeholder' => __( 'No print logo selected' ),
 			'frame_title' => __( 'Select print logo' ),
 			'frame_button' => __( 'Choose print logo' ),
-		),
-		'active_callback' => function () use ( $wp_customize ) {
-			return (
-				!in_array(
-					strtoupper($wp_customize->get_setting( 'header-bg' )->value()),
-					["#FFFFFF","#FFF"]
-				)
-			);
-		}
+		)
 	)));
 
 	/*
