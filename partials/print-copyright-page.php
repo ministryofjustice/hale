@@ -16,9 +16,9 @@
 
 		$small_copyright = esc_html__('&copy; Copyright', 'hale').", ";
 		if ('' !== $organisation_name) {
-			$small_copyright .=  esc_html($organisation_name);
+			$small_copyright .= esc_html($organisation_name);
 		} else {
-			bloginfo('name');
+			$small_copyright .= get_bloginfo('name');
 		}
 		$small_copyright .=  esc_html(date_i18n(__(' Y', 'hale'))).".";
 
