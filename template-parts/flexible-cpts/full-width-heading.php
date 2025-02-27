@@ -32,13 +32,13 @@
 		<?php
 			if ($revision_date_set) {
 				echo __('Revision date:', 'hale' )." ";
-				echo date('j F Y', $revision_date);
+				echo date(get_option( 'date_format' ), $revision_date);
 			} elseif (get_the_date() == get_the_modified_date()) {
-				echo __('First published:', 'hale' )." ";
-				the_date();
+				echo __('Published:', 'hale' )." ";
+				echo get_the_date();
 			} else {
 				echo __('Updated:', 'hale' )." ";
-				the_modified_date();
+				echo get_the_modified_date();
 			}
 		?>
 		</span>
