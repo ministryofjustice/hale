@@ -101,7 +101,11 @@ function hale_generate_custom_colours() {
 			}
 			$css .= "}";
 			if (!empty($colour_bar_colour) && strcasecmp($colour_bar_colour, "#FFF") != 0 && strcasecmp($colour_bar_colour, "#FFFFFF") != 0) {
-				$colour_bar_style  = "@media only screen {.govuk-header__container {";
+				$colour_bar_style  = "@media only screen {";
+				$colour_bar_style .= 	".govuk-header__container {";
+				$colour_bar_style .= 	".hale-table-of-contents--current {";
+				$colour_bar_style .= 		"border-left-color: $colour_bar_colour;";
+				$colour_bar_style .= 	"}";
 				$colour_bar_style .= 	"border-bottom-color: $colour_bar_colour!important;";
 				$colour_bar_style .= "}}";
 				$colour_bar_style .= ".govuk-header {";
