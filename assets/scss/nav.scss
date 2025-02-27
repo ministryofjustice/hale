@@ -524,8 +524,8 @@
   }
 
   @include govuk-media-query($from: tablet) {
-    .hale-print-page {
-      margin-left:3px;
+    .hale-print-page:is(#toc *) {
+      margin-left:15px;
     }
   }
 }
