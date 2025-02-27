@@ -477,6 +477,10 @@
   margin-bottom: 2rem;
   border-bottom: 1px solid;
 
+  @include govuk-media-query($media-type: print) {
+    border-bottom: none;
+  }
+
   @include govuk-media-query($from: tablet, $media-type: screen) {
     max-height: 97vh;
     overflow-y: auto;
