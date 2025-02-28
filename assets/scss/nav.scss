@@ -489,7 +489,12 @@
   }
 }
 
-.hale-shaded-heading + #toc .hale-table-of-contents {
-  //full width heading is used, so top padding not needed
-  padding-top:0;
+.hale-shaded-heading {
+  @extend .govuk-\!-margin-bottom-8;
+  @extend .govuk-\!-margin-top-5;
+
+  + #toc .hale-table-of-contents {
+    //full width heading is used, so top padding not needed
+    padding-top:0;
+  }
 }
