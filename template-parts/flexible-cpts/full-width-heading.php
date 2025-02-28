@@ -18,15 +18,15 @@
 		}
 	}
 ?>
-<div class="govuk-grid-column-full hale-shaded-heading govuk-!-margin-bottom-3">
-	<div class="govuk-grid-column-two-thirds govuk-!-padding-top-4 govuk-!-padding-bottom-4">
+<div class="govuk-grid-column-full hale-shaded-heading">
+	<div class="govuk-grid-column-two-thirds hale-shaded-heading__container govuk-!-padding-top-3 govuk-!-padding-bottom-3">
 		<?php
 			if ($post_type) {
 				echo "<span class='govuk-caption-l'>$post_type_name</span>";
 			}
 		?>
 		<?php
-			the_title('<h1 class="govuk-heading-xl govuk-!-margin-top-3 govuk-!-margin-bottom-3">', '</h1>');
+			the_title('<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-2">', '</h1>');
 		?>
 		<span class="govuk-caption-m">
 		<?php
