@@ -467,7 +467,7 @@
     display: none;
   }
 
-  ol {
+  .hale-table-of-contents__list {
     list-style-position: inside;
   }
 }
@@ -499,7 +499,6 @@
         @include govuk-font-size($size: 16);
 
         &--number {
-          list-style-position: inside;
           padding-left: 0;
         }
       }
