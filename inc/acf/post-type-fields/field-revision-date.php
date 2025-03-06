@@ -15,7 +15,7 @@ function hale_register_post_type_fields_revision_date()
       $post_types = get_post_types([], 'objects');
 
       foreach ($post_types as $key => $post_type) {
-          if (isset($post_type->revision_date)) {
+          if (isset($post_type->revision_date) && $post_type->revision_date == '1') {
           
             $post_type_name = $post_type->label;
             $post_type_key = $key;
