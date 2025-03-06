@@ -14,12 +14,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
-		if (array_key_exists('full-width-heading',$args)) {
-			$full_width_heading = $args['full-width-heading'];
-		} else {
-			$full_width_heading = false;
-		}
-		if ( is_singular()  && !$full_width_heading) :
+		if ( is_singular()) :
 			the_title( '<h1 class="govuk-heading-xl">', '</h1>' );
 		else :
 			the_title( '<h2 class="govuk-heading-l"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
