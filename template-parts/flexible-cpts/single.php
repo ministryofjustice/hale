@@ -8,7 +8,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
     <div class="flexible-post-type-header">
         <?php
-            $full_width_heading = hale_get_acf_field_status('full_width_heading');
+            $full_width_heading = $args['full-width-heading'];
             if (!$full_width_heading) {
                 the_title('<h1 class="flexible-post-type-title govuk-heading-xl">', '</h1>');
             }

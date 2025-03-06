@@ -18,7 +18,7 @@ get_header();
 		$show_toc_on_single_view = hale_get_acf_field_status('show_toc_on_single_view');
 		$number_headings = hale_get_acf_field_status('number_headings');
 
-		if ($full_width_heading) {
+		if ($full_width_heading && !is_singular('hearing')) {
 			get_template_part( 'template-parts/flexible-cpts/full-width-heading' );
 		}
 
@@ -38,13 +38,13 @@ get_header();
 				$allow_doc_upload_status = hale_get_acf_field_status('allow_document_upload');
 				
 				if ($allow_doc_upload_status === true) {
-					get_template_part( 'template-parts/content', 'documents' );
+					get_template_part( 'template-parts/content', 'documents', ['full-width-heading' => $full_width_heading] );
 				} 
 				elseif ( is_singular('hearing') ) {
-					get_template_part( 'template-parts/hearing-list/hearing-single');
+					get_template_part( 'template-parts/hearing-list/hearing-single'); //full-width-heading not used as per line 21
 				}
 				else {
-					get_template_part( 'template-parts/flexible-cpts/single');
+					get_template_part( 'template-parts/flexible-cpts/single', ['full-width-heading' => $full_width_heading] );
 				}
 
 			endwhile;
