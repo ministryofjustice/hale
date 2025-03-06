@@ -44,7 +44,7 @@ get_header();
 					get_template_part( 'template-parts/hearing-list/hearing-single'); //full-width-heading not used as per line 21
 				}
 				else {
-					get_template_part( 'template-parts/flexible-cpts/single', ['full-width-heading' => $full_width_heading] );
+					get_template_part( 'template-parts/flexible-cpts/single', false, ['full-width-heading' => $full_width_heading] );
 				}
 
 			endwhile;

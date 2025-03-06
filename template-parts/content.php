@@ -14,7 +14,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
-		$full_width_heading = $args['full-width-heading'];
+		if (array_key_exists('full-width-heading',$args)) {
+			$full_width_heading = $args['full-width-heading'];
+		} else {
+			$full_width_heading = false;
+		}
 		if ( is_singular()  && !$full_width_heading) :
 			the_title( '<h1 class="govuk-heading-xl">', '</h1>' );
 		else :
