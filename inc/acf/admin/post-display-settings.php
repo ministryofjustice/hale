@@ -51,6 +51,19 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 
     acf_render_field_wrap(
         array(
+            'label' => 'Show full width heading',
+            'instructions' => 'Moves the main page heading to the top of the page.',
+            'name'         => 'full_width_heading',
+            'value'        => isset( $acf_post_type['full_width_heading'] ) ? $acf_post_type['full_width_heading'] : false,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'full_width_heading',
+            'ui' => true,
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
             'label' => 'Show Table of Contents',
             'instructions' => 'Shows table of contents at the side.',
             'name'         => 'show_toc_on_single_view',
@@ -190,6 +203,10 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
     }
     else {
         $args['show_summary_on_single_view'] = true;
+    }
+
+    if ( isset( $post_type['full_width_heading'] ) ) {
+        $args['full_width_heading'] = $post_type['full_width_heading'];
     }
 
     if ( isset( $post_type['show_toc_on_single_view'] ) ) {
