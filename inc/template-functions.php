@@ -349,6 +349,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	$xpath = new DOMXPath($dom);
 	$tags = $xpath->query('//h2');
 	foreach($tags as $tag) {
+		$tag->setAttribute('class', "hale-toc-item");
 		$title = $tag->nodeValue;
 		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
 		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
@@ -375,17 +376,32 @@ function hale_get_ordered_content($content, $numbered_headings) {
 }
 
 /**
+ * This creates the print this page button
+ */
+
+	function hale_print_page_button($print = false) {
+		$print_button = "";
+		if ($print) {
+			$print_button_text = __("Print this page");
+			$print_button = "<div class='hale-print-button'><button class='govuk-button govuk-button--secondary hale-print-page' onClick='window.print()'>$print_button_text</button></div>";
+		}
+		return $print_button;
+	}
+
+/**
  * This funciton constructs a table of contents
  * from the number of H2s on the page, which it
  * gets from the above funciton
  */
 
- function hale_table_of_contents( $ordered = false) {
+ function hale_table_of_contents( $ordered = false, $print = false) {
 	$list_class = "";
 	// if it is ordered, the index uses an ordered list and the number is displayed
 	if ($ordered) {
 		$list_class = "govuk-list--number";
 	}
+
+	$print_button = hale_print_page_button($print);
 
 	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)["index"];
 
@@ -393,7 +409,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	$list_of_headings = "";
 	$count_headings = 0;
 	foreach ($index as $content_item) {
-		$list_of_headings .= '<li><a id="anchor-for-'.$content_item["id"].'" class="govuk-link" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
+		$list_of_headings .= '<li class="hale-table-of-contents__item"><a id="anchor-for-'.$content_item["id"].'" class="govuk-link govuk-link--no-visited-state" href="#'.$content_item["id"].'">'.$content_item["title"].'</a></li>';
 		$count_headings++;
 	}
 
@@ -406,8 +422,9 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	if ($count_headings > 25) $print_columns = "hale-print-col hale-print-col--3";
 
 	$toc = "<div id='table-of-contents' class='hale-table-of-contents'>
-			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-toc-heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
-			<ol class='govuk-list $list_class $print_columns'>$list_of_headings</ol>
+			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-table-of-contents__heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
+			<ol class='hale-table-of-contents__list govuk-list $list_class $print_columns'>$list_of_headings</ol>
+			$print_button
 		</div>";
 
 	return $toc;
