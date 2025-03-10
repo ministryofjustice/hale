@@ -49,6 +49,8 @@
 					['heading-text',$black,'Heading level text','',''],
 					['dark-text',$white,'Normal text on custom-set dark background','',''],
 					['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
+					['shaded-heading-text',$black,'Shaded heading level text','',''],
+					['shaded-heading-bg',$lightGrey,'Shaded heading shading','',''],
 				)
 			],
 			[

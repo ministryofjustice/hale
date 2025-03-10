@@ -64,7 +64,12 @@ if ($file) {
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('flexible-post-type-single')); ?>>
 	
 	<?php
-	the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
+	if (array_key_exists('full-width-heading',$args)) {
+		$full_width_heading = $args['full-width-heading'];
+	} else {
+		$full_width_heading = false;
+	}
+	if (!$full_width_heading) the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
 	?>
 
     <div class="flexible-post-type-published-date">
