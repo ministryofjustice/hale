@@ -842,8 +842,10 @@
 	}
 
 	.hale-table-of-contents__item--current {
-		background-color: var(--toc-current-item-shading);
-		border-left-color: var(--toc-current-item-border);
+		@include govuk-media-query($from: tablet, $media-type: screen) {
+			background-color: var(--toc-current-item-shading);
+			border-left-color: var(--toc-current-item-border);
+		}
 	}
 
 	@include hale-custom-shading-text-colours("has-black-background-color");
