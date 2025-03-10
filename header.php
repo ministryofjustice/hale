@@ -147,7 +147,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
       const grantButton = document.getElementById('cookie-accept'); 
       grantButton.addEventListener("click", function() {
         console.log('granting consent');
-    localStorage.setItem("consentGranted", "true");
+    localStorage.setItem("cookie_consent", "granted");
     function gtag() { dataLayer.push(arguments); }
 
     gtag('consent', 'update', {
@@ -161,7 +161,7 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
   const declineButton = document.getElementById('cookie-decline'); 
     declineButton.addEventListener("click", function() {
         console.log('decline consent');
-    localStorage.setItem("consentGranted", "true");
+   localStorage.setItem("cookie_consent", "denied");
     function gtag() { dataLayer.push(arguments); }
 
     gtag('consent', 'update', {
@@ -171,6 +171,23 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
       analytics_storage: 'denied'
     });
   });
+
+  window.onload = function () {
+        let consent = localStorage.getItem('cookie_consent');
+
+        // If a consent decision exists, ensure GTM gets the correct state
+        if (consent) {
+
+          gtag('consent', 'update', {
+            ad_user_data: consent,
+            ad_personalization: consent,
+            ad_storage: consent,
+            analytics_storage: consent
+          });
+  
+        }
+
+    };
 
   // Load Tag Manager script.
   var gtmScript = document.createElement('script');
