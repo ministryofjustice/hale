@@ -23,8 +23,31 @@
 	wp_head();
 	flush();
 	?>
+   <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500,
+  });
+  dataLayer.push({'gtm.start': new Date().getTime(), 'event': 'gtm.js'});
+  </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KSQ2X4W9');</script>
+<!-- End Google Tag Manager -->
 </head>
 <body <?php body_class(""); ?>>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSQ2X4W9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 <?php
 if ( ! function_exists( 'wp_body_open' ) ) {
@@ -115,6 +138,48 @@ echo '<header class="govuk-header hale-header ' . esc_attr( $header_search_class
     <?php } ?>
 </div>
 </header>
+<button class="ccfw-banner__button" id="cookie-accept" type="submit" aria-label="I am OK with cookies. Page will reload.">
+                    I am OK with cookies                </button>
+ <button class="ccfw-banner__button" id="cookie-decline" type="submit">
+                    Only use essential cookies                </button>
+
+ <script>
+      const grantButton = document.getElementById('cookie-accept'); 
+      grantButton.addEventListener("click", function() {
+        console.log('granting consent');
+    localStorage.setItem("consentGranted", "true");
+    function gtag() { dataLayer.push(arguments); }
+
+    gtag('consent', 'update', {
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      ad_storage: 'granted',
+      analytics_storage: 'granted'
+    });
+  });
+
+  const declineButton = document.getElementById('cookie-decline'); 
+    declineButton.addEventListener("click", function() {
+        console.log('decline consent');
+    localStorage.setItem("consentGranted", "true");
+    function gtag() { dataLayer.push(arguments); }
+
+    gtag('consent', 'update', {
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      ad_storage: 'denied',
+      analytics_storage: 'denied'
+    });
+  });
+
+  // Load Tag Manager script.
+  var gtmScript = document.createElement('script');
+  gtmScript.async = true;
+  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KSQ2X4W9';
+
+  var firstScript = document.getElementsByTagName('script')[0];
+  firstScript.parentNode.insertBefore(gtmScript,firstScript);
+  </script>
 <?php
 
 include "partials/information-banner.php";
