@@ -104,6 +104,7 @@ function hale_get_allowed_blocks(){
         'mojblocks/cta',
         'mojblocks/hero',
         'mojblocks/highlights-list',
+        'mojblocks/iframe',
         'mojblocks/quote',
         'mojblocks/reveal',
         'mojblocks/separator',
