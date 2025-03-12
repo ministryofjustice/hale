@@ -1173,12 +1173,19 @@ body.hale-colours-variable {
 			}
 		}
 
-		.widget_social_widget .hale-social-link:focus {
-			box-shadow:
-				-4px 0 var(--footer-link-focus-background),
-				4px 0 var(--footer-link-focus-background),
-				-4px 4px var(--footer-link-focus-shadow),
-				4px 4px var(--footer-link-focus-shadow);
+		.widget_social_widget .hale-social-link {
+
+			&:hover {
+				box-shadow: 0 4px var(--footer-link);
+			}
+
+			&:focus {
+				box-shadow:
+					-4px 0 var(--footer-link-focus-background),
+					4px 0 var(--footer-link-focus-background),
+					-4px 4px var(--footer-link-focus-shadow),
+					4px 4px var(--footer-link-focus-shadow);
+			}
 		}
 	}
 
