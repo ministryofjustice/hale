@@ -70,15 +70,17 @@ if ($file) {
 		$full_width_heading = false;
 	}
 	if (!$full_width_heading) the_title( '<h1 class="document-title govuk-heading-xl">', '</h1>' );
+
+	$show_published_date_on_single_view = hale_get_acf_field_status('show_published_date_on_single_view');
+	if ($show_published_date_on_single_view) :
 	?>
-
-    <div class="flexible-post-type-published-date">
-            <div class="flexible-post-type-published-date-label">Published: </div>
-            <?php hale_posted_on(); ?>
-    </div>
-
+		<div class="flexible-post-type-published-date">
+			<div class="flexible-post-type-published-date-label">Published: </div>
+			<?php hale_posted_on(); ?>
+		</div>
 	<?php 
-	
+	endif;
+
 	// Load array of CPTs and taxonomies
 	get_template_part( 'template-parts/flexible-cpts/details'); 
 	
