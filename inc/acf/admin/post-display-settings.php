@@ -73,14 +73,14 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             'key' => 'show_toc_on_single_view',
             'ui' => true,
             'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'post_toc',
-						'operator' => '==',
-						'value' => '1',
-					),
-				),
-			),
+                array(
+                    array(
+                        'field' => 'post_toc',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         )
     );
 
@@ -95,14 +95,36 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             'key' => 'number_headings',
             'ui' => true,
             'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'post_number_headings',
-						'operator' => '==',
-						'value' => '1',
-					),
-				),
-			),
+                array(
+                    array(
+                        'field' => 'post_number_headings',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+        )
+    );
+
+    acf_render_field_wrap(
+        array(
+            'label' => 'Show print this page button',
+            'instructions' => 'Adds a print this page button to the page.',
+            'name'         => 'print_button',
+            'value'        => isset( $acf_post_type['print_button'] ) ? $acf_post_type['print_button'] : false,
+            'prefix'       => 'acf_post_type',
+            'type' => 'true_false',
+            'key' => 'print_button',
+            'ui' => true,
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'post_print_button',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         )
     );
 
@@ -211,6 +233,10 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
 
     if ( isset( $post_type['show_toc_on_single_view'] ) ) {
         $args['show_toc_on_single_view'] = $post_type['show_toc_on_single_view'];
+    }
+
+    if ( isset( $post_type['print_button'] ) ) {
+        $args['print_button'] = $post_type['print_button'];
     }
 
     if ( isset( $post_type['number_headings'] ) ) {

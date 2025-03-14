@@ -22,10 +22,10 @@ function emailWarning($unset_colours,$custom_colours_found,$max,$location,) {
 			$subject = "Warning: Production site № $site№ colours have failed";
 		} elseif ($env == "prod") {
 			// Send condition 2: A production site has some unset colours - but it isn't thought to be a major issue.
-			$subject = "Notice: Undeclared colours on production site № $site№";
+			// $subject = "Notice: Undeclared colours on production site № $site№";
 		} elseif (!$custom_colours_found && $env != "local") {
 			// Send condition 3: Any other (non-local) site has utterly failed to retrieve any colours
-			$subject = "Notice: Site № $site№ colours have failed ($env)";
+			// $subject = "Notice: Site № $site№ colours have failed ($env)";
 		} else {
 			// For testing, add something in here to set a subject and set the email to your own email.
 			// $email = "xxxxx.yyyyy@digital.justice.gov.uk";
