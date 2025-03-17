@@ -454,9 +454,10 @@
   }
 }
 
-// Table of contents styling
+// Table of contents styling (including print this page button)
 
 @include govuk-media-query($from: tablet) {
+  #solo-print,
   #toc {
     position: sticky;
     top: 2rem;
@@ -466,26 +467,68 @@
     display: none;
   }
 
-  ol {
+  .hale-table-of-contents__list {
     list-style-position: inside;
   }
 }
 
 .hale-table-of-contents {
-  @include govuk-media-query($from: tablet, $media-type: screen) {
-    max-height: 100vh;
-    overflow-y: scroll;
+  padding-bottom: 1.1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid;
+
+  @include govuk-media-query($media-type: print) {
+    border-bottom: none;
   }
-  @include govuk-media-query($from: desktop) {
-    padding: 0.5rem 0.5rem 1.1rem 0rem;
-    //top padding to bring in line with large H1
-    ol {
-      @include govuk-font-size($size: 16);
-      margin-bottom: 0;
+
+  @include govuk-media-query($from: tablet, $media-type: screen) {
+    max-height: 97vh;
+    overflow-y: auto;
+    padding: 0.5rem 0.5rem 1.1rem 0;
+    margin-left: -15px;
+    border-bottom: none;
+
+    &__heading {
+      padding-left: 15px;
+    }
+
+    &__list {
+      margin-bottom: 2rem;
+
+      &.govuk-list {
+        @include govuk-font-size($size: 16);
+
+        &--number {
+          padding-left: 0;
+        }
+      }
+    }
+    &__item {
+      padding-left: 15px;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+
+      &--current {
+        padding-left: 10px;
+        border-left: 5px solid;
+      }
     }
   }
-  li {
-    padding: 0.2rem 0;
+}
+
+.hale-print-button {
+  display: none;
+
+  &:is(.js-enabled *) {
+    @include govuk-media-query($media-type: screen) {
+      display: block;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .hale-print-page:is(#toc *) {
+      margin-left:15px;
+    }
   }
 }
 

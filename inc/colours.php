@@ -140,6 +140,15 @@
 				)
 			],
 			[
+				"section_name" => "Table of Contents",
+				"id" => "toc",
+				"description" => "",
+				"colours" => array(
+					['toc-current-item-shading',$lightGrey,'Current item shading','',''],
+					['toc-current-item-border',$blue,'Current item marker','The little line that appears next to the current item',''],
+				)
+			],
+			[
 				"section_name" => "Backgrounds and chapters",
 				"id" => "pages",
 				"description" => "",
