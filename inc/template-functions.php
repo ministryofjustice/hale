@@ -153,7 +153,7 @@ function hale_get_branding_class() {
 	if (!$custom_colours_set) {
 		$style_class = " hale-colours-gds-standard";
 	} else {
-		$style_class = " hale-colours-variable";
+		$style_class = " hale-colours-customised";
 	}
 	if (is_front_page()) {
 		$style_class .= " hale-landing-page";
