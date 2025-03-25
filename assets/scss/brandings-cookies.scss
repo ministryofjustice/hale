@@ -1,5 +1,49 @@
-*{
-	//cookie banner styling
+//cookie banner styling
+
+#save-cookies-button {
+	background-color: var(--cookie-button-bg);
+	color: var(--cookie-button-text);
+	-webkit-text-fill-color: var(--cookie-button-text);
+
+	&:hover {
+		background-color: var(--cookie-button-hover-bg);
+		color: var(--cookie-button-hover-text);
+		-webkit-text-fill-color: var(--cookie-button-hover-text);
+	}
+
+	&:focus:hover,&:active,&:focus:not(:hover) {
+		background-color: var(--cookie-button-focus-bg);
+		color: var(--cookie-button-focus-text);
+		-webkit-text-fill-color: var(--cookie-button-focus-text);
+	}
+}
+
+#cookie-compliance-banner {
+	button {
+		@extend #save-cookies-button;
+	}
+	a {
+		color: var(--link);
+		-webkit-text-fill-color: var(--link);
+
+		&:hover {
+			color: var(--link-hover);
+			-webkit-text-fill-color: var(--link-hover);
+		}
+
+		&:focus {
+			color: var(--link-focus);
+			-webkit-text-fill-color: var(--link-focus);
+			background-color: var(--link-focus-background);
+			border: none;
+			outline: 4px solid transparent;
+			box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
+		}
+	}
+}
+* {
+
+
 	#ccfw-page-banner {
 		.ccfw-banner__button:not(.ccfw-banner__button--close) {
 			background-color: var(--cookie-button-bg);
