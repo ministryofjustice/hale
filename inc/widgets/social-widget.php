@@ -20,7 +20,7 @@ class social_widget extends WP_Widget {
             echo $args['before_title'] . $title . $args['after_title'];
 
         if ( ! empty( $instance['blog_url'] ) ){
-            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['blog_url']  . '"><span class="govuk-visually-hidden">Blog</span><i class="blog ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
+            echo '<a class="govuk-footer__link hale-social-link" href="' . $instance['blog_url']  . '"><span class="govuk-visually-hidden">Blog</span><i class="blog-icon ' . $harmonized_icons . '" aria-hidden="true"></i></a>';
         }
 
         if ( ! empty( $instance['facebook_url'] ) ){
