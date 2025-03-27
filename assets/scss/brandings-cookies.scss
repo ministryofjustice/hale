@@ -41,6 +41,28 @@
 		}
 	}
 }
+
+#cookie-settings-page {
+	a.cookie-link {
+		color: var(--link);
+		-webkit-text-fill-color: var(--link);
+
+		&:hover {
+			color: var(--link-hover);
+			-webkit-text-fill-color: var(--link-hover);
+		}
+
+		&:focus {
+			color: var(--link-focus);
+			-webkit-text-fill-color: var(--link-focus);
+			background-color: var(--link-focus-background);
+			border: none;
+			outline: 4px solid transparent;
+			box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
+		}
+	}
+}
+
 * {
 
 
