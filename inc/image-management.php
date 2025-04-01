@@ -31,3 +31,13 @@ function hale_add_custom_image_size_name( $size_names ) {
 
     return $size_names;
 }
+
+add_filter( 'upload_mimes', 'hale_allow_svg' );
+
+function hale_allow_svg( $mimes ) {
+    
+    $mimes['svg']  = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+
+    return $mimes;
+}
