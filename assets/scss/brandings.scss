@@ -1070,32 +1070,8 @@ body.hale-colours-customised {
 
 	.hale-search-header,
 	.page-header-section {
-
-		position: relative;
-		padding: 0.2em 0;
-		margin-bottom: 2rem;
-
-		&:before {
-			@extend .hale-shaded; // gets the shading colour
-			position: absolute;
-			content: "";
-			left: 50%;
-			width: 200vw;
-			height: calc(100% + 0.6em);
-			z-index: -1;
-			display: block;
-			overflow: visible;
-			transform: translate(-50%, -0.3em);
-
-			@media (hover: none) and (pointer: coarse) {
-				display: none;
-			}
-		}
-
-		>* {
-			position: relative;
-			top: 1rem;
-		}
+		background-color: var(--title-shading);
+		box-shadow: 0vw 0px 0 15px var(--title-shading), 50vw 0px 0 15px var(--title-shading), -50vw 0px 0 15px var(--title-shading);
 	}
 
 	/* Category Navigation */
@@ -1113,13 +1089,6 @@ body.hale-colours-customised {
 
 	&.page-body-colour {
 		background-color: var(--title-shading);
-
-		.hale-search-header,
-		.page-header-section {
-			&:before {
-				content: none;
-			}
-		}
 	}
 
 	.gem-c-pagination__item {
