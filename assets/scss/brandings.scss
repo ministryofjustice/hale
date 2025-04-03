@@ -1071,7 +1071,14 @@ body.hale-colours-customised {
 	.hale-search-header,
 	.page-header-section {
 		background-color: var(--title-shading);
-		box-shadow: 0vw 0px 0 15px var(--title-shading), 50vw 0px 0 15px var(--title-shading), -50vw 0px 0 15px var(--title-shading);
+		box-shadow: 0 0 0 15px var(--title-shading),
+					300px 0px 0 15px var(--title-shading), -300px 0px 0 15px var(--title-shading),
+					600px 0px 0 15px var(--title-shading), -600px 0px 0 15px var(--title-shading),
+					900px 0px 0 15px var(--title-shading), -900px 0px 0 15px var(--title-shading),
+					1200px 0px 0 15px var(--title-shading), -1200px 0px 0 15px var(--title-shading),
+					1500px 0px 0 15px var(--title-shading), -1500px 0px 0 15px var(--title-shading),
+					1800px 0px 0 15px var(--title-shading), -1800px 0px 0 15px var(--title-shading),
+					2100px 0px 0 15px var(--title-shading), -2100px 0px 0 15px var(--title-shading);
 	}
 
 	/* Category Navigation */
