@@ -15,8 +15,6 @@
 				// Set the Aria controls to be the same as the (new) content ID
 				// This was the only thing being incremented by PHP, but was still insufficient for many accordions per page
 				haleAllAccordionHeadings[i].closest(".govuk-accordion__section-button").setAttribute("aria-controls", "hale-accordion-content-" + (i+1));
-				// Set the content Aria label to the (new) heading ID
-				haleAllAccordionContentArray[i].setAttribute("aria-labelledby", "hale-accordion-heading-" + (i+1));
 			}
 		}
 
