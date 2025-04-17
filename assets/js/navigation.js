@@ -260,7 +260,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	const $desktopSubMenuButton = $('<button class="hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
 
 	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
-	$desktopSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > a");
+	$desktopSubMenuButton.insertAfter("#menu-menu-top-menu li.menu-item-has-children > a");
 
 	//Keyboard functionailty (requires mouse functionality)
 	$(".hale-header__dropdown-arrow").keydown(function(e){
