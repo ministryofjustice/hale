@@ -43,13 +43,13 @@ while (have_posts()) :
                 <div class="listing-search-section">
                     <div class="listing-search-form">
                         <form action="<?= esc_url(get_permalink()); ?>" method="GET">
-                            <div class="govuk-form-group govuk-!-margin-bottom-7">
-                                <label for="listing-search-field" class="govuk-label govuk-!-margin-top-0">
+                            <div class="govuk-form-group govuk-!-margin-bottom-4">
+                                <label for="listing-search-field" class="govuk-visually-hidden">
                                     <?php _e('Search', 'hale'); ?>
                                 </label>
                                 <input class="govuk-input" id="listing-search-field" name="listing_search"
                                        value="<?= esc_attr($listing_search_text); ?>" type="search"
-                                >
+                                       placeholder="<?php _e('Search', 'hale'); ?>">
                             </div>
 
                             <div class="listing-filter-field-wrapper">
