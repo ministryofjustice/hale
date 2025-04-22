@@ -1,6 +1,6 @@
 <?php
 
-function emailWarning($unset_colours,$custom_colours_found,$max,$location,$CSS_string = "") {
+function emailWarning($unset_colours,$custom_colours_found,$max,$location,) {
 	/**
 	 * $unset_colours [array] colour IDs which weren't set
 	 * $custom_colours_found [int] number of colours set
@@ -55,10 +55,6 @@ function emailWarning($unset_colours,$custom_colours_found,$max,$location,$CSS_s
 			$message .= "## Other info\r\n";
 			$message .= "This message was triggered from `$location`.\r\n\r\n";
 			$message .= "URI: `$uri`.\r\n\r\n";
-			if ($location == "colours.php") {
-				$CSS_length = strlen($CSS_string);
-				$message .= "Analyzed CSS file contents [length: $CSS_length chars] (this is the CSS which would have been searched causing the error being noticed): \r\n $CSS_string \r\n\r\n";
-			}
 			wp_mail($email, $subject, $message);
 		}
 	}
