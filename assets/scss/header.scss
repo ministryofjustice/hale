@@ -1,6 +1,11 @@
 .hale-header {
   padding-top: 2px; //wee bit of space above the logo
 
+  + div {
+    margin-top: 15px;
+    padding-top: 1.5rem;
+  }
+
   .govuk-header__logotype-text {
 
     @extend .govuk-header__link--homepage;
