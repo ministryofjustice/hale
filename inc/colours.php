@@ -485,7 +485,7 @@
 				 * This next bit emails warnings about unset colours
 				 */
 				require_once get_template_directory() . '/inc/colour-email-warning.php';
-				emailWarning($missing_colour_array,$found_colour_count,$i,"colours.php");
+				emailWarning($missing_colour_array,$found_colour_count,$i,"colours.php",$CSS_string);
 			} else {
 				//if there are no missing colours, nothing needs to be done.
 				//but we still touch the file so the surrounding if statement is not triggered and we don't have to do the get_file_contents each time
