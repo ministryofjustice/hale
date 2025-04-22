@@ -1,3 +1,12 @@
+html {
+  /*
+  * This is a fix for  tiny amounts of horizontal scrolling experienced on mobile.
+  * Overflow hidden might break position sticky so we cannot use that.
+  */
+  overflow-x: clip;
+}
+
+
 .hale-secondary-text {
   color:$govuk-secondary-text-colour;
 }
@@ -12,7 +21,7 @@
 }
 
 .govuk-breadcrumbs {
-  padding: 0.7em 0;
+  padding: 0.7rem 0;
 
   &__list {
     &-item {
