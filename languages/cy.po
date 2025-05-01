@@ -20075,7 +20075,12 @@ msgstr "Chwilio %s"
 msgid "Published:"
 msgstr "Cyhoeddwyd:"
 
-# 
+# hale/page-listing.php
 # Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
 msgid "Filters"
 msgstr "Hidlyddion"
+
+# hale/search.php
+# Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
+msgid "for %s"
+msgstr "ar gyfer %s"
