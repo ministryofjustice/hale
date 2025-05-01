@@ -24,6 +24,11 @@ while (have_posts()) :
 
     // Check if documents are restricted
     $restrict_documents = get_post_meta(get_the_ID(), 'restrict_documents', true);
+
+    // Get name of post type for search box
+    $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
+    $post_type_obj = get_post_type_object( $listing_post_type );
+    $flex_cpt_name_plural = strtolower($post_type_obj->labels->name);
     ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
@@ -43,13 +48,13 @@ while (have_posts()) :
                 <div class="listing-search-section">
                     <div class="listing-search-form">
                         <form action="<?= esc_url(get_permalink()); ?>" method="GET">
-                            <div class="govuk-form-group govuk-!-margin-bottom-4">
-                                <label for="listing-search-field" class="govuk-visually-hidden">
-                                    <?php _e('Search', 'hale'); ?>
+                            <div class="govuk-form-group govuk-!-margin-bottom-7">
+                                <label for="listing-search-field" class="govuk-label govuk-!-margin-top-0">
+                                    <?php printf(__('Search %s', 'hale'),$flex_cpt_name_plural); ?>
                                 </label>
                                 <input class="govuk-input" id="listing-search-field" name="listing_search"
                                        value="<?= esc_attr($listing_search_text); ?>" type="search"
-                                       placeholder="<?php _e('Search', 'hale'); ?>">
+                                >
                             </div>
 
                             <div class="listing-filter-field-wrapper">

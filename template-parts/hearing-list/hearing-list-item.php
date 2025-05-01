@@ -58,7 +58,7 @@
                     <div class="list-item-detail detail-<?php echo $field['name']; ?>">
                         <?php if(!empty($field['label'])){ ?>
                             <div class="list-item-detail-label">
-                                <?php echo $field['label']; ?>:
+                                <?php echo __($field['label'],'hale'); ?>:
                             </div>
                         <?php }?>
                         <?php echo $field_value; ?>

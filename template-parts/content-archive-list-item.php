@@ -17,7 +17,7 @@ $post_summary = get_field('post_summary');
 
     <div class="archive-item-detail">
         <div class="archive-published-date">
-            <span class="archive-item-detail-label">Published:</span>
+            <span class="archive-item-detail-label"><?php _e("Published:",'hale');?></span>
             <?= hale_posted_on(); ?>
         </div>
     </div>

@@ -20064,3 +20064,28 @@ msgstr "Dim canlyniadau"
 # Translation from Welsh Gov (https://www.llyw.cymru/chwilio?globalkeywords=ywasdaS)
 msgid "Please try again with some different keywords."
 msgstr "Chwilio eto gan ddefnyddio geiriau gwahanol."
+
+# hale/page-listing.php
+# Translation adapted from existing translation here
+msgid "Search %s"
+msgstr "Chwilio %s"
+
+# Listing pages
+# Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
+msgid "Published:"
+msgstr "Cyhoeddwyd:"
+
+# hale/page-listing.php
+# Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
+msgid "Filters"
+msgstr "Hidlyddion"
+
+# hale/search.php
+# Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
+msgid "for %s"
+msgstr "ar gyfer %s"
+
+# hale/search.php
+# Translation from Bridgend council site (https://www.bridgend.ac.uk/?lang=cy)
+msgid "Search website"
+msgstr "Chwiliwch y wefan hon"
