@@ -20084,3 +20084,8 @@ msgstr "Hidlyddion"
 # Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
 msgid "for %s"
 msgstr "ar gyfer %s"
+
+# hale/search.php
+# Translation from Bridgend council site (https://www.bridgend.ac.uk/?lang=cy)
+msgid "Search website"
+msgstr "Chwiliwch y wefan hon"

@@ -52,12 +52,12 @@ if ($args['header'] == true) {
 	<div class="hale-header__search-wrap" <?php echo esc_attr( $wrap_search ); ?>>
 		<form class="hale-header__search-form hale-search-invisible-contrast-correction" <?php echo esc_attr( $search_form ); ?> action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
 			<label class="govuk-visually-hidden hale-search__hidden-search-label" for="<?php echo esc_attr( $search_field ); ?>"><?php esc_html_e( 'Search this website', 'hale' ); ?></label>
-			<input class="hale-search__input govuk-input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search', 'hale' ); ?>" value="<?php esc_html_e($query);?>">
+			<input class="hale-search__input govuk-input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search website', 'hale' ); ?>" value="<?php esc_html_e($query);?>">
 			<button class="hale-search__submit govuk-button govuk-button--secondary" type="submit">
 				<svg class="hale-icon hale-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 					<path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
 				</svg>
-				<span class="govuk-visually-hidden"><?php esc_html_e( 'Search', 'hale' ); ?></span>
+				<span class="govuk-visually-hidden"><?php esc_html_e( 'Search website', 'hale' ); ?></span>
 			</button>
 		</form>
 	</div>
@@ -69,9 +69,9 @@ if ($args['header'] == true) {
 	<div class="hale-search" <?php echo esc_attr( $wrap_search ); ?>>
 		<form class="hale-search__search-form hale-search-invisible-contrast-correction" <?php echo esc_attr( $search_form ); ?> action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
 			<label class="govuk-visually-hidden hale-search__hidden-search-label" for="<?php echo esc_attr( $search_field ); ?>"><?php esc_html_e( 'Search this website', 'hale' ); ?></label>
-			<input class="hale-search__input govuk-input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search', 'hale' ); ?>" value="<?php esc_html_e($query);?>">
+			<input class="hale-search__input govuk-input" id="<?php echo esc_attr( $search_field ); ?>" name="s" type="search" placeholder="<?php echo esc_attr__( 'Search website', 'hale' ); ?>" value="<?php esc_html_e($query);?>">
 			<button class="hale-search__submit govuk-button govuk-button--secondary" type="submit">
-				<span class="hale-search__button-text"><?php esc_html_e( 'Search', 'hale' ); ?></span>
+				<span class="hale-search__button-text"><?php esc_html_e( 'Search website', 'hale' ); ?></span>
 			</button>
 		</form>
 	</div>
