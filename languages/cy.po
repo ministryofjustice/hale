@@ -20064,3 +20064,8 @@ msgstr "Dim canlyniadau"
 # Translation from Welsh Gov (https://www.llyw.cymru/chwilio?globalkeywords=ywasdaS)
 msgid "Please try again with some different keywords."
 msgstr "Chwilio eto gan ddefnyddio geiriau gwahanol."
+
+# hale/page-listing.php
+# Translation adapted from existing translation here
+msgid "Search %s"
+msgstr "Chwilio %s"
