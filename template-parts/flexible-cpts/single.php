@@ -24,7 +24,7 @@
     if($show_published_date_on_single_view) {
     ?>
         <div class="flexible-post-type-published-date">
-                <div class="flexible-post-type-published-date-label">Published: </div>
+                <div class="flexible-post-type-published-date-label"><?php _e("Published:",'hale');?> </div>
                 <?php hale_posted_on(); ?>
         </div>
     <?php } ?>

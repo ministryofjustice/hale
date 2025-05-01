@@ -20069,3 +20069,8 @@ msgstr "Chwilio eto gan ddefnyddio geiriau gwahanol."
 # Translation adapted from existing translation here
 msgid "Search %s"
 msgstr "Chwilio %s"
+
+# Listing pages
+# Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
+msgid "Published:"
+msgstr "Cyhoeddwyd:"

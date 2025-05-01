@@ -28,7 +28,7 @@ while (have_posts()) :
     // Get name of post type for search box
     $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
     $post_type_obj = get_post_type_object( $listing_post_type );
-    $flex_cpt_name_plural = lcfirst($post_type_obj->labels->name);
+    $flex_cpt_name_plural = strtolower($post_type_obj->labels->name);
     ?>
 
     <div id="primary" class="govuk-grid-column-full-from-desktop">
