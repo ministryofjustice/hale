@@ -20074,3 +20074,8 @@ msgstr "Chwilio %s"
 # Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
 msgid "Published:"
 msgstr "Cyhoeddwyd:"
+
+# 
+# Translation from Welsh Police site (https://www.south-wales.police.uk/cy-GB/news/chwilio-newyddion/?ct=Apeliadau)
+msgid "Filters"
+msgstr "Hidlyddion"
