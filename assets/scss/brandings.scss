@@ -581,6 +581,10 @@
 									border-bottom-color: currentColor;
 
 									@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg, $width: desktop);
+
+									&:not(:focus):not(:active) {
+										color: var(--header-submenu-link-hover);
+									}
 								}
 
 								&:focus:hover,
