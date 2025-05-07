@@ -87,7 +87,7 @@ get_header();
                 $u_time = get_the_time('U');
                 $u_modified_time = get_the_modified_time('U');
                 echo "<p class='govuk-body hale-search-results__last-updated-date'>";
-                echo "Published: " . get_the_date();
+                echo __('Published:', 'hale' )." ".get_the_date();
                 echo "</p> ";
               ?>
 						</div>
