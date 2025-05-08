@@ -245,6 +245,25 @@ function hale_breadcrumb() {
 
 								}
 							}
+
+							if ( is_single()) {
+
+								//Custom set parent page for flexible cpt
+								$parent_page_id = hale_get_post_type_setting('breadcrumb_parent_page'); 
+
+								if(!empty($parent_page_id)){
+									?>
+									<li class="govuk-breadcrumbs__list-item">
+										<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( get_permalink( $parent_page_id ) ); ?>">
+											<?php echo get_the_title( $parent_page_id ); ?>
+										</a>
+									</li>
+									<?php
+									$back_one_level = array( get_permalink( $parent_page_id ), get_the_title( $parent_page_id ) );
+
+								}
+								
+							}
 							if ( ! ( is_archive() || is_category() || is_post_type_archive() || is_search() || is_404() ) ) {
 
 								?>
