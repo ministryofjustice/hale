@@ -165,7 +165,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
     );
 
 
-    echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Breadcrumnb</label></div>';
+    echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Breadcrumb</label></div>';
     echo '<div class="acf-field acf-field-seperator" data-type="seperator" style="margin-top: 15px;"></div>';
     
 
