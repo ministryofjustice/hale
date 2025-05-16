@@ -1,7 +1,7 @@
 .hale-header {
   padding-top: 2px; //wee bit of space above the logo
 
-  + div {
+  + div:not(.info-banner) {
     margin-top: 15px;
     padding-top: 1.5rem;
   }
