@@ -98,6 +98,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
 
         if ($has_subtopics) {
             $disabled_subtopics = 'disabled="disabled"';
+            $subtopic_wrapper_classes = 'govuk-visually-hidden';
 
             $sub_topics = [];
 
@@ -110,6 +111,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
 
                 if (!empty($sub_topics)) {
                     $disabled_subtopics = '';
+                    $subtopic_wrapper_classes = '';
                 }
             }
 
@@ -123,7 +125,10 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                 $subfilter_label = "Sub-topic";
             }
 
+
+            $wrapper_id = $child_class_name . '-wrapper';
             
+            echo '<div id="' . $wrapper_id . '"class="' . $subtopic_wrapper_classes . '">';
             echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($subfilter_label) . '</label>';
             echo '<select name="' . esc_attr($subtopic_query_var) . '" id="' . esc_attr($child_class_name) . '" class="govuk-select filter-subtopic" ' . $disabled_subtopics . '>';
             echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>Select option</option>';
@@ -134,6 +139,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                 echo '</option>';
             }
             echo '</select>';
+            echo '</div>';
         }
     }
 }
