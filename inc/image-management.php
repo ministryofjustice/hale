@@ -8,8 +8,11 @@
  * @version   1.0
  */
 
-// Add new image size to theme, 1366x683 pixels, aspect ratio 2:1, crop = true
+// Add new image size to theme, 1366 × 683 pixels, aspect ratio 2:1, crop = true
 add_image_size( 'hero', 1366, 683, true );
+
+// Add new image size to theme, 960 × 540 pixels, aspect ratio 16:9, crop = true
+add_image_size( 'largish_16x9', 960, 540, true );
 
 add_filter( 'image_size_names_choose', 'hale_add_custom_image_size_name' );
 /**
