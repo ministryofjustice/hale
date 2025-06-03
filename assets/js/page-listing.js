@@ -12,6 +12,7 @@ jQuery(document).ready(function ($) {
       if (termsWithParents.length > 0) {
         populateSubTopics(childClass, termsWithParents);
         $(childClass).prop('disabled', false);
+        $(childClass+'-wrapper').removeClass('govuk-visually-hidden');
       } else {
         resetSubTopics(childClass);
       }
@@ -52,6 +53,7 @@ jQuery(document).ready(function ($) {
     $(childClass).empty();
     $(childClass).append(new Option("Select option", ""));
     $(childClass).prop('disabled', true); // Disable the dropdown by default
+    $(childClass+'-wrapper').addClass('govuk-visually-hidden');
   }
 
   // Attach change event listeners to each parent topic dropdown
