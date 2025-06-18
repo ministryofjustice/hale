@@ -450,7 +450,7 @@
 		$CSSfileURL = $CSSpath."/custom-colours.css";
 		$ColourFileURL = get_template_directory()."/inc/colours.php";
 
-		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL)) {
+		if (filemtime($CSSfileURL) <= filemtime($ColourFileURL) && !empty(filemtime($CSSfileURL)) && !empty(filemtime($ColourFileURL))) {
 			//The colours CSS for this site is older than the last colours build - doesn't necessarily mean that the CSS is incomplete
 			//But if the colours CSS is newer, that means the colours have been set since the last update and the error cannot occur
 			$missing_colours = "";
@@ -458,40 +458,45 @@
 			$missing_colour_array = [];
 			$colour_array = hale_get_colours();
 			$CSS_string = file_get_contents($CSSfileURL);
-			for ($i=0;$i<count($colour_array);$i++) {
-				if (strpos($CSS_string, $colour_array[$i][0]) === false) {
-					trigger_error("Colour not found: ".$colour_array[$i][0]." auto-creating colour, set to default (".$colour_array[$i][1].")");
-					//we add the missing colour variable with default value to missing colour string
-					$missing_colours .= "\t--".$colour_array[$i][0].": ".$colour_array[$i][1].";\n";
 
-					//add the missing colour to the array
-					$missing_colour_array[] = $colour_array[$i][0];
+			if (!empty($CSS_string)) {
+				for ($i=0;$i<count($colour_array);$i++) {
+					if (strpos($CSS_string, $colour_array[$i][0]) === false) {
+						trigger_error("Colour not found: ".$colour_array[$i][0]." auto-creating colour, set to default (".$colour_array[$i][1].")");
+						//we add the missing colour variable with default value to missing colour string
+						$missing_colours .= "\t--".$colour_array[$i][0].": ".$colour_array[$i][1].";\n";
+
+						//add the missing colour to the array
+						$missing_colour_array[] = $colour_array[$i][0];
+					} else {
+						$found_colour_count++;
+					}
+				}
+				if ($missing_colours != "") {
+					if (file_exists($CSSpath)) {
+						$css_file = fopen($CSSfileURL, "a");
+						// We only do this step if the directory is either found or created
+						// Append the new CSS to the end of the file
+						fwrite($css_file, ":root {\n");
+						fwrite($css_file, $missing_colours);
+						fwrite($css_file, "}");
+						fclose($css_file);
+					}
+
+					/********
+					 * This next bit emails warnings about unset colours
+					 */
+					require_once get_template_directory() . '/inc/colour-email-warning.php';
+					emailWarning($missing_colour_array,$found_colour_count,$i,"colours.php",$CSS_string);
 				} else {
-					$found_colour_count++;
+					//if there are no missing colours, nothing needs to be done.
+					//but we still touch the file so the surrounding if statement is not triggered and we don't have to do the get_file_contents each time
+					touch($CSSfileURL);
 				}
-			}
-			if ($missing_colours != "") {
-				if (file_exists($CSSpath)) {
-					$css_file = fopen($CSSfileURL, "a");
-					// We only do this step if the directory is either found or created
-					// Append the new CSS to the end of the file
-					fwrite($css_file, ":root {\n");
-					fwrite($css_file, $missing_colours);
-					fwrite($css_file, "}");
-					fclose($css_file);
-				}
-
-				/********
-				 * This next bit emails warnings about unset colours
-				 */
-				require_once get_template_directory() . '/inc/colour-email-warning.php';
-				emailWarning($missing_colour_array,$found_colour_count,$i,"colours.php",$CSS_string);
-			} else {
-				//if there are no missing colours, nothing needs to be done.
-				//but we still touch the file so the surrounding if statement is not triggered and we don't have to do the get_file_contents each time
-				touch($CSSfileURL);
 			}
 		}
 	}
 
-	hale_new_colour_check();
+	//Not calling this function as it has occastionally wiped the colours from the page.
+	//If needed (e.g. if new colours added), comment back in the below temproarily.
+	//hale_new_colour_check();
