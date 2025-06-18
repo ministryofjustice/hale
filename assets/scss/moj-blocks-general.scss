@@ -10,6 +10,7 @@
     @extend .govuk-link;
   }
   ul:not([class]), ul[class=""],
+  ul.wp-block-list,
   ul.is-style-default,
   ul.is-style-wide {
     //deals with any lists that aren't classed
@@ -21,6 +22,7 @@
     }
   }
   ol:not([class]), ol[class=""],
+  ol.wp-block-list,
   ol.is-style-default,
   ol.is-style-wide {
     //deals with any numbered lists that aren't classed
