@@ -68,4 +68,60 @@
       }
     }
   }
+
+
+  // Date Picker styles 
+  .moj-datepicker {
+
+    input {
+      max-width: 100%;
+    }
+    .moj-datepicker__toggle{
+      box-sizing: border-box;
+      //background: #505471;
+
+    }
+
+    button.govuk-button--secondary.moj-js-datepicker-cancel {
+      background-color: white;
+      border: none;
+      color: var(--link);
+      text-decoration: underline;
+      padding: 0;
+
+      &:hover:not(:focus) {
+        color: var(--link-hover);
+      }
+
+      &:focus, &:focus:not(:hover):not(:active) {
+        color: var(--link-focus);
+        background-color: var(--link-focus-background);
+        text-decoration: none;
+        box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+        outline: 3px solid transparent;
+      }
+
+    }
+  }
+
+  .moj-datepicker__calendar {
+      tbody:focus-within{ outline: none }
+
+      .moj-datepicker__button {
+      &.moj-datepicker__button--selected{
+        background: #4E5574;
+        outline: #4E5574;
+        color: #FFF;
+        
+        &:hover {
+          color: #FFF;
+        }
+        &:not(:focus):after {
+          background: #4E5574;
+        }
+      }
+      }
+  }
+
+  
 }

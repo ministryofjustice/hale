@@ -73,27 +73,116 @@ if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
-        // Create an array of what taxonomies have been selected in dropdown
-        hale_add_filter_term_if_exists($filter, $listing_active_filters);
+        if (taxonomy_exists($filter)) {
+            // Create an array of what taxonomies have been selected in dropdown
+            hale_add_filter_term_if_exists($filter, $listing_active_filters);
 
-        //Filters
-        if(!empty($listing_active_filters)){
+            //Filters
+            if(!empty($listing_active_filters)){
 
-            foreach($listing_active_filters as $active_filter){
-                $tax_qry_ary[] = array(
-                    'taxonomy' => $active_filter['taxonomy'],
-                    'field' => 'term_id',
-                    'terms' => $active_filter['value']
-                );
+                foreach($listing_active_filters as $active_filter){
+                    $tax_qry_ary[] = array(
+                        'taxonomy' => $active_filter['taxonomy'],
+                        'field' => 'term_id',
+                        'terms' => $active_filter['value']
+                    );
+                }
             }
         }
+        else if($filter == 'published-date'){
+
+            $start_date = hale_validate_date(get_query_var('date_published_from_date'));
+            $end_date = hale_validate_date(get_query_var('date_published_to_date'));
+
+            if (!empty($start_date) || !empty($end_date)) {
+                if ($start_date && $end_date && $end_date < $start_date) {
+                    // Swap dates if the end date is before the start date
+                    [$start_date, $end_date] = [$end_date, $start_date];
+                }
+
+                $date_query = [
+                    'inclusive' => true, // Include the boundaries
+                ];
+                if (!empty($start_date)) {
+                    $date_query['after'] = date('Y-m-d', $start_date);
+                }
+                if (!empty($end_date)) {
+                    $date_query['before'] = date('Y-m-d', $end_date);
+                }
+
+                $listing_args['date_query'] = $date_query;
+            }
+        }
+        else if(str_starts_with($filter, "meta-")){
+            //METAFIELDS
+            $field_name = str_replace("meta-", "", $filter);
+
+            $start_date = hale_validate_date(get_query_var($field_name . "_from_date"));
+            $end_date = hale_validate_date(get_query_var($field_name  . "_to_date"));
+
+            if (!empty($start_date) || !empty($end_date)) {
+                if ($start_date && $end_date && $end_date < $start_date) {
+                    // Swap dates if the end date is before the start date
+                    [$start_date, $end_date] = [$end_date, $start_date];
+                }
+
+                if (!empty($start_date) && !empty($end_date)) {
+                    $listing_args['meta_query'][] = [
+                        'key'     => $field_name,
+                        'value'   => [ date('Ymd', $start_date), date('Ymd', $end_date)],
+                        'compare' => 'BETWEEN',
+                        'type'    => 'NUMERIC'
+                    ];
+                }
+                else if (!empty($start_date)) {
+                    $listing_args['meta_query'][] = [
+                        'key'     => $field_name,
+                        'value'   => date('Ymd', $start_date),
+                        'compare' => '>=',
+                        'type'    => 'NUMERIC',
+                    ];
+                }
+                else if (!empty($end_date)) {
+                    $listing_args['meta_query'][] = [
+                        'key'     => $field_name,
+                        'value'   => date('Ymd', $end_date),
+                        'compare' => '<=',
+                        'type'    => 'NUMERIC',
+                    ];
+                }
+            }
+        }
+
+
     }
 }
+
+
+//var_dump($listing_args);
+/*
+
+$listing_args['meta_query'][] = [
+    'key'     => 'date_of_death',
+    'value'   => "20250525",
+    'compare' => '>=',
+    'type'    => 'NUMERIC',
+];*/
+
+/*
+$listing_args['meta_query'][] = [
+    'key'     => 'date_of_death',
+    'value'   => [ "1748127600", "1750770311" ],
+    'compare' => 'BETWEEN',
+    'type'    => 'NUMERIC'
+
+];*/
+
 
 if (!empty($tax_qry_ary)) {
     $listing_args['tax_query'] = $tax_qry_ary;
 }
 
+//var_dump($listing_args);
 $listing_query = new WP_Query($listing_args);
 $post_type_obj = get_post_type_object( $listing_post_type );
 $flex_cpt_name = $post_type_obj->labels->singular_name;

@@ -274,6 +274,36 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
     $vars[] = "listing_search";
     $vars[] = "from_date";
     $vars[] = "to_date";
+    $vars[] = "date_published_from_date";
+    $vars[] = "date_published_to_date";
+
+    $post_types = get_post_types($args, 'objects');
+
+    foreach($post_types as $post_type) {
+
+        $groups = acf_get_field_groups(array('post_type' => $post_type->name)); 
+
+        if(is_array($groups) && count($groups) > 0){
+        
+                foreach($groups as $group) {
+        
+                    $fields = acf_get_fields($group['key']);
+        
+                    if (empty($fields)) {
+                        continue;
+                    }
+        
+                    foreach($fields as $field){
+                        
+                        if($field['type'] == "date_picker"){
+                            $vars[] = $field['name'] . "_from_date";
+                            $vars[] = $field['name'] . "_to_date";
+                        }
+                    }
+                }
+        }
+    }
+
     return $vars;
 }
 

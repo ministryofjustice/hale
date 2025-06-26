@@ -1,11 +1,22 @@
 <?php
 
+$filter_name = $args['name'];
+$filter_label = $args['label'];
 
-//$from_date = isset($filter['value']['from_date']) ? sanitize_text_field($filter['value']['from_date']) : '';
-//$to_date = isset($filter['value']['to_date']) ? sanitize_text_field($filter['value']['to_date']) : '';
+if(!empty($filter_label)){
+    $from_date_label = $filter_label . " (from)";
+    $to_date_label = $filter_label . " (to)";
+}
+else {
+    $from_date_label = "Date from";
+    $to_date_label = "Date to";
+}
 
-$from_date = '';
-$to_date  = '';
+$from_date_name = $args['name'] . "_from_date";
+$to_date_name = $args['name'] . "_to_date";
+
+$from_date = get_query_var($from_date_name);
+$to_date = get_query_var($to_date_name);
 
 $error_date_from = false;
 $error_date_to = false;
@@ -26,7 +37,7 @@ $error_date_to = false;
 <div class="moj-datepicker" data-module="moj-date-picker">
     <div class="govuk-form-group <?php if ($error_date_from) { echo 'govuk-form-group--error'; } ?>">
         <label class="govuk-label" for="date">
-            Date from
+            <?php echo $from_date_label; ?>
         </label>
         <div id="from-date-hint" class="govuk-hint">
             For example, 13/2/2024.
@@ -42,7 +53,7 @@ $error_date_to = false;
         <input 
             class="govuk-input moj-js-datepicker-input" 
             id="from-date" 
-            name="from_date" 
+            name="<?php echo $from_date_name; ?>" 
             type="text" 
             aria-describedby="from-date-hint" 
             autocomplete="off" 
@@ -54,7 +65,7 @@ $error_date_to = false;
 <div class="moj-datepicker" data-module="moj-date-picker">
     <div class="govuk-form-group <?php if ($error_date_to) { echo 'govuk-form-group--error'; } ?>">
         <label class="govuk-label" for="date">
-            Date to
+            <?php echo $to_date_label; ?>
         </label>
         <div id="to-date-hint" class="govuk-hint">
             For example, 13/2/2024.
@@ -70,7 +81,7 @@ $error_date_to = false;
         <input 
             class="govuk-input moj-js-datepicker-input" 
             id="to-date" 
-            name="to_date" 
+            name="<?php echo $to_date_name; ?>" 
             type="text" 
             aria-describedby="to-date-hint" 
             autocomplete="true" 
