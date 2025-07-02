@@ -23,23 +23,15 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             
             $groups = acf_get_field_groups(array('post_type' => $listing_post_type)); 
 
-            if(is_array($groups) && count($groups) > 0){
-            
-                    foreach($groups as $group) {
-            
-                        $fields = acf_get_fields($group['key']);
-            
-                        if (empty($fields)) {
-                            continue;
-                        }
-            
-                        foreach($fields as $field){
+            $fields = hale_get_post_type_date_fields($listing_post_type);
+
+            if (!empty($fields)) {
+                foreach($fields as $field){
                             
-                            if($field['name'] == $field_name){
-                                $label = $field['label'];
-                            }
-                        }
+                    if($field['name'] == $field_name){
+                        $label = $field['label'];
                     }
+                }
             }
 
             get_template_part('template-parts/flexible-cpts/date-filter', false, ['name' => $field_name, "label" => $label]);
