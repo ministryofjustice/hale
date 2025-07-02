@@ -69,7 +69,7 @@ if(isset($taxonomy->labels->listing_page_filter) && !empty($taxonomy->labels->li
     $filter_label = $taxonomy->labels->listing_page_filter;
 }
 
-if($filter == "category"){
+if($taxonomy_name == "category"){
     $filter_label = "Topic";
 }
 
@@ -115,7 +115,7 @@ if ($has_subtopics) {
         $subfilter_label = $taxonomy->labels->listing_page_subfilter;
     }
 
-    if($filter == "category"){
+    if($taxonomy_name == "category"){
         $subfilter_label = "Sub-topic";
     }
 

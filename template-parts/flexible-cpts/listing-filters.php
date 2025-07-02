@@ -13,7 +13,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             get_template_part('template-parts/flexible-cpts/taxonomy-filter', false, ['taxonomy-name' => $filter ]);
         }
         else if($filter == 'published-date'){
-            get_template_part('template-parts/flexible-cpts/date-filter', false, ['name' => "date_published"]);
+            get_template_part('template-parts/flexible-cpts/date-filter', false, ['name' => "date_published", "label" => ""]);
         }
         else if(str_starts_with($filter, "meta-")){
             //METAFIELDS

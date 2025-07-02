@@ -277,6 +277,10 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
     $vars[] = "date_published_from_date";
     $vars[] = "date_published_to_date";
 
+    $args = array(
+        'public'   => true
+    ); 
+
     $post_types = get_post_types($args, 'objects');
 
     foreach($post_types as $post_type) {

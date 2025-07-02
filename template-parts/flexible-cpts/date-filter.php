@@ -21,7 +21,7 @@ $to_date = get_query_var($to_date_name);
 ?>
 
 <div class="moj-datepicker" data-module="moj-date-picker">
-    <div class="govuk-form-group <?php if ($error_date_from) { echo 'govuk-form-group--error'; } ?>">
+    <div class="govuk-form-group">
         <label class="govuk-label" for="date">
             <?php echo $from_date_label; ?>
         </label>
@@ -41,7 +41,7 @@ $to_date = get_query_var($to_date_name);
 </div>
 
 <div class="moj-datepicker" data-module="moj-date-picker">
-    <div class="govuk-form-group <?php if ($error_date_to) { echo 'govuk-form-group--error'; } ?>">
+    <div class="govuk-form-group">
         <label class="govuk-label" for="date">
             <?php echo $to_date_label; ?>
         </label>
