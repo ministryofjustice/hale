@@ -281,33 +281,57 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
 
     foreach($post_types as $post_type) {
 
-        $groups = acf_get_field_groups(array('post_type' => $post_type->name)); 
-
-        if(is_array($groups) && count($groups) > 0){
+        $fields = hale_get_post_type_date_fields($post_type->name);
         
-                foreach($groups as $group) {
-        
-                    $fields = acf_get_fields($group['key']);
-        
-                    if (empty($fields)) {
-                        continue;
-                    }
-        
-                    foreach($fields as $field){
-                        
-                        if($field['type'] == "date_picker"){
-                            $vars[] = $field['name'] . "_from_date";
-                            $vars[] = $field['name'] . "_to_date";
-                        }
-                    }
+        if (!empty($fields)) {
+            foreach($fields as $field){
+                if($field['type'] == "date_picker"){
+                    $vars[] = $field['name'] . "_from_date";
+                    $vars[] = $field['name'] . "_to_date";
                 }
+            }
         }
+
     }
 
     return $vars;
 }
 
 add_filter('query_vars', 'hale_flexible_post_types_add_query_vars_filter');
+
+/**
+ * Looks for date acf meta fields of a specific post_type
+ *
+ * @param array $post_type_name Post type name/slug
+ * @return array The date fields found
+ */
+function hale_get_post_type_date_fields($post_type_name){
+
+    $date_fields = [];
+
+    $groups = acf_get_field_groups(array('post_type' => $post_type_name)); 
+
+    if(is_array($groups) && count($groups) > 0){
+    
+            foreach($groups as $group) {
+    
+                $fields = acf_get_fields($group['key']);
+    
+                if (empty($fields)) {
+                    continue;
+                }
+    
+                foreach($fields as $field){
+                    
+                    if($field['type'] == "date_picker"){
+                        $date_fields[] = $field;
+                    }
+                }
+            }
+    }
+
+    return $date_fields;
+}
 
 /**
  * Registers custom query variables for all public taxonomies.

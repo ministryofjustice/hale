@@ -32,23 +32,14 @@ function hale_add_select_acf_field($post_type, $field_key, $field_label, $field_
 
     if(array_key_exists("acf-meta-fields", $field_choices) && $field_choices['acf-meta-fields'] == true){
         
-        $groups = acf_get_field_groups(array('post_type' => $post_type->name)); 
+        $fields = hale_get_post_type_date_fields($post_type->name);
 
-        if(is_array($groups) && count($groups) > 0){
-    
-            foreach($groups as $group) {
-    
-                $fields = acf_get_fields($group['key']);
-    
-                if (empty($fields)) {
-                    continue;
-                }
-    
-                foreach($fields as $field){
-                    
-                    if($field['type'] == "date_picker"){
-                        $choices['meta-' . $field['name']] = $field['label'];
-                    }
+        if (!empty($fields)) {
+                
+            foreach($fields as $field){
+ 
+                if($field['type'] == "date_picker"){
+                    $choices['meta-' . $field['name']] = $field['label'];
                 }
             }
         }
