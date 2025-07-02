@@ -157,27 +157,6 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
     }
 }
 
-
-//var_dump($listing_args);
-/*
-
-$listing_args['meta_query'][] = [
-    'key'     => 'date_of_death',
-    'value'   => "20250525",
-    'compare' => '>=',
-    'type'    => 'NUMERIC',
-];*/
-
-/*
-$listing_args['meta_query'][] = [
-    'key'     => 'date_of_death',
-    'value'   => [ "1748127600", "1750770311" ],
-    'compare' => 'BETWEEN',
-    'type'    => 'NUMERIC'
-
-];*/
-
-
 if (!empty($tax_qry_ary)) {
     $listing_args['tax_query'] = $tax_qry_ary;
 }
