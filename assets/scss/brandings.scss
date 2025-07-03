@@ -867,21 +867,20 @@
 			&__button:focus:after {
 				background-color: transparent;
 			}
-		}
-		.moj-datepicker__calendar {
-			.moj-datepicker__button {
-				&.moj-datepicker__button--selected{
-					background: #4E5574;
-					outline: #4E5574;
-					color: #FFF;
+			.moj-datepicker__calendar {
+				.moj-datepicker__button {
+					&.moj-datepicker__button--selected{
+						background: var(--date-selected-bg);
+						outline: var(--date-selected-bg);
+						color: var(--date-selected-text);
 
-					&:hover {
-						color: #FFF;
-					}
-					&:not(:focus):after {
-						background: #4E5574;
+						&:not(:focus):after {
+							background: var(--date-selected-bg);
+						}
 					}
 					&:focus {
+						color: var(--link);
+						background-color: var(--link-focus-background);
 						box-shadow: none;
 						border-color: var(--link-focus-shadow);
 						&:after {
