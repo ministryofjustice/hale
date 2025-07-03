@@ -4,7 +4,6 @@
 $listing_filters = $args['listing-filters'];
 $listing_search_text = $args['listing-search-text'];
 
-$flex_cpt_settings = [];
 $listing_active_filters = [];
 $tax_qry_ary = [];
 $display_fields = [];
@@ -58,13 +57,13 @@ if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
     foreach($restrict_taxonomies as $tax){
         $restrict_field = 'restrict_by_' . $tax;
 
-        $restict_terms = get_field($restrict_field);
+        $restrict_terms = get_field($restrict_field);
 
-            if(!empty($restict_terms) && is_array($restict_terms)) {
+            if(!empty($restrict_terms) && is_array($restrict_terms)) {
                 $tax_qry_ary[] = array(
                     'taxonomy' => $tax,
                     'field' => 'term_id',
-                'terms' => $restict_terms
+                'terms' => $restrict_terms
                 );
             }
     }
@@ -73,20 +72,87 @@ if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
 if (!empty($listing_filters) && is_array($listing_filters)) {
     foreach ($listing_filters as $filter) {
 
-        // Create an array of what taxonomies have been selected in dropdown
-        hale_add_filter_term_if_exists($filter, $listing_active_filters);
+        if (taxonomy_exists($filter)) {
+            // Create an array of what taxonomies have been selected in dropdown
+            hale_add_filter_term_if_exists($filter, $listing_active_filters);
 
-        //Filters
-        if(!empty($listing_active_filters)){
+            //Filters
+            if(!empty($listing_active_filters)){
 
-            foreach($listing_active_filters as $active_filter){
-                $tax_qry_ary[] = array(
-                    'taxonomy' => $active_filter['taxonomy'],
-                    'field' => 'term_id',
-                    'terms' => $active_filter['value']
-                );
+                foreach($listing_active_filters as $active_filter){
+                    $tax_qry_ary[] = array(
+                        'taxonomy' => $active_filter['taxonomy'],
+                        'field' => 'term_id',
+                        'terms' => $active_filter['value']
+                    );
+                }
             }
         }
+        else if($filter == 'published-date'){
+
+            $start_date = hale_validate_date(get_query_var('date_published_from_date'));
+            $end_date = hale_validate_date(get_query_var('date_published_to_date'));
+
+            if (!empty($start_date) || !empty($end_date)) {
+                if ($start_date && $end_date && $end_date < $start_date) {
+                    // Swap dates if the end date is before the start date
+                    [$start_date, $end_date] = [$end_date, $start_date];
+                }
+
+                $date_query = [
+                    'inclusive' => true, // Include the boundaries
+                ];
+                if (!empty($start_date)) {
+                    $date_query['after'] = date('Y-m-d', $start_date);
+                }
+                if (!empty($end_date)) {
+                    $date_query['before'] = date('Y-m-d', $end_date);
+                }
+
+                $listing_args['date_query'] = $date_query;
+            }
+        }
+        else if(str_starts_with($filter, "meta-")){
+            //METAFIELDS
+            $field_name = str_replace("meta-", "", $filter);
+
+            $start_date = hale_validate_date(get_query_var($field_name . "_from_date"));
+            $end_date = hale_validate_date(get_query_var($field_name  . "_to_date"));
+
+            if (!empty($start_date) || !empty($end_date)) {
+                if ($start_date && $end_date && $end_date < $start_date) {
+                    // Swap dates if the end date is before the start date
+                    [$start_date, $end_date] = [$end_date, $start_date];
+                }
+
+                if (!empty($start_date) && !empty($end_date)) {
+                    $listing_args['meta_query'][] = [
+                        'key'     => $field_name,
+                        'value'   => [ date('Ymd', $start_date), date('Ymd', $end_date)],
+                        'compare' => 'BETWEEN',
+                        'type'    => 'NUMERIC'
+                    ];
+                }
+                else if (!empty($start_date)) {
+                    $listing_args['meta_query'][] = [
+                        'key'     => $field_name,
+                        'value'   => date('Ymd', $start_date),
+                        'compare' => '>=',
+                        'type'    => 'NUMERIC',
+                    ];
+                }
+                else if (!empty($end_date)) {
+                    $listing_args['meta_query'][] = [
+                        'key'     => $field_name,
+                        'value'   => date('Ymd', $end_date),
+                        'compare' => '<=',
+                        'type'    => 'NUMERIC',
+                    ];
+                }
+            }
+        }
+
+
     }
 }
 
@@ -134,6 +200,8 @@ $display_terms_taxonomies = get_field('display_terms_taxonomies');
 
 if ($listing_query->have_posts()) { 
     
+    $item_count_text = '';
+
     if ($listing_query->found_posts > 1) {
         $item_count_text = $listing_query->found_posts . ' ' . strtolower($flex_cpt_name_plural);
     } elseif ($listing_query->found_posts == 1) {
@@ -141,7 +209,7 @@ if ($listing_query->have_posts()) {
     }
     ?>
     <div class="listing-item-count">
-        <?php echo $item_count_text; ?>
+        <?php echo esc_html($item_count_text); ?>
     </div>
     
     <div class="flexible-post-type-list">

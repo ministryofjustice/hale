@@ -2,7 +2,7 @@
 
 function hearing_list_footer_scripts(){ 
 	
-	if ( is_page_template('page-hearing-list.php') ) {
+	if ( is_page_template('page-hearing-list.php') || is_page_template('page-listing.php')  ) {
 	?>
 
 		<script type="module">

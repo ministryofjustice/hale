@@ -18,7 +18,7 @@ add_filter( 'acf/field_group/additional_field_settings_tabs', function ( $tabs )
 //Defines what acf field types have frontend display settings
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=text', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=date_picker', 'hale_field_frontend_display_settings');
-add_action( 'acf/field_group/render_field_settings_tabfrontend-display-settings/type=number', 'hale_field_frontend_display_settings');
+add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=number', 'hale_field_frontend_display_settings');
 
 
 /**
@@ -83,7 +83,15 @@ function hale_add_listing_page_acf_fields() {
     $post_types = get_post_types($args, 'objects');
 
     foreach($post_types as $post_type) {
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
+        
+        //Allows listing to be filtered by taxonomy, published date or postmeta field
+        $field_choices = [
+            'taxonomies' => true,
+            'published-date' => true,
+            'acf-meta-fields' => true
+        ];
+        hale_add_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', 'group_65a71031ea4fb', $field_choices); 
+        
         hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
         hale_add_tax_select_acf_field($post_type, $post_type->name . '_display_terms_taxonomies', 'Display Terms', 'display_terms_taxonomies', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
         hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', 'group_65a71031ea4fb'); 
@@ -266,10 +274,68 @@ function hale_flexible_post_types_add_query_vars_filter($vars)
     $vars[] = "listing_search";
     $vars[] = "from_date";
     $vars[] = "to_date";
+    $vars[] = "date_published_from_date";
+    $vars[] = "date_published_to_date";
+
+    $args = array(
+        'public'   => true
+    ); 
+
+    $post_types = get_post_types($args, 'objects');
+
+    foreach($post_types as $post_type) {
+
+        $fields = hale_get_post_type_date_fields($post_type->name);
+        
+        if (!empty($fields)) {
+            foreach($fields as $field){
+                if($field['type'] == "date_picker"){
+                    $vars[] = $field['name'] . "_from_date";
+                    $vars[] = $field['name'] . "_to_date";
+                }
+            }
+        }
+
+    }
+
     return $vars;
 }
 
 add_filter('query_vars', 'hale_flexible_post_types_add_query_vars_filter');
+
+/**
+ * Looks for date acf meta fields of a specific post_type
+ *
+ * @param array $post_type_name Post type name/slug
+ * @return array The date fields found
+ */
+function hale_get_post_type_date_fields($post_type_name){
+
+    $date_fields = [];
+
+    $groups = acf_get_field_groups(array('post_type' => $post_type_name)); 
+
+    if(is_array($groups) && count($groups) > 0){
+    
+            foreach($groups as $group) {
+    
+                $fields = acf_get_fields($group['key']);
+    
+                if (empty($fields)) {
+                    continue;
+                }
+    
+                foreach($fields as $field){
+                    
+                    if($field['type'] == "date_picker"){
+                        $date_fields[] = $field;
+                    }
+                }
+            }
+    }
+
+    return $date_fields;
+}
 
 /**
  * Registers custom query variables for all public taxonomies.

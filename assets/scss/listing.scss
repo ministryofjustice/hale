@@ -68,4 +68,34 @@
       }
     }
   }
+
+
+  // Date Picker styles 
+  .moj-datepicker {
+
+    input {
+      max-width: 100%;
+    }
+    .moj-datepicker__toggle{
+      box-sizing: border-box;
+      //background: #505471;
+
+    }
+
+    button.govuk-button--secondary.moj-js-datepicker-cancel {
+      border: none;
+      text-decoration: underline;
+      padding: 0;
+
+      &:focus, &:focus:not(:hover):not(:active) {
+        text-decoration: none;
+        outline: 3px solid;
+      }
+
+    }
+  }
+
+  .moj-datepicker__calendar {
+    tbody:focus-within { outline: none }
+  }
 }

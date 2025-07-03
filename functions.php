@@ -224,6 +224,10 @@ function hale_scripts() {
         $script_version = file_exists($script_path) ? filemtime($script_path) : false;
         wp_register_script('page-listing', hale_mix_asset('/js/page-listing.js'), array(), $script_version, true);
         wp_enqueue_script('page-listing');
+
+         //used for date picker
+         wp_enqueue_script('moj-frontend', hale_mix_asset('/js/moj-frontend.js'), '', "3.2.0", true);
+         
     }
 
     if ( is_page_template('page-hearing-list.php') ) {
@@ -404,6 +408,9 @@ require get_template_directory() . '/inc/acf/post-type-fields/field-document-upl
 require get_template_directory() . '/inc/acf/post-type-fields/field-summary.php';
 require get_template_directory() . '/inc/acf/post-type-fields/field-banner.php';
 require get_template_directory() . '/inc/acf/post-type-fields/field-revision-date.php';
+
+// Register taxonomies
+require get_template_directory() . '/inc/acf/add-select-field.php';
 
 // Register taxonomies
 require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';

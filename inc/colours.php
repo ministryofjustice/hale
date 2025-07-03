@@ -315,6 +315,15 @@
 				)
 			],
 			[
+				"section_name" => "Date picker",
+				"id" => "date-picker",
+				"description" => "",
+				"colours" => array(
+					['date-selected-text',$white,'Selected date number','',''],
+					['date-selected-bg',$blue,'Selected date background','',''],
+				)
+			],
+			[
 				"section_name" => "Tags",
 				"id" => "tags",
 				"description" => "",

@@ -845,6 +845,52 @@
 		}
 	}
 
+	.page-template-page-listing {
+		// Date Picker styles
+		.moj-datepicker {
+			&__button,
+			button.govuk-button--secondary.moj-js-datepicker-cancel {
+				background-color: white;
+				color: var(--link);
+
+				&:hover:not(:focus) {
+					color: var(--link-hover);
+				}
+
+				&:focus, &:focus:not(:hover):not(:active) {
+					color: var(--link-focus);
+					background-color: var(--link-focus-background);
+					box-shadow: 0 -2px var(--link-focus-background), 0 4px var(--link-focus-shadow);
+					outline-color: transparent;
+				}
+			}
+			&__button:focus:after {
+				background-color: transparent;
+			}
+			.moj-datepicker__calendar {
+				.moj-datepicker__button {
+					&.moj-datepicker__button--selected{
+						background: var(--date-selected-bg);
+						outline: var(--date-selected-bg);
+						color: var(--date-selected-text);
+
+						&:not(:focus):after {
+							background: var(--date-selected-bg);
+						}
+					}
+					&:focus {
+						color: var(--link);
+						background-color: var(--link-focus-background);
+						box-shadow: none;
+						border-color: var(--link-focus-shadow);
+						&:after {
+							background: var(--link-focus-shadow);
+						}
+					}
+				}
+			}
+		}
+	}
 	.hale-table-of-contents__item--current {
 		@include govuk-media-query($from: tablet, $media-type: screen) {
 			background-color: var(--toc-current-item-shading);
