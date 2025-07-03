@@ -316,7 +316,7 @@
 			],
 			[
 				"section_name" => "Date picker",
-				"id" => "inputs",
+				"id" => "date-picker",
 				"description" => "",
 				"colours" => array(
 					['date-selected-text',$white,'Selected date number','',''],
