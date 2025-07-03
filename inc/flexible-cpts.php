@@ -18,7 +18,7 @@ add_filter( 'acf/field_group/additional_field_settings_tabs', function ( $tabs )
 //Defines what acf field types have frontend display settings
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=text', 'hale_field_frontend_display_settings');
 add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=date_picker', 'hale_field_frontend_display_settings');
-add_action( 'acf/field_group/render_field_settings_tabfrontend-display-settings/type=number', 'hale_field_frontend_display_settings');
+add_action( 'acf/field_group/render_field_settings_tab/frontend-display-settings/type=number', 'hale_field_frontend_display_settings');
 
 
 /**

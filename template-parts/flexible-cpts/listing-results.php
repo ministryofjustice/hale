@@ -4,7 +4,6 @@
 $listing_filters = $args['listing-filters'];
 $listing_search_text = $args['listing-search-text'];
 
-$flex_cpt_settings = [];
 $listing_active_filters = [];
 $tax_qry_ary = [];
 $display_fields = [];
@@ -58,13 +57,13 @@ if(!empty($restrict_taxonomies) && is_array($restrict_taxonomies)) {
     foreach($restrict_taxonomies as $tax){
         $restrict_field = 'restrict_by_' . $tax;
 
-        $restict_terms = get_field($restrict_field);
+        $restrict_terms = get_field($restrict_field);
 
-            if(!empty($restict_terms) && is_array($restict_terms)) {
+            if(!empty($restrict_terms) && is_array($restrict_terms)) {
                 $tax_qry_ary[] = array(
                     'taxonomy' => $tax,
                     'field' => 'term_id',
-                'terms' => $restict_terms
+                'terms' => $restrict_terms
                 );
             }
     }
@@ -161,7 +160,6 @@ if (!empty($tax_qry_ary)) {
     $listing_args['tax_query'] = $tax_qry_ary;
 }
 
-//var_dump($listing_args);
 $listing_query = new WP_Query($listing_args);
 $post_type_obj = get_post_type_object( $listing_post_type );
 $flex_cpt_name = $post_type_obj->labels->singular_name;
@@ -202,6 +200,8 @@ $display_terms_taxonomies = get_field('display_terms_taxonomies');
 
 if ($listing_query->have_posts()) { 
     
+    $item_count_text = '';
+
     if ($listing_query->found_posts > 1) {
         $item_count_text = $listing_query->found_posts . ' ' . strtolower($flex_cpt_name_plural);
     } elseif ($listing_query->found_posts == 1) {
@@ -209,7 +209,7 @@ if ($listing_query->have_posts()) {
     }
     ?>
     <div class="listing-item-count">
-        <?php echo $item_count_text; ?>
+        <?php echo esc_html($item_count_text); ?>
     </div>
     
     <div class="flexible-post-type-list">

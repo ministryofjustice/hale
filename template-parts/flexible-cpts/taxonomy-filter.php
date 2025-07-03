@@ -122,7 +122,7 @@ if ($has_subtopics) {
 
     $wrapper_id = $child_class_name . '-wrapper';
     
-    echo '<div id="' . $wrapper_id . '"class="' . $subtopic_wrapper_classes . '">';
+    echo '<div id="' . $wrapper_id . '" class="' . $subtopic_wrapper_classes . '">';
     echo '<label class="govuk-label" for="' . esc_attr($child_class_name) . '">' . esc_html($subfilter_label) . '</label>';
     echo '<select name="' . esc_attr($subtopic_query_var) . '" id="' . esc_attr($child_class_name) . '" class="govuk-select filter-subtopic" ' . $disabled_subtopics . '>';
     echo '<option value="0"' . selected($selected_sub_topic, 0, false) . '>Select option</option>';

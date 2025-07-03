@@ -20,8 +20,6 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
             $field_name = str_replace("meta-", "", $filter);
             $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
             $label = "";
-            
-            $groups = acf_get_field_groups(array('post_type' => $listing_post_type)); 
 
             $fields = hale_get_post_type_date_fields($listing_post_type);
 
@@ -30,6 +28,7 @@ if (!empty($listing_filters) && is_array($listing_filters)) {
                             
                     if($field['name'] == $field_name){
                         $label = $field['label'];
+                        break;
                     }
                 }
             }
