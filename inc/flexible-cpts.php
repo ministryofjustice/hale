@@ -93,13 +93,13 @@ function hale_add_listing_page_acf_fields() {
             'published-date' => true,
             'acf-meta-fields' => true
         ];
-        hale_add_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', $group_key, $field_choices); 
-    
-        hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_65a710325ad17', $group_key); 
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_display_terms_taxonomies', 'Display Terms', 'display_terms_taxonomies', 1, 'field_65a710325ad17', $group_key); 
-        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', $group_key); 
+        hale_add_select_acf_field($post_type, $post_type->name . '_listing_filter', $post_type->label . ' Listing Filters', 'listing_filters', 1, 'field_65a710325ad17', $group_key, $field_choices);
+
+        hale_add_custom_fields_select_acf_field($post_type, $post_type->name . '_list_item_fields', 'Display fields', 'list_item_fields', 1, 'field_65a710325ad17', $group_key);
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_display_terms_taxonomies', 'Display Terms', 'display_terms_taxonomies', 1, 'field_65a710325ad17', $group_key);
+        hale_add_tax_select_acf_field($post_type, $post_type->name . '_listing_restrict', 'Restrict ' . $post_type->label, 'listing_restrict', 1, 'field_65a710325ad17', $group_key);
     }
-    
+
     $taxonomies = get_taxonomies(['public' => true], 'objects');
 
     foreach ($taxonomies as $tax){
