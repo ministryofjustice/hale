@@ -50,7 +50,7 @@
 					['dark-text',$white,'Normal text on custom-set dark background','',''],
 					['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
 					['shaded-heading-text',$black,'Shaded heading level text','',''],
-					['shaded-heading-bg',$lightGrey,'Shaded heading shading','',''],
+					['shaded-heading-bg',$lightGrey,'Shaded heading shading','Also the colour for shaded list items in the listing pages, if shading selected',''],
 				)
 			],
 			[

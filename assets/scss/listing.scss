@@ -67,6 +67,14 @@
         border: none;
       }
     }
+    .flexible-post-type-list--shaded {
+      .list-item {
+        border-radius: 10px;
+        margin-bottom: 30px;
+        padding: 30px;
+        border-bottom: none;
+      }
+    }
   }
 
 
@@ -78,8 +86,6 @@
     }
     .moj-datepicker__toggle{
       box-sizing: border-box;
-      //background: #505471;
-
     }
 
     button.govuk-button--secondary.moj-js-datepicker-cancel {

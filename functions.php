@@ -411,6 +411,7 @@ require get_template_directory() . '/inc/acf/post-type-fields/field-revision-dat
 
 // Register taxonomies
 require get_template_directory() . '/inc/acf/add-select-field.php';
+require get_template_directory() . '/inc/acf/add-basic-fields.php';
 
 // Register taxonomies
 require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';

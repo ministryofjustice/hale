@@ -212,7 +212,11 @@ if ($listing_query->have_posts()) {
         <?php echo esc_html($item_count_text); ?>
     </div>
     
-    <div class="flexible-post-type-list">
+    <?php
+        $cpt_shaded_class = "";
+        if (get_field('shaded_background') == "Yes") $cpt_shaded_class = "flexible-post-type-list--shaded";
+    ?>
+    <div class="flexible-post-type-list <?php echo $cpt_shaded_class;?>">
         <?php
         while ($listing_query->have_posts()) {
             $listing_query->the_post();
