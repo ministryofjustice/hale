@@ -846,6 +846,13 @@
 	}
 
 	.page-template-page-listing {
+
+		.flexible-post-type-list--shaded {
+			.list-item {
+				background: var(--shaded-heading-bg);
+			}
+		}
+
 		// Date Picker styles
 		.moj-datepicker {
 			&__button,
