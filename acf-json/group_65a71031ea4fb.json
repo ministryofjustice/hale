@@ -25,6 +25,26 @@
             "append": ""
         },
         {
+            "key": "shaded_background",
+            "label": "Shaded background",
+            "name": "shaded_background",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Yes": "Yes",
+                "No": "No"
+            },
+            "default_value": false,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_65bb8460617d1",
             "label": "Listing sort order",
             "name": "listing_sort_order",

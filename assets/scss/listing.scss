@@ -73,6 +73,9 @@
         margin-bottom: 30px;
         padding: 30px;
         border-bottom: none;
+        >*:last-child {
+          margin-bottom:0;
+        }
       }
     }
   }

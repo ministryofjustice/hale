@@ -83,8 +83,6 @@ function hale_add_listing_page_acf_fields() {
     $post_types = get_post_types($args, 'objects');
     $group_key = 'group_65a71031ea4fb'; //Listing Page Details key
 
-    hale_add_boolean_acf_field($group_key . '_shaded_background', 'Shaded background', 'shaded_background', 'Yes', 'No', $group_key);
-
     foreach($post_types as $post_type) {
         
         //Allows listing to be filtered by taxonomy, published date or postmeta field
