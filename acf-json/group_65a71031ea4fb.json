@@ -25,11 +25,11 @@
             "append": ""
         },
         {
-            "key": "shaded_background",
+            "key": "listing_shaded_background",
             "label": "Shaded background",
-            "name": "shaded_background",
+            "name": "listing_shaded_background",
             "aria-label": "",
-            "type": "radio",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "wrapper": {
@@ -37,12 +37,10 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "Yes": "Yes",
-                "No": "No"
-            },
-            "default_value": false,
-            "layout": "horizontal"
+            "default_value": 0,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1
         },
         {
             "key": "field_65bb8460617d1",

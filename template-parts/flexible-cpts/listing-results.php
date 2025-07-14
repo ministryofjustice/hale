@@ -215,8 +215,8 @@ if ($listing_query->have_posts()) {
     <?php
         // Shaded backgrounds for items on page
         $cpt_shaded_class = "";
-        $shaded_background = get_post_meta(get_the_ID(), 'shaded_background', true);
-        if ($shaded_background == "Yes") $cpt_shaded_class = "flexible-post-type-list--shaded";
+        $shaded_background = get_post_meta(get_the_ID(), 'listing_shaded_background', true);
+        if ($shaded_background) $cpt_shaded_class = "flexible-post-type-list--shaded";
     ?>
     <div class="flexible-post-type-list <?php echo $cpt_shaded_class;?>">
         <?php
