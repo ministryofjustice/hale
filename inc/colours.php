@@ -49,8 +49,7 @@
 					['heading-text',$black,'Heading level text','',''],
 					['dark-text',$white,'Normal text on custom-set dark background','',''],
 					['dark-heading-text',$white,'Heading level text on custom-set dark background','',''],
-					['shaded-heading-text',$black,'Shaded heading level text','',''],
-					['shaded-heading-bg',$lightGrey,'Shaded heading shading','Also the colour for shaded list items in the listing pages, if shading selected',''],
+					['shaded-heading-text',$black,'Shaded heading secondary text','Supplementary text in the heading for custom post types',''],
 				)
 			],
 			[
@@ -153,7 +152,7 @@
 				"id" => "pages",
 				"description" => "",
 				"colours" => array(
-					['title-shading',$white,'Page title background','',''],
+					['title-shading',$white,'Page title background','Also the colour for shaded list items in the listing pages, if shading selected',''],
 					['mojblocks-hero-bg',$white,'Hero background','Will be obscured by the Hero image',''],
 					['cat-nav-arrows',$black,'Chapter headings navigation arrows','',''],
 					['pagination-border',$midGrey,'Line at bottom of listing page','When there are multiple pages',''],

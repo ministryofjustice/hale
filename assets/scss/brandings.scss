@@ -764,9 +764,6 @@
 
 	//Shaded headings (full-width headings)
 	.hale-shaded-heading {
-		background-color: var(--shaded-heading-bg);
-
-		h1,
 		span {
 			color: var(--shaded-heading-text);
 		}
@@ -849,7 +846,7 @@
 
 		.flexible-post-type-list--shaded {
 			.list-item {
-				background: var(--shaded-heading-bg);
+				background: var(--title-shading);
 			}
 		}
 
@@ -1125,6 +1122,7 @@ body.hale-colours-customised {
 		background-color: var(--title-shading);
 	}
 
+	.hale-shaded-heading,
 	.hale-search-header,
 	.page-header-section {
 		background-color: var(--title-shading);
