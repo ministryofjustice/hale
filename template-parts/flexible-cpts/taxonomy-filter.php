@@ -43,7 +43,6 @@ if (is_array($restrict_terms) && !empty($restrict_terms)) {
     }
 }
 
-
 $all_terms = get_terms(array(
     'taxonomy' => $taxonomy_name,
     'hide_empty' => false,
@@ -68,6 +67,7 @@ if ($selected_topic && is_numeric($selected_topic)) {
 
 // Get filter label
 $filter_label = $taxonomy->labels->singular_name;
+
 if (isset($taxonomy->labels->listing_page_filter) && !empty($taxonomy->labels->listing_page_filter)) {
     $filter_label = $taxonomy->labels->listing_page_filter;
 }
@@ -77,7 +77,7 @@ if ($taxonomy_name == "category") {
 
 echo '<label class="govuk-label" for="' . esc_attr($parent_class_name) . '">' . esc_html($filter_label) . '</label>';
 
-// Determine if autocomplete is turned on for a taxonomy
+//Determines if the ACF toggle on a taxonomy is turned on
 $is_autocomplete_enabled = $taxonomy->autocomplete ?? false;
 
 if ($is_autocomplete_enabled) {
@@ -90,7 +90,8 @@ if ($is_autocomplete_enabled) {
         'child-class-name' => $child_class_name,
         'subtopic-query-var' => $subtopic_query_var,
         'dropdown-exclude' => $dropdown_exclude,
-        'selected-term-name' => $selected_term_name
+        'selected-term-name' => $selected_term_name,
+        'selected-sub-topic' => $selected_sub_topic
     ]);
 } else {
     // Use dropdown

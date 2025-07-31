@@ -1,10 +1,8 @@
-/* Simplified autocomplete filter for listing page */
+/* Autocomplete filter for listing page */
 var taxonomies_with_terms = {};
 
 // Check if the object exists and extract terms
 if (typeof listing_page_object !== 'undefined') {
-    console.log('listing_page_object:', listing_page_object);
-    
     // Store taxonomy terms
     Object.entries(listing_page_object.taxonomies).forEach(([taxonomy_name, taxonomy_terms]) => {
         taxonomies_with_terms[taxonomy_name] = taxonomy_terms;
@@ -21,7 +19,10 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container) {
     const wrapper = document.getElementById(childClass + '-wrapper');
     const subtopicSelect = document.getElementById(childClass);
     
-    if (!wrapper || !subtopicSelect) return;
+    if (!wrapper || !subtopicSelect) {
+        console.warn(`Subtopic elements not found for ${taxonomy_name}`);
+        return;
+    }
     
     // Clear existing options
     subtopicSelect.innerHTML = '<option value="0">Select option</option>';
@@ -29,7 +30,7 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container) {
     if (parent_term_id && parent_term_id !== '0') {
         // Get child terms for the selected parent
         const childTerms = taxonomies_with_terms[taxonomy_name]
-            .filter(term => term.parent == parent_term_id);
+            ?.filter(term => term.parent == parent_term_id) || [];
         
         if (childTerms.length > 0) {
             // Show subtopic dropdown and enable it
@@ -62,9 +63,14 @@ document.addEventListener("DOMContentLoaded", function() {
     containers.forEach(container => {
         const taxonomy_name = container.getAttribute('data-taxonomy');
         const selected_name = container.getAttribute('data-selected-name');
-        const selected_value = container.getAttribute('data-selected-value');
         const exclude_terms = container.getAttribute('data-exclude-terms');
         const has_subtopics = container.getAttribute('data-has-subtopics') === '1';
+        const show_option_all = container.getAttribute('data-show-option-all');
+        
+        if (!taxonomy_name) {
+            console.warn('No taxonomy name found for container:', container);
+            return;
+        }
         
         // Get terms for this taxonomy
         let taxonomy_terms = taxonomies_with_terms[taxonomy_name] || [];
@@ -76,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         // For hierarchical taxonomies, only show parent terms in autocomplete
-        let source_terms; // FIXED: Declare variable properly
+        let source_terms; 
         if (has_subtopics) {
             source_terms = taxonomy_terms
                 .filter(term => term.parent == 0) // Only parent terms
@@ -85,19 +91,62 @@ document.addEventListener("DOMContentLoaded", function() {
             source_terms = taxonomy_terms.map(term => term.name);
         }
         
-        console.log(`Setting up autocomplete for taxonomy: ${taxonomy_name}`);
-        console.log('Selected value from URL:', selected_value);
-        console.log('Selected name for display:', selected_name);
-        console.log('Available terms:', source_terms);
-        console.log('Has subtopics:', has_subtopics);
+        function validateAndGetValue(input) {
+            if (!input) return '';
+            const value = input.value?.trim() || '';
+            return value && source_terms.includes(value) ? value : '';
+        }
         
+        // Function to update hidden input (shared between all handlers)
+        function updateHiddenInput(selectedValue) {
+            // Determine what value to set
+            let valueToSet = '';
+            let subtopicValue = '';
+            
+            // If we have a valid value, try to find the term
+            if (selectedValue && selectedValue.trim() !== '') {
+                const selectedTerm = taxonomy_terms.find(term => term.name === selectedValue);
+                if (selectedTerm) {
+                    valueToSet = selectedTerm.term_id;
+                    subtopicValue = selectedTerm.term_id;
+                }
+            }
+            
+            // Update the hidden input (always, whether clearing or setting)
+            const hiddenInput = document.getElementById(`listing-template-hidden-input-${taxonomy_name}`);
+            if (hiddenInput) {
+                hiddenInput.value = valueToSet;
+                hiddenInput.dispatchEvent(new Event('change'));
+            } else {
+                console.warn(`Hidden input not found for ${taxonomy_name}`);
+            }
+            
+            // Update subtopic dropdown (always, whether clearing or setting)
+            if (has_subtopics) {
+                updateSubtopicDropdown(taxonomy_name, subtopicValue, container);
+            }
+        }
+        
+        // Form submission helper
+        function submitFormDelayed(delay = 50) {
+            setTimeout(() => {
+                const form = container.closest('form');
+                if (form) {
+                    form.submit();
+                } else {
+                    console.warn('Form not found for submission');
+                }
+            }, delay);
+        }
+        
+        // Create the autocomplete widget
         accessibleAutocomplete({
             element: container,
             id: `listing-template-autocomplete-${taxonomy_name}`,
             name: `listing-template-autocomplete-${taxonomy_name}`,
             displayMenu: 'overlay',
-            placeholder: '',
-            defaultValue: selected_name || '', // Show selected term on page load (ensure it's not null)
+            placeholder: show_option_all || 'Select option',
+            defaultValue: selected_name || '',
             source: function (query, populateResults) {
                 const results = source_terms.filter(term => 
                     term.toLowerCase().includes(query.toLowerCase())
@@ -113,94 +162,40 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
         
-        // Function to update hidden input (shared between onConfirm and form submit)
-        function updateHiddenInput(selectedValue) {
-            console.log('Updating hidden input with value:', selectedValue);
-            
-            // Find the selected term object
-            const selectedTerm = taxonomy_terms.find(term => term.name === selectedValue);
-            
-            if (selectedTerm) {
-                // Update the hidden input with the term ID
-                const hiddenInput = document.getElementById(`listing-template-hidden-input-${taxonomy_name}`);
-                if (hiddenInput) {
-                    hiddenInput.value = selectedTerm.term_id;
-                    console.log(`Updated hidden input for ${taxonomy_name}: ${selectedTerm.term_id}`);
-                    
-                    // Trigger change event for any other scripts that might be listening
-                    hiddenInput.dispatchEvent(new Event('change'));
-                    
-                    // Update subtopic dropdown if this taxonomy has subtopics
-                    if (has_subtopics) {
-                        updateSubtopicDropdown(taxonomy_name, selectedTerm.term_id, container);
-                    }
-                }
-            } else {
-                // Clear the hidden input if no term selected
-                const hiddenInput = document.getElementById(`listing-template-hidden-input-${taxonomy_name}`);
-                if (hiddenInput) {
-                    hiddenInput.value = '';
-                    hiddenInput.dispatchEvent(new Event('change'));
-                    
-                    // Hide subtopic dropdown if this taxonomy has subtopics
-                    if (has_subtopics) {
-                        updateSubtopicDropdown(taxonomy_name, '', container);
-                    }
-                }
-            }
-        }
-        
-        // CRITICAL: Add event listeners to catch form submissions and update hidden input
+        // Add event listeners with consistent validation
         const autocompleteInput = container.querySelector('input[type="text"]');
         if (autocompleteInput) {
             // Update hidden input when autocomplete input loses focus
             autocompleteInput.addEventListener('blur', () => {
-                const currentValue = autocompleteInput.value;
-                if (currentValue && source_terms.includes(currentValue)) {
-                    updateHiddenInput(currentValue);
-                }
+                const validValue = validateAndGetValue(autocompleteInput);
+                updateHiddenInput(validValue);
             });
             
             // Update hidden input when user presses Enter
             autocompleteInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    e.preventDefault(); // Prevent form submission
-                    const currentValue = autocompleteInput.value;
-                    if (currentValue && source_terms.includes(currentValue)) {
-                        updateHiddenInput(currentValue);
-                    }
-                    // Now submit the form
-                    setTimeout(() => {
-                        const form = autocompleteInput.closest('form');
-                        if (form) form.submit();
-                    }, 100);
+                    e.preventDefault();
+                    const validValue = validateAndGetValue(autocompleteInput);
+                    updateHiddenInput(validValue);
+                    submitFormDelayed(100);
                 }
             });
         }
         
-        // CRITICAL: Add form submit handler to ensure hidden input is updated before submission
+        // Add form submit handler to ensure hidden input is updated before submission
         const form = container.closest('form');
         if (form) {
             form.addEventListener('submit', (e) => {
                 const autocompleteInput = container.querySelector('input[type="text"]');
-                if (autocompleteInput && autocompleteInput.value) {
-                    const currentValue = autocompleteInput.value;
-                    if (source_terms.includes(currentValue)) {
-                        // Prevent default submission temporarily
-                        e.preventDefault();
-                        
-                        // Update hidden input
-                        updateHiddenInput(currentValue);
-                        
-                        // Submit form after a brief delay to ensure hidden input is updated
-                        setTimeout(() => {
-                            form.submit();
-                        }, 50);
-                    }
+                const validValue = validateAndGetValue(autocompleteInput);
+                
+                if (validValue) {
+                    e.preventDefault();
+                    updateHiddenInput(validValue);
+                    submitFormDelayed();
                 }
             });
         }
-        
-        // Don't initialize subtopics on page load - only show when parent is actively selected
     });
 });
+

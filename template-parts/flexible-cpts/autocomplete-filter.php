@@ -13,8 +13,16 @@ $child_class_name = $args['child-class-name'];
 $subtopic_query_var = $args['subtopic-query-var'];
 $dropdown_exclude = $args['dropdown-exclude'];
 $selected_term_name = $args['selected-term-name'];
+$selected_sub_topic = $args['selected-sub-topic'];
 
-
+// Ensure the autocompete always has a term name even if there is an issue
+if (empty($selected_term_name) && !empty($selected_topic) && is_numeric($selected_topic)) {
+    // Get term from db
+    $term = get_term($selected_topic);
+    if ($term && !is_wp_error($term)) {
+        $selected_term_name = $term->name;
+    }
+}
 
 // Create parent class name for label consistency (matches original dropdown structure)
 $parent_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-topic');
@@ -40,7 +48,9 @@ $parent_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-topic');
     data-has-subtopics="<?php echo $has_subtopics ? '1' : '0'; ?>"
     data-child-class="<?php echo esc_attr($child_class_name); ?>"
     data-subtopic-query-var="<?php echo esc_attr($subtopic_query_var); ?>"
+    data-selected-subtopic="<?php echo esc_attr($selected_sub_topic); ?>"
     data-exclude-terms="<?php echo esc_attr(is_array($dropdown_exclude) ? implode(',', $dropdown_exclude) : ''); ?>"
+    data-show-option-all="Select option"
 ></div>
 
 <?php if ($has_subtopics): ?>
@@ -49,22 +59,11 @@ $parent_class_name = str_replace(' ', '-', $taxonomy->name . '-filter-topic');
     $selected_sub_topic = get_query_var($subtopic_query_var);
 
     $disabled_subtopics = 'disabled="disabled"';
-    $subtopic_wrapper_classes = 'govuk-visually-hidden';
+    $subtopic_wrapper_classes = 'govuk-visually-hidden'; // Always start hidden
 
     $sub_topics = [];
 
-    if (is_numeric($selected_topic) && $selected_topic > 0) {
-        $sub_topics = get_terms(array(
-            'taxonomy' => $taxonomy_name,
-            'parent' => $selected_topic,
-            'hide_empty' => false,
-        ));
-
-        if (!empty($sub_topics)) {
-            $disabled_subtopics = '';
-            $subtopic_wrapper_classes = '';
-        }
-    }
+    // Don't populate subtopics on page load - let JavaScript handle it when parent is selected
 
     // Get subtopic label (same logic as main filter)
     $subfilter_label = 'Sub ' . $taxonomy->labels->singular_name;
