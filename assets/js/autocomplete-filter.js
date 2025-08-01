@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     containers.forEach(container => {
         const taxonomy_name = container.getAttribute('data-taxonomy');
         const selected_name = container.getAttribute('data-selected-name');
+        const selected_value = container.getAttribute('data-selected-value');
         const exclude_terms = container.getAttribute('data-exclude-terms');
         const has_subtopics = container.getAttribute('data-has-subtopics') === '1';
         const show_option_all = container.getAttribute('data-show-option-all');
@@ -91,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
             source_terms = taxonomy_terms.map(term => term.name);
         }
         
+        // Reusable validation function
         function validateAndGetValue(input) {
             if (!input) return '';
             const value = input.value?.trim() || '';
@@ -164,9 +166,28 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             onConfirm: (selectedValue) => {
                 updateHiddenInput(selectedValue);
-            },
-
+            }
         });
+        
+        // Initialize subtopics and selected subtopic on page load
+        const selected_subtopic = container.getAttribute('data-selected-subtopic');
+        
+        if (has_subtopics && selected_value && selected_value !== '0') {
+            console.log(`Initializing subtopics for ${taxonomy_name}, parent ID: ${selected_value}`);
+            updateSubtopicDropdown(taxonomy_name, selected_value, container);
+            
+            // Set the selected subtopic after a brief delay
+            if (selected_subtopic && selected_subtopic !== '0') {
+                setTimeout(() => {
+                    const childClass = container.getAttribute('data-child-class');
+                    const subtopicSelect = document.getElementById(childClass);
+                    if (subtopicSelect) {
+                        subtopicSelect.value = selected_subtopic;
+                        console.log(`Restored subtopic selection: ${selected_subtopic}`);
+                    }
+                }, 150);
+            }
+        }
         
         // Add event listeners with consistent validation
         const autocompleteInput = container.querySelector('input[type="text"]');
@@ -204,4 +225,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
