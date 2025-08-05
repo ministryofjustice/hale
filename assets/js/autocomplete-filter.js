@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
         accessibleAutocomplete({
             element: container,
             id: `listing-template-autocomplete-${taxonomy_name}`,
-            name: `listing-template-autocomplete-${taxonomy_name}`,
+            name: `${taxonomy_name}-autocomplete-term`,
             displayMenu: 'overlay',
             placeholder: show_option_all || 'Select option',
             defaultValue: selected_name || '',
