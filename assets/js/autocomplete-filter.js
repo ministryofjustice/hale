@@ -32,8 +32,6 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container, select
     // Clear existing options
     subtopicSelect.innerHTML = '<option value="0">Select option</option>';
 
-    console.log(parent_term_id);
-    
     if (parent_term_id && parent_term_id !== '0') {
         // Get child terms for the selected parent
         const childTerms = taxonomies_with_terms[taxonomy_name]
