@@ -31,6 +31,8 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container, select
     
     // Clear existing options
     subtopicSelect.innerHTML = '<option value="0">Select option</option>';
+
+    console.log(parent_term_id);
     
     if (parent_term_id && parent_term_id !== '0') {
         // Get child terms for the selected parent
@@ -55,7 +57,6 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container, select
                 const optionExists = childTerms.some(term => term.term_id == selectedSubtopic);
                 if (optionExists) {
                     subtopicSelect.value = selectedSubtopic;
-                    console.log(`Preserved subtopic selection: ${selectedSubtopic}`);
                 }
             }
         } else {
