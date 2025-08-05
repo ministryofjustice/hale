@@ -10,7 +10,7 @@ if (typeof listing_page_object !== 'undefined') {
 }
 
 // Function to update subtopic dropdown when parent term is selected
-function updateSubtopicDropdown(taxonomy_name, parent_term_id, container) {
+function updateSubtopicDropdown(taxonomy_name, parent_term_id, container, selectedSubtopic = null) {
     const hasSubtopics = container.getAttribute('data-has-subtopics') === '1';
     
     if (!hasSubtopics) return;
@@ -22,6 +22,11 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container) {
     if (!wrapper || !subtopicSelect) {
         console.warn(`Subtopic elements not found for ${taxonomy_name}`);
         return;
+    }
+    
+    // Remember current selection if not provided
+    if (!selectedSubtopic) {
+        selectedSubtopic = subtopicSelect.value;
     }
     
     // Clear existing options
@@ -44,6 +49,15 @@ function updateSubtopicDropdown(taxonomy_name, parent_term_id, container) {
                 option.textContent = term.name;
                 subtopicSelect.appendChild(option);
             });
+            
+            // Restore the selected subtopic if it exists in the new options
+            if (selectedSubtopic && selectedSubtopic !== '0') {
+                const optionExists = childTerms.some(term => term.term_id == selectedSubtopic);
+                if (optionExists) {
+                    subtopicSelect.value = selectedSubtopic;
+                    console.log(`Preserved subtopic selection: ${selectedSubtopic}`);
+                }
+            }
         } else {
             // Hide subtopic dropdown if no children
             wrapper.classList.add('govuk-visually-hidden');
@@ -92,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
             source_terms = taxonomy_terms.map(term => term.name);
         }
         
-        // Reusable validation function
+        // Validation function
         function validateAndGetValue(input) {
             if (!input) return '';
             const value = input.value?.trim() || '';
@@ -123,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.warn(`Hidden input not found for ${taxonomy_name}`);
             }
             
-            // Update subtopic dropdown (always, whether clearing or setting)
+            // Update subtopic dropdown (preserve existing selection when possible)
             if (has_subtopics) {
                 updateSubtopicDropdown(taxonomy_name, subtopicValue, container);
             }
@@ -173,20 +187,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const selected_subtopic = container.getAttribute('data-selected-subtopic');
         
         if (has_subtopics && selected_value && selected_value !== '0') {
-            console.log(`Initializing subtopics for ${taxonomy_name}, parent ID: ${selected_value}`);
-            updateSubtopicDropdown(taxonomy_name, selected_value, container);
-            
-            // Set the selected subtopic after a brief delay
-            if (selected_subtopic && selected_subtopic !== '0') {
-                setTimeout(() => {
-                    const childClass = container.getAttribute('data-child-class');
-                    const subtopicSelect = document.getElementById(childClass);
-                    if (subtopicSelect) {
-                        subtopicSelect.value = selected_subtopic;
-                        console.log(`Restored subtopic selection: ${selected_subtopic}`);
-                    }
-                }, 150);
-            }
+            // Pass the selected subtopic to preserve it
+            updateSubtopicDropdown(taxonomy_name, selected_value, container, selected_subtopic);
         }
         
         // Add event listeners with consistent validation
@@ -198,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 updateHiddenInput(validValue);
             });
             
-            // Update hidden input when user presses Enter
+            // Enter key handler
             autocompleteInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
