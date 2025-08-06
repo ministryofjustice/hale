@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Hale theme functions and definitions
  *
@@ -22,7 +23,7 @@ require get_template_directory() . '/inc/sanitization-callbacks.php';
  */
 function hale_setup()
 {
-    load_theme_textdomain('hale',get_template_directory() . '/languages');
+    load_theme_textdomain('hale', get_template_directory() . '/languages');
     // Add default posts and comments RSS feed links to head.
     add_theme_support('automatic-feed-links');
 
@@ -172,7 +173,7 @@ function hale_content_width()
 {
     // This variable is intended to be overruled from themes.
     // Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
     $GLOBALS['content_width'] = apply_filters('hale_content_width', 640);
 }
 
@@ -182,21 +183,23 @@ add_action('after_setup_theme', 'hale_content_width', 0);
  * Enqueue scripts and styles.
  */
 
-function hale_action_customize_save_after( $array ) {
+function hale_action_customize_save_after($array)
+{
     // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.
 
     clearstatcache();
     $upload_file_path = wp_get_upload_dir()["basedir"];
-    rename ($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
+    rename($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
 };
 
-add_action( 'customize_save_after', 'hale_action_customize_save_after', 10, 1 );
+add_action('customize_save_after', 'hale_action_customize_save_after', 10, 1);
 
-function hale_scripts() {
+function hale_scripts()
+{
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
-    
-    $t=time();
+
+    $t = time();
 
     if (is_customize_preview()) {
         $css_file_name = "/temp-colours.css?t=$t";
@@ -207,7 +210,7 @@ function hale_scripts() {
 
     if (is_ssl()) {
         //wp_get_upload_dir()["baseurl"] only returns http.
-        $baseURL = str_replace('http://','https://',wp_get_upload_dir()["baseurl"]);
+        $baseURL = str_replace('http://', 'https://', wp_get_upload_dir()["baseurl"]);
         wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
     } else {
         wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
@@ -219,22 +222,31 @@ function hale_scripts() {
     wp_enqueue_script('hale-combined-scripts', hale_mix_asset('/js/hale-combined-scripts.js'), '', null, true);
 
     // Load Listing template JS
-    if ( is_page_template('page-listing.php') ) {
+    if (is_page_template('page-listing.php')) {
         $script_path = get_template_directory() . '/dist/js/page-listing.js';
         $script_version = file_exists($script_path) ? filemtime($script_path) : false;
         wp_register_script('page-listing', hale_mix_asset('/js/page-listing.js'), array(), $script_version, true);
         wp_enqueue_script('page-listing');
 
-         //used for date picker
-         wp_enqueue_script('moj-frontend', hale_mix_asset('/js/moj-frontend.js'), '', "3.2.0", true);
-         
+        //used for date picker
+        wp_enqueue_script('moj-frontend', hale_mix_asset('/js/moj-frontend.js'), '', "3.2.0", true);
+
     }
 
-    if ( is_page_template('page-hearing-list.php') ) {
-
+    if (is_page_template('page-hearing-list.php') || is_page_template('page-listing.php')) {
         //autocomplete styles and js
         wp_enqueue_style('hale-autocomplete', hale_mix_asset('/css/accessible-autocomplete.min.css'));
         wp_enqueue_script('autocomplete', hale_mix_asset('/js/accessible-autocomplete.min.js'), '', "3.0.1", true);
+
+
+        $script_path = get_template_directory() . '/dist/js/autocomplete-filter.js';
+        $script_version = file_exists($script_path) ? filemtime($script_path) : false;
+        wp_register_script('autocomplete-filter', hale_mix_asset('/js/autocomplete-filter.js'), array(), $script_version, true);
+        wp_enqueue_script('autocomplete-filter');
+    }
+
+    if (is_page_template('page-hearing-list.php')) {
+
 
         //used for date picker
         wp_enqueue_script('moj-frontend', hale_mix_asset('/js/moj-frontend.js'), '', "3.2.0", true);
@@ -250,7 +262,7 @@ function hale_scripts() {
 add_action('wp_enqueue_scripts', 'hale_scripts');
 
 /**
- * Enqueue listing template JS and 
+ * Enqueue listing template JS and
  * localize the script with data
  */
 require get_template_directory() . '/inc/listing-template/localize-script-data.php';
@@ -277,7 +289,7 @@ add_action('wp_print_scripts', 'hale_dequeue_scripts', 100);
 function hale_mix_asset($filename)
 {
     $manifest_path = get_template_directory() . '/dist/mix-manifest.json';
-    
+
     if (!file_exists($manifest_path)) {
         error_log("Mix manifest file does not exist at path: $manifest_path");
         return '';
@@ -393,7 +405,7 @@ require get_template_directory() . '/inc/flexible-cpts.php';
  * ACF additions
  */
 
- // Admin changes
+// Admin changes
 require get_template_directory() . '/inc/acf/admin/settings.php';
 require get_template_directory() . '/inc/acf/admin/post-display-settings.php';
 require get_template_directory() . '/inc/acf/admin/post-block-settings.php';
@@ -488,19 +500,19 @@ require get_template_directory() . '/inc/image-management.php';
 require get_template_directory() . '/inc/uploads.php';
 
 /**
- * Disable archives 
+ * Disable archives
  */
 require get_template_directory() . '/inc/disable-archives.php';
 
 /**
- * Remove default post type 
+ * Remove default post type
  */
 require get_template_directory() . '/inc/remove-default-post-type.php';
 
-function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
+function hale_manage_page_templates($post_templates, $theme, $post, $post_type)
 {
 
-    if(is_admin()) {
+    if (is_admin()) {
         $screen = get_current_screen();
 
         //Checks if on page edit screen - means all templates show on acf settings
@@ -508,7 +520,7 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
 
             //Checks if page templates are being requested
             if ($post_type == 'page') {
-                
+
                 if (!post_type_exists('hearing')) {
                     unset($post_templates['page-hearing-list.php']);
                 }
@@ -519,29 +531,30 @@ function hale_manage_page_templates($post_templates,  $theme, $post, $post_type)
     return $post_templates;
 }
 
-add_filter( 'theme_templates', 'hale_manage_page_templates' , 10, 4);
+add_filter('theme_templates', 'hale_manage_page_templates', 10, 4);
 
-function hale_add_module_tag( $tag, $handle, $src ) {
+function hale_add_module_tag($tag, $handle, $src)
+{
     $modules = ["govuk-frontend"];
-    if ( in_array($handle, $modules) ) {
-        $tag = str_replace( 'src=', 'type="module" src=', $tag );
+    if (in_array($handle, $modules)) {
+        $tag = str_replace('src=', 'type="module" src=', $tag);
     }
     return $tag;
 }
-add_filter( 'script_loader_tag', 'hale_add_module_tag', 10, 3 );
+add_filter('script_loader_tag', 'hale_add_module_tag', 10, 3);
 
 // Remove Yoast `SEO Manager` role
-if ( get_role('wpseo_manager') ) {
-    remove_role( 'wpseo_manager' );
+if (get_role('wpseo_manager')) {
+    remove_role('wpseo_manager');
 }
 
 // Remove Yoast `SEO Editor` role
-if ( get_role('wpseo_editor') ) {
-    remove_role( 'wpseo_editor' );
+if (get_role('wpseo_editor')) {
+    remove_role('wpseo_editor');
 }
 
 //Remove relevanssi throttle as it prevents some documents and pages showing on listing and search pages
-remove_filter( 'relevanssi_query_filter', 'relevanssi_limit_filter' );
+remove_filter('relevanssi_query_filter', 'relevanssi_limit_filter');
 
 /**
  * Add options for lang attribute for footer menu links
