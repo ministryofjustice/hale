@@ -33,7 +33,8 @@ if (is_array($restrict_terms) && !empty($restrict_terms)) {
     // Get an array of terms excluding the restricted ones
     $exclude_terms = get_terms([
         'taxonomy' => $taxonomy_name,
-        'exclude' => $restrict_terms
+        'exclude' => $restrict_terms,
+        'hide_empty' => false
     ]);
 
     if (!empty($exclude_terms)) {
@@ -106,7 +107,8 @@ if ($is_autocomplete_enabled) {
         'order' => 'ASC',
         'hierarchical' => 1,
         'selected' => $selected_topic,
-        'exclude' => $dropdown_exclude
+        'exclude' => $dropdown_exclude,
+        'hide_empty' => false
     ];
 
     wp_dropdown_categories($dropdown_args);
