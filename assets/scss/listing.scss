@@ -1,35 +1,55 @@
 .page-template-page-listing {
-
   #primary {
     .listing-search-section {
-
       .listing-search-form {
-
         p {
           font-weight: bold;
           margin-top: 20px;
         }
-
         .govuk-label {
           margin-top: 10px;
         }
-
         .govuk-select {
           width: 100%;
           min-width: 100%;
         }
-
         .filter-subtopic {
           width: 100%;
           min-width: 100%;
         }
+        
+        // Autocomplete styles
+        [id^="listing-template-autocomplete-container-"] {
+          input {
+            width: 100%;
+            
+            &::placeholder {
+              color: black !important;
+              opacity: 1 !important;
+            }
+            
+            // Browser compatibility for placeholder styling
+            &::-webkit-input-placeholder {
+              color: black !important;
+              opacity: 1 !important;
+            }
+            
+            &::-moz-placeholder {
+              color: black !important;
+              opacity: 1 !important;
+            }
+            
+            &:-ms-input-placeholder {
+              color: black !important;
+              opacity: 1 !important;
+            }
+          }
+        }
       }
     }
-
     .listing-filter-field-wrapper {
       all: unset;
     }
-
     .listing-item-count {
       border-top: 1px solid $govuk-border-colour;
       padding-bottom: 16px;
@@ -37,32 +57,25 @@
       text-align: right;
       @include govuk-font-size($size: 19);
     }
-
     .list-item {
       border-bottom: 1px solid $govuk-border-colour;
       margin-bottom: 20px;
-
       .list-item-published-date {
         @include govuk-font-size($size: 19);
         margin-bottom: 20px;
         font-weight: bold;
-
         .published-date {
           font-weight: normal;
         }
-
       }
-
       .list-item-detail {
         @include govuk-font-size($size: 19);
         margin-bottom: 20px;
-
         .list-item-detail-label {
           font-weight: bold;
           display: inline-block;
         }
       }
-
       &:last-child {
         border: none;
       }
@@ -79,31 +92,24 @@
       }
     }
   }
-
-
   // Date Picker styles 
   .moj-datepicker {
-
     input {
       max-width: 100%;
     }
     .moj-datepicker__toggle{
       box-sizing: border-box;
     }
-
     button.govuk-button--secondary.moj-js-datepicker-cancel {
       border: none;
       text-decoration: underline;
       padding: 0;
-
       &:focus, &:focus:not(:hover):not(:active) {
         text-decoration: none;
         outline: 3px solid;
       }
-
     }
   }
-
   .moj-datepicker__calendar {
     tbody:focus-within { outline: none }
   }

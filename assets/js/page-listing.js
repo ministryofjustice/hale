@@ -67,8 +67,6 @@ jQuery(document).ready(function ($) {
         const selected_topic = this.value;
         handleTopicChange(parentClass, childClass, selected_topic);
       });
-    } else {
-      console.warn(`Parent dropdown with class ${parentClass} not found.`);
     }
   });
 
