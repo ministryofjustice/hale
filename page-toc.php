@@ -108,16 +108,6 @@ while (have_posts()) :
 
     </article><!-- #post-<?php the_ID(); ?> -->
 </div><!-- #primary -->
-<div class="govuk-grid-column-one-third">
-    <?php
-    /**
-     * Load page sidebar
-     *
-     * */
-    get_sidebar('page');
-
-    ?>
-</div>
 <?php endwhile;
 
 flush();
