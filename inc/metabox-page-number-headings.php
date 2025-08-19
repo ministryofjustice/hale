@@ -1,11 +1,7 @@
 <?php
 
 /**
- * MetaBox for managing the display option for the Page Title section (Page Title and Category Nav)
- *
- * @package   Hale
- * @copyright Ministry of Justice
- * @version   1.0
+ * MetaBox for managing the display option for the Number Headings
  */
 
 add_action('add_meta_boxes', 'hale_page_number_headings_metabox');

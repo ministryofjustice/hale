@@ -366,11 +366,9 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	libxml_clear_errors();
 	$xpath = new DOMXPath($dom);
 	$tags = $xpath->query('//h2');
-
 	foreach($tags as $tag) {
 		$tag->setAttribute('class', "hale-toc-item");
 		$title = $tag->nodeValue;
-
 		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
 		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
 		$index[] = ["title"=>$title,"id"=>$id];
@@ -422,7 +420,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	}
 
 	$print_button = hale_print_page_button($print);
-	
+
 	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)["index"];
 
 	// Create the table of contents
