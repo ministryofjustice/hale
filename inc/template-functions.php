@@ -315,6 +315,24 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
 
 	// Check if we're inside the main loop in a single Post.
 	if ( is_singular() && in_the_loop() && is_main_query()) {
+
+		if(is_page()){
+			global $post;
+
+			$numbered_headings = false;
+
+			$display_number_headings = get_post_meta($post->ID, 'hale_metabox_page_number_headings', true);
+
+			if(!empty($display_number_headings) && $display_number_headings == 'yes'){
+				$numbered_headings = true;
+			}
+
+			if(!is_page_template( 'page-toc.php' ) && !$numbered_headings){
+				return $content;
+			}
+
+			return hale_get_ordered_content($content, $numbered_headings)["content"];
+		}
 		$numbered_headings = hale_get_acf_field_status('number_headings');
 		$table_of_contents = hale_get_acf_field_status('show_toc_on_single_view');
 
@@ -348,9 +366,11 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	libxml_clear_errors();
 	$xpath = new DOMXPath($dom);
 	$tags = $xpath->query('//h2');
+
 	foreach($tags as $tag) {
 		$tag->setAttribute('class', "hale-toc-item");
 		$title = $tag->nodeValue;
+
 		$id = preg_replace('/[^a-zA-Z0-9]/', '', remove_accents($title));
 		$id = ++$count."-$id"; //$count is incremented & added to ID (this ensures no duplicates)
 		$index[] = ["title"=>$title,"id"=>$id];
@@ -402,7 +422,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	}
 
 	$print_button = hale_print_page_button($print);
-
+	
 	$index = hale_get_ordered_content(hale_clean_bad_content( false ),$ordered)["index"];
 
 	// Create the table of contents
