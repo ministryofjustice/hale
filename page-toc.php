@@ -14,15 +14,45 @@ get_header();
 
 flush();
 
+//close <div id="contentinner" class="govuk-grid-row">
+?>
+
+    <div class="govuk-grid-column-two-thirds">
+        <div class="page-header-section">
+        <?php
+
+        /**
+         * Category page list section
+         * This loads the category list section if cat metabox is checked
+         *
+         * */
+
+
+        include(locate_template('partials/category-list-section.php', false, false));
+
+        // Header loads if category not selected on page
+        if (empty($is_cat_page)) {
+            ?>
+            <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-6"><?php the_title(); ?></h1>
+        <?php
+            }
+        ?>
+        </div>
+    </div>
+<?php  //close <div id="contentinner" class="govuk-grid-row"> ?> 
+</div>
+<div class="govuk-grid-row">
+<?php
+
 if (function_exists('hale_table_of_contents')) {
 
     global $post;
 
     $numbered_headings = false;
 
-    $display_number_headings = get_post_meta($post->ID, 'hale_metabox_page_number_headings', true);
+    $display_numbered_headings = get_post_meta($post->ID, 'hale_metabox_page_numbered_headings', true);
 
-    if(!empty($display_number_headings) && $display_number_headings == 'yes'){
+    if(!empty($display_numbered_headings) && $display_numbered_headings == 'yes'){
         $numbered_headings = true;
     }
 
@@ -45,31 +75,7 @@ while (have_posts()) :
         $show_title_section = 'yes';
     }
 
-    if(is_front_page() === false && $show_title_section == 'yes') { ?>
-
-        <div class="page-header-section">
-
-            <?php
-
-        /**
-         * Category page list section
-         * This loads the category list section if cat metabox is checked
-         *
-         * */
-        include(locate_template('partials/category-list-section.php', false, false));
-
-
-
-         // Header loads if category not selected on page
-                if (empty($is_cat_page)) { ?>
-                 <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-6"><?php the_title(); ?></h1>
-             <?php
-                }
-
-        ?>
-        </div>
-    <?php
-    } elseif (is_front_page()) {
+   if (is_front_page()) {
         // If we are on a landing page, we need to check that an H1 is present.
         // If one is not present, we need to add in a hidden one.
         if (strpos(get_the_content(),"<h1") === false) {

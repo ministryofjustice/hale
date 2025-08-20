@@ -321,9 +321,9 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
 
 			$numbered_headings = false;
 
-			$display_number_headings = get_post_meta($post->ID, 'hale_metabox_page_number_headings', true);
+			$display_numbered_headings = get_post_meta($post->ID, 'hale_metabox_page_numbered_headings', true);
 
-			if(!empty($display_number_headings) && $display_number_headings == 'yes'){
+			if(!empty($display_numbered_headings) && $display_numbered_headings == 'yes'){
 				$numbered_headings = true;
 			}
 
