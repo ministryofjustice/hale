@@ -13,8 +13,6 @@ $is_cat_page = false;
 get_header();
 
 flush();
-
-//close <div id="contentinner" class="govuk-grid-row">
 ?>
 
     <div class="govuk-grid-column-two-thirds">
