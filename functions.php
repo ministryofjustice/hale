@@ -382,11 +382,6 @@ require get_template_directory() . '/inc/metabox-page-breadcrumb.php';
 require get_template_directory() . '/inc/metabox-page-title-section.php';
 
 /**
- * Custom Page Number Headings Metabox
- */
-require get_template_directory() . '/inc/metabox-page-numbered-headings.php';
-
-/**
  * Widget functions
  */
 require get_template_directory() . '/inc/widgets.php';

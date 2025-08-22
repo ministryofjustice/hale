@@ -61,11 +61,11 @@ if (function_exists('hale_table_of_contents')) {
 
     $numbered_headings = false;
 
-    if(array_key_exists('hale_metabox_page_numbered_headings', $post_meta) && is_array($post_meta['hale_metabox_page_numbered_headings']) && count($post_meta['hale_metabox_page_numbered_headings']) > 0){
-        $display_numbered_headings = $post_meta['hale_metabox_page_numbered_headings'][0];
+    if(array_key_exists('page_numbered_headings', $post_meta) && is_array($post_meta['page_numbered_headings']) && count($post_meta['page_numbered_headings']) > 0){
+        $display_numbered_headings = $post_meta['page_numbered_headings'][0];
 
-        if(!empty($display_numbered_headings) && $display_numbered_headings == 'yes'){
-            $numbered_headings = true;
+        if(!empty($display_numbered_headings)){
+            $numbered_headings = $display_numbered_headings;
         }
     }
 

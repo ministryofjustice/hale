@@ -321,10 +321,10 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
 
 			$numbered_headings = false;
 
-			$display_numbered_headings = get_post_meta($post->ID, 'hale_metabox_page_numbered_headings', true);
+			$display_numbered_headings = get_post_meta($post->ID, 'page_numbered_headings', true);
 
-			if(!empty($display_numbered_headings) && $display_numbered_headings == 'yes'){
-				$numbered_headings = true;
+			if(!empty($display_numbered_headings)){
+				$numbered_headings = $display_numbered_headings;
 			}
 
 			if(!is_page_template( 'page-toc.php' ) && !$numbered_headings){
