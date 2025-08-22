@@ -55,7 +55,7 @@ if (function_exists('hale_table_of_contents')) {
     }
 
     $toc = hale_table_of_contents($numbered_headings);
-    echo "<div id='toc' class='govuk-grid-column-one-third'>$toc</div>";
+    echo "<div id='toc' class='govuk-grid-column-one-third'>" . wp_kses_post($toc) . "</div>";
 }
 
 while (have_posts()) :
@@ -78,7 +78,7 @@ while (have_posts()) :
         // If one is not present, we need to add in a hidden one.
         if (strpos(get_the_content(),"<h1") === false) {
             $hidden_title = get_bloginfo("name")." &ndash; ".__("Homepage","hale");
-            echo "<h1 class='govuk-visually-hidden'>$hidden_title</h1>";
+            echo "<h1 class='govuk-visually-hidden'>" . esc_html($hidden_title) . "</h1>";
         }
     }
     ?>
@@ -90,10 +90,12 @@ while (have_posts()) :
         if (is_front_page() === false) {
             if (!empty($is_cat_page)) {
 
-            // Add special heading CSS class depending on if category menu is activated
-            $hale_heading_class = $is_cat_page ? ' govuk-heading-l' : '';
+                // Add special heading CSS class depending on if category menu is activated
+                $hale_heading_class = $is_cat_page ? ' govuk-heading-l' : '';
 
-                echo '<h1 class="entry-title' . $hale_heading_class . '">' . get_the_title() . '</h1>';
+                echo '<h1 class="entry-title' . esc_attr($hale_heading_class) . '">' . esc_html(get_the_title()) . '</h1>';
+
+
             }
         }
 
