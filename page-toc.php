@@ -13,6 +13,18 @@ $is_cat_page = false;
 get_header();
 
 flush();
+
+$post_meta = get_post_meta($post->ID);
+
+$show_title_section = 'yes';
+
+if(array_key_exists('hale_metabox_page_title_section', $post_meta) && is_array($post_meta['hale_metabox_page_title_section']) && count($post_meta['hale_metabox_page_title_section']) > 0){
+    if (!empty($post_meta['hale_metabox_page_title_section'][0])) {
+        $show_title_section = $post_meta['hale_metabox_page_title_section'][0];
+    }
+}
+
+if(is_front_page() === false && $show_title_section == 'yes') {
 ?>
 
     <div class="govuk-grid-column-two-thirds">
@@ -39,6 +51,7 @@ flush();
     </div>
 <?php  //close <div id="contentinner" class="govuk-grid-row"> ?> 
 </div>
+<?php } ?>
 <div class="govuk-grid-row">
 <?php
 
@@ -48,10 +61,12 @@ if (function_exists('hale_table_of_contents')) {
 
     $numbered_headings = false;
 
-    $display_numbered_headings = get_post_meta($post->ID, 'hale_metabox_page_numbered_headings', true);
+    if(array_key_exists('hale_metabox_page_numbered_headings', $post_meta) && is_array($post_meta['hale_metabox_page_numbered_headings']) && count($post_meta['hale_metabox_page_numbered_headings']) > 0){
+        $display_numbered_headings = $post_meta['hale_metabox_page_numbered_headings'][0];
 
-    if(!empty($display_numbered_headings) && $display_numbered_headings == 'yes'){
-        $numbered_headings = true;
+        if(!empty($display_numbered_headings) && $display_numbered_headings == 'yes'){
+            $numbered_headings = true;
+        }
     }
 
     $toc = hale_table_of_contents($numbered_headings);
@@ -67,12 +82,6 @@ while (have_posts()) :
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
-    $show_title_section = get_post_meta($post->ID, 'hale_metabox_page_title_section', true);
-
-    if (empty($show_title_section)) {
-        $show_title_section = 'yes';
-    }
-
    if (is_front_page()) {
         // If we are on a landing page, we need to check that an H1 is present.
         // If one is not present, we need to add in a hidden one.
