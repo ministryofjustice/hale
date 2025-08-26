@@ -315,6 +315,24 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
 
 	// Check if we're inside the main loop in a single Post.
 	if ( is_singular() && in_the_loop() && is_main_query()) {
+
+		if(is_page()){
+			global $post;
+
+			$numbered_headings = false;
+
+			$display_numbered_headings = get_post_meta($post->ID, 'page_numbered_headings', true);
+
+			if(!empty($display_numbered_headings)){
+				$numbered_headings = $display_numbered_headings;
+			}
+
+			if(!is_page_template( 'page-toc.php' ) && !$numbered_headings){
+				return $content;
+			}
+
+			return hale_get_ordered_content($content, $numbered_headings)["content"];
+		}
 		$numbered_headings = hale_get_acf_field_status('number_headings');
 		$table_of_contents = hale_get_acf_field_status('show_toc_on_single_view');
 
