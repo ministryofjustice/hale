@@ -107,6 +107,7 @@ function hale_get_allowed_blocks(){
         'mojblocks/iframe',
         'mojblocks/quote',
         'mojblocks/reveal',
+        'mojblocks/route-planner',
         'mojblocks/separator',
         'mojblocks/staggered-box',
         'mojblocks/featured-item',
