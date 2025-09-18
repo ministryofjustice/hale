@@ -78,6 +78,7 @@ function hale_get_allowed_blocks(){
         'core/buttons',
         'core/button',
         'core/columns',
+        'core/column',
         'core/group',
         'core/spacer',
 
