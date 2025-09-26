@@ -65,7 +65,7 @@
                 ?>
                 <div class="flexible-post-type-detail">
                     <div class="flexible-post-type-detail-label"><?php echo $tax['label'];?>: </div>
-                    <?php echo implode("," , $term_names); ?>
+                    <?php echo implode("; " , $term_names); ?>
                 </div>
                 <?php
             }
