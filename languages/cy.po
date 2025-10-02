@@ -20089,3 +20089,8 @@ msgstr "ar gyfer %s"
 # Translation from Bridgend council site (https://www.bridgend.ac.uk/?lang=cy)
 msgid "Search website"
 msgstr "Chwiliwch y wefan hon"
+
+# hale/inc/breadcrumbs.php
+# Translation adapted from https://www.croeso.cymru/
+msgid "Go back to "
+msgstr "Yn ôl i "
