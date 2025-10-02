@@ -112,3 +112,9 @@
     }
   }
 }
+
+// Footnotes
+sup.fn a:before {
+  @extend .govuk-visually-hidden;
+  content: "Footnote ";
+}
