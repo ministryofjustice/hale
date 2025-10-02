@@ -274,7 +274,7 @@ function hale_breadcrumb() {
 						</ol>
 						<p class="hale-width--show-narrow-40 govuk-!-margin-0">
 							<a class="govuk-back-link" href="<?php echo esc_url( $back_one_level[0] ); ?>">
-								<?php echo esc_html_e( 'Go back to ', 'hale' ) . esc_html( $back_one_level[1] ); ?>
+								<?php echo esc_html__( 'Go back to ', 'hale' ) . esc_html( $back_one_level[1] ); ?>
 							</a>
 						</p>
 					<?php } // end of LearnDash / Uncanny Toolkit conditional ?>
