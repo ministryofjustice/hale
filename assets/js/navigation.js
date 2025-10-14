@@ -257,10 +257,58 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
 	const $mobileSubMenuButton = $('<button class="hale-header__dropdown-arrow" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
-	const $desktopSubMenuButton = $('<button class="hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
 
 	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
-	$desktopSubMenuButton.insertAfter("#menu-menu-top-menu li.menu-item-has-children > a");
+
+	//Keyboard functionailty (main nav - arrow navigation)
+	$(".menu-item>a").keydown(function(e) {
+
+		let list = $(this).parents("ul");
+		let listItem = $(this).parent();
+
+		//Is this first or last item?
+		let isFirstItem = false;
+		let isLastItem = false;
+		if(listItem.is(list.children().first())) isFirstItem = true;
+		if(listItem.is(list.children().last())) isLastItem = true;
+
+		//Is this item or the previous item a dropdown?
+		let dropdown = false;
+		let prevDropdown = false;
+		if (listItem.is(".menu-item-has-children")) dropdown = true;
+		if (!isFirstItem && listItem.prev().is(".menu-item-has-children")) prevDropdown = true;
+		if (isFirstItem && list.children().last().is(".menu-item-has-children")) prevDropdown = true;
+
+		//Next items
+		let next;
+		if (dropdown) {
+			next = $(this).next(); //go to the dropdown control
+		} else if (isLastItem) {
+			next = list.children().first().find("a"); //last in list: go to the main link of the first item
+		} else {
+			next = listItem.next().find("a"); //go to the main link of the next item
+		}
+		//Previous items
+		let prev;
+		if (isFirstItem && prevDropdown) {
+			prev = list.children().last().find(".hale-header__dropdown-arrow"); //the dropdown control of the last item in the list
+		} else if (prevDropdown) {
+			prev = listItem.prev().find(".hale-header__dropdown-arrow"); //the dropdown control of the previos item
+		} else if (isFirstItem) {
+			prev = list.children().last().find("a"); //go to the main link of the last item in the list
+		} else {
+			prev = listItem.prev().find("a"); //go to the main link of the previous item
+		}
+
+		if (e.keyCode == "39" || e.keyCode == "40") { // right/down arrow - focus on dropdown control or next item
+			e.preventDefault();
+			next.focus();
+		}
+		if (e.keyCode == "37"|| e.keyCode == "38") { // left/up arrow - focus on previous main link or dropdown control
+			e.preventDefault();
+			prev.focus();
+		}
+	});
 
 	//Keyboard functionailty (requires mouse functionality)
 	$(".hale-header__dropdown-arrow").keydown(function(e){
@@ -268,23 +316,81 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 		let openCloseControl = $(this);
 
 		if (openCloseControl.is(":visible")) {
-			if (e.keyCode == "32") { // space
-				e.preventDefault();
-				openCloseControl.click();
-			}
 			if (e.keyCode == "13") { // return
 				openCloseControl.click();
 			}
 			if (e.keyCode == "40") { // down arrow
 				if (!$(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
 					openCloseControl.click();
+				} else {
+					e.preventDefault();
+					$(this).siblings(".sub-menu").find("li:first-child a").focus();
 				}
 			}
 			if (e.keyCode == "38") { // up arrow
 				if ($(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
 					openCloseControl.click();
+				} else {
+					$(this).prev().focus();
 				}
 			}
+			if (e.keyCode == "37") { // left arrow - focus on main link
+				$(this).prev().focus();
+			}
+			if (e.keyCode == "39") { // right arrow - focus on next main link or first item
+				if ($(this).parents(".menu-item").is($(this).parents("ul").children().last())) {
+					$(this).parents("ul").children().first().find("a").focus();
+				} else {
+					$(this).parent().next().find("a").focus();
+				}
+			}
+		}
+	});
+	$(".hale-header__dropdown-arrow").next().find("a").keydown(function(e){
+		// Keyboard functionality for when within the submenu.
+		// Esc key closes menu
+		// Arrow keys navigate up and down menu
+		let listItemLink = $(this);
+		let listItem = $(this).parent();
+		let list = $(this).parents(".sub-menu");
+		let control = list.siblings(".hale-header__dropdown-arrow");
+		let mainNavItem = list.parents(".menu-item");
+		let mainNavFirstItem = list.parents("ul").children().first();
+		let mainNavLastItem = list.parents("ul").children().last();
+
+		if (listItemLink.is(":visible")) {
+			if (e.keyCode == "27") { // escape key
+				e.preventDefault();
+				control.click(); //closes sub-menu
+				control.focus(); //focuses on sub-menu control
+			}
+			if (e.keyCode == "39" || e.keyCode == "40") { // right or down arrow
+				if (!list.children().last().is(listItem)) {
+					e.preventDefault();
+					listItem.next().find("a").focus();
+				} else {
+					e.preventDefault();
+					control.click(); //closes sub-menu
+					list.parent().next().find("a").focus(); //focuses on next main nav item
+					console.log(mainNavItem);
+					console.log(mainNavLastItem);
+					if (mainNavItem.is(mainNavLastItem)) {
+						console.log("y")
+						mainNavFirstItem.find("a").focus();
+					}
+				}
+			}
+			if (e.keyCode == "37" || e.keyCode == "38") { // left or up arrow
+				e.preventDefault();
+				if (!list.children().first().is(listItem)) {
+					listItem.prev().find("a").focus();
+				} else {
+					control.focus();
+				}
+			}
+
 		}
 	});
 

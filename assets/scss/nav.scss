@@ -239,11 +239,11 @@
             background-color: transparent;
             cursor: pointer;
 
-            &--desktop {
-              display:none;
-            }
             @include govuk-media-query($from: desktop) {
-              display:none;
+              // Submenu arrow button on desktop
+              right: 0;
+              width: 34px;
+              border-bottom-width:0;
             }
 
             &:hover,
@@ -268,6 +268,11 @@
               top: 10px;
               transform: rotate(45deg);
               -webkit-transform: rotate(45deg);
+
+              @include govuk-media-query($from: desktop) {
+                left: 3px;
+              }
+
             }
           }
 
@@ -301,8 +306,7 @@
             }
           }
           @include govuk-media-query($from: desktop) {
-            &:hover,
-            &:focus-within {
+            &:hover {
               .sub-menu {
                 display:block;
               }
@@ -315,48 +319,6 @@
               transform: rotate(-135deg);
               -webkit-transform: rotate(-135deg);
               margin: 6px 10px 0 5px;
-            }
-            @include govuk-media-query($from: desktop) {
-              .hale-header__dropdown-arrow--desktop {
-                height: 17px;
-                width: 15px;
-                top: unset;
-                bottom: 0;
-                padding: 0;
-                clip: unset;
-                border: none;
-
-                &:after {
-                  content: "×";
-                  transform: initial;
-                  font-weight: 700;
-                  left: -7px;
-                  top: unset;
-                  bottom: -9px;
-                  border:none;
-                  transform: none;
-                  font-size: 23px;
-                }
-              }
-            }
-          }
-          @include govuk-media-query($from: desktop) {
-            .hale-header__dropdown-arrow--desktop {
-
-              display: block;
-              position: absolute;
-              width: 0px;
-              right: 0px;
-              height: 0px;
-              clip: rect(0,0,0,0);
-
-              &:focus {
-                ~ .sub-menu {
-                  outline-style: solid;
-                  outline-width: 4px;
-                  display:block;
-                }
-              }
             }
           }
         }
