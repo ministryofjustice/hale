@@ -2,9 +2,23 @@
 
 .govuk-header {
   //overrides the govuk nowrap and centres text for the longer menus found on hale
-  &.hale-header .govuk-header__navigation-list li a {
-    white-space: normal;
-    text-align: left;
+  &.hale-header .govuk-header__navigation-list li {
+    a {
+      white-space: normal;
+      text-align: left;
+    }
+    // outline for when more button is clicked
+    &.menu-item--more--open {
+      .menu-item__more:before {
+        content: "";
+        width: 100%;
+        height: calc(100% + 3px);
+        position: absolute;
+        outline: 3px solid;
+        outline-offset: -3px;
+        z-index: 1;
+      }
+    }
   }
 
   @include govuk-media-query($from: desktop) {
@@ -244,6 +258,7 @@
               right: 0;
               width: 34px;
               border-bottom-width:0;
+              height: 100%;
             }
 
             &:hover,
@@ -284,25 +299,6 @@
 
             @include govuk-media-query($from: desktop) {
               padding-right: 34px;
-            }
-
-            &:after {
-              content: "";
-              border-color: currentColor;
-              border-style: solid;
-              border-width: 0 3px 3px 0;
-              display: block;
-              padding: 3px;
-              transform: rotate(45deg);
-              -webkit-transform: rotate(45deg);
-              float: left;
-              margin: 3px 10px 0 5px;
-              position: absolute;
-              top: 10px;
-              right: -45px;
-              @include govuk-media-query($from: desktop) {
-                right: 7px;
-              }
             }
           }
           @include govuk-media-query($from: desktop) {

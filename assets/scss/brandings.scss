@@ -13,6 +13,40 @@
 	}
 }
 
+@mixin hale-dropdown-control-underline-desktop($colour, $background, $underline, $left-limit: 100%) {
+	@include govuk-media-query($from: desktop) {
+		color: $colour;
+		background-color: $background;
+		border-bottom-color: unset;
+		border-image-slice: 1;
+		border-image-source: linear-gradient(to left,
+			$background 0,
+			$background 15px,
+			$underline 0,
+			$underline $left-limit,
+			$background 0,
+			$background
+		);
+	}
+}
+
+@mixin hale-nav-item-desktop($colour, $background, $underline, $gapL: 15px, $gapR: 15px) {
+	@include govuk-media-query($from: desktop) {
+		color: $colour;
+		background-color: $background;
+		border-bottom-color: unset;
+		border-image-slice: 1;
+		border-image-source: linear-gradient(to right,
+			$background 0,
+			$background 15px,
+			$underline 0,
+			$underline calc(100% - $gapR),
+			$background 0,
+			$background
+		);
+	}
+}
+
 // This Mixin adds the style which cancels out the text colour should a different block of a different colour be inside it.
 // However, it will break down if a different block of the same colour be insude it - in such cases, the text colour might need to be manually set.
 @mixin hale-block-inside-block($paletteColour, $colour, $hoverColour: "") {
@@ -353,7 +387,7 @@
 
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
-
+/**/
 				.current-menu-item {
 
 					>a,
@@ -420,25 +454,21 @@
 						}
 					}
 
-					// outline for when more button is clicked
-					&.menu-item--more--open {
-						.menu-item__more:before {
-							content: "";
-							width: 100%;
-							height: calc(100% + 3px);
-							position: absolute;
-							outline: 3px solid;
-							outline-offset: -3px;
-							z-index: 1;
-						}
-					}
-
 					&.menu-item-has-children {
 						border-right-color: var(--header-divider-line);
 
 						&:has(.hale-header__dropdown-arrow:focus) {
-							color: var(--header-link-hover-focus);
 							background-color: var(--header-link-focus-highlight);
+							>a,
+							>a:link,
+							>a:visited,
+							>a:link:visited {
+								color: var(--header-link-hover-focus);
+							}
+						}
+
+						&:hover .hale-header__dropdown-arrow {
+							color: var(--header-link-with-children-hover);
 						}
 
 						a:focus {
@@ -460,18 +490,12 @@
 								background-color: var(--header-link-focus-highlight);
 								border-bottom-color: var(--header-link-focus-underline);
 
-								@include govuk-media-query($from: desktop) {
-									border-bottom-color: unset;
-									border-image-slice: 1;
-									border-image-source: linear-gradient(to left,
-										var(--header-link-focus-highlight) 0,
-										var(--header-link-focus-highlight) 14px,
-										var(--header-link-focus-underline) 0,
-										var(--header-link-focus-underline) 27px,
-										var(--header-link-hover-border) 0,
-										var(--header-link-hover-border),
-									);
-								}
+								@include hale-dropdown-control-underline-desktop(
+									$colour: var(--header-link-hover-focus),
+									$background: var(--header-link-focus-highlight),
+									$underline: var(--header-link-focus-underline),
+									$left-limit: 27px
+								);
 							}
 
 							&:focus:not(:hover) {
@@ -479,61 +503,27 @@
 								border-bottom-color: var(--header-link-focus-underline);
 								background-color: var(--header-link-focus-highlight);
 
-								@include govuk-media-query($from: desktop) {
-									border-bottom-color: unset;
-									border-image-slice: 1;
-									border-image-source: linear-gradient(to left,
-										var(--header-link-focus-highlight) 0,
-										var(--header-link-focus-highlight) 14px,
-										var(--header-link-focus-underline) 0,
-										var(--header-link-focus-underline) 27px,
-										var(--header-link-focus-highlight) 0,
-										var(--header-link-focus-highlight)
-									);
-								}
+								@include hale-dropdown-control-underline-desktop(
+									$colour: var(--header-link-focus),
+									$background: var(--header-link-focus-highlight),
+									$underline: var(--header-link-focus-underline),
+									$left-limit: 27px
+								);
 							}
 
 							&:hover {
 								color: var(--header-link-hover);
 								border-bottom-color: var(--header-link-hover-border);
 
-								@include govuk-media-query($from: desktop) {
-									color: var(--header-link-with-children-hover);
-									background-color: var(--header-link-with-children-hover-bg);
-									border-bottom-color: unset;
-									border-image-slice: 1;
-									border-image-source: linear-gradient(to left,
-										var(--header-link-focus-highlight) 0,
-										var(--header-link-focus-highlight) 14px,
-										var(--header-link-with-children-hover-border) 0,
-										var(--header-link-with-children-hover-border) 100%,
-										var(--header-link-focus-highlight) 0,
-										var(--header-link-focus-highlight)
-									);
-								}
+								@include hale-dropdown-control-underline-desktop(
+									$colour: var(--header-link-with-children-hover),
+									$background: var(--header-link-with-children-hover-bg),
+									$underline: var(--header-link-with-children-hover-border)
+								);
 							}
-						}
-
-						>a:after,
-						>a:link:after,
-						>a:visited:after,
-						>a:link:visited:after {
-							border-color: currentColor;
-							;
 						}
 
 						@include govuk-media-query($until: desktop) {
-
-							&.current_page_item,
-							&.current_page_ancestor {
-
-								>a:after,
-								>a:link:after,
-								>a:visited:after,
-								>a:link:visited:after {
-									border-color: var(--header-link);
-								}
-							}
 
 							>a:focus:after {
 								border-color: var(--header-link);
@@ -551,6 +541,14 @@
 									color: var(--header-link-with-children-hover);
 									border-color: var(--header-link-with-children-hover-border);
 									@include hale-heading-link-underline-restrictor($colour: --header-link-with-children-hover-bg);
+
+									&:is(.menu-item-has-children:has(.hale-header__dropdown-arrow:focus) *) {
+										// submenu toggle is focussed & top-level control hovered over
+										background-color: var(--header-link-focus-highlight);
+										color: var(--header-link-hover-focus);
+										border-color: var(--header-link-focus-underline);
+										@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+									}
 								}
 							}
 
@@ -569,6 +567,34 @@
 
 						&.current-menu-item,
 						&.current-menu-ancestor {
+
+							&:has(.hale-header__dropdown-arrow:focus) {
+								background-color: var(--header-link-focus-highlight);
+								>a,
+								>a:link,
+								>a:visited,
+								>a:link:visited {
+									color: var(--header-link-hover-focus);
+									background-color: var(--header-link-focus-highlight);
+									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
+								}
+							}
+
+							.hale-header__dropdown-arrow {
+								@include govuk-media-query($from: desktop) {
+									color: var(--header-link-ancestor);
+									background-color: var(--header-link-ancestor-bg);
+								}
+							
+								&:hover {
+									@include hale-dropdown-control-underline-desktop(
+										$colour: var(--header-link-ancestor),
+										$background: var(--header-link-ancestor-bg),
+										$underline: var(--header-link-ancestor-hover-border),
+										$left-limit: 27px
+									);
+								}
+							}
 
 							>a:not(:focus),
 							>a:not(:focus):visited,

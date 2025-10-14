@@ -350,7 +350,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	});
 	$(".hale-header__dropdown-arrow").next().find("a").keydown(function(e){
 		// Keyboard functionality for when within the submenu.
-		// Esc key closes menu
+		// Esc key closes menu (whist focussed) - separate code for when not focussed
 		// Arrow keys navigate up and down menu
 		let listItemLink = $(this);
 		let listItem = $(this).parent();
@@ -393,7 +393,12 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 
 		}
 	});
-
+	// If escape key is pressed anywhere on the page and a submenu is open - it gets shut.
+	$(document).keydown(function(e) {
+		if (e.keyCode == "27") { // escape key
+			$(".sub-menu-open").find(".hale-header__dropdown-arrow").click();
+		}
+	});
 	//Mouse functionality
 	$( ".hale-header__dropdown-arrow" ).click(function( event ) {
 
