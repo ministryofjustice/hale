@@ -38,7 +38,7 @@
 		border-image-slice: 1;
 		border-image-source: linear-gradient(to right,
 			$background 0,
-			$background 15px,
+			$background $gapL,
 			$underline 0,
 			$underline calc(100% - $gapR),
 			$background 0,
@@ -387,7 +387,311 @@
 
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
-/**/
+				>.menu-item {
+
+					// Normal link
+					>a,
+					.hale-header__dropdown-arrow {
+						color: var(--header-link);
+
+						&:hover {
+							color: var(--header-link-hover);
+							border-bottom-color: var(--header-link-hover-border);
+						}
+						&:focus {
+							color: var(--header-link-focus);
+							background-color: var(--header-link-focus-highlight);
+							border-bottom-color: var(--header-link-focus-underline);
+						}
+					}
+
+					// Current page (no children)
+					&.current-menu-item:not(.menu-item-has-children) {
+						>a {
+							color: var(--header-link-current);
+							background-color: var(--header-link-current-bg);
+							border-bottom-color: var(--header-link-current-border);
+
+							&:hover {
+								border-bottom-color: var(--header-link-current-hover-border);
+							}
+						}
+					}
+
+					// Has children
+					&.menu-item-has-children {
+						>a,
+						.hale-header__dropdown-arrow {
+							&:hover {
+								color: var(--header-link-with-children-hover);
+								background-color: var(--header-link-with-children-hover-bg);
+								border-bottom-color: var(--header-link-with-children-hover-border);
+							}
+						}
+					}
+
+					// Current page is child
+					&.current-menu-ancestor {
+						>a,
+						.hale-header__dropdown-arrow {
+							color: var(--header-link-ancestor);
+							background-color: var(--header-link-ancestor-bg);
+							&:hover {
+								color: var(--header-link-ancestor);
+								background-color: var(--header-link-ancestor-bg);
+								border-bottom-color: var(--header-link-ancestor-hover-border);
+							}
+							&:focus {
+								color: var(--header-link-focus);
+								background-color: var(--header-link-focus-highlight);
+								border-bottom-color: var(--header-link-focus-underline);
+							}
+						}
+					}
+
+					// Now are the desktop colours - the colours are the same, but to achieve
+					// the correct underline, we use a mixin (nav-item-desktop) which applies
+					// the colour, the background/highlight and the correct underline
+					@include govuk-media-query($from: desktop) {
+						// Normal desktop link
+						>a {
+							&:hover {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-hover),
+									$background: var(--header-bg),
+									$underline: var(--header-link-hover-border)
+								);
+							}
+							&:focus {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-focus),
+									$background: var(--header-link-focus-highlight),
+									$underline: var(--header-link-focus-underline)
+								);
+							}
+						}
+
+						// Current page (no children)
+						&.current-menu-item:not(.menu-item-has-children) {
+							>a {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-current),
+									$background: var(--header-link-current-bg),
+									$underline: var(--header-link-current-border)
+								);
+								&:hover {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-current),
+										$background: var(--header-link-current-bg),
+										$underline: var(--header-link-current-hover-border)
+									);
+								}
+							}
+						}
+
+						// Has children
+						&.menu-item-has-children {
+							>a {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link),
+									$background: var(--header-bg), //no background, use header background
+									$underline: var(--header-bg), //no underlilne - same as background
+									$gapR: 34px
+								);
+								+ .hale-header__dropdown-arrow {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link),
+										$background: var(--header-bg), //no background, use header background
+										$underline: var(--header-bg), //no underlilne - same as background
+										$gapL: 0px,
+										$gapR: 8px
+									);
+								}
+								&:hover {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-with-children-hover),
+										$background: var(--header-link-with-children-hover-bg),
+										$underline: var(--header-link-with-children-hover-border),
+										$gapR: 34px
+									);
+									+ .hale-header__dropdown-arrow {
+										@include hale-nav-item-desktop(
+											$colour: var(--header-link-with-children-hover),
+											$background: var(--header-link-with-children-hover-bg),
+											$underline: var(--header-link-with-children-hover-bg),
+											$gapL: 0px,
+											$gapR: 8px
+										);
+									}
+								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
+										$gapR: 34px
+									);
+									+ .hale-header__dropdown-arrow {
+										@include hale-nav-item-desktop(
+											$colour: var(--header-link-focus),
+											$background: var(--header-link-focus-highlight),
+											$underline: var(--header-link-focus-highlight),
+											$gapL: 0px,
+											$gapR: 8px
+										);
+									}
+								}
+							}
+							// The dropdown control is hovered over or focussed - highlight the entire thing
+							&:has(.hale-header__dropdown-arrow:hover)>a {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-with-children-hover),
+									$background: var(--header-link-with-children-hover-bg),
+									$underline: var(--header-link-with-children-hover-bg),
+									$gapR: 34px
+								);
+							}
+							&:has(.hale-header__dropdown-arrow:focus)>a:not(:hover) {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-focus),
+									$background: var(--header-link-focus-highlight),
+									$underline: var(--header-link-focus-highlight),
+									$gapR: 34px
+								);
+							}
+
+							.hale-header__dropdown-arrow {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link),
+									$background: var(--header-bg), //no background, use header background
+									$underline: var(--header-bg), //no underlilne - same as background
+									$gapL: 0px,
+									$gapR: 8px
+								);
+								&:hover {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-with-children-hover),
+										$background: var(--header-link-with-children-hover-bg),
+										$underline: var(--header-link-with-children-hover-border),
+										$gapL: 0px,
+										$gapR: 8px
+									);
+								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
+										$gapL: 0px,
+										$gapR: 8px
+									);
+								}
+							}
+						}
+
+						// Current page is child
+						&.current-menu-ancestor {
+							>a {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-ancestor),
+									$background: var(--header-link-ancestor-bg),
+									$underline: var(--header-link-ancestor-bg), //no underlilne - same as background
+									$gapR: 34px
+								);
+								+ .hale-header__dropdown-arrow {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-ancestor),
+										$background: var(--header-link-ancestor-bg),
+										$underline: var(--header-link-ancestor-bg), //no underlilne - same as background
+										$gapL: 0px,
+										$gapR: 8px
+									);
+								}
+								&:hover {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-ancestor),
+										$background: var(--header-link-ancestor-bg),
+										$underline: var(--header-link-ancestor-hover-border),
+										$gapR: 34px
+									);
+									+ .hale-header__dropdown-arrow {
+										@include hale-nav-item-desktop(
+											$colour: var(--header-link-ancestor),
+											$background: var(--header-link-ancestor-bg),
+											$underline: var(--header-link-ancestor-bg), //no underlilne - same as background
+											$gapL: 0px,
+											$gapR: 8px
+										);
+									}
+								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
+										$gapR: 34px
+									);
+									+ .hale-header__dropdown-arrow {
+										@include hale-nav-item-desktop(
+											$colour: var(--header-link-focus),
+											$background: var(--header-link-focus-highlight),
+											$underline: var(--header-link-focus-highlight), //no underlilne - same as background
+											$gapL: 0px,
+											$gapR: 8px
+										);
+									}
+								}
+							}
+							// The dropdown control is hovered over or focussed - highlight the entire thing
+							&:has(.hale-header__dropdown-arrow:hover)>a {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-ancestor),
+									$background: var(--header-link-ancestor-bg),
+									$underline: var(--header-link-ancestor-bg),
+									$gapR: 34px
+								);
+							}
+							&:has(.hale-header__dropdown-arrow:focus)>a:not(:hover) {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-focus),
+									$background: var(--header-link-focus-highlight),
+									$underline: var(--header-link-focus-highlight),
+									$gapR: 34px
+								);
+							}
+							.hale-header__dropdown-arrow {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link-ancestor),
+									$background: var(--header-link-ancestor-bg),
+									$underline: var(--header-link-ancestor-bg), //no underlilne - same as background
+									$gapL: 0px,
+									$gapR: 8px
+								);
+								&:hover {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-ancestor),
+										$background: var(--header-link-ancestor-bg),
+										$underline: var(--header-link-ancestor-hover-border),
+										$gapL: 0px,
+										$gapR: 8px
+									);
+								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
+										$gapL: 0px,
+										$gapR: 8px
+									);
+								}
+							}
+
+						}
+					}
+				}
+
+/*
 				.current-menu-item {
 
 					>a,
@@ -625,7 +929,7 @@
 						}
 					}
 				}
-
+*/
 				.sub-menu {
 					outline-color: var(--header-link-focus-underline);
 					box-shadow: 0px -1px 0px 0px var(--header-submenu-top-border);
