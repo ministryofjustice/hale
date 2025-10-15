@@ -387,8 +387,8 @@
 
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
-				>.menu-item {
-
+				// The following will also apply to submenus
+				.menu-item {
 					// Normal link
 					>a,
 					.hale-header__dropdown-arrow {
@@ -448,11 +448,13 @@
 							}
 						}
 					}
-
-					// Now are the desktop colours - the colours are the same, but to achieve
-					// the correct underline, we use a mixin (nav-item-desktop) which applies
-					// the colour, the background/highlight and the correct underline
-					@include govuk-media-query($from: desktop) {
+				}
+				// Now are the desktop colours - the colours are the same, but to achieve
+				// the correct underline, we use a mixin (nav-item-desktop) which applies
+				// the colour, the background/highlight and the correct underline
+				@include govuk-media-query($from: desktop) {
+					// The following will NOT apply to submenus
+					>.menu-item {
 						// Normal desktop link
 						>a {
 							&:hover {
@@ -692,7 +694,6 @@
 				}
 
 				.sub-menu {
-					outline-color: var(--header-link-focus-underline);
 					box-shadow: 0px -1px 0px 0px var(--header-submenu-top-border);
 
 					@include govuk-media-query($from: desktop) {
@@ -711,6 +712,10 @@
 						>a:link,
 						>a:link:visited {
 							color: var(--header-submenu-link-mobile);
+
+							&:focus {
+								color: var(--header-link-focus);
+							}
 
 							@include govuk-media-query($from: desktop) {
 								color: var(--header-submenu-link);
