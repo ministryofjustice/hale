@@ -7,18 +7,6 @@
       white-space: normal;
       text-align: left;
     }
-    // outline for when more button is clicked
-    &.menu-item--more--open {
-      .menu-item__more:before {
-        content: "";
-        width: 100%;
-        height: calc(100% + 3px);
-        position: absolute;
-        outline: 3px solid;
-        outline-offset: -3px;
-        z-index: 1;
-      }
-    }
   }
 
   @include govuk-media-query($from: desktop) {
@@ -109,7 +97,6 @@
 
             &--open .menu-item--more__content,
             &:hover .menu-item--more__content,
-            .menu-item__more:focus ~ .menu-item--more__content,
             .menu-item--more__content:focus,
             .menu-item--more__content:focus-within {
               visibility: visible;

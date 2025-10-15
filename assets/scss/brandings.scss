@@ -688,7 +688,50 @@
 									);
 								}
 							}
-
+						}
+						&--more {
+							>button.menu-item__more {
+								@include hale-nav-item-desktop(
+									$colour: var(--header-link),
+									$background: var(--header-bg), //no background, use header background
+									$underline: var(--header-bg), //no underlilne - same as background
+								);
+								&:hover {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-with-children-hover),
+										$background: var(--header-link-with-children-hover-bg),
+										$underline: var(--header-link-with-children-hover-border),
+									);
+								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
+									);
+								}
+								&--contains-current {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-ancestor),
+										$background: var(--header-link-ancestor-bg),
+										$underline: var(--header-link-ancestor-bg), //no underlilne - same as background
+									);
+									&:hover {
+										@include hale-nav-item-desktop(
+											$colour: var(--header-link-ancestor),
+											$background: var(--header-link-ancestor-bg),
+											$underline: var(--header-link-ancestor-hover-border),
+										);
+									}
+									&:focus {
+										@include hale-nav-item-desktop(
+											$colour: var(--header-link-focus),
+											$background: var(--header-link-focus-highlight),
+											$underline: var(--header-link-focus-underline),
+										);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -780,33 +823,6 @@
 				}
 
 				.menu-item--more {
-					.menu-item__more {
-						background-color: var(--header-bg);
-						border-bottom-color: var(--header-bg);
-
-						&--contains-current {
-							background-color: var(--header-link-ancestor-bg);
-							border-bottom-color: var(--header-link-ancestor-bg);
-							color: var(--header-link-ancestor);
-
-							&:hover {
-								color: var(--header-link-ancestor);
-								border-bottom-color: var(--header-link-ancestor-hover-border);
-
-								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
-
-								&:focus {
-									border-bottom-color: currentColor;
-
-									@include hale-heading-link-underline-restrictor($colour: --header-link-focus-highlight);
-								}
-							}
-
-							&:not(:hover) {
-								@include hale-heading-link-underline-restrictor($colour: --header-link-ancestor-bg);
-							}
-						}
-					}
 
 					&__content {
 						background-color: var(--header-submenu-bg);
@@ -865,11 +881,11 @@
 										&:visited,
 										&:link:visited {
 											&:not(:focus) {
-												background-color: var(--header-submenu-bg);
-												color: var(--header-submenu-link);
-												border-bottom-color: var(--header-submenu-bg);
-
-												@include hale-heading-link-underline-restrictor($colour: --header-submenu-bg);
+												@include hale-nav-item-desktop(
+													$colour: var(--header-submenu-link),
+													$background: var(--header-submenu-bg),
+													$underline: var(--header-submenu-bg),
+												);
 											}
 										}
 									}
@@ -883,16 +899,20 @@
 									&:visited,
 									&:link:visited {
 										&:not(:focus) {
-											color: var(--header-link-current);
-											background-color: var(--header-link-current-bg);
-											@include hale-heading-link-underline-restrictor($colour: --header-link-current-bg);
-
 											&:not(:hover) {
-												border-bottom-color: var(--header-link-current-border);
+												@include hale-nav-item-desktop(
+													$colour: var(--header-link-current),
+													$background: var(--header-link-current-bg),
+													$underline: var(--header-link-current-border),
+												);
 											}
 
 											&:hover {
-												border-bottom-color: var(--header-link-current-hover-border);
+												@include hale-nav-item-desktop(
+													$colour: var(--header-link-current),
+													$background: var(--header-link-current-bg),
+													$underline: var(--header-link-current-hover-border),
+												);
 											}
 										}
 									}

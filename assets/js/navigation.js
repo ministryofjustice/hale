@@ -261,23 +261,28 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
 
 	//Keyboard functionailty (main nav - arrow navigation)
-	$(".menu-item>a").keydown(function(e) {
+	$(".menu-item>a,.menu-item--more>.menu-item__more").keydown(function(e) {
 
 		let list = $(this).parents("ul");
 		let listItem = $(this).parent();
+
+		//Is this in the more menu
+		let inMoreMenu = false;
+		if ($(this).closest(".menu-item--more__content").length) inMoreMenu = true;
 
 		//Is this first or last item?
 		let isFirstItem = false;
 		let isLastItem = false;
 		if(listItem.is(list.children().first())) isFirstItem = true;
-		if(listItem.is(list.children().last())) isLastItem = true;
-
+		if(listItem.is(list.children().last()) || $(this).hasClass("menu-item__more")) isLastItem = true;
+		
 		//Is this item or the previous item a dropdown?
 		let dropdown = false;
 		let prevDropdown = false;
 		if (listItem.is(".menu-item-has-children")) dropdown = true;
 		if (!isFirstItem && listItem.prev().is(".menu-item-has-children")) prevDropdown = true;
 		if (isFirstItem && list.children().last().is(".menu-item-has-children")) prevDropdown = true;
+		if (isFirstItem && list.children("menu-item--more").length > 0) prevDropdown = false; //the more button
 
 		//Next items
 		let next;
@@ -287,26 +292,122 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 			next = list.children().first().find("a"); //last in list: go to the main link of the first item
 		} else {
 			next = listItem.next().find("a"); //go to the main link of the next item
+			if (next.length > 1) {
+				// This will happen if the More button is displayed, hiding several links
+				next = listItem.next().find(".menu-item__more"); //go to the more block
+			}
 		}
 		//Previous items
 		let prev;
 		if (isFirstItem && prevDropdown) {
-			prev = list.children().last().find(".hale-header__dropdown-arrow"); //the dropdown control of the last item in the list
+			prev = list.children().find(".menu-item__more"); //go to the more block
+			if (prev.length == 0) {
+				prev = list.children().last().find(".hale-header__dropdown-arrow"); //the dropdown control of the last item in the list
+			}
 		} else if (prevDropdown) {
 			prev = listItem.prev().find(".hale-header__dropdown-arrow"); //the dropdown control of the previos item
 		} else if (isFirstItem) {
-			prev = list.children().last().find("a"); //go to the main link of the last item in the list
+			prev = list.children().find(".menu-item__more"); //go to the more block
+			if (prev.length == 0) {
+				prev = list.children().last().find("a"); //go to the main link of the last item in the list
+			}
 		} else {
 			prev = listItem.prev().find("a"); //go to the main link of the previous item
 		}
 
-		if (e.keyCode == "39" || e.keyCode == "40") { // right/down arrow - focus on dropdown control or next item
+		let up = prev;
+		let down = next;
+
+		if (inMoreMenu) {
+			let more_top = $(this).closest(".menu-item--more__content > li");
+			let more_sub_menu = $(this).closest(".sub-menu");
+			let more_parent = $(this).parent();
+			let isLast = more_top.is(":nth-child(3n),:last-child");
+			let isFirst = more_top.is(":nth-child(3n-2),:first-child");
+console.log(more_top);
+console.log(more_sub_menu);			
+console.log(more_parent);		
+console.log(isFirst);
+console.log(isLast);			
+			if (!more_sub_menu.length) {
+				// top level
+				prev = more_parent.prev().children("a");
+				next = more_parent.next().children("a");
+				if (isFirst) {
+					prev = more_parent.next().next().children("a"); //last on same row
+				} else if (isLast) {
+					next = more_parent.prev().prev().children("a"); //last on same row
+				}
+				if (dropdown) {
+					down = $(this).siblings(".sub-menu").children().first().find("a");
+				} else {
+					down = more_parent.next().next().next().children("a"); // next in column
+					// down at bottom does nothing
+				}
+				if ($(this).is(":nth-child(-n+3)")) {
+					up = $(".menu-item__more"); //top row, return to more button
+				} else {
+					up = more_parent.prev().prev().prev().find("a"); //go to 3 earlier - directly above
+				}
+			} else {
+				// second level
+				let more_sub_menu_position = more_parent.prevAll().length + 1;
+				prev = more_top.prev().children(".sub-menu").find("a:nth-child("+more_sub_menu_position+")");
+				next = more_top.next().children(".sub-menu").find("a:nth-child("+more_sub_menu_position+")");
+console.log(more_top.prev().children(".sub-menu").children().eq(more_sub_menu_position).children("a"));
+				if (isFirst) {
+					prev = more_top.next().next().children(".sub-menu").children(":last-child").children("a"); //fallback in case next doesn't exist
+					prev = more_top.next().next().children(".sub-menu").children().eq(more_sub_menu_position).children("a");
+				}
+				if (isLast) {
+					next = more_top.prev().prev().children(".sub-menu").children(":last-child").children("a"); //fallback in case next doesn't exist
+					next = more_top.prev().prev().children(".sub-menu").children().eq(more_sub_menu_position).children("a");
+				}
+				if (isLastItem) {
+					down = more_sub_menu.closest("menu-item").next().next().next().children("a"); // top level directly below
+				} else {
+					down = more_parent.next().children("a");
+				}
+				if (isFirstItem) {
+					up = more_sub_menu.siblings("a"); //first level parent
+				} else {
+					up = more_parent.prev().children("a");
+				}
+			}
+		}
+
+		if (e.keyCode == "39") { // right arrow - focus on dropdown control or next item
 			e.preventDefault();
 			next.focus();
 		}
-		if (e.keyCode == "37"|| e.keyCode == "38") { // left/up arrow - focus on previous main link or dropdown control
+		if (e.keyCode == "40") { // down arrow - focus on dropdown control or next item or open more links
+			e.preventDefault();
+			if ($(this).parent().hasClass("menu-item--more")) {
+				if ($(this).parent().hasClass("menu-item--more--open")) {
+					// We focus on the 3rd top level element in the more menu which
+					// should be directly below the more button itself, falling back to
+					// the first and second
+					$(".menu-item--more__content").children(":nth-child(1)").children("a").focus();
+					$(".menu-item--more__content").children(":nth-child(2)").children("a").focus();
+					$(".menu-item--more__content").children(":nth-child(3)").children("a").focus();
+				} else {
+					$(this).click(); //opens more menu
+				}
+			} else {
+				down.focus();
+			}
+		}
+		if (e.keyCode == "37") { // left/up arrow - focus on previous main link or dropdown control
 			e.preventDefault();
 			prev.focus();
+		}
+		if (e.keyCode == "38") { // left/up arrow - focus on previous main link or dropdown control
+			e.preventDefault();
+			if ($(this).parent().hasClass("menu-item--more") && $(this).parent().hasClass("menu-item--more--open")) {
+				$(this).click(); //closes more menu
+			} else {
+				up.focus();
+			}
 		}
 	});
 
@@ -374,10 +475,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 					e.preventDefault();
 					control.click(); //closes sub-menu
 					list.parent().next().find("a").focus(); //focuses on next main nav item
-					console.log(mainNavItem);
-					console.log(mainNavLastItem);
 					if (mainNavItem.is(mainNavLastItem)) {
-						console.log("y")
 						mainNavFirstItem.find("a").focus();
 					}
 				}
@@ -397,6 +495,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	$(document).keydown(function(e) {
 		if (e.keyCode == "27") { // escape key
 			$(".sub-menu-open").find(".hale-header__dropdown-arrow").click();
+			$(".menu-item--more--open").find("button").click();
 		}
 	});
 	//Mouse functionality
