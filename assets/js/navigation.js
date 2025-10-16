@@ -319,56 +319,77 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 		let down = next;
 
 		if (inMoreMenu) {
-			let more_top = $(this).closest(".menu-item--more__content > li");
-			let more_sub_menu = $(this).closest(".sub-menu");
-			let more_parent = $(this).parent();
-			let isLast = more_top.is(":nth-child(3n),:last-child");
-			let isFirst = more_top.is(":nth-child(3n-2),:first-child");
-console.log(more_top);
-console.log(more_sub_menu);			
-console.log(more_parent);		
-console.log(isFirst);
-console.log(isLast);			
+			let more_menu = $(this).closest(".menu-item--more__content");
+			let more_menu_items = more_menu.children("li");
+			let more_items_total = more_menu_items.length;
+			let more_top = $(this).closest(".menu-item--more__content > li"); // the LI which contains the current link
+			let more_current_position = more_top.prevAll().length + 1; //gets the current position
+			let more_sub_menu = $(this).closest(".sub-menu"); //the container for the second level nav
+			let more_parent = $(this).parent(); //the parent - 2nd level nav use only (1st level will resolve the same as more_top)
+
+			// Positional checks
+			let isFirstColumn = (more_current_position % 3 == 1);
+			let isMiddleColumn = (more_current_position % 3 == 2);
+			let isLastColumn = (more_current_position % 3 == 0);
+			let isLastItem = (more_current_position == more_items_total);
+			let isFirstRow = (more_current_position <= 3);
+			let isFirstSubMenuItem = (more_parent.prevAll().length == 0);
+			let isLastSubMenuItem = (more_parent.nextAll().length == 0);
+			let isEmptyBelow = (
+				(isLastColumn && (more_current_position + 1 == more_items_total || more_current_position +2 == more_items_total))
+				||
+				(isMiddleColumn && more_current_position + 2 == more_items_total)
+			);
+
+			// Sideways arrows go to next 1st level item
+			prev = more_top.prev().children("a");
+			next = more_top.next().children("a");
+
+			if (isFirstColumn) {
+				// if the first in the row, sideways goes to the other end of the row
+				if (more_current_position + 2 <= more_items_total) {
+					prev = more_top.next().next().children("a");
+				} else {
+					prev = more_menu_items.last().children("a");
+				}
+			} else if (isLastColumn) {
+				if (more_current_position - 2 > 0) {
+					next = more_top.prev().prev().children("a");
+				} else {
+					next = more_menu_items.first().children("a");
+				}
+			} else if (isLastItem) {
+				// First and last column already dealt with, so must be in middle
+				next = more_top.prev().children("a");
+			}
+
+			// Up and down
 			if (!more_sub_menu.length) {
 				// top level
-				prev = more_parent.prev().children("a");
-				next = more_parent.next().children("a");
-				if (isFirst) {
-					prev = more_parent.next().next().children("a"); //last on same row
-				} else if (isLast) {
-					next = more_parent.prev().prev().children("a"); //last on same row
-				}
 				if (dropdown) {
+					//if there is a submenu, always go into that on down
 					down = $(this).siblings(".sub-menu").children().first().find("a");
+				} else if (isEmptyBelow) {
+					// if there is an item not directly below, but it is empty below, go to that item.
+					down = more_menu_items.last().children("a");
 				} else {
-					down = more_parent.next().next().next().children("a"); // next in column
+					down = more_top.next().next().next().children("a"); // next in column
 					// down at bottom does nothing
 				}
-				if ($(this).is(":nth-child(-n+3)")) {
+				if (isFirstRow) {
 					up = $(".menu-item__more"); //top row, return to more button
 				} else {
-					up = more_parent.prev().prev().prev().find("a"); //go to 3 earlier - directly above
+					up = more_top.prev().prev().prev().find("a"); //go to 3 earlier - directly above
 				}
 			} else {
-				// second level
-				let more_sub_menu_position = more_parent.prevAll().length + 1;
-				prev = more_top.prev().children(".sub-menu").find("a:nth-child("+more_sub_menu_position+")");
-				next = more_top.next().children(".sub-menu").find("a:nth-child("+more_sub_menu_position+")");
-console.log(more_top.prev().children(".sub-menu").children().eq(more_sub_menu_position).children("a"));
-				if (isFirst) {
-					prev = more_top.next().next().children(".sub-menu").children(":last-child").children("a"); //fallback in case next doesn't exist
-					prev = more_top.next().next().children(".sub-menu").children().eq(more_sub_menu_position).children("a");
+				//second level nav
+				down = more_parent.next().children("a");
+				if (isLastSubMenuItem && isEmptyBelow) {
+					// if there is an item not directly below, but it is empty below, go to that item.
+					down = more_menu_items.last().children("a");
 				}
-				if (isLast) {
-					next = more_top.prev().prev().children(".sub-menu").children(":last-child").children("a"); //fallback in case next doesn't exist
-					next = more_top.prev().prev().children(".sub-menu").children().eq(more_sub_menu_position).children("a");
-				}
-				if (isLastItem) {
-					down = more_sub_menu.closest("menu-item").next().next().next().children("a"); // top level directly below
-				} else {
-					down = more_parent.next().children("a");
-				}
-				if (isFirstItem) {
+				// down at bottom does nothing
+				if (isFirstSubMenuItem) {
 					up = more_sub_menu.siblings("a"); //first level parent
 				} else {
 					up = more_parent.prev().children("a");
@@ -397,11 +418,11 @@ console.log(more_top.prev().children(".sub-menu").children().eq(more_sub_menu_po
 				down.focus();
 			}
 		}
-		if (e.keyCode == "37") { // left/up arrow - focus on previous main link or dropdown control
+		if (e.keyCode == "37") { // left arrow - focus on previous main link or dropdown control
 			e.preventDefault();
 			prev.focus();
 		}
-		if (e.keyCode == "38") { // left/up arrow - focus on previous main link or dropdown control
+		if (e.keyCode == "38") { // up arrow - focus on previous main link or dropdown control
 			e.preventDefault();
 			if ($(this).parent().hasClass("menu-item--more") && $(this).parent().hasClass("menu-item--more--open")) {
 				$(this).click(); //closes more menu
@@ -461,7 +482,7 @@ console.log(more_top.prev().children(".sub-menu").children().eq(more_sub_menu_po
 		let mainNavFirstItem = list.parents("ul").children().first();
 		let mainNavLastItem = list.parents("ul").children().last();
 
-		if (listItemLink.is(":visible")) {
+		if (listItemLink.is(":visible") && !listItemLink.closest(".menu-item--more__content").length) {
 			if (e.keyCode == "27") { // escape key
 				e.preventDefault();
 				control.click(); //closes sub-menu
