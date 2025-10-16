@@ -292,22 +292,22 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 			next = list.children().first().find("a"); //last in list: go to the main link of the first item
 		} else {
 			next = listItem.next().find("a"); //go to the main link of the next item
-			if (next.length > 1) {
-				// This will happen if the More button is displayed, hiding several links
-				next = listItem.next().find(".menu-item__more"); //go to the more block
+			if (next.closest(".menu-item--more").length) {
+				// This will happen if the More button is displayed
+				next = listItem.next().find(".menu-item__more"); //go to the more button
 			}
 		}
 		//Previous items
 		let prev;
 		if (isFirstItem && prevDropdown) {
-			prev = list.children().find(".menu-item__more"); //go to the more block
+			prev = list.children().find(".menu-item__more"); //go to the more button
 			if (prev.length == 0) {
 				prev = list.children().last().find(".hale-header__dropdown-arrow"); //the dropdown control of the last item in the list
 			}
 		} else if (prevDropdown) {
 			prev = listItem.prev().find(".hale-header__dropdown-arrow"); //the dropdown control of the previos item
 		} else if (isFirstItem) {
-			prev = list.children().find(".menu-item__more"); //go to the more block
+			prev = list.children().find(".menu-item__more"); //go to the more button
 			if (prev.length == 0) {
 				prev = list.children().last().find("a"); //go to the main link of the last item in the list
 			}
@@ -462,11 +462,17 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 				$(this).prev().focus();
 			}
 			if (e.keyCode == "39") { // right arrow - focus on next main link or first item
+				let next;
 				if ($(this).parents(".menu-item").is($(this).parents("ul").children().last())) {
-					$(this).parents("ul").children().first().find("a").focus();
+					next = $(this).parents("ul").children().first().find("a");
 				} else {
-					$(this).parent().next().find("a").focus();
+					next = $(this).parent().next().find("a");
+					if (next.closest(".menu-item--more").length) {
+						// This will happen if the More button is displayed
+						next = $(this).parent().next().find(".menu-item__more"); //go to the more button
+					}
 				}
+				next.focus();
 			}
 		}
 	});
