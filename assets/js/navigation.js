@@ -248,8 +248,10 @@ document.addEventListener('mouseover', function(e) {
 
 jQuery("#menu-menu-top-menu").ready(function( $ ) {
 	navBarOptimization();
+	arrowMainNavAndMoreMenu($);
 	$(window).resize(function() {
 		navBarOptimization();
+		arrowMainNavAndMoreMenu($);
 	});
 });
 
@@ -260,6 +262,124 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 
 	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
 
+	arrowMainNavAndMoreMenu($);
+
+	//Keyboard functionailty (requires mouse functionality)
+	$(".hale-header__dropdown-arrow").keydown(function(e){
+
+		let openCloseControl = $(this);
+
+		if (openCloseControl.is(":visible")) {
+			if (e.keyCode == "13") { // return
+				openCloseControl.click();
+			}
+			if (e.keyCode == "40") { // down arrow
+				if (!$(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
+					openCloseControl.click();
+				} else {
+					e.preventDefault();
+					$(this).siblings(".sub-menu").find("li:first-child a").focus();
+				}
+			}
+			if (e.keyCode == "38") { // up arrow
+				if ($(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
+					openCloseControl.click();
+				} else {
+					$(this).prev().focus();
+				}
+			}
+			if (e.keyCode == "37") { // left arrow - focus on main link
+				$(this).prev().focus();
+			}
+			if (e.keyCode == "39") { // right arrow - focus on next main link or first item
+				let next;
+				if ($(this).parents(".menu-item").is($(this).parents("ul").children().last())) {
+					next = $(this).parents("ul").children().first().find("a");
+				} else {
+					next = $(this).parent().next().find("a");
+					if (next.closest(".menu-item--more").length) {
+						// This will happen if the More button is displayed
+						next = $(this).parent().next().find(".menu-item__more"); //go to the more button
+					}
+				}
+				next.focus();
+			}
+		}
+	});
+	$(".hale-header__dropdown-arrow").next().find("a").keydown(function(e){
+		// Keyboard functionality for when within the submenu.
+		// Esc key closes menu (whist focussed) - separate code for when not focussed
+		// Arrow keys navigate up and down menu
+		let listItemLink = $(this);
+		let listItem = $(this).parent();
+		let list = $(this).parents(".sub-menu");
+		let control = list.siblings(".hale-header__dropdown-arrow");
+		let mainNavItem = list.parents(".menu-item");
+		let mainNavFirstItem = list.parents("ul").children().first();
+		let mainNavLastItem = list.parents("ul").children().last();
+
+		if (listItemLink.is(":visible") && !listItemLink.closest(".menu-item--more__content").length) {
+			if (e.keyCode == "27") { // escape key
+				e.preventDefault();
+				control.click(); //closes sub-menu
+				control.focus(); //focuses on sub-menu control
+			}
+			if (e.keyCode == "39" || e.keyCode == "40") { // right or down arrow
+				if (!list.children().last().is(listItem)) {
+					e.preventDefault();
+					listItem.next().find("a").focus();
+				} else {
+					e.preventDefault();
+					control.click(); //closes sub-menu
+					list.parent().next().find("a").focus(); //focuses on next main nav item
+					if (mainNavItem.is(mainNavLastItem)) {
+						mainNavFirstItem.find("a").focus();
+					}
+				}
+			}
+			if (e.keyCode == "37" || e.keyCode == "38") { // left or up arrow
+				e.preventDefault();
+				if (!list.children().first().is(listItem)) {
+					listItem.prev().find("a").focus();
+				} else {
+					control.focus();
+				}
+			}
+
+		}
+	});
+	// If escape key is pressed anywhere on the page and a submenu is open - it gets shut.
+	$(document).keydown(function(e) {
+		if (e.keyCode == "27") { // escape key
+			$(".sub-menu-open").find(".hale-header__dropdown-arrow").click();
+			$(".menu-item--more--open").find("button").click();
+		}
+	});
+	//Mouse functionality
+	$( ".hale-header__dropdown-arrow" ).click(function( event ) {
+
+		event.preventDefault();
+
+		let menuItem = $(this).parent();
+
+		$(".hale-header__dropdown-arrow").css("height","");
+
+		if (menuItem.hasClass('sub-menu-open')) {
+			menuItem.removeClass("sub-menu-open");
+			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","false");
+		} else {
+			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
+			menuItem.addClass("sub-menu-open");
+			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","true");
+		}
+	}).keydown(function(e){
+		if (e.keyCode == "13") $(this).click();
+	});
+});
+
+function arrowMainNavAndMoreMenu($) {
 	//Keyboard functionailty (main nav - arrow navigation)
 	$(".menu-item>a,.menu-item--more>.menu-item__more").keydown(function(e) {
 
@@ -431,121 +551,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 			}
 		}
 	});
-
-	//Keyboard functionailty (requires mouse functionality)
-	$(".hale-header__dropdown-arrow").keydown(function(e){
-
-		let openCloseControl = $(this);
-
-		if (openCloseControl.is(":visible")) {
-			if (e.keyCode == "13") { // return
-				openCloseControl.click();
-			}
-			if (e.keyCode == "40") { // down arrow
-				if (!$(this).parent().hasClass('sub-menu-open')) {
-					e.preventDefault();
-					openCloseControl.click();
-				} else {
-					e.preventDefault();
-					$(this).siblings(".sub-menu").find("li:first-child a").focus();
-				}
-			}
-			if (e.keyCode == "38") { // up arrow
-				if ($(this).parent().hasClass('sub-menu-open')) {
-					e.preventDefault();
-					openCloseControl.click();
-				} else {
-					$(this).prev().focus();
-				}
-			}
-			if (e.keyCode == "37") { // left arrow - focus on main link
-				$(this).prev().focus();
-			}
-			if (e.keyCode == "39") { // right arrow - focus on next main link or first item
-				let next;
-				if ($(this).parents(".menu-item").is($(this).parents("ul").children().last())) {
-					next = $(this).parents("ul").children().first().find("a");
-				} else {
-					next = $(this).parent().next().find("a");
-					if (next.closest(".menu-item--more").length) {
-						// This will happen if the More button is displayed
-						next = $(this).parent().next().find(".menu-item__more"); //go to the more button
-					}
-				}
-				next.focus();
-			}
-		}
-	});
-	$(".hale-header__dropdown-arrow").next().find("a").keydown(function(e){
-		// Keyboard functionality for when within the submenu.
-		// Esc key closes menu (whist focussed) - separate code for when not focussed
-		// Arrow keys navigate up and down menu
-		let listItemLink = $(this);
-		let listItem = $(this).parent();
-		let list = $(this).parents(".sub-menu");
-		let control = list.siblings(".hale-header__dropdown-arrow");
-		let mainNavItem = list.parents(".menu-item");
-		let mainNavFirstItem = list.parents("ul").children().first();
-		let mainNavLastItem = list.parents("ul").children().last();
-
-		if (listItemLink.is(":visible") && !listItemLink.closest(".menu-item--more__content").length) {
-			if (e.keyCode == "27") { // escape key
-				e.preventDefault();
-				control.click(); //closes sub-menu
-				control.focus(); //focuses on sub-menu control
-			}
-			if (e.keyCode == "39" || e.keyCode == "40") { // right or down arrow
-				if (!list.children().last().is(listItem)) {
-					e.preventDefault();
-					listItem.next().find("a").focus();
-				} else {
-					e.preventDefault();
-					control.click(); //closes sub-menu
-					list.parent().next().find("a").focus(); //focuses on next main nav item
-					if (mainNavItem.is(mainNavLastItem)) {
-						mainNavFirstItem.find("a").focus();
-					}
-				}
-			}
-			if (e.keyCode == "37" || e.keyCode == "38") { // left or up arrow
-				e.preventDefault();
-				if (!list.children().first().is(listItem)) {
-					listItem.prev().find("a").focus();
-				} else {
-					control.focus();
-				}
-			}
-
-		}
-	});
-	// If escape key is pressed anywhere on the page and a submenu is open - it gets shut.
-	$(document).keydown(function(e) {
-		if (e.keyCode == "27") { // escape key
-			$(".sub-menu-open").find(".hale-header__dropdown-arrow").click();
-			$(".menu-item--more--open").find("button").click();
-		}
-	});
-	//Mouse functionality
-	$( ".hale-header__dropdown-arrow" ).click(function( event ) {
-
-		event.preventDefault();
-
-		let menuItem = $(this).parent();
-
-		$(".hale-header__dropdown-arrow").css("height","");
-
-		if (menuItem.hasClass('sub-menu-open')) {
-			menuItem.removeClass("sub-menu-open");
-			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","false");
-		} else {
-			$("#menu-menu-top-menu li.menu-item-has-children").removeClass("sub-menu-open");
-			menuItem.addClass("sub-menu-open");
-			menuItem.find(".hale-header__dropdown-arrow").attr("aria-expanded","true");
-		}
-	}).keydown(function(e){
-		if (e.keyCode == "13") $(this).click();
-	});
-});
+}
 
 /**
  *
