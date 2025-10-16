@@ -380,7 +380,10 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 });
 
 function arrowMainNavAndMoreMenu($) {
-	//Keyboard functionailty (main nav - arrow navigation)
+	// Keyboard functionailty (main nav - arrow navigation)
+	// This is run when the menu is first loaded, and when the screen is resized
+	// The resize is so the relevant functions are attached to any new More button
+	// which is created as part of the re-size
 	$(".menu-item>a,.menu-item--more>.menu-item__more").keydown(function(e) {
 
 		let list = $(this).parents("ul");
