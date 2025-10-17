@@ -248,7 +248,6 @@ document.addEventListener('mouseover', function(e) {
 
 jQuery("#menu-menu-top-menu").ready(function( $ ) {
 	navBarOptimization();
-	arrowMainNavAndMoreMenu($);
 	$(window).resize(function() {
 		navBarOptimization();
 		arrowMainNavAndMoreMenu($);
@@ -547,7 +546,7 @@ function arrowMainNavAndMoreMenu($) {
 		}
 		if (e.keyCode == "38") { // up arrow - focus on previous main link or dropdown control
 			e.preventDefault();
-			if ($(this).parent().hasClass("menu-item--more") && $(this).parent().hasClass("menu-item--more--open")) {
+			if ($(this).parent().hasClass("menu-item--more--open")) {
 				$(this).click(); //closes more menu
 			} else {
 				up.focus();
