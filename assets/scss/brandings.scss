@@ -388,6 +388,9 @@
 			.govuk-header__navigation-list {
 				border-top: 1px solid var(--header-divider-line);
 				// The following will also apply to submenus
+				li, li .hale-header__dropdown-arrow {
+					border-color: var(--header-divider-line);
+				}
 				.menu-item {
 					// Normal link
 					>a,
