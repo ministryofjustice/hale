@@ -298,7 +298,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 					next = $(this).parents("ul").children().first().find("a");
 				} else {
 					next = $(this).parent().next().children("a");
-					if (next.closest(".menu-item--more").length) {
+					if (!next.length) {
 						// This will happen if the More button is displayed
 						next = $(this).parent().next().find(".menu-item__more"); //go to the more button
 					}
@@ -414,7 +414,7 @@ function arrowMainNavAndMoreMenu($) {
 			next = list.children().first().find("a"); //last in list: go to the main link of the first item
 		} else {
 			next = listItem.next().children("a"); //go to the main link of the next item
-			if (next.closest(".menu-item--more").length) {
+			if (!next.length) {
 				// This will happen if the More button is displayed
 				next = listItem.next().find(".menu-item__more"); //go to the more button
 			}
