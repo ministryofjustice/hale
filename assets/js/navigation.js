@@ -250,6 +250,7 @@ jQuery("#menu-menu-top-menu").ready(function( $ ) {
 	navBarOptimization();
 	$(window).resize(function() {
 		navBarOptimization();
+		arrowMainNavAndMoreMenu($);
 	});
 });
 
@@ -257,10 +258,10 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 	// We use JS to add a span that is used to tap on (mobile only) to shew the sub-menu, and is hidden by CSS on Desktop.
 
 	const $mobileSubMenuButton = $('<button class="hale-header__dropdown-arrow" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
-	const $desktopSubMenuButton = $('<button class="hale-header__dropdown-arrow hale-header__dropdown-arrow--desktop" aria-expanded="false"><span class="govuk-visually-hidden">Show submenu</span></button>');
 
 	$mobileSubMenuButton.insertBefore("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu");
-	$desktopSubMenuButton.insertAfter("#menu-menu-top-menu li.menu-item-has-children > a");
+
+	arrowMainNavAndMoreMenu($);
 
 	//Keyboard functionailty (requires mouse functionality)
 	$(".hale-header__dropdown-arrow").keydown(function(e){
@@ -268,26 +269,93 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 		let openCloseControl = $(this);
 
 		if (openCloseControl.is(":visible")) {
-			if (e.keyCode == "32") { // space
-				e.preventDefault();
-				openCloseControl.click();
-			}
 			if (e.keyCode == "13") { // return
 				openCloseControl.click();
 			}
 			if (e.keyCode == "40") { // down arrow
 				if (!$(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
 					openCloseControl.click();
+				} else {
+					e.preventDefault();
+					$(this).siblings(".sub-menu").find("li:first-child a").focus();
 				}
 			}
 			if (e.keyCode == "38") { // up arrow
 				if ($(this).parent().hasClass('sub-menu-open')) {
+					e.preventDefault();
 					openCloseControl.click();
+				} else {
+					$(this).prev().focus();
 				}
+			}
+			if (e.keyCode == "37") { // left arrow - focus on main link
+				$(this).prev().focus();
+			}
+			if (e.keyCode == "39") { // right arrow - focus on next main link or first item
+				let next;
+				if ($(this).parents(".menu-item").is($(this).parents("ul").children().last())) {
+					next = $(this).parents("ul").children().first().find("a");
+				} else {
+					next = $(this).parent().next().children("a");
+					if (!next.length) {
+						// This will happen if the More button is displayed
+						next = $(this).parent().next().find(".menu-item__more"); //go to the more button
+					}
+				}
+				next.focus();
 			}
 		}
 	});
+	$(".hale-header__dropdown-arrow").next().find("a").keydown(function(e){
+		// Keyboard functionality for when within the submenu.
+		// Esc key closes menu (whist focussed) - separate code for when not focussed
+		// Arrow keys navigate up and down menu
+		let listItemLink = $(this);
+		let listItem = $(this).parent();
+		let list = $(this).parents(".sub-menu");
+		let control = list.siblings(".hale-header__dropdown-arrow");
+		let mainNavItem = list.parents(".menu-item");
+		let mainNavFirstItem = list.parents("ul").children().first();
+		let mainNavLastItem = list.parents("ul").children().last();
 
+		if (listItemLink.is(":visible") && !listItemLink.closest(".menu-item--more__content").length) {
+			if (e.keyCode == "27") { // escape key
+				e.preventDefault();
+				control.click(); //closes sub-menu
+				control.focus(); //focuses on sub-menu control
+			}
+			if (e.keyCode == "39" || e.keyCode == "40") { // right or down arrow
+				if (!list.children().last().is(listItem)) {
+					e.preventDefault();
+					listItem.next().find("a").focus();
+				} else {
+					e.preventDefault();
+					control.click(); //closes sub-menu
+					list.parent().next().find("a").focus(); //focuses on next main nav item
+					if (mainNavItem.is(mainNavLastItem)) {
+						mainNavFirstItem.find("a").focus();
+					}
+				}
+			}
+			if (e.keyCode == "37" || e.keyCode == "38") { // left or up arrow
+				e.preventDefault();
+				if (!list.children().first().is(listItem)) {
+					listItem.prev().find("a").focus();
+				} else {
+					control.focus();
+				}
+			}
+
+		}
+	});
+	// If escape key is pressed anywhere on the page and a submenu is open - it gets shut.
+	$(document).keydown(function(e) {
+		if (e.keyCode == "27") { // escape key
+			$(".sub-menu-open").find(".hale-header__dropdown-arrow").click();
+			$(".menu-item--more--open").find("button").click();
+		}
+	});
 	//Mouse functionality
 	$( ".hale-header__dropdown-arrow" ).click(function( event ) {
 
@@ -309,6 +377,183 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 		if (e.keyCode == "13") $(this).click();
 	});
 });
+
+function arrowMainNavAndMoreMenu($) {
+	// Keyboard functionailty (main nav - arrow navigation)
+	// This is run when the menu is first loaded, and when the screen is resized
+	// The resize is so the relevant functions are attached to any new More button
+	// which is created as part of the re-size
+	$(".menu-item>a,.menu-item--more>.menu-item__more").keydown(function(e) {
+
+		let list = $(this).parents("ul");
+		let listItem = $(this).parent();
+
+		//Is this in the more menu
+		let inMoreMenu = false;
+		if ($(this).closest(".menu-item--more__content").length) inMoreMenu = true;
+
+		//Is this first or last item?
+		let isFirstItem = false;
+		let isLastItem = false;
+		if(listItem.is(list.children().first())) isFirstItem = true;
+		if(listItem.is(list.children().last()) || $(this).hasClass("menu-item__more")) isLastItem = true;
+		
+		//Is this item or the previous item a dropdown?
+		let dropdown = false;
+		let prevDropdown = false;
+		if (listItem.is(".menu-item-has-children")) dropdown = true;
+		if (!isFirstItem && listItem.prev().is(".menu-item-has-children")) prevDropdown = true;
+		if (isFirstItem && list.children().last().is(".menu-item-has-children")) prevDropdown = true;
+		if (isFirstItem && list.children("menu-item--more").length > 0) prevDropdown = false; //the more button
+
+		//Next items
+		let next;
+		if (dropdown) {
+			next = $(this).next(); //go to the dropdown control
+		} else if (isLastItem) {
+			next = list.children().first().find("a"); //last in list: go to the main link of the first item
+		} else {
+			next = listItem.next().children("a"); //go to the main link of the next item
+			if (!next.length) {
+				// This will happen if the More button is displayed
+				next = listItem.next().find(".menu-item__more"); //go to the more button
+			}
+		}
+		//Previous items
+		let prev;
+		if (isFirstItem && prevDropdown) {
+			prev = list.children().find(".menu-item__more"); //go to the more button
+			if (prev.length == 0) {
+				prev = list.children().last().find(".hale-header__dropdown-arrow"); //the dropdown control of the last item in the list
+			}
+		} else if (prevDropdown) {
+			prev = listItem.prev().find(".hale-header__dropdown-arrow"); //the dropdown control of the previos item
+		} else if (isFirstItem) {
+			prev = list.children().find(".menu-item__more"); //go to the more button
+			if (prev.length == 0) {
+				prev = list.children().last().find("a"); //go to the main link of the last item in the list
+			}
+		} else {
+			prev = listItem.prev().find("a"); //go to the main link of the previous item
+		}
+
+		let up = prev;
+		let down = next;
+
+		if (inMoreMenu) {
+			let more_menu = $(this).closest(".menu-item--more__content");
+			let more_menu_items = more_menu.children("li");
+			let more_items_total = more_menu_items.length;
+			let more_top = $(this).closest(".menu-item--more__content > li"); // the LI which contains the current link
+			let more_current_position = more_top.prevAll().length + 1; //gets the current position
+			let more_sub_menu = $(this).closest(".sub-menu"); //the container for the second level nav
+			let more_parent = $(this).parent(); //the parent - 2nd level nav use only (1st level will resolve the same as more_top)
+
+			// Positional checks
+			let isFirstColumn = (more_current_position % 3 == 1);
+			let isMiddleColumn = (more_current_position % 3 == 2);
+			let isLastColumn = (more_current_position % 3 == 0);
+			let isLastItem = (more_current_position == more_items_total);
+			let isFirstRow = (more_current_position <= 3);
+			let isFirstSubMenuItem = (more_parent.prevAll().length == 0);
+			let isLastSubMenuItem = (more_parent.nextAll().length == 0);
+			let isEmptyBelow = (
+				(isLastColumn && (more_current_position + 1 == more_items_total || more_current_position +2 == more_items_total))
+				||
+				(isMiddleColumn && more_current_position + 2 == more_items_total)
+			);
+
+			// Sideways arrows go to next 1st level item
+			prev = more_top.prev().children("a");
+			next = more_top.next().children("a");
+
+			if (isFirstColumn) {
+				// if the first in the row, sideways goes to the other end of the row
+				if (more_current_position + 2 <= more_items_total) {
+					prev = more_top.next().next().children("a");
+				} else {
+					prev = more_menu_items.last().children("a");
+				}
+			} else if (isLastColumn) {
+				if (more_current_position - 2 > 0) {
+					next = more_top.prev().prev().children("a");
+				} else {
+					next = more_menu_items.first().children("a");
+				}
+			} else if (isLastItem) {
+				// First and last column already dealt with, so must be in middle
+				next = more_top.prev().children("a");
+			}
+
+			// Up and down
+			if (!more_sub_menu.length) {
+				// top level
+				if (dropdown) {
+					//if there is a submenu, always go into that on down
+					down = $(this).siblings(".sub-menu").children().first().find("a");
+				} else if (isEmptyBelow) {
+					// if there is an item not directly below, but it is empty below, go to that item.
+					down = more_menu_items.last().children("a");
+				} else {
+					down = more_top.next().next().next().children("a"); // next in column
+					// down at bottom does nothing
+				}
+				if (isFirstRow) {
+					up = $(".menu-item__more"); //top row, return to more button
+				} else {
+					up = more_top.prev().prev().prev().find("a"); //go to 3 earlier - directly above
+				}
+			} else {
+				//second level nav
+				down = more_parent.next().children("a");
+				if (isLastSubMenuItem && isEmptyBelow) {
+					// if there is an item not directly below, but it is empty below, go to that item.
+					down = more_menu_items.last().children("a");
+				}
+				// down at bottom does nothing
+				if (isFirstSubMenuItem) {
+					up = more_sub_menu.siblings("a"); //first level parent
+				} else {
+					up = more_parent.prev().children("a");
+				}
+			}
+		}
+
+		if (e.keyCode == "39") { // right arrow - focus on dropdown control or next item
+			e.preventDefault();
+			next.focus();
+		}
+		if (e.keyCode == "40") { // down arrow - focus on dropdown control or next item or open more links
+			e.preventDefault();
+			if ($(this).parent().hasClass("menu-item--more")) {
+				if ($(this).parent().hasClass("menu-item--more--open")) {
+					// We focus on the 3rd top level element in the more menu which
+					// should be directly below the more button itself, falling back to
+					// the first and second
+					$(".menu-item--more__content").children(":nth-child(1)").children("a").focus();
+					$(".menu-item--more__content").children(":nth-child(2)").children("a").focus();
+					$(".menu-item--more__content").children(":nth-child(3)").children("a").focus();
+				} else {
+					$(this).click(); //opens more menu
+				}
+			} else {
+				down.focus();
+			}
+		}
+		if (e.keyCode == "37") { // left arrow - focus on previous main link or dropdown control
+			e.preventDefault();
+			prev.focus();
+		}
+		if (e.keyCode == "38") { // up arrow - focus on previous main link or dropdown control
+			e.preventDefault();
+			if ($(this).parent().hasClass("menu-item--more--open")) {
+				$(this).click(); //closes more menu
+			} else {
+				up.focus();
+			}
+		}
+	});
+}
 
 /**
  *
