@@ -44,6 +44,11 @@ $govuk-font-family: 'PT Sans', sans-serif;
   .hale-footer__copyright a {
     @extend .govuk-footer__link;
   }
+
+  .govuk-footer__copyright-logo:before {
+    // Completely remove the GOV.UK crown pseudo-element :before spacing 
+    content: none;
+  }
 }
 
 .hale-width {
