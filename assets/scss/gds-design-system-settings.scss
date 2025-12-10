@@ -44,9 +44,9 @@ $govuk-font-family: 'PT Sans', sans-serif;
   .hale-footer__copyright a {
     @extend .govuk-footer__link;
   }
-  a.govuk-footer__links.govuk-footer__copyright-logo:before {
-    // This is a fix for the extra spacing which was mysteriously appearing above the crown copyright logo
-    padding: 0;
+  .govuk-footer__copyright-logo:before {
+    // Completely remove the GOV.UK crown pseudo-element
+    content: none;
   }
 }
 
