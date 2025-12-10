@@ -491,6 +491,13 @@
 										$underline: var(--header-link-current-hover-border)
 									);
 								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
+									);
+								}
 							}
 						}
 
