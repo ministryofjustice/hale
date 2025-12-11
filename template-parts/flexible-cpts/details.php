@@ -49,6 +49,13 @@
 
         $tax_details = hale_get_post_tax_details();
 
+        // Filter taxonomies to show only those specified in settings.
+        $tax_show_specifics = hale_get_post_type_setting('single_view_tax_show_specifics');
+        // If the field is an array with values, then filter.
+        if(is_array($tax_show_specifics) && sizeof($tax_show_specifics)) {
+            $tax_details = array_filter($tax_details, fn($tax) => in_array($tax['slug'], $tax_show_specifics, true));
+        }
+
         if($single_view_tax_style == 'list' && !empty($tax_details)){
 
             foreach($tax_details as $tax){
