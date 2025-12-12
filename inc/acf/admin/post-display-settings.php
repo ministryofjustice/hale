@@ -11,7 +11,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 
     $post_label = $acf_post_type['labels']['singular_name'] ?? "page of this type"; //used in hint text on line 138
 
-    $post_type_taxonomies = get_object_taxonomies( $acf_post_type['post_type'], 'names' ); // Uses for single_view_tax_values choices
+    $post_type_taxonomies = get_object_taxonomies( $acf_post_type['post_type'], 'names' ); // Used for single_view_tax_values choices
 
     echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Single view</label></div>';
     echo '<div class="acf-field acf-field-seperator" data-type="seperator" style="margin-top: 15px;"></div>';
