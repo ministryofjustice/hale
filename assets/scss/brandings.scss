@@ -418,6 +418,12 @@
 							&:hover {
 								border-bottom-color: var(--header-link-current-hover-border);
 							}
+
+							&:focus {
+								color: var(--header-link-focus);
+								background-color: var(--header-link-focus-highlight);
+								border-bottom-color: var(--header-link-focus-underline);
+							}
 						}
 					}
 
