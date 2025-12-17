@@ -39,7 +39,7 @@ function hale_get_acf_field_status($field, $post_type = "") {
  *
  * @param string $setting The name of the setting to check.
  *
- * @return bool Returns value of setting for the current post type. Returns false if setting not found.
+ * @return mixed Returns value of setting for the current post type. Returns false if setting not found.
  *
  */
 function hale_get_post_type_setting($setting) {
@@ -49,10 +49,10 @@ function hale_get_post_type_setting($setting) {
         return false;
     }
 
-    $post_types = get_post_types([], 'objects');
+    $current_post_type_object = get_post_type_object($current_post_type);
 
-    if (isset($post_types[$current_post_type]->$setting)) {
-        return $post_types[$current_post_type]->$setting;
+    if (isset($current_post_type_object->$setting)) {
+        return $current_post_type_object->$setting;
     }
 
     return false;

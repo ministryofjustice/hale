@@ -11,6 +11,8 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 
     $post_label = $acf_post_type['labels']['singular_name'] ?? "page of this type"; //used in hint text on line 138
 
+    $post_type_taxonomies = get_object_taxonomies( $acf_post_type['post_type'], 'names' ); // Used for single_view_tax_values choices
+
     echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Single view</label></div>';
     echo '<div class="acf-field acf-field-seperator" data-type="seperator" style="margin-top: 15px;"></div>';
     
@@ -163,6 +165,31 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             ),
         )
     );
+    acf_render_field_wrap(
+        array(
+            'label'        => 'Specify shown taxonomies',
+            'instructions' => 'Select which taxonomies to show on the single view.<br/>Leave empty to show all assigned taxonomies for this post type.',
+            'name'         => 'single_view_tax_show_specifics',
+            'prefix'       => 'acf_post_type',
+            'value'        => $acf_post_type['single_view_tax_show_specifics'] ?? [],
+            'type'         => 'select',
+            'choices'      => acf_get_taxonomy_labels($post_type_taxonomies),
+            'ui'           => true,
+            'allow_null'   => true,
+            'multiple'     => true,
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'show_tax_on_single_view',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+        ),
+        null,
+        'field'
+    );
 
 
     echo '<div class="acf-label"><label for="acf_post_type-admin_menu_parent" style="font-weight:500;">Breadcrumb</label></div>';
@@ -247,6 +274,9 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
     }
     if ( isset( $post_type['single_view_tax_style'] ) ) {
         $args['single_view_tax_style'] = $post_type['single_view_tax_style'];
+    }
+    if ( isset( $post_type['single_view_tax_show_specifics'] ) ) {
+        $args['single_view_tax_show_specifics'] = $post_type['single_view_tax_show_specifics'];
     }
 
     if ( isset( $post_type['show_summary_on_single_view'] ) ) {
