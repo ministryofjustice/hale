@@ -62,7 +62,7 @@
                     }
 
                     if(!empty($term_names)){
-                        $field_value = implode(", " , $term_names);
+                        $field_value = implode("; " , $term_names);
                     }
                 }
             }
