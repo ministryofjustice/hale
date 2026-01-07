@@ -20094,3 +20094,8 @@ msgstr "Chwiliwch y wefan hon"
 # Translation adapted from https://www.croeso.cymru/
 msgid "Go back to "
 msgstr "Yn ôl i "
+
+# hale/partials/category-list-section.php
+# Translation from (https://github.com/ministryofjustice/prisoner-content-hub-frontend/blob/main/server/locales/cy.json)
+msgid "Section contents:"
+msgstr "Yn yr Adran hon:"
