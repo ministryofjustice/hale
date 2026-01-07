@@ -40,7 +40,7 @@ if (!empty($page_cats)) {
             $is_cat_page = true;
         ?>
 
-        <h2 class="govuk-heading-l"><?php echo $page_cat->name; ?></h2>
+        <h2 class="govuk-heading-l" aria-label="Section heading"><?php echo $page_cat->name; ?></h2>
 
         <nav aria-label="Section contents">
 
