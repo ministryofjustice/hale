@@ -418,6 +418,12 @@
 							&:hover {
 								border-bottom-color: var(--header-link-current-hover-border);
 							}
+
+							&:focus {
+								color: var(--header-link-focus);
+								background-color: var(--header-link-focus-highlight);
+								border-bottom-color: var(--header-link-focus-underline);
+							}
 						}
 					}
 
@@ -489,6 +495,13 @@
 										$colour: var(--header-link-current),
 										$background: var(--header-link-current-bg),
 										$underline: var(--header-link-current-hover-border)
+									);
+								}
+								&:focus {
+									@include hale-nav-item-desktop(
+										$colour: var(--header-link-focus),
+										$background: var(--header-link-focus-highlight),
+										$underline: var(--header-link-focus-underline),
 									);
 								}
 							}
