@@ -20098,4 +20098,4 @@ msgstr "Yn ôl i "
 # hale/partials/category-list-section.php
 # Translation from (https://github.com/ministryofjustice/prisoner-content-hub-frontend/blob/main/server/locales/cy.json)
 msgid "Section contents:"
-msgstr "Yn yr Adran hon:"
+msgstr "Yn yr adran hon:"
