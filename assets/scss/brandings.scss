@@ -264,6 +264,31 @@
 				&::placeholder {
 					color: var(--header-search-input-placeholder);
 				}
+				&::-webkit-search-cancel-button {
+
+					/* Remove default */
+					-webkit-appearance: none;
+
+					/* Add custom colour */
+					cursor: pointer;
+					height: 0.7rem;
+					width: 0.7rem;
+					background-color: var(--header-search-input-text);
+					clip-path: polygon(
+						18% 0%,
+						0% 18%,
+						32% 50%,
+						0% 82%,
+						18% 100%,
+						50% 68%,
+						82% 100%,
+						100% 82%,
+						68% 50%,
+						100% 18%,
+						82% 0%,
+						50% 32%
+					);
+				}
 
 				&:focus {
 					border-color: var(--header-search-input-focus-border-trim); //this is an inner border to increase contrast betwixt search box and the focus outline (next line)
