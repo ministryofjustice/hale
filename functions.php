@@ -570,3 +570,21 @@ require get_template_directory() . '/inc/helper-functions.php';
  * Extend API with custom post type info
  */
 require get_template_directory() . '/inc/api-extensions.php';
+
+/**
+ * Function for adding language attributes to the top-level navigation items
+ *
+ * Language attribute set in the menu settings appearance>menus and is free text
+ * See: inc/footer-language-attributes.php for the code which adds the option to ALL menu items
+ */
+add_filter( 'nav_menu_link_attributes', 'add_lang_from_menu_meta', 10, 4 );
+function add_lang_from_menu_meta( $atts, $item, $args, $depth ) {
+
+    $lang_attr = get_post_meta( $item->ID, '_lang_attribute', true );
+
+    if ($lang_attr) {
+        $atts['lang'] = $lang_attr;
+    }
+
+    return $atts;
+}
