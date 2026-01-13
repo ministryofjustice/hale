@@ -44,3 +44,19 @@ function hale_save_lang_attribute( $menu_id, $menu_item_db_id ) {
     }
 }
 add_action( 'wp_update_nav_menu_item', 'hale_save_lang_attribute', 10, 2 );
+
+
+/**
+ * Function for adding language attributes to the top-level navigation items
+ */
+add_filter( 'nav_menu_link_attributes', 'hale_add_lang_from_menu_meta', 10, 4 );
+function hale_add_lang_from_menu_meta( $atts, $item, $args, $depth ) {
+
+    $lang_attr = get_post_meta( $item->ID, '_lang_attribute', true );
+
+    if ($lang_attr) {
+        $atts['lang'] = $lang_attr;
+    }
+
+    return $atts;
+}

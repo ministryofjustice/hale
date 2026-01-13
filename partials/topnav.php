@@ -55,7 +55,7 @@ if ($show_header_menu == 'yes') {
             <span><?php echo esc_html__( 'Menu', 'hale' ); ?></span>
         </button>
         <?php
-        wp_nav_menu($topmenu_args);
+            wp_nav_menu($topmenu_args);
         ?>
     </nav>
 <?php }
