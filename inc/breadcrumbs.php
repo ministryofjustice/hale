@@ -82,6 +82,8 @@ function hale_uncanny_breadcrumb_check() {
 function hale_breadcrumb() {
 	global $wp_query;
 
+	$main_lang = get_blog_option(get_current_blog_id(), 'WPLANG');
+
     $theme_show_breadcrumb = get_theme_mod('show_breadcrumb', 'yes');
 
 	if ( ! is_home() && $theme_show_breadcrumb == 'yes') {
@@ -227,8 +229,18 @@ function hale_breadcrumb() {
 									$home_page = get_option( 'page_on_front' );
 									foreach ( $ancestors as $ancestor ) {
 										if ( ( end( $ancestors ) !== $ancestor ) && ( ( $home_page !== $ancestor ) ) ) {
+											$ancestor_lang = "";
+											$ancestor_custom_lang_code = esc_html(get_post_meta($ancestor, 'page_custom_language_code', true));
+											if (!empty($ancestor_custom_lang_code) && strpos($main_lang, $ancestor_custom_lang_code) === false && strlen($ancestor_custom_lang_code) <= 12) {
+												/**
+												 * If: custom language code is set, and it is not the same as the language for the main page
+												 * We ignore it if it is longer than 12 chars (longest we'll find is something like zh-Hant-HK, but in reality, es-419 is likely the longest - Spanish in Latin America)
+												 * We should encourage 2 letter codes, but not exclude the longer ones.
+												 */
+												$ancestor_lang = "lang='$ancestor_custom_lang_code'";
+											}
 											?>
-											<li class="govuk-breadcrumbs__list-item">
+											<li <?php echo $ancestor_lang;?> class="govuk-breadcrumbs__list-item">
 												<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( get_permalink( $ancestor ) ); ?>">
 													<?php echo esc_html( wp_strip_all_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) ); ?>
 												</a>
@@ -266,9 +278,20 @@ function hale_breadcrumb() {
 							}
 							if ( ! ( is_archive() || is_category() || is_post_type_archive() || is_search() || is_404() ) ) {
 
+								$this_lang = "";
+								$this_custom_lang_code = esc_html(get_post_meta($post->ID, 'page_custom_language_code', true));
+								if (!empty($this_custom_lang_code) && strpos($main_lang, $this_custom_lang_code) === false && strlen($this_custom_lang_code) <= 12) {
+									/**
+									 * If: custom language code is set, and it is not the same as the language for the main page
+									 * We ignore it if it is longer than 12 chars (longest we'll find is something like zh-Hant-HK, but in reality, es-419 is likely the longest - Spanish in Latin America)
+									 * We should encourage 2 letter codes, but not exclude the longer ones.
+									 */
+									$this_lang = "lang='$this_custom_lang_code'";
+								}
+
 								?>
 
-								<li class="govuk-breadcrumbs__list-item"><?php echo esc_html( the_title() ); ?></li>
+								<li <?php echo $this_lang; ?> class="govuk-breadcrumbs__list-item"><?php echo esc_html( the_title() ); ?></li>
 
 							<?php } ?>
 						</ol>
