@@ -353,6 +353,11 @@ add_filter( 'the_content', 'hale_filter_add_index_for_h2_elements', 1 );
  */
 
 function hale_get_ordered_content($content, $numbered_headings) {
+	if (!empty($GLOBALS["page_language"])) {
+		// If a page language has been set, use it for translations
+		switch_to_locale($GLOBALS["page_language"]);
+	}
+
 	$index = [];
 	if (empty($content)) {
 		return ["index" => $index, "content" => $content];
@@ -389,6 +394,9 @@ function hale_get_ordered_content($content, $numbered_headings) {
 
 	// This is the content with IDs for all h2 elements (or whatever was set in $tags)
 	$changed_content = trim($dom->saveHtml());
+
+	// Return the language to the site language
+	switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
 
 	return array("index"=>$index,"content"=>$changed_content);
 }
@@ -439,11 +447,19 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	if ($count_headings > 15) $print_columns = "hale-print-col hale-print-col--2";
 	if ($count_headings > 25) $print_columns = "hale-print-col hale-print-col--3";
 
+	if (!empty($GLOBALS["page_language"])) {
+		// If a page language has been set, use it for translations
+		switch_to_locale($GLOBALS["page_language"]);
+	}
+
 	$toc = "<div id='table-of-contents' class='hale-table-of-contents'>
 			<h2 class='govuk-heading-s govuk-!-margin-bottom-2 hale-table-of-contents__heading' id='table-of-contents-heading'>".__("Table of contents","hale")."</h2>
 			<ol class='hale-table-of-contents__list govuk-list $list_class $print_columns'>$list_of_headings</ol>
 			$print_button
 		</div>";
+
+	// Return the language to the site language
+	switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
 
 	return $toc;
 }

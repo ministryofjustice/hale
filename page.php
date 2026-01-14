@@ -23,7 +23,7 @@ flush();
 
 $main_lang = get_blog_option(get_current_blog_id(), 'WPLANG');
 
-$lang = "";
+$GLOBALS['page_language'] = $lang_attr = "";
 $custom_lang_code = trim(esc_html(get_post_meta($post->ID, 'page_custom_language_code', true)));
 if (!empty($custom_lang_code) && strpos($main_lang, $custom_lang_code) === false && strlen($custom_lang_code) <= 12) {
     /**
@@ -31,14 +31,15 @@ if (!empty($custom_lang_code) && strpos($main_lang, $custom_lang_code) === false
      * We ignore it if it is longer than 12 chars (longest we'll find is something like zh-Hant-HK, but in reality, es-419 is likely the longest - Spanish in Latin America)
      * We should encourage 2 letter codes, but not exclude the longer ones.
      */
-    $lang = "lang='$custom_lang_code'";
+    $GLOBALS['page_language'] = $custom_lang_code;
+    $lang_attr = "lang='$custom_lang_code'";
 }
 
 while (have_posts()) :
     the_post();
     ?>
 
-<div <?php echo $lang;?> id="primary" class="govuk-grid-column-two-thirds">
+<div <?php echo $lang_attr;?> id="primary" class="govuk-grid-column-two-thirds">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
