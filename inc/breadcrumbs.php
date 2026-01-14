@@ -230,7 +230,7 @@ function hale_breadcrumb() {
 									foreach ( $ancestors as $ancestor ) {
 										if ( ( end( $ancestors ) !== $ancestor ) && ( ( $home_page !== $ancestor ) ) ) {
 											$ancestor_lang = "";
-											$ancestor_custom_lang_code = esc_html(get_post_meta($ancestor, 'page_custom_language_code', true));
+											$ancestor_custom_lang_code = trim(esc_html(get_post_meta($ancestor, 'page_custom_language_code', true)));
 											if (!empty($ancestor_custom_lang_code) && strpos($main_lang, $ancestor_custom_lang_code) === false && strlen($ancestor_custom_lang_code) <= 12) {
 												/**
 												 * If: custom language code is set, and it is not the same as the language for the main page
@@ -279,7 +279,7 @@ function hale_breadcrumb() {
 							if ( ! ( is_archive() || is_category() || is_post_type_archive() || is_search() || is_404() ) ) {
 
 								$this_lang = "";
-								$this_custom_lang_code = esc_html(get_post_meta($post->ID, 'page_custom_language_code', true));
+								$this_custom_lang_code = trim(esc_html(get_post_meta($post->ID, 'page_custom_language_code', true)));
 								if (!empty($this_custom_lang_code) && strpos($main_lang, $this_custom_lang_code) === false && strlen($this_custom_lang_code) <= 12) {
 									/**
 									 * If: custom language code is set, and it is not the same as the language for the main page

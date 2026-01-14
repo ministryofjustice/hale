@@ -112,7 +112,7 @@ add_filter( 'excerpt_more', 'hale_excerpt_more' );
 function hale_read_more_posts( $title, $link ) {
   $readmorelink = '';
 	if ( '' !== $link ) {
-		$readmorelink .= '<a class="govuk-button" href="' . $link . '">' . esc_html__( 'Read more ', 'hale' ) . '</a>';
+		$readmorelink .= '<a class="govuk-button" href="' . $link . '">' . esc_html__( 'Read more', 'hale') . '</a>';
 	}
 	return $readmorelink;
 }
@@ -400,7 +400,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	function hale_print_page_button($print = false) {
 		$print_button = "";
 		if ($print) {
-			$print_button_text = __("Print this page");
+			$print_button_text = __("Print this page", "hale");
 			$print_button = "<div class='hale-print-button'><button class='govuk-button govuk-button--secondary hale-print-page' onClick='window.print()'>$print_button_text</button></div>";
 		}
 		return $print_button;

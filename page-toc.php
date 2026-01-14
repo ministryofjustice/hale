@@ -17,7 +17,7 @@ flush();
 $main_lang = get_blog_option(get_current_blog_id(), 'WPLANG');
 
 $lang = "";
-$custom_lang_code = esc_html(get_post_meta($post->ID, 'page_custom_language_code', true));
+$custom_lang_code = trim(esc_html(get_post_meta($post->ID, 'page_custom_language_code', true)));
 if (!empty($custom_lang_code) && strpos($main_lang, $custom_lang_code) === false && strlen($custom_lang_code) <= 12) {
     /**
      * If: custom language code is set, and it is not the same as the language for the main page
@@ -83,7 +83,7 @@ if (function_exists('hale_table_of_contents')) {
     }
 
     $toc = hale_table_of_contents($numbered_headings);
-    echo "<div id='toc' class='govuk-grid-column-one-third'>" . wp_kses_post($toc) . "</div>";
+    echo "<div $lang id='toc' class='govuk-grid-column-one-third'>" . wp_kses_post($toc) . "</div>";
 }
 
 while (have_posts()) :
