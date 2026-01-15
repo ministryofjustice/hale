@@ -13,6 +13,11 @@
 
 // Requires category-nav.php to be loaded first to set $prev_page and $next_page vars
 
+if (!empty($GLOBALS["page_language"])) {
+	// If a page language has been set, use it for translations
+	switch_to_locale($GLOBALS["page_language"]);
+}
+
 if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
     <nav role="navigation" aria-label="Pagination" class="gem-c-pagination
 
@@ -34,7 +39,7 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
 										<path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
 									</svg>
 									<span class="gem-c-pagination__link-text">
-										Previous
+										<?php _e("Previous","hale"); ?>
 									</span>
 								</span>
 								<span class="gem-c-pagination__link-divider govuk-visually-hidden">:</span>
@@ -55,7 +60,7 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
 										<path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
 									</svg>
 									<span class="gem-c-pagination__link-text">
-										Next
+										<?php _e("Next","hale"); ?>
 									</span>
 								</span>
 								<span class="gem-c-pagination__link-divider govuk-visually-hidden">:</span>
@@ -72,3 +77,5 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
     <?php
 }
 
+// Return the language to the site language
+switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
