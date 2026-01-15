@@ -42,7 +42,7 @@ while (have_posts()) :
 
         <div class="page-header-section">
 
-            <?php
+        <?php
 
         /**
          * Category page list section
@@ -50,8 +50,6 @@ while (have_posts()) :
          *
          * */
         include(locate_template('partials/category-list-section.php', false, false));
-
-
 
          // Header loads if category not selected on page
                 if (empty($is_cat_page)) { ?>
