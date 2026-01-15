@@ -20096,14 +20096,14 @@ msgid "Go back to "
 msgstr "Yn ôl i "
 
 # hale/inc/template-functions.php
-# Translation adapted from https://www.croeso.cymru/
+# Translation from https://www.croeso.cymru/
 msgid "Back to top"
 msgstr "Yn ôl i&rsquo;r brig"
 
 # hale/partials/category-list-section.php
 # Translation from (https://github.com/ministryofjustice/prisoner-content-hub-frontend/blob/main/server/locales/cy.json)
-msgid "Section contents:"
-msgstr "Yn yr adran hon:"
+msgid "Section contents"
+msgstr "Yn yr adran hon"
 
 #: hale/inc/template-functions.php
 # Translation from line 9206

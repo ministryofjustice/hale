@@ -54,7 +54,7 @@ if (!empty($page_cats)) {
             }
 
             ?>
-            <h3 class="govuk-body govuk-!-margin-bottom-0"><?php esc_html_e( 'Section contents:', 'hale' ); ?></h3>
+            <h3 class="govuk-body govuk-!-margin-bottom-0"><?php esc_html_e( 'Section contents', 'hale' ); ?></h3>
             <?php
                 // Return the language to the site language
                 switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
