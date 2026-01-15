@@ -557,9 +557,10 @@ if (get_role('wpseo_editor')) {
 remove_filter('relevanssi_query_filter', 'relevanssi_limit_filter');
 
 /**
- * Add options for lang attribute for footer menu links
+ * Add options for lang attribute for footer menu links, main nav links
+ * and function for getting the lang attribute for page content area
  */
-require get_template_directory() . '/inc/nav-language-attributes.php';
+require get_template_directory() . '/inc/language-attributes.php';
 
 /**
  * Utility functions to help with various tasks
