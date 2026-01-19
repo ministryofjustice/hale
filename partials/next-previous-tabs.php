@@ -78,4 +78,4 @@ if ($is_cat_page && (!empty($prev_page) || !empty($next_page))) { ?>
 }
 
 // Return the language to the site language
-switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
+restore_previous_locale();

@@ -396,8 +396,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 	$changed_content = trim($dom->saveHtml());
 
 	// Return the language to the site language
-	switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
-
+	restore_previous_locale();
 	return array("index"=>$index,"content"=>$changed_content);
 }
 
@@ -459,7 +458,7 @@ function hale_get_ordered_content($content, $numbered_headings) {
 		</div>";
 
 	// Return the language to the site language
-	switch_to_locale(get_blog_option(get_current_blog_id(), 'WPLANG'));
+	restore_previous_locale();
 
 	return $toc;
 }
