@@ -21,11 +21,14 @@ get_header();
 
 flush();
 
+$lang_attr = hale_get_page_lang_attr($post->ID);
+
+
 while (have_posts()) :
     the_post();
     ?>
 
-<div id="primary" class="govuk-grid-column-two-thirds">
+<div <?php echo $lang_attr;?> id="primary" class="govuk-grid-column-two-thirds">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
@@ -39,7 +42,7 @@ while (have_posts()) :
 
         <div class="page-header-section">
 
-            <?php
+        <?php
 
         /**
          * Category page list section
@@ -47,8 +50,6 @@ while (have_posts()) :
          *
          * */
         include(locate_template('partials/category-list-section.php', false, false));
-
-
 
          // Header loads if category not selected on page
                 if (empty($is_cat_page)) { ?>

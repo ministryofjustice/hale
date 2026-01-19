@@ -227,8 +227,9 @@ function hale_breadcrumb() {
 									$home_page = get_option( 'page_on_front' );
 									foreach ( $ancestors as $ancestor ) {
 										if ( ( end( $ancestors ) !== $ancestor ) && ( ( $home_page !== $ancestor ) ) ) {
+											$ancestor_lang = hale_get_page_lang_attr($ancestor, false)
 											?>
-											<li class="govuk-breadcrumbs__list-item">
+											<li <?php echo $ancestor_lang;?> class="govuk-breadcrumbs__list-item">
 												<a class="govuk-breadcrumbs__link" href="<?php echo esc_url( get_permalink( $ancestor ) ); ?>">
 													<?php echo esc_html( wp_strip_all_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) ); ?>
 												</a>
@@ -266,9 +267,11 @@ function hale_breadcrumb() {
 							}
 							if ( ! ( is_archive() || is_category() || is_post_type_archive() || is_search() || is_404() ) ) {
 
+								$this_lang = hale_get_page_lang_attr($post->ID, false)
+
 								?>
 
-								<li class="govuk-breadcrumbs__list-item"><?php echo esc_html( the_title() ); ?></li>
+								<li <?php echo $this_lang; ?> class="govuk-breadcrumbs__list-item"><?php echo esc_html( the_title() ); ?></li>
 
 							<?php } ?>
 						</ol>

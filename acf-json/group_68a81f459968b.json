@@ -22,6 +22,24 @@
             "ui_on_text": "",
             "ui_off_text": "",
             "ui": 1
+        },
+        {
+            "key": "field_MjB_page_language",
+            "label": "Language",
+            "name": "page_custom_language_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Add a language tag (e.g. 'cy' for Welsh, 'en' for English)<br />Only needed if the language is different from the rest of the site.",
+            "required": 0,
+            "maxlength": 12,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": ""
         }
     ],
     "location": [

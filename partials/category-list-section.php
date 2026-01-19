@@ -44,10 +44,21 @@ if (!empty($page_cats)) {
 
         <nav aria-label="Section contents">
 
-            <?php // Use `govuk-body` class to get font size to match the list items - at all screen sizes ?>
-            <?php // Use `govuk-!-margin-bottom-0` class to override default bottom margin on heading ?>
-            <h3 class="govuk-body govuk-!-margin-bottom-0"><?php esc_html_e( 'Section contents:', 'hale' ); ?></h3>
+            <?php
+            // Use `govuk-body` class to get font size to match the list items - at all screen sizes
+            // Use `govuk-!-margin-bottom-0` class to override default bottom margin on heading
 
+            if (!empty($GLOBALS["page_language"])) {
+                // If a page language has been set, use it for translations
+                switch_to_locale($GLOBALS["page_language"]);
+            }
+
+            ?>
+            <h3 class="govuk-body govuk-!-margin-bottom-0"><?php esc_html_e( 'Section contents', 'hale' ); ?></h3>
+            <?php
+                // Return the language to the site language
+                restore_previous_locale();
+            ?>
             <ul class="govuk-list govuk-list--bullet hale-list--top">
                 <?php
                 foreach ($pages as $key => $post) : ?>

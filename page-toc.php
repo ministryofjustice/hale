@@ -14,6 +14,8 @@ get_header();
 
 flush();
 
+$lang_attr = hale_get_page_lang_attr($post->ID);
+
 $post_meta = get_post_meta($post->ID);
 
 $show_title_section = 'yes';
@@ -27,7 +29,7 @@ if(array_key_exists('hale_metabox_page_title_section', $post_meta) && is_array($
 if(is_front_page() === false && $show_title_section == 'yes') {
 ?>
 
-    <div class="govuk-grid-column-two-thirds">
+    <div <?php echo $lang_attr;?> class="govuk-grid-column-two-thirds">
         <div class="page-header-section">
         <?php
 
@@ -70,7 +72,7 @@ if (function_exists('hale_table_of_contents')) {
     }
 
     $toc = hale_table_of_contents($numbered_headings);
-    echo "<div id='toc' class='govuk-grid-column-one-third'>" . wp_kses_post($toc) . "</div>";
+    echo "<div $lang_attr id='toc' class='govuk-grid-column-one-third'>" . wp_kses_post($toc) . "</div>";
 }
 
 while (have_posts()) :
@@ -78,7 +80,7 @@ while (have_posts()) :
 
     ?>
 
-<div id="primary" class="govuk-grid-column-two-thirds">
+<div <?php echo $lang_attr;?> id="primary" class="govuk-grid-column-two-thirds">
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php
