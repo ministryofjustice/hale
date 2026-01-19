@@ -13,7 +13,7 @@ if ($file === null) {
 
 if ($file) {
 	$link_uri = $file['url'];
-	$link = "<a class='govuk-link' href='$link_uri'>".$file['title']."</a>";
+	$link_text = $file['title'];
 	$size = size_format($file['filesize'],1);
 	$filenameArray = explode(".",$file['filename']);
 	$metadata = strtoupper($filenameArray[count($filenameArray)-1]);
@@ -57,6 +57,8 @@ if ($file) {
 	}
 
 	if (isset($size) && $size) $metadata .= ", ".$size;
+	$link_text .= "<span class='govuk-visually-hidden'> ($metadata)</span>";
+	$link = "<a class='govuk-link' href='$link_uri'>$link_text</a>";
 	
 }
 ?>
@@ -102,7 +104,8 @@ if ($file) {
 					if ($icon_image) {
 						echo "<span class='document-summary__icon'>$image</span>";
 					}
-					echo "<b>$link</b> ($metadata)";
+					// We aria-hide the metadata as it is included in the link (visually hidden) for AT users.
+					echo "<b>$link</b><span aria-hidden='true'> ($metadata)</span>";
 				?>
 				</p>
 			</div>
