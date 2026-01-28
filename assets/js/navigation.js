@@ -356,7 +356,7 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 			$(".menu-item--more--open").find("button").click();
 
 			// The next few lines deal with the edge case where a submenu is open by mouse hover.
-			let $hovered = $('#menu-menu-top-menu .menu-item-has-children:hover');
+			const $hovered = $('#menu-menu-top-menu .menu-item-has-children:hover');
 			if ($hovered.length) {
 				$hovered.addClass('kill-popup').on('mouseleave', function () {
 					$(this).off('mouseleave').removeClass('kill-popup');
