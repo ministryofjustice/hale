@@ -354,6 +354,14 @@ jQuery("#menu-menu-top-menu li.menu-item-has-children > ul.sub-menu").ready(func
 		if (e.keyCode == "27") { // escape key
 			$(".sub-menu-open").find(".hale-header__dropdown-arrow").click();
 			$(".menu-item--more--open").find("button").click();
+
+			// The next few lines deal with the edge case where a submenu is open by mouse hover.
+			const $hovered = $('#menu-menu-top-menu .menu-item-has-children:hover');
+			if ($hovered.length) {
+				$hovered.addClass('kill-popup').on('mouseleave', function () {
+					$(this).off('mouseleave').removeClass('kill-popup');
+				});
+			}
 		}
 	});
 	//Mouse functionality

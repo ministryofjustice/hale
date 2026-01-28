@@ -289,7 +289,7 @@
             }
           }
           @include govuk-media-query($from: desktop) {
-            &:hover {
+            &:not(.kill-popup):hover {
               .sub-menu {
                 display:block;
               }
