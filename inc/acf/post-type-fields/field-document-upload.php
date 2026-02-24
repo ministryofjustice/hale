@@ -37,7 +37,7 @@ function hale_register_post_type_fields_document_upload()
                 'return_format' => 'array',
                 'library' => 'all',
                 'min_size' => '',
-                'max_size' => '20',
+                'max_size' => '400',
                 'mime_types' => 'pdf,doc,docx,rtf,odt,fodt,txt,xls,xlsx,ods,fods,ppt,pptx',
             ]);
 
