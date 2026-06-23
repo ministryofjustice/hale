@@ -90,9 +90,6 @@ function hale_get_allowed_blocks(){
         // Embeds
         'core/embed',
         
-        //Custom HTML
-        'core/html',
-
         // Pattern blocks
         'core/block',
         'core/pattern',
