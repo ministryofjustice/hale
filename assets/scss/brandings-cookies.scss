@@ -23,12 +23,14 @@
 		@extend #save-cookies-button;
 	}
 	a {
-		color: var(--link);
-		-webkit-text-fill-color: var(--link);
-
-		&:hover {
-			color: var(--link-hover);
-			-webkit-text-fill-color: var(--link-hover);
+		@media screen and not (prefers-color-scheme: dark) {
+			color: var(--link);
+			-webkit-text-fill-color: var(--link);
+	
+			&:hover {
+				color: var(--link-hover);
+				-webkit-text-fill-color: var(--link-hover);
+			}
 		}
 
 		&:focus {
