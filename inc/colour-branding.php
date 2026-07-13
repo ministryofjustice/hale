@@ -10,7 +10,7 @@ require get_template_directory() . '/inc/colour-branding-import.php';
 
 // This code creates the CSS files that are used to turn the colour options into a stylesheet
 function hale_generate_custom_colours() {
-	$upload_file_path = wp_get_upload_dir()["basedir"]; //for PHP-created CSS file
+	$upload_file_path = wp_upload_dir()["basedir"]; //for PHP-created CSS file
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$dark_background_css_file = get_template_directory().'/dist/css/dark-background.min.css';
 	$dark_background_css_file_exists = file_exists($dark_background_css_file);
