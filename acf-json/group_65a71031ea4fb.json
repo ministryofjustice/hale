@@ -43,6 +43,24 @@
             "ui": 1
         },
         {
+            "key": "listing_thumbnail",
+            "label": "Show the featured image in the list",
+            "name": "listing_thumbnail",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "How to display the small thumbnail of the featured image in the listing, if the item has an image.",
+            "required": 0,
+            "choices": {
+                "none": "Do not show thumbnail",
+                "square": "Square thumbnail",
+                "rounded": "Rounded corners thumbnail",
+                "circle": "Circular thumbnail"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "allow_null": 0
+        },
+        {
             "key": "field_65bb8460617d1",
             "label": "Listing sort order",
             "name": "listing_sort_order",

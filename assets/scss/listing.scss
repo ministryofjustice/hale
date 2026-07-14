@@ -1,3 +1,6 @@
+.list-item__thumb {
+  //float: right;
+}
 .page-template-page-listing {
   #primary {
     .listing-search-section {
@@ -60,6 +63,47 @@
     .list-item {
       border-bottom: 1px solid $govuk-border-colour;
       margin-bottom: 20px;
+      clear: both;
+      position: relative;
+
+      &__thumb,
+      &__thumb-spacer {
+        width: 125px;
+        height: 125px;
+
+        @include govuk-media-query($from: "desktop") {
+          width: 150px;
+          height: 150px;
+        }
+
+      }
+
+      &__thumb-spacer {
+        float: right;
+        margin: 0 0 2px 5px;
+
+        + h2 {
+          clear:none;
+        }
+      }
+
+      &__thumb {
+        position: absolute;
+        top:0;
+        right:0;
+        border: solid 1px $govuk-border-colour;
+
+        &--square {
+          border-radius: 0;
+        }
+        &--rounded {
+          border-radius: 1rem;
+        }
+        &--circle {
+          border-radius: 50%;
+        }
+      }
+
       .list-item-published-date {
         @include govuk-font-size($size: 19);
         margin-bottom: 20px;

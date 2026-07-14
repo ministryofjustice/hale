@@ -3,14 +3,27 @@
  * Template part for displaying list item for flexible CPT
  */
 
- $single_view = $args['single_view'];
+$single_view = $args['single_view'];
 
- $display_terms_taxonomies = $args['display-terms-taxonomies'];
+$display_terms_taxonomies = $args['display-terms-taxonomies'];
 
- $display_fields = $args['display-fields'];
+$display_fields = $args['display-fields'];
+
+$thumbnail_style = $args['thumbnail-style'];
+
+$include_thumbnail = false;
+
+if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "none") $include_thumbnail = true;
+
 ?>
 
 <div class="list-item">
+    <?php
+        if ($include_thumbnail) {
+            // This floats to where the absolutely positioned thumbnail is to create the wrapping behaviour we need
+            echo '<div class="list-item__thumb-spacer"></div>';
+        }
+    ?>
     <h2 class="list-item-title govuk-heading-m">
         <?php if($single_view !== false){ ?>
             <a href="<?php echo get_permalink(); ?>">
@@ -22,8 +35,18 @@
         }
         ?>
     </h2>
-    <?php 
-    
+    <?php
+    if ($include_thumbnail) {
+
+        // if there is a post thumbnail, and the listing page has it set to display, we echo it out here
+        $thumb_id = get_post_thumbnail_id(get_the_ID());
+        $thumb_url = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
+        $thumb_class = "list-item__thumb list-item__thumb--$thumbnail_style";
+        $alt_text = esc_attr__(get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ),"hale");
+
+        echo "<img class='$thumb_class' src='$thumb_url' alt='' />";
+    }
+
     if(!empty($display_terms_taxonomies)){
 
         $tax_details = hale_get_post_tax_details($display_terms_taxonomies);
