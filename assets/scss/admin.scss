@@ -1,0 +1,19 @@
+/**
+ * This file is used in the ACF settings page.
+ * It is enqueued using admin_enqueue_style
+*/
+
+// makes conditionally visible settings obviously different
+.acf-admin-single-post-type {
+	.hale-acf-indented-setting.acf-field {
+		padding-left: 12px;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		margin-bottom: 0;
+		border-left: 3px solid #b1b4b6;
+	
+		+ *:not(.hale-acf-indented-setting) {
+			margin-top: 24px;
+		}
+	}
+}

@@ -19,7 +19,7 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
     acf_render_field_wrap(
         array(
             'label' => 'Show Published Date',
-            'instructions' => 'Shows published date on the single view.',
+            'instructions' => 'Shows the '.strtolower($post_label).'&rsquo;s initial publication date.',
             'name'         => 'show_published_date_on_single_view',
             'value'        => isset( $acf_post_type['show_published_date_on_single_view'] ) ? $acf_post_type['show_published_date_on_single_view'] : true,
             'prefix'       => 'acf_post_type',
@@ -53,27 +53,75 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
 
     acf_render_field_wrap(
         array(
-            'label' => 'Show full width heading',
+            'label'        => 'Show full width heading',
             'instructions' => 'Moves the main page heading to the top of the page.',
             'name'         => 'full_width_heading',
             'value'        => isset( $acf_post_type['full_width_heading'] ) ? $acf_post_type['full_width_heading'] : false,
             'prefix'       => 'acf_post_type',
-            'type' => 'true_false',
-            'key' => 'full_width_heading',
-            'ui' => true,
+            'type'         => 'true_false',
+            'key'          => 'full_width_heading',
+            'ui'           => true,
+        )
+    );
+    acf_render_field_wrap(
+        array(
+            'label'        => 'Include post type name',
+            'instructions' => '"<b>'.$post_label.'</b>" will appear above the heading.',
+            'name'         => 'full_width_post_type_name',
+            'prefix'       => 'acf_post_type',
+            'value'        => isset( $acf_post_type['full_width_post_type_name'] ) ? $acf_post_type['full_width_post_type_name'] : true,
+            'type'         => 'true_false',
+            'key'          => 'full_width_post_type_name',
+            'ui'           => true,
+            'wrapper'      => array(
+                'class'    => 'hale-acf-indented-setting',
+            ),
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'full_width_heading',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
+        )
+    );
+    acf_render_field_wrap(
+        array(
+            'label'        => 'Include post date',
+            'instructions' => 'Adds the '.strtolower($post_label).'&rsquo;s date beneath the heading, this is separate from the Published Date option above, and will show the updated date if the '.strtolower($post_label).' has been updated.',
+            'name'         => 'full_width_revision_date',
+            'prefix'       => 'acf_post_type',
+            'value'        => isset( $acf_post_type['full_width_revision_date'] ) ? $acf_post_type['full_width_revision_date'] : true,
+            'type'         => 'true_false',
+            'key'          => 'full_width_revision_date',
+            'ui'           => true,
+            'wrapper'      => array(
+                'class'    => 'hale-acf-indented-setting',
+            ),
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field' => 'full_width_heading',
+                        'operator' => '==',
+                        'value' => '1',
+                    ),
+                ),
+            ),
         )
     );
 
     acf_render_field_wrap(
         array(
-            'label' => 'Show Table of Contents',
+            'label'        => 'Show Table of Contents',
             'instructions' => 'Shows table of contents at the side.',
             'name'         => 'show_toc_on_single_view',
             'value'        => isset( $acf_post_type['show_toc_on_single_view'] ) ? $acf_post_type['show_toc_on_single_view'] : false,
             'prefix'       => 'acf_post_type',
-            'type' => 'true_false',
-            'key' => 'show_toc_on_single_view',
-            'ui' => true,
+            'type'         => 'true_false',
+            'key'          => 'show_toc_on_single_view',
+            'ui'           => true,
             'conditional_logic' => array(
                 array(
                     array(
@@ -154,6 +202,9 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
                 'list' => 'List',
                 'tags' => 'Tags',
             ),
+            'wrapper'      => array(
+                'class'    => 'hale-acf-indented-setting',
+            ),
             'conditional_logic' => array(
                 array(
                     array(
@@ -177,6 +228,9 @@ add_action('acf/post_type/render_settings_tab/display-settings', function ($acf_
             'ui'           => true,
             'allow_null'   => true,
             'multiple'     => true,
+            'wrapper'      => array(
+                'class'    => 'hale-acf-indented-setting',
+            ),
             'conditional_logic' => array(
                 array(
                     array(
@@ -288,6 +342,14 @@ add_filter( 'acf/post_type/registration_args', function( $args, $post_type ) {
 
     if ( isset( $post_type['full_width_heading'] ) ) {
         $args['full_width_heading'] = $post_type['full_width_heading'];
+    }
+
+    if ( isset( $post_type['full_width_post_type_name'] ) ) {
+        $args['full_width_post_type_name'] = $post_type['full_width_post_type_name'];
+    }
+
+    if ( isset( $post_type['full_width_revision_date'] ) ) {
+        $args['full_width_revision_date'] = $post_type['full_width_revision_date'];
     }
 
     if ( isset( $post_type['show_toc_on_single_view'] ) ) {

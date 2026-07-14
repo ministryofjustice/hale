@@ -183,6 +183,13 @@ add_action('after_setup_theme', 'hale_content_width', 0);
  * Enqueue scripts and styles.
  */
 
+add_action( 'admin_enqueue_scripts', function() {
+    wp_enqueue_style(
+        'hale-admin',
+        hale_mix_asset('/css/admin.min.css')
+    );
+} );
+
 function hale_action_customize_save_after($array)
 {
     // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.

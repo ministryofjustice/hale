@@ -11,12 +11,15 @@
  * @param string $field The name of the ACF field to check. This should correspond
  *                      to the exact field name as configured in ACF.
  *
+ * @param bool  $null_return This returns null if the field is not set, helps to deal
+ *              with rollout of new features.
+ *
  * @return bool Returns true if the specified field is enabled (i.e., set to '1')
  *              for the current post type. Returns false if the field is not enabled,
  *              the field does not exist, or there is no current post type determined.
  *
  */
-function hale_get_acf_field_status($field, $post_type = "") {
+function hale_get_acf_field_status($field, $post_type = "", $null_return = false) {
 
     if ($post_type == "") $post_type = get_post_type();
 
@@ -25,6 +28,11 @@ function hale_get_acf_field_status($field, $post_type = "") {
     }
 
     $post_types = get_post_types([], 'objects');
+
+    // Returns null if not set
+    if ($null_return && $post_types[$post_type]->$field === null) {
+        return null;
+    }
 
     // Check if document uploads are allowed for this post type
     if (isset($post_types[$post_type]->$field) && $post_types[$post_type]->$field == '1') {
