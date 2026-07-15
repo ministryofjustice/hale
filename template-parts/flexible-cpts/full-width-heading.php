@@ -14,7 +14,7 @@
 	$show_name = hale_get_acf_field_status('full_width_post_type_name', "", $null_return = true);
 	$show_date = hale_get_acf_field_status('full_width_revision_date', "", $null_return = true);
 
-	// To ensure existing sites with these settings not set behave as they currently do
+	// To ensure existing sites (with these settings not set) behave as they currently do
 	if ($show_date === null) $show_date = true;
 	if ($show_name === null) $show_name = true;
 
