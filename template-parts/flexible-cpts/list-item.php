@@ -58,7 +58,8 @@ if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "non
     
     
     ?>
-    <?php if(!empty($display_fields)){
+    <?php
+    if(!empty($display_fields)){
 
         foreach($display_fields as $field){
 
@@ -109,7 +110,7 @@ if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "non
                 <?php
             }
         }
-        }
+    }
     ?>
 </div>
 <?php 

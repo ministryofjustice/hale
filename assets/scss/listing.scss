@@ -61,7 +61,9 @@
       border-bottom: 1px solid $govuk-border-colour;
       margin-bottom: 20px;
       clear: both;
+      display: flow-root;
       position: relative;
+      padding-bottom: 20px;
 
       &__thumb,
       &__thumb-spacer {
@@ -103,15 +105,19 @@
 
       .list-item-published-date {
         @include govuk-font-size($size: 19);
-        margin-bottom: 20px;
         font-weight: bold;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
         .published-date {
           font-weight: normal;
         }
       }
       .list-item-detail {
         @include govuk-font-size($size: 19);
-        margin-bottom: 20px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
         .list-item-detail-label {
           font-weight: bold;
           display: inline-block;
