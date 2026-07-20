@@ -69,6 +69,8 @@
       &__thumb-spacer {
         width: 125px;
         height: 125px;
+        background-repeat:no-repeat;
+        background-position: center;
 
         @include govuk-media-query($from: "desktop") {
           width: 152px;

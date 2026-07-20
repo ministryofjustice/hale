@@ -44,7 +44,7 @@ if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "non
         $thumb_class = "list-item__thumb list-item__thumb--$thumbnail_style";
         $alt_text = esc_attr__(get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ),"hale");
 
-        echo "<img class='$thumb_class' src='$thumb_url' alt='' />";
+        echo "<div class='$thumb_class' style=\"background-image:url('$thumb_url')\" aria-hidden='true'></div>";
     }
 
     if(!empty($display_terms_taxonomies)){
