@@ -14,10 +14,10 @@
  * @param bool  $null_return This returns null if the field is not set, helps to deal
  *              with rollout of new features.
  *
- * @return bool Returns true if the specified field is enabled (i.e., set to '1')
- *              for the current post type. Returns false if the field is not enabled,
- *              the field does not exist, or there is no current post type determined.
- *
+ * @return bool|null Returns true if the specified field is enabled (i.e., set to '1')
+ *                   for the current post type. Returns false if the field is not enabled,
+ *                   the field does not exist, or there is no current post type determined.
+ *                   Returns null when $null_return is true and the field has not been set yet.
  */
 function hale_get_acf_field_status($field, $post_type = "", $null_return = false) {
 
