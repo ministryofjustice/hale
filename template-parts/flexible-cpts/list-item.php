@@ -20,8 +20,14 @@ if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "non
 <div class="list-item">
     <?php
         if ($include_thumbnail) {
-            // This floats to where the absolutely positioned thumbnail is to create the wrapping behaviour we need
-            echo '<div class="list-item__thumb-spacer"></div>';
+
+            // if there is a post thumbnail, and the listing page has it set to display, we echo it out here
+            $thumb_id = get_post_thumbnail_id(get_the_ID());
+            $thumb_url = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
+            $thumb_class = "list-item__thumb list-item__thumb--$thumbnail_style";
+            $alt_text = esc_attr__(get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ),"hale");
+
+            echo "<div class='$thumb_class' style=\"background-image:url('$thumb_url')\" aria-hidden='true'></div>";
         }
     ?>
     <h2 class="list-item-title govuk-heading-m">
@@ -36,17 +42,6 @@ if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "non
         ?>
     </h2>
     <?php
-    if ($include_thumbnail) {
-
-        // if there is a post thumbnail, and the listing page has it set to display, we echo it out here
-        $thumb_id = get_post_thumbnail_id(get_the_ID());
-        $thumb_url = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
-        $thumb_class = "list-item__thumb list-item__thumb--$thumbnail_style";
-        $alt_text = esc_attr__(get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ),"hale");
-
-        echo "<div class='$thumb_class' style=\"background-image:url('$thumb_url')\" aria-hidden='true'></div>";
-    }
-
     if(!empty($display_terms_taxonomies)){
 
         $tax_details = hale_get_post_tax_details($display_terms_taxonomies);

@@ -65,34 +65,22 @@
       position: relative;
       padding-bottom: 20px;
 
-      &__thumb,
-      &__thumb-spacer {
+      &__thumb {
         width: 125px;
         height: 125px;
-        background-repeat:no-repeat;
+        background-repeat: no-repeat;
         background-position: center;
+        float: right;
+        margin: 0 0 2px 5px;
+        border: solid 1px $govuk-border-colour;
 
         @include govuk-media-query($from: "desktop") {
           width: 152px;
           height: 152px;
         }
-
-      }
-
-      &__thumb-spacer {
-        float: right;
-        margin: 0 0 2px 5px;
-
         + h2 {
           clear:none;
         }
-      }
-
-      &__thumb {
-        position: absolute;
-        top:0;
-        right:0;
-        border: solid 1px $govuk-border-colour;
 
         &--square {
           border-radius: 0;
