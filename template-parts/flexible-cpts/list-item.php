@@ -27,7 +27,7 @@ if (has_post_thumbnail() && !empty($thumbnail_style) && $thumbnail_style != "non
             $thumb_class = "list-item__thumb list-item__thumb--$thumbnail_style";
             $alt_text = esc_attr__(get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ),"hale");
 
-            echo "<div class='$thumb_class' style=\"background-image:url('$thumb_url')\" aria-hidden='true'></div>";
+            echo "<div class='$thumb_class' style=\"background-image:url('$thumb_url')\"></div>";
         }
     ?>
     <h2 class="list-item-title govuk-heading-m">
