@@ -31,7 +31,10 @@ if (!empty($items_per_page)) {
     $listing_args['posts_per_page'] = $items_per_page;
 } 
 
-//Search by text
+// Whether to include thumbnails in the listing page
+$thumbnail_style = get_post_meta(get_the_ID(), 'listing_thumbnail', true);
+
+// Search by text
 if (!empty($listing_search_text)) {
 
     $listing_args['s'] = $listing_search_text;
@@ -220,9 +223,10 @@ if ($listing_query->have_posts()) {
     ?>
     <div class="flexible-post-type-list <?php echo $cpt_shaded_class;?>">
         <?php
+        
         while ($listing_query->have_posts()) {
             $listing_query->the_post();
-            get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable  ));
+            get_template_part('template-parts/flexible-cpts/list-item', false, array('display-fields' => $display_fields, 'display-terms-taxonomies' => $display_terms_taxonomies,'single_view' => $post_type_obj->publicly_queryable,'thumbnail-style' => $thumbnail_style ));
         } ?>
     </div>
 

@@ -60,17 +60,54 @@
     .list-item {
       border-bottom: 1px solid $govuk-border-colour;
       margin-bottom: 20px;
+      clear: both;
+      display: flow-root;
+      position: relative;
+      padding-bottom: 20px;
+
+      &__thumb {
+        width: 125px;
+        height: 125px;
+        background-repeat: no-repeat;
+        background-position: center;
+        float: right;
+        margin: 0 0 2px 5px;
+        border: solid 1px $govuk-border-colour;
+
+        @include govuk-media-query($from: "desktop") {
+          width: 152px;
+          height: 152px;
+        }
+        + h2 {
+          clear:none;
+        }
+
+        &--square {
+          border-radius: 0;
+        }
+        &--rounded {
+          border-radius: 1rem;
+        }
+        &--circle {
+          border-radius: 50%;
+        }
+      }
+
       .list-item-published-date {
         @include govuk-font-size($size: 19);
-        margin-bottom: 20px;
         font-weight: bold;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
         .published-date {
           font-weight: normal;
         }
       }
       .list-item-detail {
         @include govuk-font-size($size: 19);
-        margin-bottom: 20px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
         .list-item-detail-label {
           font-weight: bold;
           display: inline-block;
