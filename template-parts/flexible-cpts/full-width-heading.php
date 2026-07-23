@@ -11,8 +11,8 @@
 	$post_type = get_post_type_object(get_post_type($post));
 	$revision_date_set = false;
 
-	$show_name = hale_get_acf_field_status('full_width_post_type_name', "", $null_return = true);
-	$show_date = hale_get_acf_field_status('full_width_revision_date', "", $null_return = true);
+	$show_name = hale_get_acf_field_status('full_width_post_type_name', '', true);
+	$show_date = hale_get_acf_field_status('full_width_revision_date', '', true);
 
 	// To ensure existing sites (with these settings not set) behave as they currently do
 	if ($show_date === null) $show_date = true;
