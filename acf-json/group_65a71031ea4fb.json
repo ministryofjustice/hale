@@ -61,6 +61,24 @@
             "allow_null": 0
         },
         {
+            "key": "listing_include_filters",
+            "label": "Include filters",
+            "name": "listing_include_filters",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1
+        },
+        {
             "key": "field_65bb8460617d1",
             "label": "Listing sort order",
             "name": "listing_sort_order",

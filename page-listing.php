@@ -25,6 +25,9 @@ while (have_posts()) :
     // Check if documents are restricted
     $restrict_documents = get_post_meta(get_the_ID(), 'restrict_documents', true);
 
+    // Check if filters are to be shewn
+    $show_filters = get_post_meta(get_the_ID(), 'listing_include_filters', true);
+
     // Get name of post type for search box
     $listing_post_type = get_post_meta(get_the_ID(), 'listing_post_type', true);
     $post_type_obj = get_post_type_object( $listing_post_type );
@@ -43,6 +46,10 @@ while (have_posts()) :
 
         <div class="govuk-grid-row">
 
+            <?php
+            // If unset, this will be treated as true
+            if ($show_filters !== "0") {
+            ?>
             <!-- Lefthand column with filters and search -->
             <div class="govuk-grid-column-one-third">
                 <div class="listing-search-section">
@@ -92,6 +99,9 @@ while (have_posts()) :
                     </div>
                 </div>
             </div>
+            <?php
+            }
+            ?>
 
             <!-- Righthand column with listing page results -->
             <div class="govuk-grid-column-two-thirds">
