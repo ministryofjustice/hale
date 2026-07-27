@@ -14,6 +14,8 @@
  */
 require get_template_directory() . '/inc/sanitization-callbacks.php';
 
+//Fix for default block styles not loading - Since WP7.0
+add_filter( 'should_load_separate_core_block_assets', '__return_true', 11 );
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
