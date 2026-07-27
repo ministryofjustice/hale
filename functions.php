@@ -185,20 +185,25 @@ add_action('after_setup_theme', 'hale_content_width', 0);
  * Enqueue scripts and styles.
  */
 
-add_action('edit_post_type_enqueue_scripts', function ($screen) {
+add_action( 'admin_enqueue_scripts', function ( $hook ) {
+    if ( $hook !== 'post.php' && $hook !== 'post-new.php' ) {
+        return;
+    }
 
+    $screen = get_current_screen();
     if (!$screen) {
         return;
     }
 
-    // Check we are on a post edit screen
-    if ($screen->base !== 'post') {
+    if ($screen->post_type !== 'acf-post-type' ) {
         return;
     }
 
     wp_enqueue_style(
         'hale-admin',
-        hale_mix_asset('/css/admin.min.css')
+        hale_mix_asset('/css/admin.min.css'),
+        [],
+        '1.0'
     );
 });
 
