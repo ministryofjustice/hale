@@ -595,3 +595,21 @@ require get_template_directory() . '/inc/helper-functions.php';
  * Extend API with custom post type info
  */
 require get_template_directory() . '/inc/api-extensions.php';
+
+// Disables Iframe Editor - Temp fix 
+// Wordpress previosuly disabled the iframe editor across the whole site if blocks were using v2 api 
+// Since Wordpress 7.0.0 its on a page by page basis
+// This means editor styles/fonts are not loading into the iframe.
+add_action( 'enqueue_block_editor_assets', function () {
+	wp_add_inline_script(
+		'wp-blocks',
+		"wp.hooks.addFilter(
+			'blocks.registerBlockType',
+			'hale/debug-no-iframe',
+			function ( settings ) {
+				return Object.assign( {}, settings, { apiVersion: 2 } );
+			}
+		);",
+		'after'
+	);
+} );
