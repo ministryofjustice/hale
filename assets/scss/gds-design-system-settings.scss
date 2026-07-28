@@ -3,7 +3,12 @@ $govuk-font-family: 'PT Sans', sans-serif;
 //removes wordpress styling for core blocks
 @import 'core-wp-blocks-overrides';
 @import "node_modules/govuk-frontend/dist/govuk/all";
-@import url(https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);
+
+// PT Sans is enqueued as a stylesheet, not imported here:
+//   front end -> hale_scripts()               (functions.php)
+//   editor    -> hale_editor_canvas_font()    (inc/custom-gutenberg.php)
+// A CSS @import is render-blocking, and cannot be relied on once the editor
+// stylesheet is inlined into the block editor canvas.
 
 //Overrides
 

@@ -220,6 +220,15 @@ add_action('customize_save_after', 'hale_action_customize_save_after', 10, 1);
 
 function hale_scripts()
 {
+    // Loaded first so it is not blocked behind the theme stylesheet. Previously a
+    // CSS @import inside gds-design-system-settings.scss.
+    wp_enqueue_style(
+        'hale-webfont',
+        'https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+        [],
+        null
+    );
+
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
