@@ -15,6 +15,15 @@
  * Editor UI (chrome) styles belong in editor.scss instead.
 */
 
+// Branding is normally scoped to a class hale_get_branding_class() puts on
+// <body>, which never reaches the iframed canvas. Overriding the scope to plain
+// `body` here means WordPress rewrites it to .editor-styles-wrapper on
+// injection, so the branded colours apply to canvas content.
+//
+// Must be set BEFORE gds-design-system-settings, where the !default values live.
+$hale-branding-scope: 'body';
+$hale-branding-scope-any: 'body';
+
 // Provides $govuk-font-family plus the govuk-frontend mixins and placeholder
 // classes that default.scss / hale-styles.scss @extend.
 @import 'gds-design-system-settings';
@@ -24,6 +33,13 @@
 @import 'hale-styles';
 @import 'fontstyles/gds-font-sizes';
 @import 'fontstyles/pt-sans';
+
+// Branded colours. The custom properties these consume (--link etc) are injected
+// into the canvas by hale_editor_canvas_inline_styles() reading custom-colours.css.
+@import 'brandings';
+@import 'brandings-extended-core-blocks';
+@import 'brandings-mojblocks';
+@import 'brandings-cookies';
 
 // default.scss already sets `body { font-family: 'PT Sans', sans-serif }`, which
 // WordPress rewrites onto the canvas root so headings inherit it. These two rules

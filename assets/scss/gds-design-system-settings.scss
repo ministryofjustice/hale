@@ -1,5 +1,20 @@
 $govuk-font-family: 'PT Sans', sans-serif;
 
+/**
+ * Wrapper selectors for the branding stylesheets.
+ *
+ * On the front end and in the editor chrome, branding is scoped to a class that
+ * hale_get_branding_class() puts on <body> (template-functions.php). That class
+ * never reaches the block editor's iframed canvas, so editor-canvas.scss
+ * overrides these to plain `body` — WordPress rewrites `body` to
+ * .editor-styles-wrapper when it injects an add_editor_style() sheet, which is
+ * the canvas root in both iframed and non-iframed mode.
+ *
+ * Declared with !default so a bundle can set them before importing this file.
+ */
+$hale-branding-scope: 'body.hale-colours-customised' !default;
+$hale-branding-scope-any: 'body.hale-colours-customised, body.hale-colours-gds-standard' !default;
+
 //removes wordpress styling for core blocks
 @import 'core-wp-blocks-overrides';
 @import "node_modules/govuk-frontend/dist/govuk/all";

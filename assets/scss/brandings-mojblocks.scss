@@ -1,7 +1,6 @@
 //brandings for MoJ Blocks
 
-body.hale-colours-customised,
-body.hale-colours-gds-standard {
+#{$hale-branding-scope-any} {
 	//Accordion block
 	.govuk-accordion,
 	.js-enabled .govuk-accordion {
