@@ -58,7 +58,7 @@ $gutenberg-styles: false;
 @import 'archive';
 
 //MOJ Design System
-@import "node_modules/@ministryofjustice/frontend/moj/components/date-picker/date-picker";
+@import "@ministryofjustice/frontend/moj/components/date-picker/date-picker";
 
 //Printing
 @import 'printing';

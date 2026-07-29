@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .hale-page .moj-pagination__link:after,
 .hale-page .moj-pagination__link:before {
   //correction for the font used on JotW.
@@ -133,7 +135,7 @@
 }
 
 .gem-c-pagination__item {
-  @include govuk-font-size($size: 16, $line-height: (20 / 16));
+  @include govuk-font-size($size: 16, $line-height: math.div(20, 16)); // 20 / 16
   list-style: none;
 
   &:first-child {
@@ -188,7 +190,7 @@
 }
 
 .gem-c-pagination__link-icon {
-  @include govuk-font-size($size: 24, $line-height: (33.75 / 27));
+  @include govuk-font-size($size: 24, $line-height: math.div(33.75, 27)); // 33.75 / 27
   display: inline-block;
   margin-bottom: 1px;
   height: .482em;

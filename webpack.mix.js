@@ -1,13 +1,24 @@
 const mix_ = require('laravel-mix');
 
+const silenceDeprecations = true;
+const quietSass = silenceDeprecations ? {
+  sassOptions: {
+    quietDeps: true, // mutes govuk-frontend's own deprecations (slash-div, color-functions red/green/blue, non-% $weight units)
+    silenceDeprecations: [
+      'import',         // @import rules (our partials + govuk-frontend); migrate to @use/@forward
+      'global-builtin', // unquote() in vendored Font-Awesome scss; use string.unquote
+      'if-function'     // if() syntax in vendored Font-Awesome _functions.scss
+    ],
+  }
+} : {};
 
 mix_.setPublicPath('./dist')
   .copy('./assets/images/*', 'dist/images/')
   .copy('./assets/webfonts/*', 'dist/webfonts/')
-  .sass('./assets/scss/style.scss', 'css/style.min.css')
-  .sass('./assets/scss/style-gutenburg.scss', 'css/style-gutenburg.min.css')
-  .sass('./assets/scss/custom-branding.scss', 'css/custom-branding.min.css')
-  .sass('./assets/scss/editor-branding.scss', 'css/editor-branding.min.css')
+  .sass('./assets/scss/style.scss', 'css/style.min.css', quietSass)
+  .sass('./assets/scss/style-gutenburg.scss', 'css/style-gutenburg.min.css', quietSass)
+  .sass('./assets/scss/custom-branding.scss', 'css/custom-branding.min.css', quietSass)
+  .sass('./assets/scss/editor-branding.scss', 'css/editor-branding.min.css', quietSass)
   .sass('./assets/scss/brandings-dark-background--php-used.scss', 'css/dark-background.min.css')
   .sass('./assets/scss/admin.scss', 'css/admin.min.css')
   .copy('./assets/js/*', 'dist/js/')
@@ -19,6 +30,9 @@ mix_.setPublicPath('./dist')
   .scripts(['./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js', './assets/js/gov-overrides.js'], 'dist/js/govuk-frontend.js')
   .options({
     processCssUrls: false
+  })
+  .webpackConfig({
+    stats: { children: !silenceDeprecations }
   });
 
 if (mix_.inProduction()) {
