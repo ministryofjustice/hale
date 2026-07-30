@@ -42,29 +42,6 @@ function hale_add_editor_styles()
 add_action('after_setup_theme', 'hale_add_editor_styles');
 
 /**
- * Webfont for the canvas.
- *
- * enqueue_block_assets fires in both the editor and on the front end. In the
- * editor, _wp_get_iframed_editor_assets() collects what is queued here and emits
- * real <link> tags inside the iframe, which an inlined CSS @import cannot reliably do.
- */
-function hale_editor_canvas_font()
-{
-    if (!is_admin()) {
-        return;
-    }
-
-    wp_enqueue_style(
-        'hale-webfont',
-        'https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-        [],
-        null
-    );
-}
-
-add_action('enqueue_block_assets', 'hale_editor_canvas_font');
-
-/**
  * Per-site custom colours and the customizer font choice, injected into the canvas.
  *
  * The colours file is read from disk rather than passed to add_editor_style() as a
@@ -110,21 +87,35 @@ function hale_editor_canvas_inline_styles($settings, $context)
 
 add_filter('block_editor_settings_all', 'hale_editor_canvas_inline_styles', 10, 2);
 
-/**
- * Chrome styles.
- *
- * These stay on enqueue_block_editor_assets because they target the editor UI
- * outside the iframe, where .primary-font--*, .edit-post-visual-editor and
- * .interface-interface-skeleton__content do exist.
- */
+
 function hale_gutenberg_editor_styles()
 {
+  
+    if (!is_admin()) {
+        return;
+    }
+
     $screen = get_current_screen();
 
     // Only apply to edit backend pages.
     if ('post' !== $screen->base) {
         return;
     }
+
+    /**
+     * Webfont for the canvas.
+     *
+     * enqueue_block_assets fires in both the editor and on the front end. In the
+     * editor, _wp_get_iframed_editor_assets() collects what is queued here and emits
+     * real <link> tags inside the iframe, which an inlined CSS @import cannot reliably do.
+    */
+
+    wp_enqueue_style(
+        'hale-webfont',
+        'https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+        [],
+        null
+    );
 
     wp_enqueue_style('hale-gutenburg-style', hale_mix_asset('/css/style-gutenburg.min.css'));
     wp_enqueue_style('hale-editor-branding', hale_mix_asset('/css/editor-branding.min.css'));
@@ -139,6 +130,7 @@ function hale_gutenberg_editor_styles()
     } else {
         wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
     }
+    
 }
 
-add_action('enqueue_block_editor_assets', 'hale_gutenberg_editor_styles', 100);
+add_action('enqueue_block_assets', 'hale_gutenberg_editor_styles', 100);
