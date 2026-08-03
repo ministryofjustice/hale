@@ -1,6 +1,6 @@
 @import "govuk-frontend/dist/govuk/helpers/index";
 
-@import url(https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);
+// PT Sans is enqueued via hale_editor_canvas_font() in inc/custom-gutenberg.php.
 
 $pt-sans: 'PT Sans', sans-serif;
 $fonts: (

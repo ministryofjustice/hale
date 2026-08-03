@@ -1,0 +1,84 @@
+/**
+ * Styles for the block editor CONTENT canvas, injected via add_editor_style().
+ *
+ * WordPress prefixes every selector in this file with .editor-styles-wrapper and
+ * rewrites html/body/:root to that wrapper. That happens whether or not the
+ * canvas is iframed, so these rules apply in BOTH modes:
+ *
+ *   - iframed (all blocks in the post are apiVersion 3+)
+ *   - non-iframed (a v1/v2 block is present, or an older WP)
+ *
+ * DO NOT scope anything here to .interface-interface-skeleton__content,
+ * .edit-post-visual-editor, .primary-font--* or .hale-page — those ancestors
+ * only exist in the parent admin document, so they break the iframed case.
+ *
+ * Editor UI (chrome) styles belong in editor.scss instead.
+*/
+
+// Branding is normally scoped to a class hale_get_branding_class() puts on
+// <body>, which never reaches the iframed canvas. Overriding the scope to plain
+// `body` here means WordPress rewrites it to .editor-styles-wrapper on
+// injection, so the branded colours apply to canvas content.
+//
+// Must be set BEFORE gds-design-system-settings, where the !default values live.
+$hale-branding-scope: 'body';
+$hale-branding-scope-any: 'body';
+
+// Provides $govuk-font-family plus the govuk-frontend mixins and placeholder
+// classes that default.scss / hale-styles.scss @extend.
+@import 'gds-design-system-settings';
+
+@import 'moj-blocks-editor';
+@import 'default';
+@import 'hale-styles';
+@import 'fontstyles/gds-font-sizes';
+@import 'fontstyles/pt-sans';
+
+// Branded colours. The custom properties these consume (--link etc) are injected
+// into the canvas by hale_editor_canvas_inline_styles() reading custom-colours.css.
+@import 'brandings';
+@import 'brandings-extended-core-blocks';
+@import 'brandings-mojblocks';
+@import 'brandings-cookies';
+
+// default.scss already sets `body { font-family: 'PT Sans', sans-serif }`, which
+// WordPress rewrites onto the canvas root so headings inherit it. These two rules
+// are belt-and-braces, and honour the customizer's primary_font choice via the
+// custom property injected by hale_editor_canvas_inline_styles().
+body {
+	background-color: #fff; // overriding the default grey background from WP
+	font-family: var(--hale-primary-font, #{$govuk-font-family});
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--hale-primary-font, #{$govuk-font-family});
+}
+
+/**
+ * Editor overrides
+ * These styles are overrides to make wordpress blocks easier to manage in the editor interface
+*/
+
+// Table block
+.wp-block-table {
+	&:not(.is-style-stripes) td,
+	td {
+		// adding dashed borders to aid editors visulisation of the table
+		border: 1px #b1b4b6;
+		border-style: dashed;
+		border-bottom-style: solid;
+		// overriding the normal padding to ease reading with the new dashed borders
+		padding: 10px;
+
+		&:last-child {
+			// overriding the normal padding to ease reading with the new dashed borders
+			// also makes table looked more uniform in the editor
+			padding: 10px;
+		}
+	}
+	&.is-style-stripes td {
+		// top and bottom are not needed for striped design
+		border-top-style: none;
+		border-bottom-style: none;
+	}
+}
