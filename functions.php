@@ -14,7 +14,13 @@
  */
 require get_template_directory() . '/inc/sanitization-callbacks.php';
 
-//Fix for default block styles not loading - Since WP7.0
+/**
+ * Fix for default block styles not loading - Since WP7.0
+ *
+ * This fix is essential, for core block styling.
+ * e.g. padding of core group blocks with backgrounds
+ * `<div class="wp-block-group has-background">...</div>`
+ */ 
 add_filter( 'should_load_separate_core_block_assets', '__return_true', 11 );
 
 /**

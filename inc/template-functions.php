@@ -168,7 +168,7 @@ function hale_get_branding_class() {
 function hale_get_template_class() {
 	$screen = get_current_screen();
 	//Checks if on page edit screen
-	if ($screen->base === "post" && $screen->post_type === "page") {
+	if ($screen?->base === "post" && $screen->post_type === "page") {
 		$template = get_page_template_slug();
 		if ($template) {
 			$class = preg_replace('/\.php$/', "", $template);
@@ -290,6 +290,11 @@ add_filter( 'admin_body_class', 'hale_admin_deprecation', 10, 1);
 function hale_clean_bad_content( $b_print = false ) {
 
 	global $post;
+
+	if ( ! $post instanceof WP_Post ) {
+		return $b_print ? null : '';
+	}
+
 	$hale_post_content  = $post->post_content;
 	$hale_remove_filter = array( '~<p[^>]*>\s?</p>~', '~<a[^>]*>\s?</a>~', '~<h[^>]*>\s?</h[^>]>~', '~<font[^>]*>~', '~<\/font>~' );
 	$hale_post_content  = preg_replace( $hale_remove_filter, '', $hale_post_content );

@@ -267,7 +267,7 @@ function hale_breadcrumb() {
 							}
 							if ( ! ( is_archive() || is_category() || is_post_type_archive() || is_search() || is_404() ) ) {
 
-								$this_lang = hale_get_page_lang_attr($post->ID, false)
+								$this_lang = hale_get_page_lang_attr(get_the_ID(), false)
 
 								?>
 
