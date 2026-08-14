@@ -118,3 +118,13 @@ function hale_get_allowed_blocks(){
 
     return $allowed_blocks;
 }
+
+add_filter( 'block_type_metadata', function ( array $metadata ) {
+
+    if ( in_array( $metadata['name'], [ 'core/heading', 'core/paragraph' ], true ) ) {
+        $metadata['supports']['typography']['fitText'] = false;
+    }
+
+    return $metadata;
+
+} );

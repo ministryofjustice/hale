@@ -50,12 +50,4 @@ wp.domReady(function () {
     }
   });
 
-  wp.blocks.getBlockVariations('core/heading').forEach(function (blockVariation) {
-      wp.blocks.unregisterBlockVariation('core/heading', blockVariation.name);
-  });
-
-   wp.blocks.getBlockVariations('core/paragraph').forEach(function (blockVariation) {
-      wp.blocks.unregisterBlockVariation('core/paragraph', blockVariation.name);
-  });
-    
 });

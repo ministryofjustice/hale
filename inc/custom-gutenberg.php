@@ -98,7 +98,7 @@ function hale_gutenberg_editor_styles()
     $screen = get_current_screen();
 
     // Only apply to edit backend pages.
-    if ('post' !== $screen->base) {
+    if ('post' !== $screen?->base) {
         return;
     }
 
