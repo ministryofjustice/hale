@@ -1,3 +1,5 @@
+@use "sass:map";
+
 /*
 The following are copied from $_govuk-typography-scale-modern from the design system.
 We use variables here as we need to set the WordPress variable to the size to prevent Gutenberg overriding it.
@@ -13,10 +15,10 @@ Setting font-size:var(--gds-font-size-48) and line-height:var(--gds-line-height-
 	$sizes: 16, 19, 24, 36, 48; // These must be GDS sizes
 		:root {
 			@each $size in $sizes {
-				$font-map: map-get($_govuk-typography-scale-modern, $size);
+				$font-map: map.get($_govuk-typography-scale-modern, $size);
 				@each $breakpoint, $breakpoint-map in $font-map {
-					$font-size: map-get($breakpoint-map, "font-size");
-					$line-height: map-get($breakpoint-map, "line-height");
+					$font-size: map.get($breakpoint-map, "font-size");
+					$line-height: map.get($breakpoint-map, "line-height");
 					@if not $breakpoint {
 						--gds-font-size-#{$size}: #{$font-size};
 						--gds-line-height-#{$size}: #{$line-height};

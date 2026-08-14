@@ -22,12 +22,11 @@
     "govuk-frontend": "^5.6.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "cssnano": "^5.0.7",
+    "cross-env": "^10.1.0",
+    "cssnano": "^8.0.2",
     "laravel-mix": "^6.0.25",
-    "postcss-cli": "^8.3.1",
     "sass": "^1.35.2",
-    "sass-loader": "^12.1.0",
+    "sass-loader": "^17.0.0",
     "webpack": "^5.88.0 <5.104.0"
   }
 }

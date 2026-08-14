@@ -17,7 +17,7 @@ $hale-branding-scope-any: 'body.hale-colours-customised, body.hale-colours-gds-s
 
 //removes wordpress styling for core blocks
 @import 'core-wp-blocks-overrides';
-@import "node_modules/govuk-frontend/dist/govuk/all";
+@import "govuk-frontend/dist/govuk/index";
 
 // PT Sans is enqueued as a stylesheet, not imported here:
 //   front end -> hale_scripts()               (functions.php)
