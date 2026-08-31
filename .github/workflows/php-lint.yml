@@ -1,0 +1,82 @@
+name: Apply linting and code sniffer
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LINT_OUTPUT: lint-results.txt
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v4
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run PHPCBF dry-run (fixable violations)
+      run: |
+        echo "::group::Running PHPCBF dry-run..."
+        composer phpcbf --standard=PSR12 --dry-run > $LINT_OUTPUT || true
+        echo "::endgroup::"
+
+    - name: Set PHPCS config
+      run: composer phpcs-config-set
+
+    - name: Run PHPCS check (report-only)
+      run: |
+        echo "::group::Running PHPCS check..."
+        composer phpcs --standard=PSR12 >> $LINT_OUTPUT || true
+        echo "::endgroup::"
+
+    - name: Output Linting Results
+      run: cat $LINT_OUTPUT
+
+    - name: Leave PR comment if linting issues found
+      if: always()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        ERROR_LINES=$(grep -i "ERROR" "$LINT_OUTPUT" || true)
+        WARNING_COUNT=$(grep -i "WARNING" "$LINT_OUTPUT" | wc -l)
+
+        if [ -n "$ERROR_LINES" ] || [ "$WARNING_COUNT" -gt 0 ]; then
+          COMMENT_BODY=""
+
+          if [ -n "$ERROR_LINES" ]; then
+            COMMENT_BODY="${COMMENT_BODY}**✨PHP Code linting results:**\n\n\`\`\`\n${ERROR_LINES}\n\`\`\`\n"
+          fi
+
+          if [ "$WARNING_COUNT" -gt 0 ]; then
+            COMMENT_BODY="${COMMENT_BODY}**${WARNING_COUNT} warnings** were found. Check GitAction build for more details."
+          fi
+
+          COMMENT_BODY_ESCAPED=$(echo -e "$COMMENT_BODY" | jq -Rs .)
+
+          curl -s -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"body\": $COMMENT_BODY_ESCAPED}" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
+        else
+          echo "No linting errors or warnings found."
+        fi
