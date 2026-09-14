@@ -213,17 +213,6 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
     );
 });
 
-function hale_action_customize_save_after($array)
-{
-    // generate from options on page rather than preview CSS file to avoid editor clash of styles if someone else is previewing at the same time.
-
-    clearstatcache();
-    $upload_file_path = wp_get_upload_dir()["basedir"];
-    rename($upload_file_path."/temp-colours.css", $upload_file_path."/custom-colours.css");
-};
-
-add_action('customize_save_after', 'hale_action_customize_save_after', 10, 1);
-
 function hale_scripts()
 {
     // Loaded first so it is not blocked behind the theme stylesheet. Previously a
