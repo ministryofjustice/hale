@@ -151,56 +151,6 @@ function hale_generate_custom_colours() {
 
 }
 
-/**
- * On customizer save, promote the preview CSS to the live file, then clear it from the CDN.
- *
- * Promotes the file rather than regenerating from saved options, to avoid a clash
- * of styles if someone else is previewing at the same time.
- */
-function hale_publish_custom_colours() {
-	clearstatcache();
-	$upload_dir = wp_get_upload_dir();
-
-	if (!rename($upload_dir["basedir"]."/temp-colours.css", $upload_dir["basedir"]."/custom-colours.css")) {
-		return;
-	}
-
-	hale_invalidate_custom_colours_cdn_cache($upload_dir["baseurl"]."/custom-colours.css");
-}
-
-add_action('customize_save_after', 'hale_publish_custom_colours');
-
-/**
- * Clear custom-colours.css from CloudFront after it has been regenerated.
- *
- * Uses the invalidation helpers from the hale-components mu-plugin. Does nothing if
- * they aren't loaded, or if uploads aren't served from the CDN (e.g. local).
- * Failures are logged, not thrown: the new file is already saved to S3.
- *
- * @param string $css_url Full URL of the site's custom-colours.css.
- */
-function hale_invalidate_custom_colours_cdn_cache(string $css_url): void {
-	if (!function_exists('hale_components_invalidate_cloudfront_path') || !function_exists('hale_components_host_is_a_cdn')) {
-		return;
-	}
-
-	$host = parse_url($css_url, PHP_URL_HOST);
-	$path = parse_url($css_url, PHP_URL_PATH);
-
-	if (!$host || !$path || !hale_components_host_is_a_cdn($host)) {
-		return;
-	}
-
-	try {
-		hale_components_invalidate_cloudfront_path(
-			$path, // e.g. /uploads/sites/12/custom-colours.css
-			'custom-colours-'.get_current_blog_id().'-'.time()
-		);
-	} catch (Throwable $t) {
-		error_log($t->getMessage());
-	}
-}
-
 function get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value, $colour_default) {
 	if ($jason) { //JSON file uploaded
 		$colour_to_use = $jason[$colour_id];
