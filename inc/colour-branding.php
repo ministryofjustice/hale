@@ -9,7 +9,9 @@
 require get_template_directory() . '/inc/colour-branding-import.php';
 
 // This code creates the CSS files that are used to turn the colour options into a stylesheet
-function hale_generate_custom_colours() {
+// Writes temp-colours.css (promoted to custom-colours.css on customizer save) and returns the CSS
+function hale_generate_custom_colours(): string {
+	$css = "";
 	$upload_file_path = wp_upload_dir()["basedir"]; //for PHP-created CSS file
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$dark_background_css_file = get_template_directory().'/dist/css/dark-background.min.css';
@@ -131,9 +133,14 @@ function hale_generate_custom_colours() {
 			$css .= $logo_focus_invert_style;
 		}
 
+		// The preview inlines $css, so a failed write would otherwise go unnoticed until publish
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
-		fwrite($css_file, $css);
-		fclose($css_file);
+		if (!$css_file || fwrite($css_file, $css) === false) {
+			error_log("Failed to write ".$upload_file_path."/temp-colours.css");
+		}
+		if ($css_file) {
+			fclose($css_file);
+		}
 	}
 
 	if (get_theme_mod("customizer_setting_json")) {
@@ -149,6 +156,7 @@ function hale_generate_custom_colours() {
 		remove_theme_mod("customizer_setting_json");
 	}
 
+	return $css;
 }
 
 /**

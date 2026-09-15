@@ -227,21 +227,25 @@ function hale_scripts()
     wp_enqueue_style('hale-style', hale_mix_asset('/css/style.min.css'));
     wp_enqueue_style('hale-custom-branding', hale_mix_asset('/css/custom-branding.min.css'));
 
-    $t = time();
-
     if (is_customize_preview()) {
-        $css_file_name = "/temp-colours.css?t=$t";
+        // Inline rather than link temp-colours.css: uploads are cached on CloudFront,
+        // and this CSS changes on every preview refresh.
+        // Strip < so imported JSON colour values can't close the style tag.
+        $css = hale_generate_custom_colours();
+        wp_register_style('hale-custom-colours', false);
+        wp_enqueue_style('hale-custom-colours');
+        wp_add_inline_style('hale-custom-colours', str_replace('<', '', $css));
     } else {
+        $t = time();
         $css_file_name = "/custom-colours.css?t=$t";
-    }
 
-
-    if (is_ssl()) {
-        //wp_get_upload_dir()["baseurl"] only returns http.
-        $baseURL = str_replace('http://', 'https://', wp_get_upload_dir()["baseurl"]);
-        wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
-    } else {
-        wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
+        if (is_ssl()) {
+            //wp_get_upload_dir()["baseurl"] only returns http.
+            $baseURL = str_replace('http://', 'https://', wp_get_upload_dir()["baseurl"]);
+            wp_enqueue_style('hale-custom-colours', $baseURL . $css_file_name);
+        } else {
+            wp_enqueue_style('hale-custom-colours', wp_get_upload_dir()["baseurl"] . $css_file_name);
+        }
     }
 
     // JS
