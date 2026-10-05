@@ -248,6 +248,14 @@ document.addEventListener('mouseover', function(e) {
 
 jQuery("#menu-menu-top-menu").ready(function( $ ) {
 	navBarOptimization();
+
+	if (document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(function() {
+			navBarOptimization();
+			arrowMainNavAndMoreMenu($);
+		});
+	}
+
 	$(window).resize(function() {
 		navBarOptimization();
 		arrowMainNavAndMoreMenu($);
