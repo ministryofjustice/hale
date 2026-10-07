@@ -465,6 +465,7 @@ require get_template_directory() . '/inc/acf/add-select-field.php';
 
 // Register taxonomies
 require get_template_directory() . '/inc/acf/taxonomy-fields/add-taxonomy.php';
+require get_template_directory() . '/inc/acf/taxonomy-fields/term-sorting.php';
 
 // Stop ACF from saving or loading JSON files
 require get_template_directory() . '/inc/acf/disable-json.php';
