@@ -525,6 +525,11 @@ function hale_learndash_admin_fix()
 require get_template_directory() . '/inc/restrict-blocks.php';
 
 /**
+ * Disable editor features
+ */
+require get_template_directory() . '/inc/disable-editor-features.php';
+
+/**
  * Taxonomies
  */
 require get_template_directory() . '/inc/taxonomies/tax-page-category.php';
