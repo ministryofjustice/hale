@@ -15,6 +15,17 @@
 require get_template_directory() . '/inc/sanitization-callbacks.php';
 
 /**
+ * Disables the "custom CSS" field found in the advanced section of most blocks
+ * This feature was rolled out in WP 7.0 in May 2026
+ */
+add_filter( 'register_block_type_args', function ( $args ) {
+    $args['supports'] = $args['supports'] ?? [];
+    $args['supports']['customCSS'] = false;
+
+    return $args;
+}, 100 );
+
+/**
  * Fix for default block styles not loading - Since WP7.0
  *
  * This fix is essential, for core block styling.
