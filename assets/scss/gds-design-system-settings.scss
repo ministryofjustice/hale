@@ -68,6 +68,12 @@ $hale-branding-scope-any: 'body.hale-colours-customised, body.hale-colours-gds-s
   .govuk-footer__copyright-logo:before {
     // Completely remove the GOV.UK crown pseudo-element :before spacing 
     content: none;
+    // content: none alone still leaves the browser requesting the crest, whose
+    // default path /assets/images/govuk-crest.svg no site serves (a 404 on every
+    // page). Drop the image URLs too; the theme draws its own crest inline.
+    background-image: none;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
