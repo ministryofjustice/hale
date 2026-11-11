@@ -130,7 +130,7 @@ $extra_styles = $page_colour ? 'page-style--' . $page_colour : '';
 
 ?>
 
-<div id="content" class="govuk-width-container govuk-!-margin-top-0 govuk-!-padding-top-0">
+<div id="content" class="govuk-width-container">
 	<main class="govuk-main-wrapper <?php echo esc_attr( $extra_styles ); ?>" id="maincontent">
 		<div id="contentinner" class="govuk-grid-row">
 		<?php
