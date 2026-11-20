@@ -1,0 +1,21 @@
+name: Build preview
+
+# Builds any branch into a pre-release zip for testing on a shared environment.
+#   Actions tab -> "Build preview" -> Run workflow -> pick the branch
+#   or: gh workflow run preview.yml --ref my-branch
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    # TODO: pin to a commit SHA once the shared workflow is settled.
+    uses: ministryofjustice/wb-workflows/.github/workflows/wb-package.yml@main
+    with:
+      mode: preview
+      version-file: style.css
+      package-name: hale
+      # "build" is a development build; production minifies and versions via mix-manifest.json.
+      build-command: npm run production

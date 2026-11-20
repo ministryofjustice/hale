@@ -14,6 +14,8 @@ const quietSass = silenceDeprecations ? {
 
 mix_.setPublicPath('./dist')
   .copy('./assets/images/*', 'dist/images/')
+  // GOV.UK Frontend images, for govuk-image-url() ($govuk-images-path in gds-design-system-settings.scss)
+  .copy('./node_modules/govuk-frontend/dist/govuk/assets/images/*', 'dist/images/')
   .copy('./assets/webfonts/*', 'dist/webfonts/')
   .sass('./assets/scss/style.scss', 'css/style.min.css', quietSass)
   .sass('./assets/scss/style-gutenburg.scss', 'css/style-gutenburg.min.css', quietSass)
