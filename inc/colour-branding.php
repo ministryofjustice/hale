@@ -9,7 +9,9 @@
 require get_template_directory() . '/inc/colour-branding-import.php';
 
 // This code creates the CSS files that are used to turn the colour options into a stylesheet
-function hale_generate_custom_colours() {
+// Writes temp-colours.css (promoted to custom-colours.css on customizer save) and returns the CSS
+function hale_generate_custom_colours(): string {
+	$css = "";
 	$upload_file_path = wp_upload_dir()["basedir"]; //for PHP-created CSS file
 	$upload_file_path_exists = is_dir($upload_file_path);
 	$dark_background_css_file = get_template_directory().'/dist/css/dark-background.min.css';
@@ -131,9 +133,14 @@ function hale_generate_custom_colours() {
 			$css .= $logo_focus_invert_style;
 		}
 
+		// The preview inlines $css, so a failed write would otherwise go unnoticed until publish
 		$css_file = fopen($upload_file_path."/temp-colours.css", "w");
-		fwrite($css_file, $css);
-		fclose($css_file);
+		if (!$css_file || fwrite($css_file, $css) === false) {
+			error_log("Failed to write ".$upload_file_path."/temp-colours.css");
+		}
+		if ($css_file) {
+			fclose($css_file);
+		}
 	}
 
 	if (get_theme_mod("customizer_setting_json")) {
@@ -149,6 +156,57 @@ function hale_generate_custom_colours() {
 		remove_theme_mod("customizer_setting_json");
 	}
 
+	return $css;
+}
+
+/**
+ * On customizer save, promote the preview CSS to the live file, then clear it from the CDN.
+ *
+ * Promotes the file rather than regenerating from saved options, to avoid a clash
+ * of styles if someone else is previewing at the same time.
+ */
+function hale_publish_custom_colours() {
+	clearstatcache();
+	$upload_dir = wp_get_upload_dir();
+
+	if (!rename($upload_dir["basedir"]."/temp-colours.css", $upload_dir["basedir"]."/custom-colours.css")) {
+		return;
+	}
+
+	hale_invalidate_custom_colours_cdn_cache($upload_dir["baseurl"]."/custom-colours.css");
+}
+
+add_action('customize_save_after', 'hale_publish_custom_colours');
+
+/**
+ * Clear custom-colours.css from CloudFront after it has been regenerated.
+ *
+ * Uses the invalidation helpers from the hale-components mu-plugin. Does nothing if
+ * they aren't loaded, or if uploads aren't served from the CDN (e.g. local).
+ * Failures are logged, not thrown: the new file is already saved to S3.
+ *
+ * @param string $css_url Full URL of the site's custom-colours.css.
+ */
+function hale_invalidate_custom_colours_cdn_cache(string $css_url): void {
+	if (!function_exists('hale_components_invalidate_cloudfront_path') || !function_exists('hale_components_host_is_a_cdn')) {
+		return;
+	}
+
+	$host = parse_url($css_url, PHP_URL_HOST);
+	$path = parse_url($css_url, PHP_URL_PATH);
+
+	if (!$host || !$path || !hale_components_host_is_a_cdn($host)) {
+		return;
+	}
+
+	try {
+		hale_components_invalidate_cloudfront_path(
+			$path, // e.g. /uploads/sites/12/custom-colours.css
+			'custom-colours-'.get_current_blog_id().'-'.time()
+		);
+	} catch (Throwable $t) {
+		error_log($t->getMessage());
+	}
 }
 
 function get_colour_to_use($jason, $colour_id, $custom_colours_set, $colour_value, $colour_default) {

@@ -145,10 +145,6 @@ require get_template_directory() . '/inc/colour-branding.php';
 
 function hale_get_branding_class() {
 
-	if (is_customize_preview()) {
-		hale_generate_custom_colours();
-	}
-
 	$custom_colours_set = ! get_theme_mod("gds_style_tickbox");
 	if (!$custom_colours_set) {
 		$style_class = " hale-colours-gds-standard";
