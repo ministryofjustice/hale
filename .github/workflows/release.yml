@@ -1,0 +1,22 @@
+name: Release
+
+# Releases when a merge to main bumps the Version header in style.css.
+# See https://github.com/ministryofjustice/wb-workflows for details.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: read # to title the release after the merged PR
+
+jobs:
+  release:
+    # TODO: pin to a commit SHA once the shared workflow is settled.
+    uses: ministryofjustice/wb-workflows/.github/workflows/wb-package.yml@main
+    with:
+      mode: release
+      version-file: style.css
+      package-name: hale
+      # "build" is a development build; production minifies and versions via mix-manifest.json.
+      build-command: npm run production

@@ -72,7 +72,7 @@ $logo_line_2 = 'no' === $org_name_checkbox ? get_bloginfo( 'description' ) : get
         ">
         <svg role="presentation" focusable="false" class="moj-header__logotype-crest" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702.47 624.08" height="40" width="47">
           <?php include 'govuk-crest-svg-content.php'; ?>
-          <image src="/assets/images/gov-crest-white.png" xlink:href="" class="govuk-header__logotype-crown-fallback-image" width="702.47" height="624.08"></image>
+          <image src="<?php echo esc_url(hale_mix_asset('/images/gov-crest-white.png')); ?>" xlink:href="" class="govuk-header__logotype-crown-fallback-image" width="702.47" height="624.08"></image>
         </svg>
       <?php } //endif for custon logo = no ?>
     <?php } //endif for site logo = yes ?>

@@ -1,0 +1,19 @@
+# Files shipped in the release and preview zips.
+# rsync filter rules: checked top to bottom, first match wins.
+# "***" means the folder and everything in it; "- *" drops anything not listed.
++ /style.css
++ /theme.json
++ /screenshot.png
++ /readme.txt
++ /composer.json
++ /*.php
++ /inc/***
++ /template-parts/***
++ /partials/***
++ /acf-json/***
++ /languages/***
+# Compiled CSS/JS, plus the images, webfonts and JS that webpack.mix.js copies
+# in. Source maps aren't needed on sites. assets/ is all build input.
+- /dist/**.map
++ /dist/***
+- *
